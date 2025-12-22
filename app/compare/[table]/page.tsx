@@ -34,4 +34,12 @@ export default async function CompareTablePage({ params }: PageProps) {
 
   if (!entry) return notFound();
 
-  // Rows are derived from category (never stored on
+  const rows = getFeeRowsByCategory(entry.category);
+
+  return (
+    <div style={{ display: "grid", gap: 12 }}>
+      <h1 style={{ margin: 0, fontSize: 20 }}>{entry.title}</h1>
+      <FeeTable rows={rows} />
+    </div>
+  );
+}
