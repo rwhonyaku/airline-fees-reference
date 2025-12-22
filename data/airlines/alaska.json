@@ -1,0 +1,119 @@
+{
+  "slug": "alaska",
+  "name": "Alaska Airlines",
+  "iata": "AS",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "1st checked bag under 50 lbs (23 kg)",
+      "applies_to": "Economy",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd checked bag under 50 lbs (23 kg)",
+      "applies_to": "Economy",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "3rd checked bag",
+      "applies_to": "Economy",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bags 4+",
+      "applies_to": "Economy",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Standard seat selection included; preferred seating may cost extra",
+      "applies_to": "Main Cabin",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Preferred seats; fee varies by flight",
+      "applies_to": "Main Cabin",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Cancel within 24 hours of booking for full refund",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "within 24h",
+      "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation rules depend on fare type (Saver fares most restrictive)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "after 24h",
+      "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee (ages 5–11)",
+      "applies_to": "All fares",
+      "region_or_route": "U.S. Mainland",
+      "timing": "one-way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee (ages 5–11)",
+      "applies_to": "All fares",
+      "region_or_route": "Between Hawaiian Islands",
+      "timing": "one-way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
+      "last_verified": "2025-12-19"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "slug": "american",
+  "name": "American Airlines",
+  "iata": "AA",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "Bag 1; base rate shown as $35 (prepaid) / $40 (standard at check-in location); fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "Bag 2; fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Bag 3; fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bag 4+; fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "Bag 1; base rate shown as $35 (prepaid) / $40 (standard at check-in location); fees vary by destination and travel date",
+      "applies_to": "Basic Economy",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "Bag 2; fees vary by destination and travel date",
+      "applies_to": "Basic Economy",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Bag 3; fees vary by destination and travel date",
+      "applies_to": "Basic Economy",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bag 4+; fees vary by destination and travel date",
+      "applies_to": "Basic Economy",
+      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-19"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee (per direction); additional fare requirements apply",
+      "applies_to": "All fares",
+      "region_or_route": "Varies",
+      "timing": "per direction",
+      "source_url": "https://www.aa.com/i18n/travel-info/special-assistance/unaccompanied-minors.jsp",
+      "last_verified": "2025-12-19"
+    }
+  ]
+}

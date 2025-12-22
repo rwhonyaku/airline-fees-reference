@@ -1,0 +1,31 @@
+{
+  "slug": "spirit",
+  "name": "Spirit Airlines",
+  "iata": "NK",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "No change or cancellation fees; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01195",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee (ages 5–14); nonstop flights only",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic only",
+      "timing": "each way",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01160",
+      "last_verified": "2025-12-19"
+    }
+  ]
+}

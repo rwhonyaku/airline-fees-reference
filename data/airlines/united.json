@@ -1,0 +1,108 @@
+{
+  "slug": "united",
+  "name": "United Airlines",
+  "iata": "UA",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "First checked bag prepaid online $35; $40 at airport",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd checked bag prepaid online $45; $50 at airport",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 15,
+      "currency": "USD",
+      "conditions": "Advance seat assignment (starting price)",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Varies",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 29 to 299",
+      "currency": "USD",
+      "conditions": "Economy Plus seating (per flight, per person)",
+      "applies_to": "Economy",
+      "region_or_route": "Varies",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 24,
+      "currency": "USD",
+      "conditions": "Preferred seating (starting price)",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "Varies",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 136,
+      "currency": "USD",
+      "conditions": "Preferred seating (starting price)",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Varies",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee; full adult fare also required",
+      "applies_to": "All fares",
+      "region_or_route": "Varies",
+      "timing": "per direction",
+      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "No change fee; fare difference applies",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US domestic and international",
+      "timing": "before departure",
+      "source_url": "https://www.united.com/en/us/fly/travel/trip-planning/flexible-booking-options.html#change-fees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Changes and cancellations not permitted after 24 hours",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Varies",
+      "timing": "after 24h",
+      "source_url": "https://www.united.com/en/us/fly/travel/trip-planning/flexible-booking-options.html#change-fees",
+      "last_verified": "2025-12-19"
+    }
+  ]
+}

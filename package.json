@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:data": "node scripts/validate-data.mjs",
+    "new:airline": "node scripts/new-airline.mjs"
+
+
   },
   "dependencies": {
     "next": "16.1.0",

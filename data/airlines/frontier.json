@@ -1,0 +1,86 @@
+{
+  "slug": "frontier",
+  "name": "Frontier Airlines",
+  "iata": "F9",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Change flight fee (Basic Fare / Standard): 60+ days before departure",
+      "applies_to": "Basic Fare / Standard",
+      "region_or_route": "All routes",
+      "timing": "60+ days before departure",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 49,
+      "currency": "USD",
+      "conditions": "Change flight fee (Basic Fare / Standard): 59 to 7 days before departure",
+      "applies_to": "Basic Fare / Standard",
+      "region_or_route": "All routes",
+      "timing": "59 to 7 days before departure",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 99,
+      "currency": "USD",
+      "conditions": "Change flight fee (Basic Fare / Standard): 6 days or less before departure (including same-day)",
+      "applies_to": "Basic Fare / Standard",
+      "region_or_route": "All routes",
+      "timing": "6 days or less before departure",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Change flight fee: no change fees at any time",
+      "applies_to": "Economy / Premium / Business bundle",
+      "region_or_route": "All routes",
+      "timing": "any time before departure",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 99,
+      "currency": "USD",
+      "conditions": "Cancel flight fee (Basic Fare / Standard): per passenger, per direction",
+      "applies_to": "Basic Fare / Standard",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Cancel flight fee: no cancellation fee",
+      "applies_to": "Economy / Premium / Business bundle",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service not offered (children under 15 must be in the same reservation as an accompanying adult)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/travel-policies/?mobile=true",
+      "last_verified": "2025-12-19"
+    }
+  ]
+}

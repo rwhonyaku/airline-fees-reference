@@ -1,0 +1,120 @@
+{
+  "slug": "delta",
+  "name": "Delta Air Lines",
+  "iata": "DL",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "1st standard checked bag under 50 lbs (23 kg)",
+      "applies_to": "Basic Economy",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
+      "applies_to": "Basic Economy",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "1st standard checked bag under 50 lbs (23 kg)",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US domestic",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Change/cancel fee: free",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "US/Canada/Mexico/Caribbean/Central America",
+      "timing": "before departure",
+      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 99,
+      "currency": "USD",
+      "conditions": "Change/cancel fee",
+      "applies_to": "Basic Economy",
+      "region_or_route": "US/Canada/Mexico/Caribbean/Central America",
+      "timing": "before departure",
+      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Change/cancel fee: free",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "South America/Europe/UK/Africa/Middle East/India/Asia/Pacific",
+      "timing": "before departure",
+      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 199,
+      "currency": "USD",
+      "conditions": "Change/cancel fee",
+      "applies_to": "Basic Economy",
+      "region_or_route": "South America/Europe/UK/Africa/Middle East/India/Asia/Pacific",
+      "timing": "before departure",
+      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Changes not permitted (Basic Economy tickets purchased before Nov 6, 2025)",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Varies",
+      "timing": "before departure",
+      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor service fee; additional fare requirements apply",
+      "applies_to": "All fares",
+      "region_or_route": "Varies",
+      "timing": "per direction",
+      "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
+      "last_verified": "2025-12-19"
+    }
+
+  ]
+}

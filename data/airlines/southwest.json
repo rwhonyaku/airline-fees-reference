@@ -1,0 +1,98 @@
+{
+  "slug": "southwest",
+  "name": "Southwest Airlines",
+  "iata": "WN",
+  "country": "US",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "First and second checked bags free (up to 50 lbs / 23 kg each)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 125,
+      "currency": "USD",
+      "conditions": "Third checked bag",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 75,
+      "currency": "USD",
+      "conditions": "Overweight bag (51–100 lbs); bags over 100 lbs not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 75,
+      "currency": "USD",
+      "conditions": "Oversize bag (63–80 inches L+W+H); bags over 80 inches not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Open seating; no assigned seats",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "check-in / boarding",
+      "source_url": "https://www.southwest.com/fare-information/",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "No change or cancellation fees; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.southwest.com/fare-information/",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor (UM) fee (ages 5–11)",
+      "applies_to": "All fares",
+      "region_or_route": "U.S. Mainland",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "Unaccompanied minor (UM) fee (ages 5–11)",
+      "applies_to": "All fares",
+      "region_or_route": "Between Hawaiian Islands",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-19"
+    }
+
+  ]
+}
