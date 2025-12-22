@@ -2,34 +2,36 @@
 
 import { notFound } from "next/navigation";
 import { COMPARE_TABLES } from "@/content/compare-tables";
-import { buildComparisonRows } from "@/lib/compare";
+import { getFeeRowsByCategory } from "@/lib/data";
 import { FeeTable } from "@/components/Table";
+import { canonical } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return COMPARE_TABLES.map((t) => ({ table: t.id }));
-}
+type PageProps = {
+  params: Promise<{
+    table: string;
+  }>;
+};
 
-export async function generateMetadata({ params }: { params: Promise<{ table: string }> }) {
+export async function generateMetadata({ params }: PageProps) {
   const { table } = await params;
-  const def = COMPARE_TABLES.find((t) => t.id === table);
-  if (!def) return { title: "Comparison not found | Airline Fees Reference" };
-  return { title: `${def.title} | Airline Fees Reference` };
+  const entry = COMPARE_TABLES.find((t) => t.id === table);
+
+  if (!entry) {
+    return { title: "Comparison not found" };
+  }
+
+  return {
+    title: entry.title,
+    alternates: {
+      canonical: canonical(`/compare/${entry.id}`),
+    },
+  };
 }
 
-export default async function CompareTablePage({ params }: { params: Promise<{ table: string }> }) {
+export default async function CompareTablePage({ params }: PageProps) {
   const { table } = await params;
-  const def = COMPARE_TABLES.find((t) => t.id === table);
-  if (!def) return notFound();
+  const entry = COMPARE_TABLES.find((t) => t.id === table);
 
-  const rows = buildComparisonRows(def);
+  if (!entry) return notFound();
 
-  return (
-    <div style={{ display: "grid", gap: 12 }}>
-      <h1 style={{ margin: 0, fontSize: 20 }}>{def.title}</h1>
-      <FeeTable rows={rows} />
-      <div style={{ fontSize: 12, opacity: 0.85 }}>
-        This table includes only rows that match the stated conditions and have verifiable sources and last-verified dates.
-      </div>
-    </div>
-  );
-}
+  // Rows are derived from category (never stored on
