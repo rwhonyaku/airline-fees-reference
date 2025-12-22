@@ -1,6 +1,7 @@
 // app/layout.tsx
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Disclaimer } from "@/components/Disclaimer";
 import { canonical } from "@/lib/seo";
 import "./globals.css";
@@ -10,8 +11,7 @@ export const metadata: Metadata = {
     default: "Airline Fees Reference",
     template: "%s | Airline Fees Reference",
   },
-  description:
-    "Reference tables of published airline fees, organized by airline and fee category.",
+  description: "Reference tables of published airline fees, organized by airline and fee category.",
   alternates: {
     canonical: canonical("/"),
   },
@@ -23,10 +23,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body style={{ margin: 0 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px" }}>
           <header style={{ marginBottom: 18 }}>
-            <div style={{ fontSize: 18, fontWeight: 700 }}>Airline Fees Reference</div>
-            <div style={{ fontSize: 13, opacity: 0.9 }}>
-              Reference tables of published airline fees, organized by airline and fee category.
-            </div>
+            <Link
+              href="/"
+              style={{
+                display: "inline-block",
+                fontSize: 18,
+                fontWeight: 700,
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Airline Fees Reference
+            </Link>
           </header>
 
           <main>{children}</main>
