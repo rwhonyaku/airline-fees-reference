@@ -49,6 +49,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer style={{ marginTop: 28, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,0.12)" }}>
             <Disclaimer />
           </footer>
+          <footer
+            style={{
+              marginTop: 28,
+              paddingTop: 16,
+              borderTop: "1px solid rgba(0,0,0,0.12)",
+              fontSize: 13,
+            }}
+          >
+            <div style={{ marginBottom: 8 }}>
+              <a href="/privacy" style={{ color: "#555", textDecoration: "underline" }}>
+                Privacy Policy
+              </a>
+            </div>
+
+            <Disclaimer />
+        </footer>
+
         </div>
       </body>
     </html>
