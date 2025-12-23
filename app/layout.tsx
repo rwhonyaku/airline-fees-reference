@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Disclaimer } from "@/components/Disclaimer";
 import { canonical } from "@/lib/seo";
 import "./globals.css";
+import Script from "next/script";
+
 
 export const metadata: Metadata = {
   title: {
@@ -20,6 +22,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711217631458410"
+        crossOrigin="anonymous"
+      />
       <body style={{ margin: 0 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px" }}>
           <header style={{ marginBottom: 18 }}>
