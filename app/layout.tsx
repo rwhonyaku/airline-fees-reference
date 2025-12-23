@@ -2,11 +2,10 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Disclaimer } from "@/components/Disclaimer";
 import { canonical } from "@/lib/seo";
 import "./globals.css";
-import Script from "next/script";
-
 
 export const metadata: Metadata = {
   title: {
@@ -22,11 +21,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711217631458410"
-        crossOrigin="anonymous"
-      />
+      <head>
+        <Script
+          id="adsense"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711217631458410"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body style={{ margin: 0 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px" }}>
           <header style={{ marginBottom: 18 }}>
@@ -46,9 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <main>{children}</main>
 
-          <footer style={{ marginTop: 28, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,0.12)" }}>
-            <Disclaimer />
-          </footer>
           <footer
             style={{
               marginTop: 28,
@@ -57,16 +57,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               fontSize: 13,
             }}
           >
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 8 }}>
-              <a href="/about">About</a>
-              <a href="/methodology">Methodology</a>
-              <a href="/privacy">Privacy</a>
-              <a href="/contact">Contact</a>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 10 }}>
+              <Link href="/about">About</Link>
+              <Link href="/methodology">Methodology</Link>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/contact">Contact</Link>
             </div>
 
             <Disclaimer />
-        </footer>
-
+          </footer>
         </div>
       </body>
     </html>
