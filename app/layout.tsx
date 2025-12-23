@@ -57,10 +57,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               fontSize: 13,
             }}
           >
-            <div style={{ marginBottom: 8 }}>
-              <a href="/privacy" style={{ color: "#555", textDecoration: "underline" }}>
-                Privacy Policy
-              </a>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 8 }}>
+              <a href="/about">About</a>
+              <a href="/methodology">Methodology</a>
+              <a href="/privacy">Privacy</a>
+              <a href="/contact">Contact</a>
             </div>
 
             <Disclaimer />
