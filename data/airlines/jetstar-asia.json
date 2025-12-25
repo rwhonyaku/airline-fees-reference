@@ -1,0 +1,101 @@
+{
+  "slug": "jetstar-asia",
+  "name": "Jetstar Asia",
+  "iata": "3K",
+  "country": "Singapore",
+  "region": "Asia-Pacific",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "Carry-on allowance varies by fare: Economy Starter includes up to 7 kg total cabin baggage; higher fares may allow up to 14 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/what-are-the-carry-on-baggage-allowances",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 25 to 90",
+      "currency": "SGD",
+      "conditions": "Checked baggage add-on (15–40 kg options); price varies by weight selection, route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Airport baggage fees apply if no checked baggage was pre-purchased or if allowance is exceeded; higher rates apply at the airport",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 5 to 28",
+      "currency": "SGD",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "Starter fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/seating-options",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 18 to 70",
+      "currency": "SGD",
+      "conditions": "Extra legroom or upfront seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/seating-options",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Changes permitted for a fee plus fare difference on Starter fares; Starter Plus, Flex, and Max fares allow changes with fewer restrictions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/fees-and-charges",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "SGD",
+      "conditions": "Refunds not permitted on Starter fares except for flight cancellation or qualifying circumstances",
+      "applies_to": "Starter fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/refunds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "SGD",
+      "conditions": "Jetstar Asia does not offer an Unaccompanied Minor service; children must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.jetstar.com/sg/en/help/articles/travelling-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

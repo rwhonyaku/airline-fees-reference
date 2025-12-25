@@ -1,0 +1,113 @@
+{
+  "slug": "air-france",
+  "name": "Air France",
+  "iata": "AF",
+  "country": "France",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Cabin allowance depends on fare: Economy includes 0 to 1 hand baggage (fare-dependent) + 1 small bag; maximum total weight 12 kg; small bag dimensions 40 x 30 x 15 cm; hand baggage max dimensions 55 x 35 x 25 cm",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Hand Baggage option (Basic fare only); rates are displayed during purchase and in My Bookings; can be purchased up to 4 hours before departure",
+      "applies_to": "Basic fare (Economy)",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Additional Baggage option (extra bag up to 158 cm total dimensions; weight limit depends on cabin); rates are displayed during purchase and in My Bookings; discounted rate when purchased online at least 24 hours before departure (except flights from/to Canada and USA where online price is the same as airport)",
+      "applies_to": "All fares (where additional bags are permitted)",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "at booking / manage booking / online check-in",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Oversized Baggage option applies to bags over 158 cm and up to 300 cm total dimensions; price depends on itinerary and must be paid at the airport",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "at airport",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Overweight Baggage option applies to bags heavier than the allowance in the ticket up to 32 kg; price depends on itinerary and must be paid at the airport; bags over 32 kg must be handled via cargo",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "at airport",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Advance seat selection pricing varies by destination, travel dates, and fare; Economy Light fares can select only paid seats until check-in closes; otherwise seats are auto-assigned at check-in (30 hours before departure)",
+      "applies_to": "All fares (Economy Light has restrictions)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / check-in",
+      "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Standard seat selection is free for: Flying Blue Silver/Gold/Platinum (and companions on same booking), passengers with reduced mobility, children traveling alone, and passengers traveling on a Flex fare",
+      "applies_to": "Eligible passengers / fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Change and cancellation terms depend on the fare conditions of the ticket; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://wwws.airfrance.fr/en/trip",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Kids Solo service fares vary by child age and itinerary (domestic vs international age eligibility applies)",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Varies",
+      "timing": "per direction",
+      "source_url": "https://wwws.airfrance.us/information/passagers/enfants-voyageant-seuls",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

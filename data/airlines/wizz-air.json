@@ -1,0 +1,145 @@
+{
+  "slug": "wizz-air",
+  "name": "Wizz Air",
+  "iata": "W6",
+  "country": "Hungary",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One small personal item included (40 × 30 × 20 cm) that must fit under the seat in front",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "From 5 to 60",
+      "currency": "EUR",
+      "conditions": "WIZZ Priority: includes 1 small personal item and 1 trolley bag up to 10 kg (55 × 40 × 23 cm); price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 10 to 75",
+      "currency": "EUR",
+      "conditions": "10 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 15 to 85",
+      "currency": "EUR",
+      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 25 to 95",
+      "currency": "EUR",
+      "conditions": "32 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 13,
+      "currency": "EUR",
+      "conditions": "Excess baggage fee per additional kg over purchased allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 30",
+      "currency": "EUR",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 10 to 50",
+      "currency": "EUR",
+      "conditions": "Extra legroom or front-row seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/seats",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": 40,
+      "currency": "EUR",
+      "conditions": "Flight change fee per passenger, per flight (online)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "more than 14 days before departure",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 50,
+      "currency": "EUR",
+      "conditions": "Flight change fee per passenger, per flight (online)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "within 14 days of departure",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ticket refunds not permitted except for flight cancellation or qualifying circumstances",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Wizz Air does not offer an Unaccompanied Minor service; passengers under 14 must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/travel-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

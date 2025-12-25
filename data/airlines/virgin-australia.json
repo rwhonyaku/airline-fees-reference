@@ -1,0 +1,97 @@
+{
+  "slug": "virgin-australia",
+  "name": "Virgin Australia",
+  "iata": "VA",
+  "country": "Australia",
+  "region": "Oceania",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Carry-on baggage included; allowance and weight limits depend on fare type and aircraft",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/carry-on-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Checked baggage included on Choice, Flex, and Business fares; allowance varies by fare type and status",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Checked baggage fees apply on Lite fares or when exceeding allowance; prices vary by route and purchase timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / at airport",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Checked bags exceeding standard weight limits may incur an overweight fee; maximum weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Checked baggage exceeding size limits may be subject to oversize fees or handling restrictions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Standard seat selection included on Choice, Flex, and Business fares; availability may vary",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Seat selection fees apply on Lite fares; amount varies by seat type and route",
+      "applies_to": "Lite fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Change and cancellation fees depend on fare type; Lite fares are the most restrictive",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/fare-types/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

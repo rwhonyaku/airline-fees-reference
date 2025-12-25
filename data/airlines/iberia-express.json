@@ -1,0 +1,125 @@
+{
+  "slug": "iberia-express",
+  "name": "Iberia Express",
+  "iata": "I2",
+  "country": "Spain",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One cabin bag included (up to 56 × 40 × 25 cm) plus one personal item; weight limits depend on fare (generally up to 10 kg in Economy)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.iberiaexpress.com/en/luggage/hand-luggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Checked baggage included on Comfort and Business fares; allowance varies by route and fare",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 15 to 70",
+      "currency": "EUR",
+      "conditions": "Checked baggage fee on Basic fares or for additional bags; price varies by route and purchase timing",
+      "applies_to": "Basic fares / additional bags",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Standard seat selection included on Comfort and Business fares; timing and availability depend on fare",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.iberiaexpress.com/en/seats/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 6 to 35",
+      "currency": "EUR",
+      "conditions": "Seat selection fee on Basic fares; amount varies by route, seat type (standard, preferred, extra legroom), and timing",
+      "applies_to": "Basic fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.iberiaexpress.com/en/seats/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Change and cancellation fees depend on fare and route; Basic fares are the most restrictive; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.iberiaexpress.com/en/fares-and-conditions/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Refunds not permitted on Basic fares except for flight cancellation or qualifying circumstances",
+      "applies_to": "Basic fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.iberiaexpress.com/en/fares-and-conditions/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Iberia Express does not offer an Unaccompanied Minor service; children must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.iberiaexpress.com/en/travel-with-children/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "slug": "easyjet",
+  "name": "easyJet",
+  "iata": "U2",
+  "country": "United Kingdom",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One small cabin bag included (45 × 36 × 20 cm) that must fit under the seat in front",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "From 5.99 to 37.99",
+      "currency": "EUR",
+      "conditions": "Large cabin bag up to 15 kg (56 × 45 × 25 cm); included with Up Front or Extra Legroom seats or available as an add-on; price varies by route and timing",
+      "applies_to": "Optional add-on / seat bundle",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 6.99 to 49.99",
+      "currency": "EUR",
+      "conditions": "15 kg hold bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 9.49 to 59.99",
+      "currency": "EUR",
+      "conditions": "23 kg hold bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 12,
+      "currency": "EUR",
+      "conditions": "Excess baggage fee per additional kg over purchased allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 24.99",
+      "currency": "EUR",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/seating",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 7.99 to 49.99",
+      "currency": "EUR",
+      "conditions": "Up Front or Extra Legroom seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/seating",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Flight changes permitted for a fee plus fare difference; amount varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/changes-and-cancellations",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ticket refunds not permitted except for flight cancellation or qualifying circumstances",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/changes-and-cancellations",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "easyJet does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/travelling-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

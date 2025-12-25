@@ -1,0 +1,86 @@
+{
+  "slug": "qantas",
+  "name": "Qantas Airways",
+  "iata": "QF",
+  "country": "Australia",
+  "region": "Oceania",
+  "fees": [
+    {
+      "category": "additional_baggage",
+      "amount": 130,
+      "currency": "AUD",
+      "conditions": "Fee per extra checked bag beyond free allowance; applies on domestic flights if pre-purchased or at airport",
+      "applies_to": "All passengers",
+      "region_or_route": "Domestic Australia",
+      "timing": "at booking / at airport",
+      "source_url": "https://www.qantas.com/us/en/travel-info/baggage/additional-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 50,
+      "currency": "AUD",
+      "conditions": "Heavy charge for each piece weighing over 23kg (50lbs) on domestic flights",
+      "applies_to": "All passengers",
+      "region_or_route": "Domestic Australia",
+      "timing": "at airport",
+      "source_url": "https://www.qantas.com/us/en/travel-info/baggage/additional-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "additional_baggage",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Pre-purchase additional baggage in weight increments; charges vary by route and weight increment",
+      "applies_to": "All passengers",
+      "region_or_route": "International / Domestic",
+      "timing": "at booking",
+      "source_url": "https://www.qantas.com/agencyconnect/nz/en/policy-and-guidelines/baggage-information/pre-purchase-additional-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 100,
+      "currency": "AUD",
+      "conditions": "Change or cancellation fee (excluding fare difference) on many domestic economy and premium economy fares for tickets issued on/after 30 July 2025",
+      "applies_to": "Applicable fare types",
+      "region_or_route": "Domestic Australia",
+      "timing": "before departure",
+      "source_url": "https://www.qantas.com/au/en/book-a-trip/flights/schedule-of-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Change and cancellation fees depend on fare rules and route; some premium cabins may have no change fees or different conditions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.qantas.com/au/en/book-a-trip/flights/schedule-of-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Carry-on allowance included; size and weight limits apply per Qantas baggage policy",
+      "applies_to": "All passengers",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage_included",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Free checked baggage allowance varies by itinerary, cabin class, and frequent flyer status",
+      "applies_to": "All passengers",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

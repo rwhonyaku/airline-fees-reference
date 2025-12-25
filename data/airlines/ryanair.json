@@ -1,0 +1,134 @@
+{
+  "slug": "ryanair",
+  "name": "Ryanair",
+  "iata": "FR",
+  "country": "Ireland",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One small personal bag included (40 × 20 × 25 cm) that must fit under the seat in front",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "From 6 to 36",
+      "currency": "EUR",
+      "conditions": "Priority & 2 Cabin Bags: includes 1 small personal bag and 1 cabin bag up to 10 kg (55 × 40 × 20 cm); price varies by route and timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 9.49 to 59.99",
+      "currency": "EUR",
+      "conditions": "10 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 18.99 to 59.99",
+      "currency": "EUR",
+      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 12,
+      "currency": "EUR",
+      "conditions": "Excess baggage fee per additional kg over purchased allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 35",
+      "currency": "EUR",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 8 to 45",
+      "currency": "EUR",
+      "conditions": "Extra legroom or front-row seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": 45,
+      "currency": "EUR",
+      "conditions": "Flight change fee per passenger, per flight (online)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 60,
+      "currency": "EUR",
+      "conditions": "Flight change fee per passenger, per flight (at airport or call center)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ticket refunds not permitted except for flight cancellation or qualifying circumstances",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ryanair does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

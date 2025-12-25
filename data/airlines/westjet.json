@@ -1,0 +1,157 @@
+{
+  "slug": "westjet",
+  "name": "WestJet",
+  "iata": "WS",
+  "country": "Canada",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "One carry-on bag and one personal item included; size and weight limits apply; enforcement may vary by aircraft",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.westjet.com/en-ca/baggage/carry-on",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "First checked bag included on EconoFlex, Premium, and Business fares; allowance varies by route and fare brand",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "each way",
+      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "CAD",
+      "conditions": "First checked bag fee on Econo fares; fees may vary by route",
+      "applies_to": "Econo fares",
+      "region_or_route": "Domestic and transborder",
+      "timing": "each way",
+      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 50,
+      "currency": "CAD",
+      "conditions": "Second checked bag fee where not included; fees may vary by route",
+      "applies_to": "Applicable fares",
+      "region_or_route": "Domestic and transborder",
+      "timing": "each way",
+      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "From 100 to 150",
+      "currency": "CAD",
+      "conditions": "Overweight checked bag (23–32 kg); bags over 32 kg are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "at airport",
+      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "From 100 to 150",
+      "currency": "CAD",
+      "conditions": "Oversize checked bag (over 158 cm L+W+H); acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "at airport",
+      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "Standard seat selection included on EconoFlex, Premium, and Business fares; timing and availability depend on fare",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.westjet.com/en-ca/flights/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 10 to 60",
+      "currency": "CAD",
+      "conditions": "Advance seat selection fee on Econo fares; price varies by route and seat type",
+      "applies_to": "Econo fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.westjet.com/en-ca/flights/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 30 to 199",
+      "currency": "CAD",
+      "conditions": "Preferred or extra legroom seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.westjet.com/en-ca/flights/seats",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "No change fee on EconoFlex and higher fares; fare difference applies",
+      "applies_to": "EconoFlex, Premium, Business",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "CAD",
+      "conditions": "Change fees apply on Econo fares; amount varies by fare bundle and route; fare difference applies",
+      "applies_to": "Econo fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "CAD",
+      "conditions": "Refunds not permitted on the most restrictive Econo bundles except for flight cancellation or qualifying circumstances",
+      "applies_to": "Most restrictive Econo fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": 100,
+      "currency": "CAD",
+      "conditions": "Unaccompanied Minor service fee per direction; age eligibility and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Domestic and international",
+      "timing": "per direction",
+      "source_url": "https://www.westjet.com/en-ca/children/unaccompanied-minor",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

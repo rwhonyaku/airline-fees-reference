@@ -1,0 +1,86 @@
+{
+  "slug": "volaris",
+  "name": "Volaris",
+  "iata": "Y4",
+  "country": "Mexico",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance depends on fare bundle; Zero and Basic fares include only a personal item; Plus and Premium include 1 carry-on bag; size and weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage not included on Zero and Basic fares; fees depend on fare bundle, route, and purchase timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags exceeding weight allowance incur overweight fees; single bag maximum weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage exceeding size limits is subject to oversize charges; acceptance depends on aircraft and handling capabilities",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, fare bundle, route, and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.volaris.com/en-us/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.volaris.com/en-us/travel-info/changes-and-refunds/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; minors must travel with an accompanying adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.volaris.com/en-us/travel-info/children-and-infants/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

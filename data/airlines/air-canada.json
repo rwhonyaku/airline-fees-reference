@@ -1,0 +1,146 @@
+{
+  "slug": "air-canada",
+  "name": "Air Canada",
+  "iata": "AC",
+  "country": "Canada",
+  "region": "North America",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "One standard carry-on and one personal item included; size and weight limits apply; enforcement varies by aircraft and airport",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/carry-on.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "First checked bag included on Standard, Flex, Comfort, Latitude, Premium Economy, and Business fares; allowance varies by route and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "each way",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 30,
+      "currency": "CAD",
+      "conditions": "First checked bag on Basic fares; fees vary by route and fare brand",
+      "applies_to": "Basic fares",
+      "region_or_route": "Domestic and transborder",
+      "timing": "each way",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 50,
+      "currency": "CAD",
+      "conditions": "Second checked bag on fares where not included; fees vary by route and fare brand",
+      "applies_to": "Applicable fares",
+      "region_or_route": "Domestic and transborder",
+      "timing": "each way",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "From 100 to 225",
+      "currency": "CAD",
+      "conditions": "Overweight checked bag (23–32 kg); fee varies by route; bags over 32 kg are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "at airport",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "From 100 to 225",
+      "currency": "CAD",
+      "conditions": "Oversize checked bag (over 158 cm L+W+H); fee varies by route",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "at airport",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "Standard seat selection included on Standard and higher fares; timing and availability depend on fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 10 to 70",
+      "currency": "CAD",
+      "conditions": "Advance seat selection fee on Basic fares; price varies by route and seat type",
+      "applies_to": "Basic fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 25 to 199",
+      "currency": "CAD",
+      "conditions": "Preferred or extra legroom seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "No change fee on Standard and higher fares; fare difference applies",
+      "applies_to": "Standard and higher fares",
+      "region_or_route": "Domestic, transborder, international",
+      "timing": "before departure",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/fly/customer-support/cancellation-refund.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "CAD",
+      "conditions": "Changes and refunds not permitted on Basic fares except within 24 hours of booking or qualifying circumstances",
+      "applies_to": "Basic fares",
+      "region_or_route": "All routes",
+      "timing": "after 24h",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/fly/customer-support/cancellation-refund.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": 100,
+      "currency": "CAD",
+      "conditions": "Unaccompanied Minor service fee per direction; age eligibility and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Domestic and international",
+      "timing": "per direction",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/special-assistance/unaccompanied-minors.html",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

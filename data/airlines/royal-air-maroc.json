@@ -1,0 +1,97 @@
+{
+  "slug": "royal-air-maroc",
+  "name": "Royal Air Maroc",
+  "iata": "AT",
+  "country": "Morocco",
+  "region": "Africa",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on baggage included; allowance depends on cabin class; size and weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.royalairmaroc.com/int-en/baggage/cabin-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included on most fares; allowance varies by cabin class, fare family, route, and frequent flyer status",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.royalairmaroc.com/int-en/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limitations",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees depend on fare family, seat type, and timing; some fares include standard seat selection",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.royalairmaroc.com/int-en/seating",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare rules, ticket type, and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.royalairmaroc.com/int-en/fare-rules",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.royalairmaroc.com/int-en/special-assistance/unaccompanied-minor",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

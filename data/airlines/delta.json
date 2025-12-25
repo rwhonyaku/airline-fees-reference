@@ -49,6 +49,54 @@
       "source_url": "https://www.delta.com/us/en/baggage/overview",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.delta.com/us/en/baggage/carry-on-baggage",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bags measuring 63–80 linear inches (160–203 cm)",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Bags weighing 51–70 lbs (23–32 kg)",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bags weighing 71–100 lbs (32–45 kg); bags over 100 lbs not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
+      "last_verified": "2025-12-22"
+    },
+
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -104,6 +152,42 @@
       "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "same_day_change",
+      "amount": 75,
+      "currency": "USD",
+      "conditions": "Same-day confirmed change; waived for Diamond, Platinum, and Gold Medallion members",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic",
+      "timing": "per request",
+      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-ticket-changes",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "same_day_standby",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Same-day standby available on select routes; eligibility restrictions apply",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic",
+      "timing": "per request",
+      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-ticket-changes",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Preferred seat pricing varies by flight",
+      "applies_to": "Main Cabin",
+      "region_or_route": "All routes",
+      "timing": "per segment",
+      "source_url": "https://www.delta.com/us/en/onboard/onboard-experience/seating",
+      "last_verified": "2025-12-22"
+    },
+
     {
       "category": "unaccompanied_minor",
       "amount": 150,
@@ -115,6 +199,5 @@
       "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
       "last_verified": "2025-12-19"
     }
-
   ]
 }

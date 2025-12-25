@@ -1,0 +1,97 @@
+{
+  "slug": "asiana",
+  "name": "Asiana Airlines",
+  "iata": "OZ",
+  "country": "South Korea",
+  "region": "East Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "KRW",
+      "conditions": "Economy Class: 1 cabin bag up to 10 kg; Business/First Class have higher allowances; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Asiana-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/carry-on-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "KRW",
+      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/free-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "applies_to": "All fares (where additional bags are permitted)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / airport",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Advance seat selection fees vary by route, fare family, and seat type; free seat assignment available at check-in for eligible fares",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / check-in",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Change and cancellation fees depend on fare rules and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/refund-exchange",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "KRW",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "per direction",
+      "source_url": "https://flyasiana.com/C/US/EN/contents/unaccompanied-minor",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

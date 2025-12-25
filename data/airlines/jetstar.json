@@ -1,0 +1,101 @@
+{
+  "slug": "jetstar",
+  "name": "Jetstar",
+  "iata": "JQ",
+  "country": "Australia",
+  "region": "Asia-Pacific",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Carry-on allowance varies by fare: Economy Starter includes up to 7 kg total cabin baggage; higher fares may allow up to 14 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/what-are-the-carry-on-baggage-allowances",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 30 to 75",
+      "currency": "AUD",
+      "conditions": "Checked baggage add-on (15–40 kg options); price varies by weight selection, route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Airport baggage fees apply if no checked baggage was pre-purchased or if allowance is exceeded; higher rates at airport",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 5 to 25",
+      "currency": "AUD",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "Starter fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/seating-options",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 15 to 65",
+      "currency": "AUD",
+      "conditions": "Extra legroom or upfront seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/seating-options",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "AUD",
+      "conditions": "Changes permitted for a fee plus fare difference on Starter fares; Starter Plus, Flex, and Max fares allow changes with fewer restrictions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/fees-and-charges",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "AUD",
+      "conditions": "Refunds not permitted on Starter fares except for flight cancellation or qualifying circumstances",
+      "applies_to": "Starter fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/refunds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "AUD",
+      "conditions": "Jetstar does not offer an Unaccompanied Minor service; children must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.jetstar.com/au/en/help/articles/travelling-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

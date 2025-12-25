@@ -1,0 +1,114 @@
+{
+  "slug": "ana",
+  "name": "All Nippon Airways",
+  "iata": "NH",
+  "country": "Japan",
+  "region": "Asia-Pacific",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Carry-on baggage allowance: up to 10 kg total including personal item; standard size limits apply (55 × 40 × 25 cm per item)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/carry-on/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Checked baggage included; allowance depends on route and cabin (e.g., Economy typically 1 piece up to 23 kg on Japan domestic routes; international allowances vary)",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "JPY",
+      "conditions": "Additional checked baggage fees apply when exceeding the free allowance; fees vary by route, cabin, and baggage piece",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "JPY",
+      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags exceeding 32 kg are not accepted as checked baggage",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "JPY",
+      "conditions": "Checked bags with total dimensions exceeding 158 cm (L+W+H) incur an oversize fee; maximum accepted size is 203 cm",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Advance seat selection included for most fares; availability and timing depend on fare type and route",
+      "applies_to": "Most fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/seat-map/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "JPY",
+      "conditions": "Preferred seat selection fees may apply on some international Economy fares depending on fare brand and route",
+      "applies_to": "Economy (some fares)",
+      "region_or_route": "International",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/seat-map/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "JPY",
+      "conditions": "Change and cancellation fees depend on fare rules, route (domestic vs international), and ticket type; some fares are non-refundable",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/fare-rules/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Unaccompanied minor assistance is provided free of charge on ANA-operated flights; age restrictions and conditions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.ana.co.jp/en/jp/travel-information/children/child-support/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

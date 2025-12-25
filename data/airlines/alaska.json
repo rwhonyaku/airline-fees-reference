@@ -49,6 +49,19 @@
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One carry-on bag permitted up to 22″ x 14″ x 9″ (including wheels and handles) plus one smaller personal item; additional or larger items must be checked",
+      "applies_to": "All fares (including Saver)",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://news.alaskaair.com/alaska-airlines/how-to-travel-like-an-alaska-airlines-pro/",
+      "last_verified": "2025-12-24"
+    },
+
     {
       "category": "seat_selection",
       "amount": 0,
@@ -71,6 +84,7 @@
       "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -93,6 +107,7 @@
       "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "unaccompanied_minor",
       "amount": 100,

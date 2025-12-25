@@ -1,0 +1,97 @@
+{
+  "slug": "vistara",
+  "name": "Vistara",
+  "iata": "UK",
+  "country": "India",
+  "region": "South Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Carry-on allowance included; Economy and Premium Economy up to 7 kg, Business Class up to 10 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/cabin-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Checked baggage included; allowance varies by cabin class, fare family, and route",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Standard seat selection included on most fares; premium or preferred seats may incur additional charges",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/seating",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Preferred or extra legroom seats are chargeable; fees vary by seat type and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/seating",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Change and cancellation fees depend on fare family and route; lowest fares are the most restrictive",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.airvistara.com/in/en/travel-information/special-assistance/unaccompanied-minors",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

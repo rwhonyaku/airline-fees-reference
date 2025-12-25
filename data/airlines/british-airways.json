@@ -1,0 +1,125 @@
+{
+  "slug": "british-airways",
+  "name": "British Airways",
+  "iata": "BA",
+  "country": "UK",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "One cabin bag (maximum 56 × 45 × 25 cm) and one personal item (maximum 40 × 30 × 15 cm) permitted; weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Checked baggage included in fare; allowance depends on cabin and fare type",
+      "applies_to": "Most fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "GBP",
+      "conditions": "Checked baggage fee applies on fares without an included checked bag; price varies by route, cabin, and booking time",
+      "applies_to": "Basic fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Not permitted",
+      "currency": "GBP",
+      "conditions": "Single checked bag must not exceed 32 kg; bags over 32 kg are not accepted as checked baggage",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "GBP",
+      "conditions": "Oversize items accepted within maximum dimensions of 190 × 75 × 65 cm; handling fees may apply depending on item and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Seat selection included from time of booking for First, Club World, Club Europe, and Club Europe Plus fares",
+      "applies_to": "Premium cabins",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "GBP",
+      "conditions": "Advance seat selection fee applies on some Economy fares; pricing varies by route, seat type, and time of selection",
+      "applies_to": "Economy (some fares)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Free seat selection available at check-in (24 hours before departure) on eligible fares",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "check-in",
+      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "GBP",
+      "conditions": "Change fees and fare differences apply depending on ticket fare rules; some fares are non-refundable",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.britishairways.com/en-gb/information/legal/fare-rules",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "GBP",
+      "conditions": "Unaccompanied minors are not accepted on British Airways-operated flights",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.britishairways.com/en-gb/information/family-travel/children-flying",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

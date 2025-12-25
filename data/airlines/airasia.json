@@ -1,0 +1,86 @@
+{
+  "slug": "airasia",
+  "name": "AirAsia",
+  "iata": "AK",
+  "country": "Malaysia",
+  "region": "Southeast Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance includes 1 cabin bag and 1 personal item; combined weight not exceeding 7 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/cabin-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage is not included by default; fees depend on weight tier (15 kg, 20 kg, 25 kg, 30 kg, 40 kg) and route; pre-booking is cheaper than airport purchase",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/checked-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Single checked bag may not exceed 32 kg; excess weight must be purchased in advance as additional baggage weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/checked-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Sports equipment must be pre-booked; fees depend on equipment type and route; weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/sports-equipment.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/seats.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Flight changes permitted with fee plus fare difference; cancellations generally not permitted except for specific fare products or add-ons",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/fees-and-charges.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; children must be accompanied by an adult aged 18 or above",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/children-and-infants.html",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

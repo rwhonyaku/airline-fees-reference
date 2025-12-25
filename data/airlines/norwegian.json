@@ -1,0 +1,123 @@
+{
+  "slug": "norwegian",
+  "name": "Norwegian",
+  "iata": "DY",
+  "country": "Norway",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One small personal item included (30 × 20 × 38 cm) that must fit under the seat in front",
+      "applies_to": "LowFare",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/hand-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One cabin bag up to 10 kg (55 × 40 × 23 cm) included",
+      "applies_to": "LowFare+, Flex",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/hand-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 9.90 to 59.90",
+      "currency": "EUR",
+      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 17.90 to 74.90",
+      "currency": "EUR",
+      "conditions": "23 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 12,
+      "currency": "EUR",
+      "conditions": "Excess baggage fee per additional kg over purchased allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 20",
+      "currency": "EUR",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "LowFare",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.norwegian.com/en/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 10 to 45",
+      "currency": "EUR",
+      "conditions": "Extra legroom or front-row seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.norwegian.com/en/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Flight changes permitted for a fee plus fare difference on LowFare; LowFare+ and Flex fares allow changes with fewer restrictions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.norwegian.com/en/travel-info/booking-changes-and-refunds/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ticket refunds not permitted on LowFare except for flight cancellation or qualifying circumstances",
+      "applies_to": "LowFare",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.norwegian.com/en/travel-info/booking-changes-and-refunds/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Norwegian does not offer an Unaccompanied Minor service; children must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.norwegian.com/en/travel-info/travel-with-children/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

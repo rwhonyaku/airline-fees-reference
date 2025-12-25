@@ -14,7 +14,7 @@
       "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
     },
     {
       "category": "checked_baggage",
@@ -25,86 +25,171 @@
       "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
-    },
-    {
-      "category": "checked_baggage",
-      "amount": 150,
-      "currency": "USD",
-      "conditions": "Bag 3; fees vary by destination and travel date",
-      "applies_to": "Economy (non-Basic)",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
-      "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
-    },
-    {
-      "category": "checked_baggage",
-      "amount": 200,
-      "currency": "USD",
-      "conditions": "Bag 4+; fees vary by destination and travel date",
-      "applies_to": "Economy (non-Basic)",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
-      "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
     },
 
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": 75,
       "currency": "USD",
-      "conditions": "Bag 1; base rate shown as $35 (prepaid) / $40 (standard at check-in location); fees vary by destination and travel date",
-      "applies_to": "Basic Economy",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "conditions": "Bag 1 on transatlantic flights; exceptions apply for Basic Economy and certain fare products",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. ↔ Europe",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
     },
+    {
+      "category": "checked_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Bag 2 on transatlantic flights",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S. ↔ Europe",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 30,
+      "currency": "USD",
+      "conditions": "Bag 1; fee applies on select Central America routes",
+      "applies_to": "Economy",
+      "region_or_route": "U.S. ↔ Central America",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
+      "last_verified": "2025-12-22"
+    },
+
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "Bag 2; fees vary by destination and travel date",
-      "applies_to": "Basic Economy",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "conditions": "Bag 1; fee applies on select South America routes",
+      "applies_to": "Economy",
+      "region_or_route": "U.S. ↔ South America",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
     },
-    {
-      "category": "checked_baggage",
-      "amount": 150,
-      "currency": "USD",
-      "conditions": "Bag 3; fees vary by destination and travel date",
-      "applies_to": "Basic Economy",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
-      "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
-    },
+
     {
       "category": "checked_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bag 4+; fees vary by destination and travel date",
-      "applies_to": "Basic Economy",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "conditions": "Bag 3; applies on most international routes",
+      "applies_to": "All fares",
+      "region_or_route": "International",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/carry-on-baggage.jsp",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bags measuring 62–65 linear inches (158–165 cm); bags over 115 inches are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Bags weighing 51–70 lbs (23–32 kg)",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Bags weighing 71–100 lbs (32–45 kg); bags over 100 lbs are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "same_day_standby",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Same-day standby available on select routes; eligibility restrictions apply",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic",
+      "timing": "per request",
+      "source_url": "https://www.aa.com/i18n/travel-info/travel-tools/same-day-travel.jsp",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "same_day_change",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Same-day confirmed change pricing varies by itinerary; starting at $60",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic",
+      "timing": "per request",
+      "source_url": "https://www.aa.com/i18n/travel-info/travel-tools/same-day-travel.jsp",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Preferred seat pricing varies by flight; published range approximately $4–$139",
+      "applies_to": "Main Cabin",
+      "region_or_route": "All routes",
+      "timing": "per segment",
+      "source_url": "https://www.aa.com/i18n/travel-info/experience/seats/preferred-seats.jsp",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Main Cabin Extra pricing varies by flight; published range approximately $20–$280",
+      "applies_to": "Main Cabin",
+      "region_or_route": "All routes",
+      "timing": "per segment",
+      "source_url": "https://www.aa.com/i18n/travel-info/experience/seats/main-cabin-extra.jsp",
+      "last_verified": "2025-12-22"
     },
 
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (per direction); additional fare requirements apply",
+      "conditions": "Unaccompanied minor service fee per direction; covers up to two siblings on the same flight",
       "applies_to": "All fares",
-      "region_or_route": "Varies",
+      "region_or_route": "Eligible routes only",
       "timing": "per direction",
       "source_url": "https://www.aa.com/i18n/travel-info/special-assistance/unaccompanied-minors.jsp",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-22"
     }
   ]
 }

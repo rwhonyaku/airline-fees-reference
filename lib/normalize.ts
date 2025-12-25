@@ -29,12 +29,9 @@ function isValidCategory(value: unknown): boolean {
  * - category (must be one of locked keys)
  * - amount (number|string)
  * - currency (non-empty)
- * - conditions (non-empty, label-like)
+ * - conditions (non-empty; can be long—UI should truncate if needed)
  * - source_url (http/https)
  * - last_verified (YYYY-MM-DD)
- *
- * Forbidden behaviors (enforced softly here):
- * - long prose in conditions (warn if too long)
  */
 export function validateFeeItem(item: FeeItem): { ok: true } | { ok: false; reason: string } {
   if (!item) return { ok: false, reason: "missing_item" };
@@ -49,10 +46,7 @@ export function validateFeeItem(item: FeeItem): { ok: true } | { ok: false; reas
 
   if (!isNonEmptyString(item.conditions)) return { ok: false, reason: "missing_conditions" };
 
-  // Soft guard: discourage prose
-  if (item.conditions.length > 140) {
-    console.warn(`[data] conditions too long; keep label-like: "${item.conditions.slice(0, 80)}..."`);
-  }
+  // Do not warn about length here; conditions may contain verbatim airline wording.
 
   if (!isValidUrl(item.source_url)) return { ok: false, reason: "missing_or_invalid_source_url" };
 

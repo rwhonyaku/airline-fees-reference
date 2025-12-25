@@ -1,0 +1,86 @@
+{
+  "slug": "oman-air",
+  "name": "Oman Air",
+  "iata": "WY",
+  "country": "Oman",
+  "region": "Middle East",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on baggage included; Economy Class allowance up to 7 kg; Business and First Class allowances higher; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.omanair.com/travel-info/baggage/cabin-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included; allowance varies by fare family, cabin class, route, and frequent flyer status",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.omanair.com/travel-info/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.omanair.com/travel-info/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Single checked bag must not exceed 32 kg; overweight charges apply for bags exceeding standard limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.omanair.com/travel-info/baggage/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees depend on fare family and seat type; some fares include standard seat selection",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.omanair.com/travel-info/seating",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare rules and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.omanair.com/travel-info/fees-and-charges",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.omanair.com/travel-info/special-assistance/unaccompanied-minor",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

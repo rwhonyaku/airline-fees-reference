@@ -16,6 +16,66 @@
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01195",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One personal item included; must fit completely under the seat in front of you",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Carry-on bag fee varies based on purchase timing (online booking, online check-in, airport counter, or gate)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bag fee varies based on purchase timing and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Overweight bag fees apply for bags exceeding standard weight limits; maximum accepted weight is 100 lbs",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Oversize bag fees apply for bags exceeding standard size limits; maximum accepted size is 80 linear inches",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
+      "last_verified": "2025-12-24"
+    },
+
     {
       "category": "unaccompanied_minor",
       "amount": 150,

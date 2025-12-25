@@ -1,0 +1,86 @@
+{
+  "slug": "vietjet-air",
+  "name": "VietJet Air",
+  "iata": "VJ",
+  "country": "Vietnam",
+  "region": "Southeast Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance includes 1 cabin bag up to 7 kg; size limits apply; additional small personal item permitted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.vietjetair.com/en/pages/carry-on-baggage-1607054973954",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage not included by default; baggage can be purchased in weight packages (20 kg, 30 kg, 40 kg); fees vary by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.vietjetair.com/en/pages/checked-baggage-1607054942727",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged per kilogram at airport rates",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.vietjetair.com/en/pages/checked-baggage-1607054942727",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Sports equipment requires advance purchase; fees depend on equipment type and route; weight and size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vietjetair.com/en/pages/sports-equipment-1607054986126",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is optional and chargeable; prices vary by seat type, route, and selection timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vietjetair.com/en/pages/seat-selection-1607055009390",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly stated by fare rules",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.vietjetair.com/en/pages/fees-and-charges-1607055039783",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; children must be accompanied by an adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.vietjetair.com/en/pages/children-and-infants-1607055067461",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

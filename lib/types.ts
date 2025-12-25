@@ -19,9 +19,12 @@ export type CurrencyCode =
 export type FeeCategoryKey =
   | "checked_baggage"
   | "carry_on"
+  | "overweight_baggage"
+  | "oversize_baggage"
   | "seat_selection"
   | "change_cancellation"
   | "same_day_change"
+  | "same_day_standby"
   | "unaccompanied_minor";
 
 export type FeeItem = {

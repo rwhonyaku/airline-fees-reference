@@ -1,0 +1,86 @@
+{
+  "slug": "indigo",
+  "name": "IndiGo",
+  "iata": "6E",
+  "country": "India",
+  "region": "South Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Domestic flights: 1 cabin bag up to 7 kg plus 1 personal item; International allowances vary by route; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "Domestic India / International varies",
+      "timing": "per flight",
+      "source_url": "https://www.goindigo.in/baggage/baggage-allowance.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route and fare type",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic India / International varies",
+      "timing": "each way",
+      "source_url": "https://www.goindigo.in/baggage/baggage-allowance.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Additional checked baggage can be purchased in advance or at the airport; pricing depends on route and timing",
+      "applies_to": "All fares (where additional bags are permitted)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / airport",
+      "source_url": "https://www.goindigo.in/add-on-services/excess-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Overweight baggage fees apply when exceeding allowance; fees depend on route and excess weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.goindigo.in/add-on-services/excess-baggage.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Advance seat selection fees vary by seat type and route; free seat assignment available at check-in",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / check-in",
+      "source_url": "https://www.goindigo.in/add-on-services/seat-plus.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Change and cancellation fees depend on fare rules and timing before departure",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.goindigo.in/information/fees-and-charges.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "INR",
+      "conditions": "Unaccompanied Minor service not offered; minors must travel with an accompanying adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.goindigo.in/information/terms-and-conditions.html",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

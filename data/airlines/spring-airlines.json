@@ -1,0 +1,86 @@
+{
+  "slug": "spring-airlines",
+  "name": "Spring Airlines",
+  "iata": "9C",
+  "country": "China",
+  "region": "East Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "Carry-on baggage allowance limited to 1 piece; weight and size limits depend on fare type; some basic fares may restrict cabin baggage",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://en.ch.com/service/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "Checked baggage included only on select fare products; allowance varies by purchased package",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://en.ch.com/service/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "CNY",
+      "conditions": "Checked baggage must be purchased separately on most fares; fees depend on weight package and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://en.ch.com/service/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "CNY",
+      "conditions": "Checked bags exceeding purchased allowance incur overweight charges; maximum per-bag weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://en.ch.com/service/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "CNY",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://en.ch.com/service/seat",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "CNY",
+      "conditions": "Change and cancellation fees depend on fare product and timing; lowest fares are the most restrictive",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://en.ch.com/service/ticket",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "CNY",
+      "conditions": "Unaccompanied Minor service is generally not offered; minors must travel with an adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://en.ch.com/service/children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "scoot",
+  "name": "Scoot",
+  "iata": "TR",
+  "country": "Singapore",
+  "region": "Southeast Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance depends on fare type; Economy (Scoot, ScootPlus) includes up to 10 kg total; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/cabin-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage not included by default on some fares; baggage can be purchased in weight bundles; fees vary by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Sports equipment must be pre-purchased; fees depend on equipment type, route, and selected baggage bundle",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/sports-equipment",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, fare bundle, and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/fees-and-charges",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; minors must travel with an accompanying adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.flyscoot.com/en/plan/your-trip/children-and-infants",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

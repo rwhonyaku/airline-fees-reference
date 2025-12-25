@@ -1,0 +1,108 @@
+{
+  "slug": "ethiopian",
+  "name": "Ethiopian Airlines",
+  "iata": "ET",
+  "country": "Ethiopia",
+  "region": "Africa",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Business Class has higher allowance; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Ethiopian Airlines–operated flights)",
+      "timing": "per flight",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/carry-on-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Additional checked baggage purchased in advance or at airport; pricing depends on route, baggage concept, and timing",
+      "applies_to": "All fares (where additional bags are permitted)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / airport",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/additional-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Overweight baggage applies when exceeding allowance; maximum single bag weight 32 kg; fees depend on route and baggage concept",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on aircraft and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Standard seat selection included on higher fare families; free seat selection also available at check-in for eligible fares",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.ethiopianairlines.com/aa/services/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees apply on lowest fare families and for preferred seats; pricing varies by route and timing",
+      "applies_to": "Lowest fare families / preferred seats",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.ethiopianairlines.com/aa/services/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare family and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.ethiopianairlines.com/aa/help/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "per direction",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/traveling-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

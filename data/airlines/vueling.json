@@ -1,0 +1,134 @@
+{
+  "slug": "vueling",
+  "name": "Vueling",
+  "iata": "VY",
+  "country": "Spain",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One small cabin bag included (40 × 20 × 30 cm) that must fit under the seat in front",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/hand-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "From 8 to 75",
+      "currency": "EUR",
+      "conditions": "Large cabin bag up to 10 kg (55 × 40 × 20 cm); included with TimeFlex, Optima, or Family fares, or available as an add-on; price varies by route and timing",
+      "applies_to": "Optional add-on / bundled fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/hand-luggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "From 10 to 59",
+      "currency": "EUR",
+      "conditions": "15 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/checked-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 14 to 69",
+      "currency": "EUR",
+      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/checked-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 18 to 89",
+      "currency": "EUR",
+      "conditions": "25 kg checked bag; price varies by route, season, and purchase timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/checked-luggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 12,
+      "currency": "EUR",
+      "conditions": "Excess baggage fee per additional kg over purchased allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/luggage/checked-luggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 24",
+      "currency": "EUR",
+      "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 8 to 45",
+      "currency": "EUR",
+      "conditions": "Front row or extra legroom seats; price varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/seats",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Flight changes permitted for a fee plus fare difference; amount varies by route and timing; TimeFlex fares allow changes with fewer restrictions",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/changes-and-cancellations",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Ticket refunds not permitted except for flight cancellation or qualifying circumstances",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "after booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/changes-and-cancellations",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Vueling does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.vueling.com/en/we-are-vueling/prepare-your-trip/travelling-with-children",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

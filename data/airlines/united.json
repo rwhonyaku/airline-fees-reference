@@ -27,6 +27,7 @@
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "seat_selection",
       "amount": 15,
@@ -40,9 +41,9 @@
     },
     {
       "category": "seat_selection",
-      "amount": "From 29 to 299",
+      "amount": "Varies",
       "currency": "USD",
-      "conditions": "Economy Plus seating (per flight, per person)",
+      "conditions": "Economy Plus seating (per flight, per person); published range $29–$299",
       "applies_to": "Economy",
       "region_or_route": "Varies",
       "timing": "at booking / manage trip",
@@ -71,6 +72,7 @@
       "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "unaccompanied_minor",
       "amount": 150,
@@ -82,6 +84,7 @@
       "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "change_cancellation",
       "amount": 0,

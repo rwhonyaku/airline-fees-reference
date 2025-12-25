@@ -1,0 +1,97 @@
+{
+  "slug": "spicejet",
+  "name": "SpiceJet",
+  "iata": "SG",
+  "country": "India",
+  "region": "South Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Carry-on allowance limited to 1 piece up to 7 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.spicejet.com/Baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Checked baggage allowance included; allowance varies by domestic and international routes",
+      "applies_to": "Eligible fares",
+      "region_or_route": "Domestic India / International",
+      "timing": "each way",
+      "source_url": "https://www.spicejet.com/Baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.spicejet.com/Baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.spicejet.com/Baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Sports equipment accepted as checked baggage; charges depend on equipment type and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / at airport",
+      "source_url": "https://www.spicejet.com/SportsEquipment.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.spicejet.com/SeatSelection.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Change and cancellation fees depend on fare rules and timing; lowest fares are the most restrictive",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.spicejet.com/ChangeFee.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "INR",
+      "conditions": "Unaccompanied Minor service available on select domestic routes and ages; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.spicejet.com/UnaccompaniedMinor.aspx",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

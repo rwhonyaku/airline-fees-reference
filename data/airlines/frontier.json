@@ -71,6 +71,77 @@
       "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One personal item included; must fit under the seat in front of you",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "carry_on",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Carry-on bag fee varies based on purchase timing (booking, online check-in, airport, or gate)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bag fee varies by purchase timing and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": 75,
+      "currency": "USD",
+      "conditions": "Bags weighing 41–50 lbs (19–23 kg)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Bags weighing 51–100 lbs (23–45 kg); bags over 100 lbs not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": 75,
+      "currency": "USD",
+      "conditions": "Bags measuring 63–110 linear inches (160–279 cm); bags over 110 inches not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+      "last_verified": "2025-12-22"
+    },
+
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",

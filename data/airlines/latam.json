@@ -1,0 +1,114 @@
+{
+  "slug": "latam",
+  "name": "LATAM Airlines",
+  "iata": "LA",
+  "country": "Chile",
+  "region": "South America",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance depends on fare family: Light fares include 1 personal item; other fares include 1 carry-on bag up to 12 kg; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/baggage/carry-on",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included on Plus, Top, and Premium cabins; allowance varies by route and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage fees apply on Light fares or when exceeding allowance; fees vary by route, fare family, and purchase timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/baggage/checked",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/baggage/excess",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/baggage/excess",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Standard seat selection included on Plus, Top, and Premium fares; timing and availability depend on fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees apply on Light fares; amount varies by route, seat type, and time of selection",
+      "applies_to": "Light fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/seats",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare family and route; Light fares are generally the most restrictive",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.latamairlines.com/us/en/experience/prepare-your-trip/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available on select routes and ages; fees and conditions vary by country and route",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.latamairlines.com/us/en/experience/special-assistance/unaccompanied-minor",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

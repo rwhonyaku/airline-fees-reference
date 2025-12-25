@@ -1,0 +1,97 @@
+{
+  "slug": "kenya-airways",
+  "name": "Kenya Airways",
+  "iata": "KQ",
+  "country": "Kenya",
+  "region": "Africa",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on baggage included; allowance depends on cabin class; size and weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/cabin-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included; allowance varies by cabin class, route, fare family, and frequent flyer status",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/free-baggage-allowance/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Excess baggage fees apply when exceeding free allowance; charges vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees depend on fare family, cabin class, seat type, and timing; some fares include standard seat selection",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare rules, ticket type, and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/changes-and-refunds/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.kenya-airways.com/prepare-for-travel/special-assistance/unaccompanied-minor/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

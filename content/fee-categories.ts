@@ -5,9 +5,18 @@ import type { FeeCategory, FeeCategoryKey } from "@/lib/types";
 export const FEE_CATEGORIES: ReadonlyArray<FeeCategory> = Object.freeze([
   { key: "checked_baggage", label: "Checked baggage" },
   { key: "carry_on", label: "Carry-on" },
+
+  // Added: present in data + should have category pages
+  { key: "overweight_baggage", label: "Overweight baggage" },
+  { key: "oversize_baggage", label: "Oversize baggage" },
+
   { key: "seat_selection", label: "Seat selection" },
   { key: "change_cancellation", label: "Change / cancellation" },
   { key: "same_day_change", label: "Same-day change" },
+
+  // Added: present in data + should have category pages
+  { key: "same_day_standby", label: "Same-day standby" },
+
   { key: "unaccompanied_minor", label: "Unaccompanied minor" },
 ]);
 

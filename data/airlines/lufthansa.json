@@ -1,0 +1,146 @@
+{
+  "slug": "lufthansa",
+  "name": "Lufthansa",
+  "iata": "LH",
+  "country": "Germany",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Carry-on allowance: 1 item (max 56 × 36 × 23 cm, max 7 kg) in Economy and Premium Economy; additional small item permitted (e.g., slim laptop bag) per published rules",
+      "applies_to": "Economy / Premium Economy",
+      "region_or_route": "All routes (rules may vary by origin)",
+      "timing": "per flight",
+      "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Carry-on allowance: 2 items (each max 56 × 36 × 23 cm, max 7 kg) in Business and First; additional small item permitted (e.g., slim laptop bag) per published rules",
+      "applies_to": "Business / First",
+      "region_or_route": "All routes (rules may vary by origin)",
+      "timing": "per flight",
+      "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Free baggage allowance applies according to fare/cabin; published examples include 1 piece up to 23 kg in Economy on eligible fares and higher allowances in premium cabins",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes (allowance varies by fare/cabin/route)",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/free-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "First checked bag up to 23 kg: free of charge (example shown for Economy Class travelers from the United States to Germany); rules vary by origin/destination and fare",
+      "applies_to": "Economy (example scenario)",
+      "region_or_route": "United States → Germany",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/current-fees",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 90,
+      "currency": "USD",
+      "conditions": "Second checked bag up to 23 kg (example shown for Economy Class travelers from the United States to Germany); fees subject to change and vary by origin/destination and fare",
+      "applies_to": "Economy (example scenario)",
+      "region_or_route": "United States → Germany",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/current-fees",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "In Economy/Premium Economy, a checked bag is considered excess when it weighs more than 23 kg (up to max 32 kg); excess baggage fees apply as published and vary by route",
+      "applies_to": "Economy / Premium Economy",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "In Economy/Premium Economy, a checked bag is considered excess when total dimensions exceed 158 cm (sum of width + height + depth) up to a maximum of 292 cm; excess baggage fees apply as published and vary by route",
+      "applies_to": "Economy / Premium Economy",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/excess-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Not permitted",
+      "currency": "EUR",
+      "conditions": "Maximum travel weight per checked bag is 32 kg; items exceeding this weight are not accepted as travel baggage",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Advance seat reservation fees may apply depending on fare, route, and status; published rules include restrictions for Economy Light and free reservations for certain status members on eligible flights",
+      "applies_to": "Most fares",
+      "region_or_route": "All routes (varies)",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.lufthansa.com/az/en/advance-seat-reservation",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": 199,
+      "currency": "USD",
+      "conditions": "Economy Light fares can be rebooked with a 199 USD fee plus possible fare differences (published as international flight change fee information on Lufthansa current fees page)",
+      "applies_to": "Economy Light",
+      "region_or_route": "International (published example context)",
+      "timing": "before departure",
+      "source_url": "https://www.lufthansa.com/us/en/current-fees",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Economy Classic fares and upwards can be rebooked; fare differences may apply and additional conditions apply per published rules",
+      "applies_to": "Economy Classic and above",
+      "region_or_route": "International (published example context)",
+      "timing": "before departure",
+      "source_url": "https://www.lufthansa.com/us/en/current-fees",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Refund eligibility and reimbursement depend on fare conditions; cancellations and refunds can be requested online up to 24 hours before the beginning of the journey (fare conditions apply)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before journey begins",
+      "source_url": "https://www.lufthansa.com/us/en/cancellations-and-refunds",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

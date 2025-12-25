@@ -1,0 +1,114 @@
+{
+  "slug": "emirates",
+  "name": "Emirates",
+  "iata": "EK",
+  "country": "United Arab Emirates",
+  "region": "Middle East",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "AED",
+      "conditions": "Carry-on allowance depends on cabin: Economy—1 piece up to 7 kg; Premium Economy—1 piece up to 10 kg; Business—2 pieces up to 7 kg each; First—2 pieces up to 7 kg each; size limits apply (typically up to 55 × 38 × 20 cm per item)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/cabin-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "AED",
+      "conditions": "Checked baggage included under the weight or piece concept depending on route; allowance varies by cabin and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and whether the weight or piece concept applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "AED",
+      "conditions": "Standard seat selection included for First, Business, Premium Economy, and Flex/Flex Plus Economy fares; timing and availability depend on fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.emirates.com/ae/english/manage-booking/seat-selection/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Seat selection fees may apply on some Economy fares (e.g., Special/Saver) depending on route, seat type, and time of selection",
+      "applies_to": "Economy (some fares)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.emirates.com/ae/english/manage-booking/seat-selection/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Change and cancellation fees depend on fare family and route; some fares are non-refundable; fare differences may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.emirates.com/ae/english/legal/fare-conditions/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "AED",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and fare",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.emirates.com/ae/english/help/family/unaccompanied-minors/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

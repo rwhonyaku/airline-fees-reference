@@ -6,93 +6,265 @@
   "region": "North America",
   "fees": [
     {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carryon + personal item included: (a) one carryon bag not exceeding 10 x 16 x 24 inches; and (b) one smaller personal item stowable under a seat or in an overhead compartment",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "First and second checked bags free (up to 50 lbs / 23 kg each)",
+      "conditions": "1st checked bag: free (applies to travel booked and ticketed before May 28, 2025)",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
     {
       "category": "checked_baggage",
-      "amount": 125,
+      "amount": 0,
       "currency": "USD",
-      "conditions": "Third checked bag",
+      "conditions": "2nd checked bag: free (applies to travel booked and ticketed before May 28, 2025)",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Basic Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
     },
     {
       "category": "checked_baggage",
-      "amount": 75,
+      "amount": 45,
       "currency": "USD",
-      "conditions": "Overweight bag (51–100 lbs); bags over 100 lbs not accepted",
-      "applies_to": "All fares",
+      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Basic Fare",
       "region_or_route": "All routes",
-      "timing": "each way",
+      "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
     {
       "category": "checked_baggage",
-      "amount": 75,
+      "amount": 35,
       "currency": "USD",
-      "conditions": "Oversize bag (63–80 inches L+W+H); bags over 80 inches not accepted",
+      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 35,
+      "currency": "USD",
+      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Preferred Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Preferred Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag: free (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Extra Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "2nd checked bag: free (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "applies_to": "Choice Extra Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "3rd+ checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
       "applies_to": "All fares",
       "region_or_route": "All routes",
-      "timing": "each way",
+      "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
+
+    {
+      "category": "oversize_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Oversized item: in excess of 62 inches but not more than 80 inches; charge is in addition to the standard checked bag fee",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "Overweight item: 51–70 lbs; charge is in addition to the standard checked bag fee",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Overweight item: 71–100 lbs; charge is in addition to the standard checked bag fee",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Oversized & overweight: only one $200 charge applies if the piece is both oversized and overweight (as long as it does not exceed 100 lbs); standard checked bag fee also applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2025-12-24"
+    },
+
     {
       "category": "seat_selection",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Open seating; no assigned seats",
-      "applies_to": "All fares",
+      "conditions": "No seat selection with Basic fares; a Standard seat will be assigned at check-in (flights departing on or after January 27, 2026). Until then, Southwest uses open seating",
+      "applies_to": "Basic Fare",
       "region_or_route": "All routes",
       "timing": "check-in / boarding",
       "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Paid seat upgrades (for flights departing on or after January 27, 2026)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per segment",
+      "source_url": "https://www.southwest.com/fare-information/",
+      "last_verified": "2025-12-24"
+    },
+
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No change or cancellation fees; fare difference may apply",
+      "conditions": "No cancel fees (all fare types eligible for cancellations without a fee); failure to cancel at least 10 minutes prior to scheduled departure may result in forfeited travel funds",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
+
+    {
+      "category": "same_day_change",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Free same-day change available only for Choice Extra, Choice Preferred, or Choice fares; Basic fares not eligible unless fare is upgraded",
+      "applies_to": "Choice / Choice Preferred / Choice Extra",
+      "region_or_route": "All routes",
+      "timing": "day of travel",
+      "source_url": "https://www.southwest.com/fare-information/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "same_day_standby",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Same-day standby available; request must be made at least 10 minutes prior to scheduled departure of original flight; if using app/mobile web for standby, must list 30 minutes ahead of scheduled departure",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "day of travel",
+      "source_url": "https://www.southwest.com/fare-information/",
+      "last_verified": "2025-12-24"
+    },
+
     {
       "category": "unaccompanied_minor",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Unaccompanied minor (UM) fee (ages 5–11)",
+      "conditions": "Unaccompanied minor (UM) service charge (ages 5–11): U.S. Mainland",
       "applies_to": "All fares",
       "region_or_route": "U.S. Mainland",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     },
     {
       "category": "unaccompanied_minor",
       "amount": 35,
       "currency": "USD",
-      "conditions": "Unaccompanied minor (UM) fee (ages 5–11)",
+      "conditions": "Unaccompanied minor (UM) service charge (ages 5–11): Between Hawaiian Islands",
       "applies_to": "All fares",
       "region_or_route": "Between Hawaiian Islands",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-19"
+      "last_verified": "2025-12-24"
     }
-
   ]
 }

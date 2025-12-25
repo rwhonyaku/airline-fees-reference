@@ -1,0 +1,97 @@
+{
+  "slug": "egyptair",
+  "name": "EgyptAir",
+  "iata": "MS",
+  "country": "Egypt",
+  "region": "Africa",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on baggage included; allowance depends on cabin class; size and weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/cabin-baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included; allowance varies by cabin class, fare type, route, and frequent flyer status",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/free-baggage-allowance.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport / pre-purchase",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage exceeding size limits is subject to oversize fees; acceptance subject to aircraft and handling constraints",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection fees depend on fare type, cabin class, seat location, and timing; some fares include standard seat selection",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.egyptair.com/en/fly/Pages/seat-selection.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare rules, ticket type, and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.egyptair.com/en/fly/Pages/conditions-of-carriage.aspx",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available on select routes and ages; fees and conditions vary",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Selected routes",
+      "timing": "at booking",
+      "source_url": "https://www.egyptair.com/en/fly/special-services/Pages/unaccompanied-minor.aspx",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "cebu-pacific",
+  "name": "Cebu Pacific",
+  "iata": "5J",
+  "country": "Philippines",
+  "region": "Southeast Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance includes up to 7 kg total for cabin baggage; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage is not included by default; fees depend on weight tier (20 kg, 32 kg, 40 kg) and route; pre-purchase available",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage exceeding purchased allowance is charged per kilo at airport rates; single bag maximum weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Sports equipment must be pre-booked; charges depend on equipment type and route; weight limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/sports-equipment",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Flight changes permitted with fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/fees-and-charges",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; minors must travel with an accompanying adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.cebupacificair.com/pages/travel-info/children-and-infants",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

@@ -49,6 +49,43 @@
       "source_url": "https://www.jetblue.com/legal/fees",
       "last_verified": "2025-12-19"
     },
+
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "applies_to": "Most fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.jetblue.com/help/carry-on-bags",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Bags measuring 63–80 linear inches (160–203 cm); bags over 80 inches are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.jetblue.com/help/checked-bags",
+      "last_verified": "2025-12-22"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "Bags weighing 51–99 lbs (23–45 kg); bags weighing 100 lbs or more are not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.jetblue.com/help/checked-bags",
+      "last_verified": "2025-12-22"
+    },
+
     {
       "category": "seat_selection",
       "amount": 0,
@@ -71,6 +108,7 @@
       "source_url": "https://www.jetblue.com/travel-agents/seat-assignments",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -93,13 +131,14 @@
       "source_url": "https://www.jetblue.com/legal/fees",
       "last_verified": "2025-12-19"
     },
+
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5–13)",
+      "conditions": "Unaccompanied minor service fee (ages 5–13); nonstop flights only",
       "applies_to": "All fares",
-      "region_or_route": "Nonstop flights only",
+      "region_or_route": "Eligible routes only",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/unaccompanied-minors-umnr",
       "last_verified": "2025-12-19"

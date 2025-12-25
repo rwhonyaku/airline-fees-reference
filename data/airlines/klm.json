@@ -1,0 +1,124 @@
+{
+  "slug": "klm",
+  "name": "KLM Royal Dutch Airlines",
+  "iata": "KL",
+  "country": "Netherlands",
+  "region": "Europe",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Economy passengers may bring 1 hand baggage (max 55 × 35 × 25 cm) plus 1 accessory (40 × 30 × 15 cm); total weight up to 12 kg; allowance varies by cabin",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (KLM-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://www.klm.com/information/baggage/hand-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "carry_on",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Hand baggage option available on Economy Light fares; price displayed during booking and in My Trip; must be purchased before check-in closes",
+      "applies_to": "Economy Light",
+      "region_or_route": "All routes (KLM-operated flights)",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Checked baggage included on Standard, Flex, and premium fares; allowance varies by route and cabin",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.klm.com/information/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Additional checked baggage (up to 158 cm total dimensions); rates shown during booking and in My Trip; discounted when purchased online in advance (exceptions apply on certain routes including USA/Canada)",
+      "applies_to": "All fares (where additional bags permitted)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / online check-in",
+      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Oversized baggage applies to items exceeding 158 cm and up to 300 cm total dimensions; fee depends on itinerary and is payable at the airport",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Overweight baggage applies to bags heavier than the ticketed allowance up to 32 kg; price depends on route; bags over 32 kg must be shipped as cargo",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Seat selection fees vary by seat type, route, fare, and timing; Economy Light fares require paid seat selection until check-in opens (30 hours before departure)",
+      "applies_to": "All fares (restrictions apply on Light)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / check-in",
+      "source_url": "https://www.klm.com/information/travel-class-extra-options/seat-options",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Standard seat selection is free for Flex fares, Flying Blue Elite members (Silver+), passengers with reduced mobility, and children traveling alone",
+      "applies_to": "Eligible passengers / fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.klm.com/information/travel-class-extra-options/seat-options",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Change and cancellation conditions depend on fare rules; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.klm.com/information/refund-exchange",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "EUR",
+      "conditions": "Unaccompanied Minor service fee depends on age and itinerary; service mandatory for eligible children traveling alone",
+      "applies_to": "Eligible ages",
+      "region_or_route": "Varies",
+      "timing": "per direction",
+      "source_url": "https://www.klm.com/information/assistance-health/children-travelling-alone",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

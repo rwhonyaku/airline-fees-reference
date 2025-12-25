@@ -1,0 +1,86 @@
+{
+  "slug": "flydubai",
+  "name": "flydubai",
+  "iata": "FZ",
+  "country": "United Arab Emirates",
+  "region": "Middle East",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on allowance includes 1 cabin bag up to 7 kg; size limits apply; Business Class includes additional allowance",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.flydubai.com/en/plan/baggage/hand-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage is included only with certain fare types; baggage can be purchased in weight options; fees vary by route and fare",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / at airport",
+      "source_url": "https://www.flydubai.com/en/plan/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Single checked bag may not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.flydubai.com/en/plan/baggage/checked-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Sports equipment must be pre-booked as special baggage; fees depend on route and equipment type",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.flydubai.com/en/plan/baggage/special-baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Seat selection is chargeable on Economy fares; included with Business Class; fees vary by seat type and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.flydubai.com/en/plan/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare type and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.flydubai.com/en/plan/fees",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Not permitted",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service is not offered; children must travel with an adult",
+      "applies_to": "Minors",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.flydubai.com/en/help/children-and-infants",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

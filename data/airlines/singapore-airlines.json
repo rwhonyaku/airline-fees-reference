@@ -1,0 +1,114 @@
+{
+  "slug": "singapore-airlines",
+  "name": "Singapore Airlines",
+  "iata": "SQ",
+  "country": "Singapore",
+  "region": "Asia-Pacific",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "Carry-on allowance depends on cabin: Economy/Premium Economy—1 piece up to 7 kg; Business/First—2 pieces up to 7 kg each; size limits apply (typically up to 55 × 40 × 20 cm per item)",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/carry-on/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "Checked baggage included under the weight or piece concept depending on route; allowance varies by cabin and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/checked-baggage/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "Standard seat selection included for most fares; timing and availability depend on fare family and cabin",
+      "applies_to": "Most fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Preferred or extra-legroom seats may incur a fee on some Economy fares depending on route and fare family",
+      "applies_to": "Economy (some fares)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/seating/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Change and cancellation fees depend on fare family and route; some fares are non-refundable; fare differences may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/fare-conditions/",
+      "last_verified": "2025-12-24"
+    },
+
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "SGD",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and fare",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/special-assistance/unaccompanied-minors/",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "copa",
+  "name": "Copa Airlines",
+  "iata": "CM",
+  "country": "Panama",
+  "region": "Central America",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Economy: 1 carry-on bag plus 1 personal item; size and weight limits apply; allowance varies by fare family",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Copa-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://www.copaair.com/en/web/gs/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Checked baggage included on Classic and Full fares; allowance varies by route and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.copaair.com/en/web/gs/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Checked baggage not included on Basic fare; fees vary by route, baggage weight, and timing",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / airport",
+      "source_url": "https://www.copaair.com/en/web/gs/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Overweight baggage fees apply for bags exceeding the allowance up to 32 kg; pricing depends on route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.copaair.com/en/web/gs/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Oversize baggage applies to items exceeding standard size limits; fees and acceptance depend on route and aircraft",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.copaair.com/en/web/gs/baggage-information",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Standard seat selection included on higher fare families; seat assignment at check-in for other fares",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.copaair.com/en/web/gs/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Preferred seats available for a fee; pricing varies by route and timing",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.copaair.com/en/web/gs/seats",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Change and cancellation fees depend on fare family and route; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.copaair.com/en/web/gs/changes-and-refunds",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "USD",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "per direction",
+      "source_url": "https://www.copaair.com/en/web/gs/special-assistance",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}

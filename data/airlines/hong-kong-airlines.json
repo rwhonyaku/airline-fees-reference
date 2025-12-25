@@ -1,0 +1,97 @@
+{
+  "slug": "hong-kong-airlines",
+  "name": "Hong Kong Airlines",
+  "iata": "HX",
+  "country": "Hong Kong",
+  "region": "East Asia",
+  "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Economy Class: 1 cabin bag up to 7 kg; Business Class allowance higher; size limits apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes (Hong Kong Airlines–operated flights)",
+      "timing": "per flight",
+      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Checked baggage allowance included on most fares; allowance varies by route and fare family",
+      "applies_to": "Eligible fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and timing",
+      "applies_to": "All fares (where additional bags are permitted)",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / airport",
+      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on aircraft and route",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Advance seat selection fees vary by route and seat type; free seat assignment available at check-in for eligible fares",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking / check-in",
+      "source_url": "https://www.hongkongairlines.com/en_HK/seat-selection",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Change and cancellation fees depend on fare rules and timing; fare difference may apply",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://www.hongkongairlines.com/en_HK/conditions-of-carriage",
+      "last_verified": "2025-12-24"
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Varies",
+      "currency": "HKD",
+      "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
+      "applies_to": "Eligible ages",
+      "region_or_route": "All routes",
+      "timing": "per direction",
+      "source_url": "https://www.hongkongairlines.com/en_HK/special-assistance",
+      "last_verified": "2025-12-24"
+    }
+  ]
+}
