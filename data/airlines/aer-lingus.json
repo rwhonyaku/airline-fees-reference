@@ -93,7 +93,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.aerlingus.com/support/booking-changes/",
+      "source_url": "https://www.aerlingus.com/support/booking-flexibility/changing-your-booking/",
       "last_verified": "2025-12-24"
     },
     {
@@ -104,7 +104,7 @@
       "applies_to": "Saver fares",
       "region_or_route": "All routes",
       "timing": "after booking",
-      "source_url": "https://www.aerlingus.com/support/refunds/",
+      "source_url": "https://www.aerlingus.com/support/booking-flexibility/cancelling-your-booking/",
       "last_verified": "2025-12-24"
     },
 

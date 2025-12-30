@@ -1,3 +1,10 @@
+/* Keep all your existing styles, then add: */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add new utility classes without breaking old ones */
+
 /* 
   Airline Fees Reference
   Global styles

@@ -13,7 +13,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://aeromexico.com/en-us/travel-information/baggage/carry-on-baggage",
+      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -24,7 +24,7 @@
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://aeromexico.com/en-us/travel-information/baggage/checked-baggage",
+      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -35,7 +35,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / at airport",
-      "source_url": "https://aeromexico.com/en-us/travel-information/baggage/checked-baggage",
+      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -68,7 +68,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://aeromexico.com/en-us/travel-information/seats",
+      "source_url": "https://www.aeromexico.com/en-us/travel-information/seats-and-cabins",
       "last_verified": "2025-12-24"
     },
     {
@@ -90,7 +90,7 @@
       "applies_to": "Eligible ages",
       "region_or_route": "Selected routes",
       "timing": "at booking",
-      "source_url": "https://aeromexico.com/en-us/travel-information/special-services/unaccompanied-minor",
+      "source_url": "https://www.aeromexico.com/en-us/travel-information/passengers/unaccompanied-minors",
       "last_verified": "2025-12-24"
     }
   ]

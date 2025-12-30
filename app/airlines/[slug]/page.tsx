@@ -126,7 +126,7 @@ export default async function AirlinePage({ params }: PageProps) {
       <header style={{ display: "grid", gap: 6 }}>
         <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0, fontSize: 20 }}>{airline.name}</h1>
-          <span style={{ color: "#555", fontSize: 13 }}>Slug: {airline.slug}</span>
+          <span style={{ color: "#555", fontSize: 13, display: "none" }}>Slug: {airline.slug}</span>
         </div>
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 13 }}>

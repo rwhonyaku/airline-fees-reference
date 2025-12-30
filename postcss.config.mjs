@@ -1,6 +1,8 @@
+// postcss.config.mjs - UPDATE THIS FILE
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {},
+    autoprefixer: {},
   },
 };
 

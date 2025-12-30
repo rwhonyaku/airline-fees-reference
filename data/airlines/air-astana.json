@@ -13,7 +13,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://airastana.com/global/en-us/information/baggage/carry-on",
+      "source_url": "https://airastana.com/nld-en/information/carry-on-baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -24,7 +24,7 @@
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://airastana.com/global/en-us/information/baggage/checked",
+      "source_url": "https://airastana.com/nld-en/information/checked-baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -35,7 +35,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://airastana.com/global/en-us/information/baggage/excess",
+      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -46,7 +46,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://airastana.com/global/en-us/information/baggage/excess",
+      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -57,7 +57,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://airastana.com/global/en-us/information/baggage/excess",
+      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
       "last_verified": "2025-12-24"
     },
     {
@@ -68,7 +68,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://airastana.com/global/en-us/information/seating",
+      "source_url": "https://airastana.com/global-en/booking-manage/myseat",
       "last_verified": "2025-12-24"
     },
     {
@@ -79,7 +79,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://airastana.com/global/en-us/information/fees-and-charges",
+      "source_url": "https://help.airastana.com/hc/en-gb/articles/6842167383186-I-want-to-change-my-flight-date-how-much-does-it-cost-to-rebook",
       "last_verified": "2025-12-24"
     },
     {
@@ -90,7 +90,7 @@
       "applies_to": "Eligible ages",
       "region_or_route": "Selected routes",
       "timing": "at booking",
-      "source_url": "https://airastana.com/global/en-us/information/special-assistance/unaccompanied-minor",
+      "source_url": "https://airastana.com/global-en/information/travelling-with-children",
       "last_verified": "2025-12-24"
     }
   ]
