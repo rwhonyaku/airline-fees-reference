@@ -1955,8 +1955,11 @@ function LegacyAirlinePage({
         <div className="rounded-2xl border border-slate-200 bg-slate-900 p-6 text-white">
           <div className="text-xs font-bold uppercase tracking-widest text-blue-300">Related references</div>
           <div className="mt-3 flex flex-wrap gap-3 text-sm">
+            <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}`} className="underline decoration-blue-300 underline-offset-4">
+              Checked baggage calculator
+            </Link>
             <Link href={`/best-cards?airline=${encodeURIComponent(slug)}`} className="underline decoration-blue-300 underline-offset-4">
-              Free checked bag calculator
+              Card break-even calculator
             </Link>
             <Link href="/sizer-rules" className="underline decoration-blue-300 underline-offset-4">
               Sizer enforcement
@@ -2069,6 +2072,9 @@ function LegacyAirlinePage({
             <div className="mt-4 grid gap-3 text-sm">
               <Link href={`/airlines/${slug}/how-to-beat-fees`} className="font-semibold text-blue-700 underline">
                 Go to the {airline.name} fee guide
+              </Link>
+              <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}`} className="font-semibold text-blue-700 underline">
+                Estimate checked-bag cost
               </Link>
               <Link href={`/best-cards?airline=${encodeURIComponent(slug)}`} className="font-semibold text-blue-700 underline">
                 Run break-even card math

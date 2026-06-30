@@ -1,5 +1,6 @@
 // components/RelatedTools.tsx
 import Link from "next/link";
+import { CheckedBaggageCalculatorCallout } from "@/components/CheckedBaggageCalculatorCallout";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
 import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 
@@ -8,6 +9,7 @@ export function RelatedTools({ slug }: { slug: string }) {
 
   return (
     <div className="mt-10 grid gap-4">
+      <CheckedBaggageCalculatorCallout airlineSlug={slug} compact />
       <CheckedBagCardMathCallout airlineSlug={slug} compact />
       <TravelEsimCallout compact />
       <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -15,6 +17,9 @@ export function RelatedTools({ slug }: { slug: string }) {
         <div className="mt-3 grid gap-2 text-sm">
           <Link className="underline text-blue-700" href="/sizer-rules">
             Sizer rules & enforcement reality
+          </Link>
+          <Link className="underline text-blue-700" href={`/tools/checked-baggage-calculator?airline=${enc}`}>
+            Checked baggage cost calculator
           </Link>
           <Link className="underline text-blue-700" href={`/best-cards?airline=${enc}`}>
             Free checked bag card calculator for this airline

@@ -775,12 +775,12 @@ export default function BasicEconomyTrapsGuide() {
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
             <h3 className="text-lg font-bold text-slate-900">
-              <Link href="/best-cards" className="underline">
-                Free checked bag calculator
+              <Link href="/tools/checked-baggage-calculator" className="underline">
+                Checked baggage cost calculator
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this only after you confirm the real trip still involves a repeatable first-bag problem.
+              Use this to price the bag penalty before deciding whether a fare upgrade or card benefit is rational.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">

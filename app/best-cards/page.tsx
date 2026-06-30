@@ -3,34 +3,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
+import {
+  calcCardBagOffset,
+  clampInt,
+  findCheckedBagFeeUsd,
+  firstString,
+  safeExternalUrl,
+  usd,
+  type AirlineOverrides,
+  type CardsJson,
+} from "@/lib/bag-cost-calculator";
 import fs from "fs/promises";
 import path from "path";
-
-type Card = {
-  id: string;
-  name: string;
-  airline_slug: string;
-  tier?: string;
-  annual_fee_usd: number;
-  free_checked_bags: number;
-  applies_to_travelers: number;
-  requires_purchase_with_card: boolean;
-  notes?: string[];
-  offer_url?: string;
-  offer_label?: string;
-  issuer_disclosure?: string;
-  last_offer_verified?: string;
-};
-
-type CardsJson = { cards: Card[] };
-
-type AirlineOverrides = Record<
-  string,
-  {
-    requires_card_payment_for_free_bag?: boolean;
-    amex_platinum_vanilla_free_bag?: boolean;
-  }
->;
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -46,162 +30,13 @@ export const metadata: Metadata = {
     "Calculate whether an airline credit card's free checked bag benefit offsets its annual fee using published bag fees, traveler coverage, and card-payment rules.",
 };
 
-function usd(n: number): string {
-  return `$${Math.round(n)}`;
-}
-
-function safeExternalUrl(v: string | undefined): string | null {
-  if (!v) return null;
-  try {
-    const url = new URL(v);
-    return url.protocol === "https:" ? url.toString() : null;
-  } catch {
-    return null;
-  }
-}
-
-function clampInt(v: string | undefined, min: number, max: number, fallback: number): number {
-  const n = Number(v);
-  if (!Number.isFinite(n)) return fallback;
-  const i = Math.round(n);
-  return Math.min(max, Math.max(min, i));
-}
-
-function firstString(v: string | string[] | undefined): string | undefined {
-  if (typeof v === "string") return v;
-  if (Array.isArray(v) && typeof v[0] === "string") return v[0];
-  return undefined;
-}
-
-function findFirstCheckedBagFeeUsd(fees: FeeItem[]): number | null {
-  const matches = (fees as FeeItem[]).filter((r) => {
-    const cat = typeof r?.category === "string" ? r.category : "";
-    if (cat !== "checked_baggage") return false;
-    const cond = typeof r?.conditions === "string" ? r.conditions.toLowerCase() : "";
-    if (!(cond.includes("first checked bag") || cond.includes("bag 1") || cond.includes("1st"))) {
-      return false;
-    }
-
-    const appliesTo = typeof r?.applies_to === "string" ? r.applies_to.toLowerCase() : "";
-    const region = typeof r?.region_or_route === "string" ? r.region_or_route.toLowerCase() : "";
-
-    if (appliesTo.includes("blue plus")) return false;
-    if (region.includes("intra-island")) return false;
-    if (region.includes("asia") || region.includes("europe") || region.includes("oceania")) return false;
-
-    return true;
-  });
-
-  if (!matches.length) return null;
-
-  const score = (row: FeeItem): number => {
-    const cond = typeof row.conditions === "string" ? row.conditions.toLowerCase() : "";
-    const region = typeof row.region_or_route === "string" ? row.region_or_route.toLowerCase() : "";
-    const verified = typeof row.last_verified === "string" ? row.last_verified : "";
-    let value = 0;
-
-    if (cond.includes("on or after") || cond.includes("booked on or after") || cond.includes("current")) value += 100;
-    if (region.includes("most routes") || region.includes("most markets") || region.includes("north america") || region.includes("u.s.") || region.includes("domestic")) value += 10;
-    if (/^\d{4}-\d{2}-\d{2}$/.test(verified)) value += Number(verified.replace(/-/g, ""));
-
-    return value;
-  };
-
-  const row = matches.sort((a, b) => score(b) - score(a))[0];
-
-  const currency = typeof row.currency === "string" ? row.currency : "";
-  if (typeof row.amount === "number" && Number.isFinite(row.amount)) {
-    return currency.toUpperCase() === "USD" || currency === "" ? row.amount : null;
-  }
-  if (typeof row.amount === "string") {
-    const m = row.amount.match(/(\d+(\.\d+)?)/);
-    if (!m) return null;
-    const n = Number(m[1]);
-    if (!Number.isFinite(n)) return null;
-    if (currency && currency.toUpperCase() !== "USD") return null;
-    return n;
-  }
-
-  return null;
-}
-
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
   const full = path.join(process.cwd(), relPathFromRepoRoot);
   const raw = await fs.readFile(full, "utf8");
   return JSON.parse(raw) as T;
 }
 
-function calcForCard(params: {
-  firstBagFeeUsd: number | null;
-  roundtripsPerYear: number;
-  travelers: number;
-  bagsPerTravelerPerDirection: number;
-  card: Card;
-  userWillPayWithCard: boolean;
-  airlineOverrides?: AirlineOverrides[string];
-}): {
-  eligible: boolean;
-  savingsPerRoundtripUsd: number;
-  annualSavingsUsd: number;
-  netAnnualUsd: number;
-  breakEvenRoundtrips: number | null;
-  warnings: string[];
-} {
-  const warnings: string[] = [];
-
-  if (params.firstBagFeeUsd == null) {
-    return {
-      eligible: false,
-      savingsPerRoundtripUsd: 0,
-      annualSavingsUsd: 0,
-      netAnnualUsd: -params.card.annual_fee_usd,
-      breakEvenRoundtrips: null,
-      warnings: ["First checked bag fee is missing from the airline fee table, so break-even math cannot run."],
-    };
-  }
-
-  const mustPay =
-    params.card.requires_purchase_with_card ||
-    params.airlineOverrides?.requires_card_payment_for_free_bag === true;
-
-  if (mustPay && !params.userWillPayWithCard) {
-    return {
-      eligible: false,
-      savingsPerRoundtripUsd: 0,
-      annualSavingsUsd: 0,
-      netAnnualUsd: -params.card.annual_fee_usd,
-      breakEvenRoundtrips: null,
-      warnings: ["This card's free checked bag benefit only applies here if the ticket is paid for with the card."],
-    };
-  }
-
-  const eligibleTravelers = Math.min(params.travelers, params.card.applies_to_travelers);
-  const paidBagsPerDirection = Math.min(1, params.bagsPerTravelerPerDirection);
-  const freeBagsPerDirection = Math.min(params.card.free_checked_bags, paidBagsPerDirection);
-  const savedBagsPerDirection = eligibleTravelers * freeBagsPerDirection;
-
-  const savingsPerRoundtripUsd = savedBagsPerDirection * params.firstBagFeeUsd * 2;
-  const annualSavingsUsd = savingsPerRoundtripUsd * params.roundtripsPerYear;
-  const netAnnualUsd = annualSavingsUsd - params.card.annual_fee_usd;
-
-  if (savingsPerRoundtripUsd <= 0) {
-    warnings.push("With these inputs, this card does not save anything on first checked bag fees.");
-  }
-
-  const breakEvenRoundtrips =
-    savingsPerRoundtripUsd > 0 ? Math.ceil(params.card.annual_fee_usd / savingsPerRoundtripUsd) : null;
-
-  return {
-    eligible: true,
-    savingsPerRoundtripUsd,
-    annualSavingsUsd,
-    netAnnualUsd,
-    breakEvenRoundtrips,
-    warnings,
-  };
-}
-
-function verdictForResult(r: ReturnType<typeof calcForCard>): {
+function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
   label: string;
   detail: string;
   className: string;
@@ -215,7 +50,7 @@ function verdictForResult(r: ReturnType<typeof calcForCard>): {
     };
   }
 
-  if (r.savingsPerRoundtripUsd <= 0) {
+  if (r.savingsPerTripUsd <= 0) {
     return {
       label: "Not justified by bag fees",
       detail:
@@ -275,7 +110,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const payWithCard = (firstString(sp.pay) ?? "yes") !== "no";
 
   const fees = (airline.fees ?? []) as FeeItem[];
-  const firstBagFeeUsd = findFirstCheckedBagFeeUsd(fees);
+  const firstBagFeeUsd = findCheckedBagFeeUsd(fees, 1);
+  const feeByBagOrdinal = new Map<number, number>();
+  if (firstBagFeeUsd != null) feeByBagOrdinal.set(1, firstBagFeeUsd);
 
   const cardsJson = await readJsonFile<CardsJson>("data/cards/cards.json");
   const overridesJson = await readJsonFile<AirlineOverrides>("data/cards/airline_overrides.json");
@@ -302,8 +139,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const computed = allCardsForAirline
     .map((card) => ({
       card,
-      r: calcForCard({
-        firstBagFeeUsd,
+      r: calcCardBagOffset({
+        feeByBagOrdinal,
+        directions: 2,
         roundtripsPerYear: trips,
         travelers,
         bagsPerTravelerPerDirection: bags,
@@ -555,7 +393,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
                     <td className="py-3 pr-4 text-slate-700">{card.tier ?? "-"}</td>
                     <td className="py-3 pr-4 text-slate-700">{usd(card.annual_fee_usd)}</td>
                     <td className="py-3 pr-4 text-slate-700">
-                      {r.eligible ? usd(r.savingsPerRoundtripUsd) : "-"}
+                      {r.eligible ? usd(r.savingsPerTripUsd) : "-"}
                     </td>
                     <td className="py-3 pr-4 text-slate-700">
                       {r.eligible ? usd(r.annualSavingsUsd) : "-"}

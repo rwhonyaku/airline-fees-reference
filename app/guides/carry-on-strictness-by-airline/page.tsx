@@ -266,12 +266,12 @@ export default function CarryOnStrictnessGuide() {
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
             <div style={{ fontWeight: 700 }}>
-              <Link href="/best-cards" style={{ textDecoration: "underline" }}>
-                Free checked bag calculator
+              <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
+                Checked baggage cost calculator
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              If you decide strict cabin-bag play is not worth it, use the card math to see whether checked-bag economics are the better long-run move.
+              If strict cabin-bag play is not worth it, price the checked-bag path before comparing card math.
             </div>
           </div>
         </div>

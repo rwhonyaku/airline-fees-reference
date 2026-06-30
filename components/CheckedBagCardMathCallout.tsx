@@ -8,6 +8,9 @@ export function CheckedBagCardMathCallout({
   compact?: boolean;
 }) {
   const href = airlineSlug ? `/best-cards?airline=${encodeURIComponent(airlineSlug)}` : "/best-cards";
+  const calculatorHref = airlineSlug
+    ? `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}`
+    : "/tools/checked-baggage-calculator";
 
   return (
     <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
@@ -23,6 +26,9 @@ export function CheckedBagCardMathCallout({
         requirements.
       </p>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link href={calculatorHref} className="font-bold text-blue-800 underline">
+          Estimate checked-bag cost first
+        </Link>
         <Link href={href} className="font-bold text-emerald-900 underline">
           Use the free checked bag calculator
         </Link>

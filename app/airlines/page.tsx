@@ -41,6 +41,9 @@ export default function AirlinesIndexPage() {
           <Link href="/fees/checked_baggage" className="font-medium text-blue-700 underline">
             Checked baggage reference
           </Link>
+          <Link href="/tools/checked-baggage-calculator" className="font-medium text-blue-700 underline">
+            Checked baggage calculator
+          </Link>
           <Link href="/guides/basic-economy-traps" className="font-medium text-blue-700 underline">
             Basic Economy guide
           </Link>

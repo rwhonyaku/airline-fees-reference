@@ -70,8 +70,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/guides/basic-economy-traps" className="hover:text-blue-600">
                 Basic Economy Guide
               </Link>
-              <Link href="/best-cards" className="hover:text-blue-600">
-                Credit Cards
+              <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600">
+                Bag Calculator
               </Link>
               <Link href="/sizer-rules" className="hover:text-blue-600">
                 Sizer Rules
@@ -92,13 +92,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <div className="bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl p-6 text-white shadow-xl shadow-blue-200/50">
                 <h3 className="text-xl font-bold mb-2">Never Pay For Bags Again</h3>
                 <p className="text-blue-100 text-sm mb-6">
-                  Select credit cards wipe out baggage fees automatically.
+                  Estimate your checked-bag bill, then compare cards only when the savings justify it.
                 </p>
                 <Link
-                  href="/best-cards"
+                  href="/tools/checked-baggage-calculator"
                   className="block w-full py-3 bg-white text-blue-700 font-bold text-center rounded-xl hover:bg-blue-50 transition-colors"
                 >
-                  Find Your Card
+                  Price Your Bags
                 </Link>
               </div>
 
@@ -109,6 +109,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     ✅{" "}
                     <Link href="/sizer-rules" className="hover:text-blue-600 underline">
                       Sizer enforcement guide
+                    </Link>
+                  </li>
+                  <li className="flex gap-2">
+                    ✅{" "}
+                    <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600 underline">
+                      Checked baggage calculator
                     </Link>
                   </li>
                   <li className="flex gap-2">

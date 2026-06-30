@@ -153,9 +153,11 @@ function getContextualBridge(category: string) {
           Some airline credit cards include a published first checked bag benefit for the primary
           cardholder and, in some cases, companions on the same reservation. Use the{" "}
           <Link href="/guides/airline-credit-card-baggage-benefits">airline credit card baggage benefits guide</Link>{" "}
-          to compare those published benefit rules, use{" "}
-          <Link href="/best-cards">the bag-fee card calculator</Link> when the question is whether
-          recurring first-bag fees are enough to offset an annual fee, or use{" "}
+          to understand benefit rules, use the{" "}
+          <Link href="/tools/checked-baggage-calculator">checked baggage cost calculator</Link>{" "}
+          to price the trip from traveler and bag inputs, use{" "}
+          <Link href="/best-cards">the card break-even calculator</Link> when the question is whether
+          recurring first-bag fees offset an annual fee, or use{" "}
           <Link href="/sizer-rules">Sizer rules</Link> if the better comparison is avoiding the
           checked bag entirely.
         </p>

@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/privacy",
     "/sizer-rules",
+    "/tools/checked-baggage-calculator",
     "/guides/basic-economy-traps",
     "/guides/airline-credit-card-baggage-benefits",
     "/guides/carry-on-strictness-by-airline",

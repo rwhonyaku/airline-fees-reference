@@ -42,10 +42,10 @@ export default function HomePage() {
               Check Sizer Rules
             </Link>
             <Link
-              href="/best-cards"
+              href="/tools/checked-baggage-calculator"
               className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
             >
-              Free Bag Calculator
+              Bag Cost Calculator
             </Link>
             <Link
               href="/methodology"

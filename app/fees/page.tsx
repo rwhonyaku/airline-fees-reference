@@ -58,6 +58,9 @@ export default function FeeCategoriesIndexPage() {
             <Link href="/best-cards" style={{ textDecoration: "underline" }}>
               Free checked bag calculator
             </Link>
+            <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
+              Checked baggage cost calculator
+            </Link>
           </div>
         </div>
       </header>
