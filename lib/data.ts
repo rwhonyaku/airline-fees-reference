@@ -37,6 +37,19 @@ const ALLOWED_CATEGORIES = new Set<string>([
 ]);
 
 /**
+ * Runtime category aliases for legacy / expansion rows that still represent
+ * existing fee intents in the current information architecture.
+ *
+ * We intentionally map only to already-supported categories so route
+ * generation, fee hubs, and airline pages stay consistent.
+ */
+const CATEGORY_ALIASES: Record<string, FeeCategoryKey> = {
+  additional_baggage: "checked_baggage",
+  checked_baggage_included: "checked_baggage",
+  sports_equipment: "checked_baggage",
+};
+
+/**
  * Lightweight runtime validation.
  * - Does NOT truncate/mutate `conditions`
  * - Omits only when a row is structurally invalid or category is not allowed
@@ -46,8 +59,9 @@ function validateFeeItemLight(item: unknown): { ok: true; value: FeeItem } | { o
 
   const obj = item as Record<string, unknown>;
 
-  const category = obj.category;
-  if (typeof category !== "string") return { ok: false, reason: "missing_category" };
+  const rawCategory = obj.category;
+  if (typeof rawCategory !== "string") return { ok: false, reason: "missing_category" };
+  const category = CATEGORY_ALIASES[rawCategory] ?? rawCategory;
   if (!ALLOWED_CATEGORIES.has(category)) return { ok: false, reason: "invalid_category" };
 
   const currency = obj.currency;
@@ -83,7 +97,28 @@ function validateFeeItemLight(item: unknown): { ok: true; value: FeeItem } | { o
   // - applies_to already required above (per your project rules)
   // - region_or_route required above (per your project rules)
 
-  return { ok: true, value: item as FeeItem };
+  return { ok: true, value: { ...(item as FeeItem), category } };
+}
+
+function extractUniqueInsights(item: unknown): Airline["unique_insights"] | null {
+  if (!item || typeof item !== "object") return null;
+
+  const maybeInsights = (item as Record<string, unknown>).unique_insights;
+  if (!maybeInsights || typeof maybeInsights !== "object") return null;
+
+  const raw = maybeInsights as Record<string, unknown>;
+  const traps = Array.isArray(raw.traps)
+    ? raw.traps.filter((v): v is string => typeof v === "string" && v.trim().length > 0)
+    : [];
+  const proHack =
+    typeof raw.pro_hack === "string" && raw.pro_hack.trim().length > 0 ? raw.pro_hack.trim() : undefined;
+
+  if (!traps.length && !proHack) return null;
+
+  return {
+    traps: traps.length ? traps : undefined,
+    pro_hack: proHack,
+  };
 }
 
 function readJsonFileSafe<T>(absPath: string): { ok: true; data: T } | { ok: false; error: string } {
@@ -132,13 +167,20 @@ export function getAllAirlines(): Airline[] {
     }
 
     const validFees: FeeItem[] = [];
+    let uniqueInsights: Airline["unique_insights"] | undefined;
     for (const item of airline.fees ?? []) {
+      const extractedInsights = extractUniqueInsights(item);
+      if (extractedInsights) {
+        uniqueInsights = extractedInsights;
+        continue;
+      }
+
       const res = validateFeeItemLight(item);
       if (res.ok) validFees.push(res.value);
       else console.warn(`[data] Omitted fee row airline=${airline.slug} reason=${res.reason}`);
     }
 
-    airlines.push({ ...airline, fees: validFees });
+    airlines.push({ ...airline, unique_insights: uniqueInsights, fees: validFees });
   }
 
   return airlines;

@@ -152,6 +152,18 @@
       "timing": "at booking",
       "source_url": "https://www.flyfrontier.com/travel/travel-info/travel-policies/?mobile=true",
       "last_verified": "2025-12-19"
-    }
+    },
+
+    {
+  "id": "frontier",
+  "name": "Frontier Airlines",
+  "unique_insights": {
+    "traps": [
+      "The \"Human Interaction\" Tax: Frontier charges $25 just to talk to a gate agent for help you could have handled in the app."
+    ],
+    "pro_hack": "The \"Works\" Bundle Math: Only buy \"The Works\" at initial checkout—it's often ~40% more expensive if you add it later."
+  }
+}
+
   ]
 }

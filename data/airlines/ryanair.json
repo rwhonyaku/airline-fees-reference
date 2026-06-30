@@ -9,25 +9,24 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One small personal bag included (40 × 20 × 25 cm) that must fit under the seat in front",
+      "conditions": "One small personal bag included (40 x 30 x 20 cm) that must fit under the seat in front",
       "applies_to": "Basic fare",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-us/articles/12888036565521-Ryanair-s-Bag-Policy",
       "last_verified": "2025-12-24"
     },
     {
       "category": "carry_on",
       "amount": "From 6 to 36",
       "currency": "EUR",
-      "conditions": "Priority & 2 Cabin Bags: includes 1 small personal bag and 1 cabin bag up to 10 kg (55 × 40 × 20 cm); price varies by route and timing",
+      "conditions": "Priority & 2 Cabin Bags: includes 1 small personal bag and 1 cabin bag up to 10 kg (55 x 40 x 20 cm); price varies by route and timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-us/articles/12888036565521-Ryanair-s-Bag-Policy",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "checked_baggage",
       "amount": "From 9.49 to 59.99",
@@ -36,7 +35,7 @@
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-us/articles/12888036565521-Ryanair-s-Bag-Policy",
       "last_verified": "2025-12-24"
     },
     {
@@ -47,7 +46,7 @@
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-us/articles/12888036565521-Ryanair-s-Bag-Policy",
       "last_verified": "2025-12-24"
     },
     {
@@ -58,10 +57,9 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-ie/articles/12889885474705-Can-I-increase-my-baggage-allowance-and-pay-for-excess-baggage",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "seat_selection",
       "amount": "From 0 to 35",
@@ -70,7 +68,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-ie/articles/12892714228753-What-is-Ryanair-s-Family-Seat-Policy",
       "last_verified": "2025-12-24"
     },
     {
@@ -81,10 +79,9 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-ie/articles/12892714228753-What-is-Ryanair-s-Family-Seat-Policy",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "change_cancellation",
       "amount": 45,
@@ -93,7 +90,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/12891192262161-How-much-does-it-cost-to-change-my-flights",
       "last_verified": "2025-12-24"
     },
     {
@@ -104,7 +101,7 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-gb/articles/12891192262161-How-much-does-it-cost-to-change-my-flights",
       "last_verified": "2025-12-24"
     },
     {
@@ -115,20 +112,29 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "after booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-ie/articles/12896766243857-Refund-Policy",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
       "currency": "EUR",
-      "conditions": "Ryanair does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult",
+      "conditions": "Ryanair does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult aged 18 or over",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://help.ryanair.com/hc/en-gb/articles/360017824658",
+      "source_url": "https://help.ryanair.com/hc/en-us/articles/12889654202641-How-do-I-add-a-minor-16-years-to-a-booking",
       "last_verified": "2025-12-24"
+    },
+    {
+      "id": "ryanair",
+      "name": "Ryanair",
+      "unique_insights": {
+        "traps": [
+          "The \"Incorrect Currency\" Trap: Ryanair often defaults to your home currency at a bad exchange rate for bag fees."
+        ],
+        "pro_hack": "The \"Wearable Luggage\" Hack: This is why travel vests exist-stuff 5 kg of clothes into a vest and it won't be counted as a bag."
+      }
     }
   ]
 }

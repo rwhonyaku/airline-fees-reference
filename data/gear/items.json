@@ -1,0 +1,32 @@
+{
+  "gear_items": [
+    {
+      "id": "soft_personal_item_1",
+      "type": "soft_personal_item",
+      "title": "Soft-sided personal item (compressible)",
+      "why_it_works": "Compresses into sizers and avoids the “boxy hardshell” pre-tag bias on full flights.",
+      "offer_url": ""
+    },
+    {
+      "id": "underseat_backpack_1",
+      "type": "underseat_backpack",
+      "title": "Under-seat backpack (structured but flexible)",
+      "why_it_works": "Carries like a backpack but still has “give” at the sizer edges.",
+      "offer_url": ""
+    },
+    {
+      "id": "foldable_duffel_1",
+      "type": "foldable_duffel",
+      "title": "Foldable duffel (weight-split backup)",
+      "why_it_works": "Lets you split a heavy bag into two at the kiosk to avoid overweight fees.",
+      "offer_url": ""
+    },
+    {
+      "id": "luggage_scale_1",
+      "type": "luggage_scale",
+      "title": "Digital luggage scale",
+      "why_it_works": "Prevents overweight surprises (the highest-margin “donation” fee).",
+      "offer_url": ""
+    }
+  ]
+}

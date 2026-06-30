@@ -74,6 +74,10 @@ export type Airline = {
   icao?: string;
   country?: string;
   region?: string;
+  unique_insights?: {
+    traps?: string[];
+    pro_hack?: string;
+  };
 
   fees: FeeItem[];
 };

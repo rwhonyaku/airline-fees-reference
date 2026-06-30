@@ -7,51 +7,103 @@
   "fees": [
     {
       "category": "change_cancellation",
-      "amount": 0,
+      "amount": "Varies",
       "currency": "USD",
-      "conditions": "No change or cancellation fees; fare difference may apply",
-      "applies_to": "All fares",
+      "conditions": "Value: change or cancellation fee applies; fare difference may apply",
+      "applies_to": "Value",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01195",
-      "last_verified": "2025-12-19"
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
     },
-
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Premium Economy: no change or cancel fees; fare difference may apply",
+      "applies_to": "Premium Economy",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Spirit First: no change or cancel fees; fare difference may apply",
+      "applies_to": "Spirit First",
+      "region_or_route": "All routes",
+      "timing": "before departure",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
+    },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
       "conditions": "One personal item included; must fit completely under the seat in front of you",
-      "applies_to": "All fares",
+      "applies_to": "Value / Premium Economy / Spirit First",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
-      "last_verified": "2025-12-24"
+      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01149",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "carry_on",
       "amount": "Varies",
       "currency": "USD",
-      "conditions": "Carry-on bag fee varies based on purchase timing (online booking, online check-in, airport counter, or gate)",
-      "applies_to": "All fares",
+      "conditions": "Value: carry-on bag fee varies based on purchase timing (online booking, online check-in, airport counter, or gate)",
+      "applies_to": "Value",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
-      "last_verified": "2025-12-24"
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
     },
-
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on bag included with Premium Economy travel option",
+      "applies_to": "Premium Economy",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Carry-on bag included with Spirit First travel option",
+      "applies_to": "Spirit First",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
+    },
     {
       "category": "checked_baggage",
       "amount": "Varies",
       "currency": "USD",
-      "conditions": "Checked bag fee varies based on purchase timing and route",
-      "applies_to": "All fares",
+      "conditions": "Value and Premium Economy: checked bag fee varies based on purchase timing and route",
+      "applies_to": "Value / Premium Economy",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
-      "last_verified": "2025-12-24"
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
     },
-
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "First checked bag included with Spirit First travel option",
+      "applies_to": "Spirit First",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
+      "last_verified": "2026-05-06"
+    },
     {
       "category": "overweight_baggage",
       "amount": "Varies",
@@ -63,7 +115,6 @@
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "oversize_baggage",
       "amount": "Varies",
@@ -75,17 +126,26 @@
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5–14); nonstop flights only",
+      "conditions": "Unaccompanied minor service fee (ages 10-14); direct domestic flights only, including Puerto Rico and the U.S. Virgin Islands",
       "applies_to": "All fares",
-      "region_or_route": "Domestic only",
+      "region_or_route": "Domestic direct flights only",
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01160",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-05-06"
+    },
+    {
+      "id": "spirit",
+      "name": "Spirit Airlines",
+      "unique_insights": {
+        "traps": [
+          "The \"Short-Window\" Pass: Printing a boarding pass at the airport is $25."
+        ],
+        "pro_hack": "The \"Personal Item\" Padding: Spirit's sizer is roughly ~0.5 inches more forgiving than the stated 18x14x8. A soft bag with some \"give\" can fit even if slightly overstuffed."
+      }
     }
   ]
 }

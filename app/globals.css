@@ -1,118 +1,50 @@
-/* Keep all your existing styles, then add: */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Add new utility classes without breaking old ones */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-blue-100;
+    font-family: var(--font-body), sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
 
-/* 
-  Airline Fees Reference
-  Global styles
-  Purpose: neutral, readable, boring
-*/
+  /* Typography for SEO and Authority */
+  h1 { @apply text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6; }
+  h2 { @apply text-2xl font-bold text-slate-800 mt-12 mb-4; }
+  h3 { @apply text-xl font-bold text-slate-800 mt-8 mb-3; }
+  
+  p { @apply mb-4 leading-relaxed text-slate-600; }
 
-/* 1. CSS Reset (minimal, safe) */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  /* Modern Professional Tables */
+  table { 
+    @apply w-full text-left border-separate border-spacing-0 rounded-2xl overflow-hidden border border-slate-200 shadow-sm my-8; 
+  }
+  
+  thead { @apply bg-slate-50; }
+  
+  th { 
+    @apply p-4 text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200; 
+  }
+  
+  td { 
+    @apply p-4 bg-white border-b border-slate-100 text-sm align-top leading-relaxed; 
+  }
+
+  tr:last-child td { @apply border-b-0; }
+  
+  /* Styling Source Links */
+  td a { @apply text-blue-600 font-medium hover:underline flex items-center gap-1; }
+
+  /* Neutral but Modern Code blocks for dates/conditions */
+  code { 
+    @apply font-mono text-xs bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded border border-slate-200 font-medium; 
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* 2. Base typography */
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #111;
-  background-color: #ffffff;
-}
-
-/* 3. Links (neutral, not persuasive) */
-a {
-  color: #0047ab; /* restrained blue */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* 4. Headings (plain, hierarchical) */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  line-height: 1.3;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-h1 {
-  font-size: 20px;
-}
-
-h2 {
-  font-size: 17px;
-}
-
-h3 {
-  font-size: 15px;
-}
-
-/* 5. Paragraphs & lists */
-p {
-  margin: 0.75em 0;
-}
-
-ul,
-ol {
-  margin: 0.75em 0;
-  padding-left: 1.25em;
-}
-
-/* 6. Tables (core UI) */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
-  font-size: 13px;
-}
-
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 6px 8px;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #f5f5f5;
-  font-weight: 600;
-}
-
-/* 7. Inline code (sources, conditions) */
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12px;
-  background: #f2f2f2;
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-
-/* 8. Utility: visually separate sections without decoration */
-hr {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 2em 0;
+@layer components {
+  /* Use this class for "Advocate Boxes" in your MDX/HTML */
+  .advocate-note {
+    @apply bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-xl my-8 text-amber-900 font-medium shadow-sm;
+  }
 }

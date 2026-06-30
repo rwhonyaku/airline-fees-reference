@@ -7,47 +7,190 @@
   "fees": [
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": 40,
       "currency": "USD",
-      "conditions": "1st checked bag under 50 lbs (23 kg)",
-      "applies_to": "Economy",
+      "conditions": "1st checked bag under 50 lbs (23 kg) on North American flights ticketed before April 10, 2026; previous online/mobile prepay discount applied four or more hours before departure",
+      "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
-      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-06-10"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag under 50 lbs (23 kg)",
-      "applies_to": "Economy",
+      "conditions": "2nd checked bag under 50 lbs (23 kg) on North American flights ticketed before April 10, 2026; previous online/mobile prepay discount applied four or more hours before departure",
+      "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
-      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-06-10"
     },
     {
       "category": "checked_baggage",
       "amount": 150,
       "currency": "USD",
-      "conditions": "3rd checked bag",
-      "applies_to": "Economy",
+      "conditions": "3rd checked bag on North American flights ticketed before April 10, 2026",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 150,
+      "currency": "USD",
+      "conditions": "4th and additional checked bags on North American flights ticketed before April 10, 2026",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "1st checked bag under 50 lbs (23 kg) on North American flights ticketed on or after April 10, 2026; no online/mobile prepay discount",
+      "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "2nd checked bag under 50 lbs (23 kg) on North American flights ticketed on or after April 10, 2026; no online/mobile prepay discount",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
     },
     {
       "category": "checked_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bags 4+",
-      "applies_to": "Economy",
+      "conditions": "3rd checked bag on North American flights ticketed on or after April 10, 2026",
+      "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "4th and additional checked bags on North American flights ticketed on or after April 10, 2026",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 30,
+      "currency": "USD",
+      "conditions": "1st checked bag under 50 lbs (23 kg)",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Intra-island (wholly within the state of Hawaii)",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 40,
+      "currency": "USD",
+      "conditions": "2nd checked bag under 50 lbs (23 kg)",
+      "applies_to": "Main Cabin and Saver",
+      "region_or_route": "Intra-island (wholly within the state of Hawaii)",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag free up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Asia",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "2nd checked bag free up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Asia",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag free up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Europe",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 100,
+      "currency": "USD",
+      "conditions": "2nd checked bag up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Europe",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag free up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Oceania (Australia, New Zealand and Pacific Islands outside of Hawaii)",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "2nd checked bag free up to 50 lbs and 62 linear inches",
+      "applies_to": "Main Cabin",
+      "region_or_route": "Oceania (Australia, New Zealand and Pacific Islands outside of Hawaii)",
+      "timing": "each way",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-06-10"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": 200,
+      "currency": "USD",
+      "conditions": "Oversized bag fee",
+      "applies_to": "All fares",
+      "region_or_route": "Most routes",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-06-10"
     },
 
     {
@@ -129,6 +272,19 @@
       "timing": "one-way",
       "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
       "last_verified": "2025-12-19"
-    }
+    },
+    
+    {
+  "id": "alaska",
+  "name": "Alaska Airlines",
+  "unique_insights": {
+    "traps": [
+      "The \"20-Minute\" Ghosting: Alaska has a baggage guarantee ($25 credit if late), but the claim process can be hidden behind a QR code at the carousel."
+    ],
+    "pro_hack": "The \"Wine Flies Free\": From 32 West Coast cities, a case of wine flies free—use it to bypass a checked bag fee when you’re hauling bulky items."
+  }
+}
+
+
   ]
 }

@@ -1,0 +1,217 @@
+{
+  "cards": [
+    {
+      "id": "aa_citi_platinum_select",
+      "name": "Citi / AAdvantage Platinum Select World Elite Mastercard",
+      "airline_slug": "american",
+      "tier": "entry",
+      "annual_fee_usd": 99,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 5,
+      "requires_purchase_with_card": false,
+      "notes": [
+        "First checked bag free on domestic American Airlines itineraries for the primary cardholder and up to 4 companions on the same reservation."
+      ],
+      "offer_url": "https://creditcards.aa.com/card-benefits/",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "aa_aviator_red",
+      "name": "AAdvantage Aviator Red World Elite Mastercard",
+      "airline_slug": "american",
+      "tier": "entry_alt",
+      "annual_fee_usd": 99,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 5,
+      "requires_purchase_with_card": false,
+      "notes": [
+        "First checked bag free for the cardholder and up to 4 companions on the same reservation."
+      ],
+      "offer_url": "https://creditcards.aa.com/card-benefits/",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "aa_citi_executive",
+      "name": "Citi / AAdvantage Executive World Elite Mastercard",
+      "airline_slug": "american",
+      "tier": "premium",
+      "annual_fee_usd": 595,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 9,
+      "requires_purchase_with_card": false,
+      "notes": [
+        "First checked bag free on domestic American Airlines itineraries for the cardholder and up to 8 companions on the same reservation.",
+        "Includes Admirals Club access."
+      ],
+      "offer_url": "https://creditcards.aa.com/card-benefits/",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "united_explorer",
+      "name": "United Explorer Card",
+      "airline_slug": "united",
+      "tier": "entry",
+      "annual_fee_usd": 150,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 2,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the primary cardmember and one companion on the same reservation.",
+        "Ticket must be purchased with the card and the MileagePlus number must be attached to the reservation."
+      ],
+      "offer_url": "https://creditcards.chase.com/travel-credit-cards/united",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "united_quest",
+      "name": "United Quest Card",
+      "airline_slug": "united",
+      "tier": "mid",
+      "annual_fee_usd": 350,
+      "free_checked_bags": 2,
+      "applies_to_travelers": 2,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First and second checked bags free for the primary cardmember and one companion on the same reservation.",
+        "Ticket must be purchased with the card and the MileagePlus number must be attached to the reservation."
+      ],
+      "offer_url": "https://creditcards.chase.com/travel-credit-cards/united",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "united_club_infinite",
+      "name": "United Club Card",
+      "airline_slug": "united",
+      "tier": "premium",
+      "annual_fee_usd": 695,
+      "free_checked_bags": 2,
+      "applies_to_travelers": 2,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First and second checked bags free for the primary cardmember and one companion on the same reservation.",
+        "Ticket must be purchased with the card and the MileagePlus number must be attached to the reservation."
+      ],
+      "offer_url": "https://creditcards.chase.com/travel-credit-cards/united",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "delta_gold",
+      "name": "Delta SkyMiles Gold American Express Card",
+      "airline_slug": "delta",
+      "tier": "entry",
+      "annual_fee_usd": 150,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 9,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number."
+      ],
+      "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "delta_platinum",
+      "name": "Delta SkyMiles Platinum American Express Card",
+      "airline_slug": "delta",
+      "tier": "mid",
+      "annual_fee_usd": 350,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 9,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
+        "Includes a companion certificate after renewal, but that is not part of the bag-value model."
+      ],
+      "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "delta_reserve",
+      "name": "Delta SkyMiles Reserve American Express Card",
+      "airline_slug": "delta",
+      "tier": "premium",
+      "annual_fee_usd": 650,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 9,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
+        "Includes premium travel benefits outside the bag-fee model."
+      ],
+      "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "alaska_atmos_ascent",
+      "name": "Atmos Rewards Ascent Visa Signature Card",
+      "airline_slug": "alaska",
+      "tier": "entry",
+      "annual_fee_usd": 95,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 7,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "Free checked bag for the cardholder and up to 6 guests on the same reservation when the flight is paid for with the card.",
+        "Preferred boarding is also published when the flight is paid for with the card."
+      ],
+      "offer_url": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "alaska_atmos_summit",
+      "name": "Atmos Rewards Summit Visa Infinite Card",
+      "airline_slug": "alaska",
+      "tier": "premium",
+      "annual_fee_usd": 395,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 7,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "Free checked bag and preferred boarding for the cardholder and up to 6 guests on the same reservation when the flight is paid for with the card.",
+        "Published Summit benefits also include a same-day confirmed change fee waiver on Alaska flights excluding Saver fare."
+      ],
+      "offer_url": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    },
+    {
+      "id": "alaska_atmos_business",
+      "name": "Atmos Rewards Visa Business card",
+      "airline_slug": "alaska",
+      "tier": "business",
+      "annual_fee_usd": 70,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 7,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "Free checked bag for the cardholder and up to 6 guests on the same reservation when the flight is paid for with the card.",
+        "Preferred boarding is also published when the flight is paid for with the card."
+      ],
+      "offer_url": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+      "offer_label": "Check issuer terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-06-10"
+    }
+  ]
+}

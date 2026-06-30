@@ -118,6 +118,18 @@
       "timing": "at booking",
       "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/travelling-with-children",
       "last_verified": "2025-12-24"
-    }
+    },
+
+    {
+  "id": "easyjet",
+  "name": "easyJet",
+  "unique_insights": {
+    "traps": [
+      "The \"Hands-Free\" Upsell: They push you to pay to check your carry-on."
+    ],
+    "pro_hack": "The \"Large Cabin Bag\" Trick: Booking an \"Extra Legroom\" seat often includes the large carry-on, which can make the seat effectively \"free\" versus buying the bag alone."
+  }
+}
+
   ]
 }

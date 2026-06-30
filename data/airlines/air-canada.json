@@ -16,7 +16,6 @@
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/carry-on.html",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
@@ -50,12 +49,11 @@
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "overweight_baggage",
       "amount": "From 100 to 225",
       "currency": "CAD",
-      "conditions": "Overweight checked bag (23–32 kg); fee varies by route; bags over 32 kg are not accepted",
+      "conditions": "Overweight checked bag (23-32 kg); fee varies by route; bags over 32 kg are not accepted",
       "applies_to": "All fares",
       "region_or_route": "Domestic, transborder, international",
       "timing": "at airport",
@@ -73,7 +71,6 @@
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -107,7 +104,6 @@
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -130,7 +126,6 @@
       "source_url": "https://www.aircanada.com/ca/en/aco/home/fly/customer-support/cancellation-refund.html",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 100,

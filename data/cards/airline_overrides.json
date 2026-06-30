@@ -1,0 +1,12 @@
+{
+  "united": {
+    "requires_card_payment_for_free_bag": true
+  },
+  "delta": {
+    "requires_card_payment_for_free_bag": true,
+    "amex_platinum_vanilla_free_bag": false
+  },
+  "alaska": {
+    "requires_card_payment_for_free_bag": true
+  }
+}

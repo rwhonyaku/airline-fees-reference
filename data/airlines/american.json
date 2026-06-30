@@ -9,23 +9,45 @@
       "category": "checked_baggage",
       "amount": 35,
       "currency": "USD",
-      "conditions": "Bag 1; base rate shown as $35 (prepaid) / $40 (standard at check-in location); fees vary by destination and travel date",
+      "conditions": "Bag 1; $35 prepaid / $40 at the airport for domestic, Canada, and short-haul international tickets purchased before April 9, 2026; fees vary by destination and travel date",
       "applies_to": "Economy (non-Basic)",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://news.aa.com/news/news-details/2026/Customers-save-time-and-money-when-prepaying-for-checked-bags-MKG-OTH-02/",
+      "last_verified": "2026-04-27"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "Bag 2; fees vary by destination and travel date",
+      "conditions": "Bag 2; $45 prepaid / $50 at the airport for domestic, Canada, and short-haul international tickets purchased on or after February 18, 2026, and before April 9, 2026; fees vary by destination and travel date",
       "applies_to": "Economy (non-Basic)",
-      "region_or_route": "U.S. (including HI/AK), Puerto Rico, USVI",
+      "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://news.aa.com/news/news-details/2026/Customers-save-time-and-money-when-prepaying-for-checked-bags-MKG-OTH-02/",
+      "last_verified": "2026-04-27"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "Bag 1; $45 prepaid / $50 at the airport for domestic, Canada, and short-haul international tickets booked on or after April 9, 2026; fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S., Canada, and short-haul international",
+      "timing": "each way",
+      "source_url": "https://news.aa.com/news/news-details/2026/American-Airlines-updates-bag-fees-and-Basic-Economy-fares-OPS-POL-04/default.aspx?pubDate=20260409",
+      "last_verified": "2026-04-27"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "Bag 2; $55 prepaid / $60 at the airport for domestic, Canada, and short-haul international tickets booked on or after April 9, 2026; fees vary by destination and travel date",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "U.S., Canada, and short-haul international",
+      "timing": "each way",
+      "source_url": "https://news.aa.com/news/news-details/2026/American-Airlines-updates-bag-fees-and-Basic-Economy-fares-OPS-POL-04/default.aspx?pubDate=20260409",
+      "last_verified": "2026-04-27"
     },
 
     {
@@ -190,6 +212,19 @@
       "timing": "per direction",
       "source_url": "https://www.aa.com/i18n/travel-info/special-assistance/unaccompanied-minors.jsp",
       "last_verified": "2025-12-22"
-    }
+    },
+
+    {
+  "id": "american",
+  "name": "American Airlines",
+  "unique_insights": {
+    "traps": [
+      "The \"Ghost Sizer\": AA is removing metal sizers at DFW/CLT. Enforcement is now 100% agent discretion—if it looks big, it’s checked.",
+      "The \"White Tag\" Danger: On AA Eagle, \"White Tags\" go to the carousel, not the jetbridge. Never leave car keys/medicine in a bag on a regional AA flight."
+    ],
+    "pro_hack": "Assume every AA regional gate-check will be separated from you until baggage claim—keep essentials (keys, meds, chargers) on-person, not in the tagged bag."
+  }
+}
+
   ]
 }

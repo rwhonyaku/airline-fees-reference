@@ -1,0 +1,8 @@
+{
+  "sizer_rules": {
+    "soft_personal_item": ["soft_personal_item_1"],
+    "underseat_backpack": ["underseat_backpack_1"],
+    "foldable_duffel": ["foldable_duffel_1"],
+    "luggage_scale": ["luggage_scale_1"]
+  }
+}

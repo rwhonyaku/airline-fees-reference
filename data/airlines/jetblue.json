@@ -10,22 +10,44 @@
       "amount": 35,
       "currency": "USD",
       "conditions": "1st checked bag under 50 lbs (23 kg); prepaid online",
-      "applies_to": "Blue / Blue Plus",
+      "applies_to": "Blue",
       "region_or_route": "U.S., Caribbean, Central America",
       "timing": "each way",
-      "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
       "conditions": "2nd checked bag under 50 lbs (23 kg); prepaid online",
-      "applies_to": "Blue / Blue Plus",
+      "applies_to": "Blue",
       "region_or_route": "U.S., Caribbean, Central America",
       "timing": "each way",
-      "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag included",
+      "applies_to": "Blue Plus",
+      "region_or_route": "U.S., Caribbean, Central America",
+      "timing": "each way",
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "2nd checked bag under 50 lbs (23 kg); prepaid online",
+      "applies_to": "Blue Plus",
+      "region_or_route": "U.S., Caribbean, Central America",
+      "timing": "each way",
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
@@ -49,43 +71,39 @@
       "source_url": "https://www.jetblue.com/legal/fees",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
       "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
-      "applies_to": "Most fares",
+      "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.jetblue.com/help/carry-on-bags",
-      "last_verified": "2025-12-22"
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
     },
-
     {
       "category": "oversize_baggage",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Bags measuring 63–80 linear inches (160–203 cm); bags over 80 inches are not accepted",
+      "conditions": "Bags measuring 63-80 linear inches (160-203 cm); bags over 80 inches are not accepted",
       "applies_to": "All fares",
       "region_or_route": "Most routes",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/checked-bags",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "overweight_baggage",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Bags weighing 51–99 lbs (23–45 kg); bags weighing 100 lbs or more are not accepted",
+      "conditions": "Bags weighing 51-99 lbs (23-45 kg); bags weighing 100 lbs or more are not accepted",
       "applies_to": "All fares",
       "region_or_route": "Most routes",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/checked-bags",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -108,7 +126,6 @@
       "source_url": "https://www.jetblue.com/travel-agents/seat-assignments",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -117,31 +134,40 @@
       "applies_to": "Blue / Blue Plus / Blue Extra",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": 100,
       "currency": "USD",
-      "conditions": "Change and cancellation fees may apply depending on fare bundle (e.g., Blue Basic)",
+      "conditions": "Blue Basic cancellations are $100 per person on most routes and $200 per person on transatlantic itineraries; changes are not allowed",
       "applies_to": "Blue Basic",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "last_verified": "2026-05-06"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5–13); nonstop flights only",
+      "conditions": "Unaccompanied minor service fee (ages 5-13); nonstop flights only",
       "applies_to": "All fares",
       "region_or_route": "Eligible routes only",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/unaccompanied-minors-umnr",
       "last_verified": "2025-12-19"
+    },
+    {
+      "id": "jetblue",
+      "name": "JetBlue Airways",
+      "unique_insights": {
+        "traps": [
+          "The \"24-Hour\" Penalty: JetBlue adds a $10 surcharge if you pay for a bag within 24 hours of flight time."
+        ],
+        "pro_hack": "The \"Mosaic Shadow\": If you travel with a Mosaic member, your bag fees may be waived even if you aren't on the same confirmation number (often hinges on matching last name/address)."
+      }
     }
   ]
 }

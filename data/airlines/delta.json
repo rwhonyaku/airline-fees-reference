@@ -7,47 +7,47 @@
   "fees": [
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": 45,
       "currency": "USD",
       "conditions": "1st standard checked bag under 50 lbs (23 kg)",
       "applies_to": "Basic Economy",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
-      "amount": 45,
+      "amount": 55,
       "currency": "USD",
       "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
       "applies_to": "Basic Economy",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": 45,
       "currency": "USD",
       "conditions": "1st standard checked bag under 50 lbs (23 kg)",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
-      "amount": 45,
+      "amount": 55,
       "currency": "USD",
       "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-05-06"
     },
 
     {
@@ -198,6 +198,17 @@
       "timing": "per direction",
       "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
       "last_verified": "2025-12-19"
-    }
+    },
+    {
+  "id": "delta",
+  "name": "Delta Air Lines",
+  "unique_insights": {
+    "traps": [
+      "Hardshell Bias: Delta gate agents often \"pre-tag\" hardshell rollers for the cargo hold on full flights because they don’t compress."
+    ],
+    "pro_hack": "The \"Softside\" Loophole: Use a soft-sided bag. Agents visually skip over them in the boarding line far more often than boxy hardshells."
+  }
+}
+
   ]
 }

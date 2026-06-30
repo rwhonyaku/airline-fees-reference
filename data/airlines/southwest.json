@@ -19,114 +19,180 @@
 
     {
       "category": "checked_baggage",
-      "amount": 0,
+      "amount": 35,
       "currency": "USD",
-      "conditions": "1st checked bag: free (applies to travel booked and ticketed before May 28, 2025)",
-      "applies_to": "All fares",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Basic Fare",
       "region_or_route": "All routes",
-      "timing": "each way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
-      "amount": 0,
+      "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag: free (applies to travel booked and ticketed before May 28, 2025)",
-      "applies_to": "All fares",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Basic Fare",
       "region_or_route": "All routes",
-      "timing": "each way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
 
     {
       "category": "checked_baggage",
       "amount": 35,
       "currency": "USD",
-      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
-      "applies_to": "Basic Fare",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Choice Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
-      "applies_to": "Basic Fare",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Choice Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 35,
       "currency": "USD",
-      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
-      "applies_to": "Choice Fare",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Choice Preferred Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
-      "applies_to": "Choice Fare",
-      "region_or_route": "All routes",
-      "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
-    },
-    {
-      "category": "checked_baggage",
-      "amount": 35,
-      "currency": "USD",
-      "conditions": "1st checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed before April 9, 2026",
       "applies_to": "Choice Preferred Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "1st checked bag: free for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Choice Extra Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "2nd checked bag: free for U.S. Mainland travel booked and ticketed before April 9, 2026",
+      "applies_to": "Choice Extra Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
+      "applies_to": "Basic Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
+      "applies_to": "Basic Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
+      "applies_to": "Choice Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
+      "applies_to": "Choice Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 45,
+      "currency": "USD",
+      "conditions": "1st checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
       "applies_to": "Choice Preferred Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "2nd checked bag for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
+      "applies_to": "Choice Preferred Fare",
+      "region_or_route": "All routes",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "1st checked bag: free (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "conditions": "1st checked bag: free for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
       "applies_to": "Choice Extra Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "2nd checked bag: free (for travel booked and ticketed and/or changed on or after May 28, 2025)",
+      "conditions": "2nd checked bag: free for U.S. Mainland travel booked and ticketed and/or changed on or after April 9, 2026",
       "applies_to": "Choice Extra Fare",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-05-06"
     },
 
     {
@@ -265,6 +331,19 @@
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
       "last_verified": "2025-12-24"
-    }
+    },
+    
+    {
+  "id": "southwest",
+  "name": "Southwest Airlines",
+  "unique_insights": {
+    "traps": [
+      "The \"Flight Credit\" Trap: If you switch to a cheaper flight, you don’t get cash back—you get a credit that expires in 12 months."
+    ],
+    "pro_hack": "The 2-Bag Weight Split: You get 2 free bags. Pack a light foldable duffel so you can split a 51 lb bag into two ~26 lb bags at the kiosk and avoid the $100+ overweight fee."
+  }
+}
+
+
   ]
 }
