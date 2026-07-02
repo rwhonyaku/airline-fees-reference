@@ -4,6 +4,13 @@
   "iata": "UA",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "United's checked-bag price is cheaper when the first two bags are prepaid online instead of handled at the airport.",
+      "Some United credit-card bag benefits require paying for the ticket with the eligible card."
+    ],
+    "pro_hack": "On smaller United Express regional jets, under-seat space can be tighter than the published personal-item rule suggests. Keep essentials in a soft bag that can compress."
+  },
   "fees": [
     {
       "category": "checked_baggage",
@@ -64,7 +71,7 @@
       "category": "checked_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "3rd checked bag $200 for tickets purchased on or after April 3, 2026, in most markets; trip-specific pricing may vary in the baggage fee calculator",
+      "conditions": "3rd checked bag; tickets purchased on or after April 3, 2026; most markets",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "Most markets",
       "timing": "each way",
@@ -150,20 +157,6 @@
       "timing": "after 24h",
       "source_url": "https://www.united.com/en/us/fly/travel/trip-planning/flexible-booking-options.html#change-fees",
       "last_verified": "2025-12-19"
-    },  
-    {
-  "id": "united",
-  "name": "United Airlines",
-  "unique_insights": {
-    "traps": [
-      "The $5 Airport Surcharge: Paying at the counter costs more than the app.",
-      "The CRJ-200 Squeeze: Window seats have restricted under-seat floor space.",
-      "The Card Requirement: You MUST pay with the United card to get the free bag.",
-      "The \"Basic\" Lockout: United Basic Economy forbids carry-ons. If you bring one to the gate, they charge the bag fee PLUS a $25 gate handling fee."
-    ],
-    "pro_hack": "The Aisle Advantage: On United Express regional jets (CRJ-200), window seats have a structural bar under the seat. Book an aisle seat to gain ~2 extra inches of bag width."
-  }
-}
-
+    }
   ]
 }

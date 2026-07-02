@@ -4,6 +4,12 @@
   "iata": "U2",
   "country": "United Kingdom",
   "region": "Europe",
+  "unique_insights": {
+    "traps": [
+      "easyJet includes only the small under-seat bag by default; the larger cabin bag is tied to a paid add-on, fare benefit, membership, or selected seat path."
+    ],
+    "pro_hack": "Compare the large cabin bag price against Up Front or Extra Legroom seating. Sometimes the seat path is the cleaner way to buy the same cabin-bag entitlement."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -20,7 +26,7 @@
       "category": "carry_on",
       "amount": "From 5.99 to 37.99",
       "currency": "EUR",
-      "conditions": "Large cabin bag up to 15 kg (56 × 45 × 25 cm); included with Up Front or Extra Legroom seats or available as an add-on; price varies by route and timing",
+      "conditions": "Large cabin bag up to 15 kg; paid add-on or included with eligible seat/fare path",
       "applies_to": "Optional add-on / seat bundle",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
@@ -118,18 +124,6 @@
       "timing": "at booking",
       "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/travelling-with-children",
       "last_verified": "2025-12-24"
-    },
-
-    {
-  "id": "easyjet",
-  "name": "easyJet",
-  "unique_insights": {
-    "traps": [
-      "The \"Hands-Free\" Upsell: They push you to pay to check your carry-on."
-    ],
-    "pro_hack": "The \"Large Cabin Bag\" Trick: Booking an \"Extra Legroom\" seat often includes the large carry-on, which can make the seat effectively \"free\" versus buying the bag alone."
-  }
-}
-
+    }
   ]
 }

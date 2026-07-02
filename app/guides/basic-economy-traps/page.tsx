@@ -78,7 +78,7 @@ function findFee(
 }
 
 function usdRangeText(row: FeeItem | null, prefix = "From"): string {
-  if (!row) return "Not published in current dataset";
+  if (!row) return "Not published in the current fee table";
   return `${prefix} ${formatAmount(row.amount, row.currency)}`;
 }
 
@@ -183,9 +183,9 @@ function buildGuideRows(): GuideRow[] {
       airline: "American",
       model: "Legacy Basic Economy with full carry-on access",
       carryOn: "One carry-on bag and one personal item remain allowed on Basic Economy.",
-      seats: "Current dataset publishes variable seat products rather than a separate Basic Economy seat row.",
+      seats: "American publishes variable seat products rather than a separate Basic Economy seat row in this fee table.",
       changes:
-        "Current dataset does not publish a separate Basic Economy change row, so the operational risk is more about bags, seats, and fare-family limits than a single posted fee line here.",
+        "This fee table does not publish a separate Basic Economy change row, so the practical risk is more about bags, seats, and fare-family limits than a single posted fee line here.",
       whereItBreaks:
         "American usually stops looking cheap when route-specific bag pricing or paid seat selection gets layered onto a fare that still looked manageable in search.",
       sourceLabel: "American Basic Economy",
@@ -196,7 +196,7 @@ function buildGuideRows(): GuideRow[] {
       airline: "Delta",
       model: "Legacy Basic Economy with carry-on access but harsher flexibility rules",
       carryOn: "One carry-on bag and one personal item remain allowed.",
-      seats: "The current dataset publishes preferred-seat pricing separately, but the main Basic difference here is not cabin access.",
+      seats: "Preferred-seat pricing is published separately, but the main Basic difference here is not cabin access.",
       changes: `Basic Economy is listed at ${formatAmount(deltaBasicChangeShort?.amount, deltaBasicChangeShort?.currency)} on short-haul regional groups and ${formatAmount(deltaBasicChangeLong?.amount, deltaBasicChangeLong?.currency)} on long-haul regional groups.`,
       whereItBreaks:
         "Delta Basic usually stops being cheap when the trip is uncertain, because the bag baseline looks normal but the change/cancel penalty does not.",
@@ -207,12 +207,12 @@ function buildGuideRows(): GuideRow[] {
       slug: "jetblue",
       airline: "JetBlue",
       model: "Blue Basic: entry fare with carry-on restored but flexibility stripped back",
-      carryOn: "Blue Basic includes one carry-on bag and one personal item under the current published update.",
-      seats: "Standard-seat inclusion is published for Blue, Blue Plus, and Blue Extra; current dataset does not publish a separate Blue Basic standard-seat line.",
+      carryOn: "Blue Basic includes one carry-on bag and one personal item under JetBlue's current policy.",
+      seats: "Standard-seat inclusion is published for Blue, Blue Plus, and Blue Extra; this fee table does not publish a separate Blue Basic standard-seat line.",
       changes:
         jetblueBasicChange
           ? `${safeText(jetblueBasicChange.conditions)}.`
-          : "Blue Basic is the fare family with the published change/cancel penalty in the current dataset.",
+          : "Blue Basic is the fare family with the published change/cancel penalty in the current fee table.",
       whereItBreaks:
         "JetBlue's cheap fare usually stops being cheap when the traveler assumed carry-on access solved the problem and missed the stricter cancellation rule.",
       sourceLabel: "JetBlue Blue Basic update",
@@ -222,7 +222,7 @@ function buildGuideRows(): GuideRow[] {
       slug: "alaska",
       airline: "Alaska",
       model: "Saver-style entry fare rather than classic Basic Economy",
-      carryOn: "Saver still includes one carry-on bag and one personal item in the current dataset.",
+      carryOn: "Saver still includes one carry-on bag and one personal item in the current fee table.",
       seats: "Standard seat selection is published at USD 0 in Main Cabin, with preferred seats separately variable.",
       changes:
         alaskaChange
@@ -262,7 +262,7 @@ function buildGuideRows(): GuideRow[] {
       changes:
         spiritValueChange
           ? `${safeText(spiritValueChange.conditions)}.`
-          : "Value is the fee-based product in the current dataset.",
+          : "Value is the fee-based product in the current fee table.",
       whereItBreaks:
         "Spirit stops being cheap when the trip needs a carry-on, a checked bag, or flexibility after booking. That is the stripped-fare version of the Basic Economy trap.",
       sourceLabel: "Spirit travel options",
@@ -280,7 +280,7 @@ function buildGuideRows(): GuideRow[] {
       changes:
         frontierLateChange
           ? `${safeText(frontierLateChange.conditions)}.`
-          : "Basic Fare / Standard is the more restrictive product path in the current dataset.",
+          : "Basic Fare / Standard is the more restrictive product path in the current fee table.",
       whereItBreaks:
         "Frontier's cheap fare usually breaks when the traveler buys back normal behavior late: cabin bag, checked bag, or a change close to departure.",
       sourceLabel: "Frontier change policy",
@@ -316,7 +316,7 @@ const CLASS_MODEL_CARDS: ScopeCard[] = [
   {
     title: "Classic Basic Economy",
     body:
-      "United is the clearest example in this repo: the entry fare changes cabin access directly and then layers seat and flexibility restrictions on top.",
+      "United is the clearest example: the entry fare changes cabin access directly and then layers seat and flexibility restrictions on top.",
   },
   {
     title: "Legacy Basic with full carry-on",
@@ -378,7 +378,7 @@ export default function BasicEconomyTrapsGuide() {
                 combination of all three.
               </p>
               <p>
-                In this repo, United is the clearest example of a Basic Economy fare that can force
+                United is the clearest example of a Basic Economy fare that can force
                 checked-bag math. American, Delta, and JetBlue keep normal carry-on access but use
                 other restrictions to change the trip economics. Spirit and Frontier are the same
                 decision problem pushed further through stripped fares and paid cabin access.
@@ -664,15 +664,14 @@ export default function BasicEconomyTrapsGuide() {
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
           <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
             <li>
-              <strong>American:</strong> the current dataset&apos;s transatlantic example starts at USD
-              75 for the first checked bag on Economy (non-Basic), with published exceptions for
-              Basic Economy and certain fare products.
+              <strong>American:</strong> the transatlantic example shown here starts at USD 75 for
+              the first checked bag on Economy (non-Basic), while domestic and short-haul Basic
+              Economy tickets can price differently by ticketing date.
             </li>
             <li>
-              <strong>Delta:</strong> the Basic Economy change/cancel penalty in the current dataset
-              is explicitly split between shorter-haul regional groups and long-haul regional
-              groups, which is a bigger practical difference than the simple “Basic vs Main Cabin”
-              label suggests.
+              <strong>Delta:</strong> the Basic Economy change/cancel penalty shown here is split
+              between shorter-haul regional groups and long-haul regional groups, which is a bigger
+              practical difference than the simple “Basic vs Main Cabin” label suggests.
             </li>
             <li>
               <strong>JetBlue:</strong> Blue Basic uses a different published cancellation number on

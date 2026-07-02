@@ -338,46 +338,46 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   southwest: {
     intro: {
       carryOn:
-        "One carry-on bag and one personal item are published as included on all fares.",
+        "Southwest still includes one carry-on bag and one personal item on every fare.",
       personalItem:
-        "The personal item must be stowable under a seat or in an overhead compartment under the published carry-on rule.",
+        "The personal item needs to be small enough to stow under a seat or in an overhead bin, so soft backpacks and laptop bags are safer than rigid totes.",
       checkedBag:
-        "Published first- and second-bag pricing is route-wide but fare-specific: before April 9, 2026, Basic, Choice, and Choice Preferred show USD 35 and USD 45 one-way, while bookings ticketed and/or changed on or after April 9, 2026 show USD 45 and USD 55 one-way. Choice Extra remains at USD 0 for the first and second checked bags in both published booking windows.",
+        "Southwest's old bag simplicity is gone. For U.S. Mainland travel, Basic, Choice, and Choice Preferred show USD 45 for the first checked bag and USD 55 for the second on bookings ticketed or changed on or after April 9, 2026. Choice Extra remains the fare with the first two checked bags included.",
       restrictions:
-        "Basic Fare lists no seat selection, same-day change is limited to Choice, Choice Preferred, and Choice Extra, and Choice Extra retains published free first and second checked bags on later bookings.",
+        "Basic is now the clear restriction point: no seat selection, no included first bag, and no free same-day change unless the fare is upgraded.",
     },
     fareClasses: [
         {
           name: "Basic Fare",
           details:
-          "Published rows show first and second checked bags at USD 35 and USD 45 one-way before April 9, 2026, then USD 45 and USD 55 one-way on bookings ticketed and/or changed on or after April 9, 2026, with no seat selection and no same-day change eligibility unless the fare is upgraded.",
+          "Basic is the fare most likely to surprise longtime Southwest flyers. It keeps the carry-on, but on newer U.S. Mainland bookings it charges for the first and second checked bags and does not include seat selection or same-day change.",
         },
         {
           name: "Choice Fare",
           details:
-          "Published rows show the same bag-pricing pattern as Basic: USD 35 and USD 45 one-way before April 9, 2026, then USD 45 and USD 55 one-way on bookings ticketed and/or changed on or after April 9, 2026, while same-day change is listed at USD 0.",
+          "Choice has the same newer first- and second-bag charges as Basic on U.S. Mainland bookings, but it restores free same-day change.",
         },
       {
         name: "Choice Preferred Fare",
         details:
-          "Published later-booking rows show the same first- and second-bag pricing as Choice, with same-day change also listed at USD 0.",
+          "Choice Preferred keeps the same checked-bag charges as Choice in the published later-booking U.S. Mainland rows, with same-day change listed at USD 0.",
       },
       {
         name: "Choice Extra Fare",
         details:
-          "Published later-booking rows list the first and second checked bags at USD 0 and same-day change at USD 0.",
+          "Choice Extra is the Southwest fare to compare when you are checking bags. The first two checked bags and same-day change are listed at USD 0.",
       },
     ],
     scenarios: [
       {
         title: "Traveling with only cabin items",
         details:
-          "Published carry-on rows show one carry-on bag and one personal item included on all fares.",
+          "A carry-on-only Southwest trip still works cleanly across fare families because the carry-on and personal item remain included.",
       },
         {
           title: "Checking one standard bag",
           details:
-          "On U.S. Mainland Basic, Choice, and Choice Preferred bookings ticketed and/or changed on or after April 9, 2026, the published first checked bag amount is USD 45 one-way. Choice Extra shows the first checked bag at USD 0.",
+          "On U.S. Mainland Basic, Choice, and Choice Preferred bookings ticketed or changed on or after April 9, 2026, the first checked bag is USD 45 one-way. Choice Extra lists the first checked bag at USD 0.",
         },
       {
         title: "Checking an overweight bag",
@@ -386,9 +386,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
       exceptions: [
-        "Choice Extra fares show the first and second checked bags at USD 0 in both published U.S. Mainland booking windows.",
-        "Before April 9, 2026, the published U.S. Mainland first- and second-bag amounts remain USD 35 and USD 45 for Basic, Choice, and Choice Preferred fares.",
-        "All fares show no cancellation fee in the published change and cancellation rows.",
+        "Choice Extra fares show the first and second checked bags at USD 0 in both U.S. Mainland booking windows.",
+        "Before April 9, 2026, U.S. Mainland first- and second-bag amounts remain USD 35 and USD 45 for Basic, Choice, and Choice Preferred fares.",
+        "All fare types are eligible for cancellations without a cancellation fee, but Southwest still requires canceling before departure to preserve eligible funds.",
       ],
     comparisonLinks: [
       { href: "/airlines/alaska", label: "Alaska Airlines" },
@@ -623,36 +623,36 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   jetblue: {
     intro: {
       carryOn:
-        "One carry-on bag and one personal item are published as included on all fares, including Blue Basic, under the current JetBlue update in this dataset.",
+        "JetBlue includes one carry-on bag and one personal item even on Blue Basic, so the cabin-bag trap is not the main issue anymore.",
       personalItem:
-        "The published carry-on row confirms a personal item is included, but this dataset does not publish a separate JetBlue personal-item dimensions row on this page.",
+        "A personal item is included, but this page does not currently show a separate personal-item dimensions row for JetBlue.",
       checkedBag:
-        "On the published U.S., Caribbean, and Central America baseline, Blue shows the first checked bag at USD 35 prepaid online and the second at USD 45 prepaid online, while Blue Plus includes the first checked bag and still lists the second at USD 45.",
+        "JetBlue checked-bag pricing is now date- and timing-sensitive. Within the U.S., Latin America, the Caribbean, and Canada, the first checked bag on Blue, Blue Basic, Blue Extra, and EvenMore is listed at USD 45 off-peak or USD 49 peak when added before check-in; the second bag is USD 59 off-peak or USD 69 peak. Blue Plus keeps the first bag included.",
       restrictions:
-        "Blue Basic is the main restrictive fare family in the current dataset: it still includes a carry-on, but changes are not allowed and cancellations are listed at USD 100 per person on most routes and USD 200 on transatlantic itineraries.",
+        "Blue Basic still includes a carry-on, but it gives up flexibility: changes are not allowed, and cancellations are listed at USD 100 per person on most North America, Central America, and Caribbean routes or USD 200 on other routes.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The newest JetBlue carry-on, checked-bag, and change/cancellation rows in this dataset were last verified on 2026-05-06. Oversize and overweight rows were last verified on 2025-12-22, while seat rows were last verified on 2025-12-19.",
+      "JetBlue checked-bag pricing was verified against JetBlue's optional-services fee page on 2026-07-01. Carry-on and change/cancellation rows were last verified on 2026-05-06, oversize and overweight rows on 2025-12-22, and seat rows on 2025-12-19.",
     fareClasses: [
       {
         name: "Blue Basic",
         details:
-          "Published rows show Blue Basic still includes one carry-on bag and one personal item, but changes are not allowed and cancellations are listed at USD 100 per person on most routes and USD 200 per person on transatlantic itineraries. This dataset does not publish a separate Blue Basic checked-bag row on this page.",
+          "Blue Basic includes one carry-on bag and one personal item, but changes are not allowed. Cancellation fees are the bigger trap: USD 100 on North America, Central America, and Caribbean routes, and USD 200 on other routes.",
       },
       {
         name: "Blue",
         details:
-          "Published rows show the first checked bag at USD 35 prepaid online and the second checked bag at USD 45 prepaid online on the U.S., Caribbean, and Central America baseline, with no change or cancellation fee listed.",
+          "Blue has no change or cancellation fee listed, but checked bags are dynamic: the first two checked bags vary by peak versus off-peak travel dates and by whether you add them before check-in.",
       },
       {
         name: "Blue Plus / Blue Extra",
         details:
-          "Blue Plus includes the first checked bag on the published U.S., Caribbean, and Central America baseline and still lists the second checked bag at USD 45 prepaid online. Blue Extra is grouped with other non-Basic fares for standard seat inclusion and no change or cancellation fee, but this dataset does not publish a separate Blue Extra baggage row.",
+          "Blue Plus includes the first checked bag and then follows JetBlue's dynamic second-bag pricing. Blue Extra is grouped with the other paid-seat-included fares for standard seat selection and no change or cancellation fee.",
       },
       {
         name: "Premium seating and higher-end products",
         details:
-          "Even More Space seats are published as a separate variable seat product. This dataset does not publish a separate Mint baggage or cancellation row on this page.",
+          "EvenMore seats are a variable paid seat product. Mint has separate baggage treatment on JetBlue's fee page, so do not apply the Blue checked-bag ladder to Mint without checking the itinerary.",
       },
     ],
     scenarios: [
@@ -664,17 +664,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag on Blue",
         details:
-          "Published first-bag pricing is USD 35 prepaid online each way on the listed U.S., Caribbean, and Central America baseline.",
+          "The first checked bag on Blue is USD 45 off-peak or USD 49 peak when added before check-in on the U.S., Latin America, Caribbean, and Canada chart.",
       },
       {
         title: "Checking one standard bag on Blue Plus",
         details:
-          "Published rows show the first checked bag included, with the second checked bag listed at USD 45 prepaid online on the same regional baseline.",
+          "Blue Plus includes the first checked bag. The second checked bag follows the dynamic chart: USD 59 off-peak or USD 69 peak when added before check-in on the listed regional chart.",
       },
       {
         title: "Checking three bags on most routes",
         details:
-          "Published rows list the third checked bag at USD 150 each way on most routes, with the fourth checked bag and beyond at USD 200 each way.",
+          "Within the U.S., Latin America, the Caribbean, and Canada, JetBlue lists the third checked bag at USD 200. Transatlantic third-bag pricing has its own off-peak and peak amounts.",
       },
       {
         title: "Canceling a Blue Basic transatlantic itinerary",
@@ -682,10 +682,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Published rows list Blue Basic cancellations at USD 200 per person on transatlantic itineraries, while changes are not allowed.",
       },
     ],
-    exceptions: [
-      "Blue Plus includes the first checked bag on the published U.S., Caribbean, and Central America baseline.",
+      exceptions: [
+      "Blue Plus includes the first checked bag on the U.S., Latin America, Caribbean, and Canada chart.",
       "Blue, Blue Plus, and Blue Extra show no published change or cancellation fee, with fare difference still applying where relevant.",
-      "The current dataset does not publish Mosaic, elite-style, or co-branded card baggage-waiver rows on this page, so they are not reflected in these tables.",
+      "Mosaic and eligible JetBlue card benefits can change the bag math. Those benefits are referenced separately so the base fee rows stay readable.",
     ],
     comparisonLinks: [
       { href: "/airlines/alaska", label: "Alaska Airlines" },
@@ -700,22 +700,22 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The published carry-on row states that size and placement requirements apply to the personal item.",
       checkedBag:
-        "The published Economy (non-Basic) checked-bag baseline is split by booking date. On U.S., Canada, and short-haul international tickets booked on or after April 9, 2026, the first bag is USD 45 prepaid or USD 50 at the airport and the second bag is USD 55 prepaid or USD 60 at the airport, while route-specific transatlantic examples start at USD 75 for the first bag.",
+        "American's domestic and short-haul bag price now depends on both ticketing date and fare family. On the main U.S., Canada, Mexico, Caribbean, and Central America group, Main Cabin/Economy (non-Basic) tickets issued on or after April 9, 2026 show USD 45 online or USD 50 at the airport for the first bag and USD 55 online or USD 60 at the airport for the second bag. Basic Economy tickets issued on or after May 18, 2026 are USD 5 higher for those same bag positions.",
       restrictions:
-        "Published rows in this dataset are route- and product-specific. They do not include a separate Basic Economy baggage row, while same-day confirmed change starts at USD 60 on eligible domestic itineraries and seat pricing varies by product.",
+        "American's fee traps are route, fare-family, and timing based: Basic Economy can now cost more for domestic and short-haul checked bags, same-day confirmed change starts at USD 60 on eligible domestic itineraries, and seat pricing varies by product.",
     },
     verificationNote:
-      "The newest American checked-baggage rows on this page were last verified on 2026-04-27. The carry-on, transatlantic baggage, seat, and same-day travel rows currently shown here were last verified on 2025-12-22.",
+      "The newest American domestic and short-haul checked-baggage rows shown here were last verified against American's checked bag policy on 2026-07-01. Carry-on, transatlantic baggage, seat, and same-day travel rows were last verified on 2025-12-22.",
     fareClasses: [
       {
         name: "Basic Economy",
         details:
-          "The current published rows in this dataset do not include separate Basic Economy baggage or change rows. Carry-on inclusion is published for all fares, and the transatlantic first-bag row separately notes exceptions for Basic Economy and certain fare products.",
+          "Carry-on inclusion is published for all fares, but Basic Economy has its own checked-bag trap on many domestic and short-haul tickets issued on or after May 18, 2026: the first bag is USD 50 online or USD 55 at the airport, and the second bag is USD 60 online or USD 65 at the airport. Older ticketing windows and longer international routes can use different rules.",
       },
       {
         name: "Economy (non-Basic)",
         details:
-          "Published checked-bag rows show the domestic first bag at USD 45 prepaid or USD 50 at the airport and the second bag at USD 55 prepaid or USD 60 at the airport on tickets booked on or after April 9, 2026. Earlier published rows for pre-April 9, 2026 tickets remain at USD 35 prepaid or USD 40 at the airport for the first bag, and USD 45 prepaid or USD 50 at the airport for the second bag, with route-specific international pricing also listed.",
+          "Published checked-bag rows show the domestic and short-haul first bag at USD 45 online or USD 50 at the airport and the second bag at USD 55 online or USD 60 at the airport on tickets issued on or after April 9, 2026. Earlier published rows for pre-April 9, 2026 tickets remain at USD 35 prepaid or USD 40 at the airport for the first bag, and USD 45 prepaid or USD 50 at the airport for the second bag, with route-specific international pricing also listed.",
       },
       {
         name: "Main Cabin seat products",
@@ -737,12 +737,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag on a U.S., Canada, or short-haul international trip",
         details:
-          "The published first-bag baseline is USD 45 prepaid or USD 50 at the airport for Economy (non-Basic) on tickets booked on or after April 9, 2026.",
+          "For Main Cabin/Economy (non-Basic), the first-bag baseline is USD 45 online or USD 50 at the airport on tickets issued on or after April 9, 2026. For Basic Economy tickets issued on or after May 18, 2026, it is USD 50 online or USD 55 at the airport.",
       },
       {
         title: "Checking two standard bags on a newer domestic or short-haul ticket",
         details:
-          "Published pricing is USD 55 prepaid or USD 60 at the airport for the second checked bag on tickets booked on or after April 9, 2026, in the domestic, Canada, and short-haul international group shown in this dataset.",
+          "For Main Cabin/Economy (non-Basic), the second checked bag is USD 55 online or USD 60 at the airport on tickets issued on or after April 9, 2026. For Basic Economy tickets issued on or after May 18, 2026, it is USD 60 online or USD 65 at the airport.",
       },
       {
         title: "Checking one overweight bag",
@@ -757,7 +757,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Published same-day standby is USD 0 on eligible domestic fares.",
-      "Published checked-bag rows are split by booking date: pre-April 9, 2026 domestic, Canada, and short-haul international rows remain at USD 35 prepaid or USD 40 at the airport for the first bag and USD 45 prepaid or USD 50 at the airport for the second bag, while later-ticket rows move to USD 45, USD 50, USD 55, and USD 60.",
+      "Published checked-bag rows are split by ticketing date and fare family: pre-April 9, 2026 domestic, Canada, and short-haul international rows remain at USD 35 prepaid or USD 40 at the airport for the first bag and USD 45 prepaid or USD 50 at the airport for the second bag; Main Cabin/Economy tickets issued on or after April 9, 2026 use the newer USD 45/50 and USD 55/60 online-versus-airport structure; Basic Economy tickets issued on or after May 18, 2026 are USD 5 higher for those same bag positions.",
       "No explicit elite-status or co-branded card bag waiver is included in the published fee rows shown on this page, even though the separate card-benefit reference tracks verified American card baggage benefits.",
     ],
     comparisonLinks: [
@@ -769,13 +769,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   united: {
     intro: {
       carryOn:
-        "The current published fee rows on this page do not include a general carry-on allowance line item.",
+        "United's main cabin-bag risk is fare-specific: Basic Economy is more restrictive than regular Economy, so do not assume every cheap United fare includes the same overhead-bin access.",
       personalItem:
-        "The current published fee rows on this page do not include a separate personal-item allowance line item.",
+        "A personal-item-only strategy is safest on Basic Economy. On small United Express aircraft, keep the item soft enough to fit into tighter under-seat spaces.",
       checkedBag:
-        "The published Economy (non-Basic) baseline is split by purchase date. On tickets purchased on or after April 3, 2026, the first checked bag is USD 45 prepaid online or USD 50 at the airport, the second is USD 55 prepaid online or USD 60 at the airport, and the third is USD 200 in most markets.",
+        "United rewards early bag payment and penalizes airport payment. In most markets on Economy (non-Basic) tickets purchased on or after April 3, 2026, the first checked bag is USD 45 prepaid online or USD 50 at the airport, the second is USD 55 prepaid online or USD 60 at the airport, and the third is USD 200.",
       restrictions:
-        "Basic Economy is the published fare class with the main restrictions in this dataset: change and cancellation are listed as not permitted after 24 hours, advance seat assignment starts at USD 15, Basic preferred seating starts at USD 136, and this page's practical value is concentrated in the checked-bag, seat, and change rows rather than cabin-entitlement rows.",
+        "Basic Economy is the restriction product: changes and cancellations are listed as not permitted after 24 hours, advance seat assignment starts at USD 15, and preferred seating on Basic starts much higher than the regular Economy preferred-seat starting price.",
     },
     verificationNote:
       "The newest United checked-baggage rows on this page were last verified on 2026-04-27. The seat-selection and change/cancellation rows currently shown here were last verified on 2025-12-19.",
@@ -783,12 +783,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic Economy",
         details:
-          "Published rows show changes and cancellations not permitted after 24 hours, advance seat assignment starting at USD 15, and preferred seating starting at USD 136. This dataset does not publish a separate Basic Economy checked-bag row on this page.",
+          "Basic Economy is where United's fee stack starts. The rows here show no changes or cancellations after 24 hours, advance seat assignment starting at USD 15, and Basic preferred seating starting at USD 136.",
       },
       {
         name: "Economy (non-Basic)",
         details:
-          "Published rows show the first checked bag at USD 45 prepaid online or USD 50 at the airport, the second checked bag at USD 55 prepaid online or USD 60 at the airport, and the third checked bag at USD 200 in most markets on tickets purchased on or after April 3, 2026; earlier published rows for pre-April 3, 2026 tickets remain at USD 35, USD 45, and USD 150 in most markets. Preferred seating starts at USD 24 and no change fee is listed for non-Basic Economy.",
+          "Economy (non-Basic) is the cleaner product if you need normal flexibility. On newer tickets, the first and second checked bags are cheaper online than at the airport, preferred seating starts at USD 24, and no change fee is listed apart from any fare difference.",
       },
       {
         name: "Economy Plus",
@@ -798,14 +798,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "No separate premium-cabin baggage or cancellation row is published in this dataset.",
+          "This page does not show a separate premium-cabin baggage or cancellation ladder, so use the rows here as an Economy-focused reference.",
       },
     ],
     scenarios: [
       {
         title: "Traveling without a checked bag",
         details:
-          "The current published rows on this page do not include a general carry-on fee line, so this page only confirms the checked-bag and seat rules listed above.",
+          "If you are buying Basic Economy, verify cabin-bag access before relying on the overhead bin. If you are buying regular Economy, the bigger fee exposure usually moves to seats and checked bags.",
       },
       {
         title: "Checking one standard bag on a U.S. domestic trip",
@@ -831,7 +831,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Economy (non-Basic) shows no published change fee, with fare difference applying.",
       "Published checked-bag rows are split by ticket purchase date: pre-April 3, 2026 most-market rows remain at USD 35, USD 45, and USD 150, while later-ticket rows move to USD 45, USD 55, and USD 200 in most markets.",
-      "No explicit elite-status, fare-bundle, or co-branded card fee waiver is included in the published fee rows shown on this page, even though the separate card-benefit reference tracks verified United card baggage benefits.",
+      "United card benefits can offset checked-bag fees, but many United card baggage benefits require paying with the eligible card. Check the card-benefit guide before assuming the waiver applies.",
     ],
     comparisonLinks: [
       { href: "/airlines/american", label: "American Airlines" },
@@ -846,9 +846,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The published carry-on row states that size and placement requirements apply to the personal item.",
       checkedBag:
-        "The published U.S. domestic baseline is USD 45 for the first checked bag and USD 55 for the second checked bag, with the same baseline shown for both Basic Economy and Economy (non-Basic).",
+        "Delta's domestic bag baseline is easy to price: USD 45 for the first standard checked bag and USD 55 for the second on domestic flights in the official common-fee chart, before card, status, military, or cabin exceptions.",
       restrictions:
-        "Basic Economy is the published fare class with the main restrictions in this dataset: the same domestic bag baseline applies, but change or cancellation is listed at USD 99 on U.S., Canada, Mexico, Caribbean, and Central America itineraries and USD 199 on South America, Europe, U.K., Africa, Middle East, India, Asia, and Pacific itineraries, while older Basic Economy tickets can also be listed as not changeable at all.",
+        "Delta Basic Economy is not mainly a carry-on trap. The bigger risk is flexibility: Basic change or cancellation fees differ by region, and older Basic tickets can still have stricter no-change treatment.",
     },
     verificationNote:
       "The newest Delta checked-baggage rows on this page were last verified on 2026-05-06. The carry-on, oversize, overweight, same-day travel, and seat rows currently shown here were last verified on 2025-12-22, while the change/cancellation rows were last verified on 2025-12-19.",
@@ -856,12 +856,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic Economy",
         details:
-          "Published rows show the same domestic first- and second-bag pricing as non-Basic Economy, but change and cancellation pricing differs by region and can also be listed as not permitted on Basic Economy tickets purchased before Nov. 6, 2025.",
+          "Basic Economy keeps the same domestic checked-bag baseline shown for non-Basic Economy, but flexibility is the catch. U.S./Canada-origin Basic fees depend on destination group, and tickets purchased before Nov. 6, 2025 can still be handled under older no-change rules.",
       },
         {
           name: "Economy (non-Basic)",
           details:
-          "Published rows show the same USD 45 and USD 55 domestic baggage baseline as Basic Economy and no change or cancellation fee in the regions listed in the dataset.",
+          "Economy (non-Basic) keeps the USD 45 and USD 55 domestic bag baseline, but the practical advantage over Basic is flexibility: the listed U.S./Canada-origin regions show no change or cancellation fee for Classic/Main-style tickets.",
         },
       {
         name: "Main Cabin seat products",
@@ -871,7 +871,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Medallion-linked same-day products",
         details:
-          "Published same-day confirmed change is USD 75, with the row explicitly noting a waiver for Diamond, Platinum, and Gold Medallion members.",
+          "Same-day confirmed change is USD 75 for eligible fares, but Diamond, Platinum, and Gold Medallion members have the fee waived in the row shown here.",
       },
     ],
     scenarios: [
@@ -883,12 +883,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard domestic bag",
         details:
-          "Published first-bag pricing is USD 45 each way on both Basic Economy and Economy (non-Basic) domestic itineraries.",
+          "The common domestic chart lists the first standard checked bag at USD 45 each way before card, status, cabin, or military exceptions.",
       },
       {
         title: "Checking two standard domestic bags",
         details:
-          "Published second-bag pricing is USD 55 each way on both Basic Economy and Economy (non-Basic) domestic itineraries.",
+          "The second standard checked bag is USD 55 each way in the common domestic chart.",
       },
       {
         title: "Checking one overweight bag",
@@ -903,7 +903,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Published same-day confirmed change is waived for Diamond, Platinum, and Gold Medallion members.",
-      "Economy (non-Basic) rows show no published change or cancellation fee in the listed regions.",
+      "Economy (non-Basic) rows show no change or cancellation fee in the listed regions, but fare difference can still apply.",
       "Basic Economy rows can differ by ticket era: the current regional groups show USD 99 or USD 199 change/cancellation pricing, while older Basic Economy tickets purchased before Nov. 6, 2025 can still be listed as not permitted.",
     ],
     comparisonLinks: [
@@ -919,7 +919,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The published carry-on row states that the smaller personal item is included with the cabin bag allowance.",
       checkedBag:
-        "The published baseline on most North American routes is USD 45 for the first checked bag and USD 55 for the second checked bag on flights ticketed on or after April 10, 2026, while earlier ticketed bookings in this dataset retain the prior USD 40 and USD 45 amounts. Alaska's published April 2026 update also removed the former USD 5 online/mobile prepay discount.",
+        "Alaska's standard North America bag price is now ticketing-date sensitive. On most North American routes ticketed on or after April 10, 2026, the first checked bag is USD 45 and the second is USD 55; earlier ticketed bookings retain the prior USD 40 and USD 45 amounts. The former online/mobile prepay discount is no longer part of the newer structure.",
       restrictions:
         "Saver is identified in the published change and cancellation rows as the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
     },
@@ -929,12 +929,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Saver",
         details:
-          "The published change and cancellation rows state that Saver is the most restrictive fare family after the 24-hour cancellation window, while the published carry-on row still includes one carry-on bag and one personal item.",
+          "Saver still includes one carry-on bag and one personal item, so the problem is not overhead-bin access. The tradeoff is flexibility after the 24-hour cancellation window.",
       },
       {
         name: "Main Cabin",
         details:
-          "Published rows show a most-routes checked-bag baseline of USD 45 and USD 55 on flights ticketed on or after April 10, 2026, no longer show the former USD 5 prepay discount, and still list standard seat selection at USD 0 with preferred seats at variable pricing.",
+          "Main Cabin uses the newer USD 45 and USD 55 most-route North America checked-bag baseline on flights ticketed on or after April 10, 2026. Standard seat selection is listed at USD 0, while preferred seats remain variable.",
       },
       {
         name: "Preferred seating products",
@@ -944,7 +944,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "First Class and route exceptions",
         details:
-          "The Alaska baggage materials you supplied show First Class receiving two free checked bags at 70 lbs each. The same official baggage pages also publish separate intrastate Hawaii and international Main Cabin baggage examples, so Alaska's bag pricing is not one universal domestic-only ladder.",
+          "Alaska's bag pricing is not one universal domestic ladder. First Class receives two checked bags, while intrastate Hawaii and international Main Cabin examples use separate baggage treatment.",
       },
     ],
     scenarios: [
@@ -961,7 +961,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag wholly within Hawaii",
         details:
-          "The published intra-island Hawaii example shows the first checked bag at USD 30 and the second at USD 40 for Main Cabin and Saver guests.",
+          "Wholly within Hawaii, the published non-resident interisland example shows the first checked bag at USD 30 and the second at USD 40 for Main Cabin and Saver guests.",
       },
       {
         title: "Checking multiple bags",
@@ -971,14 +971,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a Main Cabin bag on an international trip",
         details:
-          "The published international Main Cabin examples are not all the same: Asia shows the first and second checked bags free, Europe shows the first bag free and the second at USD 100, and the Oceania example also shows the first and second bags free.",
+          "International Main Cabin examples are not all the same: Asia shows the first and second checked bags free, Europe shows the first bag free and the second at USD 100, and Oceania shows the first and second bags free.",
       },
     ],
     exceptions: [
       "All fares show a full refund when canceled within 24 hours of booking.",
       "Alaska's published baggage materials say Mileage Plan elite members, eligible co-branded cardholders, Atmos Rewards status holders, and eligible Alaska and Hawaii resident programs such as Club 49 and Huaka'i receive baggage benefits or exceptions in the published program terms.",
-      "The official fee-waiver page says strollers, car seats, pineapple from Hawaii on qualifying U.S. itineraries, mobility aids or medical assistive devices, and qualifying wine shipments for eligible Atmos Rewards members do not count toward standard checked baggage charges.",
-      "The official baggage page says First Class includes two free checked bags at 70 lbs each.",
+      "Strollers, car seats, mobility aids or medical assistive devices, qualifying pineapple from Hawaii, and qualifying wine shipments have special baggage treatment in Alaska's published exceptions.",
+      "First Class includes two checked bags at 70 lbs each.",
       "Published pre-April 10, 2026 most-route baggage rows remain at USD 40 for the first bag and USD 45 for the second bag.",
     ],
     comparisonLinks: [
@@ -1221,6 +1221,25 @@ function safeText(v: unknown): string {
   return "Not published";
 }
 
+function readerCopy(text: string): string {
+  return text
+    .replaceAll("The current dataset does not publish", "The current fee table does not show")
+    .replaceAll("This dataset does not publish", "This fee table does not show")
+    .replaceAll("The dataset does not publish", "The fee table does not show")
+    .replaceAll("this dataset", "the current fee table")
+    .replaceAll("This dataset", "This fee table")
+    .replaceAll("the dataset", "the current fee table")
+    .replaceAll("The dataset", "The current fee table")
+    .replaceAll("current dataset", "current fee table")
+    .replaceAll("published rows shown on this page", "published fee rows shown here")
+    .replaceAll("published rows included in the current fee table", "published fee rows included here")
+    .replaceAll("published rows below", "published fee rows below")
+    .replaceAll("Published rows below", "Published fee rows below")
+    .replaceAll("row-level source checks", "source checks for the fee rows")
+    .replaceAll("Last verified support on this page comes from", "Last verified dates come from")
+    .replaceAll("does not publish", "does not show");
+}
+
 function safeUrl(v: unknown): string | null {
   if (typeof v !== "string") return null;
   const s = v.trim();
@@ -1323,9 +1342,9 @@ function getCardBenefitReference(slug: string) {
     case "american":
       return (
         <p className="text-sm leading-relaxed text-slate-600">
-          This site&apos;s current verified card dataset includes American Airlines co-branded cards
+          This site currently includes American Airlines co-branded cards
           with a published first checked bag benefit on domestic American itineraries. For the
-          tracked card families, traveler counts, and booking limits, see the{" "}
+          card families, traveler counts, and booking limits, see the{" "}
           <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
             airline credit card baggage benefit reference
           </Link>
@@ -1335,9 +1354,9 @@ function getCardBenefitReference(slug: string) {
     case "united":
       return (
         <p className="text-sm leading-relaxed text-slate-600">
-          This site&apos;s current verified card dataset includes United cards with published first-
+          This site currently includes United cards with published first-
           and, on some tiers, second-checked-bag benefits on eligible United-operated itineraries.
-          For the tracked card families, companion limits, and card-payment requirement, see the{" "}
+          For the card families, companion limits, and card-payment requirement, see the{" "}
           <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
             airline credit card baggage benefit reference
           </Link>
@@ -1347,9 +1366,9 @@ function getCardBenefitReference(slug: string) {
     case "delta":
       return (
         <p className="text-sm leading-relaxed text-slate-600">
-          This site&apos;s current verified card dataset includes Delta SkyMiles cards with a
+          This site currently includes Delta SkyMiles cards with a
           published first checked bag benefit when the reservation includes the eligible SkyMiles
-          number. For the tracked card families, traveler counts, and route limits, see the{" "}
+          number. For the card families, traveler counts, and route limits, see the{" "}
           <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
             airline credit card baggage benefit reference
           </Link>
@@ -1565,25 +1584,25 @@ function ReferenceAirlinePage({
               <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
                 Carry-on allowance
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{content.intro.carryOn}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.carryOn)}</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5">
               <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
                 Personal item rules
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{content.intro.personalItem}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.personalItem)}</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5">
               <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
                 Checked bag baseline
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{content.intro.checkedBag}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.checkedBag)}</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5">
               <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
                 Notable restrictions
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{content.intro.restrictions}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.restrictions)}</p>
             </div>
           </div>
         </div>
@@ -1592,14 +1611,14 @@ function ReferenceAirlinePage({
       {content.verificationNote ? (
         <section className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
           <span className="font-bold text-slate-900">Last verified note:</span>{" "}
-          {content.verificationNote}
+          {readerCopy(content.verificationNote)}
         </section>
       ) : null}
 
       {content.statusUpdate ? (
         <section className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-slate-700">
           <span className="font-bold text-slate-900">{content.statusUpdate.label}:</span>{" "}
-          {content.statusUpdate.body}
+          {readerCopy(content.statusUpdate.body)}
         </section>
       ) : null}
 
@@ -1607,7 +1626,7 @@ function ReferenceAirlinePage({
         <div className="border-b border-slate-200 pb-4">
           <h2 className="text-2xl font-bold text-slate-900">Core fee breakdown</h2>
           <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
-            Published rows below are grouped by fee type and retain the route, fare, and timing limits shown in this dataset.
+            Published fee rows below are grouped by fee type and retain the route, fare, and timing limits that matter for booking.
           </p>
         </div>
 
@@ -1625,14 +1644,14 @@ function ReferenceAirlinePage({
           </p>
           <FeeRowsTable
             rows={carryOnRows}
-            emptyMessage="No dedicated carry-on fee row is published in the current dataset for this airline page."
+            emptyMessage="No dedicated carry-on fee row is shown for this airline yet."
           />
         </section>
 
         <section className="space-y-3">
           <h3 className="text-xl font-bold text-slate-900">Personal item rules</h3>
           <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
-            {content.intro.personalItem}
+            {readerCopy(content.intro.personalItem)}
           </div>
         </section>
 
@@ -1645,7 +1664,7 @@ function ReferenceAirlinePage({
           {getCardBenefitReference(slug)}
           <FeeRowsTable
             rows={checkedRows}
-            emptyMessage="No checked-baggage row is published in the current dataset for this airline page."
+            emptyMessage="No checked-baggage row is shown for this airline yet."
           />
         </section>
 
@@ -1654,14 +1673,14 @@ function ReferenceAirlinePage({
             <h3 className="text-xl font-bold text-slate-900">Excess and overweight baggage</h3>
             <FeeRowsTable
               rows={overweightRows}
-              emptyMessage="No dedicated overweight-baggage row is published in the current dataset for this airline page."
+              emptyMessage="No dedicated overweight-baggage row is shown for this airline yet."
             />
           </div>
           <div className="space-y-3">
             <h3 className="text-xl font-bold text-slate-900">Oversized baggage</h3>
             <FeeRowsTable
               rows={oversizeRows}
-              emptyMessage="No dedicated oversized-baggage row is published in the current dataset for this airline page."
+              emptyMessage="No dedicated oversized-baggage row is shown for this airline yet."
             />
           </div>
         </section>
@@ -1673,7 +1692,7 @@ function ReferenceAirlinePage({
           </p>
           <FeeRowsTable
             rows={seatRows}
-            emptyMessage="No dedicated seat-selection row is published in the current dataset for this airline page."
+            emptyMessage="No dedicated seat-selection row is shown for this airline yet."
           />
         </section>
 
@@ -1693,7 +1712,7 @@ function ReferenceAirlinePage({
           ) : null}
           <FeeRowsTable
             rows={[...changeRows, ...sameDayChangeRows, ...sameDayStandbyRows]}
-            emptyMessage="No dedicated change, cancellation, or same-day service row is published in the current dataset for this airline page."
+            emptyMessage="No dedicated change, cancellation, or same-day service row is shown for this airline yet."
           />
         </section>
       </section>
@@ -1704,7 +1723,7 @@ function ReferenceAirlinePage({
           <ul className="space-y-3 text-sm leading-relaxed text-blue-950">
             {avoidFeeAdvice.map((item) => (
               <li key={item} className="border-l-4 border-blue-300 pl-4">
-                {item}
+                {readerCopy(item)}
               </li>
             ))}
           </ul>
@@ -1735,7 +1754,7 @@ function ReferenceAirlinePage({
           {content.fareClasses.map((item) => (
             <div key={item.name} className="rounded-2xl border border-slate-200 bg-white p-5">
               <h3 className="text-lg font-bold text-slate-900">{item.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.details}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(item.details)}</p>
             </div>
           ))}
         </div>
@@ -1756,7 +1775,7 @@ function ReferenceAirlinePage({
           {content.scenarios.map((scenario) => (
             <div key={scenario.title} className="rounded-2xl border border-slate-200 bg-white p-5">
               <h3 className="text-base font-bold text-slate-900">{scenario.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{scenario.details}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(scenario.details)}</p>
             </div>
           ))}
         </div>
@@ -1769,7 +1788,7 @@ function ReferenceAirlinePage({
             <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
               {content.exceptions.map((item) => (
                 <li key={item} className="border-l-4 border-slate-300 pl-4">
-                  {item}
+                  {readerCopy(item)}
                 </li>
               ))}
             </ul>
@@ -1818,7 +1837,7 @@ function ReferenceAirlinePage({
         <Disclaimer />
         <div className="space-y-2 text-xs text-slate-400">
           <p>
-            This reference page reflects only the published rows included in the current dataset and their linked source documents.
+            This reference reflects the published fee rows and linked source documents available for this airline.
           </p>
         </div>
       </div>

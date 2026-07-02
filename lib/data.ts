@@ -167,7 +167,7 @@ export function getAllAirlines(): Airline[] {
     }
 
     const validFees: FeeItem[] = [];
-    let uniqueInsights: Airline["unique_insights"] | undefined;
+    let uniqueInsights: Airline["unique_insights"] | undefined = extractUniqueInsights(airline) ?? undefined;
     for (const item of airline.fees ?? []) {
       const extractedInsights = extractUniqueInsights(item);
       if (extractedInsights) {

@@ -4,6 +4,12 @@
   "iata": "DL",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "Delta's domestic checked-bag baseline is straightforward, but Basic Economy changes and cancellations are where the fare can get expensive."
+    ],
+    "pro_hack": "If your plans might move, compare Basic against Main before booking. A normal carry-on allowance does not protect you from the Basic change or cancellation penalty."
+  },
   "fees": [
     {
       "category": "checked_baggage",
@@ -198,17 +204,6 @@
       "timing": "per direction",
       "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
       "last_verified": "2025-12-19"
-    },
-    {
-  "id": "delta",
-  "name": "Delta Air Lines",
-  "unique_insights": {
-    "traps": [
-      "Hardshell Bias: Delta gate agents often \"pre-tag\" hardshell rollers for the cargo hold on full flights because they don’t compress."
-    ],
-    "pro_hack": "The \"Softside\" Loophole: Use a soft-sided bag. Agents visually skip over them in the boarding line far more often than boxy hardshells."
-  }
-}
-
+    }
   ]
 }

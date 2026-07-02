@@ -21,7 +21,7 @@
       "category": "checked_baggage",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Checked baggage included; allowance depends on route and cabin (e.g., Economy typically 1 piece up to 23 kg on Japan domestic routes; international allowances vary)",
+      "conditions": "Checked baggage included; allowance depends on route, cabin, and domestic vs international rules",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",

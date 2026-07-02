@@ -113,7 +113,7 @@ function travelerCoverageLabel(card: Card): string {
 
 function annualFeeBand(cards: Card[]): string {
   const fees = cards.map((card) => card.annual_fee_usd).sort((a, b) => a - b);
-  if (!fees.length) return "Not modeled";
+  if (!fees.length) return "No annual fee shown";
   const min = fees[0];
   const max = fees[fees.length - 1];
   return min === max ? usd(min) : `${usd(min)}-${usd(max)}`;

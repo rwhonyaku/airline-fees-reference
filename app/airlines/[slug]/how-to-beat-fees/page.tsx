@@ -156,7 +156,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
 
         <p className="max-w-4xl text-base leading-relaxed text-slate-700">
           {isUnited
-            ? "United’s fee machine is predictable: it punishes airport bag payments, sells seat anxiety, and uses Basic Economy restrictions to force paid add-ons. If you control bags, seats, and flexibility, you avoid most of the damage."
+            ? "United’s fee pattern is predictable: airport bag payment costs more than prepaying, Basic Economy limits normal trip flexibility, and seat selection can add up fast. If you control bags, seats, and flexibility before booking, most of the avoidable cost disappears."
             : strategy?.verdict ??
               "This airline’s fees are usually won or lost in three places: bags, seats, and fare restrictions. The sections below focus on the costs that matter most before you buy."}
         </p>

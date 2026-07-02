@@ -4,6 +4,12 @@
   "iata": "NK",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "Spirit's cheapest path depends on solving bags early. Carry-on and checked-bag prices can change by route and purchase timing."
+    ],
+    "pro_hack": "If a trip needs a carry-on or checked bag, compare the bundle or travel option before booking instead of adding bags late."
+  },
   "fees": [
     {
       "category": "change_cancellation",
@@ -136,16 +142,6 @@
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01160",
       "last_verified": "2026-05-06"
-    },
-    {
-      "id": "spirit",
-      "name": "Spirit Airlines",
-      "unique_insights": {
-        "traps": [
-          "The \"Short-Window\" Pass: Printing a boarding pass at the airport is $25."
-        ],
-        "pro_hack": "The \"Personal Item\" Padding: Spirit's sizer is roughly ~0.5 inches more forgiving than the stated 18x14x8. A soft bag with some \"give\" can fit even if slightly overstuffed."
-      }
     }
   ]
 }

@@ -4,12 +4,18 @@
   "iata": "AS",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "Alaska's bag price is no longer just a simple domestic ladder: ticketing date, Hawaii interisland travel, international regions, card benefits, and status can all change the answer."
+    ],
+    "pro_hack": "Before paying for a standard bag, check whether your fare, Alaska card, Mileage Plan or Atmos status, military eligibility, or Hawaii-resident program already covers it."
+  },
   "fees": [
     {
       "category": "checked_baggage",
       "amount": 40,
       "currency": "USD",
-      "conditions": "1st checked bag under 50 lbs (23 kg) on North American flights ticketed before April 10, 2026; previous online/mobile prepay discount applied four or more hours before departure",
+      "conditions": "1st checked bag; North America; ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
@@ -20,7 +26,7 @@
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "2nd checked bag under 50 lbs (23 kg) on North American flights ticketed before April 10, 2026; previous online/mobile prepay discount applied four or more hours before departure",
+      "conditions": "2nd checked bag; North America; ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
       "region_or_route": "Most routes",
       "timing": "each way",
@@ -197,7 +203,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on bag permitted up to 22″ x 14″ x 9″ (including wheels and handles) plus one smaller personal item; additional or larger items must be checked",
+      "conditions": "One carry-on up to 22 x 14 x 9 inches plus one smaller personal item",
       "applies_to": "All fares (including Saver)",
       "region_or_route": "All routes",
       "timing": "per flight",
@@ -272,19 +278,6 @@
       "timing": "one-way",
       "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
       "last_verified": "2025-12-19"
-    },
-    
-    {
-  "id": "alaska",
-  "name": "Alaska Airlines",
-  "unique_insights": {
-    "traps": [
-      "The \"20-Minute\" Ghosting: Alaska has a baggage guarantee ($25 credit if late), but the claim process can be hidden behind a QR code at the carousel."
-    ],
-    "pro_hack": "The \"Wine Flies Free\": From 32 West Coast cities, a case of wine flies free—use it to bypass a checked bag fee when you’re hauling bulky items."
-  }
-}
-
-
+    }
   ]
 }

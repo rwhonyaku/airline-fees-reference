@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "SGD",
-      "conditions": "Carry-on allowance varies by fare: Economy Starter includes up to 7 kg total cabin baggage; higher fares may allow up to 14 kg; size limits apply",
+      "conditions": "Carry-on allowance varies by fare; Starter includes 7 kg, while higher fares may allow more",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

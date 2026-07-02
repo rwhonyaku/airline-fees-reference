@@ -4,28 +4,34 @@
   "iata": "B6",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "JetBlue bag pricing is no longer a single flat number: the first two checked bags can change by travel date and by when you add the bag."
+    ],
+    "pro_hack": "Add checked bags before check-in when you know you need them. JetBlue publishes a savings window for the first two checked bags when they are added at least 24 hours before departure."
+  },
   "fees": [
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": "45-49",
       "currency": "USD",
-      "conditions": "1st checked bag under 50 lbs (23 kg); prepaid online",
-      "applies_to": "Blue",
-      "region_or_route": "U.S., Caribbean, Central America",
+      "conditions": "1st checked bag; early purchase price varies by off-peak vs peak travel dates",
+      "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
+      "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-07-01"
     },
     {
       "category": "checked_baggage",
-      "amount": 45,
+      "amount": "59-69",
       "currency": "USD",
-      "conditions": "2nd checked bag under 50 lbs (23 kg); prepaid online",
-      "applies_to": "Blue",
-      "region_or_route": "U.S., Caribbean, Central America",
+      "conditions": "2nd checked bag; early purchase price varies by off-peak vs peak travel dates",
+      "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
+      "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-07-01"
     },
     {
       "category": "checked_baggage",
@@ -40,25 +46,25 @@
     },
     {
       "category": "checked_baggage",
-      "amount": 45,
+      "amount": "59-69",
       "currency": "USD",
-      "conditions": "2nd checked bag under 50 lbs (23 kg); prepaid online",
+      "conditions": "2nd checked bag; early purchase price varies by off-peak vs peak travel dates",
       "applies_to": "Blue Plus",
-      "region_or_route": "U.S., Caribbean, Central America",
+      "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-07-01"
     },
     {
       "category": "checked_baggage",
-      "amount": 150,
+      "amount": 200,
       "currency": "USD",
       "conditions": "3rd checked bag",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-07-01"
     },
     {
       "category": "checked_baggage",
@@ -158,16 +164,6 @@
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/unaccompanied-minors-umnr",
       "last_verified": "2025-12-19"
-    },
-    {
-      "id": "jetblue",
-      "name": "JetBlue Airways",
-      "unique_insights": {
-        "traps": [
-          "The \"24-Hour\" Penalty: JetBlue adds a $10 surcharge if you pay for a bag within 24 hours of flight time."
-        ],
-        "pro_hack": "The \"Mosaic Shadow\": If you travel with a Mosaic member, your bag fees may be waived even if you aren't on the same confirmation number (often hinges on matching last name/address)."
-      }
     }
   ]
 }

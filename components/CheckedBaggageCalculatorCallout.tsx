@@ -21,7 +21,7 @@ export function CheckedBaggageCalculatorCallout({
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-700">
         Enter the airline, travelers, and bags per traveler. The calculator estimates the trip&apos;s
-        checked-bag cost when the dataset has a usable published amount, then shows whether a free
+        checked-bag cost when a usable published amount is available, then shows whether a free
         checked bag card could offset it.
       </p>
       <Link href={href} className="mt-4 inline-flex text-sm font-bold text-blue-800 underline">

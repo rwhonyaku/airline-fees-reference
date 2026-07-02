@@ -43,7 +43,7 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
 } {
   if (!r.eligible) {
     return {
-      label: "Cannot model from current fee data",
+      label: "Needs a route-specific fee lookup",
       detail:
         "The calculator needs a published first checked bag fee and applicable benefit rules before it can make a card judgment.",
       className: "border-amber-200 bg-amber-50 text-amber-950",
@@ -63,7 +63,7 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
     return {
       label: "Worth it on bag fees alone",
       detail:
-        "The modeled first checked bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
+        "The first checked bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
       className: "border-emerald-200 bg-emerald-50 text-emerald-950",
     };
   }
@@ -168,8 +168,8 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       <div className="flex flex-col gap-3">
         <h1 className="text-4xl font-extrabold tracking-tight">Free checked bag card calculator</h1>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-700">
-          This page is a checked-baggage offset calculator, not a general travel-card ranking. It tests
-          whether a tracked airline card&apos;s published free checked bag benefit is enough to cover
+          This is a checked-baggage break-even calculator, not a general travel-card ranking. It tests
+          whether an airline card&apos;s published free checked bag benefit is enough to cover
           the annual fee from first-bag savings alone.
         </p>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
@@ -200,8 +200,8 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-bold text-slate-900">What this calculator models</h2>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700">
-            <li>First checked bag savings from the airline fee data already published on this site.</li>
-            <li>Annual fee cost for the tracked airline card.</li>
+            <li>First checked bag savings from the airline fee details on this site.</li>
+            <li>Annual fee cost for the airline card.</li>
             <li>Traveler-count limits and card-payment requirements where they apply.</li>
           </ul>
         </div>
@@ -290,14 +290,14 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       </form>
 
       <div className={`mt-8 rounded-2xl border p-6 ${topVerdict.className}`}>
-        <div className="text-xs font-bold uppercase tracking-widest">Modeled verdict</div>
+        <div className="text-xs font-bold uppercase tracking-widest">Calculator verdict</div>
         <div className="mt-2 text-2xl font-extrabold">{topVerdict.label}</div>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed">{topVerdict.detail}</p>
       </div>
 
       <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-emerald-800">
-          Largest modeled bag-fee offset for these inputs
+          Largest bag-fee offset for these inputs
         </div>
         <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
@@ -356,7 +356,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       </div>
 
       <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-lg font-bold">All cards tracked for {airline.name}</h2>
+        <h2 className="text-lg font-bold">Cards included for {airline.name}</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>

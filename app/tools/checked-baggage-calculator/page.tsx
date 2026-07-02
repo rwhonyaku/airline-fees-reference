@@ -108,9 +108,9 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage cost calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-          Estimate the checked-bag bill before booking, then see whether a tracked free checked bag
-          card could offset it. The tool uses published fee rows from this site and refuses to
-          invent route- or fare-specific amounts when the dataset does not support them.
+          Estimate the checked-bag bill before booking, then see whether a free checked bag card
+          could offset it. The calculator uses published airline fee details and leaves the total
+          unquoted when the price depends on route, fare, or booking timing.
         </p>
       </header>
 
@@ -196,7 +196,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
               Annualized across {roundtrips} roundtrip{roundtrips === 1 ? "" : "s"}, that is about{" "}
               <span className="font-bold">{annualBagCost != null ? usd(annualBagCost) : "-"}</span> in
-              modeled checked-bag fees before elite status, fare bundles, included allowances, or
+              estimated checked-bag fees before elite status, fare bundles, included allowances, or
               route-specific exceptions.
             </p>
           </>
@@ -223,11 +223,11 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           {best ? (
             <>
               <h2 className="text-2xl font-extrabold text-slate-950">
-                A tracked free checked bag card could save about {usd(best.result.annualSavingsUsd)} per year.
+                A free checked bag card could save about {usd(best.result.annualSavingsUsd)} per year.
               </h2>
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                Best modeled match: <span className="font-bold">{best.card.name}</span>. After its annual
-                fee, the modeled bag-only value is{" "}
+                Best bag-fee match: <span className="font-bold">{best.card.name}</span>. After its annual
+                fee, the bag-only value is{" "}
                 <span className={best.result.netAnnualUsd >= 0 ? "font-bold text-emerald-800" : "font-bold text-rose-700"}>
                   {best.result.netAnnualUsd >= 0 ? "+" : "-"}
                   {usd(Math.abs(best.result.netAnnualUsd))}
@@ -253,10 +253,10 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           ) : (
             <>
               <h2 className="text-2xl font-extrabold text-slate-950">
-                No tracked card produces a modeled checked-bag offset for these inputs.
+                No card in this calculator offsets checked-bag fees for these inputs.
               </h2>
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                That can happen when this airline has no card in the dataset, when the benefit requires
+                That can happen when this airline has no eligible card in the calculator, when the benefit requires
                 card payment and you selected no, or when the card benefit does not cover the requested bag pattern.
               </p>
             </>
@@ -271,7 +271,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             <thead>
               <tr className="border-b border-slate-200 text-slate-600">
                 <th className="py-2 pr-4">Bag</th>
-                <th className="py-2 pr-4">Modeled fee</th>
+                <th className="py-2 pr-4">Estimated fee</th>
               </tr>
             </thead>
             <tbody>
@@ -281,7 +281,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
                     {ordinal === 1 ? "First" : ordinal === 2 ? "Second" : "Third"} checked bag
                   </td>
                   <td className="py-3 pr-4 text-slate-700">
-                    {trip.feeByBagOrdinal.has(ordinal) ? usd(trip.feeByBagOrdinal.get(ordinal) ?? 0) : "Not modeled"}
+                    {trip.feeByBagOrdinal.has(ordinal) ? usd(trip.feeByBagOrdinal.get(ordinal) ?? 0) : "Needs route lookup"}
                   </td>
                 </tr>
               ))}

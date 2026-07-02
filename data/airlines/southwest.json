@@ -4,12 +4,18 @@
   "iata": "WN",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "Southwest's old bag simplicity is gone: Basic, Choice, and Choice Preferred now have standard checked-bag fees in the published 2026 structure, while Choice Extra keeps the first two bags free."
+    ],
+    "pro_hack": "If you are checking bags on Southwest, compare the bag fees against the fare upgrade. Choice Extra can be rational when the first two checked bags would otherwise be paid."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carryon + personal item included: (a) one carryon bag not exceeding 10 x 16 x 24 inches; and (b) one smaller personal item stowable under a seat or in an overhead compartment",
+      "conditions": "One carryon up to 10 x 16 x 24 inches plus one smaller personal item included",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
@@ -211,7 +217,7 @@
       "category": "oversize_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Oversized item: in excess of 62 inches but not more than 80 inches; charge is in addition to the standard checked bag fee",
+      "conditions": "Oversized item over 62 inches and up to 80 inches; standard bag fee also applies",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
@@ -244,7 +250,7 @@
       "category": "oversize_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Oversized & overweight: only one $200 charge applies if the piece is both oversized and overweight (as long as it does not exceed 100 lbs); standard checked bag fee also applies",
+      "conditions": "Oversized and overweight item up to 100 lbs; one $200 charge plus standard bag fee",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
@@ -256,7 +262,7 @@
       "category": "seat_selection",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No seat selection with Basic fares; a Standard seat will be assigned at check-in (flights departing on or after January 27, 2026). Until then, Southwest uses open seating",
+      "conditions": "No seat selection with Basic; standard seat assigned at check-in from Jan. 27, 2026",
       "applies_to": "Basic Fare",
       "region_or_route": "All routes",
       "timing": "check-in / boarding",
@@ -279,7 +285,7 @@
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No cancel fees (all fare types eligible for cancellations without a fee); failure to cancel at least 10 minutes prior to scheduled departure may result in forfeited travel funds",
+      "conditions": "No cancel fee; cancel at least 10 minutes before departure to preserve eligible funds",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
@@ -302,7 +308,7 @@
       "category": "same_day_standby",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Same-day standby available; request must be made at least 10 minutes prior to scheduled departure of original flight; if using app/mobile web for standby, must list 30 minutes ahead of scheduled departure",
+      "conditions": "Same-day standby; request before departure, with earlier app/mobile deadlines",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "day of travel",
@@ -331,19 +337,6 @@
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
       "last_verified": "2025-12-24"
-    },
-    
-    {
-  "id": "southwest",
-  "name": "Southwest Airlines",
-  "unique_insights": {
-    "traps": [
-      "The \"Flight Credit\" Trap: If you switch to a cheaper flight, you don’t get cash back—you get a credit that expires in 12 months."
-    ],
-    "pro_hack": "The 2-Bag Weight Split: You get 2 free bags. Pack a light foldable duffel so you can split a 51 lb bag into two ~26 lb bags at the kiosk and avoid the $100+ overweight fee."
-  }
-}
-
-
+    }
   ]
 }

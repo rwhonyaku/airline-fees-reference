@@ -157,7 +157,7 @@ export function calcCheckedBagTripCost(params: {
       tripCostUsd: 0,
       perDirectionCostUsd: 0,
       missingBagOrdinals,
-      explanation: "No checked bags selected, so the modeled checked-bag cost is zero.",
+      explanation: "No checked bags selected, so the estimated checked-bag cost is zero.",
     };
   }
 
@@ -172,8 +172,8 @@ export function calcCheckedBagTripCost(params: {
     perDirectionCostUsd,
     missingBagOrdinals,
     explanation: canEstimate
-      ? "This estimate uses published USD checked-bag rows from the airline data and multiplies them by travelers and flight directions."
-      : "This airline's checked-bag pricing cannot be fully modeled from the current dataset because one or more requested bag positions are route-, fare-, timing-, or market-dependent.",
+      ? "This estimate uses published USD checked-bag fees and multiplies them by travelers and flight directions."
+      : "This airline's checked-bag pricing needs a route or fare lookup because one or more requested bag positions are route-, fare-, timing-, or market-dependent.",
   };
 }
 
@@ -217,7 +217,7 @@ export function calcCardBagOffset(params: {
   for (let ordinal = 1; ordinal <= freeBagsPerDirection; ordinal += 1) {
     const fee = params.feeByBagOrdinal.get(ordinal);
     if (fee == null) {
-      warnings.push("The dataset is missing at least one checked-bag fee needed to model this card benefit.");
+      warnings.push("At least one checked-bag fee needed for this card benefit requires a route or fare lookup.");
       return {
         eligible: false,
         savingsPerTripUsd: 0,

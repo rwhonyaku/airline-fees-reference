@@ -64,7 +64,7 @@
       "category": "change_cancellation",
       "amount": "Varies",
       "currency": "USD",
-      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly stated by fare rules",
+      "conditions": "Flight changes may require a fee plus fare difference; cancellation rules depend on fare terms",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",

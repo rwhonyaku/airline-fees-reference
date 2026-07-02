@@ -4,6 +4,12 @@
   "iata": "FR",
   "country": "Ireland",
   "region": "Europe",
+  "unique_insights": {
+    "traps": [
+      "Ryanair's free allowance is the small under-seat bag only. Anything that needs the overhead bin has to be solved before the airport."
+    ],
+    "pro_hack": "Decide at booking whether you can truly fit inside 40 x 30 x 20 cm. If not, compare Priority & 2 Cabin Bags against a checked-bag add-on before prices and availability change."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -125,16 +131,6 @@
       "timing": "at booking",
       "source_url": "https://help.ryanair.com/hc/en-us/articles/12889654202641-How-do-I-add-a-minor-16-years-to-a-booking",
       "last_verified": "2025-12-24"
-    },
-    {
-      "id": "ryanair",
-      "name": "Ryanair",
-      "unique_insights": {
-        "traps": [
-          "The \"Incorrect Currency\" Trap: Ryanair often defaults to your home currency at a bad exchange rate for bag fees."
-        ],
-        "pro_hack": "The \"Wearable Luggage\" Hack: This is why travel vests exist-stuff 5 kg of clothes into a vest and it won't be counted as a bag."
-      }
     }
   ]
 }
