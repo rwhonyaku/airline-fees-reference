@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "validate:data": "node scripts/validate-data.mjs",
-    "new:airline": "node scripts/new-airline.mjs"
+    "new:airline": "node scripts/new-airline.mjs",
+    "publish:prod": "sh scripts/publish-prod.sh"
   },
   "dependencies": {
     "autoprefixer": "^10.4.23",
