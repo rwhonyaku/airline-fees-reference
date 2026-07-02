@@ -87,6 +87,62 @@ function buildGenericSections(airlineName: string, strategyText?: string) {
   ];
 }
 
+function decisionToolLinks(slug: string) {
+  const enc = encodeURIComponent(slug);
+  return [
+    {
+      href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=2&bags=1&directions=2&trips=2&pay=yes`,
+      label: "Estimate checked-bag cost",
+      body: "Use this first if a checked bag could erase the fare savings.",
+    },
+    {
+      href: `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`,
+      label: "Check free-bag card math",
+      body: "Use this only after you know repeat first-bag fees are a real part of the trip.",
+    },
+    {
+      href: "/sizer-rules?height=22&width=14&depth=9",
+      label: "Test carry-on fit",
+      body: "Use this when the best fee move may be avoiding the checked bag entirely.",
+    },
+    {
+      href: "/guides/basic-economy-traps#basic-economy-tool",
+      label: "Check Basic fare risk",
+      body: "Use this when the cheapest fare may restrict bags, seats, or flexibility.",
+    },
+  ];
+}
+
+function getScenarioCards(slug: string, airlineName: string) {
+  const enc = encodeURIComponent(slug);
+  return [
+    {
+      title: "One checked bag",
+      body: "Price the first checked bag before you compare this fare against another airline.",
+      href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=1&bags=1&directions=2&trips=1&pay=yes`,
+      cta: "Price one checked bag",
+    },
+    {
+      title: "Two travelers, repeat trips",
+      body: "This is where recurring bag fees can make a card waiver or different fare rational.",
+      href: `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`,
+      cta: "Run annual bag math",
+    },
+    {
+      title: "Carry-on only",
+      body: `If ${airlineName} is strict or the fare is stripped down, the carry-on plan matters before the ticket does.`,
+      href: "/sizer-rules?height=22&width=14&depth=9",
+      cta: "Check sizer risk",
+    },
+    {
+      title: "Heavy or odd-size bag",
+      body: "A normal checked-bag fee may not be the whole bill if weight or size limits are crossed.",
+      href: `/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=51&size=63`,
+      cta: "Test excess-bag risk",
+    },
+  ];
+}
+
 export function generateStaticParams() {
   return getAirlineSlugs().map((slug) => ({ slug }));
 }
@@ -143,6 +199,8 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
     .map((peerSlug) => getAirlineBySlug(peerSlug))
     .filter(Boolean);
   const genericSections = strategy?.playbookSections ?? buildGenericSections(airline.name, strategy?.feeEngine);
+  const toolLinks = decisionToolLinks(slug);
+  const scenarioCards = getScenarioCards(slug, airline.name);
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12">
@@ -171,39 +229,61 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           <Link href="/fees" className="font-medium text-blue-700 underline">
             Fee categories
           </Link>
-          <Link href="/methodology" className="font-medium text-blue-700 underline">
+            <Link href="/methodology" className="font-medium text-blue-700 underline">
             Methodology
           </Link>
         </nav>
 
-        <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-          <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Related references</div>
-          <div className="mt-3 flex flex-wrap gap-4 text-sm">
-            <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
-              Checked baggage calculator
-            </Link>
-            <Link href={`/best-cards?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
-              Card break-even calculator
-            </Link>
-            <Link href="/sizer-rules" className="font-semibold text-blue-700 underline">
-              Sizer rules
-            </Link>
-            <Link href="/guides/basic-economy-traps" className="font-semibold text-blue-700 underline">
-              Basic Economy guide
-            </Link>
-            {(strategy?.relatedGuides ?? []).map((guide) => (
-              <Link key={guide.href} href={guide.href} className="font-semibold text-blue-700 underline">
-                {guide.label}
-              </Link>
-            ))}
-            {peers.map((peer) => (
-              <Link key={peer!.slug} href={`/airlines/${peer!.slug}`} className="font-semibold text-blue-700 underline">
-                Compare with {peer!.name}
+        <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
+          <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Decision tools</div>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+            Turn this fee guide into trip math
+          </h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {toolLinks.map((tool) => (
+              <Link key={tool.href} href={tool.href} className="rounded-2xl border border-blue-100 bg-white p-4 hover:border-blue-300">
+                <div className="font-bold text-blue-800 underline">{tool.label}</div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{tool.body}</p>
               </Link>
             ))}
           </div>
         </section>
       </header>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold text-slate-900">Start with your trip scenario</h2>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {scenarioCards.map((card) => (
+            <Link key={card.title} href={card.href} className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-300">
+              <h3 className="text-lg font-bold text-slate-900">{card.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{card.body}</p>
+              <div className="mt-3 text-sm font-semibold text-blue-700 underline">{card.cta}</div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Related references</div>
+        <div className="mt-3 flex flex-wrap gap-4 text-sm">
+          {(strategy?.relatedGuides ?? []).map((guide) => (
+            <Link key={guide.href} href={guide.href} className="font-semibold text-blue-700 underline">
+              {guide.label}
+            </Link>
+          ))}
+          <Link href="/guides/international-baggage-allowance" className="font-semibold text-blue-700 underline">
+            International baggage allowance
+          </Link>
+          <Link href="/guides/basic-economy-traps" className="font-semibold text-blue-700 underline">
+            Basic Economy guide
+          </Link>
+          {peers.map((peer) => (
+            <Link key={peer!.slug} href={`/airlines/${peer!.slug}`} className="font-semibold text-blue-700 underline">
+              Compare with {peer!.name}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {(insightTraps.length > 0 || insightProHack) && (
         <section className="grid gap-6 md:grid-cols-[1.3fr_0.9fr]">
@@ -345,6 +425,11 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           <li>
             <Link href="/fees" className="font-semibold text-blue-700 underline">
               Browse fee-topic pages
+            </Link>
+          </li>
+          <li>
+            <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
+              Run the {airline.name} checked-bag scenario
             </Link>
           </li>
           <li>

@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and piece/weight concept",
       "currency": "IDR",
       "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
       "applies_to": "All fares (where additional bags are permitted)",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and excess weight",
       "currency": "IDR",
       "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route, size, and aircraft",
       "currency": "IDR",
       "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route, fare, and seat type",
       "currency": "IDR",
       "conditions": "Advance seat selection fees vary by route, fare family, and seat type; free seat assignment available at check-in for eligible fares",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare rules and route",
       "currency": "IDR",
       "conditions": "Change and cancellation fees depend on fare rules and route; fare difference may apply",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on age, route, and eligibility",
       "currency": "IDR",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
       "applies_to": "Eligible ages",

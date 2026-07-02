@@ -3,12 +3,13 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getAirlineBySlug } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
+import { BasicEconomyDecisionTool } from "@/components/BasicEconomyDecisionTool";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
 
 export const metadata: Metadata = {
   title: "Basic Economy traps by airline: carry-on, seats, changes (2026) | Airline Fees Reference",
   description:
-    "A neutral operational comparison of Basic Economy and stripped-down entry fares: carry-on access, seat limits, change rules, and the airline-by-airline differences that usually change the real trip price.",
+    "Compare Basic Economy and stripped-down entry fares by carry-on access, seat limits, change rules, and the airline-by-airline traps that can erase the cheap fare.",
 };
 
 const LAST_VERIFIED = "2026-05-23";
@@ -44,6 +45,13 @@ type GuideRow = {
 type ScopeCard = {
   title: string;
   body: string;
+};
+
+type DecisionCard = {
+  title: string;
+  verdict: string;
+  action: string;
+  links: Array<{ href: string; label: string }>;
 };
 
 function safeText(v: unknown): string {
@@ -335,6 +343,59 @@ const CLASS_MODEL_CARDS: ScopeCard[] = [
   },
 ];
 
+const DECISION_CARDS: DecisionCard[] = [
+  {
+    title: "You need a normal carry-on",
+    verdict:
+      "Be most careful with United Basic Economy and ULCC value fares. American, Delta, JetBlue, Alaska, and Southwest are less likely to break on carry-on access alone.",
+    action:
+      "If the cheapest fare restricts the overhead bin, price the checked bag or cabin-bag add-on before treating it as cheaper.",
+    links: [
+      { href: "/airlines/united", label: "United fee page" },
+      { href: "/airlines/spirit", label: "Spirit fee page" },
+      { href: "/airlines/frontier", label: "Frontier fee page" },
+      { href: "/fees/carry_on", label: "Carry-on reference" },
+    ],
+  },
+  {
+    title: "You will check a bag",
+    verdict:
+      "The Basic Economy question becomes bag math. A fare that saves $30 can lose quickly if it triggers paid first-bag pricing or pushes you toward airport purchase.",
+    action:
+      "Run the bag-cost calculator before booking, then compare whether a fare upgrade or free checked bag card is the rational fix.",
+    links: [
+      { href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked-bag calculator" },
+      { href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes", label: "Card break-even math" },
+      { href: "/fees/checked_baggage", label: "Checked baggage reference" },
+    ],
+  },
+  {
+    title: "Your plans might change",
+    verdict:
+      "Delta, United, JetBlue, Spirit, and Frontier can all become expensive when the trip changes. Carry-on access does not solve a restrictive fare.",
+    action:
+      "Treat flexibility as a priced feature. If dates are uncertain, compare the next fare family before buying the cheapest result.",
+    links: [
+      { href: "/fees/change_cancellation", label: "Change/cancel reference" },
+      { href: "/airlines/delta", label: "Delta fee page" },
+      { href: "/airlines/jetblue", label: "JetBlue fee page" },
+      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
+    ],
+  },
+  {
+    title: "You care where you sit",
+    verdict:
+      "Basic-style fares often sell back control through seat assignment. The fee may look small until multiple travelers or multiple segments are involved.",
+    action:
+      "Compare the total seat-control cost against the next fare family, especially for families, couples, or tight connections.",
+    links: [
+      { href: "/fees/seat_selection", label: "Seat selection reference" },
+      { href: "/airlines/united", label: "United seat fees" },
+      { href: "/airlines/southwest", label: "Southwest fare page" },
+    ],
+  },
+];
+
 export default function BasicEconomyTrapsGuide() {
   const rows = buildGuideRows();
 
@@ -351,6 +412,12 @@ export default function BasicEconomyTrapsGuide() {
         </div>
 
         <nav className="flex flex-wrap gap-4 text-sm">
+          <a href="#basic-economy-tool" className="font-medium text-blue-700 underline">
+            Decision tool
+          </a>
+          <a href="#decision-matrix" className="font-medium text-blue-700 underline">
+            Decision matrix
+          </a>
           <Link href="/airlines" className="font-medium text-blue-700 underline">
             All airlines
           </Link>
@@ -411,6 +478,44 @@ export default function BasicEconomyTrapsGuide() {
           </figcaption>
         </figure>
       </header>
+
+      <BasicEconomyDecisionTool />
+
+      <section id="decision-matrix" className="space-y-4">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+              Decision matrix
+            </div>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">
+              Which Basic Economy trap matters for your trip?
+            </h2>
+          </div>
+          <Link href="/tools/checked-baggage-calculator" className="text-sm font-bold text-blue-700 underline">
+            Start with bag math
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {DECISION_CARDS.map((card) => (
+            <div key={card.title} className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+              <h3 className="text-lg font-black text-slate-950">{card.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{card.verdict}</p>
+              <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-900">{card.action}</p>
+              <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                {card.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="rounded-full border border-blue-200 bg-white px-3 py-1.5 font-semibold text-blue-800 underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">What Basic Economy usually changes</h2>

@@ -67,7 +67,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           <Link
             href="/fees/checked_baggage"
             className="rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-blue-300 hover:shadow-sm"
@@ -105,6 +105,16 @@ export default function HomePage() {
             <div className="text-lg font-bold text-slate-900">Airline credit-card bag benefits</div>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">
               Checked-bag benefit rules by airline card family and traveler coverage.
+            </p>
+          </Link>
+
+          <Link
+            href="/guides/international-baggage-allowance"
+            className="rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-blue-300 hover:shadow-sm"
+          >
+            <div className="text-lg font-bold text-slate-900">International baggage allowance</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              Piece versus weight concept, fare family, and route-based allowance traps.
             </p>
           </Link>
 

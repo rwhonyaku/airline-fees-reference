@@ -47,6 +47,9 @@ export default function AirlinesIndexPage() {
           <Link href="/guides/basic-economy-traps" className="font-medium text-blue-700 underline">
             Basic Economy guide
           </Link>
+          <Link href="/guides/international-baggage-allowance" className="font-medium text-blue-700 underline">
+            International baggage allowance
+          </Link>
           <Link href="/best-cards" className="font-medium text-blue-700 underline">
             Free checked bag calculator
           </Link>

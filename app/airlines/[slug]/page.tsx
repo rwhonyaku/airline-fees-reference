@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { BaggageDecisionWidget } from "@/components/BaggageDecisionWidget";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
+import { findCheckedBagFeeUsd } from "@/lib/bag-cost-calculator";
 import type { FeeItem } from "@/lib/types";
 import { RelatedTools } from "@/components/RelatedTools";
 import { SizerCheck } from "@/components/SizerCheck";
@@ -1369,6 +1371,15 @@ function summarizeRows(fees: FeeItem[]) {
   ].filter(Boolean) as Array<{ label: string; value: string; detail: string; href: string }>;
 }
 
+function getNumericCheckedBagFees(fees: FeeItem[]): Array<[number, number]> {
+  return [1, 2, 3]
+    .map((ordinal) => {
+      const fee = findCheckedBagFeeUsd(fees, ordinal);
+      return fee == null ? null : ([ordinal, fee] as [number, number]);
+    })
+    .filter(Boolean) as Array<[number, number]>;
+}
+
 function getRowsByCategory(fees: FeeItem[], category: FeeItem["category"]) {
   return fees.filter((row) => row.category === category);
 }
@@ -1639,6 +1650,7 @@ function ReferenceAirlinePage({
   const sameDayStandbyRows = getRowsByCategory(fees, "same_day_standby");
   const avoidFeeAdvice = content.avoidFees ?? getDefaultAvoidFeeAdvice(slug, airline.name);
   const relatedGuides = content.relatedGuides ?? getDefaultRelatedGuides(slug);
+  const numericCheckedBagFees = getNumericCheckedBagFees(fees);
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12">
@@ -1719,6 +1731,12 @@ function ReferenceAirlinePage({
           {readerCopy(content.statusUpdate.body)}
         </section>
       ) : null}
+
+      <BaggageDecisionWidget
+        airlineSlug={slug}
+        airlineName={airline.name}
+        feeByBagOrdinal={numericCheckedBagFees}
+      />
 
       <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
@@ -1957,6 +1975,7 @@ function LegacyAirlinePage({
   const insightTraps = airline.unique_insights?.traps ?? [];
   const insightHack = airline.unique_insights?.pro_hack;
   const summaryCards = summarizeRows(fees);
+  const numericCheckedBagFees = getNumericCheckedBagFees(fees);
   const authorityHighlights = strategy?.authorityHighlights ?? [];
   const peerLinks = (strategy?.relatedAirlines ?? [])
     .map((peerSlug) => getAirlineBySlug(peerSlug))
@@ -2058,6 +2077,12 @@ function LegacyAirlinePage({
         ))}
       </section>
 
+      <BaggageDecisionWidget
+        airlineSlug={slug}
+        airlineName={airline.name}
+        feeByBagOrdinal={numericCheckedBagFees}
+      />
+
       <section className="grid gap-6 md:grid-cols-2">
         <Link
           href={`/airlines/${slug}/how-to-beat-fees`}
@@ -2154,7 +2179,7 @@ function LegacyAirlinePage({
                         </Link>
                       </td>
                       <td className="whitespace-nowrap px-4 py-4 font-mono font-bold text-slate-900">
-                        {formatAmount(item.amount, item.currency)}
+                        {formatContextualAmount(item)}
                       </td>
                       <td className="max-w-xs px-4 py-4 text-slate-600">{conditions}</td>
                       <td className="px-4 py-4 italic text-slate-500">{pricingUnit}</td>

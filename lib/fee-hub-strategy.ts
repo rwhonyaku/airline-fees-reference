@@ -73,7 +73,9 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "jetblue", reason: "JetBlue is a strong example of the first-bag math that can justify card benefits." },
     ],
     toolLinks: [
+      { href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked baggage cost calculator", reason: "Use this first when you need a traveler-and-bag estimate instead of a raw fee row." },
       { href: "/best-cards", label: "Free checked bag calculator", reason: "Use this if the main question is whether a free checked bag benefit covers a card's annual fee." },
+      { href: "/guides/international-baggage-allowance", label: "International baggage allowance", reason: "Use this when baggage depends on route, fare family, cabin, or piece-versus-weight concept instead of one flat fee." },
       { href: "/sizer-rules", label: "Sizer rules", reason: "Avoiding a checked bag entirely is often more useful than comparing checked bag fees after the fact." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Basic restrictions often make a checked bag more likely, even when the fare looked cheaper at first." },
     ],
@@ -103,6 +105,8 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     ],
     toolLinks: [
       { href: "/sizer-rules", label: "Sizer rules", reason: "This is the most important tool bridge because enforcement reality is the story." },
+      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Use this when the question is not just the size limit, but whether the airline is likely to enforce it." },
+      { href: "/guides/basic-economy-traps#basic-economy-tool", label: "Basic Economy decision tool", reason: "Use this when the cheapest fare may restrict carry-on access or make a checked bag more likely." },
       { href: "/best-cards", label: "Free checked bag calculator", reason: "The card tool matters after the traveler decides a checked-bag strategy is more rational than trying to beat the sizer." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Carry-on restrictions are one of the main ways cheap fares become fake cheap." },
     ],
@@ -189,10 +193,41 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "spirit", reason: "Spirit is useful because the bag can go from cheap trip to fee stack the moment weight control breaks." },
     ],
     toolLinks: [
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62", label: "Overweight baggage calculator", reason: "Use this when the bag is just over a common weight threshold and you need trip-level math." },
       { href: "/best-cards", label: "Free checked bag calculator", reason: "The card tool matters when the traveler decides checked-bag math is unavoidable and wants to lower the recurring cost of the first bag." },
       { href: "/sizer-rules", label: "Sizer rules", reason: "The cleanest way to avoid overweight fees is often to avoid checking a bag at all when the airline's carry-on reality allows it." },
       { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Strictness and bag shape determine whether a lighter carry-on strategy is realistic before the airport." },
     ],
     bridgeText: "After the overweight-baggage page, the most useful next step is usually the airline page or carry-on guide, because the best solution often happens before the scale, not after it.",
+  },
+  oversize_baggage: {
+    introLabel: "Use this page when the bag shape, not just the bag count, could trigger a separate airport charge.",
+    scenarioCards: [
+      {
+        title: "Oversize is hard to fix late",
+        body: "A heavy bag can sometimes be repacked. An oversized suitcase, case, or sports item is usually a structural problem by the time you reach the counter.",
+      },
+      {
+        title: "The base checked-bag fee may still apply",
+        body: "Oversize charges often sit on top of the normal checked-bag fee, so the right comparison starts with the standard bag baseline.",
+      },
+      {
+        title: "Route and aircraft handling matter",
+        body: "Some airlines publish route- or aircraft-dependent acceptance rules, which is why a single universal oversize number can be misleading.",
+      },
+    ],
+    spotlightAirlines: [
+      { slug: "american", reason: "American is a useful benchmark for published oversize and overweight ladders." },
+      { slug: "delta", reason: "Delta shows how oversize pricing interacts with a broader legacy-carrier baggage table." },
+      { slug: "southwest", reason: "Southwest is useful because free checked bags do not mean free oversize baggage." },
+      { slug: "frontier", reason: "Frontier shows how special bag handling can stack on top of a fragile low-fare bag plan." },
+    ],
+    toolLinks: [
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63", label: "Oversize baggage calculator", reason: "Use this when the bag crosses a common linear-inch threshold and you need trip-level math." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=70", label: "Heavy and oversized scenario", reason: "Use this to model the worse case where both weight and size may matter." },
+      { href: "/fees/checked_baggage", label: "Checked baggage baseline", reason: "Oversize fees may be in addition to the normal checked-bag fee, not a replacement for it." },
+      { href: "/guides/international-baggage-allowance", label: "International allowance explainer", reason: "International itineraries may move the problem into piece, weight, route, or aircraft handling rules." },
+    ],
+    bridgeText: "After the oversize-baggage page, use the excess-baggage calculator and the airline page together, because oversize acceptance can be more conditional than ordinary checked baggage.",
   },
 };

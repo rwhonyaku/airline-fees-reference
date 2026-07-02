@@ -26,6 +26,9 @@ export function RelatedTools({ slug }: { slug: string }) {
           <Link className="underline text-blue-700" href={`/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=51&size=63`}>
             Overweight and oversize baggage calculator
           </Link>
+          <Link className="underline text-blue-700" href="/guides/international-baggage-allowance">
+            International baggage allowance explainer
+          </Link>
           <Link className="underline text-blue-700" href={`/best-cards?${cardScenario}`}>
             Free checked bag card calculator for this airline
           </Link>

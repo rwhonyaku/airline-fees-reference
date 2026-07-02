@@ -185,6 +185,8 @@ function getContextualBridge(category: string) {
           to price the trip from traveler and bag inputs, use{" "}
           <Link href="/best-cards">the card break-even calculator</Link> when the question is whether
           recurring first-bag fees offset an annual fee, or use{" "}
+          <Link href="/guides/international-baggage-allowance">the international baggage allowance explainer</Link>{" "}
+          when the row depends on route, fare family, or piece-versus-weight concept. Use{" "}
           <Link href="/sizer-rules">Sizer rules</Link> if the better comparison is avoiding the
           checked bag entirely.
         </p>
@@ -253,6 +255,85 @@ function getContextualBridge(category: string) {
   }
 }
 
+function getDecisionToolCards(category: string): Array<{ href: string; label: string; body: string }> {
+  switch (category) {
+    case "checked_baggage":
+      return [
+        {
+          href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes",
+          label: "Checked-bag cost calculator",
+          body: "Turn travelers, bags, trip type, and annual trips into a baggage-cost estimate when the dataset has numeric fee rows.",
+        },
+        {
+          href: "/best-cards?travelers=2&bags=1&trips=2&pay=yes",
+          label: "Free checked bag card math",
+          body: "Check whether repeat first-bag fees can justify an eligible airline card on bag savings alone.",
+        },
+        {
+          href: "/guides/international-baggage-allowance",
+          label: "International allowance explainer",
+          body: "Use this when a fee row depends on route, fare family, cabin, or piece-versus-weight concept.",
+        },
+      ];
+    case "carry_on":
+      return [
+        {
+          href: "/sizer-rules?height=22&width=14&depth=9",
+          label: "Carry-on sizer comparison",
+          body: "Compare a bag's outside dimensions against published carry-on and personal-item rules.",
+        },
+        {
+          href: "/guides/carry-on-strictness-by-airline",
+          label: "Carry-on strictness guide",
+          body: "Decide whether the real issue is published dimensions, fare restrictions, or gate enforcement culture.",
+        },
+        {
+          href: "/guides/basic-economy-traps#basic-economy-tool",
+          label: "Basic Economy decision tool",
+          body: "Check whether the cheapest fare is risky because it restricts carry-on access, seats, or flexibility.",
+        },
+      ];
+    case "overweight_baggage":
+      return [
+        {
+          href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62",
+          label: "Overweight baggage calculator",
+          body: "Estimate the cost of crossing common weight thresholds when published numeric rows are available.",
+        },
+        {
+          href: "/sizer-rules?height=22&width=14&depth=9",
+          label: "Repack into carry-on strategy",
+          body: "Check whether moving weight out of a checked bag into a cabin setup is realistic for your airline.",
+        },
+        {
+          href: "/fees/checked_baggage",
+          label: "Standard checked-bag baseline",
+          body: "Compare the normal checked-bag fee first, because overweight charges can stack on top of it.",
+        },
+      ];
+    case "oversize_baggage":
+      return [
+        {
+          href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63",
+          label: "Oversize baggage calculator",
+          body: "Estimate oversize exposure when a bag crosses common linear-inch thresholds and numeric rows exist.",
+        },
+        {
+          href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=70",
+          label: "Heavy and oversized scenario",
+          body: "Model the worse case where weight and size issues may both matter before airport day.",
+        },
+        {
+          href: "/fees/checked_baggage",
+          label: "Checked-bag fee baseline",
+          body: "Check the normal checked-bag charge because oversize fees may not replace the base bag fee.",
+        },
+      ];
+    default:
+      return [];
+  }
+}
+
 export function generateStaticParams() {
   const slugs = getAirlineSlugs();
   const set = new Set<string>();
@@ -311,6 +392,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
   rows.sort((a, b) => b.lastVerified.localeCompare(a.lastVerified));
   const latestVerified = getLatestVerifiedDate(rows);
   const contextualBridge = getContextualBridge(cat);
+  const decisionToolCards = getDecisionToolCards(cat);
 
   const title = titleCaseFromSlug(cat);
   const spotlightAirlines = (strategy?.spotlightAirlines ?? [])
@@ -366,6 +448,45 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           </div>
         </section>
       </header>
+
+      {decisionToolCards.length > 0 ? (
+        <section
+          style={{
+            border: "1px solid #bfdbfe",
+            borderRadius: 12,
+            padding: 14,
+            background: "#eff6ff",
+            display: "grid",
+            gap: 12,
+          }}
+        >
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#1d4ed8" }}>
+              Decision tools
+            </div>
+            <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>Turn this fee table into a trip decision</h2>
+          </div>
+          <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+            {decisionToolCards.map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                style={{
+                  border: "1px solid #dbeafe",
+                  borderRadius: 10,
+                  padding: 12,
+                  background: "#fff",
+                  color: "#1e3a8a",
+                  textDecoration: "none",
+                }}
+              >
+                <div style={{ fontWeight: 800, textDecoration: "underline" }}>{tool.label}</div>
+                <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#334155" }}>{tool.body}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {cat === "checked_baggage" ? (
         <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
