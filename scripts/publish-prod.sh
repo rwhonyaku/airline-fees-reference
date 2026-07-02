@@ -6,7 +6,7 @@ REPO_SSH="git@github.com:rwhonyaku/airline-fees-reference.git"
 
 echo "Publishing ${BRANCH}..."
 
-GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git push "${REPO_SSH}" "HEAD:${BRANCH}"
+GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR" git push "${REPO_SSH}" "HEAD:${BRANCH}"
 
 if command -v vercel >/dev/null 2>&1; then
   vercel deploy --prod --yes
