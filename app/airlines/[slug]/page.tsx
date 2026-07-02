@@ -253,11 +253,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-france": {
     intro: {
       carryOn:
-        "Air France cabin baggage is fare-dependent in this dataset: Economy may include 0 to 1 hand baggage item plus one small bag, and the Basic fare can require a paid Hand Baggage option.",
+        "Air France carry-on is not one universal yes/no rule. Economy may include 0 to 1 hand baggage item plus one small bag, and the Basic fare can require a paid Hand Baggage option shown during booking.",
       personalItem:
         "The published Air France cabin row includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France checked-bag charges vary because additional baggage prices are shown during purchase or in My Bookings and depend on itinerary. The dataset also notes an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. Additional baggage prices are shown during purchase or in My Bookings, and the fee table notes an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
       restrictions:
         "The fee traps are timing and fare-family based: Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and overweight or oversized baggage must be handled at the airport.",
     },
@@ -274,9 +274,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
+      { href: "/tools/excess-baggage-calculator?airline=air-france&bags=1&directions=2&weight=51&size=63", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
-      { href: "/sizer-rules", label: "Sizer rules" },
+      { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
     ],
     fareClasses: [
       {
@@ -309,7 +310,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Adding a checked bag before travel",
         details:
-          "Additional baggage pricing varies by itinerary and is surfaced during purchase or in My Bookings, so this page does not invent a universal Air France first-bag price.",
+          "Additional baggage pricing is itinerary-based and surfaced during purchase or in My Bookings. The practical move is to price the exact route before deciding whether Air France is cheaper than another carrier.",
       },
       {
         title: "Arriving with an oversized bag",
@@ -473,16 +474,26 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-canada": {
     intro: {
       carryOn:
-        "The current dataset publishes one standard carry-on and one personal item as included on all fares, with size and weight limits and with enforcement varying by aircraft and airport.",
+        "Air Canada includes one standard carry-on and one personal item on all fares in the current fee table. The real risk is not a carry-on fee; it is whether the bag fits the published limits on the aircraft and airport you are using.",
       personalItem:
         "The carry-on row explicitly includes one personal item, but this page does not publish a separate Air Canada personal-item-only row with its own fee or dimensions table.",
       checkedBag:
-        "The current dataset publishes a split checked-bag picture rather than one single baseline: the first checked bag is included on Standard and higher fares across domestic, transborder, and international markets, while Basic fares show CAD 30 for the first checked bag on the domestic and transborder example published here and CAD 50 for the second bag where it is not included.",
+        "Air Canada baggage fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
       restrictions:
         "Basic fares are the main restriction point in this dataset: changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
       "Last verified support on this page comes from row-level source checks. The published Air Canada baggage, seat, and change rows shown here were last verified on 2025-12-24.",
+    relatedGuides: [
+      { href: "/fees/checked_baggage", label: "Checked baggage" },
+      { href: "/fees/carry_on", label: "Carry-on" },
+      { href: "/fees/seat_selection", label: "Seat selection" },
+      { href: "/fees/change_cancellation", label: "Change and cancellation" },
+      { href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
+      { href: "/tools/excess-baggage-calculator?airline=air-canada&bags=1&directions=2&weight=51&size=63", label: "Excess baggage calculator" },
+      { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
+      { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
+    ],
     fareClasses: [
       {
         name: "Basic",
@@ -509,7 +520,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only cabin baggage",
         details:
-          "The current dataset publishes one standard carry-on and one personal item included on all fares, with enforcement varying by aircraft and airport.",
+          "Air Canada does not charge a separate carry-on fee in the fee rows shown here. One standard carry-on and one personal item are included, but aircraft size and airport enforcement still matter.",
       },
       {
         title: "Checking one standard bag on a Basic domestic or transborder trip",
@@ -915,7 +926,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   alaska: {
     intro: {
       carryOn:
-        "One carry-on bag up to the published 22 x 14 x 9 inch limit and one personal item are listed as included on all fares, including Saver.",
+        "Alaska does not charge a carry-on fee in the current fee table: one carry-on bag up to the published 22 x 14 x 9 inch limit and one personal item are included on all fares, including Saver.",
       personalItem:
         "The published carry-on row states that the smaller personal item is included with the cabin bag allowance.",
       checkedBag:
@@ -925,6 +936,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     },
     verificationNote:
       "The newest Alaska checked-baggage and oversize rows on this page were verified against official Alaska sources on 2026-06-10. The carry-on row currently shown here was last verified on 2025-12-24, while seat, cancellation, and unaccompanied minor rows were last verified on 2025-12-19.",
+    relatedGuides: [
+      { href: "/fees/checked_baggage", label: "Checked baggage" },
+      { href: "/fees/carry_on", label: "Carry-on" },
+      { href: "/fees/seat_selection", label: "Seat selection" },
+      { href: "/fees/change_cancellation", label: "Change and cancellation" },
+      { href: "/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
+      { href: "/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes", label: "Alaska card bag math" },
+      { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
+      { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
+    ],
     fareClasses: [
       {
         name: "Saver",
@@ -951,7 +972,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only cabin items",
         details:
-          "Published rows show one carry-on bag and one personal item included on all fares, including Saver.",
+          "For the query 'does Alaska Airlines charge for carry on,' the practical answer is no in the current fee table: one carry-on and one personal item are included, including on Saver.",
       },
       {
         title: "Checking one standard bag",
@@ -1269,6 +1290,33 @@ function formatAmount(amount: unknown, currency: unknown): string {
   return "Not published";
 }
 
+function formatContextualAmount(row: FeeItem): string {
+  if (typeof row.amount === "number" && Number.isFinite(row.amount)) return formatAmount(row.amount, row.currency);
+  if (typeof row.amount !== "string" || !row.amount.trim()) return "Not published";
+
+  const raw = row.amount.trim();
+  if (raw.toLowerCase() !== "varies") return formatAmount(row.amount, row.currency);
+
+  const text = [row.conditions, row.applies_to, row.region_or_route, row.timing, row.notes]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (row.category === "checked_baggage" && (text.includes("additional") || text.includes("my bookings") || text.includes("purchase"))) {
+    return "Shown during booking / manage booking";
+  }
+  if (row.category === "checked_baggage") return "Depends on route and fare";
+  if (row.category === "carry_on" && text.includes("basic")) return "Basic fare add-on shown in booking";
+  if (row.category === "carry_on") return "Depends on fare and purchase timing";
+  if (row.category === "overweight_baggage") return "Airport-priced by route and weight";
+  if (row.category === "oversize_baggage") return "Airport-priced by route and size";
+  if (row.category === "seat_selection") return "Depends on route, fare, and seat type";
+  if (row.category === "change_cancellation") return "Depends on fare conditions";
+  if (row.category === "unaccompanied_minor") return "Depends on age and itinerary";
+
+  return "Depends on route, fare, or timing";
+}
+
 function prettyCategoryLabel(category: string): string {
   const c = category.replace(/_/g, " ").trim();
   return c ? c.charAt(0).toUpperCase() + c.slice(1) : category;
@@ -1376,6 +1424,20 @@ function getCardBenefitReference(slug: string) {
         </p>
       );
     case "alaska":
+      return (
+        <p className="text-sm leading-relaxed text-slate-600">
+          This site currently includes Alaska Atmos card entries with a published first checked bag
+          benefit for eligible cardholders and companions on the same reservation. Run the{" "}
+          <Link href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes" className="underline">
+            Alaska free checked bag card calculator
+          </Link>{" "}
+          before paying cash for repeat first-bag fees, and verify the route/payment rules in the{" "}
+          <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
+            airline credit card baggage benefit reference
+          </Link>
+          .
+        </p>
+      );
     case "southwest":
     case "jetblue":
       return (
@@ -1460,6 +1522,42 @@ function getDefaultRelatedGuides(slug: string): ReferenceLink[] {
   return guides;
 }
 
+function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: string): Metadata {
+  switch (slug) {
+    case "air-canada":
+      return {
+        title: "Air Canada Baggage Fees, Carry-On Rules, and Basic Fare Traps (2026)",
+        description:
+          "Air Canada baggage fees depend on fare family and route. Standard and higher fares include the first checked bag in the current fee table, while Basic domestic/transborder examples show paid checked bags.",
+      };
+    case "air-france":
+      return {
+        title: "Air France Baggage Charges, Carry-On Rules, and Seat Fees (2026)",
+        description:
+          "Air France baggage charges depend on itinerary, fare, and purchase path. Additional baggage is priced during booking or My Bookings rather than one universal first-bag fee.",
+      };
+    case "alaska":
+      return {
+        title: "Alaska Airlines Baggage Fees and Carry-On Rules (2026)",
+        description:
+          "Alaska does not charge a carry-on fee in the current fee table: one carry-on and one personal item are included, including Saver. Checked-bag fees depend on ticket date and route.",
+      };
+    case "lufthansa":
+      return {
+        title: "Lufthansa Baggage Fees, Carry-On Allowance, and EU261 Links (2026)",
+        description:
+          "Lufthansa baggage rules depend on fare, cabin, and route. The page explains included carry-on, checked-bag examples, excess baggage, seat selection, and change-fee conditions.",
+      };
+    default:
+      return {
+        title: `${airlineName} Fees, Traps, and Bag Math (2026)`,
+        description:
+          fallback ??
+          `Published baggage, seat, and service fees for ${airlineName}, plus traveler-first guidance on the biggest fee traps.`,
+      };
+  }
+}
+
 function FeeRowsTable({
   rows,
   emptyMessage,
@@ -1494,7 +1592,7 @@ function FeeRowsTable({
               <td className="px-4 py-3 text-slate-700">{safeText(row.applies_to)}</td>
               <td className="px-4 py-3 text-slate-700">{safeText(row.region_or_route)}</td>
               <td className="whitespace-nowrap px-4 py-3 font-mono font-semibold text-slate-900">
-                {formatAmount(row.amount, row.currency)}
+                {formatContextualAmount(row)}
               </td>
               <td className="px-4 py-3 text-slate-700">{safeText(row.timing)}</td>
               <td className="min-w-[260px] px-4 py-3 text-slate-700">{safeText(row.conditions)}</td>
@@ -2162,12 +2260,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!airline) return { title: "Airline not found" };
 
   const strategy = AIRLINE_STRATEGY[slug];
-  return {
-    title: `${airline.name} Fees, Traps, and Bag Math (2026)`,
-    description:
-      strategy?.verdict ??
-      `Published baggage, seat, and service fees for ${airline.name}, plus traveler-first guidance on the biggest fee traps.`,
-  };
+  return getAirlineMetadataCopy(slug, airline.name, strategy?.verdict);
 }
 
 export default async function AirlinePage({ params }: PageProps) {

@@ -23,9 +23,9 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Checked Baggage Cost Calculator | Airline Fees Reference",
+  title: "Checked Baggage Cost Calculator and Free Bag Card Check | Airline Fees Reference",
   description:
-    "Estimate checked baggage fees from published airline fee data, then see whether an eligible free checked bag card could offset the cost.",
+    "Estimate checked baggage fees from published airline fee data, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -326,6 +326,14 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
                 That can happen when this airline has no eligible card in the calculator, when the benefit requires
                 card payment and you selected no, or when the card benefit does not cover the requested bag pattern.
               </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
+                  Open card calculator
+                </Link>
+                <Link href="/guides/airline-credit-card-baggage-benefits" className="rounded-xl border border-emerald-300 bg-white px-4 py-2 font-bold text-emerald-900 hover:bg-emerald-100">
+                  Check benefit rules
+                </Link>
+              </div>
             </>
           )}
         </section>
@@ -370,7 +378,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           <Link href="/fees/checked_baggage" className="text-blue-700 underline">
             Checked baggage guide
           </Link>
-          <Link href="/best-cards" className="text-blue-700 underline">
+          <Link href={cardHref} className="text-blue-700 underline">
             Free checked bag card calculator
           </Link>
           <Link href="/guides/airline-credit-card-baggage-benefits" className="text-blue-700 underline">

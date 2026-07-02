@@ -125,11 +125,19 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       <main className="mx-auto w-full max-w-5xl px-4 py-12">
         <h1 className="text-3xl font-extrabold">Free checked bag card calculator</h1>
         <p className="mt-3 text-slate-600">
-          No airline card entries are listed yet for <strong>{airline.name}</strong>.
+          This calculator does not currently have a verified free checked bag credit-card entry for{" "}
+          <strong>{airline.name}</strong>. That does not mean a baggage exception can never apply; it
+          means this site is not modeling a co-branded card waiver for this airline yet.
         </p>
-        <div className="mt-6">
-          <Link href="/airlines" className="text-blue-700 underline">
-            Browse airlines
+        <div className="mt-6 flex flex-wrap gap-3 text-sm">
+          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            Review {airline.name} fees
+          </Link>
+          <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=${payWithCard ? "yes" : "no"}`} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            Estimate checked-bag cost
+          </Link>
+          <Link href="/guides/airline-credit-card-baggage-benefits" className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            See supported card benefits
           </Link>
         </div>
       </main>

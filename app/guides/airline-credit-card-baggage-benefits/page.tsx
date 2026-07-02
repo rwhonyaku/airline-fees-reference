@@ -4,9 +4,9 @@ import fs from "fs/promises";
 import path from "path";
 
 export const metadata: Metadata = {
-  title: "Airline credit card baggage benefits: checked bag rules by airline (2026) | Airline Fees Reference",
+  title: "Credit cards with free checked bags: airline baggage benefit rules (2026) | Airline Fees Reference",
   description:
-    "A neutral reference for airline credit card checked bag benefits: which airline cards include free checked bags, how many travelers are covered, where route limits apply, and when the bag benefit can outweigh the annual fee.",
+    "Which airline credit cards include free checked bags, how many travelers are covered, where route limits apply, and when the bag benefit can outweigh the annual fee.",
 };
 
 const LAST_VERIFIED = "2026-06-10";
@@ -141,7 +141,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
       <header className="space-y-6">
         <div className="flex flex-wrap items-baseline gap-3">
           <h1 className="text-4xl font-black tracking-tight text-slate-900">
-            Airline credit card baggage benefits
+            Credit cards with free checked bags
           </h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
             Last verified {LAST_VERIFIED}
@@ -164,6 +164,18 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
         </nav>
 
         <section className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
+          <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+            Answer first
+          </div>
+          <h2 className="mt-3 text-2xl font-black tracking-tight text-slate-900">
+            Some airline credit cards include a free checked bag, but the benefit is not universal.
+          </h2>
+          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+            In this site&apos;s verified calculator, Alaska, American, United, and Delta cards include
+            published checked-bag benefits. The important question is not just whether the card says
+            &quot;free checked bag.&quot; It is whether your airline, route, traveler count, reservation,
+            and payment method satisfy the benefit rules.
+          </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
@@ -202,6 +214,14 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                 <li>What the published route or booking limits are before using the benefit?</li>
               </ul>
             </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm">
+            <Link href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes" className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
+              Run free checked bag math
+            </Link>
+            <Link href="/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes" className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-bold text-slate-900 hover:border-blue-400">
+              Estimate baggage cost first
+            </Link>
           </div>
         </section>
       </header>

@@ -18,7 +18,7 @@
     },
     {
       "category": "carry_on",
-      "amount": "Varies",
+      "amount": "Shown during booking",
       "currency": "EUR",
       "conditions": "Hand Baggage option (Basic fare only); rates are displayed during purchase and in My Bookings; can be purchased up to 4 hours before departure",
       "applies_to": "Basic fare (Economy)",
@@ -30,7 +30,7 @@
 
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Shown during booking / My Bookings",
       "currency": "EUR",
       "conditions": "Additional Baggage option (extra bag up to 158 cm total dimensions; weight limit depends on cabin); rates are displayed during purchase and in My Bookings; discounted rate when purchased online at least 24 hours before departure (except flights from/to Canada and USA where online price is the same as airport)",
       "applies_to": "All fares (where additional bags are permitted)",
@@ -42,7 +42,7 @@
 
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by itinerary",
       "currency": "EUR",
       "conditions": "Oversized Baggage option applies to bags over 158 cm and up to 300 cm total dimensions; price depends on itinerary and must be paid at the airport",
       "applies_to": "All fares",
@@ -53,7 +53,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by itinerary",
       "currency": "EUR",
       "conditions": "Overweight Baggage option applies to bags heavier than the allowance in the ticket up to 32 kg; price depends on itinerary and must be paid at the airport; bags over 32 kg must be handled via cargo",
       "applies_to": "All fares",
@@ -65,7 +65,7 @@
 
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route, fare, and seat type",
       "currency": "EUR",
       "conditions": "Advance seat selection pricing varies by destination, travel dates, and fare; Economy Light fares can select only paid seats until check-in closes; otherwise seats are auto-assigned at check-in (30 hours before departure)",
       "applies_to": "All fares (Economy Light has restrictions)",
@@ -88,7 +88,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare conditions",
       "currency": "EUR",
       "conditions": "Change and cancellation terms depend on the fare conditions of the ticket; fare difference may apply",
       "applies_to": "All fares",
@@ -100,11 +100,11 @@
 
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on child age and itinerary",
       "currency": "EUR",
       "conditions": "Kids Solo service fares vary by child age and itinerary (domestic vs international age eligibility applies)",
       "applies_to": "Eligible ages",
-      "region_or_route": "Varies",
+      "region_or_route": "Domestic vs international itinerary",
       "timing": "per direction",
       "source_url": "https://wwws.airfrance.us/information/passagers/enfants-voyageant-seuls",
       "last_verified": "2025-12-24"

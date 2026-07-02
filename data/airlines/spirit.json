@@ -13,7 +13,7 @@
   "fees": [
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare difference",
       "currency": "USD",
       "conditions": "Value: change or cancellation fee applies; fare difference may apply",
       "applies_to": "Value",
@@ -57,7 +57,7 @@
     },
     {
       "category": "carry_on",
-      "amount": "Varies",
+      "amount": "Depends on purchase timing",
       "currency": "USD",
       "conditions": "Value: carry-on bag fee varies based on purchase timing (online booking, online check-in, airport counter, or gate)",
       "applies_to": "Value",
@@ -90,7 +90,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and purchase timing",
       "currency": "USD",
       "conditions": "Value and Premium Economy: checked bag fee varies based on purchase timing and route",
       "applies_to": "Value / Premium Economy",
@@ -112,7 +112,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Depends on excess weight",
       "currency": "USD",
       "conditions": "Overweight bag fees apply for bags exceeding standard weight limits; maximum accepted weight is 100 lbs",
       "applies_to": "All fares",
@@ -123,7 +123,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Depends on excess size",
       "currency": "USD",
       "conditions": "Oversize bag fees apply for bags exceeding standard size limits; maximum accepted size is 80 linear inches",
       "applies_to": "All fares",

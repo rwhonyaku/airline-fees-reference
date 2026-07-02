@@ -198,7 +198,7 @@
     },
     {
       "category": "same_day_change",
-      "amount": "Varies",
+      "amount": "Starts at $60; itinerary-priced",
       "currency": "USD",
       "conditions": "Same-day confirmed change pricing varies by itinerary; starting at $60",
       "applies_to": "Eligible fares",
@@ -210,7 +210,7 @@
 
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "$4-$139 published range",
       "currency": "USD",
       "conditions": "Preferred seat pricing varies by flight; published range approximately $4–$139",
       "applies_to": "Main Cabin",
@@ -221,7 +221,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "$20-$280 published range",
       "currency": "USD",
       "conditions": "Main Cabin Extra pricing varies by flight; published range approximately $20–$280",
       "applies_to": "Main Cabin",

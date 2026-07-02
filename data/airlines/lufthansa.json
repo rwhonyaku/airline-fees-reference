@@ -65,7 +65,7 @@
 
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and excess weight",
       "currency": "EUR",
       "conditions": "In Economy/Premium Economy, a checked bag is considered excess when it weighs more than 23 kg (up to max 32 kg); excess baggage fees apply as published and vary by route",
       "applies_to": "Economy / Premium Economy",
@@ -76,7 +76,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and excess size",
       "currency": "EUR",
       "conditions": "In Economy/Premium Economy, a checked bag is considered excess when total dimensions exceed 158 cm (sum of width + height + depth) up to a maximum of 292 cm; excess baggage fees apply as published and vary by route",
       "applies_to": "Economy / Premium Economy",
@@ -99,7 +99,7 @@
 
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on fare, route, and status",
       "currency": "EUR",
       "conditions": "Advance seat reservation fees may apply depending on fare, route, and status; published rules include restrictions for Economy Light and free reservations for certain status members on eligible flights",
       "applies_to": "Most fares",
@@ -122,7 +122,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fare difference may apply",
       "currency": "USD",
       "conditions": "Economy Classic fares and upwards can be rebooked; fare differences may apply and additional conditions apply per published rules",
       "applies_to": "Economy Classic and above",
@@ -133,7 +133,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare conditions",
       "currency": "USD",
       "conditions": "Refund eligibility and reimbursement depend on fare conditions; cancellations and refunds can be requested online up to 24 hours before the beginning of the journey (fare conditions apply)",
       "applies_to": "All fares",

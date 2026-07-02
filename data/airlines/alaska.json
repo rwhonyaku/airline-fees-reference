@@ -224,7 +224,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on flight and seat type",
       "currency": "USD",
       "conditions": "Preferred seats; fee varies by flight",
       "applies_to": "Main Cabin",
@@ -247,7 +247,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare type",
       "currency": "USD",
       "conditions": "Change and cancellation rules depend on fare type (Saver fares most restrictive)",
       "applies_to": "All fares",

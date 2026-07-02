@@ -271,7 +271,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on flight and seat type",
       "currency": "USD",
       "conditions": "Paid seat upgrades (for flights departing on or after January 27, 2026)",
       "applies_to": "All fares",

@@ -67,6 +67,33 @@ function formatAmount(amount: unknown, currency: unknown): string {
   return "Not published";
 }
 
+function formatContextualAmount(item: { amount: unknown; currency: unknown; category?: string; conditions?: string; applies_to?: string; region_or_route?: string; timing?: string }): string {
+  if (typeof item.amount === "number" && Number.isFinite(item.amount)) return formatAmount(item.amount, item.currency);
+  if (typeof item.amount !== "string" || !item.amount.trim()) return "Not published";
+
+  const raw = item.amount.trim();
+  if (raw.toLowerCase() !== "varies") return formatAmount(item.amount, item.currency);
+
+  const text = [item.conditions, item.applies_to, item.region_or_route, item.timing]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (item.category === "checked_baggage" && (text.includes("additional") || text.includes("my bookings") || text.includes("purchase"))) {
+    return "Shown during booking / manage booking";
+  }
+  if (item.category === "checked_baggage") return "Depends on route and fare";
+  if (item.category === "carry_on" && text.includes("basic")) return "Basic fare add-on shown in booking";
+  if (item.category === "carry_on") return "Depends on fare and purchase timing";
+  if (item.category === "overweight_baggage") return "Airport-priced by route and weight";
+  if (item.category === "oversize_baggage") return "Airport-priced by route and size";
+  if (item.category === "seat_selection") return "Depends on route, fare, and seat type";
+  if (item.category === "change_cancellation") return "Depends on fare conditions";
+  if (item.category === "unaccompanied_minor") return "Depends on age and itinerary";
+
+  return "Depends on route, fare, or timing";
+}
+
 function titleCaseFromSlug(s: string): string {
   return s
     .split("_")
@@ -268,7 +295,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         slug,
         airlineName: safeText(airline.name),
         iata: airline.iata,
-        amountText: formatAmount(item.amount, item.currency),
+        amountText: formatContextualAmount(item),
         appliesTo: item.applies_to ?? "—",
         regionOrRoute: item.region_or_route ?? "—",
         timing: item.timing ?? "—",

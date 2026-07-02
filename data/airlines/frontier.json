@@ -85,7 +85,7 @@
     },
     {
       "category": "carry_on",
-      "amount": "Varies",
+      "amount": "Depends on purchase timing",
       "currency": "USD",
       "conditions": "Carry-on bag fee varies based on purchase timing (booking, online check-in, airport, or gate)",
       "applies_to": "All fares",
@@ -97,7 +97,7 @@
 
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and purchase timing",
       "currency": "USD",
       "conditions": "Checked bag fee varies by purchase timing and route",
       "applies_to": "All fares",

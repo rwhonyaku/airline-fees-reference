@@ -123,7 +123,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on flight and seat type",
       "currency": "USD",
       "conditions": "Even More Space seats; fee varies by flight",
       "applies_to": "All fares",
