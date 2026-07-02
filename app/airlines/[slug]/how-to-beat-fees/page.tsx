@@ -179,10 +179,10 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
         <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
           <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Related references</div>
           <div className="mt-3 flex flex-wrap gap-4 text-sm">
-            <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}`} className="font-semibold text-blue-700 underline">
+            <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
               Checked baggage calculator
             </Link>
-            <Link href={`/best-cards?airline=${encodeURIComponent(slug)}`} className="font-semibold text-blue-700 underline">
+            <Link href={`/best-cards?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
               Card break-even calculator
             </Link>
             <Link href="/sizer-rules" className="font-semibold text-blue-700 underline">

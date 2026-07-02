@@ -3,6 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import fs from "fs/promises";
 import path from "path";
+import { compareBagToRules, extractSizerRules, formatDims } from "@/lib/carry-on-sizer";
+import { clampInt, firstString } from "@/lib/bag-cost-calculator";
+import { getAllAirlines } from "@/lib/data";
 
 type GearItem = {
   id: string;
@@ -14,6 +17,10 @@ type GearItem = {
 
 type GearItemsJson = { gear_items: GearItem[] };
 type GearRecsJson = Record<string, Record<string, string[]>>;
+type SearchParams = Record<string, string | string[] | undefined>;
+type PageProps = {
+  searchParams?: Promise<SearchParams>;
+};
 
 const LAST_VERIFIED = "2026-02-16";
 
@@ -72,8 +79,35 @@ function riskLabel(risk: "low" | "medium" | "high" | "extreme") {
   );
 }
 
-export default async function SizerRules() {
+function statusBadge(status: "fits" | "near_limit" | "fails") {
+  const map = {
+    fits: { label: "Fits published dimensions", cls: "border-emerald-200 bg-emerald-50 text-emerald-800" },
+    near_limit: { label: "Very tight", cls: "border-amber-200 bg-amber-50 text-amber-800" },
+    fails: { label: "Likely too large", cls: "border-rose-200 bg-rose-50 text-rose-800" },
+  } as const;
+  const v = map[status];
+  return <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-bold ${v.cls}`}>{v.label}</span>;
+}
+
+function statusRank(status: "fits" | "near_limit" | "fails"): number {
+  if (status === "fails") return 0;
+  if (status === "near_limit") return 1;
+  return 2;
+}
+
+export default async function SizerRules({ searchParams }: PageProps) {
+  const sp = (await searchParams) ?? {};
+  const heightIn = clampInt(firstString(sp.height), 1, 40, 22);
+  const widthIn = clampInt(firstString(sp.width), 1, 30, 14);
+  const depthIn = clampInt(firstString(sp.depth), 1, 20, 9);
   const gearGroups = await getGearForSection("sizer_rules");
+  const rules = extractSizerRules(getAllAirlines());
+  const results = compareBagToRules({ heightIn, widthIn, depthIn }, rules);
+  const sortedResults = [...results].sort((a, b) => statusRank(a.status) - statusRank(b.status) || a.airlineName.localeCompare(b.airlineName));
+  const cabinResults = sortedResults.filter((result) => result.kind === "cabin_bag");
+  const personalResults = sortedResults.filter((result) => result.kind === "personal_item");
+  const failCount = results.filter((result) => result.status === "fails").length;
+  const tightCount = results.filter((result) => result.status === "near_limit").length;
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
@@ -92,11 +126,94 @@ export default async function SizerRules() {
           <a href="#signals" className="text-blue-700 underline">
             What triggers checks
           </a>
+          <a href="#fit-checker" className="text-blue-700 underline">
+            Bag fit checker
+          </a>
           <a href="#gear" className="text-blue-700 underline">
             Recommended gear
           </a>
         </div>
       </header>
+
+      <section id="fit-checker" className="mt-10 rounded-2xl border border-blue-200 bg-blue-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-800">Deterministic sizer check</div>
+        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900">Compare your bag to published carry-on dimensions</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+          Enter the outside dimensions including wheels, handles, and stuffed pockets. This tool only
+          compares against dimension triplets published in the dataset; it does not guess missing
+          airline dimensions or override airport enforcement.
+        </p>
+
+        <form method="get" className="mt-5 grid gap-4 rounded-xl border border-blue-100 bg-white p-5 md:grid-cols-[1fr_1fr_1fr_auto]">
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Height, inches</label>
+            <input name="height" defaultValue={String(heightIn)} inputMode="numeric" className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Width, inches</label>
+            <input name="width" defaultValue={String(widthIn)} inputMode="numeric" className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Depth, inches</label>
+            <input name="depth" defaultValue={String(depthIn)} inputMode="numeric" className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" />
+          </div>
+          <button type="submit" className="self-end rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-700">
+            Check bag
+          </button>
+        </form>
+
+        <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Answer first</div>
+          <p className="mt-2 text-lg font-bold text-slate-950">
+            A {heightIn} × {widthIn} × {depthIn} inch bag fails {failCount} published sizer rule{failCount === 1 ? "" : "s"} in this dataset
+            {tightCount ? ` and is very tight on ${tightCount}` : ""}.
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            The comparison is dimension-only and uses a generous rotated-fit screen. A bag can still
+            be challenged if it is rigid, visibly overpacked, too heavy, or used on a stricter fare.
+          </p>
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-xl border border-slate-200 bg-white p-5">
+            <h3 className="font-bold text-slate-950">Cabin bag matches</h3>
+            <div className="mt-4 grid gap-3">
+              {cabinResults.slice(0, 10).map((result) => (
+                <div key={`${result.airlineSlug}-${result.rawText}`} className="rounded-lg border border-slate-100 p-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <Link href={`/airlines/${result.airlineSlug}`} className="font-semibold text-blue-700 underline">
+                      {result.airlineName}
+                    </Link>
+                    {statusBadge(result.status)}
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                    Published screen: {formatDims(result.dimensionsIn)}. {result.rawText}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-slate-200 bg-white p-5">
+            <h3 className="font-bold text-slate-950">Personal item / small-bag matches</h3>
+            <div className="mt-4 grid gap-3">
+              {personalResults.slice(0, 10).map((result) => (
+                <div key={`${result.airlineSlug}-${result.rawText}`} className="rounded-lg border border-slate-100 p-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <Link href={`/airlines/${result.airlineSlug}`} className="font-semibold text-blue-700 underline">
+                      {result.airlineName}
+                    </Link>
+                    {statusBadge(result.status)}
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                    Published screen: {formatDims(result.dimensionsIn)}. {result.rawText}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="risk" className="mt-10">
         <h2 className="text-2xl font-bold mb-3">Enforcement risk tiers</h2>

@@ -8,6 +8,7 @@ import {
   calcCardBagOffset,
   calcCheckedBagTripCost,
   clampInt,
+  explainVariableCheckedBagPricing,
   firstString,
   safeExternalUrl,
   usd,
@@ -57,6 +58,10 @@ function missingBagLabel(ordinals: number[]): string {
   return ordinals.map((n) => (n === 1 ? "first" : n === 2 ? "second" : `${n}rd`)).join(", ");
 }
 
+function scenarioHref(airlineSlug: string, travelers: number, bags: number, trips: number): string {
+  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=yes`;
+}
+
 export default async function CheckedBaggageCalculatorPage({ searchParams }: PageProps) {
   const sp = (await searchParams) ?? {};
   const airlineSlug = firstString(sp.airline) || "alaska";
@@ -75,6 +80,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
     bagsPerTravelerPerDirection: bags,
     directions,
   });
+  const variablePricing = explainVariableCheckedBagPricing(airline.fees);
 
   const cardsJson = await readJsonFile<CardsJson>("data/cards/cards.json");
   const overridesJson = await readJsonFile<AirlineOverrides>("data/cards/airline_overrides.json");
@@ -113,6 +119,36 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           unquoted when the price depends on route, fare, or booking timing.
         </p>
       </header>
+
+      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+        <div className="text-xs font-bold uppercase tracking-widest text-slate-600">Common scenarios</div>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link
+            href={scenarioHref(airlineSlug, 1, 1, 1)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-semibold text-blue-700 hover:border-blue-300"
+          >
+            Solo traveler, one bag
+          </Link>
+          <Link
+            href={scenarioHref(airlineSlug, 2, 1, 2)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-semibold text-blue-700 hover:border-blue-300"
+          >
+            Couple, two trips a year
+          </Link>
+          <Link
+            href={scenarioHref(airlineSlug, 4, 1, 1)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-semibold text-blue-700 hover:border-blue-300"
+          >
+            Family of four
+          </Link>
+          <Link
+            href={scenarioHref(airlineSlug, 2, 2, 2)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-semibold text-blue-700 hover:border-blue-300"
+          >
+            Two bags each
+          </Link>
+        </div>
+      </section>
 
       <form method="get" className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="grid gap-4 md:grid-cols-2">
@@ -207,13 +243,44 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             </h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
               The missing piece is the {missingBagLabel(trip.missingBagOrdinals)} checked-bag amount.
-              That usually means the charge varies by route, fare family, ticketing timing, or whether
-              the itinerary follows a piece or weight concept.
+              For {airline.name}, the published rows point to{" "}
+              <span className="font-semibold">{variablePricing.reasons.join(", ")}</span> as the likely
+              drivers of the final baggage price.
             </p>
           </>
         )}
         <p className="text-sm leading-relaxed text-slate-600">{trip.explanation}</p>
       </section>
+
+      {!trip.canEstimate ? (
+        <section className="grid gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+          <div className="text-xs font-bold uppercase tracking-widest text-amber-800">
+            What to check before you pay
+          </div>
+          <h2 className="text-2xl font-extrabold text-slate-950">
+            Do the lookup at checkout before treating the fare as cheaper.
+          </h2>
+          <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+            A variable checked-bag row is not useless, but it is not a price quote. Use the airline
+            checkout flow or baggage calculator to confirm:
+          </p>
+          <ul className="grid gap-2 text-sm leading-relaxed text-slate-700 md:grid-cols-2">
+            {variablePricing.lookupFields.map((field) => (
+              <li key={field} className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                {field}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="font-bold text-blue-800 underline">
+              Review {airline.name} fee page
+            </Link>
+            <Link href="/fees/checked_baggage" className="font-bold text-blue-800 underline">
+              Compare checked-bag rules
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       {trip.canEstimate ? (
         <section className="grid gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">

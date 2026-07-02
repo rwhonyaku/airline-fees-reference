@@ -119,6 +119,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   </li>
                   <li className="flex gap-2">
                     ✅{" "}
+                    <Link href="/tools/excess-baggage-calculator" className="hover:text-blue-600 underline">
+                      Overweight and oversize calculator
+                    </Link>
+                  </li>
+                  <li className="flex gap-2">
+                    ✅{" "}
                     <Link href="/best-cards" className="hover:text-blue-600 underline">
                       Free checked bag calculator
                     </Link>

@@ -196,9 +196,21 @@ function getContextualBridge(category: string) {
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
           Overweight-bag math is usually fixed before the airport scale, so compare{" "}
           <Link href="/airlines/southwest">Southwest</Link>, <Link href="/airlines/frontier">Frontier</Link>, and{" "}
-          <Link href="/airlines/spirit">Spirit</Link>, then use{" "}
+          <Link href="/airlines/spirit">Spirit</Link>, use the{" "}
+          <Link href="/tools/excess-baggage-calculator">overweight and oversize baggage calculator</Link>, then check{" "}
           <Link href="/guides/carry-on-strictness-by-airline">carry-on strictness by airline</Link> and{" "}
           <Link href="/sizer-rules">Sizer rules</Link> if repacking into a cabin-first strategy is still realistic.
+        </p>
+      );
+    case "oversize_baggage":
+      return (
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
+          Oversize charges can be harder to rescue at the airport because the bag shape is already
+          fixed. Use the{" "}
+          <Link href="/tools/excess-baggage-calculator">overweight and oversize baggage calculator</Link>, compare{" "}
+          <Link href="/airlines/american">American</Link>, <Link href="/airlines/delta">Delta</Link>, and{" "}
+          <Link href="/airlines/southwest">Southwest</Link>, then check{" "}
+          <Link href="/fees/checked_baggage">standard checked-bag fees</Link> because oversize charges may be in addition to the normal bag fee.
         </p>
       );
     case "unaccompanied_minor":

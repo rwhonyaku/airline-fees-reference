@@ -7,10 +7,12 @@ export function CheckedBagCardMathCallout({
   airlineSlug?: string;
   compact?: boolean;
 }) {
-  const href = airlineSlug ? `/best-cards?airline=${encodeURIComponent(airlineSlug)}` : "/best-cards";
+  const href = airlineSlug
+    ? `/best-cards?airline=${encodeURIComponent(airlineSlug)}&travelers=2&bags=1&trips=2&pay=yes`
+    : "/best-cards?travelers=2&bags=1&trips=2&pay=yes";
   const calculatorHref = airlineSlug
-    ? `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}`
-    : "/tools/checked-baggage-calculator";
+    ? `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`
+    : "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes";
 
   return (
     <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">

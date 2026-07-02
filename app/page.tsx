@@ -128,6 +128,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="mb-16 rounded-2xl border border-blue-200 bg-blue-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-800">
+          Fee calculators
+        </div>
+        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900">
+          Turn baggage rules into trip math
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+          Use deterministic tools when the question is not just what the rule says, but what the
+          likely charge does to the real fare.
+        </p>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <Link
+            href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
+            className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
+          >
+            Checked baggage cost calculator
+          </Link>
+          <Link
+            href="/tools/excess-baggage-calculator"
+            className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
+          >
+            Overweight and oversize baggage calculator
+          </Link>
+          <Link
+            href="/sizer-rules?height=22&width=14&depth=9"
+            className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
+          >
+            Carry-on sizer comparison
+          </Link>
+        </div>
+      </section>
+
       <section className="mb-16 rounded-2xl border border-sky-200 bg-sky-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-sky-800">
           International trip prep
