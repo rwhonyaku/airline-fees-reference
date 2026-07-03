@@ -20,9 +20,9 @@ export default function AirlinesIndexPage() {
       <header className="mb-12 max-w-3xl">
         <h1 className="mb-6 text-5xl font-black tracking-tight text-slate-900">Airlines Index</h1>
         <p className="text-lg leading-relaxed text-slate-600">
-          Use this directory to open each airline fee page. The airline pages summarize carry-on
-          rules, checked bag baselines, fare-class restrictions, and the most relevant fee-topic
-          references already in the site.
+          Use this directory to open an airline fee page. Each page explains carry-on rules,
+          checked-bag costs, fare restrictions, and the guides or calculators that help with that
+          airline.
         </p>
         <div className="mt-4 text-sm text-slate-500">Last verified: {latestVerified}</div>
         <div className="mt-6 flex items-center gap-4">
@@ -34,7 +34,7 @@ export default function AirlinesIndexPage() {
             href="/methodology"
             className="text-xs font-bold uppercase tracking-widest text-blue-600 hover:underline"
           >
-            Our Methodology {" >"}
+            Our methodology {" >"}
           </Link>
         </div>
         <div className="mt-5 flex flex-wrap gap-4 text-sm">
@@ -88,12 +88,11 @@ export default function AirlinesIndexPage() {
 
       <footer className="mt-20 border-t border-slate-100 pt-10">
         <div className="max-w-3xl rounded-2xl bg-slate-50 p-8">
-          <h3 className="mb-2 font-bold text-slate-900">Data Integrity Notice</h3>
+          <h3 className="mb-2 font-bold text-slate-900">About the data</h3>
           <p className="text-sm leading-relaxed text-slate-600">
-            Airline pages use published carrier fee tables and linked source documents in this
-            dataset. Because airlines can change fees quickly, treat each page as a source-linked
-            reference snapshot and verify route-specific details on the airline page when timing
-            matters.
+            Airline fees can change quickly and often depend on route, fare, and timing. These
+            pages use published airline sources where available, and each airline page shows its
+            last verified date.
           </p>
           <div className="mt-4 text-xs font-medium text-slate-500">Last verified: {latestVerified}</div>
         </div>

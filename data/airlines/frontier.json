@@ -4,6 +4,12 @@
   "iata": "F9",
   "country": "US",
   "region": "North America",
+  "unique_insights": {
+    "traps": [
+      "Frontier's cheapest fare depends on solving bags and flexibility before checkout; late carry-on, checked-bag, or change decisions can erase the low base fare."
+    ],
+    "pro_hack": "Compare the bundle price against the exact bag and change needs before booking. The bundle can be rational when you need both bags and flexibility."
+  },
   "fees": [
     {
       "category": "change_cancellation",
@@ -152,18 +158,7 @@
       "timing": "at booking",
       "source_url": "https://www.flyfrontier.com/travel/travel-info/travel-policies/?mobile=true",
       "last_verified": "2025-12-19"
-    },
-
-    {
-  "id": "frontier",
-  "name": "Frontier Airlines",
-  "unique_insights": {
-    "traps": [
-      "The \"Human Interaction\" Tax: Frontier charges $25 just to talk to a gate agent for help you could have handled in the app."
-    ],
-    "pro_hack": "The \"Works\" Bundle Math: Only buy \"The Works\" at initial checkout—it's often ~40% more expensive if you add it later."
-  }
-}
+    }
 
   ]
 }

@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Route and weight dependent",
       "currency": "INR",
       "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Weight-limit dependent",
       "currency": "INR",
       "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Seat type and route dependent",
       "currency": "INR",
       "conditions": "Preferred or extra legroom seats are chargeable; fees vary by seat type and route",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fare-family and route dependent",
       "currency": "INR",
       "conditions": "Change and cancellation fees depend on fare family and route; lowest fares are the most restrictive",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Age and routing dependent",
       "currency": "INR",
       "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
       "applies_to": "Eligible ages",

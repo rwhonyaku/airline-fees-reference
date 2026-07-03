@@ -2,17 +2,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
 import { Disclaimer } from "@/components/Disclaimer";
 import { canonical } from "@/lib/seo";
 import "./globals.css";
-
-const sourceSans = Source_Sans_3({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-body",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Script>
       </head>
 
-      <body className={`${sourceSans.variable} bg-slate-50 text-slate-900 antialiased`}>
+      <body className="bg-slate-50 text-slate-900 antialiased">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Navigation */}
           <nav className="flex items-center justify-between py-6 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 px-4 rounded-b-xl shadow-sm">

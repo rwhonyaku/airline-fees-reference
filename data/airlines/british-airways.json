@@ -30,7 +30,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route, cabin, and booking time",
       "currency": "GBP",
       "conditions": "Checked baggage fee applies on fares without an included checked bag; price varies by route, cabin, and booking time",
       "applies_to": "Basic fares",
@@ -54,7 +54,7 @@
 
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Depends on item and route",
       "currency": "GBP",
       "conditions": "Oversize items accepted within maximum dimensions of 190 × 75 × 65 cm; handling fees may apply depending on item and route",
       "applies_to": "All fares",
@@ -77,7 +77,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route, seat type, and timing",
       "currency": "GBP",
       "conditions": "Advance seat selection fee applies on some Economy fares; pricing varies by route, seat type, and time of selection",
       "applies_to": "Economy (some fares)",
@@ -100,7 +100,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare rules",
       "currency": "GBP",
       "conditions": "Change fees and fare differences apply depending on ticket fare rules; some fares are non-refundable",
       "applies_to": "All fares",

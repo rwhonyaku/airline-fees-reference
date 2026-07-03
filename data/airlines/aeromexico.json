@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and purchase timing",
       "currency": "USD",
       "conditions": "Checked baggage fees apply on Basic fares or when exceeding free allowance; fees vary by route and purchase timing",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and weight",
       "currency": "USD",
       "conditions": "Checked bags weighing more than standard allowance and up to maximum limits incur overweight fees; bags above maximum weight are not accepted",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and size",
       "currency": "USD",
       "conditions": "Checked bags exceeding size limits incur oversize fees; acceptance subject to aircraft and airport handling limits",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on fare family, seat type, and timing",
       "currency": "USD",
       "conditions": "Seat selection fees depend on fare family, seat type, and timing; some fares include standard seat selection",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare family and route",
       "currency": "USD",
       "conditions": "Change and cancellation fees depend on fare family and route; Basic fares are generally the most restrictive",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on route and age",
       "currency": "USD",
       "conditions": "Unaccompanied Minor service available on select routes and ages; fees and conditions vary by route",
       "applies_to": "Eligible ages",

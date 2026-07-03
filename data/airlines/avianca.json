@@ -18,7 +18,7 @@
     },
     {
       "category": "carry_on",
-      "amount": "Varies",
+      "amount": "Depends on route and timing",
       "currency": "USD",
       "conditions": "Basic fare includes personal item only; carry-on bag available for purchase; price varies by route and timing",
       "applies_to": "Basic fare",
@@ -40,7 +40,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route, weight, and timing",
       "currency": "USD",
       "conditions": "Checked baggage not included on Basic fare; fees vary by route, baggage weight, and timing",
       "applies_to": "Basic fare",
@@ -51,7 +51,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and weight",
       "currency": "USD",
       "conditions": "Overweight baggage fees apply for bags exceeding the allowance up to 32 kg; pricing depends on route",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and aircraft",
       "currency": "USD",
       "conditions": "Oversize baggage applies to items exceeding standard size limits; fees and acceptance depend on route and aircraft",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route and timing",
       "currency": "USD",
       "conditions": "Preferred and extra legroom seats available for a fee; pricing varies by route and timing",
       "applies_to": "All fares",
@@ -95,7 +95,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare family and route",
       "currency": "USD",
       "conditions": "Change and cancellation fees depend on fare family and route; fare difference may apply",
       "applies_to": "All fares",
@@ -106,7 +106,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on route and eligibility",
       "currency": "USD",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
       "applies_to": "Eligible ages",

@@ -18,7 +18,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Route, fare, and weight dependent",
       "currency": "USD",
       "conditions": "Checked baggage is included only with certain fare types; baggage can be purchased in weight options; fees vary by route and fare",
       "applies_to": "All fares",
@@ -29,7 +29,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport excess-weight rate",
       "currency": "USD",
       "conditions": "Single checked bag may not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "sports_equipment",
-      "amount": "Varies",
+      "amount": "Route and equipment dependent",
       "currency": "USD",
       "conditions": "Sports equipment must be pre-booked as special baggage; fees depend on route and equipment type",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Seat type and route dependent",
       "currency": "USD",
       "conditions": "Seat selection is chargeable on Economy fares; included with Business Class; fees vary by seat type and route",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fare-type and route dependent",
       "currency": "USD",
       "conditions": "Change and cancellation fees depend on fare type and route; fare difference may apply",
       "applies_to": "All fares",

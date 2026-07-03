@@ -98,7 +98,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "EUR",
       "conditions": "Flight changes permitted for a fee plus fare difference; amount varies by route and timing; TimeFlex fares allow changes with fewer restrictions",
       "applies_to": "All fares",

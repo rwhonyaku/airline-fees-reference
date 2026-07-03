@@ -121,7 +121,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare bundle and route",
       "currency": "CAD",
       "conditions": "Change fees apply on Econo fares; amount varies by fare bundle and route; fare difference applies",
       "applies_to": "Econo fares",

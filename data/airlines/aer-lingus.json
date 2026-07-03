@@ -87,7 +87,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "EUR",
       "conditions": "Flight changes permitted for a fee plus fare difference on Saver fares; Plus and Advantage fares allow changes with fewer restrictions",
       "applies_to": "All fares",
@@ -110,7 +110,7 @@
 
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on route and age",
       "currency": "EUR",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and age",
       "applies_to": "Eligible ages",

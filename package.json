@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:stable": "sh scripts/build-stable.sh",
     "start": "next start",
     "lint": "eslint",
     "validate:data": "node scripts/validate-data.mjs",

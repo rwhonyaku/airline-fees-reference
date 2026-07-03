@@ -87,7 +87,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "GBP",
       "conditions": "Flight changes permitted for a fee plus fare difference; amount varies by route and timing",
       "applies_to": "All fares",

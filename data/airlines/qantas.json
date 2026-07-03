@@ -6,7 +6,7 @@
   "region": "Oceania",
   "fees": [
     {
-      "category": "additional_baggage",
+      "category": "checked_baggage",
       "amount": 150,
       "currency": "AUD",
       "conditions": "Airport excess baggage charge for each extra checked bag beyond the published allowance on Australian domestic flights",
@@ -28,8 +28,8 @@
       "last_verified": "2025-12-24"
     },
     {
-      "category": "additional_baggage",
-      "amount": "Varies",
+      "category": "checked_baggage",
+      "amount": "Depends on route and weight increment",
       "currency": "AUD",
       "conditions": "Pre-purchase additional baggage in weight increments; charges vary by route and weight increment",
       "applies_to": "All passengers",
@@ -51,7 +51,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare rules and route",
       "currency": "AUD",
       "conditions": "Change and cancellation fees depend on fare rules and route; some premium cabins may have no change fees or different conditions",
       "applies_to": "All fares",
@@ -72,8 +72,8 @@
       "last_verified": "2025-12-24"
     },
     {
-      "category": "checked_baggage_included",
-      "amount": "Varies",
+      "category": "checked_baggage",
+      "amount": "Depends on itinerary, cabin, and status",
       "currency": "AUD",
       "conditions": "Free checked baggage allowance varies by itinerary, cabin class, and frequent flyer status",
       "applies_to": "All passengers",

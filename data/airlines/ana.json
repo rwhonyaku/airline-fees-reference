@@ -30,7 +30,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route, cabin, and baggage piece",
       "currency": "JPY",
       "conditions": "Additional checked baggage fees apply when exceeding the free allowance; fees vary by route, cabin, and baggage piece",
       "applies_to": "All fares",
@@ -42,7 +42,7 @@
 
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and weight",
       "currency": "JPY",
       "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags exceeding 32 kg are not accepted as checked baggage",
       "applies_to": "All fares",
@@ -54,7 +54,7 @@
 
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and size",
       "currency": "JPY",
       "conditions": "Checked bags with total dimensions exceeding 158 cm (L+W+H) incur an oversize fee; maximum accepted size is 203 cm",
       "applies_to": "All fares",
@@ -77,7 +77,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on fare brand and route",
       "currency": "JPY",
       "conditions": "Preferred seat selection fees may apply on some international Economy fares depending on fare brand and route",
       "applies_to": "Economy (some fares)",
@@ -89,7 +89,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare rules, route, and ticket type",
       "currency": "JPY",
       "conditions": "Change and cancellation fees depend on fare rules, route (domestic vs international), and ticket type; some fares are non-refundable",
       "applies_to": "All fares",

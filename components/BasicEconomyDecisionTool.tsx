@@ -24,8 +24,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 3,
     flexibilityRisk: 3,
     seatRisk: 2,
-    baseline: "High-risk if you need more than a personal item or may change plans.",
-    strongestWarning: "United Basic Economy is the clearest carry-on trap in this comparison.",
+    baseline: "Usually a bad fit if you need an overhead carry-on or might change plans.",
+    strongestWarning: "United Basic Economy is the one to watch if you need more than a small personal item.",
   },
   {
     slug: "american",
@@ -35,8 +35,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 2,
     flexibilityRisk: 2,
     seatRisk: 2,
-    baseline: "Usually less risky for carry-on-only trips, but bags and seats still need pricing.",
-    strongestWarning: "The trip can still get expensive once checked bags or paid seats enter the comparison.",
+    baseline: "Usually easier for carry-on-only trips, but checked bags and seats can still change the price.",
+    strongestWarning: "Price checked bags and seats before assuming Basic Economy is cheaper.",
   },
   {
     slug: "delta",
@@ -46,8 +46,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 2,
     flexibilityRisk: 4,
     seatRisk: 2,
-    baseline: "Carry-on access is not the main problem; flexibility is.",
-    strongestWarning: "Delta Basic can be a poor fit when dates or plans are uncertain.",
+    baseline: "The carry-on is usually allowed; the bigger issue is what happens if plans change.",
+    strongestWarning: "Delta Basic is a poor fit when your dates are not firm.",
   },
   {
     slug: "jetblue",
@@ -57,8 +57,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 2,
     flexibilityRisk: 4,
     seatRisk: 2,
-    baseline: "Carry-on access is restored, but flexibility remains the main trap.",
-    strongestWarning: "Blue Basic is risky when cancellation or changes are plausible.",
+    baseline: "Blue Basic includes a carry-on now, but changes and cancellations are still limited.",
+    strongestWarning: "Blue Basic is risky when you may need to cancel or change the trip.",
   },
   {
     slug: "alaska",
@@ -68,7 +68,7 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 2,
     flexibilityRisk: 3,
     seatRisk: 2,
-    baseline: "Usually clearer than classic Basic Economy, but still restrictive after the 24-hour window.",
+    baseline: "Usually clearer than classic Basic Economy, but still not ideal if plans may change.",
     strongestWarning: "Saver is a bad match when flexibility matters more than the lowest fare.",
   },
   {
@@ -79,8 +79,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 3,
     flexibilityRisk: 1,
     seatRisk: 3,
-    baseline: "The new risk is checked-bag and seat certainty math, not carry-on access.",
-    strongestWarning: "Southwest Basic needs bag and seat math before you treat it like old Southwest.",
+    baseline: "The carry-on is not the issue. Checked bags and seat choice are what you need to price.",
+    strongestWarning: "Do the bag and seat math before treating Southwest Basic like old Southwest.",
   },
   {
     slug: "spirit",
@@ -90,8 +90,8 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 4,
     flexibilityRisk: 3,
     seatRisk: 2,
-    baseline: "This is a stripped-fare model where normal travel behavior is often bought back.",
-    strongestWarning: "Spirit Value is high-risk when you need a carry-on, checked bag, or flexibility.",
+    baseline: "The low fare works best only when you can travel very light and do not need much flexibility.",
+    strongestWarning: "Spirit Value gets risky fast if you need a carry-on, checked bag, or flexible plans.",
   },
   {
     slug: "frontier",
@@ -101,35 +101,35 @@ const AIRLINE_RULES: AirlineRule[] = [
     checkedBagRisk: 4,
     flexibilityRisk: 3,
     seatRisk: 2,
-    baseline: "This is a stripped-fare model where timing and bundles matter heavily.",
-    strongestWarning: "Frontier can stop being cheap when you add bags or fix the trip late.",
+    baseline: "The low fare works best when you know your bags and plans before booking.",
+    strongestWarning: "Frontier can stop being cheap once you add bags or make changes close to departure.",
   },
 ];
 
 function verdictForScore(score: number) {
   if (score >= 8) {
     return {
-      label: "High risk: compare the next fare before booking",
+      label: "High risk: compare the next fare",
       className: "border-rose-200 bg-rose-50 text-rose-950",
       detail:
-        "The cheap fare is likely selling back something this trip actually needs. Price the next fare family before booking.",
+        "The cheapest fare probably leaves out something this trip needs. Check the next fare before you book.",
     };
   }
 
   if (score >= 4) {
     return {
-      label: "Borderline: run the fee math first",
+      label: "Maybe: add up the fees first",
       className: "border-amber-200 bg-amber-50 text-amber-950",
       detail:
-        "This fare can work, but only if the baggage, seat, and flexibility tradeoffs stay below the fare savings.",
+        "This fare may still work, but only if bags, seats, and change limits do not wipe out the savings.",
     };
   }
 
   return {
-    label: "Probably workable for this trip",
+    label: "Probably workable",
     className: "border-emerald-200 bg-emerald-50 text-emerald-950",
     detail:
-      "The selected trip needs do not hit this fare's biggest traps. Still verify the exact route and fare rules before purchase.",
+      "Based on what you selected, this fare does not hit the biggest problem areas. Still check the exact route and fare rules before buying.",
   };
 }
 
@@ -181,8 +181,8 @@ export function BasicEconomyDecisionTool() {
             Should you avoid the cheapest fare?
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-700">
-            Pick the airline and the trip constraints that matter. This tool does not guess a fare
-            difference; it flags whether the cheapest fare is likely to create fee exposure.
+            Choose an airline and check what you need for the trip. The tool will show whether the
+            cheapest fare is likely to cost more once bags, seats, or change rules are included.
           </p>
         </div>
 
@@ -249,7 +249,7 @@ export function BasicEconomyDecisionTool() {
             </p>
             <p className="mt-2 text-sm leading-relaxed">
               {result.reasons.length
-                ? `Main pressure point${result.reasons.length === 1 ? "" : "s"} for this setup: ${result.reasons.join(", ")}.`
+                ? `Main thing to check${result.reasons.length === 1 ? "" : "s"} before booking: ${result.reasons.join(", ")}.`
                 : rule.strongestWarning}
             </p>
           </div>

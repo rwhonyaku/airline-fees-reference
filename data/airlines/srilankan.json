@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Route and baggage-concept dependent",
       "currency": "USD",
       "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
       "applies_to": "All fares (where additional bags are permitted)",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Route-based overweight charge",
       "currency": "USD",
       "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Route and aircraft dependent",
       "currency": "USD",
       "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Route, fare, and seat dependent",
       "currency": "USD",
       "conditions": "Advance seat selection fees vary by route, fare family, and seat type; free seat assignment available at check-in for eligible fares",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fare-rule based",
       "currency": "USD",
       "conditions": "Change and cancellation fees depend on fare rules and route; fare difference may apply",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Age and routing dependent",
       "currency": "USD",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
       "applies_to": "Eligible ages",

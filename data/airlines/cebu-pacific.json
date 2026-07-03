@@ -18,7 +18,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on weight tier and route",
       "currency": "USD",
       "conditions": "Checked baggage is not included by default; fees depend on weight tier (20 kg, 32 kg, 40 kg) and route; pre-purchase available",
       "applies_to": "All fares",
@@ -29,7 +29,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced per kilo over allowance",
       "currency": "USD",
       "conditions": "Checked baggage exceeding purchased allowance is charged per kilo at airport rates; single bag maximum weight limits apply",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "sports_equipment",
-      "amount": "Varies",
+      "amount": "Depends on equipment and route",
       "currency": "USD",
       "conditions": "Sports equipment must be pre-booked; charges depend on equipment type and route; weight limits apply",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on seat type, route, and timing",
       "currency": "USD",
       "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "USD",
       "conditions": "Flight changes permitted with fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
       "applies_to": "All fares",

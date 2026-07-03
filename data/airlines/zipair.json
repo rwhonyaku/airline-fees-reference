@@ -18,7 +18,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Route, weight, and timing dependent",
       "currency": "JPY",
       "conditions": "Checked baggage not included by default; baggage can be purchased in advance by weight; fees vary by route and timing",
       "applies_to": "All fares",
@@ -29,7 +29,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport excess-weight rate",
       "currency": "JPY",
       "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "sports_equipment",
-      "amount": "Varies",
+      "amount": "Equipment type and route dependent",
       "currency": "JPY",
       "conditions": "Sports equipment must be checked and may require advance purchase; fees depend on equipment type and route",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Seat type and timing dependent",
       "currency": "JPY",
       "conditions": "Seat selection is optional and chargeable; fees vary by seat type and timing",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "JPY",
       "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
       "applies_to": "All fares",

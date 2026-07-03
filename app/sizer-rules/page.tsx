@@ -112,10 +112,11 @@ export default async function SizerRules({ searchParams }: PageProps) {
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
       <header className="text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight mb-4">Sizer rules & enforcement reality (2026)</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight mb-4">Carry-on sizer rules by airline (2026)</h1>
         <p className="text-slate-600 max-w-3xl mx-auto">
-          Sizers aren’t neutral. The same “carry-on size” can be ignored on one flight and enforced aggressively on another.
-          This page focuses on what gets targeted at the gate, and which bag types reduce your odds of getting flagged.
+          A bag that works on one airline may be too large on another. This page helps you compare
+          your bag against published size rules and spot the bag types most likely to get questioned
+          at the gate.
         </p>
         <div className="mt-3 text-xs text-slate-500">Last verified: {LAST_VERIFIED}</div>
 
@@ -136,12 +137,12 @@ export default async function SizerRules({ searchParams }: PageProps) {
       </header>
 
       <section id="fit-checker" className="mt-10 rounded-2xl border border-blue-200 bg-blue-50 p-6">
-        <div className="text-xs font-bold uppercase tracking-widest text-blue-800">Deterministic sizer check</div>
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-800">Bag size checker</div>
         <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900">Compare your bag to published carry-on dimensions</h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
           Enter the outside dimensions including wheels, handles, and stuffed pockets. This tool only
-          compares against dimension triplets published in the dataset; it does not guess missing
-          airline dimensions or override airport enforcement.
+          compares against published airline dimensions. It does not guess missing airline rules or
+          promise that airport staff will handle every bag the same way.
         </p>
 
         <form method="get" className="mt-5 grid gap-4 rounded-xl border border-blue-100 bg-white p-5 md:grid-cols-[1fr_1fr_1fr_auto]">
@@ -165,12 +166,12 @@ export default async function SizerRules({ searchParams }: PageProps) {
         <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Answer first</div>
           <p className="mt-2 text-lg font-bold text-slate-950">
-            A {heightIn} × {widthIn} × {depthIn} inch bag fails {failCount} published sizer rule{failCount === 1 ? "" : "s"} in this dataset
+            A {heightIn} × {widthIn} × {depthIn} inch bag fails {failCount} published sizer rule{failCount === 1 ? "" : "s"} in this comparison
             {tightCount ? ` and is very tight on ${tightCount}` : ""}.
           </p>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            The comparison is dimension-only and uses a generous rotated-fit screen. A bag can still
-            be challenged if it is rigid, visibly overpacked, too heavy, or used on a stricter fare.
+            This checks size only. A bag can still be challenged if it is rigid, visibly overpacked,
+            too heavy, or used on a stricter fare.
           </p>
         </div>
 
@@ -187,7 +188,7 @@ export default async function SizerRules({ searchParams }: PageProps) {
                     {statusBadge(result.status)}
                   </div>
                   <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                    Published screen: {formatDims(result.dimensionsIn)}. {result.rawText}
+                    Published limit: {formatDims(result.dimensionsIn)}. {result.rawText}
                   </p>
                 </div>
               ))}
@@ -206,7 +207,7 @@ export default async function SizerRules({ searchParams }: PageProps) {
                     {statusBadge(result.status)}
                   </div>
                   <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                    Published screen: {formatDims(result.dimensionsIn)}. {result.rawText}
+                    Published limit: {formatDims(result.dimensionsIn)}. {result.rawText}
                   </p>
                 </div>
               ))}
@@ -218,7 +219,8 @@ export default async function SizerRules({ searchParams }: PageProps) {
       <section id="risk" className="mt-10">
         <h2 className="text-2xl font-bold mb-3">Enforcement risk tiers</h2>
         <p className="text-slate-600 mb-6">
-          Use this as a planning heuristic. The stricter the sizer culture, the more “shape” matters (soft bags win).
+          Use this to decide how cautious to be before you pack. Stricter airlines are more likely
+          to notice rigid, overstuffed, or borderline bags.
         </p>
 
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
@@ -227,7 +229,7 @@ export default async function SizerRules({ searchParams }: PageProps) {
               <tr className="bg-slate-50 text-slate-700">
                 <th className="p-4 border-b border-slate-200">Group</th>
                 <th className="p-4 border-b border-slate-200">Typical published carry-on</th>
-                <th className="p-4 border-b border-slate-200">Primary “gotcha”</th>
+                <th className="p-4 border-b border-slate-200">What to watch for</th>
                 <th className="p-4 border-b border-slate-200">Risk</th>
               </tr>
             </thead>
@@ -235,19 +237,19 @@ export default async function SizerRules({ searchParams }: PageProps) {
               <tr>
                 <td className="p-4 border-b border-slate-100 font-semibold">US Big Three (UA / DL / AA)</td>
                 <td className="p-4 border-b border-slate-100">22 × 14 × 9 (common baseline)</td>
-                <td className="p-4 border-b border-slate-100">Discretion spikes on full flights; hardshell gets targeted</td>
+                <td className="p-4 border-b border-slate-100">Full flights make rigid rollers more likely to get checked</td>
                 <td className="p-4 border-b border-slate-100">{riskLabel("medium")}</td>
               </tr>
               <tr className="bg-rose-50/40">
-                <td className="p-4 border-b border-slate-100 font-semibold">US ULCC (Spirit / Frontier)</td>
-                <td className="p-4 border-b border-slate-100">Personal item is the pricing weapon</td>
-                <td className="p-4 border-b border-slate-100">Sizer culture is the business model (fees are the product)</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">US low-cost carriers (Spirit / Frontier)</td>
+                <td className="p-4 border-b border-slate-100">Personal item is included; larger bags usually cost extra</td>
+                <td className="p-4 border-b border-slate-100">A bag that looks too large is more likely to be checked against the sizer</td>
                 <td className="p-4 border-b border-slate-100">{riskLabel("extreme")}</td>
               </tr>
               <tr>
-                <td className="p-4 border-b border-slate-100 font-semibold">Europe LCC (Ryanair / easyJet)</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">European low-cost carriers (Ryanair / easyJet)</td>
                 <td className="p-4 border-b border-slate-100">Personal item baseline + paid “large cabin bag”</td>
-                <td className="p-4 border-b border-slate-100">They monetize enforcement; wearable storage is the classic workaround</td>
+                <td className="p-4 border-b border-slate-100">Buy the correct bag option before travel if your bag needs the overhead bin</td>
                 <td className="p-4 border-b border-slate-100">{riskLabel("extreme")}</td>
               </tr>
               <tr>
@@ -261,7 +263,8 @@ export default async function SizerRules({ searchParams }: PageProps) {
         </div>
 
         <div className="mt-4 text-xs text-slate-500">
-          Note: published dimensions vary by airline and can change. This page focuses on enforcement patterns and “bag shape” outcomes.
+          Note: published dimensions vary by airline and can change. This page focuses on size
+          rules and the bag shapes most likely to get noticed.
         </div>
       </section>
 
@@ -272,32 +275,34 @@ export default async function SizerRules({ searchParams }: PageProps) {
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <div className="text-sm font-bold text-slate-900">Trigger #1: boxy hardshell rollers</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              On busy flights, agents often pre-tag rigid rollers because they don’t compress. Soft bags get “visual passes” more often
-              because they look smaller and can squeeze into spaces.
+              On busy flights, agents often pre-tag rigid rollers because they do not compress. Soft
+              bags are less likely to draw attention because they look smaller and can squeeze into
+              tighter spaces.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #2: discretionary enforcement</div>
+            <div className="text-sm font-bold text-slate-900">Trigger #2: staff judgment at the gate</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              Some airports are moving away from obvious metal sizers, which shifts enforcement to agent judgment. If it looks big,
-              you lose the argument before it starts.
+              Some airports do not use obvious metal sizers every time. If the bag looks too large,
+              staff may ask you to check it even before exact measuring starts.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <div className="text-sm font-bold text-slate-900">Trigger #3: regional flight constraints</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              Small aircraft have real physical limits. Even if “carry-on allowed,” you may be forced to gate-check. Plan for what
-              happens next: keep medicine/keys on-person if a tag routes to the carousel.
+              Small aircraft have real physical limits. Even if carry-on bags are allowed, you may
+              still be forced to gate-check. Keep medicine, keys, and documents with you in case the
+              bag is sent to the carousel.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #4: ULCC pricing model</div>
+            <div className="text-sm font-bold text-slate-900">Trigger #4: cheapest fares with small-bag limits</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              On ULCCs, enforcement is not incidental — it’s revenue. The safest play is choosing a personal item that can compress
-              into the sizer even when slightly packed.
+              On airlines where the cheapest fare includes only a small bag, choose a personal item
+              that can compress into the sizer even when it is packed.
             </p>
           </div>
         </div>
@@ -308,8 +313,8 @@ export default async function SizerRules({ searchParams }: PageProps) {
           <div>
             <h2 className="text-2xl font-bold">Recommended gear</h2>
             <p className="text-slate-600 mt-1">
-              These are bag archetypes designed to survive sizers and gate discretion. Where a
-              product link is available, it appears below.
+              These bag types are easier to fit into sizers and under seats. Where a product link is
+              available, it appears below.
             </p>
           </div>
           <div className="text-xs text-slate-500">
@@ -328,8 +333,8 @@ export default async function SizerRules({ searchParams }: PageProps) {
             />
           </div>
           <figcaption className="border-t border-slate-100 px-5 py-3 text-xs leading-relaxed text-slate-500">
-            Bag shape matters before the gate agent ever measures it: rigid rollers invite scrutiny
-            on stricter airlines, while softer bags usually survive sizer pressure better.
+            Bag shape matters before anyone measures it: rigid rollers are easier to spot, while
+            softer bags are usually easier to fit.
           </figcaption>
         </figure>
 
@@ -369,16 +374,17 @@ export default async function SizerRules({ searchParams }: PageProps) {
           </div>
         )}
 
-        <div className="mt-8 rounded-2xl bg-slate-900 p-8 text-white">
-          <h3 className="text-xl font-bold">Next: airline-specific tactics</h3>
-          <p className="mt-2 opacity-90 leading-relaxed">
-            If you want the airline-specific fee guide, use the “How to beat fees” page for your airline.
+        <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50 p-8">
+          <h3 className="text-xl font-bold text-slate-950">Next: check your airline</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-700">
+            Bag rules can change by airline, fare, and route. Open your airline page to see the
+            carry-on and checked-bag rules that apply before you pack.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/airlines" className="inline-flex rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20">
+            <Link href="/airlines" className="inline-flex rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">
               Browse airlines
             </Link>
-            <Link href="/airlines/united/how-to-beat-fees" className="inline-flex rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20">
+            <Link href="/airlines/united/how-to-beat-fees" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
               Example: United fee guide
             </Link>
           </div>

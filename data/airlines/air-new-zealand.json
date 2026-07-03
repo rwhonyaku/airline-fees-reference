@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and timing",
       "currency": "NZD",
       "conditions": "Additional checked baggage can be purchased in advance or at the airport; pricing varies by route and timing",
       "applies_to": "All fares (where additional bags are permitted)",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and weight",
       "currency": "NZD",
       "conditions": "Overweight baggage applies to bags exceeding allowance up to 32 kg; fees vary by route; bags over 32 kg must be shipped as cargo",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and aircraft",
       "currency": "NZD",
       "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route and timing",
       "currency": "NZD",
       "conditions": "Preferred or extra legroom seats available for a fee; pricing varies by route and timing",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare family and route",
       "currency": "NZD",
       "conditions": "Change and cancellation fees depend on fare family and route; fare difference may apply",
       "applies_to": "All fares",
@@ -95,7 +95,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on route and eligibility",
       "currency": "NZD",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and routing restrictions apply",
       "applies_to": "Eligible ages",

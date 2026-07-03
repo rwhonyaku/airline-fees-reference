@@ -9,7 +9,7 @@ import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallou
 export const metadata: Metadata = {
   title: "Basic Economy traps by airline: carry-on, seats, changes (2026) | Airline Fees Reference",
   description:
-    "Compare Basic Economy and stripped-down entry fares by carry-on access, seat limits, change rules, and the airline-by-airline traps that can erase the cheap fare.",
+    "Compare Basic Economy and low-cost entry fares by carry-on access, checked bags, seat limits, and change rules before the cheap fare gets expensive.",
 };
 
 const LAST_VERIFIED = "2026-05-23";
@@ -86,7 +86,7 @@ function findFee(
 }
 
 function usdRangeText(row: FeeItem | null, prefix = "From"): string {
-  if (!row) return "Not published in the current fee table";
+  if (!row) return "Not shown here";
   return `${prefix} ${formatAmount(row.amount, row.currency)}`;
 }
 
@@ -177,74 +177,74 @@ function buildGuideRows(): GuideRow[] {
     {
       slug: "united",
       airline: "United",
-      model: "Classic Basic Economy with direct carry-on restriction",
+      model: "Basic Economy with a carry-on limit",
       carryOn: "Basic Economy is generally personal-item only under United's published Basic Economy rule.",
       seats: `${usdRangeText(unitedBasicSeat)} for advance seat assignment; preferred seating starts at ${formatAmount(unitedPreferredBasic?.amount, unitedPreferredBasic?.currency)}.`,
       changes: "Changes and cancellations are listed as not permitted after 24 hours on Basic Economy.",
       whereItBreaks:
-        "A short trip can stop being cheap immediately because the carry-on restriction can force checked-bag pricing.",
+        "If your bag will not fit under the seat, the fare may need a checked bag or a different fare before it is actually cheaper.",
       sourceLabel: "United Basic Economy",
       sourceHref: SOURCES.unitedBasic,
     },
     {
       slug: "american",
       airline: "American",
-      model: "Legacy Basic Economy with full carry-on access",
+      model: "Basic Economy with carry-on included",
       carryOn: "One carry-on bag and one personal item remain allowed on Basic Economy.",
-      seats: "American publishes variable seat products rather than a separate Basic Economy seat row in this fee table.",
+      seats: "American lists seat prices by seat product rather than one separate Basic Economy seat fee here.",
       changes:
-        "This fee table does not publish a separate Basic Economy change row, so the practical risk is more about bags, seats, and fare-family limits than a single posted fee line here.",
+        "This guide does not show a separate Basic Economy change fee for American, so the main things to price are bags, seats, and fare-family limits.",
       whereItBreaks:
-        "American usually stops looking cheap when route-specific bag pricing or paid seat selection gets layered onto a fare that still looked manageable in search.",
+        "American Basic Economy usually gets less attractive when route-specific bag prices or paid seats are added.",
       sourceLabel: "American Basic Economy",
       sourceHref: SOURCES.americanBasic,
     },
     {
       slug: "delta",
       airline: "Delta",
-      model: "Legacy Basic Economy with carry-on access but harsher flexibility rules",
+      model: "Basic Economy with carry-on included",
       carryOn: "One carry-on bag and one personal item remain allowed.",
       seats: "Preferred-seat pricing is published separately, but the main Basic difference here is not cabin access.",
       changes: `Basic Economy is listed at ${formatAmount(deltaBasicChangeShort?.amount, deltaBasicChangeShort?.currency)} on short-haul regional groups and ${formatAmount(deltaBasicChangeLong?.amount, deltaBasicChangeLong?.currency)} on long-haul regional groups.`,
       whereItBreaks:
-        "Delta Basic usually stops being cheap when the trip is uncertain, because the bag baseline looks normal but the change/cancel penalty does not.",
+        "Delta Basic is mainly a problem when your dates are not firm, because the carry-on looks normal but the change and cancel rules are tighter.",
       sourceLabel: "Delta baggage and change rules",
       sourceHref: SOURCES.deltaFees,
     },
     {
       slug: "jetblue",
       airline: "JetBlue",
-      model: "Blue Basic: entry fare with carry-on restored but flexibility stripped back",
+      model: "Blue Basic with carry-on included",
       carryOn: "Blue Basic includes one carry-on bag and one personal item under JetBlue's current policy.",
-      seats: "Standard-seat inclusion is published for Blue, Blue Plus, and Blue Extra; this fee table does not publish a separate Blue Basic standard-seat line.",
+      seats: "Standard-seat inclusion is shown for Blue, Blue Plus, and Blue Extra; this guide does not show a separate Blue Basic standard-seat fee.",
       changes:
         jetblueBasicChange
           ? `${safeText(jetblueBasicChange.conditions)}.`
-          : "Blue Basic is the fare family with the published change/cancel penalty in the current fee table.",
+          : "Blue Basic is the fare family with the change/cancel penalty shown here.",
       whereItBreaks:
-        "JetBlue's cheap fare usually stops being cheap when the traveler assumed carry-on access solved the problem and missed the stricter cancellation rule.",
+        "JetBlue Blue Basic can look fine for bags, then become the wrong fare if you need to change or cancel.",
       sourceLabel: "JetBlue Blue Basic update",
       sourceHref: SOURCES.jetblueBasic,
     },
     {
       slug: "alaska",
       airline: "Alaska",
-      model: "Saver-style entry fare rather than classic Basic Economy",
-      carryOn: "Saver still includes one carry-on bag and one personal item in the current fee table.",
+      model: "Saver fare",
+      carryOn: "Saver still includes one carry-on bag and one personal item in the rows shown here.",
       seats: "Standard seat selection is published at USD 0 in Main Cabin, with preferred seats separately variable.",
       changes:
         alaskaChange
           ? `${safeText(alaskaChange.conditions)}.`
           : "Saver is the most restrictive fare family after the 24-hour window.",
       whereItBreaks:
-        "Alaska usually stays clearer than classic Basic Economy products, so the real risk is assuming the lowest fare is fully flexible after the 24-hour window.",
+        "Alaska Saver is usually easier to understand, but it is still not the fare to buy when flexibility matters.",
       sourceLabel: "Alaska fare changes",
       sourceHref: SOURCES.alaskaChanges,
     },
     {
       slug: "southwest",
       airline: "Southwest",
-      model: "Basic Fare in a newly segmented Southwest product",
+      model: "Basic Fare",
       carryOn: "Carry-on and personal item access remain included.",
       seats:
         southwestBasicSeat
@@ -253,44 +253,44 @@ function buildGuideRows(): GuideRow[] {
       changes: "Current dataset publishes no cancellation fee across fares, with same-day rules varying by fare family.",
       whereItBreaks:
         southwestBasicBag
-          ? `Southwest's low fare now breaks more through checked-bag and seat certainty math than through carry-on access; the current Basic Fare first checked bag row is ${formatAmount(southwestBasicBag.amount, southwestBasicBag.currency)} one-way on later bookings.`
-          : "Southwest's low fare now breaks more through checked-bag and seat certainty math than through carry-on access.",
+          ? `Southwest Basic is no longer automatically a free-checked-bag fare. The current Basic Fare first checked bag row is ${formatAmount(southwestBasicBag.amount, southwestBasicBag.currency)} one-way on later bookings.`
+          : "Southwest Basic is mainly about checked bags and seat choice, not carry-on access.",
       sourceLabel: "Southwest fare information",
       sourceHref: SOURCES.southwestFares,
     },
     {
       slug: "spirit",
       airline: "Spirit",
-      model: "Stripped-fare ULCC model rather than classic Basic Economy",
+      model: "Low-cost fare with paid add-ons",
       carryOn:
         spiritValueCarryOn
           ? `${safeText(spiritValueCarryOn.conditions)}.`
           : "The cheap Spirit path is personal-item-first, not full cabin-bag access by default.",
-      seats: "The real Spirit pressure point is cabin access and bundle design, not a classic Basic-versus-Main-Cabin seat ladder.",
+      seats: "For Spirit, the bigger question is usually whether you need to buy bags or a bundle, not just whether a seat costs extra.",
       changes:
         spiritValueChange
           ? `${safeText(spiritValueChange.conditions)}.`
-          : "Value is the fee-based product in the current fee table.",
+          : "Value is the Spirit fare shown here with more paid add-ons.",
       whereItBreaks:
-        "Spirit stops being cheap when the trip needs a carry-on, a checked bag, or flexibility after booking. That is the stripped-fare version of the Basic Economy trap.",
+        "Spirit gets expensive quickly when the trip needs a carry-on, a checked bag, or flexibility after booking.",
       sourceLabel: "Spirit travel options",
       sourceHref: SOURCES.spiritOptions,
     },
     {
       slug: "frontier",
       airline: "Frontier",
-      model: "Stripped-fare ULCC model with timed change-fee ladder",
+      model: "Low-cost fare with paid add-ons",
       carryOn:
         frontierCarryOn
           ? `${safeText(frontierCarryOn.conditions)}.`
           : "Carry-on access is a paid decision path rather than a standard entitlement.",
-      seats: "Frontier's seat story matters, but the fee engine is more directly tied to bags, bundles, and late fixes than to a classic Basic seat restriction.",
+      seats: "Frontier seats matter, but bags, bundles, and late changes usually drive the bigger cost swing.",
       changes:
         frontierLateChange
           ? `${safeText(frontierLateChange.conditions)}.`
-          : "Basic Fare / Standard is the more restrictive product path in the current fee table.",
+          : "Basic Fare / Standard is the more restrictive Frontier fare shown here.",
       whereItBreaks:
-        "Frontier's cheap fare usually breaks when the traveler buys back normal behavior late: cabin bag, checked bag, or a change close to departure.",
+        "Frontier's cheap fare usually gets expensive when you add a cabin bag, checked bag, or change close to departure.",
       sourceLabel: "Frontier change policy",
       sourceHref: SOURCES.frontierChanges,
     },
@@ -301,45 +301,45 @@ const SCOPE_CARDS: ScopeCard[] = [
   {
     title: "Carry-on access",
     body:
-      "Some airlines still allow a full carry-on on their cheapest fare. Others make the cabin-bag rule the trap itself. That is the fastest way a low fare turns into checked-bag math.",
+      "Some airlines still allow a full carry-on on the cheapest fare. Others allow only a small personal item, which can force you to pay for a checked bag or a carry-on add-on.",
   },
   {
     title: "Seat limitations",
     body:
-      "Seat restrictions matter less as an isolated fee than as a signal that the airline is selling normal travel behavior back to you after checkout.",
+      "Seat fees matter most when you need to sit with someone, avoid a middle seat, or control a tight connection.",
   },
   {
     title: "Change and cancellation limits",
     body:
-      "The biggest operational difference is often flexibility. A fare can look manageable until the trip moves and the cheap path becomes the most expensive path.",
+      "A cheap fare is risky when your dates are not firm. Change and cancellation rules can matter more than the bag policy.",
   },
   {
     title: "Route and long-haul differences",
     body:
-      "Long-haul and international itineraries are where Basic-style products diverge most. Bag pricing, cancellation rules, and route carve-outs become more important there than on a short domestic comparison.",
+      "International trips can use different bag prices, cancellation rules, and route exceptions. Check the exact route before assuming the domestic rule applies.",
   },
 ];
 
 const CLASS_MODEL_CARDS: ScopeCard[] = [
   {
-    title: "Classic Basic Economy",
+    title: "Basic Economy with a carry-on limit",
     body:
-      "United is the clearest example: the entry fare changes cabin access directly and then layers seat and flexibility restrictions on top.",
+      "United is the clearest example: the cheapest fare can limit you to a personal item, then add seat and flexibility limits on top.",
   },
   {
-    title: "Legacy Basic with full carry-on",
+    title: "Basic Economy with carry-on included",
     body:
-      "American, Delta, and JetBlue still allow a normal carry-on path, so the trap shifts toward seats, route-specific baggage, and change/cancel rules rather than the overhead bin itself.",
+      "American, Delta, and JetBlue still allow a normal carry-on, so the bigger questions are seats, checked bags, and change or cancellation rules.",
   },
   {
-    title: "Entry fare without classic Basic branding",
+    title: "Lowest fare under another name",
     body:
-      "Alaska Saver and Southwest Basic Fare are still relevant here because they change the normal trip calculation even without copying United's personal-item-only model.",
+      "Alaska Saver and Southwest Basic Fare are not identical to United Basic Economy, but they can still change what is included.",
   },
   {
-    title: "ULCC stripped-fare model",
+    title: "Low-cost fare with paid add-ons",
     body:
-      "Spirit and Frontier are not Basic Economy in the legacy-carrier sense. They are the same comparison problem pushed further: the base fare excludes more normal travel behavior from the start.",
+      "Spirit and Frontier do not work like legacy-airline Basic Economy. The low fare often assumes you will buy only the add-ons you need.",
   },
 ];
 
@@ -347,7 +347,7 @@ const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You need a normal carry-on",
     verdict:
-      "Be most careful with United Basic Economy and ULCC value fares. American, Delta, JetBlue, Alaska, and Southwest are less likely to break on carry-on access alone.",
+      "Be most careful with United Basic Economy, Spirit, and Frontier. American, Delta, JetBlue, Alaska, and Southwest are less likely to fail on carry-on access alone.",
     action:
       "If the cheapest fare restricts the overhead bin, price the checked bag or cabin-bag add-on before treating it as cheaper.",
     links: [
@@ -360,9 +360,9 @@ const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You will check a bag",
     verdict:
-      "The Basic Economy question becomes bag math. A fare that saves $30 can lose quickly if it triggers paid first-bag pricing or pushes you toward airport purchase.",
+      "A fare that saves $30 can lose quickly if it adds a paid first checked bag or pushes you toward airport bag pricing.",
     action:
-      "Run the bag-cost calculator before booking, then compare whether a fare upgrade or free checked bag card is the rational fix.",
+      "Run the bag-cost calculator before booking, then compare whether a fare upgrade or free checked bag card would cost less.",
     links: [
       { href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked-bag calculator" },
       { href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes", label: "Card break-even math" },
@@ -374,7 +374,7 @@ const DECISION_CARDS: DecisionCard[] = [
     verdict:
       "Delta, United, JetBlue, Spirit, and Frontier can all become expensive when the trip changes. Carry-on access does not solve a restrictive fare.",
     action:
-      "Treat flexibility as a priced feature. If dates are uncertain, compare the next fare family before buying the cheapest result.",
+      "If your dates are uncertain, compare the next fare family before buying the cheapest result.",
     links: [
       { href: "/fees/change_cancellation", label: "Change/cancel reference" },
       { href: "/airlines/delta", label: "Delta fee page" },
@@ -385,7 +385,7 @@ const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You care where you sit",
     verdict:
-      "Basic-style fares often sell back control through seat assignment. The fee may look small until multiple travelers or multiple segments are involved.",
+      "Seat fees can look small until you multiply them across travelers or flight segments.",
     action:
       "Compare the total seat-control cost against the next fare family, especially for families, couples, or tight connections.",
     links: [
@@ -439,16 +439,15 @@ export default function BasicEconomyTrapsGuide() {
           <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
-                Basic Economy is not one product. The high-value comparison is not just{" "}
-                <em>cheap fare versus regular fare</em>. It is which part of normal travel the
-                airline removes first: full carry-on access, seat choice, flexibility, or a
-                combination of all three.
+                Basic Economy is not one simple thing. Before you book the cheapest fare, check
+                what it leaves out: a full carry-on, a checked bag, seat choice, changes, refunds,
+                or some mix of all of them.
               </p>
               <p>
-                United is the clearest example of a Basic Economy fare that can force
-                checked-bag math. American, Delta, and JetBlue keep normal carry-on access but use
-                other restrictions to change the trip economics. Spirit and Frontier are the same
-                decision problem pushed further through stripped fares and paid cabin access.
+                United is the clearest case where Basic Economy can force a bag decision right
+                away. American, Delta, and JetBlue usually keep normal carry-on access, but the
+                restrictions move to seats, bags, or flexibility. Spirit and Frontier start from a
+                lower base fare and charge separately for more of the trip.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
@@ -456,7 +455,7 @@ export default function BasicEconomyTrapsGuide() {
               <ul className="mt-3 space-y-2">
                 <li>Does the cheapest fare still work for a normal carry-on trip?</li>
                 <li>Will seat or change limits erase the fare gap later?</li>
-                <li>Is this airline using Basic branding or a stripped-fare model?</li>
+                <li>Is this a legacy-airline Basic fare or a low-cost fare with paid add-ons?</li>
               </ul>
             </div>
           </div>
@@ -473,8 +472,8 @@ export default function BasicEconomyTrapsGuide() {
             />
           </div>
           <figcaption className="border-t border-slate-100 px-5 py-3 text-xs leading-relaxed text-slate-500">
-            Basic Economy only works when the fare still survives check-in, baggage drop, and the
-            gate. The cheapest search result is not always the cheapest airport outcome.
+            Basic Economy only works when the fare still makes sense after bags, seats, and airport
+            rules are included.
           </figcaption>
         </figure>
       </header>
@@ -492,7 +491,7 @@ export default function BasicEconomyTrapsGuide() {
             </h2>
           </div>
           <Link href="/tools/checked-baggage-calculator" className="text-sm font-bold text-blue-700 underline">
-            Start with bag math
+            Calculate checked bags
           </Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -532,9 +531,9 @@ export default function BasicEconomyTrapsGuide() {
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">These fares are not all the same product</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          This guide treats Basic Economy as a comparison problem, not just a brand label. That
-          matters because the carry-on rule, seat rule, and change rule are distributed very
-          differently across airlines.
+          Airlines use similar-looking cheap fares in very different ways. One airline may limit
+          your carry-on, another may allow the bag but make changes expensive, and another may push
+          more costs into paid add-ons.
         </p>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {CLASS_MODEL_CARDS.map((card) => (
@@ -548,12 +547,11 @@ export default function BasicEconomyTrapsGuide() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">
-          Carry-on access is still the fastest way a cheap fare breaks
+          Check the carry-on rule first
         </h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          The single biggest operational split is whether the cheapest fare still allows a normal
-          carry-on. When it does not, the fare comparison changes before seat fees or boarding
-          friction even enter the picture.
+          If the cheapest fare does not include a normal carry-on, compare the next fare before
+          booking. A paid carry-on or checked bag can erase the savings immediately.
         </p>
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
           <table className="min-w-full text-left text-sm">
@@ -561,7 +559,7 @@ export default function BasicEconomyTrapsGuide() {
               <tr>
                 <th className="px-4 py-3 font-semibold">Airline</th>
                 <th className="px-4 py-3 font-semibold">Cheapest-fare carry-on path</th>
-                <th className="px-4 py-3 font-semibold">What usually happens next</th>
+                <th className="px-4 py-3 font-semibold">What to check before booking</th>
               </tr>
             </thead>
             <tbody>
@@ -575,8 +573,8 @@ export default function BasicEconomyTrapsGuide() {
                   Basic Economy is generally personal-item only.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  This is the cleanest example of a fare that can turn a short trip into checked-bag
-                  math immediately. See also the{" "}
+                  If your bag will not fit under the seat, price a checked bag or a different fare
+                  before booking. See also the{" "}
                   <a href={SOURCES.unitedCarryOn} target="_blank" rel="noreferrer" className="text-blue-700 underline">
                     official United carry-on page
                   </a>.
@@ -592,8 +590,8 @@ export default function BasicEconomyTrapsGuide() {
                   Basic Economy still allows one carry-on bag and one personal item.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  The carry-on issue is less severe, so the trap shifts toward route-specific bag
-                  pricing and paid seating.
+                  The carry-on is less of a problem, so check route-specific bag prices and paid
+                  seats instead.
                 </td>
               </tr>
               <tr className="border-t border-slate-100">
@@ -606,7 +604,7 @@ export default function BasicEconomyTrapsGuide() {
                   Basic Economy still allows one carry-on bag and one personal item.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  The bag baseline stays normal; the main pressure point is flexibility when the trip changes.
+                  The bag rule is easier. The bigger question is whether your plans might change.
                 </td>
               </tr>
               <tr className="border-t border-slate-100">
@@ -619,8 +617,7 @@ export default function BasicEconomyTrapsGuide() {
                   Blue Basic now includes a carry-on bag and a personal item.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  The comparison still matters because carry-on access was restored, but changes are
-                  still not allowed on Blue Basic.
+                  Carry-on access is included now, but Blue Basic still has stricter change rules.
                 </td>
               </tr>
               <tr className="border-t border-slate-100">
@@ -637,8 +634,8 @@ export default function BasicEconomyTrapsGuide() {
                   Personal-item-first. A full-size carry-on becomes a paid decision.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  This is the ULCC version of the Basic Economy problem: the cabin-bag path is part
-                  of the business model, not a side detail.
+                  A larger cabin bag is part of the paid add-on decision, so price it before
+                  assuming the base fare wins.
                 </td>
               </tr>
             </tbody>
@@ -655,14 +652,14 @@ export default function BasicEconomyTrapsGuide() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">
-          Seat limits and change rules are where the fare gap gets rebuilt
+          Seats and changes can erase the savings
         </h2>
         <div className="grid gap-4 lg:grid-cols-2">
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <h3 className="text-lg font-bold text-slate-900">Seat selection</h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              Seat pricing matters most when it is not really selling extra comfort. It is selling
-              back normal trip control after the cheapest fare removed it.
+              Seat pricing matters most when you need control: sitting with someone, avoiding a
+              middle seat, or choosing a seat before check-in.
             </p>
             <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700">
               <li>
@@ -676,14 +673,14 @@ export default function BasicEconomyTrapsGuide() {
                 .
               </li>
               <li>
-                <strong>Southwest:</strong> current Basic Fare seat treatment is operational rather
-                than a classic fee line: a standard seat assignment at check-in for later departures,
+                <strong>Southwest:</strong> current Basic Fare seat treatment is handled through the
+                fare rules rather than a simple fee line: a standard seat assignment at check-in for later departures,
                 with paid seat upgrades published separately.
               </li>
               <li>
                 <strong>American / Delta / JetBlue:</strong> the better comparison is often not the
-                lowest seat fee. It is whether the fare family is already forcing a seat decision
-                that the next fare would have simplified.
+                lowest seat fee. It is whether the cheapest fare is forcing you to pay for seat
+                control that the next fare would have made easier.
               </li>
             </ul>
           </div>
@@ -691,7 +688,7 @@ export default function BasicEconomyTrapsGuide() {
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <h3 className="text-lg font-bold text-slate-900">Change and cancellation</h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              This is where “looks cheap in search” most often fails in practice.
+              This is where a cheap fare can become expensive later.
             </p>
             <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700">
               <li>
@@ -740,9 +737,8 @@ export default function BasicEconomyTrapsGuide() {
                 routes and USD 200 on transatlantic itineraries; changes are not allowed.
               </li>
               <li>
-                <strong>Spirit / Frontier:</strong> the stripped fare is the restrictive product.
-                The difference is not the branding. It is how much normal flexibility you have to
-                buy back later.
+                <strong>Spirit / Frontier:</strong> the low fare is the restrictive product. The
+                important question is how much flexibility you would have to buy later.
               </li>
             </ul>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
@@ -765,7 +761,7 @@ export default function BasicEconomyTrapsGuide() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">International differences matter more than they look</h2>
+        <h2 className="text-2xl font-bold text-slate-900">International trips need a separate check</h2>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
           <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
             <li>
@@ -775,8 +771,8 @@ export default function BasicEconomyTrapsGuide() {
             </li>
             <li>
               <strong>Delta:</strong> the Basic Economy change/cancel penalty shown here is split
-              between shorter-haul regional groups and long-haul regional groups, which is a bigger
-              practical difference than the simple “Basic vs Main Cabin” label suggests.
+              between shorter-haul regional groups and long-haul regional groups, so the route can
+              matter as much as the fare name.
             </li>
             <li>
               <strong>JetBlue:</strong> Blue Basic uses a different published cancellation number on
@@ -792,21 +788,20 @@ export default function BasicEconomyTrapsGuide() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline operational comparison</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline comparison</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          This table is the reference core of the guide. It is not a brand ranking. It is a summary
-          of where the cheapest fare most often stops being cheap.
+          Use this table to see what each airline&apos;s cheapest fare is most likely to leave out.
         </p>
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
           <table className="min-w-[1100px] text-left text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
                 <th className="px-4 py-3 font-semibold">Airline</th>
-                <th className="px-4 py-3 font-semibold">Model</th>
+                <th className="px-4 py-3 font-semibold">Fare type</th>
                 <th className="px-4 py-3 font-semibold">Carry-on path</th>
                 <th className="px-4 py-3 font-semibold">Seat treatment</th>
                 <th className="px-4 py-3 font-semibold">Change / cancel baseline</th>
-                <th className="px-4 py-3 font-semibold">Where it usually breaks</th>
+                <th className="px-4 py-3 font-semibold">What can make it more expensive</th>
                 <th className="px-4 py-3 font-semibold">Related pages</th>
               </tr>
             </thead>
@@ -874,7 +869,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this when the fare is selling back normal trip control through seat pricing.
+              Use this when seat choice could add enough cost to change the fare comparison.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -884,7 +879,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this to price the bag penalty before deciding whether a fare upgrade or card benefit is rational.
+              Use this to price checked bags before deciding whether a fare upgrade or card benefit makes sense.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -894,7 +889,8 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this when the real Basic-versus-regular comparison hinges on whether the cabin bag will actually survive the trip.
+              Use this when the Basic-versus-regular fare decision depends on whether your cabin
+              bag will actually fit.
             </p>
           </div>
         </div>

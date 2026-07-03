@@ -30,7 +30,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by allowance and timing",
       "currency": "AUD",
       "conditions": "Airport baggage fees apply if no checked baggage was pre-purchased or if allowance is exceeded; higher rates at airport",
       "applies_to": "All fares",
@@ -65,7 +65,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "AUD",
       "conditions": "Changes permitted for a fee plus fare difference on Starter fares; Starter Plus, Flex, and Max fares allow changes with fewer restrictions",
       "applies_to": "All fares",

@@ -18,7 +18,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on fare bundle, route, and timing",
       "currency": "USD",
       "conditions": "Checked baggage not included on Zero fare; fees depend on fare bundle, route, and purchase timing",
       "applies_to": "All fares",
@@ -29,7 +29,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by weight allowance",
       "currency": "USD",
       "conditions": "Checked bags exceeding standard weight allowance incur overweight charges; maximum per-bag weight limits apply",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by aircraft and handling limits",
       "currency": "USD",
       "conditions": "Checked baggage exceeding size limits is subject to oversize fees; acceptance subject to aircraft and airport handling limits",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on seat type, route, and timing",
       "currency": "USD",
       "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fee plus fare difference",
       "currency": "USD",
       "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed by fare rules",
       "applies_to": "All fares",

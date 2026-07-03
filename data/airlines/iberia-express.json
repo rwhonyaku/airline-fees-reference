@@ -42,7 +42,7 @@
 
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and weight",
       "currency": "EUR",
       "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
       "applies_to": "All fares",
@@ -54,7 +54,7 @@
 
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Airport-priced by route and size",
       "currency": "EUR",
       "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
       "applies_to": "All fares",
@@ -89,7 +89,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare and route",
       "currency": "EUR",
       "conditions": "Change and cancellation fees depend on fare and route; Basic fares are the most restrictive; fare difference may apply",
       "applies_to": "All fares",

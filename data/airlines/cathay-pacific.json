@@ -30,7 +30,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and baggage concept",
       "currency": "HKD",
       "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
       "applies_to": "All fares",
@@ -42,7 +42,7 @@
 
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route and excess weight",
       "currency": "HKD",
       "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
       "applies_to": "All fares",
@@ -54,7 +54,7 @@
 
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Depends on route, size, and aircraft handling",
       "currency": "HKD",
       "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
       "applies_to": "All fares",
@@ -77,7 +77,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Depends on route and fare family",
       "currency": "HKD",
       "conditions": "Preferred or extra-legroom seats may incur a fee on some Economy fares depending on route and fare family",
       "applies_to": "Economy (some fares)",
@@ -89,7 +89,7 @@
 
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Depends on fare family and route",
       "currency": "HKD",
       "conditions": "Change and cancellation fees depend on fare family and route; some fares are non-refundable; fare differences may apply",
       "applies_to": "All fares",
@@ -101,7 +101,7 @@
 
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Depends on route and eligibility",
       "currency": "HKD",
       "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and fare",
       "applies_to": "Eligible ages",

@@ -29,7 +29,7 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Varies",
+      "amount": "Route and weight dependent",
       "currency": "USD",
       "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
       "applies_to": "All fares",
@@ -40,7 +40,7 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Varies",
+      "amount": "Weight-limit dependent",
       "currency": "USD",
       "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
       "applies_to": "All fares",
@@ -51,7 +51,7 @@
     },
     {
       "category": "oversize_baggage",
-      "amount": "Varies",
+      "amount": "Route and aircraft dependent",
       "currency": "USD",
       "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limitations",
       "applies_to": "All fares",
@@ -62,7 +62,7 @@
     },
     {
       "category": "seat_selection",
-      "amount": "Varies",
+      "amount": "Fare, seat, and timing dependent",
       "currency": "USD",
       "conditions": "Seat selection fees depend on fare family, seat type, and timing; some fares include standard seat selection",
       "applies_to": "All fares",
@@ -73,7 +73,7 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Varies",
+      "amount": "Fare-rule based",
       "currency": "USD",
       "conditions": "Change and cancellation fees depend on fare rules, ticket type, and route; fare difference may apply",
       "applies_to": "All fares",
@@ -84,7 +84,7 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Varies",
+      "amount": "Age and routing dependent",
       "currency": "USD",
       "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
       "applies_to": "Eligible ages",
