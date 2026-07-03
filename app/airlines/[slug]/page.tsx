@@ -155,16 +155,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "singapore-airlines": {
     intro: {
       carryOn:
-        "Singapore Airlines includes cabin baggage, but the allowance changes by cabin: Economy and Premium Economy get one 7 kg cabin bag, while Business and First get two 7 kg cabin bags, with the published size limits still applying.",
+        "Singapore Airlines includes cabin baggage, but the allowance changes by cabin: Economy and Premium Economy get one 7 kg cabin bag, while Business and First get two 7 kg cabin bags, with size limits still applying.",
       personalItem:
-        "This fee table does not show a separate personal-item charge for Singapore Airlines; the practical cabin-bag question is whether your booked cabin allows one or two main cabin pieces under the 7 kg-per-piece rule.",
+        "There is no separate personal-item charge shown here; the practical cabin-bag question is whether your booked cabin allows one or two main cabin pieces under the 7 kg-per-piece rule.",
       checkedBag:
         "Singapore Airlines is an included-allowance airline, not a simple paid-first-bag airline. Checked baggage is included on eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses the weight concept or piece concept.",
       restrictions:
         "The main fee risk is excess baggage, not a simple first-bag charge: once you exceed the allowance attached to your route and fare, pricing moves into a route- and concept-based excess-baggage schedule.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published Singapore Airlines baggage, seat, change, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Singapore Airlines baggage, seat, change, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your itinerary uses the weight concept or piece concept before packing; the excess charge is triggered by exceeding the allowance attached to that concept.",
       "Treat the 7 kg cabin-bag limit as real for Economy and Premium Economy. If your bag is close, moving weight into checked baggage before the airport is safer than discovering the issue at check-in.",
@@ -186,17 +186,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy / Premium Economy",
         details:
-          "Published carry-on allowance is one cabin bag up to 7 kg. Checked baggage may be included, but the actual allowance is tied to route, cabin, fare family, and whether the itinerary uses piece or weight concept rules.",
+          "The carry-on allowance is one cabin bag up to 7 kg. Checked baggage may be included, but the actual allowance is tied to route, cabin, fare family, and whether the itinerary uses piece or weight concept rules.",
       },
       {
         name: "Business / First",
         details:
-          "Published carry-on allowance is two cabin bags up to 7 kg each. This page does not show a separate premium-cabin excess-baggage price table, so extra-bag pricing remains route- and concept-based.",
+          "The carry-on allowance is two cabin bags up to 7 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
       },
       {
         name: "Standard seat selection",
         details:
-          "Standard seat selection is published as included for most fares, but timing and availability depend on fare family and cabin.",
+          "Standard seat selection is included for most fares, but timing and availability depend on fare family and cabin.",
       },
       {
         name: "Preferred or extra-legroom seats",
@@ -208,12 +208,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Flying Economy with cabin baggage only",
         details:
-          "The published cabin allowance is one cabin bag up to 7 kg. This is a weight-sensitive cabin policy, so the risk is less about a posted carry-on fee and more about being over the cabin limit.",
+          "The cabin allowance is one cabin bag up to 7 kg. This is a weight-sensitive cabin policy, so the risk is less about a posted carry-on fee and more about being over the cabin limit.",
       },
       {
         title: "Checking one standard bag",
         details:
-          "This page does not publish a fixed first-bag fee because Singapore Airlines usually starts from an included allowance on eligible fares. The useful question is how much your specific route and fare include.",
+          "There is no fixed first-bag fee shown here because Singapore Airlines usually starts from an included allowance on eligible fares. The useful question is how much your specific route and fare include.",
       },
       {
         title: "Exceeding the included allowance",
@@ -227,10 +227,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Checked baggage is published as included under either the weight or piece concept depending on route.",
+      "Checked baggage is included under either the weight or piece concept depending on route.",
       "Business and First Class show two cabin bags instead of the one-bag Economy and Premium Economy allowance.",
-      "Bags above the published maximum accepted weight per checked bag are not handled as ordinary checked baggage.",
-      "This fee table does not show a co-branded credit-card baggage waiver for Singapore Airlines.",
+      "Bags above the maximum accepted weight per checked bag are not handled as ordinary checked baggage.",
+      "No co-branded credit-card baggage waiver is shown for Singapore Airlines.",
     ],
     comparisonLinks: [
       { href: "/airlines/eva-air", label: "EVA Air" },
@@ -242,19 +242,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   lufthansa: {
     intro: {
       carryOn:
-        "Lufthansa includes carry-on baggage, but the cabin matters: Economy and Premium Economy get one 7 kg item, while Business and First get two 7 kg items. A small personal item is also permitted under the published cabin rules.",
+        "Lufthansa includes carry-on baggage, but the cabin matters: Economy and Premium Economy get one 7 kg item, while Business and First get two 7 kg items. A small personal item is also permitted under the cabin rules.",
       personalItem:
-        "Lufthansa's carry-on rows explicitly allow an additional small item, such as a slim laptop bag, alongside the main cabin baggage allowance.",
+        "Lufthansa allows an additional small item, such as a slim laptop bag, alongside the main cabin baggage allowance.",
       checkedBag:
-        "Lufthansa checked baggage is fare-, cabin-, and route-dependent rather than one global first-bag price. The fee table includes an example where Economy travel from the United States to Germany gets the first 23 kg bag free and the second bag costs USD 90.",
+        "Lufthansa checked baggage is fare-, cabin-, and route-dependent rather than one global first-bag price. In the U.S.-to-Germany Economy example shown here, the first 23 kg bag is free and the second bag costs USD 90.",
       restrictions:
         "Economy Light is the main restriction point: it has paid/limited rebooking treatment, and advance seat reservation fees may apply depending on fare, route, and status.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published Lufthansa baggage, seat, change, and refund rows shown here were last verified on 2025-12-24.",
+      "Lufthansa baggage, seat, change, and refund details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Price the exact origin, destination, and fare family before assuming the first checked bag is included; the free first-bag example here is specifically United States to Germany in Economy.",
-      "Avoid treating Economy Light like a normal flexible fare. The published example shows a USD 199 rebooking fee plus possible fare difference.",
+      "Avoid treating Economy Light like a normal flexible fare. The example shown here has a USD 199 rebooking fee plus possible fare difference.",
       "Keep Economy and Premium Economy checked bags at or below 23 kg and 158 cm total dimensions to avoid excess-baggage treatment.",
       "Use included or status-eligible seat-selection options where available instead of buying advance seat reservation by default.",
     ],
@@ -279,34 +279,34 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy Classic and above",
         details:
-          "These fares can be rebooked under the published rules, but the amount stays fare-rule based because fare differences and fare conditions still apply.",
+          "These fares can be rebooked under Lufthansa's fare rules, but the amount stays fare-rule based because fare differences and fare conditions still apply.",
       },
       {
         name: "Economy / Premium Economy baggage",
         details:
-          "Published carry-on is one 7 kg item plus a small item. Checked-bag allowance varies by fare, cabin, and route, with excess treatment above 23 kg or 158 cm total dimensions.",
+          "Carry-on is one 7 kg item plus a small item. Checked-bag allowance varies by fare, cabin, and route, with excess treatment above 23 kg or 158 cm total dimensions.",
       },
       {
         name: "Business / First",
         details:
-          "Published carry-on is two 7 kg items plus the small item. This page does not publish a separate premium-cabin checked-bag fee ladder.",
+          "Carry-on is two 7 kg items plus the small item. Premium-cabin checked-bag fees are not reduced to one separate universal ladder here.",
       },
     ],
     scenarios: [
       {
         title: "Flying Economy from the U.S. to Germany",
         details:
-          "The published example shows the first checked bag up to 23 kg free and the second checked bag at USD 90, but this page does not treat that as a universal Lufthansa rule for every route.",
+          "The U.S.-to-Germany example shows the first checked bag up to 23 kg free and the second checked bag at USD 90, but that should not be treated as a universal Lufthansa rule for every route.",
       },
       {
         title: "Booking Economy Light",
         details:
-          "Economy Light can look cheaper until you need flexibility. The published rebooking example is USD 199 plus any fare difference.",
+          "Economy Light can look cheaper until you need flexibility. The rebooking example shown here is USD 199 plus any fare difference.",
       },
       {
         title: "Checking a 25 kg Economy bag",
         details:
-          "For Economy and Premium Economy, the row treats bags above 23 kg and up to 32 kg as excess baggage, with fees varying by route.",
+          "For Economy and Premium Economy, bags above 23 kg and up to 32 kg move into excess-baggage treatment, with fees varying by route.",
       },
       {
         title: "Selecting seats before check-in",
@@ -315,10 +315,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The United States to Germany checked-bag rows are examples, not a global Lufthansa checked-bag table.",
-      "Bags above 32 kg are published as not accepted as ordinary travel baggage.",
-      "Status can affect advance seat reservation treatment on eligible flights under the published rules.",
-      "This fee table does not show a Lufthansa co-branded credit-card baggage waiver.",
+      "The United States to Germany checked-bag amounts are examples, not a global Lufthansa checked-bag table.",
+      "Bags above 32 kg are not accepted as ordinary travel baggage.",
+      "Status can affect advance seat reservation treatment on eligible flights.",
+      "No Lufthansa co-branded credit-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-france", label: "Air France" },
@@ -332,17 +332,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Air France carry-on is not one universal yes/no rule. Economy may include 0 to 1 hand baggage item plus one small bag, and the Basic fare can require a paid Hand Baggage option shown during booking.",
       personalItem:
-        "The published Air France cabin row includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
+        "Air France includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. Additional baggage prices are shown during purchase or in My Bookings, and the fee table notes an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. Additional baggage prices are shown during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
       restrictions:
         "The fee traps are timing and fare-family based: Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and overweight or oversized baggage must be handled at the airport.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published Air France baggage, seat, change, and Kids Solo rows shown here were last verified on 2025-12-24.",
+      "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "If booking Basic, confirm whether the larger hand-baggage item is included or whether the Hand Baggage option is required before comparing the fare against a higher bundle.",
-      "Buy additional baggage online at least 24 hours before departure when the route allows the discount; flights from or to Canada and the USA do not get a different online price in the fee row shown here.",
+      "Buy additional baggage online at least 24 hours before departure when the route allows the discount; flights from or to Canada and the USA do not get a different online price.",
       "Keep checked bags within the ticketed allowance because overweight and oversized baggage are airport-paid options and vary by itinerary.",
       "Use free seat-assignment eligibility when it applies, such as Flex fares or listed Flying Blue status benefits, instead of paying for seat selection too early.",
     ],
@@ -363,7 +363,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic fare",
         details:
-          "The fee table shows a Hand Baggage option for Basic Economy fares, with rates displayed during purchase and in My Bookings and purchase allowed up to 4 hours before departure.",
+          "Basic Economy can require a Hand Baggage option, with rates displayed during purchase and in My Bookings and purchase allowed up to 4 hours before departure.",
       },
       {
         name: "Economy Light",
@@ -373,7 +373,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Flex fares and eligible passengers",
         details:
-          "Standard seat selection is published as free for Flex fares and certain eligible passenger groups, including listed Flying Blue status members and companions on the same booking.",
+          "Standard seat selection is free for Flex fares and certain eligible passenger groups, including listed Flying Blue status members and companions on the same booking.",
       },
       {
         name: "Additional baggage",
@@ -385,7 +385,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Booking Basic with a cabin bag",
         details:
-          "The fare may not behave like a normal carry-on-inclusive ticket. The fee table shows a paid Hand Baggage option for Basic, with the amount shown during purchase or in My Bookings.",
+          "The fare may not behave like a normal carry-on-inclusive ticket. Basic can require a paid Hand Baggage option, with the amount shown during purchase or in My Bookings.",
       },
       {
         title: "Adding a checked bag before travel",
@@ -404,10 +404,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The additional-baggage online discount rule has an exception for flights from or to Canada and the USA, where the online price is the same as the airport price in the fee row shown here.",
-      "Passengers with reduced mobility, children traveling alone, listed Flying Blue status members, companions on the same booking, and Flex fares have published free standard seat-selection treatment.",
-      "Bags over 32 kg must be handled via cargo under the published overweight row.",
-      "This fee table does not show an Air France co-branded credit-card baggage waiver.",
+      "The additional-baggage online discount rule has an exception for flights from or to Canada and the USA, where the online price is the same as the airport price.",
+      "Passengers with reduced mobility, children traveling alone, listed Flying Blue status members, companions on the same booking, and Flex fares have free standard seat-selection treatment.",
+      "Bags over 32 kg must be handled via cargo.",
+      "No Air France co-branded credit-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/lufthansa", label: "Lufthansa" },
@@ -423,15 +423,15 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The personal item needs to be small enough to stow under a seat or in an overhead bin, so soft backpacks and laptop bags are safer than rigid totes.",
       checkedBag:
-        "Southwest's old bag simplicity is gone. The current model separates included allowance from paid checked bags: Choice Extra keeps the first two checked bags included, while Basic, Choice, and Choice Preferred show paid first- and second-bag rows on U.S. Mainland bookings ticketed or changed on or after April 9, 2026.",
+        "Southwest's old bag simplicity is gone. The current model separates included allowance from paid checked bags: Choice Extra keeps the first two checked bags included, while Basic, Choice, and Choice Preferred use paid first- and second-bag pricing on U.S. Mainland bookings ticketed or changed on or after April 9, 2026.",
       restrictions:
         "Basic is now the clear restriction point: no seat selection, no included first bag, and no free same-day change unless the fare is upgraded.",
     },
     verificationNote:
-      "The newest Southwest checked-baggage rows shown here were last verified on 2026-04-28. Carry-on, seat, change, and cancellation rows were last verified on 2025-12-19.",
+      "The newest Southwest checked-baggage details shown here were last verified on 2026-04-28. Carry-on, seat, change, and cancellation details were last verified on 2025-12-19.",
     avoidFees: [
       "Do not assume Southwest still means two checked bags for every fare. Compare Basic, Choice, and Choice Preferred against Choice Extra if anyone in the party is checking bags.",
-      "For U.S. Mainland bookings, check the ticketing or change date before relying on a baggage amount; the published table has separate rows before and after April 9, 2026.",
+      "For U.S. Mainland bookings, check the ticketing or change date before relying on a baggage amount; Southwest separates bookings before and after April 9, 2026.",
       "Keep the trip carry-on-only when possible. Southwest still includes one carry-on and one personal item, so the cleanest way to avoid the checked-bag fee is not checking a bag.",
       "If same-day flexibility matters, avoid Basic unless the lower fare still wins after bag, seat, and change restrictions are priced in.",
     ],
@@ -443,7 +443,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/tools/checked-baggage-calculator?airline=southwest&travelers=2&bags=1&directions=2&trips=1&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=southwest&travelers=2&bags=1&trips=2&pay=yes", label: "Card bag-benefit calculator" },
       { href: "/sizer-rules", label: "Sizer rules" },
-      { href: "/guides/basic-economy-traps", label: "Basic-style fare guide" },
+      { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
       { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
@@ -461,7 +461,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Choice Preferred Fare",
         details:
-          "Choice Preferred keeps the same checked-bag charges as Choice in the published later-booking U.S. Mainland rows, with same-day change listed at USD 0.",
+          "Choice Preferred keeps the same checked-bag charges as Choice for later U.S. Mainland bookings, with same-day change listed at USD 0.",
       },
       {
         name: "Choice Extra Fare",
@@ -483,7 +483,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking an overweight bag",
         details:
-          "Published overweight pricing is USD 100 one-way for 51-70 lbs and USD 200 one-way for 71-100 lbs, in addition to the standard checked bag fee.",
+          "Southwest lists overweight pricing at USD 100 one-way for 51-70 lbs and USD 200 one-way for 71-100 lbs, in addition to the standard checked bag fee.",
       },
     ],
       exceptions: [
@@ -503,19 +503,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Air India includes cabin baggage on Air India-operated flights: Economy shows one cabin bag up to 7 kg plus one personal item, while premium cabins have higher allowances.",
       personalItem:
-        "The published carry-on row explicitly includes one personal item alongside the cabin bag allowance on Air India-operated flights.",
+        "Air India includes one personal item alongside the cabin bag allowance on Air India-operated flights.",
       checkedBag:
         "Air India is mainly an allowance airline, not a flat first-bag-fee airline. Checked baggage is included on most eligible fares, while additional baggage is purchased separately under route-based piece or weight concept rules.",
       restrictions:
         "Air India's main restrictions are operational rather than one fixed fee ladder: cabin baggage is explicitly tied to Air India-operated flights, while extra baggage, seat selection, and changes all depend on route, fare family, or timing.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published Air India baggage, seat, and change rows shown here were last verified on 2025-12-24.",
+      "Air India baggage, seat, and change details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the itinerary uses the piece concept or weight concept before buying extra baggage; the excess-baggage path depends on that structure.",
       "Treat the Economy 7 kg cabin-bag limit as a real packing constraint on Air India-operated flights. If the bag is close, solve the weight before the airport.",
       "Buy additional baggage before airport handling when the route permits it, but do not assume one universal add-on amount because pricing remains route-based.",
-      "For partner-operated or mixed itineraries, check the operating carrier rules because the published cabin-baggage row is explicitly for Air India-operated flights.",
+      "For partner-operated or mixed itineraries, check the operating carrier rules because this cabin-baggage guidance is for Air India-operated flights.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -537,7 +537,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "The carry-on row states that Business and First Class have higher cabin baggage allowances, but this page does not show a separate premium-cabin checked-bag chart or a separate premium-cabin change-fee ladder.",
+          "Business and First Class have higher cabin baggage allowances, but premium-cabin checked-bag and change-fee treatment is not reduced to one universal ladder here.",
       },
       {
         name: "Allowance and purchase path",
@@ -547,7 +547,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Partner or non-Air India operations",
         details:
-          "The carry-on row is explicitly limited to Air India-operated flights. This page does not show a partner-airline baggage table.",
+          "The carry-on guidance is limited to Air India-operated flights. Partner-operated segments may use the operating carrier's baggage rules.",
       },
     ],
     scenarios: [
@@ -559,29 +559,29 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag",
         details:
-          "This page does not publish one fixed first-bag fee because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
+          "There is no fixed first-bag fee shown here because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
       },
       {
         title: "Buying extra baggage in advance",
         details:
-          "Additional checked baggage is purchasable both before travel and at the airport, but this page keeps the amount route-based because there is no one universal INR add-on figure in the fee table.",
+          "Additional checked baggage is purchasable both before travel and at the airport, but the amount stays route-based because there is no one universal INR add-on figure.",
       },
       {
         title: "Checking an overweight bag",
         details:
-          "Overweight baggage is published as a variable airport fee that depends on route and excess weight, up to the published 32 kg acceptance limit.",
+          "Overweight baggage is a variable airport fee that depends on route and excess weight, up to the 32 kg acceptance limit.",
       },
       {
         title: "Flying on a partner-operated itinerary",
         details:
-          "The carry-on row on this page is limited to Air India-operated flights, so a partner-operated segment may follow different baggage rules than the Air India baseline shown here.",
+          "The carry-on guidance here is limited to Air India-operated flights, so a partner-operated segment may follow different baggage rules than the Air India baseline.",
       },
     ],
     exceptions: [
-      "Checked baggage is published as included on most eligible fares rather than as one fixed universal paid first-bag rule.",
-      "Additional baggage may be purchased in advance or at the airport where the route permits it, but this page does not publish one fixed extra-bag number.",
-      "The carry-on row explicitly shows higher allowances for Business and First Class.",
-      "This fee table does not show an elite-status or co-branded card baggage-waiver row for Air India.",
+      "Checked baggage is included on most eligible fares rather than handled as one fixed universal paid first-bag rule.",
+      "Additional baggage may be purchased in advance or at the airport where the route permits it, but no fixed extra-bag number is shown here.",
+      "Business and First Class have higher cabin-baggage allowances.",
+      "No elite-status or co-branded-card baggage waiver is shown here for Air India.",
     ],
     comparisonLinks: [
       { href: "/airlines/eva-air", label: "EVA Air" },
@@ -593,21 +593,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-canada": {
     intro: {
       carryOn:
-        "Air Canada includes one standard carry-on and one personal item on all fares in the current fee table. The real risk is not a carry-on fee; it is whether the bag fits the published limits on the aircraft and airport you are using.",
+        "Air Canada includes one standard carry-on and one personal item on all fares. The real risk is not a carry-on fee; it is whether the bag fits the size limits on the aircraft and airport you are using.",
       personalItem:
-        "The carry-on row explicitly includes one personal item, but this page does not publish a separate Air Canada personal-item-only row with its own fee or dimensions table.",
+        "One personal item is included alongside the standard carry-on. There is no separate personal-item-only fee shown here.",
       checkedBag:
         "Air Canada baggage fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
       restrictions:
         "Basic fares are the main restriction point: changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published Air Canada baggage, seat, and change rows shown here were last verified on 2025-12-24.",
+      "Air Canada baggage, seat, and change details shown here were last verified on 2025-12-24.",
     avoidFees: [
-      "Do not compare Basic against Standard using base fare alone. On the domestic/transborder example, Basic has paid checked-bag rows while Standard and higher show the first bag included.",
+      "Do not compare Basic against Standard using base fare alone. On the domestic/transborder example, Basic has paid checked baggage while Standard and higher show the first bag included.",
       "Use the checked-bag calculator for parties with bags because the answer changes quickly when more than one traveler checks luggage.",
       "Keep bags under Air Canada's standard weight and size limits; overweight and oversize charges move into route-based ranges and bags over 32 kg are not accepted as ordinary checked baggage.",
-      "Avoid Basic when you may need to change or refund after 24 hours, because the published Basic row says changes and refunds are not permitted except in qualifying circumstances.",
+      "Avoid Basic when you may need to change or refund after 24 hours, because Basic changes and refunds are not permitted except in qualifying circumstances.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -627,56 +627,56 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Published rows show the first checked bag at CAD 30 on domestic and transborder routes, advance seat selection starting at CAD 10, and changes and refunds not permitted after 24 hours except in qualifying circumstances.",
+          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes, advance seat selection starting at CAD 10, and changes and refunds not permitted after 24 hours except in qualifying circumstances.",
       },
       {
         name: "Standard and higher",
         details:
-          "Published rows show the first checked bag included on Standard, Flex, Comfort, Latitude, Premium Economy, and Business fares, with no change fee listed before departure for Standard and higher fares.",
+          "Standard, Flex, Comfort, Latitude, Premium Economy, and Business show the first checked bag included, with no change fee listed before departure for Standard and higher fares.",
       },
       {
         name: "Preferred and extra-legroom seating",
         details:
-          "Preferred or extra-legroom seats are listed separately with a published range of CAD 25 to CAD 199 depending on route and timing.",
+          "Preferred or extra-legroom seats are listed separately with a CAD 25 to CAD 199 range depending on route and timing.",
       },
       {
         name: "International route differences",
         details:
-          "The checked-baggage allowance row applies across domestic, transborder, and international markets, but the paid Basic example shown here is specifically domestic and transborder. This page does not show one fixed international paid first-bag number outside that example.",
+          "Checked-baggage allowance treatment applies across domestic, transborder, and international markets, but the paid Basic example shown here is specifically domestic and transborder. There is no fixed international paid first-bag number shown outside that example.",
       },
     ],
     scenarios: [
       {
         title: "Traveling with only cabin baggage",
         details:
-          "Air Canada does not charge a separate carry-on fee in the fee rows shown here. One standard carry-on and one personal item are included, but aircraft size and airport enforcement still matter.",
+          "Air Canada includes one standard carry-on and one personal item, but aircraft size and airport enforcement still matter.",
       },
       {
         title: "Checking one standard bag on a Basic domestic or transborder trip",
         details:
-          "Published pricing is CAD 30 each way for the first checked bag on Basic fares in the domestic and transborder example shown here.",
+          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag.",
       },
       {
         title: "Checking two standard bags on a fare where the second bag is not included",
         details:
-          "Published pricing is CAD 50 each way for the second checked bag on the domestic and transborder example where the second bag is not included.",
+          "The domestic and transborder example shows CAD 50 each way for the second checked bag where the second bag is not included.",
       },
       {
         title: "Checking an overweight bag",
         details:
-          "The fee table publishes overweight baggage as a route-based range from CAD 100 to CAD 225, with bags over 32 kg not accepted.",
+          "Overweight baggage is route-based, with a CAD 100 to CAD 225 range and bags over 32 kg not accepted.",
       },
       {
         title: "Changing a Basic fare after the 24-hour window",
         details:
-          "The published row states that changes and refunds are not permitted on Basic fares after 24 hours except in qualifying circumstances.",
+          "Changes and refunds are not permitted on Basic fares after 24 hours except in qualifying circumstances.",
       },
     ],
     exceptions: [
-      "The first checked bag is published as included on Standard and higher fares.",
-      "The published paid Basic example on this page is domestic and transborder, not a single universal international paid-bag baseline.",
-      "No change fee is published for Standard and higher fares before departure, though fare difference can still apply.",
-      "This fee table does not show an Aeroplan status or co-branded card baggage-waiver row on this page.",
+      "The first checked bag is included on Standard and higher fares.",
+      "The paid Basic example on this page is domestic and transborder, not a single universal international paid-bag baseline.",
+      "No change fee is shown for Standard and higher fares before departure, though fare difference can still apply.",
+      "No Aeroplan status or co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/united", label: "United Airlines" },
@@ -690,19 +690,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "EVA Air includes cabin baggage on EVA Air-operated flights: Economy shows one cabin bag up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
       personalItem:
-        "The published carry-on row explicitly includes one personal item alongside the cabin bag allowance on EVA Air-operated flights.",
+        "EVA Air includes one personal item alongside the cabin bag allowance on EVA Air-operated flights.",
       checkedBag:
         "EVA Air is mainly an included-allowance airline, not a flat first-bag-fee airline. Checked baggage is included on most eligible fares, while extra baggage is purchased separately under route-based piece or weight concept rules.",
       restrictions:
         "EVA Air's main restrictions are operational rather than one fixed fee ladder: cabin baggage is explicitly tied to EVA Air-operated flights, while extra baggage, seat selection, and changes all depend on route, baggage concept, or fare rules.",
     },
     verificationNote:
-      "Last verified support on this page comes from row-level source checks. The published EVA Air baggage, seat, and change rows shown here were last verified on 2025-12-24.",
+      "EVA Air baggage, seat, and change details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your itinerary uses the piece concept or weight concept before buying extra baggage; that choice drives the excess-baggage math.",
       "Treat the Economy 7 kg cabin-bag limit as real on EVA Air-operated flights. If the bag is close, solve the weight before check-in.",
       "For additional baggage, price the exact route before travel rather than assuming one universal TWD add-on amount.",
-      "For partner-operated segments, check the operating carrier rules because the published cabin-baggage row is limited to EVA Air-operated flights.",
+      "For partner-operated segments, check the operating carrier rules because this cabin-baggage guidance is limited to EVA Air-operated flights.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -724,7 +724,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium Economy / Business",
         details:
-          "The carry-on row states that Premium Economy and Business have higher cabin baggage allowances, but this page does not show a separate premium-cabin checked-bag chart or a separate premium-cabin change-fee ladder.",
+          "Premium Economy and Business have higher cabin baggage allowances, but premium-cabin checked-bag and change-fee treatment is not reduced to one universal ladder here.",
       },
       {
         name: "Allowance and purchase path",
@@ -734,7 +734,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Partner or non-EVA operations",
         details:
-          "The carry-on row is explicitly limited to EVA Air-operated flights. This page does not show a partner-airline baggage table.",
+          "The carry-on guidance is limited to EVA Air-operated flights. Partner-operated segments may use the operating carrier's baggage rules.",
       },
     ],
     scenarios: [
@@ -746,29 +746,29 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag",
         details:
-          "This page does not publish one fixed first-bag fee because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
+          "There is no fixed first-bag fee shown here because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
       },
       {
         title: "Buying extra baggage in advance",
         details:
-          "Additional checked baggage is purchasable before travel or at the airport, but the amount stays route-based because there is no one universal TWD add-on figure in the fee table.",
+          "Additional checked baggage is purchasable before travel or at the airport, but the amount stays route-based because there is no one universal TWD add-on figure.",
       },
       {
         title: "Checking an overweight bag",
         details:
-          "Overweight baggage is published as a variable airport fee that depends on route and baggage concept, up to the published 32 kg acceptance limit.",
+          "Overweight baggage is a variable airport fee that depends on route and baggage concept, up to the 32 kg acceptance limit.",
       },
       {
         title: "Flying on a partner-operated itinerary",
         details:
-          "The carry-on row on this page is limited to EVA Air-operated flights, so a partner-operated segment may follow different baggage rules than the EVA Air baseline shown here.",
+          "The carry-on guidance here is limited to EVA Air-operated flights, so a partner-operated segment may follow different baggage rules than the EVA Air baseline.",
       },
     ],
     exceptions: [
-      "Checked baggage is published as included on most eligible fares rather than as one fixed universal paid first-bag rule.",
-      "Additional baggage may be purchased in advance or at the airport where the route permits it, but this page does not publish one fixed extra-bag number.",
-      "The carry-on row explicitly shows higher allowances for Premium Economy and Business.",
-      "This fee table does not show an Infinity MileageLands status or co-branded card baggage-waiver row for EVA Air.",
+      "Checked baggage is included on most eligible fares rather than handled as one fixed universal paid first-bag rule.",
+      "Additional baggage may be purchased in advance or at the airport where the route permits it, but no fixed extra-bag number is shown here.",
+      "Premium Economy and Business have higher cabin-baggage allowances.",
+      "No Infinity MileageLands status or co-branded-card baggage waiver is shown here for EVA Air.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -780,16 +780,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "british-airways": {
     intro: {
       carryOn:
-        "British Airways includes one cabin bag and one personal item on all fares in this fee table, so the main cabin-bag risk is size and weight enforcement rather than a posted carry-on fee.",
+        "British Airways includes one cabin bag and one personal item on all fares shown here, so the main cabin-bag risk is size and weight enforcement rather than a posted carry-on fee.",
       personalItem:
-        "The personal item is capped at 40 x 30 x 15 cm in the published row, separate from the larger 56 x 45 x 25 cm cabin bag.",
+        "The personal item is capped at 40 x 30 x 15 cm, separate from the larger 56 x 45 x 25 cm cabin bag.",
       checkedBag:
         "British Airways checked baggage depends on cabin and fare type. Many fares include a checked-bag allowance, while Basic fares can require a paid checked bag whose price depends on route, cabin, and booking time.",
       restrictions:
         "The practical restrictions are Basic-fare checked baggage, Economy seat selection, and fare-rule-based changes or refunds. British Airways does not use one simple first-bag or change-fee number across all tickets.",
     },
     verificationNote:
-      "The British Airways carry-on, checked-bag, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The British Airways carry-on, checked-bag, oversize, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Do not compare Basic against a bag-included fare using base fare alone. If you need checked baggage, price the bag before booking.",
       "Keep each checked bag at or below 32 kg because British Airways does not accept bags over that limit as ordinary checked baggage.",
@@ -813,7 +813,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic fares",
         details:
-          "Basic fares are the checked-bag pressure point: the fee table shows paid checked baggage where a bag is not included, with price depending on route, cabin, and booking time.",
+          "Basic fares are the checked-bag pressure point: paid checked baggage can apply where a bag is not included, with price depending on route, cabin, and booking time.",
       },
       {
         name: "Bag-included fares",
@@ -823,7 +823,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "First, Club World, Club Europe, and Club Europe Plus show seat selection included from booking in the published seat row.",
+          "First, Club World, Club Europe, and Club Europe Plus show seat selection included from booking.",
       },
       {
         name: "Economy seats and fare rules",
@@ -835,7 +835,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Flying with cabin bags only",
         details:
-          "One cabin bag and one personal item are included in the fee table. The question is whether both pieces fit the published size and weight limits.",
+          "One cabin bag and one personal item are included. The question is whether both pieces fit the size and weight limits.",
       },
       {
         title: "Booking Basic with one checked bag",
@@ -845,7 +845,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a bag over 32 kg",
         details:
-          "The published overweight row says a single checked bag over 32 kg is not accepted as checked baggage.",
+          "A single checked bag over 32 kg is not accepted as checked baggage.",
       },
       {
         title: "Choosing a seat in Economy",
@@ -854,10 +854,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Unaccompanied minors are not accepted on British Airways-operated flights in the published row.",
-      "Premium cabin seat selection is included from booking in the published seat row.",
-      "Oversize handling can depend on item and route within the published maximum dimensions.",
-      "This fee table does not show a British Airways co-branded card baggage waiver.",
+      "Unaccompanied minors are not accepted on British Airways-operated flights.",
+      "Premium cabin seat selection is included from booking.",
+      "Oversize handling can depend on item and route within the maximum dimensions.",
+      "No British Airways co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/lufthansa", label: "Lufthansa" },
@@ -871,14 +871,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "KLM cabin baggage depends on fare and cabin. Economy passengers may bring one hand baggage item plus one accessory on KLM-operated flights, but Economy Light can require a paid hand-baggage option shown during booking or in My Trip.",
       personalItem:
-        "The accessory allowance is 40 x 30 x 15 cm in the published Economy row, separate from the larger hand baggage item.",
+        "The accessory allowance is 40 x 30 x 15 cm in Economy, separate from the larger hand baggage item.",
       checkedBag:
         "KLM checked baggage is fare- and route-dependent. Standard, Flex, and premium fares may include checked baggage, while extra baggage is priced during booking or in My Trip and can have online-purchase discount rules.",
       restrictions:
         "The weak points are Economy Light hand baggage, itinerary-priced extra baggage, airport-priced overweight or oversize baggage, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The KLM carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The KLM carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "If booking Economy Light, confirm whether the hand-baggage option is needed before comparing the fare against Standard or Flex.",
       "Buy additional checked baggage online before travel when the route allows it; KLM prices extra baggage during booking or in My Trip and airport handling is less flexible.",
@@ -934,7 +934,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Arriving with a 33 kg bag",
         details:
-          "Bags over 32 kg must be shipped as cargo under the published overweight row.",
+          "Bags over 32 kg must be shipped as cargo.",
       },
       {
         title: "Skipping paid seat selection",
@@ -943,10 +943,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Children traveling alone and passengers with reduced mobility have published free standard seat-selection treatment.",
+      "Children traveling alone and passengers with reduced mobility have free standard seat-selection treatment.",
       "Certain additional-baggage online discount exceptions apply on routes including USA and Canada.",
       "The unaccompanied-minor service depends on age and itinerary, so the page does not show one universal service fee.",
-      "This fee table does not show a KLM co-branded card baggage waiver.",
+      "No KLM co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-france", label: "Air France" },
@@ -960,17 +960,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Emirates includes cabin baggage, but the allowance changes by cabin: Economy gets one 7 kg piece, Premium Economy gets one 10 kg piece, and Business or First get two 7 kg pieces.",
       personalItem:
-        "This fee table does not show a separate Emirates personal-item fee row; the practical cabin question is the number, weight, and size of the cabin pieces allowed by your cabin.",
+        "There is no separate Emirates personal-item fee shown here; the practical cabin question is the number, weight, and size of the cabin pieces allowed by your cabin.",
       checkedBag:
         "Emirates is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under either the weight or piece concept depending on route, and excess baggage is priced separately when you exceed that allowance.",
       restrictions:
         "The main fee risk is excess baggage and restrictive Economy fare behavior: overweight, oversize, seat selection on Special or Saver-style fares, and change/cancellation fees all depend on route, fare family, or baggage concept.",
     },
     verificationNote:
-      "The Emirates carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Emirates carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your route uses the weight concept or piece concept before packing; excess charges are triggered differently under each model.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag in the published row.",
+      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
       "Check whether standard seat selection is included by cabin or fare before paying; Economy Special and Saver-style fares can behave differently from Flex or premium cabins.",
       "Read fare conditions before buying a restrictive ticket because change, cancellation, and refund treatment depends on fare family and route.",
     ],
@@ -994,7 +994,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Business / First",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin seat selection is generally included in the row shown here.",
+          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin seat selection is generally included.",
       },
       {
         name: "Excess baggage",
@@ -1031,8 +1031,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Checked baggage is included under the weight or piece concept depending on route.",
-      "Bags above 32 kg per bag are outside the ordinary accepted weight shown in the fee row.",
-      "This fee table does not show an Emirates co-branded card baggage waiver.",
+      "Bags above 32 kg per bag are outside the ordinary accepted checked-baggage weight.",
+      "No Emirates co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/qatar-airways", label: "Qatar Airways" },
@@ -1046,17 +1046,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Qatar Airways includes cabin baggage, but the allowance changes by cabin: Economy gets one 7 kg piece, while Business and First get two 7 kg pieces.",
       personalItem:
-        "This fee table does not show a separate Qatar Airways personal-item fee row; the practical cabin question is whether your cabin allows one or two main cabin pieces under the 7 kg-per-piece rule.",
+        "There is no separate Qatar Airways personal-item fee shown here; the practical cabin question is whether your cabin allows one or two main cabin pieces under the 7 kg-per-piece rule.",
       checkedBag:
         "Qatar Airways is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under the piece or weight concept depending on route, then excess baggage is charged when the allowance is exceeded.",
       restrictions:
         "The main fee risk is exceeding the included allowance or buying a restrictive fare. Excess baggage, preferred seats, changes, cancellations, and unaccompanied-minor service all depend on route, cabin, fare family, or eligibility.",
     },
     verificationNote:
-      "The Qatar Airways carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Qatar Airways carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses the piece concept or weight concept before buying extra baggage; the allowance and excess logic change by route.",
-      "Keep each checked bag at or below 32 kg because the published row treats that as the maximum accepted weight per bag.",
+      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
       "Do not pay for preferred or extra-legroom seating until you know whether standard seat selection is included for your fare and cabin.",
       "Check fare rules before booking if you may change or cancel because fees depend on fare family and route, with fare differences possibly applying.",
     ],
@@ -1080,7 +1080,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Business / First",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. This page does not show a separate premium-cabin excess-baggage price table.",
+          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
       },
       {
         name: "Excess baggage",
@@ -1117,8 +1117,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Checked baggage is included under either the piece or weight concept depending on route.",
-      "Bags above 32 kg per bag exceed the published accepted weight limit.",
-      "This fee table does not show a Qatar Airways co-branded card baggage waiver.",
+      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
+      "No Qatar Airways co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/emirates", label: "Emirates" },
@@ -6217,19 +6217,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "JetBlue includes one carry-on bag and one personal item even on Blue Basic, so the cabin-bag trap is not the main issue anymore.",
       personalItem:
-        "A personal item is included, but this page does not currently show a separate personal-item dimensions row for JetBlue.",
+        "A personal item is included; the practical question is whether the item fits JetBlue's under-seat expectations for the aircraft and seat area.",
       checkedBag:
-        "JetBlue checked-bag pricing is fare-, date-, and timing-sensitive. Blue Plus includes the first checked bag on the regional chart, while Blue, Blue Basic, Blue Extra, and EvenMore use paid first- and second-bag rows that change by peak versus off-peak travel dates and by whether the bag is added before check-in.",
+        "JetBlue checked-bag pricing is fare-, date-, and timing-sensitive. Blue Plus includes the first checked bag on the regional chart, while Blue, Blue Basic, Blue Extra, and EvenMore use paid first- and second-bag pricing that changes by peak versus off-peak travel dates and by whether the bag is added before check-in.",
       restrictions:
         "Blue Basic still includes a carry-on, but it gives up flexibility: changes are not allowed, and cancellations are listed at USD 100 per person on most North America, Central America, and Caribbean routes or USD 200 on other routes.",
     },
     verificationNote:
-      "JetBlue checked-bag pricing was verified against JetBlue's optional-services fee page on 2026-07-01. Carry-on and change/cancellation rows were last verified on 2026-05-06, oversize and overweight rows on 2025-12-22, and seat rows on 2025-12-19.",
+      "JetBlue checked-bag pricing was verified against JetBlue's optional-services fee page on 2026-07-01. Carry-on and change/cancellation details were last verified on 2026-05-06, oversize and overweight details on 2025-12-22, and seat details on 2025-12-19.",
     avoidFees: [
       "Add checked bags before check-in when the itinerary fits JetBlue's early-purchase chart; the page separates that timing from later airport or check-in pricing.",
       "Compare Blue Plus against Blue or Blue Basic when one traveler is checking exactly one bag. Blue Plus can be cleaner because the first checked bag is included on the regional chart.",
-      "Do not buy Blue Basic just because the carry-on is included. If you may change or cancel, the published restriction can cost more than the fare savings.",
-      "Use the peak/off-peak rows as a real planning input. JetBlue's bag price can change because of travel dates, not only because of route or fare.",
+      "Do not buy Blue Basic just because the carry-on is included. If you may change or cancel, the restriction can cost more than the fare savings.",
+      "Use the peak/off-peak pricing as a real planning input. JetBlue's bag price can change because of travel dates, not only because of route or fare.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -6272,7 +6272,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only cabin items",
         details:
-          "Published rows show one carry-on bag and one personal item included on all fares, including Blue Basic.",
+          "JetBlue includes one carry-on bag and one personal item on all fares, including Blue Basic.",
       },
       {
         title: "Checking one standard bag on Blue",
@@ -6292,13 +6292,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Canceling a Blue Basic transatlantic itinerary",
         details:
-          "Published rows list Blue Basic cancellations at USD 200 per person on transatlantic itineraries, while changes are not allowed.",
+          "JetBlue lists Blue Basic cancellations at USD 200 per person on transatlantic itineraries, while changes are not allowed.",
       },
     ],
       exceptions: [
       "Blue Plus includes the first checked bag on the U.S., Latin America, Caribbean, and Canada chart.",
-      "Blue, Blue Plus, and Blue Extra show no published change or cancellation fee, with fare difference still applying where relevant.",
-      "Mosaic and eligible JetBlue card benefits can change the bag math. Those benefits are referenced separately so the base fee rows stay readable.",
+      "Blue, Blue Plus, and Blue Extra show no change or cancellation fee here, with fare difference still applying where relevant.",
+      "Mosaic and eligible JetBlue card benefits can change the bag math. Those benefits are referenced separately so the base fees stay readable.",
     ],
     comparisonLinks: [
       { href: "/airlines/alaska", label: "Alaska Airlines" },
@@ -6310,19 +6310,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   american: {
     intro: {
       carryOn:
-        "One carry-on bag and one personal item are published as included on all fares.",
+        "American includes one carry-on bag and one personal item on all fares.",
       personalItem:
-        "The published carry-on row states that size and placement requirements apply to the personal item.",
+        "The personal item still needs to meet American's size and placement requirements, so soft under-seat bags are safer than rigid totes.",
       checkedBag:
-        "American's checked-bag model is route-, ticket-date-, fare-family-, and purchase-channel based. Domestic and short-haul rows distinguish online versus airport payment, while longer international examples use separate route tables rather than one universal first-bag rule.",
+        "American's checked-bag model is route-, ticket-date-, fare-family-, and purchase-channel based. Domestic and short-haul pricing distinguishes online versus airport payment, while longer international examples use separate route tables rather than one universal first-bag rule.",
       restrictions:
         "American's fee traps are route, fare-family, and timing based: Basic Economy can now cost more for domestic and short-haul checked bags, same-day confirmed change starts at USD 60 on eligible domestic itineraries, and seat pricing varies by product.",
     },
     verificationNote:
-      "The newest American domestic and short-haul checked-baggage rows shown here were last verified against American's checked bag policy on 2026-07-01. Carry-on, transatlantic baggage, seat, and same-day travel rows were last verified on 2025-12-22.",
+      "The newest American domestic and short-haul checked-baggage facts shown here were last verified against American's checked bag policy on 2026-07-01. Carry-on, transatlantic baggage, seat, and same-day travel facts were last verified on 2025-12-22.",
     avoidFees: [
-      "Pay for checked bags online when the row offers a lower online price; the airport price is higher on the newer domestic and short-haul rows.",
-      "Check the ticket issue date before using a bag estimate. American keeps separate published rows for older tickets and newer tickets.",
+      "Pay for checked bags online when American offers a lower online price; the airport price is higher on the newer domestic and short-haul pricing structure.",
+      "Check the ticket issue date before estimating bags. American's checked-bag pricing changes by ticketing window, fare family, and whether the bag is added online or at the airport.",
       "Price Basic Economy against Main Cabin when checking bags. On newer domestic and short-haul tickets, Basic Economy can be USD 5 higher for the same first or second bag position.",
       "For repeat domestic American trips, run the card bag-benefit math before paying cash for first checked bags.",
     ],
@@ -6346,12 +6346,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic Economy",
         details:
-          "Carry-on inclusion is published for all fares, but Basic Economy has its own checked-bag trap on many domestic and short-haul tickets issued on or after May 18, 2026: the first bag is USD 50 online or USD 55 at the airport, and the second bag is USD 60 online or USD 65 at the airport. Older ticketing windows and longer international routes can use different rules.",
+          "Carry-on is included for all fares, but Basic Economy has its own checked-bag trap on many domestic and short-haul tickets issued on or after May 18, 2026: the first bag is USD 50 online or USD 55 at the airport, and the second bag is USD 60 online or USD 65 at the airport. Older ticketing windows and longer international routes can use different rules.",
       },
       {
         name: "Economy (non-Basic)",
         details:
-          "Published checked-bag rows show the domestic and short-haul first bag at USD 45 online or USD 50 at the airport and the second bag at USD 55 online or USD 60 at the airport on tickets issued on or after April 9, 2026. Earlier published rows for pre-April 9, 2026 tickets remain at USD 35 prepaid or USD 40 at the airport for the first bag, and USD 45 prepaid or USD 50 at the airport for the second bag, with route-specific international pricing also listed.",
+          "For Main Cabin/Economy tickets issued on or after April 9, 2026, the domestic and short-haul first bag is USD 45 online or USD 50 at the airport, and the second bag is USD 55 online or USD 60 at the airport. Earlier ticketing windows and route-specific international pricing can differ.",
       },
       {
         name: "Main Cabin seat products",
@@ -6361,14 +6361,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "No separate premium-cabin baggage or cancellation row is shown in the current fee table, so this page should not be read as a full premium-cabin allowance chart.",
+          "This page is focused on the Economy/Main Cabin facts available here; do not read it as a full premium-cabin allowance chart.",
       },
     ],
     scenarios: [
       {
         title: "Traveling with only cabin items",
         details:
-          "Published carry-on rows show one carry-on bag and one personal item included.",
+          "American includes one carry-on bag and one personal item.",
       },
       {
         title: "Checking one standard bag on a U.S., Canada, or short-haul international trip",
@@ -6383,18 +6383,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one overweight bag",
         details:
-          "Published overweight pricing is USD 100 each way for 51-70 lbs and USD 200 each way for 71-100 lbs.",
+          "American lists overweight pricing at USD 100 each way for 51-70 lbs and USD 200 each way for 71-100 lbs.",
       },
       {
         title: "Checking one standard bag on a transatlantic trip",
         details:
-          "The published first-bag amount is USD 75 each way for Economy (non-Basic) on U.S. to Europe itineraries.",
+          "The first-bag amount shown here is USD 75 each way for Economy (non-Basic) on U.S. to Europe itineraries.",
       },
     ],
     exceptions: [
-      "Published same-day standby is USD 0 on eligible domestic fares.",
-      "Published checked-bag rows are split by ticketing date and fare family: pre-April 9, 2026 domestic, Canada, and short-haul international rows remain at USD 35 prepaid or USD 40 at the airport for the first bag and USD 45 prepaid or USD 50 at the airport for the second bag; Main Cabin/Economy tickets issued on or after April 9, 2026 use the newer USD 45/50 and USD 55/60 online-versus-airport structure; Basic Economy tickets issued on or after May 18, 2026 are USD 5 higher for those same bag positions.",
-      "No explicit elite-status or co-branded card bag waiver is included in the published fee rows shown on this page, even though the separate card-benefit reference tracks verified American card baggage benefits.",
+      "Same-day standby is USD 0 on eligible domestic fares.",
+      "Checked-bag pricing is split by ticketing date and fare family: pre-April 9, 2026 domestic, Canada, and short-haul international tickets remain at USD 35 prepaid or USD 40 at the airport for the first bag and USD 45 prepaid or USD 50 at the airport for the second bag; Main Cabin/Economy tickets issued on or after April 9, 2026 use the newer USD 45/50 and USD 55/60 online-versus-airport structure; Basic Economy tickets issued on or after May 18, 2026 are USD 5 higher for those same bag positions.",
+      "This airline fee table does not model elite-status or co-branded-card waivers directly; use the card-benefit guide for verified American checked-bag card benefits.",
     ],
     comparisonLinks: [
       { href: "/airlines/united", label: "United Airlines" },
@@ -6415,11 +6415,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic Economy is the restriction product: changes and cancellations are listed as not permitted after 24 hours, advance seat assignment starts at USD 15, and preferred seating on Basic starts much higher than the regular Economy preferred-seat starting price.",
     },
     verificationNote:
-      "The newest United checked-baggage rows on this page were last verified on 2026-04-27. The seat-selection and change/cancellation rows currently shown here were last verified on 2025-12-19.",
+      "The newest United checked-baggage facts on this page were last verified on 2026-04-27. The seat-selection and change/cancellation facts currently shown here were last verified on 2025-12-19.",
     avoidFees: [
-      "Prepay checked bags online when United's row shows an online-versus-airport difference; the airport amount is higher on the newer most-market rows.",
+      "Prepay checked bags online when United offers an online-versus-airport difference; the airport amount is higher in the newer most-market pricing.",
       "Avoid Basic Economy when you need normal flexibility, advance seat control, or reliable cabin-bag access. The low fare can shift costs into seats and restrictions.",
-      "Use United's trip-specific bag calculator for markets not covered by the simple most-market row, especially international or mixed-itinerary travel.",
+      "Use United's trip-specific bag calculator for markets not covered by the simple most-market pricing, especially international or mixed-itinerary travel.",
       "For repeat United travel, check whether a verified United card benefit beats paying cash for checked bags; many United bag benefits depend on using the eligible card correctly.",
     ],
     relatedGuides: [
@@ -6442,7 +6442,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic Economy",
         details:
-          "Basic Economy is where United's fee stack starts. The rows here show no changes or cancellations after 24 hours, advance seat assignment starting at USD 15, and Basic preferred seating starting at USD 136.",
+          "Basic Economy is where United's fee stack starts. It allows no changes or cancellations after 24 hours, advance seat assignment starts at USD 15, and Basic preferred seating starts at USD 136.",
       },
       {
         name: "Economy (non-Basic)",
@@ -6452,12 +6452,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy Plus",
         details:
-          "Economy Plus is listed separately as a paid seat product with a published range of USD 29-299 per flight, per person.",
+          "Economy Plus is listed separately as a paid seat product with a range of USD 29-299 per flight, per person.",
       },
       {
         name: "Premium cabins",
         details:
-          "This page does not show a separate premium-cabin baggage or cancellation ladder, so use the rows here as an Economy-focused reference.",
+          "Use this as an Economy-focused reference; premium-cabin baggage and cancellation rules can follow separate allowance and fare-rule tables.",
       },
     ],
     scenarios: [
@@ -6469,27 +6469,27 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag on a U.S. domestic trip",
         details:
-          "Published pricing is USD 45 prepaid online or USD 50 at the airport for the first checked bag in Economy (non-Basic) on tickets purchased on or after April 3, 2026.",
+          "United lists USD 45 prepaid online or USD 50 at the airport for the first checked bag in Economy (non-Basic) on tickets purchased on or after April 3, 2026.",
       },
       {
         title: "Checking three bags on a newer ticket",
         details:
-          "Published pricing is USD 200 each way for the third checked bag on tickets purchased on or after April 3, 2026, in most markets, with the row also noting that trip-specific pricing may vary in United's baggage fee calculator.",
+          "United lists USD 200 each way for the third checked bag on tickets purchased on or after April 3, 2026, in most markets, with trip-specific pricing handled in United's baggage fee calculator.",
       },
       {
         title: "Purchasing a seat on Basic Economy",
         details:
-          "Published advance seat assignment starts at USD 15, while preferred seating starts at USD 136 on Basic Economy.",
+          "Advance seat assignment starts at USD 15, while preferred seating starts at USD 136 on Basic Economy.",
       },
       {
         title: "Changing a non-Basic domestic itinerary",
         details:
-          "Published change pricing is USD 0 for Economy (non-Basic), with fare difference applying.",
+          "Change pricing is USD 0 for Economy (non-Basic), with fare difference applying.",
       },
     ],
     exceptions: [
-      "Economy (non-Basic) shows no published change fee, with fare difference applying.",
-      "Published checked-bag rows are split by ticket purchase date: pre-April 3, 2026 most-market rows remain at USD 35, USD 45, and USD 150, while later-ticket rows move to USD 45, USD 55, and USD 200 in most markets.",
+      "Economy (non-Basic) shows no change fee, with fare difference applying.",
+      "Checked-bag pricing is split by ticket purchase date: pre-April 3, 2026 most-market pricing remains at USD 35, USD 45, and USD 150, while later-ticket pricing moves to USD 45, USD 55, and USD 200 in most markets.",
       "United card benefits can offset checked-bag fees, but many United card baggage benefits require paying with the eligible card. Check the card-benefit guide before assuming the waiver applies.",
     ],
     comparisonLinks: [
@@ -6502,20 +6502,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   delta: {
     intro: {
       carryOn:
-        "One carry-on bag and one personal item are published as included on all fares.",
+        "Delta includes one carry-on bag and one personal item on all fares.",
       personalItem:
-        "The published carry-on row states that size and placement requirements apply to the personal item.",
+        "The personal item still needs to meet Delta's size and placement requirements, so soft under-seat bags are safer than rigid totes.",
       checkedBag:
         "Delta's domestic bag baseline is easy to price, but the full model still depends on route, fare, and exceptions. The common domestic chart shows paid first and second standard checked bags before card, status, military, or cabin exceptions; international and exception cases should not be collapsed into one flat fee.",
       restrictions:
         "Delta Basic Economy is not mainly a carry-on trap. The bigger risk is flexibility: Basic change or cancellation fees differ by region, and older Basic tickets can still have stricter no-change treatment.",
     },
     verificationNote:
-      "The newest Delta checked-baggage rows on this page were last verified on 2026-05-06. The carry-on, oversize, overweight, same-day travel, and seat rows currently shown here were last verified on 2025-12-22, while the change/cancellation rows were last verified on 2025-12-19.",
+      "The newest Delta checked-baggage facts on this page were last verified on 2026-05-06. The carry-on, oversize, overweight, same-day travel, and seat facts currently shown here were last verified on 2025-12-22, while the change/cancellation facts were last verified on 2025-12-19.",
     avoidFees: [
       "Do not treat Basic Economy as a carry-on restriction; Delta's bigger Basic risk is change and cancellation flexibility.",
       "Check card, Medallion, military, and cabin exceptions before paying the domestic first-bag amount shown in the common chart.",
-      "Keep checked bags under the standard weight and size limits. Delta's overweight and oversized rows can quickly matter more than the base first-bag fee.",
+      "Keep checked bags under the standard weight and size limits. Delta's overweight and oversized fees can quickly matter more than the base first-bag fee.",
       "For repeat Delta domestic travel, use the card bag-benefit calculator before paying cash for first checked bags.",
     ],
     relatedGuides: [
@@ -6553,14 +6553,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Medallion-linked same-day products",
         details:
-          "Same-day confirmed change is USD 75 for eligible fares, but Diamond, Platinum, and Gold Medallion members have the fee waived in the row shown here.",
+          "Same-day confirmed change is USD 75 for eligible fares, but Diamond, Platinum, and Gold Medallion members have the fee waived.",
       },
     ],
     scenarios: [
       {
         title: "Traveling with only cabin items",
         details:
-          "Published rows show one carry-on bag and one personal item included on all fares.",
+          "Delta includes one carry-on bag and one personal item on all fares.",
       },
       {
         title: "Checking one standard domestic bag",
@@ -6575,18 +6575,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one overweight bag",
         details:
-          "Published overweight pricing is USD 100 each way for 51-70 lbs and USD 200 each way for 71-100 lbs.",
+          "Delta lists overweight pricing at USD 100 each way for 51-70 lbs and USD 200 each way for 71-100 lbs.",
       },
       {
         title: "Changing a Basic Economy long-haul itinerary",
         details:
-          "Published Basic Economy change or cancellation pricing is USD 199 each way on the long-haul regional group listed in the dataset.",
+          "The long-haul Basic Economy example shown here lists change or cancellation pricing at USD 199 each way; other regions and ticket dates can follow different rules.",
       },
     ],
     exceptions: [
-      "Published same-day confirmed change is waived for Diamond, Platinum, and Gold Medallion members.",
-      "Economy (non-Basic) rows show no change or cancellation fee in the listed regions, but fare difference can still apply.",
-      "Basic Economy rows can differ by ticket era: the current regional groups show USD 99 or USD 199 change/cancellation pricing, while older Basic Economy tickets purchased before Nov. 6, 2025 can still be listed as not permitted.",
+      "Same-day confirmed change is waived for Diamond, Platinum, and Gold Medallion members.",
+      "Economy (non-Basic) shows no change or cancellation fee in the listed regions, but fare difference can still apply.",
+      "Basic Economy can differ by ticket era: the current regional groups show USD 99 or USD 199 change/cancellation pricing, while older Basic Economy tickets purchased before Nov. 6, 2025 can still be listed as not permitted.",
     ],
     comparisonLinks: [
       { href: "/airlines/united", label: "United Airlines" },
@@ -6598,18 +6598,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   alaska: {
     intro: {
       carryOn:
-        "Alaska does not charge a carry-on fee in the current fee table: one carry-on bag up to the published 22 x 14 x 9 inch limit and one personal item are included on all fares, including Saver.",
+        "Alaska does not charge a carry-on fee here: one carry-on bag up to 22 x 14 x 9 inches and one personal item are included on all fares, including Saver.",
       personalItem:
-        "The published carry-on row states that the smaller personal item is included with the cabin bag allowance.",
+        "The smaller personal item is included with the cabin bag allowance, so the practical issue is fit, not a separate personal-item fee.",
       checkedBag:
         "Alaska's standard North America bag price is now ticketing-date sensitive. On most North American routes ticketed on or after April 10, 2026, the first checked bag is USD 45 and the second is USD 55; earlier ticketed bookings retain the prior USD 40 and USD 45 amounts. The former online/mobile prepay discount is no longer part of the newer structure.",
       restrictions:
-        "Saver is identified in the published change and cancellation rows as the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
+        "Saver is the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
     },
     verificationNote:
-      "The newest Alaska checked-baggage and oversize rows on this page were verified against official Alaska sources on 2026-06-10. The carry-on row currently shown here was last verified on 2025-12-24, while seat, cancellation, and unaccompanied minor rows were last verified on 2025-12-19.",
+      "The newest Alaska checked-baggage and oversize details on this page were verified against official Alaska sources on 2026-06-10. Carry-on details were last verified on 2025-12-24, while seat, cancellation, and unaccompanied minor details were last verified on 2025-12-19.",
     avoidFees: [
-      "Use the ticketing date first. Alaska's North America checked-bag rows changed on April 10, 2026, so an old reservation and a new reservation can price differently.",
+      "Use the ticketing date first. Alaska's North America checked-bag pricing changed on April 10, 2026, so an old reservation and a new reservation can price differently.",
       "Do not treat Alaska as one domestic bag ladder. Wholly within Hawaii, First Class, and international Main Cabin examples have their own baggage treatment.",
       "Keep the trip carry-on-only when possible. Saver still includes one carry-on and one personal item, so the main Saver tradeoff is flexibility rather than overhead-bin access.",
       "If you fly Alaska repeatedly with checked bags, compare the cash bag bill against the verified Alaska card baggage benefit before paying bag fees trip by trip.",
@@ -6654,22 +6654,22 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only cabin items",
         details:
-          "For the query 'does Alaska Airlines charge for carry on,' the practical answer is no in the current fee table: one carry-on and one personal item are included, including on Saver.",
+          "For the query 'does Alaska Airlines charge for carry on,' the practical answer is no: one carry-on and one personal item are included, including on Saver.",
       },
       {
         title: "Checking one standard bag",
         details:
-          "The published first checked bag amount is USD 45 each way on most North American routes ticketed on or after April 10, 2026.",
+          "The first checked bag amount shown here is USD 45 each way on most North American routes ticketed on or after April 10, 2026.",
       },
       {
         title: "Checking one standard bag wholly within Hawaii",
         details:
-          "Wholly within Hawaii, the published non-resident interisland example shows the first checked bag at USD 30 and the second at USD 40 for Main Cabin and Saver guests.",
+          "Wholly within Hawaii, the non-resident interisland example shows the first checked bag at USD 30 and the second at USD 40 for Main Cabin and Saver guests.",
       },
       {
         title: "Checking multiple bags",
         details:
-          "The published third-plus checked bag amount is USD 200 each way on flights ticketed on or after April 10, 2026, while earlier ticketed North American bookings remained at USD 150.",
+          "The third-plus checked bag amount shown here is USD 200 each way on flights ticketed on or after April 10, 2026, while earlier ticketed North American bookings remained at USD 150.",
       },
       {
         title: "Checking a Main Cabin bag on an international trip",
@@ -6679,10 +6679,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "All fares show a full refund when canceled within 24 hours of booking.",
-      "Alaska's published baggage materials say Mileage Plan elite members, eligible co-branded cardholders, Atmos Rewards status holders, and eligible Alaska and Hawaii resident programs such as Club 49 and Huaka'i receive baggage benefits or exceptions in the published program terms.",
-      "Strollers, car seats, mobility aids or medical assistive devices, qualifying pineapple from Hawaii, and qualifying wine shipments have special baggage treatment in Alaska's published exceptions.",
+      "Mileage Plan elite members, eligible co-branded cardholders, Atmos Rewards status holders, and eligible Alaska and Hawaii resident programs such as Club 49 and Huaka'i can receive baggage benefits or exceptions under Alaska's program terms.",
+      "Strollers, car seats, mobility aids or medical assistive devices, qualifying pineapple from Hawaii, and qualifying wine shipments have special baggage treatment under Alaska's baggage exceptions.",
       "First Class includes two checked bags at 70 lbs each.",
-      "Published pre-April 10, 2026 most-route baggage rows remain at USD 40 for the first bag and USD 45 for the second bag.",
+      "Pre-April 10, 2026 most-route baggage pricing remains at USD 40 for the first bag and USD 45 for the second bag.",
     ],
     comparisonLinks: [
       { href: "/airlines/southwest", label: "Southwest Airlines" },
@@ -6694,21 +6694,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   spirit: {
     intro: {
       carryOn:
-        "Spirit's fee model starts with one personal item at USD 0. A full-size carry-on is either included through Premium Economy or Spirit First, or priced for Value based on when and where the bag is purchased.",
+        "Spirit Airlines ceased operations on May 2, 2026, so this page should be read as a historical fee reference for old Spirit tickets, refunds, and comparisons rather than current booking advice. Spirit's former fee model started with one personal item at USD 0; a full-size carry-on was either included through Premium Economy or Spirit First, or priced for Value based on when and where the bag was purchased.",
       personalItem:
-        "The free item is the under-seat personal item. If the bag needs the overhead bin, it is no longer the free-bag path.",
+        "Under Spirit's former model, the free item was the under-seat personal item. If the bag needed the overhead bin, it was no longer the free-bag path.",
       checkedBag:
-        "Checked baggage is not a flat universal first-bag fee. Value and Premium Economy use route- and timing-based paid checked-bag pricing, while Spirit First includes the first checked bag.",
+        "Checked baggage was not a flat universal first-bag fee. Value and Premium Economy used route- and timing-based paid checked-bag pricing, while Spirit First included the first checked bag.",
       restrictions:
-        "The key split is Value versus the bundled travel options. Value is where bag timing matters most; Premium Economy and Spirit First include more upfront.",
+        "For historical Spirit fares, the key split was Value versus the bundled travel options. Value was where bag timing mattered most; Premium Economy and Spirit First included more upfront.",
     },
     verificationNote:
-      "Spirit travel-option, carry-on, checked-bag, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2026-05-06. Overweight and oversize rows were last verified on 2025-12-24.",
+      "Spirit ceased operations on May 2, 2026. The historical Spirit travel-option, carry-on, checked-bag, change/cancellation, and unaccompanied-minor details shown here were last verified on 2026-05-06. Overweight and oversize details were last verified on 2025-12-24.",
     avoidFees: [
-      "The cheapest legitimate path is personal-item-only travel. The moment a full-size carry-on or checked bag is needed, the fare stops being a simple base-price comparison.",
-      "If a carry-on is unavoidable, compare Value plus a carry-on against Premium Economy because Premium Economy includes a carry-on.",
-      "If a checked bag is unavoidable, Spirit First is the clean comparison point because the first checked bag is included there while Value and Premium Economy use route- and timing-based paid checked-bag rows.",
-      "Avoid airport or gate bag decisions. Spirit's bag cost can depend on purchase timing, which usually makes late decisions the least forgiving.",
+      "Do not use old Spirit fee math to plan a new trip. Since Spirit is no longer operating, compare replacement carriers instead.",
+      "For an old disrupted Spirit booking, focus first on refund rights and the payment channel used to buy the ticket.",
+      "For historical comparisons, Spirit's cheapest legitimate path was personal-item-only travel; the moment a full-size carry-on or checked bag was needed, the fare stopped being a simple base-price comparison.",
+      "When comparing replacement low-cost carriers, check whether the new airline prices bags by route, timing, bundle, or airport purchase.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -6718,14 +6718,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=spirit&weight=51&size=62", label: "Overweight and oversize calculator" },
       { href: "/sizer-rules", label: "Sizer rules" },
-      { href: "/guides/basic-economy-traps", label: "Basic-style fare guide" },
+      { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
       { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
       {
         name: "Value",
         details:
-          "Value was the unbundled product. The personal item was included, but carry-on pricing depended on purchase timing and checked-bag pricing depended on route and purchase timing.",
+          "Value was Spirit's unbundled product. The personal item was included, but carry-on pricing depended on purchase timing and checked-bag pricing depended on route and purchase timing.",
       },
       {
         name: "Personal-item-only travel",
@@ -6747,7 +6747,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only a personal item",
         details:
-          "The cleanest Spirit trip is one personal item under the seat and no paid carry-on or checked bag.",
+          "Historically, the cleanest Spirit trip was one personal item under the seat and no paid carry-on or checked bag.",
       },
       {
         title: "Adding a full-size carry-on",
@@ -6766,8 +6766,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
+      "Spirit Airlines is no longer operating scheduled flights; use this page as historical context, not current booking guidance.",
       "Premium Economy and Spirit First show no change or cancellation fee, with fare difference still possibly applying.",
-      "This fee table does not show an elite-status or co-branded card checked-bag waiver for Spirit.",
+      "No elite-status or co-branded-card checked-bag waiver is shown here for Spirit.",
     ],
     comparisonLinks: [
       { href: "/airlines/frontier", label: "Frontier Airlines" },
@@ -6788,10 +6789,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic Fare and Standard use a timed change-fee ladder and a USD 99 cancellation fee, while Economy, Premium, and Business bundles show no change or cancellation fee.",
     },
     verificationNote:
-      "Frontier change and cancellation rows shown here were last verified on 2025-12-19. Carry-on, checked-bag, overweight, and oversize rows were last verified on 2025-12-22.",
+      "Frontier change and cancellation details shown here were last verified on 2025-12-19. Carry-on, checked-bag, overweight, and oversize details were last verified on 2025-12-22.",
     avoidFees: [
-      "Decide on bags before checkout. Frontier's carry-on and checked-bag rows are timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
-      "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; the bundle rows show no change or cancellation fee.",
+      "Decide on bags before checkout. Frontier's carry-on and checked-bag pricing is timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
+      "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; those bundles show no change or cancellation fee.",
       "Keep bags under 40 lbs and within 62 linear inches when possible. Frontier's overweight and oversize charges are separate from the base bag purchase.",
       "For personal-item-only trips, measure the bag shape, not just the label. Frontier's cheapest path depends on the item fitting under the seat.",
     ],
@@ -6803,7 +6804,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=frontier&weight=51&size=62", label: "Overweight and oversize calculator" },
       { href: "/sizer-rules", label: "Sizer rules" },
-      { href: "/guides/basic-economy-traps", label: "Basic-style fare guide" },
+      { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
       { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
@@ -6873,7 +6874,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Ryanair trap is solving the bag too late. Priority, checked bags, seats, and flight changes all have route, timing, or channel rules that can make a cheap base fare less cheap.",
     },
     verificationNote:
-      "The Ryanair carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Ryanair carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Measure the under-seat bag before booking. If it cannot stay within 40 x 30 x 20 cm, compare Priority & 2 Cabin Bags against a checked-bag add-on before prices or availability change.",
       "Buy the correct bag product before the airport. Ryanair's checked-bag ranges depend on route, season, and purchase timing, while excess weight is charged per kg at the airport.",
@@ -6911,7 +6912,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Seats and changes",
         details:
-          "Random seating can be free at check-in, while selected seats and flight changes are paid products with separate standard, extra-legroom, online, and airport/call-center rows.",
+          "Random seating can be free at check-in, while selected seats and flight changes are paid products with separate standard, extra-legroom, online, and airport/call-center pricing.",
       },
     ],
     scenarios: [
@@ -6965,7 +6966,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The practical easyJet decision is whether to buy a larger cabin bag directly, get it through an eligible seat or fare path, or move the weight into a hold bag before airport pricing applies.",
     },
     verificationNote:
-      "The easyJet carry-on, hold-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The easyJet carry-on, hold-bag, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Start with bag size. If the trip fits inside the included 45 x 36 x 20 cm small cabin bag, the base fare can stay clean.",
       "If you need the larger cabin bag, compare the bag add-on against Up Front or Extra Legroom seating because the seat path can include the large cabin-bag entitlement.",
@@ -6998,7 +6999,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "15 kg and 23 kg hold bags",
         details:
-          "Hold baggage is bought as a weight allowance. The 15 kg and 23 kg rows have separate ranges that vary by route, season, and purchase timing.",
+          "Hold baggage is bought as a weight allowance. The 15 kg and 23 kg options have separate ranges that vary by route, season, and purchase timing.",
       },
       {
         name: "Seats and changes",
