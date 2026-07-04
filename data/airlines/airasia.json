@@ -20,7 +20,7 @@
       "category": "checked_baggage",
       "amount": "Depends on weight tier, route, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage is not included by default; fees depend on weight tier (15 kg, 20 kg, 25 kg, 30 kg, 40 kg) and route; pre-booking is cheaper than airport purchase",
+      "conditions": "Checked baggage is not included by default; fees depend on weight tier and route. Pre-booking is cheaper than airport purchase.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",

@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Carry-on allowance depends on fare and cabin: Economy generally includes 1 cabin bag (up to 55 × 40 × 20 cm) plus a personal item; weight limits apply",
+      "conditions": "Carry-on depends on fare and cabin; Economy generally includes 1 cabin bag plus a personal item. Size and weight limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

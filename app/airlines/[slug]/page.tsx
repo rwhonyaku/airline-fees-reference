@@ -99,7 +99,7 @@ const TARGET_REFERENCE_SLUGS = new Set([
   "viva-aerobus",
   "jet2",
   "thai-airways",
-  "philippin-airlines",
+  "philippine-airlines",
   "vistara",
   "jetstar-asia",
   "jetstar-japan",
@@ -1132,19 +1132,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Turkish Airlines includes cabin baggage, but the allowance changes by cabin: Economy gets one 8 kg piece, while Business gets two 8 kg pieces.",
       personalItem:
-        "This fee table does not show a separate Turkish Airlines personal-item fee row; the key cabin question is whether your cabin allows one or two main cabin pieces under the 8 kg-per-piece rule.",
+        "There is no separate Turkish Airlines personal-item fee shown here; the key cabin question is whether your cabin allows one or two main cabin pieces under the 8 kg-per-piece rule.",
       checkedBag:
         "Turkish Airlines is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under either the piece or weight concept depending on route, then excess baggage is charged when the allowance is exceeded.",
       restrictions:
         "The main fee risks are excess baggage, paid Economy seat selection on some fares, and promotional or restrictive fare rules for changes and cancellations.",
     },
     verificationNote:
-      "The Turkish Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Turkish Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your route uses piece or weight concept baggage before packing; the excess-baggage charge depends on that structure.",
-      "Keep each checked bag at or below 32 kg because the published row treats that as the maximum accepted weight per bag.",
+      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
       "Check whether standard seat selection is included for your fare before paying for an Economy seat.",
-      "Avoid promotional fares if flexibility matters because the fee table identifies promotional fares as generally the most restrictive.",
+      "Avoid promotional fares if flexibility matters because promotional fares are generally the most restrictive.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1166,7 +1166,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Business",
         details:
-          "Business cabin baggage is two pieces up to 8 kg each. This page does not show a separate premium-cabin excess-baggage price table.",
+          "Business cabin baggage is two pieces up to 8 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
       },
       {
         name: "Excess baggage",
@@ -1198,13 +1198,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Changing a promotional fare",
         details:
-          "The published change row says change and cancellation fees depend on fare family and route, with promotional fares generally the most restrictive.",
+          "Change and cancellation fees depend on fare family and route, with promotional fares generally the most restrictive.",
       },
     ],
     exceptions: [
       "Checked baggage is included under either the piece or weight concept depending on route.",
-      "Bags above 32 kg per bag exceed the published accepted weight limit.",
-      "This fee table does not show a Turkish Airlines co-branded card baggage waiver.",
+      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
+      "No Turkish Airlines co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/emirates", label: "Emirates" },
@@ -1218,17 +1218,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Cathay Pacific includes cabin baggage, but the allowance changes by cabin: Economy and Premium Economy get one 7 kg piece, while Business and First get two 7 kg pieces.",
       personalItem:
-        "This fee table does not show a separate Cathay Pacific personal-item fee row; the practical cabin question is whether your cabin allows one or two main cabin pieces.",
+        "There is no separate Cathay Pacific personal-item fee shown here; the practical cabin question is whether your cabin allows one or two main cabin pieces.",
       checkedBag:
         "Cathay Pacific is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under piece or weight concept rules depending on route, and excess baggage is charged when the allowance is exceeded.",
       restrictions:
         "The main fee risks are excess baggage, preferred or extra-legroom seat charges on some Economy fares, fare-rule-based changes, and route-specific unaccompanied-minor rules.",
     },
     verificationNote:
-      "The Cathay Pacific carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Cathay Pacific carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your itinerary uses piece or weight concept baggage before buying extra allowance.",
-      "Keep each checked bag at or below 32 kg because the published row treats that as the maximum accepted weight per bag.",
+      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
       "Check standard seat eligibility before buying preferred or extra-legroom seats on Economy fares.",
       "Read the fare rules before booking if you may change or cancel because fees depend on fare family and route.",
     ],
@@ -1252,7 +1252,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Business / First",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. This page does not show a separate premium-cabin excess-baggage price table.",
+          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
       },
       {
         name: "Excess baggage",
@@ -1289,8 +1289,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Checked baggage is included under piece or weight concept rules depending on route.",
-      "Bags above 32 kg per bag exceed the published accepted weight limit.",
-      "This fee table does not show a Cathay Pacific co-branded card baggage waiver.",
+      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
+      "No Cathay Pacific co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/singapore-airlines", label: "Singapore Airlines" },
@@ -1304,18 +1304,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "ANA includes carry-on baggage up to 10 kg total including the personal item, with standard size limits applying.",
       personalItem:
-        "ANA's carry-on row treats the personal item as part of the total 10 kg cabin allowance, so weight matters even when the bag fits physically.",
+        "ANA treats the personal item as part of the total 10 kg cabin allowance, so weight matters even when the bag fits physically.",
       checkedBag:
         "ANA checked baggage is included on eligible fares, but the allowance depends on route, cabin, and domestic versus international rules. Additional bags are charged only after the free allowance is exceeded.",
       restrictions:
         "The main risks are excess baggage above the free allowance, airport overweight or oversize charges, preferred-seat charges on some international Economy fares, and fare-rule-based changes or refunds.",
     },
     verificationNote:
-      "The ANA carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The ANA carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the trip is domestic or international before assuming the checked-bag allowance; ANA's allowance changes by route and cabin.",
-      "Keep checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds in the published rows.",
-      "Avoid bags over 32 kg because ANA does not accept them as checked baggage in the row shown here.",
+      "Keep checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds.",
+      "Avoid bags over 32 kg because ANA does not accept them as checked baggage.",
       "Use included advance seat selection where available, and check whether a preferred-seat fee applies before paying for international Economy seating.",
     ],
     relatedGuides: [
@@ -1365,7 +1365,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg bag",
         details:
-          "The published overweight row applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
+          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
       },
       {
         title: "Selecting an international Economy preferred seat",
@@ -1375,8 +1375,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "ANA provides unaccompanied-minor assistance free of charge on ANA-operated flights, with age restrictions and conditions.",
-      "Bags above 32 kg are not accepted as checked baggage in the published row.",
-      "This fee table does not show an ANA co-branded card baggage waiver.",
+      "Bags above 32 kg are not accepted as checked baggage.",
+      "No ANA co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/jal", label: "Japan Airlines" },
@@ -1390,18 +1390,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Japan Airlines includes carry-on baggage up to 10 kg total including the personal item, with size limits applying.",
       personalItem:
-        "JAL's carry-on row treats the personal item as part of the 10 kg total cabin allowance, so the combined weight is the practical constraint.",
+        "JAL treats the personal item as part of the 10 kg total cabin allowance, so the combined weight is the practical constraint.",
       checkedBag:
         "Japan Airlines checked baggage is included on eligible fares, but the allowance depends on route and cabin. Additional bags are charged only after the free allowance is exceeded.",
       restrictions:
         "The main risks are excess baggage above the included allowance, airport overweight or oversize charges, preferred-seat charges on some international Economy fares, and fare-rule-based changes or refunds.",
     },
     verificationNote:
-      "The Japan Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Japan Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm the route and cabin allowance before packing; JAL's included checked-bag allowance changes by route and cabin.",
-      "Keep Economy checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds in the published rows.",
-      "Avoid bags over 32 kg because JAL does not accept them as checked baggage in the row shown here.",
+      "Keep Economy checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds.",
+      "Avoid bags over 32 kg because JAL does not accept them as checked baggage.",
       "Check whether preferred or extra-legroom seats cost extra on the specific international Economy fare before paying for seat selection.",
     ],
     relatedGuides: [
@@ -1424,7 +1424,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy checked baggage",
         details:
-          "The fee table notes Economy is typically up to 23 kg per piece, while premium cabins have higher allowances.",
+          "Economy is typically up to 23 kg per piece, while premium cabins have higher allowances.",
       },
       {
         name: "Additional and excess baggage",
@@ -1451,7 +1451,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg Economy bag",
         details:
-          "The published overweight row applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
+          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
       },
       {
         title: "Choosing an international Economy preferred seat",
@@ -1461,8 +1461,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "JAL provides unaccompanied-minor assistance free of charge on JAL-operated flights, with age restrictions and conditions.",
-      "Bags above 32 kg are not accepted as checked baggage in the published row.",
-      "This fee table does not show a JAL co-branded card baggage waiver.",
+      "Bags above 32 kg are not accepted as checked baggage.",
+      "No JAL co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/ana", label: "ANA" },
@@ -1476,17 +1476,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Korean Air includes cabin baggage, but the allowance changes by cabin: Economy gets one 10 kg piece, while Prestige and First get two 10 kg pieces.",
       personalItem:
-        "This fee table does not show a separate Korean Air personal-item fee row; the practical cabin-bag question is how many 10 kg cabin pieces your cabin allows.",
+        "There is no separate Korean Air personal-item fee shown here; the practical cabin-bag question is how many 10 kg cabin pieces your cabin allows.",
       checkedBag:
         "Korean Air is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under piece or weight concept rules depending on route, and excess baggage is charged when the allowance is exceeded.",
       restrictions:
         "The main risks are excess baggage, preferred or extra-legroom seat charges on some Economy fares, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The Korean Air carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Korean Air carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your itinerary uses piece or weight concept baggage before buying extra allowance.",
-      "Keep each checked bag at or below 32 kg because the published row treats that as the maximum accepted weight per bag.",
+      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
       "Check whether standard seat selection is included for your fare before paying for preferred or extra-legroom seats.",
       "Read fare rules before booking if you may change or cancel because fees depend on fare family and route.",
     ],
@@ -1510,7 +1510,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Prestige / First",
         details:
-          "Prestige and First show two cabin pieces up to 10 kg each. This page does not show a separate premium-cabin excess-baggage price table.",
+          "Prestige and First show two cabin pieces up to 10 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
       },
       {
         name: "Excess baggage",
@@ -1547,8 +1547,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Checked baggage is included under piece or weight concept rules depending on route.",
-      "Bags above 32 kg per bag exceed the published accepted weight limit.",
-      "This fee table does not show a Korean Air co-branded card baggage waiver.",
+      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
+      "No Korean Air co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/ana", label: "ANA" },
@@ -1564,17 +1564,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The included small item is capped at 33 x 25 x 20 cm and must fit under the seat. That is the true free cabin-bag path on Saver.",
       checkedBag:
-        "Aer Lingus checked baggage is an add-on model on the rows shown here. The 20 kg and 25 kg checked-bag options have published ranges that vary by route, season, and purchase timing, while airport excess weight is charged per additional kg.",
+        "Aer Lingus checked baggage is an add-on model. The 20 kg and 25 kg checked-bag options have ranges that vary by route, season, and purchase timing, while airport excess weight is charged per additional kg.",
       restrictions:
         "The main Aer Lingus fee traps are Saver baggage, paid seat selection, and Saver fare flexibility. The fare can stay cheap only if the bag and change needs are solved before booking.",
     },
     verificationNote:
-      "The Aer Lingus carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Aer Lingus carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Measure the under-seat bag before booking Saver; if you need a 10 kg cabin bag, compare the add-on against Plus, Advantage, or AerSpace.",
       "Buy checked baggage before the airport when possible. The 20 kg and 25 kg bag ranges depend on route, season, and purchase timing.",
       "Do not assume paid seat selection is necessary if a random check-in seat is acceptable.",
-      "Avoid Saver if you may need changes or refunds; the rows shown here make Saver the restrictive fare.",
+      "Avoid Saver if you may need changes or refunds; Saver is the restrictive fare path.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1597,7 +1597,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Plus / Advantage / AerSpace",
         details:
-          "The 10 kg cabin bag is included with these fare paths in the published carry-on row, so compare the bundle against separate add-ons.",
+          "The 10 kg cabin bag is included with these fare paths, so compare the bundle against separate add-ons.",
       },
       {
         name: "Checked-bag add-ons",
@@ -1619,7 +1619,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Adding a 10 kg cabin bag",
         details:
-          "The 10 kg cabin bag has a published EUR 6.99 to EUR 35.99 range and can also be bundled with higher fares.",
+          "The 10 kg cabin bag has a EUR 6.99 to EUR 35.99 range and can also be bundled with higher fares.",
       },
       {
         title: "Checking a 20 kg bag",
@@ -1629,13 +1629,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Going over purchased weight",
         details:
-          "Excess baggage is charged at EUR 12 per additional kg at the airport in the published row.",
+          "Excess baggage is charged at EUR 12 per additional kg at the airport.",
       },
     ],
     exceptions: [
-      "Saver refunds are not permitted except for flight cancellation or qualifying circumstances in the row shown here.",
+      "Saver refunds are not permitted except for flight cancellation or qualifying circumstances.",
       "Unaccompanied-minor service depends on route and age, so this page does not show one universal service fee.",
-      "This fee table does not show an Aer Lingus co-branded card baggage waiver.",
+      "No Aer Lingus co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/ryanair", label: "Ryanair" },
@@ -1649,14 +1649,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Aeromexico includes one cabin bag and one personal item, but the weight and size limits depend on cabin and fare family.",
       personalItem:
-        "The carry-on row includes the personal item alongside the main cabin bag; this page does not show a separate personal-item fee.",
+        "The personal item is included alongside the main cabin bag; there is no separate personal-item fee shown here.",
       checkedBag:
         "Aeromexico checked baggage is fare- and route-based. Classic, AM Plus, Premier, and some international fares include baggage, while Basic fares or excess allowance trigger paid checked-bag pricing by route and purchase timing.",
       restrictions:
         "The main pressure points are Basic checked baggage, airport excess baggage, seat-selection rules by fare family, and Basic fare change/cancellation restrictions.",
     },
     verificationNote:
-      "The Aeromexico carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Aeromexico carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Do not compare Basic against Classic or AM Plus by base fare alone if you need a checked bag.",
       "Buy baggage before the airport when the route allows it because paid checked-bag pricing depends on route and purchase timing.",
@@ -1720,9 +1720,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Unaccompanied-minor service is available only on select routes and ages in the row shown here.",
+      "Unaccompanied-minor service is available only on select routes and ages.",
       "Some international fares include checked baggage even where Basic-style fares may not.",
-      "This fee table does not show an Aeromexico co-branded card baggage waiver.",
+      "No Aeromexico co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/american", label: "American Airlines" },
@@ -1736,18 +1736,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Air New Zealand includes cabin baggage on Air New Zealand-operated flights: Economy shows one carry-on up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
       personalItem:
-        "The personal item is included alongside the Economy carry-on allowance in the published row.",
+        "The personal item is included alongside the Economy carry-on allowance.",
       checkedBag:
         "Air New Zealand checked baggage is usually an included allowance on eligible fares, then paid additional baggage is priced by route and timing when you need more than the allowance.",
       restrictions:
         "The main risks are additional checked bags, airport overweight/oversize handling, seat options by fare family, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The Air New Zealand carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Air New Zealand carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Treat the Economy 7 kg cabin-bag allowance as a real packing limit on Air New Zealand-operated flights.",
       "Buy additional baggage before the airport when needed because pricing depends on route and timing.",
-      "Keep checked bags at or below 32 kg because bags over 32 kg must be shipped as cargo in the published row.",
+      "Keep checked bags at or below 32 kg because bags over 32 kg must be shipped as cargo.",
       "Use included standard seat selection on eligible fares or wait for check-in when that is the better fit.",
     ],
     relatedGuides: [
@@ -1770,7 +1770,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium Economy / Business",
         details:
-          "Premium cabins have higher cabin baggage allowances in the row shown here, but this page does not show a separate premium-cabin excess-baggage ladder.",
+          "Premium cabins have higher cabin baggage allowances, but premium-cabin excess-baggage pricing is still route-based rather than one universal ladder.",
       },
       {
         name: "Additional baggage",
@@ -1797,7 +1797,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a bag over 32 kg",
         details:
-          "Bags over 32 kg must be shipped as cargo under the published overweight row.",
+          "Bags over 32 kg must be shipped as cargo.",
       },
       {
         title: "Choosing extra legroom",
@@ -1806,9 +1806,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The carry-on row is limited to Air New Zealand-operated flights.",
+      "The carry-on guidance is limited to Air New Zealand-operated flights.",
       "Bags over 32 kg must be shipped as cargo.",
-      "This fee table does not show an Air New Zealand co-branded card baggage waiver.",
+      "No Air New Zealand co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/qantas", label: "Qantas" },
@@ -1820,20 +1820,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   qantas: {
     intro: {
       carryOn:
-        "Qantas includes carry-on baggage, with size and weight limits applying under the published baggage policy.",
+        "Qantas includes carry-on baggage, with size and weight limits applying.",
       personalItem:
-        "This fee table does not show a separate personal-item fee row for Qantas; the practical question is whether the cabin baggage stays inside the published size and weight limits.",
+        "There is no separate Qantas personal-item fee shown here; the practical question is whether the cabin baggage stays inside the size and weight limits.",
       checkedBag:
-        "Qantas checked baggage depends on itinerary, cabin class, and frequent-flyer status. Domestic airport extra-bag and heavy-bag charges are published separately, while pre-purchased additional baggage is sold by route and weight increment.",
+        "Qantas checked baggage depends on itinerary, cabin class, and frequent-flyer status. Domestic airport extra-bag and heavy-bag charges are separate from pre-purchased additional baggage, which is sold by route and weight increment.",
       restrictions:
         "The main risks are exceeding the included allowance, buying extra baggage at the airport, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The Qantas baggage and change/cancellation rows shown here were last verified on 2025-12-24.",
+      "The Qantas baggage and change/cancellation details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Check the itinerary, cabin, and frequent-flyer allowance before assuming how much checked baggage is included.",
-      "Pre-purchase additional baggage where possible; Qantas publishes a separate airport charge for each extra domestic bag.",
-      "Keep domestic bags at or below 23 kg to avoid the published heavy-bag charge.",
+      "Pre-purchase additional baggage where possible; Qantas has a separate airport charge for each extra domestic bag.",
+      "Keep domestic bags at or below 23 kg to avoid the heavy-bag charge.",
       "Read the fare rules before changing or canceling because fees depend on route and fare type outside the domestic example shown here.",
     ],
     relatedGuides: [
@@ -1854,17 +1854,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Domestic airport baggage",
         details:
-          "The table shows an AUD 150 airport excess-baggage charge for each extra checked bag beyond the published allowance on Australian domestic flights.",
+          "Australian domestic airport excess baggage is AUD 150 for each extra checked bag beyond the allowance.",
       },
       {
         name: "Heavy bags",
         details:
-          "The published domestic heavy-bag charge is AUD 60 for each piece weighing over 23 kg.",
+          "The domestic heavy-bag charge is AUD 60 for each piece weighing over 23 kg.",
       },
       {
         name: "Changes and cancellations",
         details:
-          "The table includes an AUD 100 domestic example, while broader change and cancellation rules depend on fare rules and route.",
+          "The domestic example is AUD 100, while broader change and cancellation rules depend on fare rules and route.",
       },
     ],
     scenarios: [
@@ -1876,12 +1876,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking an extra domestic bag at the airport",
         details:
-          "The published Australian domestic airport charge is AUD 150 for each extra checked bag beyond the allowance.",
+          "The Australian domestic airport charge is AUD 150 for each extra checked bag beyond the allowance.",
       },
       {
         title: "Checking a heavy domestic bag",
         details:
-          "The published Australian domestic heavy-bag charge is AUD 60 for each piece over 23 kg.",
+          "The Australian domestic heavy-bag charge is AUD 60 for each piece over 23 kg.",
       },
       {
         title: "Changing a domestic Economy ticket",
@@ -1891,8 +1891,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Checked-baggage allowance varies by itinerary, cabin class, and frequent-flyer status.",
-      "Some premium cabins may have no change fees or different change conditions under the published row.",
-      "This fee table does not show a Qantas co-branded card baggage waiver.",
+      "Some premium cabins may have no change fees or different change conditions.",
+      "No Qantas co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-new-zealand", label: "Air New Zealand" },
@@ -1906,19 +1906,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "TAP Air Portugal includes carry-on baggage, but the allowance depends on fare and cabin. Economy generally includes one cabin bag plus a personal item, with weight limits applying.",
       personalItem:
-        "The published carry-on row includes a personal item alongside the main cabin bag; this page does not show a separate personal-item charge.",
+        "A personal item is included alongside the main cabin bag; there is no separate personal-item charge shown here.",
       checkedBag:
         "TAP checked baggage depends on fare family and route. Economy Classic, Plus, and premium cabins include checked baggage, while Discount fares or additional bags use paid checked-bag pricing that varies by route and purchase timing.",
       restrictions:
         "The main TAP fee traps are Discount fare baggage, airport overweight or oversize charges, paid Discount seat selection, and restrictive Discount refund rules.",
     },
     verificationNote:
-      "The TAP Air Portugal carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The TAP Air Portugal carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Compare Discount against Classic or Plus when you need a checked bag; the checked-bag add-on can change the fare math quickly.",
-      "Buy checked baggage before the airport when needed because the published range depends on route and purchase timing.",
+      "Buy checked baggage before the airport when needed because the range depends on route and purchase timing.",
       "Keep checked bags at or below 23 kg and 158 cm where possible to avoid airport overweight or oversize treatment.",
-      "Avoid Discount fares if refunds or flexibility matter because the refund row says refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Avoid Discount fares if refunds or flexibility matter because refunds are not permitted except for flight cancellation or qualifying circumstances.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1942,12 +1942,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Classic / Plus / premium cabins",
         details:
-          "These fare paths include checked baggage in the published row, but the allowance still varies by route and fare family.",
+          "These fare paths include checked baggage, but the allowance still varies by route and fare family.",
       },
       {
         name: "Additional baggage",
         details:
-          "Discount checked bags or additional bags have a published EUR 20 to EUR 85 range that varies by route and purchase timing.",
+          "Discount checked bags or additional bags have a EUR 20 to EUR 85 range that varies by route and purchase timing.",
       },
       {
         name: "Seats and changes",
@@ -1969,18 +1969,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg bag",
         details:
-          "The overweight row applies above 23 kg and up to 32 kg, with bags over 32 kg not accepted.",
+          "Overweight treatment applies above 23 kg and up to 32 kg, with bags over 32 kg not accepted.",
       },
       {
         title: "Refunding a Discount fare",
         details:
-          "Refunds are not permitted on Discount fares except for flight cancellation or qualifying circumstances in the published row.",
+          "Refunds are not permitted on Discount fares except for flight cancellation or qualifying circumstances.",
       },
     ],
     exceptions: [
-      "Checked baggage is included on Economy Classic, Plus, and premium cabins in the published row.",
-      "Bags over 32 kg are not accepted under the overweight row.",
-      "This fee table does not show a TAP Air Portugal co-branded card baggage waiver.",
+      "Checked baggage is included on Economy Classic, Plus, and premium cabins.",
+      "Bags over 32 kg are not accepted as checked baggage.",
+      "No TAP Air Portugal co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/aer-lingus", label: "Aer Lingus" },
@@ -1992,20 +1992,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   avianca: {
     intro: {
       carryOn:
-        "Avianca's cheapest baggage trap is Basic fare cabin baggage. The data shows Basic includes a personal item only, while a full carry-on bag is purchased separately and priced by route and timing.",
+        "Avianca's cheapest baggage trap is Basic fare cabin baggage. Basic includes a personal item only, while a full carry-on bag is purchased separately and priced by route and timing.",
       personalItem:
         "Basic still has a personal-item path, but that is not the same as a normal overhead carry-on. If the bag needs the bin, price the carry-on add-on before booking.",
       checkedBag:
-        "Avianca checked baggage is fare- and route-based. Classic and Flex fares include checked baggage in the rows shown here, while Basic checked baggage is paid and varies by route, bag weight, and timing.",
+        "Avianca checked baggage is fare- and route-based. Classic and Flex fares include checked baggage, while Basic checked baggage is paid and varies by route, bag weight, and timing.",
       restrictions:
         "The main risk is stacking Basic add-ons: carry-on, checked baggage, seat selection, and change/cancellation rules can all move the final price away from the headline fare.",
     },
     verificationNote:
-      "The Avianca carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Avianca carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Do not book Basic unless a personal item is enough or the carry-on add-on still leaves Basic cheaper than the next fare.",
-      "Compare Basic against Classic or Flex when checking a bag; the checked-bag row depends on route, bag weight, and purchase timing.",
-      "Keep checked bags within the published allowance because overweight and oversize charges are airport-handled and route-based.",
+      "Compare Basic against Classic or Flex when checking a bag; checked-bag pricing depends on route, bag weight, and purchase timing.",
+      "Keep checked bags within the allowance because overweight and oversize charges are airport-handled and route-based.",
       "Check fare-family rules before buying if plans may change; change and cancellation costs depend on fare family and route.",
     ],
     relatedGuides: [
@@ -2024,12 +2024,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic is the personal-item-only path in the published carry-on row. Carry-on and checked baggage are paid decisions whose prices depend on route and timing.",
+          "Basic is the personal-item-only path. Carry-on and checked baggage are paid decisions whose prices depend on route and timing.",
       },
       {
         name: "Classic / Flex",
         details:
-          "These fare families include checked baggage in the rows shown here, but the allowance still varies by route and cabin.",
+          "These fare families include checked baggage, but the allowance still varies by route and cabin.",
       },
       {
         name: "Seats",
@@ -2046,7 +2046,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Booking Basic with a roller bag",
         details:
-          "Basic includes a personal item only in the row shown here, so the overhead carry-on must be priced as an add-on.",
+          "Basic includes a personal item only, so the overhead carry-on must be priced as an add-on.",
       },
       {
         title: "Checking a bag on Basic",
@@ -2065,9 +2065,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The carry-on row is for Avianca-operated flights.",
+      "The carry-on guidance is for Avianca-operated flights.",
       "Oversize acceptance depends on route and aircraft, so oversized items should be checked against the operating flight.",
-      "This fee table does not show an Avianca co-branded card baggage waiver.",
+      "No Avianca co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/latam", label: "LATAM Airlines" },
@@ -2081,14 +2081,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Copa includes one carry-on and one personal item on Copa-operated flights, but allowance details still vary by fare family.",
       personalItem:
-        "The personal item is included alongside the carry-on in the published row; this page does not show a separate personal-item fee.",
+        "The personal item is included alongside the carry-on; there is no separate personal-item fee shown here.",
       checkedBag:
         "Copa checked baggage depends on fare family and route. Classic and Full fares include checked baggage, while Basic checked baggage is paid and varies by route, bag weight, and purchase timing.",
       restrictions:
         "The main Copa fee risk is booking Basic for a trip that really needs a checked bag, preferred seat, or flexible change rules.",
     },
     verificationNote:
-      "The Copa carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Copa carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "If you need checked baggage, compare Basic against Classic or Full instead of looking only at the base fare.",
       "Buy baggage before the airport when possible because Basic checked-bag pricing depends on route, weight, and timing.",
@@ -2116,7 +2116,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Classic / Full",
         details:
-          "These fare families include checked baggage in the rows shown here, though the allowance varies by route and fare family.",
+          "These fare families include checked baggage, though the allowance varies by route and fare family.",
       },
       {
         name: "Preferred seats",
@@ -2152,9 +2152,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The carry-on row applies to Copa-operated flights.",
+      "The carry-on guidance applies to Copa-operated flights.",
       "Oversize acceptance depends on route and aircraft.",
-      "This fee table does not show a Copa co-branded card baggage waiver.",
+      "No Copa co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/avianca", label: "Avianca" },
@@ -2168,19 +2168,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Iberia includes one cabin bag plus one personal item, but checked baggage and seat selection depend heavily on whether the fare is Basic, Standard/Flex, or premium.",
       personalItem:
-        "The personal item is included with the cabin bag in the published carry-on row, so the first cabin-bag question is size and weight rather than a separate personal-item fee.",
+        "The personal item is included with the cabin bag, so the first cabin-bag question is size and weight rather than a separate personal-item fee.",
       checkedBag:
-        "Iberia checked baggage separates included allowance from paid add-ons. Standard, Flex, and premium fares include baggage in the rows shown here, while Basic fares or extra bags use a EUR 15 to EUR 70 range based on route and purchase timing.",
+        "Iberia checked baggage separates included allowance from paid add-ons. Standard, Flex, and premium fares include baggage, while Basic fares or extra bags use a EUR 15 to EUR 70 range based on route and purchase timing.",
       restrictions:
         "Basic is the main restriction point: checked baggage, seat selection, and refund flexibility can all change the final trip cost.",
     },
     verificationNote:
-      "The Iberia carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Iberia carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Compare Basic against Standard before booking when a checked bag is likely; the checked-bag add-on can erase the fare gap.",
       "Buy checked baggage before the airport when possible because Basic and additional-bag pricing varies by route and purchase timing.",
       "Keep checked bags at or below 23 kg and 158 cm to avoid airport overweight or oversize treatment.",
-      "Avoid Basic if refunds matter; the refund row says Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Avoid Basic if refunds matter; Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2199,17 +2199,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances in the row shown here.",
+          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances.",
       },
       {
         name: "Standard / Flex",
         details:
-          "These fare brands include checked baggage and standard seat selection in the published rows, with allowance still dependent on route and fare brand.",
+          "These fare brands include checked baggage and standard seat selection, with allowance still dependent on route and fare brand.",
       },
       {
         name: "Premium cabins",
         details:
-          "Premium cabins are included-allowance paths in the data, but this page does not show one universal excess-baggage schedule for every premium itinerary.",
+          "Premium cabins are included-allowance paths, but excess-baggage pricing still depends on the itinerary rather than one universal premium-cabin schedule.",
       },
       {
         name: "Changes and cancellations",
@@ -2221,7 +2221,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Booking Basic with a checked bag",
         details:
-          "The checked-bag row shows a EUR 15 to EUR 70 range for Basic fares or additional bags, varying by route and purchase timing.",
+          "Basic fares or additional bags use a EUR 15 to EUR 70 checked-bag range, varying by route and purchase timing.",
       },
       {
         title: "Flying with cabin baggage only",
@@ -2231,7 +2231,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg bag",
         details:
-          "The overweight row applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
+          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
       },
       {
         title: "Choosing a Basic seat",
@@ -2240,9 +2240,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Bags over 32 kg are not accepted under the overweight row.",
+      "Bags over 32 kg are not accepted as checked baggage.",
       "Unaccompanied-minor fees and conditions vary by route and age.",
-      "This fee table does not show an Iberia co-branded card baggage waiver.",
+      "No Iberia co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/tap-air-portugal", label: "TAP Air Portugal" },
@@ -2254,7 +2254,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   latam: {
     intro: {
       carryOn:
-        "LATAM's cheapest fare trap is Light: the carry-on row says Light includes a personal item, while other fares include a carry-on bag up to 12 kg.",
+        "LATAM's cheapest fare trap is Light: Light includes a personal item, while other fares include a carry-on bag up to 12 kg.",
       personalItem:
         "Light can work for a very small-bag trip, but it is not the same as having a normal carry-on allowance.",
       checkedBag:
@@ -2263,7 +2263,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main risks are Light fare baggage, Light seat selection, airport overweight/oversize handling, and restrictive change/cancellation treatment.",
     },
     verificationNote:
-      "The LATAM carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The LATAM carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "Do not book Light unless the personal-item-only allowance is enough or paid baggage still leaves Light cheaper.",
       "Compare Light against Plus or Top when a checked bag is likely, because eligible higher fares include baggage.",
@@ -2286,12 +2286,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Light",
         details:
-          "Light includes a personal item in the published carry-on row. Checked bags and seat selection can become paid decisions based on route, fare family, and timing.",
+          "Light includes a personal item. Checked bags and seat selection can become paid decisions based on route, fare family, and timing.",
       },
       {
         name: "Plus / Top",
         details:
-          "These fare families include checked baggage and standard seat selection in the rows shown here, though allowance varies by route and fare family.",
+          "These fare families include checked baggage and standard seat selection, though allowance varies by route and fare family.",
       },
       {
         name: "Premium cabins",
@@ -2318,18 +2318,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Taking a 12 kg carry-on",
         details:
-          "Other fares include one carry-on bag up to 12 kg, while Light is described as personal-item-only in the row shown here.",
+          "Other fares include one carry-on bag up to 12 kg, while Light is the personal-item-only path.",
       },
       {
         title: "Checking a bag over 23 kg",
         details:
-          "The overweight row applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
+          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
       },
     ],
     exceptions: [
       "Unaccompanied-minor service is available only on select routes and ages and varies by country and route.",
-      "Bags over 32 kg are not accepted under the overweight row.",
-      "This fee table does not show a LATAM co-branded card baggage waiver.",
+      "Bags over 32 kg are not accepted as checked baggage.",
+      "No LATAM co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/avianca", label: "Avianca" },
@@ -2343,16 +2343,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "WestJet includes one carry-on and one personal item, but checked-bag and seat costs depend on the fare bundle.",
       personalItem:
-        "The personal item is included with the carry-on in the published row; aircraft can affect enforcement, so soft bags are safer on smaller planes.",
+        "The personal item is included with the carry-on allowance. Aircraft can affect how tight the cabin space feels, so soft bags are safer on smaller planes.",
       checkedBag:
-        "WestJet separates included checked baggage from paid Econo baggage. EconoFlex, Premium, and Business include the first checked bag, while Econo shows CAD 35 for the first bag and CAD 50 for the second on domestic and transborder routes in the rows shown here.",
+        "WestJet separates included checked baggage from paid Econo baggage. EconoFlex, Premium, and Business include the first checked bag, while Econo shows CAD 35 for the first bag and CAD 50 for the second on the domestic and transborder examples available here.",
       restrictions:
         "The main WestJet fee trap is Econo: first checked bag, second checked bag, advance seat selection, and change fees can all matter.",
     },
     verificationNote:
-      "The WestJet carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "WestJet carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
-      "Compare Econo against EconoFlex when checking a bag; EconoFlex includes the first checked bag in the published row.",
+      "Compare Econo against EconoFlex when checking a bag; EconoFlex includes the first checked bag.",
       "Keep checked bags at or below 23 kg and 158 cm to avoid the CAD 100 to CAD 150 overweight or oversize range.",
       "Skip advance seat selection on Econo only if seat choice is not important.",
       "Avoid restrictive Econo bundles when plans may change; EconoFlex and higher fares show no change fee, though fare difference still applies.",
@@ -2374,12 +2374,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Econo",
         details:
-          "Econo is the paid-bag and paid-seat path in the rows shown here: CAD 35 first bag, CAD 50 second bag, and paid advance seat selection on applicable routes.",
+          "Econo is the paid-bag and paid-seat path: CAD 35 first bag, CAD 50 second bag, and paid advance seat selection on applicable routes.",
       },
       {
         name: "EconoFlex",
         details:
-          "EconoFlex includes the first checked bag and standard seat selection in the published rows and has no change fee, though fare difference applies.",
+          "EconoFlex includes the first checked bag and standard seat selection and has no change fee, though fare difference applies.",
       },
       {
         name: "Premium / Business",
@@ -2417,7 +2417,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Checked-bag fees may vary by route outside the domestic and transborder examples shown here.",
       "Bags over 32 kg are not accepted under the overweight row.",
-      "This fee table does not show a WestJet co-branded card baggage waiver.",
+      "No WestJet co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-canada", label: "Air Canada" },
@@ -2431,19 +2431,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Virgin Australia includes carry-on baggage, but the useful detail is not just whether a bag is allowed. The allowance and weight limits depend on fare type and aircraft.",
       personalItem:
-        "This page does not show a separate personal-item fee row for Virgin Australia; the practical cabin-bag question is whether the full carry-on allowance fits the fare and aircraft.",
+        "Virgin Australia does not list a separate personal-item charge here; the practical cabin-bag question is whether the full carry-on allowance fits the fare and aircraft.",
       checkedBag:
-        "Virgin Australia separates Lite from the higher fare families. Choice, Flex, and Business include checked baggage in the rows shown here, while Lite fares or extra bags use route- and timing-based paid baggage.",
+        "Virgin Australia separates Lite from the higher fare families. Choice, Flex, and Business include checked baggage, while Lite fares or extra bags use route- and timing-based paid baggage.",
       restrictions:
         "Lite is the fare to scrutinize: checked baggage, seat selection, and change/cancellation rules are the places where the cheap fare can become less useful.",
     },
     verificationNote:
-      "The Virgin Australia carry-on, checked-bag, excess-baggage, seat, and change/cancellation rows shown here were last verified on 2025-12-24.",
+      "Virgin Australia carry-on, checked-bag, excess-baggage, seat, and change/cancellation details were last verified on 2025-12-24.",
     avoidFees: [
-      "Compare Lite against Choice before booking if you need a checked bag; Choice includes baggage in the row shown here.",
+      "Compare Lite against Choice before booking if you need a checked bag; Choice includes checked baggage.",
       "Buy checked baggage before the airport when possible because Lite and extra-bag pricing depends on route and timing.",
       "Keep checked bags within the standard allowance to avoid airport overweight or oversize handling.",
-      "Avoid Lite when plans may change or seat choice matters, because Lite is the restrictive fare family in the rows shown here.",
+      "Avoid Lite when plans may change or seat choice matters, because Lite is the restrictive fare family.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2461,17 +2461,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Lite",
         details:
-          "Lite is the paid checked-bag and paid seat-selection path in the rows shown here. It can work for light travel, but the bag and seat costs should be priced first.",
+          "Lite is the paid checked-bag and paid seat-selection path. It can work for light travel, but the bag and seat costs should be priced first.",
       },
       {
         name: "Choice / Flex",
         details:
-          "Choice and Flex include checked baggage and standard seat selection in the published rows, with allowance still affected by fare type and status.",
+          "Choice and Flex include checked baggage and standard seat selection, with allowance still affected by fare type and status.",
       },
       {
         name: "Business",
         details:
-          "Business is an included-allowance path in the rows shown here, but aircraft and fare rules still matter for carry-on and flexibility.",
+          "Business is an included-allowance path, but aircraft and fare rules still matter for carry-on and flexibility.",
       },
       {
         name: "Changes and cancellations",
@@ -2488,7 +2488,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Booking Choice for a checked-bag trip",
         details:
-          "Choice includes checked baggage in the row shown here, so it is the natural comparison against Lite when a bag is needed.",
+          "Choice includes checked baggage, so it is the natural comparison against Lite when a bag is needed.",
       },
       {
         title: "Taking a borderline carry-on",
@@ -2504,7 +2504,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Checked-baggage allowance can vary by fare type and status.",
       "Carry-on allowance can vary by fare type and aircraft.",
-      "This fee table does not show a Virgin Australia co-branded card baggage waiver.",
+      "No Virgin Australia co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/qantas", label: "Qantas" },
@@ -2518,19 +2518,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Iberia Express includes one cabin bag plus one personal item, with Economy generally capped at 10 kg. The bigger decision is checked baggage and seat selection on Basic fares.",
       personalItem:
-        "The personal item is included with the cabin bag in the carry-on row, so the first test is whether your bag stays inside the published size and weight limits.",
+        "The personal item is included with the cabin bag, so the first test is whether your bag stays inside the size and weight limits.",
       checkedBag:
         "Iberia Express checked baggage separates included allowance from paid add-ons. Comfort and Business include checked baggage, while Basic fares or extra bags use a EUR 15 to EUR 70 range based on route and purchase timing.",
       restrictions:
         "Basic is the main restriction point: checked baggage, seat selection, and refunds can all make the cheapest fare less attractive.",
     },
     verificationNote:
-      "The Iberia Express carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "The Iberia Express carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
     avoidFees: [
-      "Compare Basic against Comfort when a checked bag is likely; Comfort includes checked baggage in the row shown here.",
+      "Compare Basic against Comfort when a checked bag is likely; Comfort includes checked baggage.",
       "Buy checked baggage before travel when needed because Basic and additional-bag pricing varies by route and purchase timing.",
       "Keep checked bags at or below 23 kg and 158 cm to avoid airport overweight or oversize handling.",
-      "Do not book Basic if refunds matter; the refund row says Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Do not book Basic if refunds matter; Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2549,17 +2549,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances in the row shown here.",
+          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances.",
       },
       {
         name: "Comfort",
         details:
-          "Comfort includes checked baggage and standard seat selection in the published rows, with allowance still varying by route and fare.",
+          "Comfort includes checked baggage and standard seat selection, with allowance still varying by route and fare.",
       },
       {
         name: "Business",
         details:
-          "Business is an included-allowance path in the rows shown here, but excess baggage remains separate if a bag exceeds limits.",
+          "Business is an included-allowance path, but excess baggage remains separate if a bag exceeds limits.",
       },
       {
         name: "Changes and cancellations",
@@ -2571,7 +2571,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Booking Basic with a checked bag",
         details:
-          "The Basic or additional-bag row shows a EUR 15 to EUR 70 range that varies by route and purchase timing.",
+          "Basic or additional bags use a EUR 15 to EUR 70 range that varies by route and purchase timing.",
       },
       {
         title: "Flying cabin-bag only",
@@ -2581,7 +2581,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg bag",
         details:
-          "The overweight row applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
+          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
       },
       {
         title: "Choosing a Basic seat",
@@ -2590,9 +2590,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Iberia Express does not offer an unaccompanied-minor service in the row shown here.",
-      "Bags over 32 kg are not accepted under the overweight row.",
-      "This fee table does not show an Iberia Express co-branded card baggage waiver.",
+      "Iberia Express does not offer an unaccompanied-minor service.",
+      "Bags over 32 kg are not accepted as checked baggage.",
+      "No Iberia Express co-branded-card baggage waiver is shown here.",
     ],
     comparisonLinks: [
       { href: "/airlines/iberia", label: "Iberia" },
@@ -2608,15 +2608,15 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The included LowFare item is 30 x 20 x 38 cm and must fit under the seat. That is a smaller allowance than a normal overhead cabin bag.",
       checkedBag:
-        "Norwegian checked baggage is bought as an add-on. The 20 kg and 23 kg bag products have published ranges that vary by route, season, and purchase timing, while airport excess baggage is charged per additional kg.",
+        "Norwegian checked baggage is bought as an add-on. The 20 kg and 23 kg bag prices vary by route, season, and purchase timing, while airport excess baggage is charged per additional kg.",
       restrictions:
         "The main Norwegian fee traps are LowFare cabin baggage, paid checked bags, seat selection, and LowFare refund limits.",
     },
     verificationNote:
-      "The Norwegian carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Norwegian carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Do not book LowFare unless the 30 x 20 x 38 cm under-seat item is enough or the fare still wins after adding a bag.",
-      "Compare LowFare+ or Flex when you need a 10 kg cabin bag, because those fare paths include it in the row shown here.",
+      "Compare LowFare+ or Flex when you need a 10 kg cabin bag, because those fare paths include it.",
       "Buy checked baggage before the airport when needed; 20 kg and 23 kg bag prices vary by route, season, and timing.",
       "Avoid LowFare if refunds matter, because the refund row says tickets are not refundable except for flight cancellation or qualifying circumstances.",
     ],
@@ -2641,7 +2641,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "LowFare+",
         details:
-          "LowFare+ includes a 10 kg cabin bag in the row shown here and allows changes with fewer restrictions than LowFare.",
+          "LowFare+ includes a 10 kg cabin bag and allows changes with fewer restrictions than LowFare.",
       },
       {
         name: "Flex",
@@ -2663,7 +2663,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Needing an overhead cabin bag",
         details:
-          "LowFare+ and Flex include a 10 kg cabin bag up to 55 x 40 x 23 cm in the row shown here.",
+          "LowFare+ and Flex include a 10 kg cabin bag up to 55 x 40 x 23 cm.",
       },
       {
         title: "Checking a 20 kg bag",
@@ -2677,9 +2677,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Norwegian does not offer an unaccompanied-minor service in the row shown here.",
+      "Norwegian does not offer an unaccompanied-minor service.",
       "Ticket refunds are not permitted on LowFare except for flight cancellation or qualifying circumstances.",
-      "This fee table does not show a Norwegian co-branded card baggage waiver.",
+      "No Norwegian co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/ryanair", label: "Ryanair" },
@@ -2693,14 +2693,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Saudia includes cabin baggage on Saudia-operated flights. Economy shows one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
       personalItem:
-        "The personal item is included alongside the Economy cabin bag in the carry-on row for Saudia-operated flights.",
+        "The personal item is included alongside the Economy cabin bag on Saudia-operated flights.",
       checkedBag:
         "Saudia is mainly an included-allowance airline, not a flat first-bag-fee airline. Checked baggage is included on most eligible fares, while additional baggage depends on route, baggage concept, and timing.",
       restrictions:
         "The key is the baggage concept: some itineraries price baggage by piece, while others use weight. Excess, overweight, and oversized baggage depend on that route-specific structure.",
     },
     verificationNote:
-      "The Saudia carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Saudia carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the itinerary uses a piece concept or weight concept before buying extra baggage.",
       "Keep Economy cabin baggage at or below 7 kg on Saudia-operated flights.",
@@ -2727,7 +2727,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Business / First",
         details:
-          "Premium cabins have higher cabin baggage allowances in the row shown here, but excess baggage still depends on route and baggage concept.",
+          "Premium cabins have higher cabin baggage allowances, but excess baggage still depends on route and baggage concept.",
       },
       {
         name: "Additional baggage",
@@ -2763,9 +2763,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The carry-on row applies to Saudia-operated flights.",
+      "The carry-on allowance applies to Saudia-operated flights.",
       "Checked-baggage allowance varies by route, cabin, fare family, and piece versus weight concept.",
-      "This fee table does not show a Saudia co-branded card baggage waiver.",
+      "No Saudia co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/emirates", label: "Emirates" },
@@ -2786,7 +2786,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Vueling fee traps are Basic small-bag limits, paid large cabin bags, checked-bag timing, seat selection, and refund limits.",
     },
     verificationNote:
-      "The Vueling carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Vueling carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Measure the under-seat bag before booking Basic; if it needs the overhead bin, price the large cabin bag or a bundled fare.",
       "Buy checked baggage before the airport when needed because the 15 kg, 20 kg, and 25 kg bag ranges depend on route, season, and timing.",
@@ -2814,7 +2814,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "TimeFlex / Optima / Family",
         details:
-          "These fare paths can include the large 10 kg cabin bag in the row shown here, so compare the bundle against buying the add-on separately.",
+          "These fare paths can include the large 10 kg cabin bag, so compare the bundle against buying the add-on separately.",
       },
       {
         name: "Checked-bag weights",
@@ -2851,8 +2851,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Vueling does not offer an unaccompanied-minor service; passengers under 16 must travel with an adult.",
-      "Ticket refunds are not permitted except for flight cancellation or qualifying circumstances in the row shown here.",
-      "This fee table does not show a Vueling co-branded card baggage waiver.",
+      "Ticket refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "No Vueling co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/iberia-express", label: "Iberia Express" },
@@ -2868,12 +2868,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The carry-on row is a combined cabin-baggage allowance rather than a separate personal-item fee row. Pack the personal item and cabin bag together under the allowed weight.",
       checkedBag:
-        "Jetstar checked baggage is an add-on model. The published 15 kg to 40 kg checked-bag options vary by weight selection, route, season, and purchase timing, while airport baggage is the expensive fallback.",
+        "Jetstar checked baggage is an add-on model. The 15 kg to 40 kg checked-bag options vary by weight selection, route, season, and purchase timing, while airport baggage is the expensive fallback.",
       restrictions:
         "The main Jetstar risk is solving bags too late: Starter fares, cabin-bag weight, checked-bag pre-purchase, seat selection, and Starter change rules all affect the final cost.",
     },
     verificationNote:
-      "The Jetstar carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Jetstar carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Weigh the carry-on before travel. Starter includes up to 7 kg total cabin baggage, not a large no-questions-asked cabin allowance.",
       "Buy checked baggage before the airport when needed; airport baggage fees apply if no allowance was pre-purchased or the allowance is exceeded.",
@@ -2899,7 +2899,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Starter Plus / Flex / Max",
         details:
-          "These fares allow changes with fewer restrictions in the row shown here and may allow higher carry-on weight.",
+          "These fares allow changes with fewer restrictions and may allow higher carry-on weight.",
       },
       {
         name: "Checked-bag weight options",
@@ -2935,9 +2935,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Jetstar does not offer an unaccompanied-minor service in the row shown here.",
+      "Jetstar does not offer an unaccompanied-minor service.",
       "Refunds are not permitted on Starter fares except for flight cancellation or qualifying circumstances.",
-      "This fee table does not show a Jetstar co-branded card baggage waiver.",
+      "No Jetstar co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/qantas", label: "Qantas" },
@@ -2951,17 +2951,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Scoot includes cabin baggage, with Economy and ScootPlus showing up to 10 kg total. The more important fee decision is checked baggage, which is not included by default on some fares.",
       personalItem:
-        "This page does not show a separate personal-item fee row for Scoot; the practical limit is the total carry-on allowance and published size rules.",
+        "Scoot does not list a separate personal-item charge here; the practical limit is the total carry-on allowance and size rules.",
       checkedBag:
         "Scoot checked baggage is usually bought in weight bundles. Pricing varies by route and timing, and airport handling is the fallback if the purchased allowance is not enough.",
       restrictions:
         "The main Scoot fee risks are checked-bag bundles, airport excess weight, sports equipment, paid seat selection, and limited cancellation flexibility.",
     },
     verificationNote:
-      "The Scoot carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Scoot carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Decide the checked-bag weight before booking or manage booking; fees vary by route and timing.",
-      "Keep each checked bag at or below 32 kg, because the row shows that a single checked bag must not exceed 32 kg.",
+      "Keep each checked bag at or below 32 kg, because a single checked bag must not exceed 32 kg.",
       "Pre-purchase sports equipment when needed; sports-equipment pricing depends on equipment type, route, and baggage bundle.",
       "Do not assume cancellation flexibility is included; cancellations are generally not permitted except where explicitly allowed.",
     ],
@@ -2980,7 +2980,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy / Scoot",
         details:
-          "Carry-on is included up to the published total allowance, while checked baggage may need to be bought as a weight bundle.",
+          "Carry-on is included up to the total allowance, while checked baggage may need to be bought as a weight bundle.",
       },
       {
         name: "ScootPlus",
@@ -3002,7 +3002,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Flying with cabin baggage only",
         details:
-          "Economy and ScootPlus show up to 10 kg total carry-on in the row shown here.",
+          "Economy and ScootPlus show up to 10 kg total carry-on.",
       },
       {
         title: "Adding checked baggage",
@@ -3021,9 +3021,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Scoot does not offer an unaccompanied-minor service in the row shown here.",
+      "Scoot does not offer an unaccompanied-minor service.",
       "Cancellations are generally not permitted except where explicitly allowed.",
-      "This fee table does not show a Scoot co-branded card baggage waiver.",
+      "No Scoot co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/airasia", label: "AirAsia" },
@@ -3044,10 +3044,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main AirAsia risks are carry-on weight, pre-booked checked-bag tiers, sports equipment, paid seats, and fee-based changes.",
     },
     verificationNote:
-      "The AirAsia carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "AirAsia carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Weigh carry-on bags together; the cabin bag and personal item share a 7 kg combined limit.",
-      "Pre-book checked baggage when needed because airport purchase is not the cheap path in the row shown here.",
+      "Pre-book checked baggage when needed because airport purchase is not the cheap path.",
       "Choose the right weight tier before travel; checked-bag pricing depends on 15 kg, 20 kg, 25 kg, 30 kg, or 40 kg tiers and route.",
       "Pre-book sports equipment if needed; fees depend on equipment type and route.",
     ],
@@ -3103,13 +3103,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Changing a flight",
         details:
-          "Flight changes are permitted with a fee plus fare difference in the row shown here.",
+          "Flight changes are permitted with a fee plus fare difference.",
       },
     ],
     exceptions: [
-      "AirAsia does not offer an unaccompanied-minor service in the row shown here.",
+      "AirAsia does not offer an unaccompanied-minor service.",
       "Cancellations are generally not permitted except for specific fare products or add-ons.",
-      "This fee table does not show an AirAsia co-branded card baggage waiver.",
+      "No AirAsia co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/scoot", label: "Scoot" },
@@ -3123,14 +3123,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "IndiGo domestic flights include one cabin bag up to 7 kg plus one personal item. International allowances vary by route, so the exact itinerary matters.",
       personalItem:
-        "The personal item is included with the cabin bag on domestic flights in the row shown here, but international routes can use different allowances.",
+        "The personal item is included with the cabin bag on domestic flights, but international routes can use different allowances.",
       checkedBag:
         "IndiGo includes checked baggage on most eligible fares, but the allowance varies by route and fare type. Additional baggage can be bought before travel or at the airport, with pricing based on route and timing.",
       restrictions:
         "The main IndiGo fee risks are route-specific baggage allowance, added baggage, airport overweight charges, paid seat selection, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The IndiGo carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "IndiGo carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the exact route before packing; domestic and international allowances can differ.",
       "Buy additional baggage before the airport when needed because pricing depends on route and timing.",
@@ -3192,9 +3192,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "IndiGo does not offer an unaccompanied-minor service in the row shown here.",
+      "IndiGo does not offer an unaccompanied-minor service.",
       "International carry-on and checked-bag allowances vary by route.",
-      "This fee table does not show an IndiGo co-branded card baggage waiver.",
+      "No IndiGo co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -3208,16 +3208,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Cebu Pacific includes up to 7 kg total cabin baggage. That weight limit is the first thing to check before assuming the trip can stay carry-on-only.",
       personalItem:
-        "This page does not show a separate personal-item fee row for Cebu Pacific; the practical issue is staying within the total cabin-baggage allowance.",
+        "Cebu Pacific does not list a separate personal-item charge here; the practical issue is staying within the total cabin-baggage allowance.",
       checkedBag:
         "Cebu Pacific checked baggage is not included by default. It is bought by weight tier, with pricing based on 20 kg, 32 kg, or 40 kg options and route.",
       restrictions:
         "The main Cebu Pacific fee risks are cabin-bag weight, checked-bag weight tier, airport per-kilo excess charges, sports equipment, paid seats, and limited cancellation flexibility.",
     },
     verificationNote:
-      "The Cebu Pacific carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Cebu Pacific carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
-      "Weigh cabin baggage before travel; the carry-on row shows up to 7 kg total.",
+      "Weigh cabin baggage before travel; the cabin allowance is up to 7 kg total.",
       "Pre-purchase checked baggage when needed because checked baggage is not included by default.",
       "Choose the correct weight tier before travel; Cebu Pacific lists 20 kg, 32 kg, and 40 kg checked-bag options.",
       "Avoid exceeding the purchased allowance because extra weight is charged per kilo at airport rates.",
@@ -3278,14 +3278,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Cebu Pacific does not offer an unaccompanied-minor service in the row shown here.",
+      "Cebu Pacific does not offer an unaccompanied-minor service.",
       "Cancellations are generally not permitted except where explicitly allowed.",
-      "This fee table does not show a Cebu Pacific co-branded card baggage waiver.",
+      "No Cebu Pacific co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/airasia", label: "AirAsia" },
       { href: "/airlines/scoot", label: "Scoot" },
-      { href: "/airlines/philippin-airlines", label: "Philippine Airlines" },
+      { href: "/airlines/philippine-airlines", label: "Philippine Airlines" },
       { href: "/airlines/jetstar", label: "Jetstar" },
     ],
   },
@@ -3294,14 +3294,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "SpiceJet includes one carry-on piece up to 7 kg. The checked-bag question depends on route because domestic and international allowances are not the same.",
       personalItem:
-        "This page does not show a separate personal-item fee row for SpiceJet; the practical cabin-bag limit is the one-piece, 7 kg carry-on allowance shown here.",
+        "SpiceJet does not list a separate personal-item charge here; the practical cabin-bag limit is one carry-on piece up to 7 kg.",
       checkedBag:
         "SpiceJet includes checked baggage on eligible fares, but allowance varies between domestic India and international routes. Excess baggage is charged when the free allowance is exceeded and depends on route and weight.",
       restrictions:
         "The main SpiceJet fee risks are excess baggage, airport overweight charges, sports equipment, paid seats, and fare-rule-based changes or cancellations.",
     },
     verificationNote:
-      "The SpiceJet carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "SpiceJet carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the trip is domestic India or international before relying on a checked-bag allowance.",
       "Keep cabin baggage at or below 7 kg.",
@@ -3363,9 +3363,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Unaccompanied-minor service is available only on select domestic routes and ages in the row shown here.",
+      "Unaccompanied-minor service is available only on select domestic routes and ages.",
       "Checked-baggage allowance varies by domestic and international route.",
-      "This fee table does not show a SpiceJet co-branded card baggage waiver.",
+      "No SpiceJet co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/indigo", label: "IndiGo" },
@@ -3386,7 +3386,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main VietJet fee risks are checked-bag package selection, airport excess weight, sports equipment, paid seats, and change rules by fare terms.",
     },
     verificationNote:
-      "The VietJet Air carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "VietJet Air carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Keep the cabin bag at or below 7 kg.",
       "Buy the right checked-bag package before travel; checked baggage is not included by default.",
@@ -3449,9 +3449,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "VietJet does not offer an unaccompanied-minor service in the row shown here.",
-      "A single checked bag must not exceed 32 kg in the checked-bag row.",
-      "This fee table does not show a VietJet co-branded card baggage waiver.",
+      "VietJet does not offer an unaccompanied-minor service.",
+      "A single checked bag must not exceed 32 kg.",
+      "No VietJet co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/airasia", label: "AirAsia" },
@@ -3472,7 +3472,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Volaris risks are personal-item-only fares, checked-bag add-ons, airport overweight/oversize fees, paid seats, and change restrictions.",
     },
     verificationNote:
-      "The Volaris carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Volaris carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Do not book Zero or Basic unless a personal item is enough or the bag add-on still leaves the fare cheaper.",
       "Compare Plus or Premium when you need a carry-on bag.",
@@ -3495,12 +3495,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Zero / Basic",
         details:
-          "These fares include only a personal item in the carry-on row and do not include checked baggage.",
+          "These fares include only a personal item and do not include checked baggage.",
       },
       {
         name: "Plus / Premium",
         details:
-          "Plus and Premium include one carry-on bag in the row shown here, making them the better comparison when overhead-bin access matters.",
+          "Plus and Premium include one carry-on bag, making them the better comparison when overhead-bin access matters.",
       },
       {
         name: "Checked baggage",
@@ -3522,7 +3522,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Needing an overhead carry-on",
         details:
-          "Plus and Premium include one carry-on bag, while Zero and Basic do not in the row shown here.",
+          "Plus and Premium include one carry-on bag, while Zero and Basic do not.",
       },
       {
         title: "Adding checked baggage",
@@ -3536,9 +3536,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Volaris does not offer an unaccompanied-minor service in the row shown here.",
+      "Volaris does not offer an unaccompanied-minor service.",
       "Oversize acceptance depends on aircraft and handling capabilities.",
-      "This fee table does not show a Volaris co-branded card baggage waiver.",
+      "No Volaris co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/viva-aerobus", label: "Viva Aerobus" },
@@ -3559,7 +3559,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Viva Aerobus risks are Zero fare baggage limits, checked-bag add-ons, airport overweight/oversize treatment, paid seats, and change rules.",
     },
     verificationNote:
-      "The Viva Aerobus carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Viva Aerobus carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Do not book Zero unless a personal item is enough.",
       "Compare Light, Smart, or Extra when you need a carry-on bag.",
@@ -3582,12 +3582,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Zero",
         details:
-          "Zero includes only a personal item and does not include checked baggage in the rows shown here.",
+          "Zero includes only a personal item and does not include checked baggage.",
       },
       {
         name: "Light / Smart / Extra",
         details:
-          "These fare bundles include one carry-on bag in the carry-on row, with checked-bag treatment depending on bundle and route.",
+          "These fare bundles include one carry-on bag, with checked-bag treatment depending on bundle and route.",
       },
       {
         name: "Checked baggage",
@@ -3609,7 +3609,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Needing a carry-on bag",
         details:
-          "Light, Smart, and Extra include one carry-on bag, while Zero does not in the row shown here.",
+          "Light, Smart, and Extra include one carry-on bag, while Zero does not.",
       },
       {
         title: "Adding checked baggage",
@@ -3623,9 +3623,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Viva Aerobus does not offer an unaccompanied-minor service in the row shown here.",
+      "Viva Aerobus does not offer an unaccompanied-minor service.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show a Viva Aerobus co-branded card baggage waiver.",
+      "No Viva Aerobus co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/volaris", label: "Volaris" },
@@ -3637,16 +3637,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   jet2: {
     intro: {
       carryOn:
-        "Jet2 includes both a small under-seat bag and a 10 kg cabin bag in the rows shown here. The bigger fee decision is checked baggage, which is sold as 22 kg or 26 kg add-ons.",
+        "Jet2 includes both a small under-seat bag and a 10 kg cabin bag. The bigger fee decision is checked baggage, which is sold as 22 kg or 26 kg add-ons.",
       personalItem:
-        "The small under-seat bag is included up to 40 x 30 x 15 cm. A separate 10 kg cabin bag is also included in the carry-on rows shown here.",
+        "The small under-seat bag is included up to 40 x 30 x 15 cm. A separate 10 kg cabin bag is also included.",
       checkedBag:
         "Jet2 checked baggage is bought as a 22 kg or 26 kg allowance. Prices vary by route, season, and purchase timing, and excess baggage is charged per additional kg at the airport.",
       restrictions:
         "The main Jet2 fee risks are choosing the wrong checked-bag weight, paying excess weight at the airport, seat selection, and fee-based changes.",
     },
     verificationNote:
-      "The Jet2 carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Jet2 carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Use the included cabin allowance when possible: a small under-seat bag plus one 10 kg cabin bag are shown as included.",
       "Buy checked baggage before travel when needed because 22 kg and 26 kg bag prices vary by route, season, and timing.",
@@ -3668,7 +3668,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Carry-on included",
         details:
-          "Jet2 includes one small under-seat bag plus one cabin bag up to 10 kg in the carry-on rows shown here.",
+          "Jet2 includes one small under-seat bag plus one cabin bag up to 10 kg.",
       },
       {
         name: "22 kg checked bag",
@@ -3690,7 +3690,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Flying carry-on only",
         details:
-          "The carry-on rows include a small under-seat bag plus one 10 kg cabin bag.",
+          "The carry-on allowance includes a small under-seat bag plus one 10 kg cabin bag.",
       },
       {
         title: "Checking a 22 kg bag",
@@ -3709,9 +3709,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Jet2 does not offer an unaccompanied-minor service in the row shown here.",
+      "Jet2 does not offer an unaccompanied-minor service.",
       "Ticket refunds are not permitted except for flight cancellation or qualifying circumstances.",
-      "This fee table does not show a Jet2 co-branded card baggage waiver.",
+      "No Jet2 co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/ryanair", label: "Ryanair" },
@@ -3723,16 +3723,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "thai-airways": {
     intro: {
       carryOn:
-        "Thai Airways includes a cabin bag on the rows shown here. Economy is listed as one cabin bag up to 7 kg, while premium cabins have higher allowances.",
+        "Thai Airways includes a cabin bag. Economy is listed as one cabin bag up to 7 kg, while premium cabins have higher allowances.",
       personalItem:
-        "The practical cabin-bag issue is weight and size compliance, not buying a basic fare add-on. Keep the cabin bag within the published allowance, especially on international connections.",
+        "The practical cabin-bag issue is weight and size compliance, not buying a basic fare add-on. Keep the cabin bag within the allowance, especially on international connections.",
       checkedBag:
         "Thai Airways usually works from an included checked-bag allowance, but the allowance is not one universal number. It depends on route, cabin, fare family, and whether the itinerary uses the piece concept or weight concept.",
       restrictions:
         "The main Thai Airways fee risks are buying the wrong fare for your baggage needs, crossing into excess baggage, overweight or oversize airport handling, paid seat selection, and fare-rule change penalties.",
     },
     verificationNote:
-      "The Thai Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Thai Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your itinerary uses piece concept or weight concept before assuming a checked-bag allowance.",
       "Use the included checked allowance when possible; extra baggage is priced from Thai Airways' excess-baggage rules rather than a single flat first-bag fee.",
@@ -3754,12 +3754,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy",
         details:
-          "Economy includes a carry-on bag up to 7 kg in the row shown here. Checked-bag allowance depends on the ticketed route, fare family, and baggage concept.",
+          "Economy includes a carry-on bag up to 7 kg. Checked-bag allowance depends on the ticketed route, fare family, and baggage concept.",
       },
       {
         name: "Premium cabins",
         details:
-          "Business and First Class have higher cabin allowances in the data, and checked-bag treatment generally depends on cabin and route.",
+          "Business and First Class have higher cabin allowances, and checked-bag treatment generally depends on cabin and route.",
       },
       {
         name: "Piece vs weight concept",
@@ -3786,7 +3786,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Bringing a heavy checked bag",
         details:
-          "Overweight charges are route- and baggage-concept based, so the safer move is keeping each bag within the published limit before airport check-in.",
+          "Overweight charges are route- and baggage-concept based, so the safer move is keeping each bag within the limit before airport check-in.",
       },
       {
         title: "Choosing a seat early",
@@ -3797,7 +3797,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated or codeshare flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Thai Airways co-branded card baggage waiver.",
+      "No Thai Airways co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/singapore-airlines", label: "Singapore Airlines" },
@@ -3806,10 +3806,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/airlines/eva-air", label: "EVA Air" },
     ],
   },
-  "philippin-airlines": {
+  "philippine-airlines": {
     intro: {
       carryOn:
-        "Philippine Airlines includes a cabin bag on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item.",
+        "Philippine Airlines includes a cabin bag. Economy is listed as one cabin bag up to 7 kg plus one personal item.",
       personalItem:
         "A personal item is included with the Economy carry-on row. The risk is usually an overweight or oversize cabin bag rather than a paid carry-on add-on.",
       checkedBag:
@@ -3818,7 +3818,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Philippine Airlines fee risks are exceeding the included allowance, buying extra baggage too late, airport overweight or oversize handling, paid seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Philippine Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Philippine Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the allowance for the exact route and cabin before packing, because Philippine Airlines uses route-specific baggage rules.",
       "If extra baggage is needed, compare advance purchase against airport handling where available; the data says timing can affect the price.",
@@ -3832,7 +3832,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/oversize_baggage", label: "Oversized baggage" },
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
-      { href: "/tools/excess-baggage-calculator?airline=philippin-airlines&weight=28&size=64", label: "Excess baggage calculator" },
+      { href: "/tools/excess-baggage-calculator?airline=philippine-airlines&weight=28&size=64", label: "Excess baggage calculator" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/sizer-rules?weight=7", label: "Sizer rules" },
     ],
@@ -3883,7 +3883,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated and codeshare itineraries can use the operating carrier's baggage rules.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show a Philippine Airlines co-branded card baggage waiver.",
+      "No Philippine Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/cebu-pacific", label: "Cebu Pacific" },
@@ -3895,16 +3895,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   vistara: {
     intro: {
       carryOn:
-        "Vistara includes cabin baggage on the rows shown here: Economy and Premium Economy up to 7 kg, and Business Class up to 10 kg.",
+        "Vistara includes cabin baggage: Economy and Premium Economy up to 7 kg, and Business Class up to 10 kg.",
       personalItem:
-        "The carry-on issue is staying within the cabin weight and size limits. This is not a personal-item-only fare model in the data.",
+        "The carry-on issue is staying within the cabin weight and size limits. This is not a personal-item-only fare model.",
       checkedBag:
         "Vistara checked baggage is included on eligible fares, but the allowance changes by cabin, fare family, and route. Excess baggage is charged separately when the free allowance is exceeded.",
       restrictions:
         "The main Vistara fee risks are exceeding the included checked allowance, airport overweight handling, paid preferred or extra-legroom seats, and restrictive fare-family change rules.",
     },
     verificationNote:
-      "The Vistara carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Vistara carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the included checked allowance for the fare family and route before buying extras.",
       "Pre-purchase excess baggage where available if you know the bag will exceed the free allowance.",
@@ -3940,7 +3940,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Seats and changes",
         details:
-          "Standard seats are included on most fares in the data, while preferred or extra-legroom seats are charged separately. Change and cancellation costs depend on fare family and route.",
+          "Standard seats are included on most fares, while preferred or extra-legroom seats are charged separately. Change and cancellation costs depend on fare family and route.",
       },
     ],
     scenarios: [
@@ -3967,8 +3967,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Vistara service and policies may be affected by Air India group integration, so verify the operating carrier on the ticket.",
-      "Unaccompanied-minor service is limited to selected routes and age groups in the data.",
-      "This fee table does not show a Vistara co-branded card baggage waiver.",
+      "Unaccompanied-minor service is limited to selected routes and age groups.",
+      "No Vistara co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -3984,12 +3984,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The cabin limit is based on total carry-on weight. A second item can still be a problem if the combined allowance is exceeded.",
       checkedBag:
-        "Checked baggage is optional on Jetstar Asia. The published range depends on selected weight, route, season, and purchase timing; airport baggage is a separate, higher-risk category.",
+        "Checked baggage is optional on Jetstar Asia. The price range depends on selected weight, route, season, and purchase timing; airport baggage is a separate, higher-risk category.",
       restrictions:
         "The main Jetstar Asia fee risks are underbuying bag weight, adding baggage at the airport, paid seat selection, Starter fare change fees, and no normal refunds on Starter fares.",
     },
     verificationNote:
-      "The Jetstar Asia carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Jetstar Asia carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Choose the correct checked-bag weight before travel instead of relying on airport baggage pricing.",
       "Use the 7 kg Starter carry-on allowance only if your bags are genuinely light enough.",
@@ -4010,7 +4010,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Starter",
         details:
-          "Starter includes 7 kg of carry-on allowance and no included checked baggage in the rows shown here.",
+          "Starter includes 7 kg of carry-on allowance and no included checked baggage.",
       },
       {
         name: "Higher fares / bundles",
@@ -4047,13 +4047,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Need to change plans",
         details:
-          "Starter changes are fee-plus-fare-difference in the data, while higher fares have fewer restrictions.",
+          "Starter changes can require a fee plus fare difference, while higher fares have fewer restrictions.",
       },
     ],
     exceptions: [
-      "Jetstar Asia does not offer an unaccompanied-minor service in the row shown here.",
+      "Jetstar Asia does not offer an unaccompanied-minor service.",
       "Refunds are not permitted on Starter fares except for flight cancellation or qualifying circumstances.",
-      "This fee table does not show a Jetstar Asia co-branded card baggage waiver.",
+      "No Jetstar Asia co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/jetstar", label: "Jetstar" },
@@ -4074,7 +4074,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Jetstar Japan fee risks are missing the 7 kg carry-on cap, buying too little checked-bag weight, airport baggage pricing, paid seat selection, and Starter fare change/refund limits.",
     },
     verificationNote:
-      "The Jetstar Japan carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Jetstar Japan carry-on, checked-bag, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Weigh carry-on bags together; the limit is total weight across the allowed items.",
       "Buy checked baggage before travel if you need it, and choose enough weight for the actual bag.",
@@ -4095,7 +4095,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Starter",
         details:
-          "Starter includes up to 7 kg total carry-on weight and no included checked baggage in the rows shown here.",
+          "Starter includes up to 7 kg total carry-on weight and no included checked baggage.",
       },
       {
         name: "Starter Plus / Flex",
@@ -4105,7 +4105,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Checked baggage add-ons",
         details:
-          "Checked baggage is bought by weight band. The data shows a JPY range that changes by weight selection, route, and timing.",
+          "Checked baggage is bought by weight band, with JPY pricing that changes by weight selection, route, and timing.",
       },
       {
         name: "Seats and changes",
@@ -4132,13 +4132,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Changing dates",
         details:
-          "Starter changes are fee-plus-fare-difference in the data, while higher fares have fewer restrictions.",
+          "Starter changes can require a fee plus fare difference, while higher fares have fewer restrictions.",
       },
     ],
     exceptions: [
-      "Jetstar Japan does not offer an unaccompanied-minor service in the row shown here.",
+      "Jetstar Japan does not offer an unaccompanied-minor service.",
       "Refunds are not permitted on Starter fares except for flight cancellation or qualifying circumstances.",
-      "This fee table does not show a Jetstar Japan co-branded card baggage waiver.",
+      "No Jetstar Japan co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/jetstar", label: "Jetstar" },
@@ -4238,14 +4238,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Gulf Air includes carry-on baggage, with weight and size limits depending on cabin class.",
       personalItem:
-        "This page does not show a separate paid personal-item fee. The main cabin-bag issue is matching the cabin-class allowance.",
+        "Gulf Air does not list a separate paid personal-item charge here. The main cabin-bag issue is matching the cabin-class allowance.",
       checkedBag:
         "Gulf Air includes checked baggage on eligible fares, but the allowance depends on cabin class, fare family, and route. Excess baggage is charged separately by route and weight.",
       restrictions:
         "The main Gulf Air fee risks are exceeding the free checked allowance, overweight airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Gulf Air carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Gulf Air carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the included checked allowance for the exact cabin, fare family, and route.",
       "Pre-purchase excess baggage where available if the bag will exceed the free allowance.",
@@ -4271,7 +4271,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "Cabin class affects both carry-on allowance and checked-bag allowance in the rows shown here.",
+          "Cabin class affects both carry-on allowance and checked-bag allowance.",
       },
       {
         name: "Excess baggage",
@@ -4303,13 +4303,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Child traveling alone",
         details:
-          "Unaccompanied-minor service is limited by route and age in the data, so it needs to be confirmed before booking.",
+          "Unaccompanied-minor service is limited by route and age, so it needs to be confirmed before booking.",
       },
     ],
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage policy.",
-      "The data does not publish a separate oversize-baggage row for Gulf Air on this page.",
-      "This fee table does not show a Gulf Air co-branded card baggage waiver.",
+      "Oversize-baggage treatment is not listed here as one separate flat fee, so confirm large items before travel.",
+      "No Gulf Air co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/etihad", label: "Etihad" },
@@ -4323,18 +4323,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Oman Air includes carry-on baggage. Economy is listed up to 7 kg, while Business and First have higher allowances.",
       personalItem:
-        "The page does not show a separate personal-item charge. The practical cabin-bag question is whether the bag fits the cabin-class allowance.",
+        "Oman Air does not list a separate personal-item charge here. The practical cabin-bag question is whether the bag fits the cabin-class allowance.",
       checkedBag:
         "Oman Air includes checked baggage, but the allowance changes by fare family, cabin class, route, and frequent flyer status. Excess baggage is charged separately by route and weight.",
       restrictions:
         "The main Oman Air fee risks are exceeding the included allowance, overweight airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Oman Air carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Oman Air carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the allowance attached to the exact fare family, cabin, route, and loyalty status before packing.",
       "Pre-purchase excess baggage where available if the bag will exceed the free allowance.",
-      "Keep each checked bag at or below 32 kg because the data lists a single-bag maximum.",
+      "Keep each checked bag at or below 32 kg because that is the single-bag maximum listed here.",
       "Use included standard seats when available instead of paying for a preferred seat by default.",
     ],
     relatedGuides: [
@@ -4383,7 +4383,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Heavy checked bag",
         details:
-          "The data lists a 32 kg single-bag maximum, making overweight planning an airport-risk issue.",
+          "The 32 kg single-bag maximum makes overweight planning an airport-risk issue.",
       },
       {
         title: "Changing the ticket",
@@ -4393,8 +4393,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "Partner-operated or codeshare flights can use the operating carrier's baggage rules.",
-      "The data does not publish a separate oversize-baggage row for Oman Air on this page.",
-      "This fee table does not show an Oman Air co-branded card baggage waiver.",
+      "Oversize-baggage treatment is not listed here as one separate flat fee, so confirm large items before travel.",
+      "No Oman Air co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/etihad", label: "Etihad" },
@@ -4493,20 +4493,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   egyptair: {
     intro: {
       carryOn:
-        "EgyptAir includes carry-on baggage, with allowance depending on cabin class and published size and weight limits.",
+        "EgyptAir includes carry-on baggage, with allowance depending on cabin class and size and weight limits.",
       personalItem:
-        "This page does not show a separate paid personal-item fee. The practical question is whether your cabin bag fits the cabin-class allowance.",
+        "EgyptAir does not list a separate paid personal-item charge here. The practical question is whether your cabin bag fits the cabin-class allowance.",
       checkedBag:
         "EgyptAir includes checked baggage on eligible fares, but the allowance changes by cabin class, fare type, route, and frequent flyer status. Excess baggage is charged separately.",
       restrictions:
         "The main EgyptAir fee risks are exceeding the included allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The EgyptAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "EgyptAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the allowance attached to the exact route, cabin, fare type, and frequent flyer status.",
       "Pre-purchase excess baggage where available if you know the free allowance will not be enough.",
-      "Keep checked bags within both weight and size limits because EgyptAir has separate overweight and oversize rows.",
+      "Keep checked bags within both weight and size limits because overweight and oversize charges are separate problems.",
       "Avoid paying for seat selection unless seat location matters; some fares include standard seat selection.",
     ],
     relatedGuides: [
@@ -4529,7 +4529,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "Cabin class affects the carry-on and checked-bag allowance in the rows shown here.",
+          "Cabin class affects the carry-on and checked-bag allowance.",
       },
       {
         name: "Excess baggage",
@@ -4556,7 +4556,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Large suitcase",
         details:
-          "EgyptAir has separate overweight and oversize rows, so a bag can trigger a charge by weight, size, or both depending on the rules.",
+          "A bag can trigger a charge by weight, size, or both depending on the rules.",
       },
       {
         title: "Booking a restrictive fare",
@@ -4567,7 +4567,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can use the operating carrier's baggage policy.",
       "Oversize acceptance depends on aircraft and airport handling constraints.",
-      "This fee table does not show an EgyptAir co-branded card baggage waiver.",
+      "No EgyptAir co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/royal-air-maroc", label: "Royal Air Maroc" },
@@ -4579,16 +4579,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   ethiopian: {
     intro: {
       carryOn:
-        "Ethiopian includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business Class has a higher allowance.",
+        "Ethiopian includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business Class has a higher allowance.",
       personalItem:
-        "The personal item is included in the Economy carry-on row, so the practical issue is keeping the main cabin bag within the published 7 kg limit.",
+        "The personal item is included with the Economy cabin allowance, so the practical issue is keeping the main cabin bag within the 7 kg limit.",
       checkedBag:
         "Ethiopian usually starts from an included checked-bag allowance, but that allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
       restrictions:
         "The main Ethiopian fee risks are exceeding the included allowance, extra baggage purchased too late, overweight or oversize airport handling, paid seats on lower fare families, and fare-family change rules.",
     },
     verificationNote:
-      "The Ethiopian carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Ethiopian carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available because pricing depends on route, baggage concept, and timing.",
@@ -4610,12 +4610,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy",
         details:
-          "Economy includes one 7 kg cabin bag plus one personal item in the row shown here. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Economy includes one 7 kg cabin bag plus one personal item. Checked allowance depends on route, cabin, fare family, and baggage concept.",
       },
       {
         name: "Business Class",
         details:
-          "Business Class has a higher cabin allowance in the data and can have different checked-bag treatment.",
+          "Business Class has a higher cabin allowance and can have different checked-bag treatment.",
       },
       {
         name: "Piece vs weight concept",
@@ -4653,7 +4653,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated or codeshare flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on aircraft and route.",
-      "This fee table does not show an Ethiopian co-branded card baggage waiver.",
+      "No Ethiopian co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/kenya-airways", label: "Kenya Airways" },
@@ -4665,16 +4665,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "royal-air-maroc": {
     intro: {
       carryOn:
-        "Royal Air Maroc includes carry-on baggage, with allowance depending on cabin class and published size and weight limits.",
+        "Royal Air Maroc includes carry-on baggage, with allowance depending on cabin class and size and weight limits.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The main cabin-bag question is whether the bag fits the cabin-class allowance.",
+        "Royal Air Maroc does not list a separate paid personal-item charge here. The main cabin-bag question is whether the bag fits the cabin-class allowance.",
       checkedBag:
         "Royal Air Maroc includes checked baggage on most eligible fares, but the allowance changes by cabin class, fare family, route, and frequent flyer status.",
       restrictions:
         "The main Royal Air Maroc fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Royal Air Maroc carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Royal Air Maroc carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the included checked allowance for the exact fare, route, cabin, and status before packing.",
       "Pre-purchase excess baggage where available if the free allowance will not be enough.",
@@ -4739,7 +4739,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can use the operating carrier's baggage policy.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show a Royal Air Maroc co-branded card baggage waiver.",
+      "No Royal Air Maroc co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/egyptair", label: "EgyptAir" },
@@ -4751,16 +4751,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "kenya-airways": {
     intro: {
       carryOn:
-        "Kenya Airways includes carry-on baggage, with allowance depending on cabin class and published size and weight limits.",
+        "Kenya Airways includes carry-on baggage, with allowance depending on cabin class and size and weight limits.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is keeping the bag inside the cabin-class limit.",
+        "Kenya Airways does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the bag inside the cabin-class limit.",
       checkedBag:
         "Kenya Airways includes checked baggage on eligible fares, but the allowance varies by cabin class, route, fare family, and frequent flyer status.",
       restrictions:
         "The main Kenya Airways fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Kenya Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Kenya Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm the allowance for the exact cabin, route, fare family, and status before packing.",
       "Pre-purchase excess baggage where available if the bag will exceed the free allowance.",
@@ -4825,7 +4825,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show a Kenya Airways co-branded card baggage waiver.",
+      "No Kenya Airways co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/ethiopian", label: "Ethiopian" },
@@ -4837,16 +4837,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "south-african-airways": {
     intro: {
       carryOn:
-        "South African Airways includes carry-on baggage, with allowance depending on cabin class and published size and weight limits.",
+        "South African Airways includes carry-on baggage, with allowance depending on cabin class and size and weight limits.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag question is whether the bag fits the cabin-class allowance.",
+        "South African Airways does not list a separate paid personal-item charge here. The practical cabin-bag question is whether the bag fits the cabin-class allowance.",
       checkedBag:
         "South African Airways includes checked baggage on eligible fares, but the allowance varies by cabin class, route, fare family, and Voyager status.",
       restrictions:
         "The main South African Airways fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The South African Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "South African Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the allowance for the exact route, fare family, cabin, and Voyager status before packing.",
       "Pre-purchase excess baggage where available when the free allowance will not be enough.",
@@ -4911,7 +4911,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show a South African Airways co-branded card baggage waiver.",
+      "No South African Airways co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/kenya-airways", label: "Kenya Airways" },
@@ -4923,16 +4923,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   srilankan: {
     intro: {
       carryOn:
-        "SriLankan includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "SriLankan includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical issue is keeping the Economy cabin bag within 7 kg.",
+        "SriLankan does not list a separate paid personal-item charge here. The practical issue is keeping the Economy cabin bag within 7 kg.",
       checkedBag:
         "SriLankan includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece or weight concept.",
       restrictions:
         "The main SriLankan fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The SriLankan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "SriLankan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether your route uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -4997,7 +4997,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a SriLankan co-branded card baggage waiver.",
+      "No SriLankan co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -5009,16 +5009,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-china": {
     intro: {
       carryOn:
-        "Air China includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "Air China includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is staying within the Economy 8 kg limit or the allowance for your booked cabin.",
+        "Air China does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 8 kg limit or the allowance for your booked cabin.",
       checkedBag:
         "Air China includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
       restrictions:
         "The main Air China fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Air China carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Air China carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5083,7 +5083,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show an Air China co-branded card baggage waiver.",
+      "No Air China co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/china-southern", label: "China Southern" },
@@ -5095,16 +5095,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-southern": {
     intro: {
       carryOn:
-        "China Southern includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "China Southern includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is whether the bag fits the booked cabin's weight and size limits.",
+        "China Southern does not list a separate paid personal-item charge here. The practical cabin-bag issue is whether the bag fits the booked cabin's weight and size limits.",
       checkedBag:
         "China Southern includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main China Southern fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The China Southern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "China Southern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the route uses piece concept or weight concept before packing.",
       "Buy additional baggage before the airport where available if the free allowance will not cover the trip.",
@@ -5169,7 +5169,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a China Southern co-branded card baggage waiver.",
+      "No China Southern co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5181,16 +5181,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   hainan: {
     intro: {
       carryOn:
-        "Hainan Airlines includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 10 kg, while Business Class has a higher allowance.",
+        "Hainan Airlines includes cabin baggage. Economy is listed as one cabin bag up to 10 kg, while Business Class has a higher allowance.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your cabin.",
+        "Hainan Airlines does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your cabin.",
       checkedBag:
         "Hainan includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main Hainan fee risks are exceeding the included allowance, airport overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Hainan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Hainan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses piece concept or weight concept before packing.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5234,7 +5234,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Economy trip with a heavier cabin bag",
         details:
-          "Hainan's Economy row allows up to 10 kg, but the bag still needs to meet the published size limits.",
+          "Hainan's Economy allowance permits up to 10 kg, but the bag still needs to meet the size limits.",
       },
       {
         title: "Adding a checked bag",
@@ -5255,7 +5255,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Hainan co-branded card baggage waiver.",
+      "No Hainan co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5267,16 +5267,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   xiamenair: {
     intro: {
       carryOn:
-        "XiamenAir includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "XiamenAir includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is keeping Economy carry-on at or below 7 kg.",
+        "XiamenAir does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping Economy carry-on at or below 7 kg.",
       checkedBag:
         "XiamenAir includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main XiamenAir fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The XiamenAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "XiamenAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the free allowance is not enough.",
@@ -5330,7 +5330,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Overweight bag",
         details:
-          "The overweight row depends on route and excess weight, so airport repricing can be route-specific.",
+          "Overweight treatment depends on route and excess weight, so airport repricing can be route-specific.",
       },
       {
         title: "Child traveling alone",
@@ -5341,7 +5341,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a XiamenAir co-branded card baggage waiver.",
+      "No XiamenAir co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5355,14 +5355,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       carryOn:
         "Air Astana includes carry-on baggage. Economy is listed up to 8 kg, while Business Class is listed up to 12 kg.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is matching the Economy or Business cabin allowance.",
+        "Air Astana does not list a separate paid personal-item charge here. The practical cabin-bag issue is matching the Economy or Business cabin allowance.",
       checkedBag:
         "Air Astana includes checked baggage on most eligible fares, but the allowance depends on fare family, cabin class, route, and Nomad Club status.",
       restrictions:
         "The main Air Astana fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Air Astana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Air Astana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the included allowance for the exact fare family, cabin, route, and Nomad Club status.",
       "Pre-purchase excess baggage where available if the free allowance will not be enough.",
@@ -5416,7 +5416,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Large suitcase",
         details:
-          "Overweight and oversize treatment are separate airport risks when the bag exceeds published limits.",
+          "Overweight and oversize treatment are separate airport risks when the bag exceeds the allowed limits.",
       },
       {
         title: "Need to change flights",
@@ -5427,7 +5427,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on aircraft and airport handling limits.",
-      "This fee table does not show an Air Astana co-branded card baggage waiver.",
+      "No Air Astana co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/turkish-airlines", label: "Turkish Airlines" },
@@ -5439,16 +5439,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   asiana: {
     intro: {
       carryOn:
-        "Asiana includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 10 kg, while Business and First have higher allowances.",
+        "Asiana includes cabin baggage. Economy is listed as one cabin bag up to 10 kg, while Business and First have higher allowances.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your booked cabin.",
+        "Asiana does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your booked cabin.",
       checkedBag:
         "Asiana includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
       restrictions:
         "The main Asiana fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Asiana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Asiana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5513,7 +5513,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show an Asiana co-branded card baggage waiver.",
+      "No Asiana co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/korean-air", label: "Korean Air" },
@@ -5525,16 +5525,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-airlines": {
     intro: {
       carryOn:
-        "China Airlines includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
+        "China Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
       personalItem:
-        "The personal item is included with the Economy cabin-bag row, so the practical issue is keeping the main cabin bag within 7 kg.",
+        "The personal item is included with the Economy cabin allowance, so the practical issue is keeping the main cabin bag within 7 kg.",
       checkedBag:
         "China Airlines includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
       restrictions:
         "The main China Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The China Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "China Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm the baggage concept for the exact route before packing or buying extra baggage.",
       "Buy additional baggage before the airport where available if the included allowance will not be enough.",
@@ -5599,7 +5599,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a China Airlines co-branded card baggage waiver.",
+      "No China Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/eva-air", label: "EVA Air" },
@@ -5611,16 +5611,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-eastern": {
     intro: {
       carryOn:
-        "China Eastern includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "China Eastern includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is keeping the bag within the booked cabin's weight and size limits.",
+        "China Eastern does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the bag within the booked cabin's weight and size limits.",
       checkedBag:
         "China Eastern includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main China Eastern fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The China Eastern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "China Eastern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5685,7 +5685,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a China Eastern co-branded card baggage waiver.",
+      "No China Eastern co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5697,16 +5697,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "hong-kong-airlines": {
     intro: {
       carryOn:
-        "Hong Kong Airlines includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "Hong Kong Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The practical cabin-bag issue is keeping the Economy cabin bag within 7 kg.",
+        "Hong Kong Airlines does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the Economy cabin bag within 7 kg.",
       checkedBag:
         "Hong Kong Airlines includes checked baggage on most eligible fares, but the allowance depends on route and fare family. Extra baggage is priced separately by route and timing.",
       restrictions:
         "The main Hong Kong Airlines fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Hong Kong Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Hong Kong Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the checked-bag allowance for the exact route and fare family before buying extras.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5771,7 +5771,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Hong Kong Airlines co-branded card baggage waiver.",
+      "No Hong Kong Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/cathay-pacific", label: "Cathay Pacific" },
@@ -5783,16 +5783,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "malaysia-airlines": {
     intro: {
       carryOn:
-        "Malaysia Airlines includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and Business Suite have higher allowances.",
+        "Malaysia Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and Business Suite have higher allowances.",
       personalItem:
-        "The personal item is included with the Economy cabin-bag row. The practical issue is keeping the main cabin bag within 7 kg.",
+        "The personal item is included with the Economy cabin allowance. The practical issue is keeping the main cabin bag within 7 kg.",
       checkedBag:
         "Malaysia Airlines includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main Malaysia Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Malaysia Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Malaysia Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5857,7 +5857,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Malaysia Airlines co-branded card baggage waiver.",
+      "No Malaysia Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/singapore-airlines", label: "Singapore Airlines" },
@@ -5869,16 +5869,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "garuda-indonesia": {
     intro: {
       carryOn:
-        "Garuda Indonesia includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
+        "Garuda Indonesia includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
       personalItem:
-        "The personal item is included with the Economy cabin-bag row. The practical issue is keeping the main cabin bag within 7 kg.",
+        "The personal item is included with the Economy cabin allowance. The practical issue is keeping the main cabin bag within 7 kg.",
       checkedBag:
         "Garuda Indonesia includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main Garuda fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Garuda Indonesia carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Garuda Indonesia carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -5943,7 +5943,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Garuda Indonesia co-branded card baggage waiver.",
+      "No Garuda Indonesia co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/malaysia-airlines", label: "Malaysia Airlines" },
@@ -5955,16 +5955,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "vietnam-airlines": {
     intro: {
       carryOn:
-        "Vietnam Airlines includes cabin baggage on the rows shown here. Economy is listed as one carry-on bag up to 10 kg plus one personal item, while Premium Economy and Business have higher allowances.",
+        "Vietnam Airlines includes cabin baggage. Economy is listed as one carry-on bag up to 10 kg plus one personal item, while Premium Economy and Business have higher allowances.",
       personalItem:
-        "The personal item is included with the Economy cabin-bag row, so the practical issue is keeping the main carry-on within 10 kg.",
+        "The personal item is included with the Economy cabin allowance, so the practical issue is keeping the main carry-on within 10 kg.",
       checkedBag:
         "Vietnam Airlines includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
       restrictions:
         "The main Vietnam Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Vietnam Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Vietnam Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -6029,7 +6029,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Vietnam Airlines co-branded card baggage waiver.",
+      "No Vietnam Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/vietjet-air", label: "VietJet Air" },
@@ -6041,16 +6041,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "batik-air": {
     intro: {
       carryOn:
-        "Batik Air includes cabin baggage on the rows shown here. Economy is listed as one cabin bag up to 7 kg plus one personal item.",
+        "Batik Air includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item.",
       personalItem:
-        "The personal item is included with the Economy cabin-bag row. The practical issue is staying within the one-bag, 7 kg cabin limit.",
+        "The personal item is included with the Economy cabin allowance. The practical issue is staying within the one-bag, 7 kg cabin limit.",
       checkedBag:
         "Batik Air includes checked baggage on most eligible fares, but the allowance depends on route and fare family. Additional baggage is priced separately by route and timing.",
       restrictions:
         "The main Batik Air fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The Batik Air carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Batik Air carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the included checked allowance for the exact route and fare family before buying extras.",
       "Buy additional baggage before the airport where available if the included allowance is not enough.",
@@ -6104,7 +6104,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Carry-on-only trip",
         details:
-          "The cabin-bag row is one bag up to 7 kg plus one personal item; a heavy cabin bag can break the plan.",
+          "The cabin allowance is one bag up to 7 kg plus one personal item; a heavy cabin bag can break the plan.",
       },
       {
         title: "Oversize item",
@@ -6115,7 +6115,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Partner-operated flights can follow the operating carrier's baggage rules.",
       "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "This fee table does not show a Batik Air co-branded card baggage waiver.",
+      "No Batik Air co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/garuda-indonesia", label: "Garuda Indonesia" },
@@ -6136,7 +6136,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Wizz Air fee risks are assuming Basic includes a normal carry-on, buying the wrong checked-bag weight, airport excess-weight charges, paid seats, and fee-based flight changes.",
     },
     verificationNote:
-      "The Wizz Air carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Wizz Air carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Measure the under-seat item before booking. Basic works only if the bag fits 40 x 30 x 20 cm.",
       "Compare WIZZ Priority against checked baggage when you need a trolley bag.",
@@ -6203,7 +6203,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     exceptions: [
       "Ticket refunds are not permitted except for flight cancellation or qualifying circumstances.",
       "Wizz Air does not offer an unaccompanied-minor service; passengers under 14 must travel with an adult.",
-      "This fee table does not show a Wizz Air co-branded card baggage waiver.",
+      "No Wizz Air co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/ryanair", label: "Ryanair" },
@@ -7049,20 +7049,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "aix-connect": {
     intro: {
       carryOn:
-        "AIX Connect follows the Air India Express-aligned baggage rules in the rows shown here. Carry-on is limited to one piece up to 7 kg.",
+        "AIX Connect follows Air India Express-aligned baggage rules. Carry-on is limited to one piece up to 7 kg.",
       personalItem:
-        "This page does not show a separate paid personal-item row. The cabin-bag issue is the 7 kg one-piece limit.",
+        "AIX Connect does not list a separate paid personal-item charge here. The cabin-bag issue is the 7 kg one-piece limit.",
       checkedBag:
         "AIX Connect includes checked baggage on most eligible fares, but the allowance differs between domestic India and international routes. Excess baggage is charged separately by route and weight.",
       restrictions:
         "The main AIX Connect fee risks are exceeding the included allowance, airport overweight handling, paid seat selection, and restrictive fare-rule change or cancellation costs.",
     },
     verificationNote:
-      "The AIX Connect carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "AIX Connect carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check whether the trip is domestic India or international before assuming the checked-bag allowance.",
       "Pre-purchase excess baggage where available if the free allowance will not be enough.",
-      "Keep the cabin bag at or below 7 kg and checked bags within the published per-bag limits.",
+      "Keep the cabin bag at or below 7 kg and checked bags within the per-bag limits.",
       "Skip paid seat selection when seat location does not matter.",
     ],
     relatedGuides: [
@@ -7112,18 +7112,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Carry-on-only trip",
         details:
-          "The carry-on row is one piece up to 7 kg, so a heavy cabin bag can break the plan.",
+          "The carry-on allowance is one piece up to 7 kg, so a heavy cabin bag can break the plan.",
       },
       {
         title: "Child traveling alone",
         details:
-          "Unaccompanied-minor service is generally not offered in the row shown here.",
+          "Unaccompanied-minor service is generally not offered.",
       },
     ],
     exceptions: [
-      "AIX Connect policy is aligned with Air India Express rules in the data shown here.",
-      "Unaccompanied-minor service is generally not offered in the row shown here.",
-      "This fee table does not show an AIX Connect co-branded card baggage waiver.",
+      "AIX Connect policy is aligned with Air India Express rules in the current fee details.",
+      "Unaccompanied-minor service is generally not offered.",
+      "No AIX Connect co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -7144,7 +7144,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Spring Airlines fee risks are booking a fare with too little cabin or checked baggage, buying the wrong weight package, paid seat selection, restrictive change rules, and no unaccompanied-minor service.",
     },
     verificationNote:
-      "The Spring Airlines carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Spring Airlines carry-on, checked-bag, overweight, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Check the fare type before assuming a normal cabin-bag allowance.",
       "Buy the right checked-bag weight package before the airport when baggage is needed.",
@@ -7171,7 +7171,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Fare products with baggage",
         details:
-          "Checked baggage is included only on select fare products in the rows shown here.",
+          "Checked baggage is included only on select fare products.",
       },
       {
         name: "Purchased weight packages",
@@ -7203,13 +7203,13 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Minor traveling alone",
         details:
-          "Unaccompanied-minor service is generally not offered in the row shown here.",
+          "Unaccompanied-minor service is generally not offered.",
       },
     ],
     exceptions: [
-      "Unaccompanied-minor service is generally not offered in the row shown here.",
+      "Unaccompanied-minor service is generally not offered.",
       "Some basic fares may restrict cabin baggage; verify the fare type before booking.",
-      "This fee table does not show a Spring Airlines co-branded card baggage waiver.",
+      "No Spring Airlines co-branded card baggage waiver is listed in the current fee details.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -7230,7 +7230,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "ZIPAIR is an optional-service model: checked bags, seats, sports equipment, and changes are separate decisions, and unaccompanied-minor service is not offered.",
     },
     verificationNote:
-      "The ZIPAIR carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "ZIPAIR carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Weigh cabin items together because the carry-on row uses a combined 7 kg limit across the cabin bag and personal item.",
       "Buy checked baggage by weight before travel when needed; checked baggage is not included by default.",
@@ -7253,7 +7253,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "All fares",
         details:
-          "The fee table treats ZIPAIR as an optional-service structure rather than a fare-family ladder with included baggage tiers.",
+          "ZIPAIR works more like an optional-service structure than a fare-family ladder with included baggage tiers.",
       },
       {
         name: "Cabin-only travel",
@@ -7290,11 +7290,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling as an unaccompanied minor",
         details:
-          "ZIPAIR does not offer unaccompanied-minor service in the fee row shown here.",
+          "ZIPAIR does not offer unaccompanied-minor service.",
       },
     ],
     exceptions: [
-      "This fee table does not show a fare-bundle, elite-status, or co-branded card checked-bag waiver for ZIPAIR.",
+      "No fare-bundle, elite-status, or co-branded card checked-bag waiver is listed for ZIPAIR.",
     ],
     comparisonLinks: [
       { href: "/airlines/jetstar-japan", label: "Jetstar Japan" },

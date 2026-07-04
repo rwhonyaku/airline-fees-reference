@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "AUD",
-      "conditions": "Carry-on allowance varies by fare: Economy Starter includes up to 7 kg total cabin baggage; higher fares may allow up to 14 kg; size limits apply",
+      "conditions": "Carry-on varies by fare: Starter includes up to 7 kg total cabin baggage; higher fares may allow up to 14 kg. Size limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

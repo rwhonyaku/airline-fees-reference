@@ -20,7 +20,7 @@
       "category": "checked_baggage",
       "amount": 0,
       "currency": "CAD",
-      "conditions": "First checked bag included on Standard, Flex, Comfort, Latitude, Premium Economy, and Business fares; allowance varies by route and fare family",
+      "conditions": "First checked bag included on Standard, Flex, Comfort, Latitude, Premium Economy, and Business; varies by route and fare family.",
       "applies_to": "Eligible fares",
       "region_or_route": "Domestic, transborder, international",
       "timing": "each way",

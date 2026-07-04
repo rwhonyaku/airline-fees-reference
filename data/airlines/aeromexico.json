@@ -42,7 +42,7 @@
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "USD",
-      "conditions": "Checked bags weighing more than standard allowance and up to maximum limits incur overweight fees; bags above maximum weight are not accepted",
+      "conditions": "Checked bags above the standard allowance and within maximum limits incur overweight fees; bags above max weight are not accepted.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",

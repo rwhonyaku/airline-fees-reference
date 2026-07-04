@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "KRW",
-      "conditions": "Carry-on allowance depends on cabin: Economy—1 piece up to 10 kg; Prestige/First—2 pieces up to 10 kg each; size limits apply (generally up to 55 × 40 × 20 cm per item)",
+      "conditions": "Carry-on varies by cabin: Economy gets 1 piece up to 10 kg; Prestige/First get 2 pieces up to 10 kg each. Size limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance depends on cabin: Economy—1 piece up to 8 kg; Business—2 pieces up to 8 kg each; size limits apply (typically up to 55 × 40 × 23 cm per item)",
+      "conditions": "Carry-on varies by cabin: Economy gets 1 piece up to 8 kg; Business gets 2 pieces up to 8 kg each. Size limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

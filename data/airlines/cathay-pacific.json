@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "HKD",
-      "conditions": "Carry-on allowance depends on cabin: Economy—1 piece up to 7 kg; Premium Economy—1 piece up to 7 kg; Business—2 pieces up to 7 kg each; First—2 pieces up to 7 kg each; size limits apply (generally up to 56 × 36 × 23 cm per item)",
+      "conditions": "Carry-on varies by cabin: Economy/Premium Economy get 1 piece up to 7 kg; Business/First get 2 pieces up to 7 kg each. Size limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

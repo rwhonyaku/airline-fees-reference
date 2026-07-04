@@ -42,7 +42,7 @@
       "category": "change_cancellation",
       "amount": 100,
       "currency": "AUD",
-      "conditions": "Change or cancellation fee (excluding fare difference) on many domestic economy and premium economy fares for tickets issued on/after 30 July 2025",
+      "conditions": "Change or cancellation fee, excluding fare difference, on many domestic economy and premium economy fares issued on or after 30 July 2025.",
       "applies_to": "Applicable fare types",
       "region_or_route": "Domestic Australia",
       "timing": "before departure",

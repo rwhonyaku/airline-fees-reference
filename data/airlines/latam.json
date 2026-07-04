@@ -9,7 +9,7 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance depends on fare family: Light fares include 1 personal item; other fares include 1 carry-on bag up to 12 kg; size limits apply",
+      "conditions": "Carry-on varies by fare family: Light includes 1 personal item; other fares include 1 carry-on up to 12 kg. Size limits apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",

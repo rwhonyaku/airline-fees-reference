@@ -21,7 +21,7 @@
       "category": "checked_baggage",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Checked baggage included; allowance depends on route and cabin (e.g., Economy typically up to 23 kg per piece; premium cabins have higher allowances)",
+      "conditions": "Checked baggage included; allowance depends on route and cabin. Economy is typically up to 23 kg per piece; premium cabins higher.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
