@@ -8,6 +8,7 @@ import {
   clampInt,
   findCheckedBagFeeUsd,
   firstString,
+  getCheckedBagFeeMap,
   safeExternalUrl,
   usd,
   type AirlineOverrides,
@@ -22,7 +23,7 @@ type PageProps = {
   searchParams?: Promise<SearchParams>;
 };
 
-const LAST_VERIFIED = "2026-06-10";
+const LAST_VERIFIED = "2026-07-14";
 
 export const metadata: Metadata = {
   title: "Free Checked Bag Card Calculator | Airline Fees Reference",
@@ -34,6 +35,60 @@ async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
   const full = path.join(process.cwd(), relPathFromRepoRoot);
   const raw = await fs.readFile(full, "utf8");
   return JSON.parse(raw) as T;
+}
+
+function parseLowerRangeAmountUsd(amount: FeeItem["amount"]): number | null {
+  if (typeof amount === "number" && Number.isFinite(amount)) return amount;
+  if (typeof amount !== "string") return null;
+
+  const match = amount.trim().match(/^\$?\s*(\d+(?:\.\d+)?)\s*[-–]\s*\$?\s*(\d+(?:\.\d+)?)/);
+  if (!match) return null;
+
+  const low = Number(match[1]);
+  const high = Number(match[2]);
+  if (!Number.isFinite(low) || !Number.isFinite(high)) return null;
+  return Math.min(low, high);
+}
+
+function bagOrdinalMatches(row: FeeItem, ordinal: number): boolean {
+  const conditions = typeof row.conditions === "string" ? row.conditions.toLowerCase() : "";
+  if (ordinal === 1) {
+    return conditions.includes("1st checked bag") || conditions.includes("first checked bag") || conditions.includes("bag 1");
+  }
+  if (ordinal === 2) {
+    return conditions.includes("2nd checked bag") || conditions.includes("second checked bag") || conditions.includes("bag 2");
+  }
+  if (ordinal === 3) {
+    return conditions.includes("3rd checked bag") || conditions.includes("third checked bag") || conditions.includes("bag 3");
+  }
+  return false;
+}
+
+function getCardMathBagFeeMap(fees: FeeItem[], maxBags: number): Map<number, number> {
+  const map = getCheckedBagFeeMap(fees, maxBags);
+
+  for (let ordinal = 1; ordinal <= maxBags; ordinal += 1) {
+    if (map.has(ordinal)) continue;
+
+    const fallback = fees
+      .filter((row) => {
+        if (row.category !== "checked_baggage") return false;
+        if (row.currency && row.currency.toUpperCase() !== "USD") return false;
+        if (!bagOrdinalMatches(row, ordinal)) return false;
+        const appliesTo = typeof row.applies_to === "string" ? row.applies_to.toLowerCase() : "";
+        return !appliesTo.includes("blue plus") && parseLowerRangeAmountUsd(row.amount) != null;
+      })
+      .sort((a, b) => {
+        const verifiedA = typeof a.last_verified === "string" ? a.last_verified : "";
+        const verifiedB = typeof b.last_verified === "string" ? b.last_verified : "";
+        return verifiedB.localeCompare(verifiedA);
+      })[0];
+
+    const fee = fallback ? parseLowerRangeAmountUsd(fallback.amount) : null;
+    if (fee != null) map.set(ordinal, fee);
+  }
+
+  return map;
 }
 
 function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
@@ -54,16 +109,16 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
     return {
       label: "Not justified by bag fees",
       detail:
-        "With these inputs, the card does not offset recurring first checked bag fees.",
+        "With these inputs, the card does not offset recurring checked-bag fees.",
       className: "border-rose-200 bg-rose-50 text-rose-950",
     };
   }
 
   if (r.netAnnualUsd >= 0) {
     return {
-      label: "Worth it on bag fees alone",
+      label: "Worth it on modeled bag fees alone",
       detail:
-        "The first checked bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
+        "The modeled checked-bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
       className: "border-emerald-200 bg-emerald-50 text-emerald-950",
     };
   }
@@ -114,9 +169,8 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const payWithCard = (firstString(sp.pay) ?? "yes") !== "no";
 
   const fees = (airline.fees ?? []) as FeeItem[];
-  const firstBagFeeUsd = findCheckedBagFeeUsd(fees, 1);
-  const feeByBagOrdinal = new Map<number, number>();
-  if (firstBagFeeUsd != null) feeByBagOrdinal.set(1, firstBagFeeUsd);
+  const feeByBagOrdinal = getCardMathBagFeeMap(fees, bags);
+  const firstBagFeeUsd = feeByBagOrdinal.get(1) ?? findCheckedBagFeeUsd(fees, 1);
 
   const cardsJson = await readJsonFile<CardsJson>("data/cards/cards.json");
   const overridesJson = await readJsonFile<AirlineOverrides>("data/cards/airline_overrides.json");
@@ -174,10 +228,6 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const top = computed[0];
   const topVerdict = verdictForResult(top.r);
   const topOfferUrl = safeExternalUrl(top.card.offer_url);
-  const modeledFirstBagCostPerRoundtrip =
-    firstBagFeeUsd != null && bags > 0 ? firstBagFeeUsd * travelers * 2 : null;
-  const modeledAnnualFirstBagCost =
-    modeledFirstBagCostPerRoundtrip != null ? modeledFirstBagCostPerRoundtrip * trips : null;
   const calculatorHref = `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=${payWithCard ? "yes" : "no"}`;
 
   return (
@@ -187,7 +237,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         <p className="max-w-4xl text-sm leading-relaxed text-slate-700">
           This is a checked-baggage break-even calculator, not a general travel-card ranking. It tests
           whether an airline card&apos;s published free checked bag benefit is enough to cover
-          the annual fee from first-bag savings alone.
+          the annual fee from modeled checked-bag savings alone.
         </p>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
           Enter the airline, number of travelers, checked bags, annual trips, and whether the
@@ -228,6 +278,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
             <li>First checked bag savings from the airline fee details on this site.</li>
             <li>Annual fee cost for the airline card.</li>
             <li>Traveler-count limits and card-payment requirements where they apply.</li>
+            <li>For published fee ranges, the lower end is used so estimated savings are conservative.</li>
           </ul>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -317,8 +368,8 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       <section className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-slate-600">What the card math is testing</div>
         <h2 className="text-2xl font-extrabold text-slate-950">
-          {modeledAnnualFirstBagCost != null
-            ? `About ${usd(modeledAnnualFirstBagCost)} in modeled annual first-bag fees.`
+          {top.r.eligible
+            ? `About ${usd(top.r.annualSavingsUsd)} in modeled annual checked-bag savings for the top match.`
             : "This airline needs a first-bag fee lookup before card math can be trusted."}
         </h2>
         <div className="grid gap-3 md:grid-cols-3">
@@ -332,7 +383,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Fee used</div>
             <p className="mt-1 text-sm leading-relaxed text-slate-700">
               {firstBagFeeUsd != null
-                ? `${usd(firstBagFeeUsd)} first checked bag fee, multiplied by travelers and roundtrip directions.`
+                ? `${usd(firstBagFeeUsd)} first checked bag fee${bags > 1 && feeByBagOrdinal.get(2) != null ? ` and ${usd(feeByBagOrdinal.get(2) ?? 0)} second checked bag fee` : ""}, multiplied by eligible travelers and roundtrip directions. Range-priced fees use the lower published amount.`
                 : "No fixed USD first checked bag fee is available for this airline in the current fee data."}
             </p>
           </div>
@@ -344,8 +395,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           </div>
         </div>
         <p className="text-sm leading-relaxed text-slate-600">
-          If you are checking more than one bag per traveler, this page still focuses on the card&apos;s published free-bag
-          benefit. Use the checked baggage calculator to estimate the full cash bill for first, second, and third bags.
+          If you are checking more than one bag per traveler, this page only counts bag positions
+          covered by the card&apos;s published benefit and available fee data. Use the checked baggage
+          calculator to estimate the full cash bill for first, second, and third bags.
         </p>
       </section>
 
@@ -364,7 +416,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
 
       <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-emerald-800">
-          Largest bag-fee offset for these inputs
+          Top baggage match for these inputs
         </div>
         <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
@@ -390,7 +442,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         </div>
 
         <div className="mt-3 text-sm text-slate-700">
-          This result only compares first checked bag savings against the annual fee.
+          This is not a general card recommendation. It only compares modeled checked-bag savings
+          against the annual fee. Delta second-bag savings are counted only when the selected bag
+          pattern and fee data support that comparison.
         </div>
 
         {top.r.breakEvenRoundtrips != null && (
@@ -506,8 +560,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         </div>
 
         <div className="mt-5 text-xs text-slate-500">
-          Uses first checked bag fees only. One roundtrip = 2 flight directions. Traveler coverage
-          is capped by each card&apos;s published benefit, and non-bag perks are excluded.
+          Uses published checked-bag fees for the selected bag count. One roundtrip = 2 flight
+          directions. Traveler coverage is capped by each card&apos;s published benefit, and non-bag
+          perks are excluded.
         </div>
       </div>
 

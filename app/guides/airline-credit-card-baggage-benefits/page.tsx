@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Which airline credit cards include free checked bags, how many travelers are covered, where route limits apply, and when the bag benefit can outweigh the annual fee.",
 };
 
-const LAST_VERIFIED = "2026-06-10";
+const LAST_VERIFIED = "2026-07-14";
 
 type Card = {
   id: string;
@@ -21,6 +21,7 @@ type Card = {
   applies_to_travelers: number;
   requires_purchase_with_card: boolean;
   notes?: string[];
+  last_offer_verified?: string;
 };
 
 type CardsJson = { cards: Card[] };
@@ -38,6 +39,44 @@ type AirlineGuideMeta = {
   coreLimits: string[];
 };
 
+const EXCLUDED_CARD_NOTES = [
+  {
+    card: "Citi / AAdvantage Globe Mastercard",
+    reason:
+      "Not modeled in the break-even calculator because the current official card page emphasizes lounge passes, earning, status-related benefits, and credits rather than a recurring checked-bag waiver like the Platinum Select card.",
+  },
+  {
+    card: "United Gateway Card",
+    reason:
+      "Not modeled as a repeat per-trip waiver because its checked-bag language is framed as earning two checked bags each year, not as a normal cardmember-plus-companion bag waiver on every eligible trip.",
+  },
+  {
+    card: "JetBlue Card",
+    reason:
+      "Not modeled because the no-annual-fee JetBlue Card does not publish a free checked bag benefit. The JetBlue Plus and Premier cards are the JetBlue cards that fit the baggage break-even model.",
+  },
+  {
+    card: "Canadian Aeroplan cards",
+    reason:
+      "TD, American Express, and CIBC Aeroplan cards can publish Air Canada bag benefits, but this calculator currently models USD annual fees. They should wait for CAD annual-fee support instead of being forced into a USD break-even table.",
+  },
+  {
+    card: "HSBC Star Alliance Credit Card",
+    reason:
+      "Not modeled as an Air Canada checked-bag card because its baggage value comes through earned Star Alliance status and extra allowance rules, not a simple recurring first-bag waiver tied directly to Air Canada card travel.",
+  },
+  {
+    card: "Chase Avios cards",
+    reason:
+      "Not modeled because the British Airways, Aer Lingus, and Iberia Chase Avios cards do not publish a recurring free checked bag waiver. Their baggage-related protections are delay or lost-luggage coverage, which is different from avoiding checked-bag fees.",
+  },
+  {
+    card: "No-annual-fee and points-only cards",
+    reason:
+      "Excluded unless the published benefit behaves like a reusable checked-bag waiver that can be compared against cash baggage fees.",
+  },
+];
+
 const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   alaska: {
     airlineName: "Alaska",
@@ -53,6 +92,23 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
       "Published free-bag language requires the flight to be paid for with the eligible card.",
       "The benefit applies to the cardholder and up to 6 guests on the same reservation.",
       "This is a first-checked-bag benefit, not an overweight or oversized waiver.",
+    ],
+  },
+  "air-canada": {
+    airlineName: "Air Canada",
+    airlinePage: "/airlines/air-canada",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=air-canada&travelers=2&bags=1&trips=2&pay=yes",
+    cardSource: "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan",
+    cardSourceLabel: "Chase Aeroplan Card",
+    policySource: "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+    policySourceLabel: "Air Canada checked baggage",
+    routeScope: "Travel originating on an Air Canada flight",
+    coreLimits: [
+      "The Chase Aeroplan Card publishes first checked bag free up to 50 lb for the cardmember and up to 8 companions on the same reservation.",
+      "The benefit applies when travel originates on an Air Canada flight.",
+      "Air Canada baggage fees in this dataset are CAD-denominated, so the card is listed as a verified benefit while full break-even math waits for multi-currency support.",
+      "This is a first-checked-bag benefit, not an overweight, oversized, or second-bag waiver.",
     ],
   },
   american: {
@@ -99,8 +155,26 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     routeScope: "Delta and Delta Connection segments when checking in with Delta",
     coreLimits: [
       "Reservation must include the Basic Card Member's SkyMiles number.",
-      "Delta publishes this benefit for flights booked with the card and checked in with Delta.",
+      "This model does not require ticket payment with the Delta card; the key published condition is the eligible cardmember's SkyMiles number on the reservation.",
+      "Delta publishes first checked bag free on domestic and international Delta flights and second checked bag free on domestic Delta flights.",
       "Codeshare flights and passengers already receiving a free checked bag through fare, status, or military eligibility are not covered by this benefit line.",
+    ],
+  },
+  jetblue: {
+    airlineName: "JetBlue",
+    airlinePage: "/airlines/jetblue",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=jetblue&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes",
+    cardSource: "https://www.jetblue.com/trueblue/credit-cards",
+    cardSourceLabel: "JetBlue credit cards",
+    policySource: "https://www.jetblue.com/legal/fees",
+    policySourceLabel: "JetBlue fees",
+    routeScope: "Eligible JetBlue-operated flights purchased with a JetBlue Plus or Premier card",
+    coreLimits: [
+      "JetBlue Plus and Premier publish first checked bag free for the cardholder and up to 3 companions on the same reservation.",
+      "This model treats the benefit as requiring the JetBlue flight to be purchased with the eligible card.",
+      "The no-annual-fee JetBlue Card is not modeled because it does not publish a free checked bag benefit.",
+      "This is a first-checked-bag benefit, not an overweight, oversized, or second-bag waiver.",
     ],
   },
 };
@@ -110,6 +184,9 @@ function usd(amount: number): string {
 }
 
 function bagBenefitLabel(card: Card): string {
+  if (card.airline_slug === "delta" && card.free_checked_bags >= 2) {
+    return "First bag free; second bag free on domestic Delta flights";
+  }
   return card.free_checked_bags >= 2
     ? "First and second checked bags free"
     : "First checked bag free";
@@ -184,9 +261,9 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             A free checked bag card is only useful when the bag savings beat the card cost.
           </h2>
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
-            Alaska, American, United, and Delta cards in this guide publish checked-bag benefits.
+            Alaska, Air Canada, American, United, Delta, and JetBlue cards in this guide publish checked-bag benefits.
             The practical question is narrower: will your airline, route, traveler count,
-            reservation, and payment method qualify for the waiver, and will the avoided first-bag
+            reservation, and payment method qualify for the waiver, and will the avoided checked-bag
             fees outweigh the card&apos;s annual fee?
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
@@ -199,14 +276,23 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                 whether the free-bag line applies.
               </p>
               <p>
+                Cards that do not behave like a repeat checked-bag waiver are intentionally left out
+                of the calculator even when they are useful for other reasons. The goal is to test
+                baggage savings, not to rank every airline card.
+              </p>
+              <p>
                 Start with the checked-bag calculator if you do not know the cash baggage bill yet.
-                Move to the card calculator only when first-bag fees are a recurring cost worth
+                Move to the card calculator only when checked-bag fees are a recurring cost worth
                 testing against an annual fee.
               </p>
               <p>
                 Current airline coverage:{" "}
                 <Link href="/airlines/alaska" className="underline">
                   Alaska
+                </Link>
+                ,{" "}
+                <Link href="/airlines/air-canada" className="underline">
+                  Air Canada
                 </Link>
                 ,{" "}
                 <Link href="/airlines/american" className="underline">
@@ -216,9 +302,13 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                 <Link href="/airlines/united" className="underline">
                   United
                 </Link>
-                , and{" "}
+                ,{" "}
                 <Link href="/airlines/delta" className="underline">
                   Delta
+                </Link>
+                , and{" "}
+                <Link href="/airlines/jetblue" className="underline">
+                  JetBlue
                 </Link>
                 .
               </p>
@@ -265,11 +355,28 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 3</div>
           <h2 className="mt-2 text-lg font-bold text-slate-900">Run break-even math</h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Compare first-bag savings against the card&apos;s annual fee before counting points, credits, or perks.
+            Compare modeled checked-bag savings against the card&apos;s annual fee before counting points, credits, or perks.
           </p>
           <Link href="/best-cards" className="mt-4 inline-block text-sm font-semibold text-blue-700 underline">
             Open card calculator
           </Link>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold text-slate-900">Cards intentionally not modeled here</h2>
+        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
+          Some airline cards have useful travel benefits but do not fit this site&apos;s recurring
+          checked-bag waiver model. Those cards can still be worth considering; they just should not
+          be treated as clean baggage-fee break-even inputs.
+        </p>
+        <div className="grid gap-4 md:grid-cols-3">
+          {EXCLUDED_CARD_NOTES.map((item) => (
+            <div key={item.card} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <h3 className="text-lg font-bold text-slate-900">{item.card}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.reason}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -337,7 +444,9 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                     </td>
                     <td className="px-4 py-4 text-slate-700">
                       <div>Verified against the airline card and baggage policy pages listed below.</div>
-                      <div className="mt-2 text-xs text-slate-500">Last verified {LAST_VERIFIED}</div>
+                      <div className="mt-2 text-xs text-slate-500">
+                        Card link verified {card.last_offer_verified ?? LAST_VERIFIED}
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -372,12 +481,16 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
               Current annual-fee ranges in this page run from{" "}
               <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "alaska"))}</strong>{" "}
               on Alaska,{" "}
+              <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "air-canada"))}</strong>{" "}
+              on Air Canada,{" "}
               <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "american"))}</strong>{" "}
               on American,{" "}
               <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "united"))}</strong>{" "}
-              on United, and{" "}
+              on United,{" "}
               <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "delta"))}</strong>{" "}
-              on Delta.
+              on Delta, and{" "}
+              <strong>{annualFeeBand(cards.filter((card) => card.airline_slug === "jetblue"))}</strong>{" "}
+              on JetBlue.
             </p>
           </div>
         </div>
@@ -386,7 +499,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           <Link href="/best-cards" className="underline">
             card break-even calculator
           </Link>
-          . It models first-bag savings only and excludes points, lounge access, credits, and
+          . It models checked-bag savings from the covered bag positions and excludes points, lounge access, credits, and
           bonuses.
         </p>
       </section>
@@ -431,6 +544,10 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             Alaska
           </Link>
           ,{" "}
+          <Link href="/airlines/air-canada" className="underline">
+            Air Canada
+          </Link>
+          ,{" "}
           <Link href="/airlines/american" className="underline">
             American
           </Link>
@@ -438,9 +555,13 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           <Link href="/airlines/united" className="underline">
             United
           </Link>
-          , and{" "}
+          ,{" "}
           <Link href="/airlines/delta" className="underline">
             Delta
+          </Link>
+          , and{" "}
+          <Link href="/airlines/jetblue" className="underline">
+            JetBlue
           </Link>
           .
         </p>

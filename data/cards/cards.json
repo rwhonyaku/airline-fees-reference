@@ -112,16 +112,17 @@
       "airline_slug": "delta",
       "tier": "entry",
       "annual_fee_usd": 150,
-      "free_checked_bags": 1,
+      "free_checked_bags": 2,
       "applies_to_travelers": 9,
-      "requires_purchase_with_card": true,
+      "requires_purchase_with_card": false,
       "notes": [
-        "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number."
+        "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
+        "Delta publishes a second checked bag free benefit on domestic Delta flights."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-06-10"
+      "last_offer_verified": "2026-07-14"
     },
     {
       "id": "delta_platinum",
@@ -129,17 +130,18 @@
       "airline_slug": "delta",
       "tier": "mid",
       "annual_fee_usd": 350,
-      "free_checked_bags": 1,
+      "free_checked_bags": 2,
       "applies_to_travelers": 9,
-      "requires_purchase_with_card": true,
+      "requires_purchase_with_card": false,
       "notes": [
         "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
+        "Delta publishes a second checked bag free benefit on domestic Delta flights.",
         "Includes a companion certificate after renewal, but that is not part of the bag-value model."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-06-10"
+      "last_offer_verified": "2026-07-14"
     },
     {
       "id": "delta_reserve",
@@ -147,17 +149,74 @@
       "airline_slug": "delta",
       "tier": "premium",
       "annual_fee_usd": 650,
-      "free_checked_bags": 1,
+      "free_checked_bags": 2,
       "applies_to_travelers": 9,
-      "requires_purchase_with_card": true,
+      "requires_purchase_with_card": false,
       "notes": [
         "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
+        "Delta publishes a second checked bag free benefit on domestic Delta flights.",
         "Includes premium travel benefits outside the bag-fee model."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-06-10"
+      "last_offer_verified": "2026-07-14"
+    },
+    {
+      "id": "jetblue_plus",
+      "name": "JetBlue Plus Card",
+      "airline_slug": "jetblue",
+      "tier": "mid",
+      "annual_fee_usd": 99,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 4,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the cardholder and up to 3 companions on the same reservation.",
+        "Benefit is modeled only for eligible JetBlue-operated flights purchased with the card."
+      ],
+      "offer_url": "https://www.jetblue.com/trueblue/credit-cards",
+      "offer_label": "Check JetBlue card terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-07-14"
+    },
+    {
+      "id": "jetblue_premier",
+      "name": "JetBlue Premier Card",
+      "airline_slug": "jetblue",
+      "tier": "premium",
+      "annual_fee_usd": 499,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 4,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free for the cardholder and up to 3 companions on the same reservation.",
+        "Benefit is modeled only for eligible JetBlue-operated flights purchased with the card.",
+        "Includes premium benefits outside the bag-fee model."
+      ],
+      "offer_url": "https://www.jetblue.com/trueblue/credit-cards",
+      "offer_label": "Check JetBlue card terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-07-14"
+    },
+    {
+      "id": "air_canada_chase_aeroplan",
+      "name": "Aeroplan Card",
+      "airline_slug": "air-canada",
+      "tier": "entry",
+      "annual_fee_usd": 95,
+      "free_checked_bags": 1,
+      "applies_to_travelers": 9,
+      "requires_purchase_with_card": true,
+      "notes": [
+        "First checked bag free up to 50 lb for the cardmember and up to 8 travel companions on the same reservation.",
+        "Benefit applies when travel originates on an Air Canada flight.",
+        "The Air Canada bag-fee data is CAD-denominated, so the USD card calculator should be treated as a benefit reference until multi-currency break-even math is added."
+      ],
+      "offer_url": "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan",
+      "offer_label": "Check Chase Aeroplan terms",
+      "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
+      "last_offer_verified": "2026-07-14"
     },
     {
       "id": "alaska_atmos_ascent",
