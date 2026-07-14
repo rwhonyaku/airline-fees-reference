@@ -11,10 +11,61 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Overweight and Oversize Baggage Calculator | Airline Fees Reference",
+  title: "Excess Baggage Cost Calculator | Overweight and Oversize Bag Fees",
   description:
-    "Estimate overweight and oversize baggage charges when published airline fee details include a usable numeric USD fee.",
+    "Estimate excess baggage cost for overweight and oversize checked bags, and see when an airline-specific route or allowance lookup is required.",
 };
+
+const FEATURED_AIRLINES = [
+  {
+    slug: "air-france",
+    label: "Air France excess baggage",
+    detail:
+      "Air France prices overweight and oversized baggage at the airport by itinerary, so the useful next step is checking the route-specific page.",
+    weight: 51,
+    size: 63,
+  },
+  {
+    slug: "air-canada",
+    label: "Air Canada excess baggage",
+    detail:
+      "Air Canada lists route-based CAD ranges for overweight and oversize baggage, with bags over 32 kg outside ordinary checked baggage.",
+    weight: 51,
+    size: 63,
+  },
+  {
+    slug: "air-india",
+    label: "Air India extra baggage",
+    detail:
+      "Air India can depend on route and baggage concept, so extra baggage should be checked against the specific itinerary.",
+    weight: 33,
+    size: 63,
+  },
+  {
+    slug: "zipair",
+    label: "ZIPAIR excess baggage",
+    detail:
+      "ZIPAIR is useful for long-tail baggage searches because paid baggage and excess handling can change the trip cost quickly.",
+    weight: 51,
+    size: 63,
+  },
+  {
+    slug: "eva-air",
+    label: "EVA Air extra baggage",
+    detail:
+      "EVA Air usually starts from included allowance, then excess baggage depends on piece or weight concept rules.",
+    weight: 33,
+    size: 63,
+  },
+  {
+    slug: "alaska",
+    label: "Alaska overweight bag",
+    detail:
+      "Alaska has clearer USD overweight and oversize rows, so this calculator can often produce a direct estimate.",
+    weight: 51,
+    size: 63,
+  },
+];
 
 function AirlineSelect({ value }: { value: string }) {
   return (
@@ -51,6 +102,10 @@ function rowSummary(row: NonNullable<ReturnType<typeof calcExcessBaggageTripCost
   return [row.conditions, row.region_or_route, row.timing].filter(Boolean).join(" · ");
 }
 
+function airlinePageHref(airlineSlug: string): string {
+  return `/airlines/${encodeURIComponent(airlineSlug)}`;
+}
+
 export default async function ExcessBaggageCalculatorPage({ searchParams }: PageProps) {
   const sp = (await searchParams) ?? {};
   const airlineSlug = firstString(sp.airline) || "american";
@@ -82,9 +137,10 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight">Overweight and oversize baggage calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-          Estimate excess-baggage charges before the airport scale. The tool uses published numeric
-          USD fees only. When an airline prices excess baggage by route, allowance, currency, or
-          special-item rule, it says so instead of inventing a number.
+          Estimate excess baggage cost before the airport scale. This covers overweight checked bags,
+          oversize checked bags, and bags that may trigger both charges. When an airline prices excess
+          baggage by route, fare allowance, currency, or special-item rule, the tool says so instead
+          of inventing a number.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link href={checkedBagHref(airlineSlug)} className="font-semibold text-blue-700 underline">
@@ -114,6 +170,41 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
           <Link href={scenarioHref(airlineSlug, 70, 70)} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-semibold text-blue-700">
             Heavy and oversized
           </Link>
+        </div>
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Airline-specific excess baggage paths
+          </div>
+          <h2 className="mt-2 text-2xl font-extrabold text-slate-950">
+            Start with the airline when excess baggage is route-priced.
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+            Some airlines publish a direct USD overweight or oversize fee. Others show the price
+            during booking, at the airport, or by allowance concept. These links open the calculator
+            with a realistic excess-bag scenario and keep the airline fee page one click away.
+          </p>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {FEATURED_AIRLINES.map((item) => {
+            const featuredAirline = getAirlineBySlug(item.slug);
+            return (
+              <div key={item.slug} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-base font-bold text-slate-950">{item.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.detail}</p>
+                <div className="mt-3 flex flex-wrap gap-3 text-sm">
+                  <Link href={scenarioHref(item.slug, item.weight, item.size)} className="font-semibold text-blue-700 underline">
+                    Test scenario
+                  </Link>
+                  <Link href={airlinePageHref(item.slug)} className="font-semibold text-blue-700 underline">
+                    {featuredAirline?.name ?? item.label} fees
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -180,7 +271,8 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
             </h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
               That usually means the charge depends on route, currency, allowance type, special-item
-              handling, or whether the airline stacks overweight and oversize fees.
+              handling, whether the bag is bought in advance or at the airport, or whether the airline
+              stacks overweight and oversize fees.
             </p>
           </>
         )}
@@ -220,6 +312,42 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
             <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="mt-3 inline-block text-sm font-semibold text-blue-700 underline">
               Open {airline.name} fees
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-slate-950">Why excess baggage fees vary</h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl border border-slate-200 p-4">
+            <h3 className="text-base font-bold text-slate-900">Route and currency</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              International airlines often price excess baggage by origin, destination, and local
+              currency. A CAD, EUR, or route-specific range should not be converted into a fake USD
+              estimate without a clear exchange-rate assumption.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 p-4">
+            <h3 className="text-base font-bold text-slate-900">Allowance concept</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Some itineraries use a piece concept and others use a weight concept. The excess fee
+              may depend on whether you exceeded the number of bags, the per-bag weight, or the total
+              allowance.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 p-4">
+            <h3 className="text-base font-bold text-slate-900">Airport versus advance purchase</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Some airlines discount baggage bought before travel, while overweight or oversize
+              charges are often settled at the airport after the bag is measured or weighed.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 p-4">
+            <h3 className="text-base font-bold text-slate-900">Stacked fees and acceptance limits</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              A bag can be both overweight and oversized, and some airlines may charge both. Very
+              heavy bags can also be refused as checked baggage and sent to cargo instead.
+            </p>
           </div>
         </div>
       </section>

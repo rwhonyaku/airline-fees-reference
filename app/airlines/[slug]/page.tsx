@@ -336,16 +336,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air France includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. Additional baggage prices are shown during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. The amount for an extra checked bag is shown during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
       restrictions:
-        "The fee traps are timing and fare-family based: Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and overweight or oversized baggage must be handled at the airport.",
+        "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary.",
     },
     verificationNote:
       "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2025-12-24.",
     avoidFees: [
       "If booking Basic, confirm whether the larger hand-baggage item is included or whether the Hand Baggage option is required before comparing the fare against a higher bundle.",
       "Buy additional baggage online at least 24 hours before departure when the route allows the discount; flights from or to Canada and the USA do not get a different online price.",
-      "Keep checked bags within the ticketed allowance because overweight and oversized baggage are airport-paid options and vary by itinerary.",
+      "Keep checked bags within the ticketed allowance because Air France overweight and oversized baggage charges are airport-paid options that vary by itinerary.",
       "Use free seat-assignment eligibility when it applies, such as Flex fares or listed Flying Blue status benefits, instead of paying for seat selection too early.",
     ],
     relatedGuides: [
@@ -380,7 +380,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Additional baggage",
         details:
-          "Additional baggage prices are itinerary-based and shown in booking or My Bookings, with the online timing rule depending on whether the itinerary touches Canada or the USA.",
+          "Additional checked-baggage prices are itinerary-based and shown in booking or My Bookings, with the online timing rule depending on whether the itinerary touches Canada or the USA.",
       },
     ],
     scenarios: [
@@ -392,12 +392,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Adding a checked bag before travel",
         details:
-          "Additional baggage pricing is itinerary-based and surfaced during purchase or in My Bookings. The practical move is to price the exact route before deciding whether Air France is cheaper than another carrier.",
+          "Additional baggage pricing is itinerary-based and surfaced during purchase or in My Bookings. The practical move is to price the exact route before deciding whether Air France is cheaper than another carrier after baggage charges.",
       },
       {
-        title: "Arriving with an oversized bag",
+        title: "Arriving with excess baggage",
         details:
-          "Oversized baggage over 158 cm and up to 300 cm total dimensions is an airport-paid option, with the price depending on itinerary.",
+          "Overweight bags up to 32 kg and oversized bags over 158 cm are airport-priced by itinerary. Over 32 kg goes to cargo instead of normal checked baggage.",
       },
       {
         title: "Skipping paid seat selection",
@@ -599,14 +599,14 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "One personal item is included alongside the standard carry-on. There is no separate personal-item-only fee shown here.",
       checkedBag:
-        "Air Canada baggage fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
+        "Air Canada check-in baggage fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
       restrictions:
-        "Basic fares are the main restriction point: changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
+        "Basic fares are the main restriction point: the checked-bag charge can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
       "Air Canada baggage, seat, and change details shown here were last verified on 2025-12-24.",
     avoidFees: [
-      "Do not compare Basic against Standard using base fare alone. On the domestic/transborder example, Basic has paid checked baggage while Standard and higher show the first bag included.",
+      "Do not compare Basic against Standard using base fare alone. On the domestic/transborder example, Basic has a paid first checked bag while Standard and higher show the first bag included.",
       "Use the checked-bag calculator for parties with bags because the answer changes quickly when more than one traveler checks luggage.",
       "Keep bags under Air Canada's standard weight and size limits; overweight and oversize charges move into route-based ranges and bags over 32 kg are not accepted as ordinary checked baggage.",
       "Avoid Basic when you may need to change or refund after 24 hours, because Basic changes and refunds are not permitted except in qualifying circumstances.",
@@ -629,7 +629,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes, advance seat selection starting at CAD 10, and changes and refunds not permitted after 24 hours except in qualifying circumstances.",
+          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes. It also lists advance seat selection starting at CAD 10, with changes and refunds not permitted after 24 hours except in qualifying circumstances.",
       },
       {
         name: "Standard and higher",
@@ -644,7 +644,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "International route differences",
         details:
-          "Checked-baggage allowance treatment applies across domestic, transborder, and international markets, but the paid Basic example shown here is specifically domestic and transborder. There is no fixed international paid first-bag number shown outside that example.",
+          "Checked-baggage allowance treatment applies across domestic, transborder, and international markets, but the paid Basic first-bag example shown here is specifically domestic and transborder. There is no fixed international paid first-bag number shown outside that example.",
       },
     ],
     scenarios: [
@@ -654,9 +654,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Air Canada includes one standard carry-on and one personal item, but aircraft size and airport enforcement still matter.",
       },
       {
-        title: "Checking one standard bag on a Basic domestic or transborder trip",
+        title: "Checking one bag on a Basic domestic or transborder trip",
         details:
-          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag.",
+          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag. That is the check-in baggage fee to compare against Standard when the first bag is included there.",
       },
       {
         title: "Checking two standard bags on a fare where the second bag is not included",
@@ -666,7 +666,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking an overweight bag",
         details:
-          "Overweight baggage is route-based, with a CAD 100 to CAD 225 range and bags over 32 kg not accepted.",
+          "Overweight baggage is route-based, with a CAD 100 to CAD 225 range. Bags over 32 kg are not accepted as ordinary checked baggage.",
       },
       {
         title: "Changing a Basic fare after the 24-hour window",
@@ -7707,15 +7707,15 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
   switch (slug) {
     case "air-canada":
       return {
-        title: "Air Canada Baggage Fees, Carry-On Rules, and Basic Fare Traps (2026)",
+        title: "Air Canada Baggage Fees, Check-In Bag Rules, and Basic Fare Traps (2026)",
         description:
-          "Air Canada baggage fees depend on fare family and route. Standard and higher fares include the first checked bag in the current fee table, while Basic domestic/transborder examples show paid checked bags.",
+          "Air Canada baggage fees depend on fare family and route. Standard and higher fares include the first checked bag in the current fee table, while Basic domestic/transborder examples show paid check-in baggage.",
       };
     case "air-france":
       return {
-        title: "Air France Baggage Charges, Carry-On Rules, and Seat Fees (2026)",
+        title: "Air France Baggage Charges, Excess Baggage Costs, and Carry-On Rules (2026)",
         description:
-          "Air France baggage charges depend on itinerary, fare, and purchase path. Additional baggage is priced during booking or My Bookings rather than one universal first-bag fee.",
+          "Air France baggage charges depend on itinerary, fare, and purchase path. Additional baggage is priced during booking or My Bookings, while excess baggage costs are airport-priced by itinerary.",
       };
     case "alaska":
       return {
