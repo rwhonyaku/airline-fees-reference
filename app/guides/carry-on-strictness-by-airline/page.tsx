@@ -65,7 +65,7 @@ const STRICTNESS_ROWS: StrictnessRow[] = [
     slug: "spirit",
     airline: "Spirit",
     tier: "Extreme",
-    summary: "Spirit is a personal-item discipline test. The fare only stays cheap if the bag does not touch the fee engine.",
+    summary: "Spirit is strict because the lowest fare is built around a small personal item, not a normal overhead-bin bag.",
     travelerMove: "A compressible personal item matters more than almost any other trip variable on Spirit.",
   },
   {
@@ -118,11 +118,14 @@ export default function CarryOnStrictnessGuide() {
           <Link href="/fees/carry_on">Carry-on fees</Link>
           <Link href="/sizer-rules">Sizer rules</Link>
           <Link href="/guides/basic-economy-traps">Basic Economy guide</Link>
+          <Link href="/tools/checked-baggage-calculator">Checked-bag calculator</Link>
         </nav>
 
         <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
           <div>
-            Published carry-on dimensions are only half the story. What matters is whether the airline treats cabin-bag enforcement as an operational necessity, an agent-discretion issue, or a revenue source.
+            Published carry-on dimensions are only half the story. What matters is whether the
+            airline usually treats cabin bags as a normal allowance, a gate decision, or a paid
+            add-on.
           </div>
 
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
@@ -130,7 +133,9 @@ export default function CarryOnStrictnessGuide() {
           </div>
 
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
-            <strong>Traveler rule:</strong> On strict airlines, plan the bag before booking the fare. On low-strictness airlines, use the carry-on policy as a comparison advantage against competitors with worse fee logic.
+            <strong>Traveler rule:</strong> On strict airlines, plan the bag before booking the
+            fare. On calmer airlines, treat the included carry-on as part of the real fare value
+            when comparing options.
           </div>
         </section>
       </header>
@@ -141,7 +146,8 @@ export default function CarryOnStrictnessGuide() {
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
             <div style={{ fontWeight: 700, marginBottom: 8 }}>Low</div>
             <div style={{ fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              These airlines are useful comparison points. They prove a traveler does not always have to accept carry-on paranoia as normal.
+              These airlines are useful comparison points. They show when a normal carry-on is
+              likely to be simpler than buying into a stricter fare.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -213,7 +219,8 @@ export default function CarryOnStrictnessGuide() {
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
             <div style={{ fontWeight: 700, marginBottom: 8 }}>If the fare is Basic or stripped down</div>
             <div style={{ fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Carry-on strictness is rarely isolated. It usually travels with worse seat flexibility and more painful add-on math.
+              Carry-on strictness is rarely isolated. It often comes with seat limits, less
+              flexibility, or more paid add-ons.
             </div>
           </div>
         </div>
@@ -231,7 +238,8 @@ export default function CarryOnStrictnessGuide() {
       >
         <h2 style={{ margin: 0, fontSize: 16 }}>Related references</h2>
         <div style={{ fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-          The value of this page is not the strictness tier alone. It is using that tier to decide whether to trust the fare, switch airlines, or move into a stricter bag strategy page before booking.
+          The strictness tier is only useful if it changes what you do next: trust the fare, choose
+          a different airline, buy the right bag option, or price a checked bag before booking.
         </div>
         <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -241,7 +249,7 @@ export default function CarryOnStrictnessGuide() {
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Use this when you want the enforcement reality and bag-shape guidance behind the strictness tier.
+              Compare your bag against published dimensions and see why shape matters at the gate.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -251,7 +259,7 @@ export default function CarryOnStrictnessGuide() {
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Use this when you need the published fee rows and airline-specific bag paths after deciding strictness matters.
+              Check the published carry-on fee rows and airline-specific bag paths after deciding strictness matters.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -261,7 +269,7 @@ export default function CarryOnStrictnessGuide() {
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Use this when the carry-on rule is only one part of a stripped-fare trap.
+              Check this when the carry-on rule is only one part of a stripped-down fare.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -271,7 +279,7 @@ export default function CarryOnStrictnessGuide() {
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              If strict cabin-bag play is not worth it, price the checked-bag path before comparing card math.
+              If the carry-on plan is too risky, price the checked-bag path before comparing card break-even math.
             </div>
           </div>
         </div>

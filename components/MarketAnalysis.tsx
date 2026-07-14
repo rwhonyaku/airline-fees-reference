@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface MarketAnalysisProps {
@@ -6,19 +7,22 @@ interface MarketAnalysisProps {
 
 export function MarketAnalysis({ count }: MarketAnalysisProps) {
   return (
-    <section className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-8 text-white shadow-2xl">
+    <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-6 text-white shadow-xl md:p-8">
       <div className="mb-8 flex flex-col items-start gap-4 border-b border-slate-700 pb-6 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-            What to check before booking
+            Start with the fees most likely to change the fare
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            Common fee traps found across {count} airline pages.
+            Across {count} airline pages, these are the places where the cheapest ticket often stops being the cheapest trip.
           </p>
         </div>
-        <div className="shrink-0 rounded-full bg-blue-600 px-4 py-2 text-xs font-bold text-white">
-          Quick guide
-        </div>
+        <Link
+          href="/tools/checked-baggage-calculator"
+          className="shrink-0 rounded-full bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500"
+        >
+          Price bags
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
@@ -32,6 +36,9 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
             Many airlines charge more, or give you fewer options, when baggage is handled at the airport.
           </p>
+          <Link href="/fees/checked_baggage" className="mt-4 inline-block text-sm font-bold text-white underline">
+            Compare checked-bag rules
+          </Link>
         </div>
 
         <div className="min-w-0 rounded-2xl border border-slate-700 bg-slate-800/40 p-5">
@@ -44,6 +51,9 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
             A bag that technically fits can still get noticed if it is rigid, overpacked, or hard to slide into a sizer.
           </p>
+          <Link href="/sizer-rules" className="mt-4 inline-block text-sm font-bold text-white underline">
+            Check sizer risk
+          </Link>
         </div>
 
         <div className="min-w-0 rounded-2xl border border-slate-700 bg-slate-800/40 p-5">
@@ -56,25 +66,31 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
             The lowest fare may not be cheapest after a bag, seat choice, or change flexibility is included.
           </p>
+          <Link href="/guides/basic-economy-traps" className="mt-4 inline-block text-sm font-bold text-white underline">
+            Check cheap-fare restrictions
+          </Link>
         </div>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-700 bg-slate-800/40 p-5">
           <h4 className="mb-2 text-sm font-bold text-blue-300">
-            How to use this
+            If you know the airline
           </h4>
           <p className="text-sm leading-relaxed text-slate-300">
-            Start with the rule that matches your trip, then open the airline page for the exact bag, seat, or change details.
+            Open its airline page first, then move into the bag calculator, sizer guide, or Basic Economy guide based on the trip.
           </p>
         </div>
         <div className="rounded-2xl border border-slate-700 bg-slate-800/40 p-5">
           <h4 className="mb-2 text-sm font-bold text-blue-300">
-            Best next step
+            If you will check bags more than once
           </h4>
           <p className="text-sm leading-relaxed text-slate-300">
-            If bags are part of the trip, run the checked-bag calculator before comparing fares.
+            Price the bags first, then run the card break-even calculator only if the annual savings could beat the fee.
           </p>
+          <Link href="/best-cards" className="mt-4 inline-block text-sm font-bold text-white underline">
+            Run card break-even
+          </Link>
         </div>
       </div>
     </section>

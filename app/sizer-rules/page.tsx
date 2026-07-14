@@ -133,6 +133,12 @@ export default async function SizerRules({ searchParams }: PageProps) {
           <a href="#gear" className="text-blue-700 underline">
             Recommended gear
           </a>
+          <Link href="/guides/basic-economy-traps" className="text-blue-700 underline">
+            Basic Economy guide
+          </Link>
+          <Link href="/tools/checked-baggage-calculator" className="text-blue-700 underline">
+            Checked-bag calculator
+          </Link>
         </div>
       </header>
 
@@ -219,7 +225,7 @@ export default async function SizerRules({ searchParams }: PageProps) {
       <section id="risk" className="mt-10">
         <h2 className="text-2xl font-bold mb-3">Enforcement risk tiers</h2>
         <p className="text-slate-600 mb-6">
-          Use this to decide how cautious to be before you pack. Stricter airlines are more likely
+          Start here to decide how cautious to be before you pack. Stricter airlines are more likely
           to notice rigid, overstuffed, or borderline bags.
         </p>
 
@@ -375,10 +381,11 @@ export default async function SizerRules({ searchParams }: PageProps) {
         )}
 
         <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50 p-8">
-          <h3 className="text-xl font-bold text-slate-950">Next: check your airline</h3>
+          <h3 className="text-xl font-bold text-slate-950">Next: choose the cheapest workable bag plan</h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-700">
-            Bag rules can change by airline, fare, and route. Open your airline page to see the
-            carry-on and checked-bag rules that apply before you pack.
+            If your bag is close to the limit, compare the airline rule with the fare you plan to
+            buy. A Basic fare or low-cost carrier may make a checked bag cheaper than gambling on
+            an oversized cabin bag at the gate.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href="/airlines" className="inline-flex rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">
@@ -386,6 +393,12 @@ export default async function SizerRules({ searchParams }: PageProps) {
             </Link>
             <Link href="/airlines/united/how-to-beat-fees" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
               Example: United fee guide
+            </Link>
+            <Link href="/guides/basic-economy-traps" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
+              Check Basic fare risk
+            </Link>
+            <Link href="/tools/checked-baggage-calculator" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
+              Price checked bags
             </Link>
           </div>
         </div>

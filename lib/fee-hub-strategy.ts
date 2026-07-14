@@ -22,7 +22,7 @@ export type FeeHubStrategy = {
 
 export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
   unaccompanied_minor: {
-    introLabel: "Use this page to decide whether the service is mandatory, avoidable, or impossible on your route before you book.",
+    introLabel: "deciding whether the service is mandatory, avoidable, or impossible on your route before you book.",
     scenarioCards: [
       {
         title: "The biggest money saver is itinerary design",
@@ -34,7 +34,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
       {
         title: "The airline fee is not always the whole cost",
-        body: "Published UM pricing can stack with full-fare rules, route limits, or age-band restrictions. That is why the airline-specific page matters after this hub.",
+        body: "Published UM pricing can stack with full-fare rules, route limits, or age-band restrictions. That is why the airline-specific page matters after this table.",
       },
     ],
     spotlightAirlines: [
@@ -44,14 +44,14 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "ryanair", reason: "Ryanair is important because the service is not offered at all." },
     ],
     toolLinks: [
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "The card tool is not a direct UM fix, but it becomes relevant if the same trip also triggers bag-fee math for the accompanying adult." },
-      { href: "/sizer-rules", label: "Sizer rules", reason: "Carry-on enforcement still matters when the adult escort is trying to avoid turning a family trip into a fee stack." },
+      { href: "/best-cards", label: "Card break-even calculator", reason: "The card tool is not a direct UM fix, but it becomes relevant if the same trip also triggers recurring first-bag fees for the accompanying adult." },
+      { href: "/sizer-rules", label: "Sizer rules", reason: "Carry-on enforcement still matters when the adult escort is trying to keep the trip from adding baggage costs." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Restricted fares can make a child-travel itinerary even harder to fix once booked." },
     ],
     bridgeText: "After the fee table, the most useful next step is usually the airline-specific page or guide that shows the route and age restrictions in context.",
   },
   checked_baggage: {
-    introLabel: "Use this page when the first checked bag changes the real trip price more than the fare shown in search.",
+    introLabel: "first checked bags that change the real trip price more than the fare shown in search.",
     scenarioCards: [
       {
         title: "Airport payment is often the most expensive version",
@@ -67,26 +67,26 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
     ],
     spotlightAirlines: [
-      { slug: "united", reason: "United is a clean example of prepaid versus airport pricing pressure." },
+      { slug: "united", reason: "United is a clean example of prepaid versus airport pricing differences." },
       { slug: "american", reason: "American shows how route-specific baggage pricing can break simple assumptions." },
       { slug: "southwest", reason: "Southwest matters because it changes the benchmark for what an all-in fare should look like." },
-      { slug: "jetblue", reason: "JetBlue is a strong example of the first-bag math that can justify card benefits." },
+      { slug: "jetblue", reason: "JetBlue is a strong example of recurring first-bag fees that can justify card benefits." },
     ],
     toolLinks: [
-      { href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked baggage cost calculator", reason: "Use this first when you need a traveler-and-bag estimate instead of a raw fee row." },
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "Use this if the main question is whether a free checked bag benefit covers a card's annual fee." },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance", reason: "Use this when baggage depends on route, fare family, cabin, or piece-versus-weight concept instead of one flat fee." },
+      { href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked baggage cost calculator", reason: "Best when you need a traveler-and-bag estimate instead of a raw fee row." },
+      { href: "/best-cards", label: "Card break-even calculator", reason: "Best when the main question is whether a free checked bag benefit covers a card's annual fee." },
+      { href: "/guides/international-baggage-allowance", label: "International baggage allowance", reason: "Best when baggage depends on route, fare family, cabin, or piece-versus-weight concept instead of one flat fee." },
       { href: "/sizer-rules", label: "Sizer rules", reason: "Avoiding a checked bag entirely is often more useful than comparing checked bag fees after the fact." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Basic restrictions often make a checked bag more likely, even when the fare looked cheaper at first." },
     ],
-    bridgeText: "After a checked baggage page, the most useful next step is usually the airline-specific fee page or a bag-benefit reference that matches the trip.",
+    bridgeText: "After checking the baggage rows, the most useful next step is usually the airline-specific fee page or a bag-benefit reference that matches the trip.",
   },
   carry_on: {
-    introLabel: "Carry-on pages should help users decide whether to buy space, compress harder, or change airlines before they ever reach the gate.",
+    introLabel: "deciding whether to buy cabin space, pack smaller, or change airlines before reaching the gate.",
     scenarioCards: [
       {
         title: "This is really an enforcement page",
-        body: "Carry-on pricing only matters because airlines differ wildly in whether they treat the bag as included, optional, or a gate-revenue target.",
+        body: "Carry-on pricing matters because airlines differ widely in whether they treat the bag as included, optional, or a paid add-on.",
       },
       {
         title: "Bag shape beats bag marketing",
@@ -94,7 +94,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
       {
         title: "Europe LCCs and US ULCCs are the key comparison set",
-        body: "Ryanair, easyJet, Spirit, and Frontier teach users the real economics of cabin-bag access better than a neutral overview ever will.",
+        body: "Ryanair, easyJet, Spirit, and Frontier show why cabin-bag access needs to be priced before the fare is compared.",
       },
     ],
     spotlightAirlines: [
@@ -104,16 +104,16 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "easyjet", reason: "easyJet matters because seat bundles can effectively include the larger bag." },
     ],
     toolLinks: [
-      { href: "/sizer-rules", label: "Sizer rules", reason: "This is the most important tool bridge because enforcement reality is the story." },
-      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Use this when the question is not just the size limit, but whether the airline is likely to enforce it." },
-      { href: "/guides/basic-economy-traps#basic-economy-tool", label: "Basic Economy decision tool", reason: "Use this when the cheapest fare may restrict carry-on access or make a checked bag more likely." },
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "The card tool matters after the traveler decides a checked-bag strategy is more rational than trying to beat the sizer." },
-      { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Carry-on restrictions are one of the main ways cheap fares become fake cheap." },
+      { href: "/sizer-rules", label: "Sizer rules", reason: "Compare the bag's actual dimensions before relying on an overhead-bin plan." },
+      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Best when the question is not just the size limit, but whether the airline is likely to enforce it." },
+      { href: "/guides/basic-economy-traps#basic-economy-tool", label: "Basic Economy decision tool", reason: "Best when the cheapest fare may restrict carry-on access or make a checked bag more likely." },
+      { href: "/tools/checked-baggage-calculator", label: "Checked-bag cost calculator", reason: "Price the checked-bag fallback when the carry-on plan is too risky." },
+      { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Carry-on restrictions are one of the main ways cheap fares stop being cheap." },
     ],
-    bridgeText: "After the carry-on page, the most useful next step is usually the airline-specific page or the enforcement guide that shows how strict the rule is in practice.",
+    bridgeText: "After checking the carry-on rows, the most useful next step is usually the airline-specific page or the enforcement guide that shows how strict the rule is in practice.",
   },
   seat_selection: {
-    introLabel: "Seat fees are usually about selling anxiety, convenience, or fake upgrade value. This hub should help users spot which is happening.",
+    introLabel: "figuring out whether a seat fee buys real value or only fixes a restrictive fare.",
     scenarioCards: [
       {
         title: "Preferred does not always mean better",
@@ -121,7 +121,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
       {
         title: "Entry fares weaponize seat discomfort",
-        body: "Basic or stripped-down fares use seating uncertainty to push users back into the paid experience they thought they had skipped.",
+        body: "Basic or stripped-down fares use seating uncertainty to push travelers back into paid choices they thought they had avoided.",
       },
       {
         title: "The right benchmark is all-in comfort cost",
@@ -130,16 +130,16 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     ],
     spotlightAirlines: [
       { slug: "delta", reason: "Delta is a strong example of premium seat upsell logic hiding inside a polished product." },
-      { slug: "united", reason: "United is useful because Basic and Preferred pricing can create a fast seat-fee stack." },
+      { slug: "united", reason: "United is useful because Basic and Preferred pricing can add seat costs quickly." },
       { slug: "american", reason: "American highlights how preferred and extra-legroom products can blur together for the buyer." },
       { slug: "easyjet", reason: "easyJet is a good European comparison because seats and bag access can interact." },
     ],
     toolLinks: [
-      { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "This is the natural next step because Basic restrictions are usually what make seat fees feel unavoidable." },
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "Cards are not a direct seat-fee solution, but they matter when bag benefits make a more flexible fare rational." },
+      { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Best when Basic restrictions are what make seat fees feel unavoidable." },
+      { href: "/tools/checked-baggage-calculator", label: "Checked-bag cost calculator", reason: "Price bags too if the paid seat is only one part of the cheapest-fare add-on total." },
       { href: "/sizer-rules", label: "Sizer rules", reason: "If the traveler is paying to avoid discomfort, it often helps to also inspect whether they are carrying the wrong bag for that airline." },
     ],
-    bridgeText: "After the seat-fee page, compare the airline page and the fare guide, because seat pricing rarely exists in isolation.",
+    bridgeText: "After checking seat fees, compare the airline page and the fare guide, because seat pricing rarely exists in isolation.",
   },
   change_cancellation: {
     introLabel: "This page should help users decide whether the cheapest fare is actually safe to buy when plans are unstable.",
@@ -164,14 +164,14 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "ryanair", reason: "Ryanair is a strong benchmark for airlines that still price flexibility like a premium add-on." },
     ],
     toolLinks: [
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "Cards do not solve change fees directly, but they matter when bag benefits make the better fare rational instead of the stripped fare." },
-      { href: "/sizer-rules", label: "Sizer rules", reason: "Trip rescue often becomes worse when the traveler is also trying to force the wrong bag strategy onto the new itinerary." },
+      { href: "/best-cards", label: "Card break-even calculator", reason: "Cards do not solve change fees directly, but they matter when bag benefits make the better fare rational instead of the stripped fare." },
+      { href: "/sizer-rules", label: "Sizer rules", reason: "Trip changes often become harder when the traveler is also trying to force the wrong bag onto the new itinerary." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Most flexibility mistakes start with buying the cheapest fare family without pricing the downside." },
     ],
     bridgeText: "After the change-fee page, compare the airline-specific fare page and the stripped-fare guide, because flexibility problems usually start before the fee is ever charged.",
   },
   overweight_baggage: {
-    introLabel: "This page should help users decide when to repack, split the load, or switch bag strategy before the airport becomes the most expensive place to solve the problem.",
+    introLabel: "deciding when to repack, split the load, or change the bag plan before the airport becomes the most expensive place to solve the problem.",
     scenarioCards: [
       {
         title: "Overweight fees are often the fastest way to turn a normal trip into a bad one",
@@ -182,26 +182,26 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
         body: "Southwest, Alaska, and other airlines make it obvious that shifting weight between bags is often cheaper than paying an overweight penalty.",
       },
       {
-        title: "Carry-on strategy can prevent the whole problem",
+        title: "A carry-on plan can prevent the whole problem",
         body: "If the traveler can stay in a strict but workable personal-item or cabin-bag setup, the overweight conversation disappears before check-in.",
       },
     ],
     spotlightAirlines: [
       { slug: "southwest", reason: "Southwest matters because the free-bag benchmark makes overweight penalties feel especially irrational." },
       { slug: "delta", reason: "Delta is a good legacy benchmark for the standard 51-70 and 71-100 pound pain ladder." },
-      { slug: "frontier", reason: "Frontier shows how overweight charges stack on top of already fragile bag math." },
-      { slug: "spirit", reason: "Spirit is useful because the bag can go from cheap trip to fee stack the moment weight control breaks." },
+      { slug: "frontier", reason: "Frontier shows how overweight charges can sit on top of an already expensive bag plan." },
+      { slug: "spirit", reason: "Spirit is useful because the trip can become expensive quickly when weight control breaks." },
     ],
     toolLinks: [
-      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62", label: "Overweight baggage calculator", reason: "Use this when the bag is just over a common weight threshold and you need trip-level math." },
-      { href: "/best-cards", label: "Free checked bag calculator", reason: "The card tool matters when the traveler decides checked-bag math is unavoidable and wants to lower the recurring cost of the first bag." },
-      { href: "/sizer-rules", label: "Sizer rules", reason: "The cleanest way to avoid overweight fees is often to avoid checking a bag at all when the airline's carry-on reality allows it." },
-      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Strictness and bag shape determine whether a lighter carry-on strategy is realistic before the airport." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62", label: "Overweight baggage calculator", reason: "Best when the bag is just over a common weight threshold and you need a trip-level estimate." },
+      { href: "/best-cards", label: "Card break-even calculator", reason: "The card tool matters when checked-bag costs are unavoidable and the traveler wants to lower the recurring cost of the first bag." },
+      { href: "/sizer-rules", label: "Sizer rules", reason: "The cleanest way to avoid overweight fees is often to avoid checking a bag at all when the airline's carry-on rules allow it." },
+      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Strictness and bag shape determine whether a lighter carry-on plan is realistic before the airport." },
     ],
-    bridgeText: "After the overweight-baggage page, the most useful next step is usually the airline page or carry-on guide, because the best solution often happens before the scale, not after it.",
+    bridgeText: "After checking overweight fees, the most useful next step is usually the airline page, the excess-baggage calculator, or the carry-on guide, because the best solution often happens before the scale, not after it.",
   },
   oversize_baggage: {
-    introLabel: "Use this page when the bag shape, not just the bag count, could trigger a separate airport charge.",
+    introLabel: "bag shapes that could trigger a separate airport charge beyond the normal bag count.",
     scenarioCards: [
       {
         title: "Oversize is hard to fix late",
@@ -223,11 +223,11 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { slug: "frontier", reason: "Frontier shows how special bag handling can stack on top of a fragile low-fare bag plan." },
     ],
     toolLinks: [
-      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63", label: "Oversize baggage calculator", reason: "Use this when the bag crosses a common linear-inch threshold and you need trip-level math." },
-      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=70", label: "Heavy and oversized scenario", reason: "Use this to model the worse case where both weight and size may matter." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63", label: "Oversize baggage calculator", reason: "Best when the bag crosses a common linear-inch threshold and you need a trip-level estimate." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=70", label: "Heavy and oversized scenario", reason: "Models the worse case where both weight and size may matter." },
       { href: "/fees/checked_baggage", label: "Checked baggage baseline", reason: "Oversize fees may be in addition to the normal checked-bag fee, not a replacement for it." },
       { href: "/guides/international-baggage-allowance", label: "International allowance explainer", reason: "International itineraries may move the problem into piece, weight, route, or aircraft handling rules." },
     ],
-    bridgeText: "After the oversize-baggage page, use the excess-baggage calculator and the airline page together, because oversize acceptance can be more conditional than ordinary checked baggage.",
+    bridgeText: "After checking oversize fees, use the excess-baggage calculator and the airline page together, because oversize acceptance can be more conditional than ordinary checked baggage.",
   },
 };

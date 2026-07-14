@@ -187,7 +187,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
                 ) : (
                   <p className="mt-2 text-sm leading-relaxed text-slate-700">
                     The full calculator is the safer next step because this airline does not publish
-                    a broad numeric first checked bag fee in this dataset.
+                    a broad numeric first checked bag fee in the current fee details.
                   </p>
                 )}
               </>
@@ -207,7 +207,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
               Open full bag calculator
             </Link>
             <Link href={cardHref} className="rounded-xl border border-blue-200 bg-white px-4 py-2 font-bold text-blue-800 hover:border-blue-400">
-              Compare eligible cards
+              Run card break-even math
             </Link>
           </div>
         </div>

@@ -28,6 +28,8 @@ type CardsJson = { cards: Card[] };
 type AirlineGuideMeta = {
   airlineName: string;
   airlinePage: string;
+  calculatorHref: string;
+  cardMathHref: string;
   cardSource: string;
   cardSourceLabel: string;
   policySource: string;
@@ -40,6 +42,8 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   alaska: {
     airlineName: "Alaska",
     airlinePage: "/airlines/alaska",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes",
     cardSource: "https://www.alaskaair.com/atmosrewards/content/credit-cards",
     cardSourceLabel: "Atmos Rewards credit cards",
     policySource: "https://www.alaskaair.com/content/travel-info/baggage/baggage-fee-waivers-exceptions",
@@ -54,6 +58,8 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   american: {
     airlineName: "American",
     airlinePage: "/airlines/american",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=american&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=american&travelers=2&bags=1&trips=2&pay=yes",
     cardSource: "https://creditcards.aa.com/card-benefits/",
     cardSourceLabel: "AA card benefits",
     policySource: "https://www.aa.com/i18n/travel-info/baggage/baggage.jsp",
@@ -68,6 +74,8 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   united: {
     airlineName: "United",
     airlinePage: "/airlines/united",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes",
     cardSource: "https://creditcards.chase.com/travel-credit-cards/united",
     cardSourceLabel: "United card comparison",
     policySource: "https://www.united.com/en/us/fly/baggage/free-bags-for-cardmembers.html",
@@ -82,6 +90,8 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   delta: {
     airlineName: "Delta",
     airlinePage: "/airlines/delta",
+    calculatorHref: "/tools/checked-baggage-calculator?airline=delta&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=delta&travelers=2&bags=1&trips=2&pay=yes",
     cardSource: "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
     cardSourceLabel: "Delta personal card overview",
     policySource: "https://www.delta.com/us/en/baggage/checked-baggage/first-checked-bag-free",
@@ -153,7 +163,10 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             Checked baggage fee reference
           </Link>
           <Link href="/best-cards" className="font-medium text-blue-700 underline">
-            Free checked bag calculator
+            Card break-even calculator
+          </Link>
+          <Link href="/tools/checked-baggage-calculator" className="font-medium text-blue-700 underline">
+            Checked-bag cost calculator
           </Link>
           <Link href="/guides/basic-economy-traps" className="font-medium text-blue-700 underline">
             Basic Economy traps
@@ -168,26 +181,30 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             Answer first
           </div>
           <h2 className="mt-3 text-2xl font-black tracking-tight text-slate-900">
-            Some airline credit cards include a free checked bag, but the benefit is not universal.
+            A free checked bag card is only useful when the bag savings beat the card cost.
           </h2>
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
-            In this site&apos;s verified calculator, Alaska, American, United, and Delta cards include
-            published checked-bag benefits. The important question is not just whether the card says
-            &quot;free checked bag.&quot; It is whether your airline, route, traveler count, reservation,
-            and payment method satisfy the benefit rules.
+            Alaska, American, United, and Delta cards in this guide publish checked-bag benefits.
+            The practical question is narrower: will your airline, route, traveler count,
+            reservation, and payment method qualify for the waiver, and will the avoided first-bag
+            fees outweigh the card&apos;s annual fee?
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
-                The airline credit cards in this site&apos;s verified dataset that include checked bag
-                benefits are currently Alaska Airlines, American Airlines, United Airlines, and
-                Delta Air Lines co-branded cards. In each case, the benefit is narrower than a
-                blanket baggage waiver: route scope, traveler count, and booking conditions still
-                control whether the published free-bag line applies.
+                The cards covered here are not treated as general travel-card recommendations.
+                They are included because their published baggage benefits can be tested against
+                real checked-bag fees. In each case, the benefit is narrower than a blanket
+                baggage waiver: route scope, traveler count, and booking conditions still control
+                whether the free-bag line applies.
               </p>
               <p>
-                This page is a technical reference, not a card ranking. It covers the airline card
-                families currently included in this site&apos;s bag-fee calculator:{" "}
+                Start with the checked-bag calculator if you do not know the cash baggage bill yet.
+                Move to the card calculator only when first-bag fees are a recurring cost worth
+                testing against an annual fee.
+              </p>
+              <p>
+                Current airline coverage:{" "}
                 <Link href="/airlines/alaska" className="underline">
                   Alaska
                 </Link>
@@ -207,17 +224,17 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
-              <div className="font-bold text-slate-900">Use this page when the question is:</div>
+              <div className="font-bold text-slate-900">This page answers:</div>
               <ul className="mt-3 space-y-2">
-                <li>Which airline credit cards currently include a checked bag benefit?</li>
-                <li>How many travelers the waiver covers on one reservation?</li>
-                <li>What the published route or booking limits are before using the benefit?</li>
+                <li>Which covered airline cards publish a checked-bag benefit?</li>
+                <li>How many travelers can be covered on one reservation?</li>
+                <li>Which route, booking, and payment rules can block the waiver?</li>
               </ul>
             </div>
           </div>
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
             <Link href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes" className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
-              Run free checked bag math
+              Run card break-even math
             </Link>
             <Link href="/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes" className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-bold text-slate-900 hover:border-blue-400">
               Estimate baggage cost first
@@ -225,6 +242,36 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           </div>
         </section>
       </header>
+
+      <section className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 1</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Price the bags</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Estimate the checked-bag bill for your airline, traveler count, bags, and annual trip pattern.
+          </p>
+          <Link href="/tools/checked-baggage-calculator" className="mt-4 inline-block text-sm font-semibold text-blue-700 underline">
+            Open baggage calculator
+          </Link>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 2</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Check the benefit rules</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Confirm route scope, traveler coverage, same-reservation rules, and whether the ticket must be paid with the card.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 3</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Run break-even math</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Compare first-bag savings against the card&apos;s annual fee before counting points, credits, or perks.
+          </p>
+          <Link href="/best-cards" className="mt-4 inline-block text-sm font-semibold text-blue-700 underline">
+            Open card calculator
+          </Link>
+        </div>
+      </section>
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline checked bag benefit reference</h2>
@@ -243,6 +290,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                 <th className="px-4 py-3 font-semibold">Companions included</th>
                 <th className="px-4 py-3 font-semibold">Annual fee</th>
                 <th className="px-4 py-3 font-semibold">Basic restrictions</th>
+                <th className="px-4 py-3 font-semibold">Next step</th>
                 <th className="px-4 py-3 font-semibold">Source / verification note</th>
               </tr>
             </thead>
@@ -274,6 +322,18 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                         ))}
                         {card.notes?.[0] ? <li>{card.notes[0]}</li> : null}
                       </ul>
+                    </td>
+                    <td className="px-4 py-4 text-slate-700">
+                      {index === 0 ? (
+                        <div className="flex flex-col gap-2">
+                          <Link href={meta.calculatorHref} className="font-semibold text-blue-700 underline">
+                            Price bags
+                          </Link>
+                          <Link href={meta.cardMathHref} className="font-semibold text-blue-700 underline">
+                            Test card break-even
+                          </Link>
+                        </div>
+                      ) : null}
                     </td>
                     <td className="px-4 py-4 text-slate-700">
                       <div>Verified against the airline card and baggage policy pages listed below.</div>
@@ -322,10 +382,9 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           </div>
         </div>
         <p className="text-sm leading-relaxed text-slate-600">
-          If you want to test a specific trip pattern instead of reading the benefit table in the
-          abstract, use the{" "}
+          To test a specific trip pattern instead of reading the benefit table by itself, use the{" "}
           <Link href="/best-cards" className="underline">
-            free checked bag math tool
+            card break-even calculator
           </Link>
           . It models first-bag savings only and excludes points, lounge access, credits, and
           bonuses.
@@ -354,6 +413,14 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           Related references:{" "}
           <Link href="/fees/checked_baggage" className="underline">
             checked baggage fee reference
+          </Link>
+          ,{" "}
+          <Link href="/tools/checked-baggage-calculator" className="underline">
+            checked-bag cost calculator
+          </Link>
+          ,{" "}
+          <Link href="/best-cards" className="underline">
+            card break-even calculator
           </Link>
           ,{" "}
           <Link href="/guides/basic-economy-traps" className="underline">

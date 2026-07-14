@@ -1,4 +1,5 @@
 // components/Table.tsx
+import Link from "next/link";
 import type { FeeRow } from "@/lib/types";
 import { SourceBadge } from "@/components/SourceBadge";
 import { LastVerified } from "@/components/LastVerified";
@@ -10,8 +11,7 @@ type ColumnMode = "show_pricing_unit" | "show_when_charged" | "hide_both" | "sho
 function getColumnMode(rows: FeeRow[]): ColumnMode {
   const cats = new Set<string>();
   for (const r of rows) {
-    const c = typeof (r.item as any).category === "string" ? (r.item as any).category : "";
-    if (c) cats.add(c);
+    cats.add(r.item.category);
   }
   if (cats.size !== 1) return "show_both";
   const category = Array.from(cats)[0];
@@ -73,13 +73,17 @@ export function FeeTable({ rows }: { rows: FeeRow[] }) {
         </thead>
         <tbody className="divide-y divide-slate-100 bg-white">
           {rows.map((r, idx) => {
-            const t = deriveTiming((r.item as any).timing);
-            const conditions = mergeConditions((r.item as any).conditions, t.appendToConditions);
+            const t = deriveTiming(r.item.timing);
+            const conditions = mergeConditions(r.item.conditions, t.appendToConditions);
             return (
               <tr key={`${r.airline_slug}-${idx}`} className="hover:bg-slate-50/50 transition-colors">
-                <td className="px-4 py-4 font-medium text-slate-900">{r.airline_name}</td>
+                <td className="px-4 py-4 font-medium text-slate-900">
+                  <Link href={`/airlines/${r.airline_slug}`} className="text-blue-700 underline">
+                    {r.airline_name}
+                  </Link>
+                </td>
                 <td className="px-4 py-4 whitespace-nowrap font-bold">
-                  {(r.item as any).amount} {(r.item as any).currency}
+                  {r.item.amount} {r.item.currency}
                 </td>
                 <td className="px-4 py-4 text-slate-600">{conditions}</td>
                 {(mode === "show_pricing_unit" || mode === "show_both") && <td className="px-4 py-4 text-slate-500 italic">{t.pricingUnit}</td>}
@@ -90,9 +94,9 @@ export function FeeTable({ rows }: { rows: FeeRow[] }) {
                     </span>
                   </td>
                 )}
-                <td className="px-4 py-4"><SourceBadge url={(r.item as any).source_url} /></td>
+                <td className="px-4 py-4"><SourceBadge url={r.item.source_url} /></td>
                 <td className="px-4 py-4 text-[11px] text-slate-400 font-mono italic">
-                  <LastVerified date={(r.item as any).last_verified} />
+                  <LastVerified date={r.item.last_verified} />
                 </td>
               </tr>
             );

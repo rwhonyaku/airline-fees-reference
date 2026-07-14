@@ -97,6 +97,10 @@ function AirlineSelect({ value }: { value: string }) {
   );
 }
 
+function plural(n: number, singular: string, pluralLabel = `${singular}s`): string {
+  return `${n} ${n === 1 ? singular : pluralLabel}`;
+}
+
 export default async function BestCardsPage({ searchParams }: PageProps) {
   const sp: SearchParams = (await searchParams) ?? {};
 
@@ -170,6 +174,11 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const top = computed[0];
   const topVerdict = verdictForResult(top.r);
   const topOfferUrl = safeExternalUrl(top.card.offer_url);
+  const modeledFirstBagCostPerRoundtrip =
+    firstBagFeeUsd != null && bags > 0 ? firstBagFeeUsd * travelers * 2 : null;
+  const modeledAnnualFirstBagCost =
+    modeledFirstBagCostPerRoundtrip != null ? modeledFirstBagCostPerRoundtrip * trips : null;
+  const calculatorHref = `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=${payWithCard ? "yes" : "no"}`;
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
@@ -202,6 +211,14 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           </Link>
           .
         </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href={calculatorHref} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            Price this baggage scenario
+          </Link>
+          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            Review {airline.name} fees
+          </Link>
+        </div>
       </div>
 
       <section className="mt-8 grid gap-4 md:grid-cols-2">
@@ -297,10 +314,52 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         </button>
       </form>
 
+      <section className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-widest text-slate-600">What the card math is testing</div>
+        <h2 className="text-2xl font-extrabold text-slate-950">
+          {modeledAnnualFirstBagCost != null
+            ? `About ${usd(modeledAnnualFirstBagCost)} in modeled annual first-bag fees.`
+            : "This airline needs a first-bag fee lookup before card math can be trusted."}
+        </h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl border border-slate-200 bg-white p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Scenario</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              {plural(travelers, "traveler")}, {plural(bags, "checked bag")} each way, {plural(trips, "roundtrip")} per year.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Fee used</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              {firstBagFeeUsd != null
+                ? `${usd(firstBagFeeUsd)} first checked bag fee, multiplied by travelers and roundtrip directions.`
+                : "No fixed USD first checked bag fee is available for this airline in the current fee data."}
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Important limit</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              This page tests bag-fee savings against annual fees. It does not add points, credits, lounge access, or sign-up bonuses.
+            </p>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed text-slate-600">
+          If you are checking more than one bag per traveler, this page still focuses on the card&apos;s published free-bag
+          benefit. Use the checked baggage calculator to estimate the full cash bill for first, second, and third bags.
+        </p>
+      </section>
+
       <div className={`mt-8 rounded-2xl border p-6 ${topVerdict.className}`}>
         <div className="text-xs font-bold uppercase tracking-widest">Calculator verdict</div>
         <div className="mt-2 text-2xl font-extrabold">{topVerdict.label}</div>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed">{topVerdict.detail}</p>
+        {top.r.breakEvenRoundtrips != null ? (
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed">
+            This card breaks even after{" "}
+            <span className="font-bold">{plural(top.r.breakEvenRoundtrips, "roundtrip")}</span> per year on modeled
+            checked-bag savings alone.
+          </p>
+        ) : null}
       </div>
 
       <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">

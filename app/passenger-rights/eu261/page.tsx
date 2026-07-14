@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { TravelEsimCallout } from "@/components/TravelEsimCallout";
+import Link from "next/link";
 
 const LAST_VERIFIED = "2026-04-27";
 
 export const metadata: Metadata = {
-  title: "EU261 Passenger Rights (Reference)",
+  title: "EU261 Passenger Rights for Flight Delays and Cancellations",
 };
 
 export default function Eu261ReferencePage() {
@@ -12,14 +12,38 @@ export default function Eu261ReferencePage() {
     <main className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-6 py-12">
       <header className="space-y-4">
         <h1 className="text-4xl font-black tracking-tight text-slate-900">
-          EU261 Passenger Rights (Reference)
+          EU261 passenger rights for flight delays and cancellations
         </h1>
         <div className="text-sm text-slate-500">Last verified: {LAST_VERIFIED}</div>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-600">
-          This page is a neutral reference summary of core EU261 scope, delay thresholds,
-          compensation brackets, and complaint routing.
+          Start here when a flight involving Europe is cancelled, delayed, or rerouted. EU261 can
+          matter alongside airline change-fee rules, but it answers a different question: whether
+          passenger-rights compensation or care may apply after a disruption.
         </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/passenger-rights/eu261-calculator" className="font-semibold text-blue-700 underline">
+            Open EU261 calculator
+          </Link>
+          <Link href="/fees/change_cancellation" className="font-semibold text-blue-700 underline">
+            Compare change and cancellation fees
+          </Link>
+          <Link href="/airlines/lufthansa" className="font-semibold text-blue-700 underline">
+            Lufthansa fee page
+          </Link>
+          <Link href="/airlines/air-france" className="font-semibold text-blue-700 underline">
+            Air France fee page
+          </Link>
+        </div>
       </header>
+
+      <section className="rounded-2xl border border-blue-100 bg-blue-50 p-6">
+        <h2 className="text-xl font-bold text-slate-900">Quick answer</h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">
+          EU261 is most relevant when the issue is a qualifying delay, cancellation, denied boarding,
+          or rerouting tied to an eligible European itinerary. It does not replace the fare rules
+          that apply when you voluntarily change or cancel your own ticket.
+        </p>
+      </section>
 
       <section className="space-y-3">
         <h2 className="text-2xl font-bold text-slate-900">1. Scope of applicability</h2>
@@ -121,10 +145,30 @@ export default function Eu261ReferencePage() {
         </div>
       </section>
 
-      <TravelEsimCallout />
+      <section className="space-y-3">
+        <h2 className="text-2xl font-bold text-slate-900">7. Where this fits with airline fees</h2>
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm leading-relaxed text-slate-700">
+          <p>
+            Use EU261 when the travel problem is caused by a qualifying delay, cancellation,
+            denied boarding, or rerouting. Use airline fee pages when the question is baggage,
+            seat selection, or voluntary fare-rule flexibility.
+          </p>
+          <p className="mt-3">
+            For a quick eligibility check, open the{" "}
+            <Link href="/passenger-rights/eu261-calculator" className="font-semibold text-blue-700 underline">
+              EU261 calculator
+            </Link>
+            . For fare restrictions, start with the{" "}
+            <Link href="/guides/basic-economy-traps" className="font-semibold text-blue-700 underline">
+              Basic Economy guide
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
 
       <section className="space-y-3">
-        <h2 className="text-2xl font-bold text-slate-900">7. Sources</h2>
+        <h2 className="text-2xl font-bold text-slate-900">8. Sources</h2>
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
             <li>

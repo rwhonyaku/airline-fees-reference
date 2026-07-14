@@ -13,7 +13,7 @@ type PageProps = {
 export const metadata: Metadata = {
   title: "Overweight and Oversize Baggage Calculator | Airline Fees Reference",
   description:
-    "Estimate overweight and oversize baggage charges from published airline fee rows when the dataset contains a usable numeric USD fee.",
+    "Estimate overweight and oversize baggage charges when published airline fee details include a usable numeric USD fee.",
 };
 
 function AirlineSelect({ value }: { value: string }) {
@@ -37,6 +37,14 @@ function AirlineSelect({ value }: { value: string }) {
 
 function scenarioHref(airlineSlug: string, weight: number, size: number): string {
   return `/tools/excess-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&bags=1&directions=2&weight=${weight}&size=${size}`;
+}
+
+function checkedBagHref(airlineSlug: string): string {
+  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=1&bags=1&directions=2&trips=1&pay=yes`;
+}
+
+function sizerHref(): string {
+  return "/sizer-rules?height=22&width=14&depth=9";
 }
 
 function rowSummary(row: NonNullable<ReturnType<typeof calcExcessBaggageTripCost>["overweight"]>["row"]): string {
@@ -70,14 +78,25 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
     <main className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-10">
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Deterministic baggage tool
+          Excess-bag cost tool
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight">Overweight and oversize baggage calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
           Estimate excess-baggage charges before the airport scale. The tool uses published numeric
-          USD fee rows only. When an airline prices excess baggage by route, allowance, currency, or
+          USD fees only. When an airline prices excess baggage by route, allowance, currency, or
           special-item rule, it says so instead of inventing a number.
         </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href={checkedBagHref(airlineSlug)} className="font-semibold text-blue-700 underline">
+            Price normal checked bag first
+          </Link>
+          <Link href={sizerHref()} className="font-semibold text-blue-700 underline">
+            Check carry-on fallback
+          </Link>
+          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="font-semibold text-blue-700 underline">
+            {airline.name} fee page
+          </Link>
+        </div>
       </header>
 
       <section className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -149,7 +168,7 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
               Estimated excess-bag charges: {result.totalUsd != null ? usd(result.totalUsd) : "-"}.
             </h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-              This multiplies the matched published excess-bag fee rows by {bagCount} bag{bagCount === 1 ? "" : "s"} and{" "}
+              This multiplies the matched published excess-bag fees by {bagCount} bag{bagCount === 1 ? "" : "s"} and{" "}
               {directions} flight direction{directions === 1 ? "" : "s"}. It does not include the
               regular checked-bag fee that may also apply.
             </p>
@@ -167,8 +186,46 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
         )}
       </section>
 
+      <section className="grid gap-4 rounded-2xl border border-blue-100 bg-blue-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
+          Before accepting the excess charge
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-bold text-slate-950">Check the base bag fee</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Overweight and oversize fees may be charged in addition to the normal checked-bag fee,
+              so the excess number is not always the full bag cost.
+            </p>
+            <Link href={checkedBagHref(airlineSlug)} className="mt-3 inline-block text-sm font-semibold text-blue-700 underline">
+              Price normal checked bag
+            </Link>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-bold text-slate-950">Try a repack</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              If the issue is a few pounds over the limit, moving weight into a personal item or
+              carry-on can be cheaper than paying the airport scale.
+            </p>
+            <Link href={sizerHref()} className="mt-3 inline-block text-sm font-semibold text-blue-700 underline">
+              Check carry-on fit
+            </Link>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-bold text-slate-950">Confirm the airline rule</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Route, aircraft, special-item rules, and maximum accepted weight can change whether a
+              bag is priced, restricted, or refused.
+            </p>
+            <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="mt-3 inline-block text-sm font-semibold text-blue-700 underline">
+              Open {airline.name} fees
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-lg font-bold text-slate-950">Rows used</h2>
+        <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
         <div className="grid gap-3 md:grid-cols-2">
           <div className="rounded-xl border border-slate-200 p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Overweight</div>
@@ -232,6 +289,9 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
           </Link>
           <Link href="/sizer-rules" className="text-blue-700 underline">
             Carry-on sizer rules
+          </Link>
+          <Link href="/guides/carry-on-strictness-by-airline" className="text-blue-700 underline">
+            Carry-on strictness guide
           </Link>
         </div>
       </section>

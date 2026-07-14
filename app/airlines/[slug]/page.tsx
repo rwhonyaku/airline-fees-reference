@@ -151,6 +151,8 @@ const DOT_REFERENCE_SLUGS = new Set([
 
 const EU261_REFERENCE_SLUGS = new Set(["aer-lingus", "air-france", "american", "british-airways", "delta", "easyjet", "iberia", "iberia-express", "jetblue", "klm", "lufthansa", "norwegian", "ryanair", "tap-air-portugal", "united", "vueling", "zipair"]);
 
+const DECISION_SCENARIO_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue"]);
+
 const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "singapore-airlines": {
     intro: {
@@ -6457,7 +6459,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Premium cabins",
         details:
-          "Use this as an Economy-focused reference; premium-cabin baggage and cancellation rules can follow separate allowance and fare-rule tables.",
+          "This is an Economy-focused reference; premium-cabin baggage and cancellation rules can follow separate allowance and fare-rule tables.",
       },
     ],
     scenarios: [
@@ -7350,11 +7352,11 @@ function readerCopy(text: string): string {
     .replaceAll("the dataset", "the current fee table")
     .replaceAll("The dataset", "The current fee table")
     .replaceAll("current dataset", "current fee table")
-    .replaceAll("published rows shown on this page", "published fee rows shown here")
-    .replaceAll("published rows included in the current fee table", "published fee rows included here")
-    .replaceAll("published rows below", "published fee rows below")
-    .replaceAll("Published rows below", "Published fee rows below")
-    .replaceAll("row-level source checks", "source checks for the fee rows")
+    .replaceAll("published rows shown on this page", "published fees shown here")
+    .replaceAll("published rows included in the current fee table", "published fees included here")
+    .replaceAll("published rows below", "published fees below")
+    .replaceAll("Published rows below", "Published fees below")
+    .replaceAll("row-level source checks", "source checks for the fees")
     .replaceAll("Last verified support on this page comes from", "Last verified dates come from")
     .replaceAll("does not publish", "does not show");
 }
@@ -7474,6 +7476,78 @@ function getNumericCheckedBagFees(fees: FeeItem[]): Array<[number, number]> {
       return fee == null ? null : ([ordinal, fee] as [number, number]);
     })
     .filter(Boolean) as Array<[number, number]>;
+}
+
+function getAirlineScenarioLinks(slug: string, airlineName: string): Array<{
+  title: string;
+  body: string;
+  href: string;
+  cta: string;
+}> {
+  const enc = encodeURIComponent(slug);
+  return [
+    {
+      title: "One traveler, one checked bag",
+      body: `Price a basic roundtrip bag setup before you decide whether ${airlineName} is actually cheaper than a competing fare.`,
+      href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=1&bags=1&directions=2&trips=1&pay=yes`,
+      cta: "Price one bag",
+    },
+    {
+      title: "Two travelers, repeat trips",
+      body: "Best when bag fees may repeat across the year and the annual total matters more than one ticket price.",
+      href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=2&bags=1&directions=2&trips=2&pay=yes`,
+      cta: "Estimate annual bag cost",
+    },
+    {
+      title: "Card break-even math",
+      body: "Check whether first-bag savings alone can justify an eligible airline card before considering any other card benefit.",
+      href: `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`,
+      cta: "Run card math",
+    },
+    {
+      title: "Heavy or oversized bag",
+      body: "A normal checked-bag fee is not the whole bill once weight or size limits are crossed.",
+      href: `/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=51&size=63`,
+      cta: "Check excess risk",
+    },
+  ];
+}
+
+function AirlineScenarioLinks({ slug, airlineName }: { slug: string; airlineName: string }) {
+  if (!DECISION_SCENARIO_SLUGS.has(slug)) return null;
+
+  const scenarios = getAirlineScenarioLinks(slug, airlineName);
+
+  return (
+    <section className="rounded-3xl border border-slate-200 bg-white p-6">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+            Common trip setups
+          </div>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+            Jump straight into the right calculator scenario
+          </h2>
+        </div>
+        <Link href="/fees/checked_baggage" className="text-sm font-semibold text-blue-700 underline">
+          Checked baggage reference
+        </Link>
+      </div>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {scenarios.map((scenario) => (
+          <Link
+            key={scenario.href}
+            href={scenario.href}
+            className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-50"
+          >
+            <h3 className="text-base font-bold text-slate-950">{scenario.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{scenario.body}</p>
+            <div className="mt-4 text-sm font-bold text-blue-700 underline">{scenario.cta}</div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function getRowsByCategory(fees: FeeItem[], category: FeeItem["category"]) {
@@ -7660,7 +7734,7 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         title: `${airlineName} Fees, Traps, and Bag Math (2026)`,
         description:
           fallback ??
-          `Published baggage, seat, and service fees for ${airlineName}, plus traveler-first guidance on the biggest fee traps.`,
+          `Published baggage, seat, and service fees for ${airlineName}, plus practical guidance on the biggest fee traps.`,
       };
   }
 }
@@ -7834,11 +7908,13 @@ function ReferenceAirlinePage({
         feeByBagOrdinal={numericCheckedBagFees}
       />
 
+      <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+
       <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
           <h2 className="text-2xl font-bold text-slate-900">Core fee breakdown</h2>
           <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
-            Published fee rows below are grouped by fee type and retain the route, fare, and timing limits that matter for booking.
+            Published fees below are grouped by fee type and keep the route, fare, and timing limits that matter for booking.
           </p>
         </div>
 
@@ -8112,7 +8188,7 @@ function LegacyAirlinePage({
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Quick summary</div>
           <p className="mt-3 max-w-4xl text-lg leading-relaxed text-slate-700">
             {strategy?.verdict ??
-              `Use this page as the factual starting point for ${airline.name}, then compare the fee guide and related references before you book or add paid extras.`}
+              `Start with the published ${airline.name} fees here, then compare the fee guide and related references before you book or add paid extras.`}
           </p>
           {insightHack ? (
             <p className="mt-4 max-w-4xl text-sm leading-relaxed text-slate-600">
@@ -8127,7 +8203,7 @@ function LegacyAirlinePage({
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Main stack to watch</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Main add-ons to watch</div>
               <p className="mt-2 text-sm leading-relaxed text-slate-700">
                 {strategy?.feeEngine ?? "Bag, seat, and flexibility costs are the first places the cheap fare breaks."}
               </p>
@@ -8179,6 +8255,8 @@ function LegacyAirlinePage({
         feeByBagOrdinal={numericCheckedBagFees}
       />
 
+      <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+
       <section className="grid gap-6 md:grid-cols-2">
         <Link
           href={`/airlines/${slug}/how-to-beat-fees`}
@@ -8186,7 +8264,7 @@ function LegacyAirlinePage({
         >
           <h2 className="text-lg font-bold text-blue-900 group-hover:text-white">How to beat {airline.name} fees</h2>
           <p className="mt-2 text-sm leading-relaxed text-blue-800 group-hover:text-blue-50">
-            Go from fee table to traveler strategy: traps, workarounds, fee-stack math, and what to do before checkout.
+            Go from the fee table to practical choices: traps, workarounds, bag math, and what to do before checkout.
           </p>
         </Link>
 
@@ -8207,7 +8285,7 @@ function LegacyAirlinePage({
             </Link>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Use this page with the airline fee guide and related references when you need more than the published fee table alone.
+            Pair this page with the airline fee guide and related references when you need more than the published fee table alone.
           </p>
           <div className="mt-4 flex flex-wrap gap-3 text-sm">
             {(strategy?.relatedGuides ?? []).map((guide) => (

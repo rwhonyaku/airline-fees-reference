@@ -80,7 +80,7 @@ const AIRLINE_RULES: AirlineRule[] = [
     flexibilityRisk: 1,
     seatRisk: 3,
     baseline: "The carry-on is not the issue. Checked bags and seat choice are what you need to price.",
-    strongestWarning: "Do the bag and seat math before treating Southwest Basic like old Southwest.",
+    strongestWarning: "Price bags and seats before treating Southwest Basic like the old Southwest fare setup.",
   },
   {
     slug: "spirit",
@@ -259,10 +259,10 @@ export function BasicEconomyDecisionTool() {
               Review {rule.name} fees
             </Link>
             <Link href={buildToolHref("/tools/checked-baggage-calculator", rule.slug)} className="rounded-xl border border-blue-200 bg-white px-4 py-2 font-bold text-blue-800 hover:border-blue-400">
-              Run bag calculator
+              Price checked bags
             </Link>
             <Link href={buildToolHref("/best-cards", rule.slug)} className="rounded-xl border border-blue-200 bg-white px-4 py-2 font-bold text-blue-800 hover:border-blue-400">
-              Check card offset
+              Run card break-even
             </Link>
           </div>
         </div>

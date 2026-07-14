@@ -21,7 +21,7 @@ export function CheckedBaggageCalculatorCallout({
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-700">
         Start with a realistic two-traveler, one-bag scenario, then adjust the inputs. The calculator
-        quotes a total only when the published data supports it, and explains what to look up when
+        quotes a total only when the current fee details support it, and explains what to look up when
         the airline prices bags by route, fare, or purchase timing.
       </p>
       <Link href={href} className="mt-4 inline-flex text-sm font-bold text-blue-800 underline">

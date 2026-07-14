@@ -50,39 +50,39 @@ function buildGenericSections(airlineName: string, strategyText?: string) {
   return [
     {
       id: "bags",
-      title: "1) Bags: where the cheap fare usually breaks first",
+      title: "1) Bags: check the bag cost before you book",
       body:
         strategyText ??
-        `${airlineName} usually extracts the easiest margin from bag behavior: waiting to pay, bringing the wrong shape of bag, or assuming the lightest fare still works for a normal trip.`,
-      tip: "Do the bag math before checkout. If one carry-on or checked bag erases the fare gap, the cheap fare was never really cheaper.",
+        `${airlineName} bag costs can change the real price of the trip, especially if the fare does not include the baggage you plan to bring.`,
+      tip: "Price your likely bags before checkout. If baggage wipes out the fare savings, compare a different fare or airline before buying.",
     },
     {
       id: "basic",
-      title: "2) Basic or entry fares: price the restrictions, not just the ticket",
+      title: "2) Basic or entry fares: check what the fare removes",
       body:
-        `The trap is not the fare itself. It is the follow-on cost of restoring normal travel behavior: seat choice, flexibility, or cabin-bag access.`,
-      tip: "Treat the regular fare as insurance when there is any chance you will need a bag, a seat assignment, or a change.",
+        "The lowest fare may remove something you normally expect, such as seat choice, flexibility, or cabin-bag access.",
+      tip: "Compare the next fare up when you need a bag, a seat assignment, or a realistic chance to change plans.",
     },
     {
       id: "seats",
-      title: "3) Seats: avoid paying premium pricing for normal comfort",
+      title: "3) Seats: separate must-have seats from nice-to-have seats",
       body:
-        "Airlines often monetize anxiety here. Preferred seating can mean very little extra value while still being priced like an upgrade.",
-      tip: "Check again at online check-in before paying early booking-time seat prices.",
+        "Seat fees are easiest to overspend on when the seat only slightly improves the trip. Extra-legroom and preferred seats are not the same thing.",
+      tip: "Pay early only when sitting together, location, or legroom is important enough to justify the added cost.",
     },
     {
       id: "changes",
-      title: "4) Changes: flexibility has value even when the fee says zero",
+      title: "4) Changes: remember that fare difference can still matter",
       body:
-        "Published change policy is only half the story. Fare difference, bundle restrictions, and locked entry fares are what turn changes into real money.",
-      tip: "If your plans are soft, price the flexible fare against the cost of having to rebuy.",
+        "A no-change-fee rule does not mean changes are free. Fare difference, fare restrictions, and basic-fare limits can still make a changed trip expensive.",
+      tip: "If your plans may move, compare the flexible fare against the cost of losing or rebooking the cheap fare.",
     },
     {
       id: "stack",
-      title: "Fee-stack math: why the lowest fare is often fake cheap",
+      title: "Add the likely extras before comparing fares",
       body:
-        `The all-in price is what matters: fare + likely bag costs + seat costs + flexibility risk. That is the number users should compare against alternatives.`,
-      tip: "Move into the fee table and the tool pages only after you identify which add-ons are actually likely for your trip.",
+        "The fare is only one part of the price. Bags, seats, and flexibility can make the lower fare a worse deal.",
+      tip: "Use the calculator links after you know which extras are likely for your trip.",
     },
   ];
 }
@@ -93,22 +93,22 @@ function decisionToolLinks(slug: string) {
     {
       href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=2&bags=1&directions=2&trips=2&pay=yes`,
       label: "Estimate checked-bag cost",
-      body: "Use this first if a checked bag could erase the fare savings.",
+      body: "Price the bags you expect to check before comparing this fare with another airline.",
     },
     {
       href: `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`,
-      label: "Check free-bag card math",
-      body: "Use this only after you know repeat first-bag fees are a real part of the trip.",
+      label: "Check card break-even math",
+      body: "Best for repeat first-bag fees that may be high enough for a free-bag card to pay for itself.",
     },
     {
       href: "/sizer-rules?height=22&width=14&depth=9",
       label: "Test carry-on fit",
-      body: "Use this when the best fee move may be avoiding the checked bag entirely.",
+      body: "Check whether a carry-on plan is realistic before you rely on avoiding checked-bag fees.",
     },
     {
       href: "/guides/basic-economy-traps#basic-economy-tool",
       label: "Check Basic fare risk",
-      body: "Use this when the cheapest fare may restrict bags, seats, or flexibility.",
+      body: "Compare the cheapest fare against the restrictions that could force you into paid extras.",
     },
   ];
 }
@@ -118,25 +118,25 @@ function getScenarioCards(slug: string, airlineName: string) {
   return [
     {
       title: "One checked bag",
-      body: "Price the first checked bag before you compare this fare against another airline.",
+      body: "Start here when the trip is simple: one traveler, one roundtrip, one checked bag.",
       href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=1&bags=1&directions=2&trips=1&pay=yes`,
       cta: "Price one checked bag",
     },
     {
       title: "Two travelers, repeat trips",
-      body: "This is where recurring bag fees can make a card waiver or different fare rational.",
+      body: "Best when baggage is likely to repeat across the year and the annual total matters.",
       href: `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`,
-      cta: "Run annual bag math",
+      cta: "Run card break-even math",
     },
     {
       title: "Carry-on only",
-      body: `If ${airlineName} is strict or the fare is stripped down, the carry-on plan matters before the ticket does.`,
+      body: `If you plan to avoid checked-bag fees on ${airlineName}, make sure the bag you bring matches the cabin rules.`,
       href: "/sizer-rules?height=22&width=14&depth=9",
       cta: "Check sizer risk",
     },
     {
-      title: "Heavy or odd-size bag",
-      body: "A normal checked-bag fee may not be the whole bill if weight or size limits are crossed.",
+      title: "Heavy or oversized bag",
+      body: "Check this separately when the bag may be over the normal weight or size limit.",
       href: `/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=51&size=63`,
       cta: "Test excess-bag risk",
     },
@@ -154,7 +154,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `How to beat ${airline.name} fees (2026)`,
-    description: `Practical tactics to avoid the biggest fee traps on ${airline.name}: bags, seats, fare restrictions, and common add-on stacks.`,
+    description: `Practical tactics to avoid the biggest fee traps on ${airline.name}: bags, seats, fare restrictions, and common add-on costs.`,
   };
 }
 
@@ -216,7 +216,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           {isUnited
             ? "United’s fee pattern is predictable: airport bag payment costs more than prepaying, Basic Economy limits normal trip flexibility, and seat selection can add up fast. If you control bags, seats, and flexibility before booking, most of the avoidable cost disappears."
             : strategy?.verdict ??
-              "This airline’s fees are usually won or lost in three places: bags, seats, and fare restrictions. The sections below focus on the costs that matter most before you buy."}
+              "Start with the extras you are most likely to need: bags, seats, and flexibility. Those are the costs most likely to change the real price before you buy."}
         </p>
 
         <nav className="flex flex-wrap gap-4 text-sm">
@@ -229,7 +229,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           <Link href="/fees" className="font-medium text-blue-700 underline">
             Fee categories
           </Link>
-            <Link href="/methodology" className="font-medium text-blue-700 underline">
+          <Link href="/methodology" className="font-medium text-blue-700 underline">
             Methodology
           </Link>
         </nav>
@@ -237,7 +237,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
         <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
           <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Decision tools</div>
           <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-            Turn this fee guide into trip math
+            Price the fee risk for your trip
           </h2>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {toolLinks.map((tool) => (
@@ -337,7 +337,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           </section>
 
           <section className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h2 className="text-xl font-bold text-slate-900">2) Basic Economy: where the fee stack starts</h2>
+            <h2 className="text-xl font-bold text-slate-900">2) Basic Economy: where restrictions start to matter</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
                 United Basic Economy is not just a cheaper ticket. It is a restriction bundle designed to push you back into paying for normal travel behavior.
@@ -360,7 +360,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           </section>
 
           <section className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h2 className="text-xl font-bold text-slate-900">3) Seats: do not pay fake-upgrade pricing blindly</h2>
+            <h2 className="text-xl font-bold text-slate-900">3) Seats: pay only when the seat solves a real problem</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
                 United sells seat peace of mind. Basic seat assignment starts around{" "}
@@ -377,7 +377,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           </section>
 
           <section className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h2 className="text-xl font-bold text-slate-900">4) Changes: the non-Basic premium is often insurance</h2>
+            <h2 className="text-xl font-bold text-slate-900">4) Changes: the non-Basic premium can be worth pricing</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>United’s real flexibility value is not “free changes.” It is staying in the game instead of locking yourself out.</p>
               <ul className="list-disc space-y-2 pl-5">
@@ -392,9 +392,10 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           </section>
 
           <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-            <h2 className="text-xl font-bold text-slate-900">Fee-stack math</h2>
+            <h2 className="text-xl font-bold text-slate-900">Add the likely extras before comparing fares</h2>
             <div className="mt-4 text-sm leading-relaxed text-slate-700">
-              A common United stack looks like: <strong>$199 Basic fare + $70 roundtrip bag fees + $48 roundtrip seat fees = $317</strong>. That is why the cheap fare often stops being cheap the moment you travel like a normal person.
+              A low fare can stop being the best deal once you add the bags, seats, and flexibility you actually need.
+              Use the checked-bag calculator and Basic Economy guide before choosing a fare on ticket price alone.
             </div>
           </section>
         </div>
@@ -443,7 +444,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
       <RelatedTools slug={slug} />
 
       <footer className="text-sm leading-relaxed text-slate-500">
-        This page combines published fee rows with route, fare, and baggage context. If a carrier source is unclear, the page should show that uncertainty rather than guess.
+        This page uses published fee rows plus route, fare, and baggage context. When a carrier does not publish one clear price, the guide points you to the specific lookup or calculator instead of guessing.
       </footer>
     </main>
   );

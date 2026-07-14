@@ -119,7 +119,7 @@ function getHubCopy(category: string) {
         verdict:
           "Carry-on rules are really enforcement rules. The published dimensions matter, but the real money is won or lost on whether the airline monetizes cabin access aggressively.",
         proTip:
-          "Treat bag shape as part of the strategy. Soft, compressible bags often outperform rigid rollers even when the claimed dimensions look similar.",
+          "Treat bag shape as part of the cost decision. Soft, compressible bags often outperform rigid rollers even when the claimed dimensions look similar.",
         loophole:
           "On some airlines, buying the right seat or bundle is actually a cheaper way to buy cabin-bag access than paying for the bag as a standalone add-on.",
         whatToWatch:
@@ -132,7 +132,7 @@ function getHubCopy(category: string) {
         proTip:
           "If you are going to pay for a seat, re-check inventory at online check-in. Booking-time seat pricing is often the worst moment to buy.",
         loophole:
-          "Sometimes the right move is not to pay the seat fee. It is to buy out of the restrictive fare or switch airlines before the stack forms.",
+          "Sometimes the right move is not to pay the seat fee. It is to buy out of the restrictive fare or switch airlines before the add-ons pile up.",
         whatToWatch:
           "Compare Basic versus non-Basic seat behavior, preferred versus legroom products, and whether seat selection also changes bag entitlement.",
       };
@@ -141,7 +141,7 @@ function getHubCopy(category: string) {
         verdict:
           "No change fee is not the same as free flexibility. Fare differences and restricted entry fares are where the real cost hides.",
         proTip:
-          "Treat a flexible fare as insurance when your plans are soft. One change can erase all the fake savings from the cheapest fare.",
+          "When your plans might move, compare the flexible fare against the likely change cost before choosing the cheapest fare.",
         loophole:
           "The real loophole is avoiding locked fares before you need them, not trying to rescue them after the trip changes.",
         whatToWatch:
@@ -163,7 +163,7 @@ function getHubCopy(category: string) {
         verdict:
           "This fee category is where airlines monetize confusion. Do not judge the fare in isolation; price the trip as fare plus likely add-ons.",
         proTip:
-          "Use the airline page after this hub to verify how the rule behaves on your fare class and route.",
+          "Check the airline page after this table to see how the rule behaves on your fare class and route.",
         loophole:
           "The best loophole is usually not cleverness. It is choosing a fare or airline that does not need rescuing.",
         whatToWatch:
@@ -194,7 +194,7 @@ function getContextualBridge(category: string) {
     case "carry_on":
       return (
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
-          Carry-on strategy gets sharper when you pair this hub with the{" "}
+          Carry-on decisions get easier when you pair this page with the{" "}
           <Link href="/guides/carry-on-strictness-by-airline">carry-on strictness guide</Link>, then check{" "}
           <Link href="/airlines/spirit">Spirit</Link>, <Link href="/airlines/frontier">Frontier</Link>, and{" "}
           <Link href="/airlines/ryanair">Ryanair</Link> before using{" "}
@@ -223,12 +223,12 @@ function getContextualBridge(category: string) {
     case "overweight_baggage":
       return (
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
-          Overweight-bag math is usually fixed before the airport scale, so compare{" "}
+          Overweight-bag decisions are usually fixed before the airport scale, so compare{" "}
           <Link href="/airlines/southwest">Southwest</Link>, <Link href="/airlines/frontier">Frontier</Link>, and{" "}
           <Link href="/airlines/spirit">Spirit</Link>, use the{" "}
           <Link href="/tools/excess-baggage-calculator">overweight and oversize baggage calculator</Link>, then check{" "}
           <Link href="/guides/carry-on-strictness-by-airline">carry-on strictness by airline</Link> and{" "}
-          <Link href="/sizer-rules">Sizer rules</Link> if repacking into a cabin-first strategy is still realistic.
+          <Link href="/sizer-rules">Sizer rules</Link> if repacking into a carry-on plan is still realistic.
         </p>
       );
     case "oversize_baggage":
@@ -247,7 +247,7 @@ function getContextualBridge(category: string) {
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
           Unaccompanied minor fees are rarely the whole story, so compare{" "}
           <Link href="/airlines/southwest">Southwest</Link>, <Link href="/airlines/alaska">Alaska</Link>, and{" "}
-          <Link href="/airlines/ryanair">Ryanair</Link> after this hub to see whether the trip is fee-based, route-limited, or not offered at all.
+          <Link href="/airlines/ryanair">Ryanair</Link> after this page to see whether the trip is fee-based, route-limited, or not offered at all.
         </p>
       );
     default:
@@ -262,17 +262,17 @@ function getDecisionToolCards(category: string): Array<{ href: string; label: st
         {
           href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes",
           label: "Checked-bag cost calculator",
-          body: "Turn travelers, bags, trip type, and annual trips into a baggage-cost estimate when the dataset has numeric fee rows.",
+          body: "Turn travelers, bags, trip type, and annual trips into a baggage-cost estimate when the published fees include a usable price.",
         },
         {
           href: "/best-cards?travelers=2&bags=1&trips=2&pay=yes",
-          label: "Free checked bag card math",
+          label: "Card break-even calculator",
           body: "Check whether repeat first-bag fees can justify an eligible airline card on bag savings alone.",
         },
         {
           href: "/guides/international-baggage-allowance",
           label: "International allowance explainer",
-          body: "Use this when a fee row depends on route, fare family, cabin, or piece-versus-weight concept.",
+          body: "Best when the price or allowance depends on route, fare family, cabin, or piece-versus-weight concept.",
         },
       ];
     case "carry_on":
@@ -298,11 +298,11 @@ function getDecisionToolCards(category: string): Array<{ href: string; label: st
         {
           href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62",
           label: "Overweight baggage calculator",
-          body: "Estimate the cost of crossing common weight thresholds when published numeric rows are available.",
+          body: "Estimate the cost of crossing common weight thresholds when published numeric fees are available.",
         },
         {
           href: "/sizer-rules?height=22&width=14&depth=9",
-          label: "Repack into carry-on strategy",
+          label: "Check a carry-on fallback",
           body: "Check whether moving weight out of a checked bag into a cabin setup is realistic for your airline.",
         },
         {
@@ -334,6 +334,22 @@ function getDecisionToolCards(category: string): Array<{ href: string; label: st
   }
 }
 
+function checkedBagCalculatorHref(slug: string): string {
+  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`;
+}
+
+function cardCalculatorHref(slug: string): string {
+  return `/best-cards?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&trips=2&pay=yes`;
+}
+
+function sizerHref(): string {
+  return "/sizer-rules?height=22&width=14&depth=9";
+}
+
+function basicEconomyHref(): string {
+  return `/guides/basic-economy-traps#basic-economy-tool`;
+}
+
 export function generateStaticParams() {
   const slugs = getAirlineSlugs();
   const set = new Set<string>();
@@ -352,7 +368,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { category } = await params;
   const title = `${titleCaseFromSlug(category)} fees by airline (2026)`;
   const description =
-    "Compare published, source-linked airline fee rows across carriers and use the related airline pages and references to understand how the fee applies.";
+    "Compare published airline fees across carriers and use the related airline pages, guides, and tools to understand how the fee applies.";
   return { title, description };
 }
 
@@ -423,7 +439,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
           {strategy && (
             <div style={{ border: "1px solid #dbe1ea", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
-              <strong>Use this page for:</strong> {strategy.introLabel}
+              <strong>Best for:</strong> {strategy.introLabel}
             </div>
           )}
 
@@ -443,7 +459,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 13, color: "#444" }}>
             <span>
-              Published rows on this page: <strong>{rows.length}</strong>
+              Published fees on this page: <strong>{rows.length}</strong>
             </span>
           </div>
         </section>
@@ -464,7 +480,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
             <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#1d4ed8" }}>
               Decision tools
             </div>
-            <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>Turn this fee table into a trip decision</h2>
+            <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>Choose the next step for this fee</h2>
           </div>
           <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
             {decisionToolCards.map((tool) => (
@@ -549,7 +565,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       )}
 
       <section style={{ display: "grid", gap: 10 }}>
-        <h2 style={{ margin: 0, fontSize: 16 }}>Published fee rows (source-linked)</h2>
+        <h2 style={{ margin: 0, fontSize: 16 }}>Published fees and sources</h2>
 
         <div style={{ overflowX: "auto" }}>
           <table>
@@ -563,7 +579,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                 <th>Conditions</th>
                 <th>Source</th>
                 <th>Last verified</th>
-                <th>Shortcut</th>
+                <th>Next step</th>
               </tr>
             </thead>
             <tbody>
@@ -590,10 +606,37 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                     )}
                   </td>
                   <td style={{ whiteSpace: "nowrap" }}>{row.lastVerified}</td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    <Link href={`/airlines/${encodeURIComponent(row.slug)}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
-                      Fee guide
-                    </Link>
+                  <td>
+                    <div style={{ display: "grid", gap: 6, minWidth: 150 }}>
+                      {cat === "checked_baggage" ? (
+                        <>
+                          <Link href={checkedBagCalculatorHref(row.slug)} style={{ textDecoration: "underline" }}>
+                            Price bags
+                          </Link>
+                          <Link href={cardCalculatorHref(row.slug)} style={{ textDecoration: "underline" }}>
+                            Card break-even
+                          </Link>
+                        </>
+                      ) : null}
+                      {cat === "carry_on" ? (
+                        <>
+                          <Link href={sizerHref()} style={{ textDecoration: "underline" }}>
+                            Check sizer
+                          </Link>
+                          <Link href={basicEconomyHref()} style={{ textDecoration: "underline" }}>
+                            Basic fare risk
+                          </Link>
+                        </>
+                      ) : null}
+                      {cat === "seat_selection" ? (
+                        <Link href={basicEconomyHref()} style={{ textDecoration: "underline" }}>
+                          Basic fare risk
+                        </Link>
+                      ) : null}
+                      <Link href={`/airlines/${encodeURIComponent(row.slug)}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
+                        Fee guide
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -602,7 +645,10 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </div>
 
         <div style={{ fontSize: 13, color: "#444", lineHeight: 1.6 }}>
-          Use the <strong>Fee guide</strong> column if you want the airline-specific page that explains how this fee usually shows up in a real trip.
+          The <strong>Next step</strong> column moves from the fee row into the relevant calculator or airline-specific guide.
+          For checked baggage, <strong>Price bags</strong> estimates the cash bill and <strong>Card break-even</strong> tests
+          whether repeat first-bag fees can justify an eligible card on bag savings alone. For carry-on and seat rows,
+          the next question is usually whether the fare restriction changes the real trip cost.
         </div>
 
         {contextualBridge}

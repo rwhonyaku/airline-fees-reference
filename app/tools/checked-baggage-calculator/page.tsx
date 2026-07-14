@@ -25,7 +25,7 @@ type PageProps = {
 export const metadata: Metadata = {
   title: "Checked Baggage Cost Calculator and Free Bag Card Check | Airline Fees Reference",
   description:
-    "Estimate checked baggage fees from published airline fee data, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
+    "Estimate checked baggage fees from published airline fee details, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -60,6 +60,10 @@ function missingBagLabel(ordinals: number[]): string {
 
 function scenarioHref(airlineSlug: string, travelers: number, bags: number, trips: number): string {
   return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=yes`;
+}
+
+function plural(n: number, singular: string, pluralLabel = `${singular}s`): string {
+  return `${n} ${n === 1 ? singular : pluralLabel}`;
 }
 
 export default async function CheckedBaggageCalculatorPage({ searchParams }: PageProps) {
@@ -104,13 +108,24 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
 
   const best = cardResults.find((item) => item.result.eligible && item.result.annualSavingsUsd > 0);
   const annualBagCost = trip.canEstimate ? trip.tripCostUsd * roundtrips : null;
+  const totalBagsPerTrip = travelers * bags * directions;
+  const annualCheckedBags = totalBagsPerTrip * roundtrips;
+  const bestAnnualSavings = best?.result.annualSavingsUsd ?? 0;
+  const remainingAnnualBagCost =
+    annualBagCost != null && best ? Math.max(0, annualBagCost - bestAnnualSavings) : null;
+  const cardBridgeLabel =
+    best && best.result.netAnnualUsd >= 0
+      ? "Card comparison is worth your time"
+      : best
+        ? "Card benefit helps, but does not fully justify the annual fee"
+        : "Card calculator has no positive match for this setup";
   const cardHref = `/best-cards?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&trips=${roundtrips}&pay=${payWithCard ? "yes" : "no"}`;
 
   return (
     <main className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-10">
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Deterministic baggage tool
+          Baggage cost tool
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage cost calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
@@ -250,6 +265,38 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           </>
         )}
         <p className="text-sm leading-relaxed text-slate-600">{trip.explanation}</p>
+
+        {trip.canEstimate ? (
+          <div className="grid gap-3 pt-2 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Trip exposure</div>
+              <div className="mt-1 text-2xl font-extrabold text-slate-950">{usd(trip.tripCostUsd)}</div>
+              <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                For {plural(totalBagsPerTrip, "checked bag")} across this {directions === 2 ? "roundtrip" : "one-way"}.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Annual exposure</div>
+              <div className="mt-1 text-2xl font-extrabold text-slate-950">
+                {annualBagCost != null ? usd(annualBagCost) : "-"}
+              </div>
+              <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                For {plural(annualCheckedBags, "checked bag")} across {plural(roundtrips, "roundtrip")}.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Best card offset</div>
+              <div className="mt-1 text-2xl font-extrabold text-slate-950">
+                {best ? usd(bestAnnualSavings) : "$0"}
+              </div>
+              <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                {best
+                  ? "Estimated annual checked-bag savings before subtracting the card annual fee."
+                  : "No eligible checked-bag card benefit matched these inputs."}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </section>
 
       {!trip.canEstimate ? (
@@ -290,7 +337,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           {best ? (
             <>
               <h2 className="text-2xl font-extrabold text-slate-950">
-                A free checked bag card could save about {usd(best.result.annualSavingsUsd)} per year.
+                {cardBridgeLabel}: about {usd(best.result.annualSavingsUsd)} in annual bag savings.
               </h2>
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
                 Best bag-fee match: <span className="font-bold">{best.card.name}</span>. After its annual
@@ -301,6 +348,21 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
                 </span>
                 . This excludes points, sign-up bonuses, lounge access, and unrelated perks.
               </p>
+              {remainingAnnualBagCost != null ? (
+                <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+                  With this input, the modeled cash bag bill is {annualBagCost != null ? usd(annualBagCost) : "-"} per
+                  year. The card benefit would leave about{" "}
+                  <span className="font-bold">{usd(remainingAnnualBagCost)}</span> in annual checked-bag fees
+                  before considering the card&apos;s annual fee.
+                </p>
+              ) : null}
+              {best.result.breakEvenRoundtrips != null ? (
+                <p className="text-sm leading-relaxed text-slate-700">
+                  Break-even point:{" "}
+                  <span className="font-bold">{plural(best.result.breakEvenRoundtrips, "roundtrip")}</span> per year
+                  on checked-bag savings alone.
+                </p>
+              ) : null}
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
                   Compare eligible cards
@@ -325,6 +387,8 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
                 That can happen when this airline has no eligible card in the calculator, when the benefit requires
                 card payment and you selected no, or when the card benefit does not cover the requested bag pattern.
+                The next best move is to reduce the cash bag bill directly: compare a bag-inclusive fare, check status
+                or military exceptions, or reduce the number of checked bags.
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
@@ -340,7 +404,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
       ) : null}
 
       <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-lg font-bold text-slate-950">Fee rows used</h2>
+        <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
@@ -364,7 +428,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           </table>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
-          The calculator prefers current, broad-market USD fee rows and avoids special-case rows such
+          The calculator prefers current, broad-market USD fees and avoids special-case prices such
           as intra-island or long-haul routes when broader domestic or North America pricing exists.
         </p>
       </section>

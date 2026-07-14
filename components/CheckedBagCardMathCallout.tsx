@@ -23,7 +23,7 @@ export function CheckedBagCardMathCallout({
         Checking bags more than once or twice a year?
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-700">
-        Run the annual-fee break-even math before paying cash for repeat first-bag fees. The
+        Run the annual-fee break-even math after pricing the bag scenario. The
         calculator only counts published checked-bag savings, traveler coverage, and card-payment
         requirements.
       </p>
@@ -32,7 +32,7 @@ export function CheckedBagCardMathCallout({
           Estimate checked-bag cost first
         </Link>
         <Link href={href} className="font-bold text-emerald-900 underline">
-          Use the free checked bag calculator
+          Run card break-even math
         </Link>
         <Link href="/guides/airline-credit-card-baggage-benefits" className="font-semibold text-blue-700 underline">
           Compare baggage benefit rules

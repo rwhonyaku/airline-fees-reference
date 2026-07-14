@@ -55,11 +55,11 @@ export default function FeeCategoriesIndexPage() {
             <Link href="/sizer-rules" style={{ textDecoration: "underline" }}>
               Sizer rules
             </Link>
-            <Link href="/best-cards" style={{ textDecoration: "underline" }}>
-              Free checked bag calculator
-            </Link>
             <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
               Checked baggage cost calculator
+            </Link>
+            <Link href="/best-cards" style={{ textDecoration: "underline" }}>
+              Card break-even calculator
             </Link>
           </div>
         </div>
@@ -92,6 +92,36 @@ export default function FeeCategoriesIndexPage() {
                 <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
                   {strategy.introLabel}
                 </div>
+                {key === "checked_baggage" ? (
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
+                    <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" style={{ textDecoration: "underline" }}>
+                      Price a bag scenario
+                    </Link>
+                    <Link href="/best-cards?travelers=2&bags=1&trips=2&pay=yes" style={{ textDecoration: "underline" }}>
+                      Test card break-even
+                    </Link>
+                  </div>
+                ) : null}
+                {key === "carry_on" ? (
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
+                    <Link href="/sizer-rules?height=22&width=14&depth=9" style={{ textDecoration: "underline" }}>
+                      Check bag fit
+                    </Link>
+                    <Link href="/guides/basic-economy-traps#basic-economy-tool" style={{ textDecoration: "underline" }}>
+                      Check Basic fare risk
+                    </Link>
+                  </div>
+                ) : null}
+                {key === "seat_selection" ? (
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
+                    <Link href="/guides/basic-economy-traps" style={{ textDecoration: "underline" }}>
+                      Check fare restrictions
+                    </Link>
+                    <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
+                      Price bag add-ons too
+                    </Link>
+                  </div>
+                ) : null}
               </div>
             );
           })}
@@ -121,7 +151,7 @@ export default function FeeCategoriesIndexPage() {
                 </div>
                 <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "#555" }}>
                   {strategy?.bridgeText ??
-                    "Use the fee page to understand the charge, then move into the airline-specific page before booking."}
+                    "Check the fee page to understand the charge, then move into the airline-specific page before booking."}
                 </div>
               </div>
             );
@@ -130,7 +160,7 @@ export default function FeeCategoriesIndexPage() {
       </section>
 
       <section style={{ display: "grid", gap: 12 }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>Airline pages worth checking after the fee hub</h2>
+        <h2 style={{ margin: 0, fontSize: 18 }}>Airline pages worth checking after the fee topic</h2>
         <div
           style={{
             display: "grid",
@@ -149,7 +179,7 @@ export default function FeeCategoriesIndexPage() {
                 </Link>
               </div>
               <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "#555" }}>
-                Use the fee topic first, then compare the airline page and fee guide once you know
+                Start with the fee topic, then compare the airline page and fee guide once you know
                 which rule affects your trip.
               </div>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>

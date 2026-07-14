@@ -250,7 +250,7 @@ function buildGuideRows(): GuideRow[] {
         southwestBasicSeat
           ? `${safeText(southwestBasicSeat.conditions)}.`
           : "Seat treatment changes by fare family rather than through a classic Basic Economy seat fee.",
-      changes: "Current dataset publishes no cancellation fee across fares, with same-day rules varying by fare family.",
+      changes: "The current fee rows show no cancellation fee across fares, with same-day rules varying by fare family.",
       whereItBreaks:
         southwestBasicBag
           ? `Southwest Basic is no longer automatically a free-checked-bag fare. The current Basic Fare first checked bag row is ${formatAmount(southwestBasicBag.amount, southwestBasicBag.currency)} one-way on later bookings.`
@@ -362,7 +362,7 @@ const DECISION_CARDS: DecisionCard[] = [
     verdict:
       "A fare that saves $30 can lose quickly if it adds a paid first checked bag or pushes you toward airport bag pricing.",
     action:
-      "Run the bag-cost calculator before booking, then compare whether a fare upgrade or free checked bag card would cost less.",
+      "Price the bags before booking, then compare whether a fare upgrade or card bag benefit would cost less.",
     links: [
       { href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked-bag calculator" },
       { href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes", label: "Card break-even math" },
@@ -430,6 +430,12 @@ export default function BasicEconomyTrapsGuide() {
           <Link href="/fees/seat_selection" className="font-medium text-blue-700 underline">
             Seat selection fee reference
           </Link>
+          <Link href="/tools/checked-baggage-calculator" className="font-medium text-blue-700 underline">
+            Checked-bag calculator
+          </Link>
+          <Link href="/best-cards" className="font-medium text-blue-700 underline">
+            Card break-even calculator
+          </Link>
           <Link href="/methodology" className="font-medium text-blue-700 underline">
             Methodology
           </Link>
@@ -451,7 +457,7 @@ export default function BasicEconomyTrapsGuide() {
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
-              <div className="font-bold text-slate-900">Use this page when the question is:</div>
+              <div className="font-bold text-slate-900">This page answers:</div>
               <ul className="mt-3 space-y-2">
                 <li>Does the cheapest fare still work for a normal carry-on trip?</li>
                 <li>Will seat or change limits erase the fare gap later?</li>
@@ -790,7 +796,7 @@ export default function BasicEconomyTrapsGuide() {
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline comparison</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          Use this table to see what each airline&apos;s cheapest fare is most likely to leave out.
+          This table shows what each airline&apos;s cheapest fare is most likely to leave out.
         </p>
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
           <table className="min-w-[1100px] text-left text-sm">
@@ -858,8 +864,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this after the guide if the cheapest fare is only cheap until the first checked
-              bag enters the trip.
+              Check this when the cheapest fare only works until the first checked bag enters the trip.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -869,7 +874,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this when seat choice could add enough cost to change the fare comparison.
+              Check this when seat choice could add enough cost to change the fare comparison.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -879,7 +884,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this to price checked bags before deciding whether a fare upgrade or card benefit makes sense.
+              Price checked bags before deciding whether a fare upgrade or card benefit makes sense.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -889,7 +894,7 @@ export default function BasicEconomyTrapsGuide() {
               </Link>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use this when the Basic-versus-regular fare decision depends on whether your cabin
+              Check this when the Basic-versus-regular fare decision depends on whether your cabin
               bag will actually fit.
             </p>
           </div>

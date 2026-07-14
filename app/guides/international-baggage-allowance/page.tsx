@@ -32,8 +32,26 @@ function formatAmount(row: FeeItem): string {
   const amount = row.amount;
   const currency = safeText(row.currency);
   if (typeof amount === "number" && Number.isFinite(amount)) return `${amount.toFixed(0)} ${currency}`;
-  if (typeof amount === "string" && amount.trim()) return `${amount.trim()} ${currency}`;
+  if (typeof amount === "string" && amount.trim()) {
+    const raw = amount.trim();
+    if (raw.toLowerCase() === "varies") {
+      const signals = conceptSignals(row);
+      if (signals.includes("piece concept") || signals.includes("weight concept")) return "Depends on piece/weight concept";
+      if (signals.includes("route-based")) return "Depends on route";
+      if (signals.includes("fare-family based")) return "Depends on fare family";
+      return "Depends on route, fare, or allowance";
+    }
+    return currency === "Not published" ? raw : `${raw} ${currency}`;
+  }
   return "Not published";
+}
+
+function checkedBagCalculatorHref(slug: string): string {
+  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=1&pay=yes`;
+}
+
+function excessBagCalculatorHref(slug: string): string {
+  return `/tools/excess-baggage-calculator?airline=${encodeURIComponent(slug)}&bags=1&directions=2&weight=51&size=63`;
 }
 
 function conceptSignals(row: FeeItem): string[] {
@@ -150,6 +168,12 @@ export default function InternationalBaggageAllowanceGuide() {
           <Link href="/airlines/air-india" className="font-medium text-blue-700 underline">
             Air India
           </Link>
+          <Link href="/airlines/lufthansa" className="font-medium text-blue-700 underline">
+            Lufthansa
+          </Link>
+          <Link href="/airlines/emirates" className="font-medium text-blue-700 underline">
+            Emirates
+          </Link>
         </nav>
 
         <section className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
@@ -167,6 +191,33 @@ export default function InternationalBaggageAllowanceGuide() {
           </p>
         </section>
       </header>
+
+      <section className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 1</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Find the allowance first</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            On many international trips, the first question is what your route, cabin, and fare
+            include before any excess-baggage fee applies.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 2</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Check the concept</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Piece-concept trips care about number of bags and per-piece weight. Weight-concept trips
+            care about the total checked weight attached to the ticket.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 3</div>
+          <h2 className="mt-2 text-lg font-bold text-slate-900">Use calculators only where they fit</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            The checked-bag and excess-bag calculators help when numeric rows exist. If the airline
+            prices by route or booking path, use the airline page and booking quote instead.
+          </p>
+        </div>
+      </section>
 
       <section className="grid gap-4 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
@@ -192,7 +243,7 @@ export default function InternationalBaggageAllowanceGuide() {
           </p>
           <p className="mt-3 text-sm leading-relaxed text-slate-700">
             This is why some international rows say the charge depends on route and piece/weight
-            concept. That is not filler. It means the airline is using different baggage math for
+            concept. That is not filler. It means the airline is using different baggage rules for
             different itineraries.
           </p>
         </div>
@@ -211,7 +262,7 @@ export default function InternationalBaggageAllowanceGuide() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Examples from the current fee dataset</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Examples from the current fee rows</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
           These are not invented fares. They are source-linked checked-baggage rows already used by
           the site, surfaced here because their conditions mention route, fare family, cabin, piece
@@ -227,6 +278,7 @@ export default function InternationalBaggageAllowanceGuide() {
                 <th className="px-4 py-3 font-semibold">Route / region</th>
                 <th className="px-4 py-3 font-semibold">Why it varies</th>
                 <th className="px-4 py-3 font-semibold">Source</th>
+                <th className="px-4 py-3 font-semibold">Next step</th>
               </tr>
             </thead>
             <tbody>
@@ -255,6 +307,19 @@ export default function InternationalBaggageAllowanceGuide() {
                       Source
                     </a>
                     <div className="mt-1 text-xs text-slate-500">Verified {row.lastVerified}</div>
+                  </td>
+                  <td className="px-4 py-4 text-slate-700">
+                    <div className="flex flex-col gap-2">
+                      <Link href={`/airlines/${row.slug}`} className="text-blue-700 underline">
+                        Airline fee page
+                      </Link>
+                      <Link href={checkedBagCalculatorHref(row.slug)} className="text-blue-700 underline">
+                        Price checked bags
+                      </Link>
+                      <Link href={excessBagCalculatorHref(row.slug)} className="text-blue-700 underline">
+                        Check excess risk
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -293,7 +358,7 @@ export default function InternationalBaggageAllowanceGuide() {
               Compare checked-baggage fee rows
             </Link>
             <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" className="font-semibold text-blue-800 underline">
-              Run checked-bag cost math
+              Price checked-bag costs
             </Link>
             <Link href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=63" className="font-semibold text-blue-800 underline">
               Test overweight and oversize exposure

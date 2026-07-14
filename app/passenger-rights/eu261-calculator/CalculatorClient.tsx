@@ -33,7 +33,7 @@ export function CalculatorClient() {
     departureCountry === "eu" ||
     (arrivalCountry === "eu" && operatingCarrier === "eu");
 
-  let coverageStatus = covered ? "Covered" : "Not covered";
+  const coverageStatus = covered ? "Covered" : "Not covered";
   let eligibilityStatus = "Not indicated";
 
   if (!covered) {
@@ -172,9 +172,9 @@ export function CalculatorClient() {
         </div>
 
         <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
-          Final determination rests with the operating airline or the relevant regulator. This tool
-          is deterministic and does not evaluate additional legal or factual conditions beyond the
-          selected inputs.
+          Final determination rests with the operating airline or the relevant regulator. This
+          screening check only evaluates the inputs shown here and does not review every legal or
+          factual condition that could affect a claim.
         </div>
       </section>
     </div>
