@@ -9,6 +9,7 @@ import { RelatedTools } from "@/components/RelatedTools";
 import { SizerCheck } from "@/components/SizerCheck";
 import { Disclaimer } from "@/components/Disclaimer";
 import { AIRLINE_STRATEGY, isCoreAirline } from "@/lib/airline-strategy";
+import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -7513,10 +7514,65 @@ function getAirlineScenarioLinks(slug: string, airlineName: string): Array<{
   ];
 }
 
+function getPopularRouteLinks(slug: string): Array<{
+  route: string;
+  body: string;
+  href: string;
+}> {
+  if (slug !== "zipair") return [];
+
+  const enc = encodeURIComponent(slug);
+  const routes = [
+    {
+      route: "Los Angeles (LAX) to Tokyo (NRT)",
+      body: "Long-haul ZIPAIR route context for testing one checked bag before treating the base fare as the final trip price.",
+      travelers: 1,
+      bags: 1,
+    },
+    {
+      route: "San Francisco (SFO) to Tokyo (NRT)",
+      body: "Useful for comparing a low fare against a trip that still needs a paid checked-bag weight allowance.",
+      travelers: 1,
+      bags: 1,
+    },
+    {
+      route: "Honolulu (HNL) to Tokyo (NRT)",
+      body: "Good leisure-trip preset when two travelers may each need one checked bag.",
+      travelers: 2,
+      bags: 1,
+    },
+    {
+      route: "Tokyo (NRT) to Seoul (ICN)",
+      body: "Cabin-light preset for a shorter route where the combined 7 kg cabin limit may decide whether a bag is needed.",
+      travelers: 1,
+      bags: 0,
+    },
+    {
+      route: "Tokyo (NRT) to Bangkok (BKK)",
+      body: "International preset for checking whether a paid weight allowance should be priced before checkout.",
+      travelers: 1,
+      bags: 1,
+    },
+    {
+      route: "Tokyo (NRT) to Singapore (SIN)",
+      body: "Use this when the fare looks cheap but checked baggage or seat choice may change the real trip total.",
+      travelers: 1,
+      bags: 1,
+    },
+  ];
+
+  return routes.map((item) => ({
+    route: item.route,
+    body: item.body,
+    href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=${item.travelers}&bags=${item.bags}&directions=2&trips=1&pay=yes&route=${encodeURIComponent(item.route)}`,
+  }));
+}
+
 function AirlineScenarioLinks({ slug, airlineName }: { slug: string; airlineName: string }) {
   if (!DECISION_SCENARIO_SLUGS.has(slug)) return null;
 
   const scenarios = getAirlineScenarioLinks(slug, airlineName);
+  const routeLinks = getPopularRouteLinks(slug);
 
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-6">
@@ -7546,6 +7602,31 @@ function AirlineScenarioLinks({ slug, airlineName }: { slug: string; airlineName
           </Link>
         ))}
       </div>
+      {routeLinks.length > 0 ? (
+        <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50 p-5">
+          <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+            Popular ZIPAIR route starts
+          </div>
+          <h3 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+            Use a route preset, then confirm ZIPAIR&apos;s baggage quote.
+          </h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+            These links do not invent route-specific baggage prices. They prefill the decision engine with a ZIPAIR route context and bag pattern so the page can show whether a fixed estimate is possible or whether checkout lookup is required.
+          </p>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {routeLinks.map((link) => (
+              <Link
+                key={link.route}
+                href={link.href}
+                className="rounded-xl border border-blue-100 bg-white p-4 transition hover:border-blue-400 hover:shadow-sm"
+              >
+                <div className="text-sm font-extrabold text-blue-800 underline">{link.route}</div>
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">{link.body}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -7648,6 +7729,146 @@ function InlineComparisonLinks({ links }: { links: ReferenceLink[] }) {
       ))}
     </span>
   );
+}
+
+function VerificationTrustBar({
+  airlineName,
+  latestVerified,
+}: {
+  airlineName: string;
+  latestVerified: string;
+}) {
+  const reportHref = `/contact?subject=${encodeURIComponent(`${airlineName} policy changed`)}`;
+
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm shadow-sm">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap gap-2">
+          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 font-bold text-blue-900">
+            Last verified: {latestVerified}
+          </span>
+          <span className="rounded-full border border-emerald-200 bg-white px-3 py-1 font-bold text-emerald-900">
+            Current as of {latestVerified}
+          </span>
+        </div>
+        <div className="flex flex-col gap-2 text-slate-700 sm:flex-row sm:items-center">
+          <span>Policy changed?</span>
+          <Link href={reportHref} className="font-bold text-blue-700 underline">
+            Report a correction
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function checkedBagCalculatorUrl(slug: string) {
+  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=1&pay=yes`;
+}
+
+function formatUsdEstimate(amount: number) {
+  return `$${Math.round(amount).toLocaleString("en-US")}`;
+}
+
+function BagCostTeaser({
+  slug,
+  airlineName,
+  feeByBagOrdinal,
+}: {
+  slug: string;
+  airlineName: string;
+  feeByBagOrdinal: [number, number][];
+}) {
+  const firstBagFee = feeByBagOrdinal.find(([ordinal]) => ordinal === 1)?.[1];
+  const modeledRoundtrip = firstBagFee == null ? null : firstBagFee * 2 * 2;
+
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">
+        Bag-cost check
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-900">
+        Price a common {airlineName} roundtrip before booking.
+      </h2>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+        {modeledRoundtrip == null
+          ? `${airlineName} bag costs need a route, fare, or baggage-concept lookup before a useful total can be quoted.`
+          : `Using the published first-bag fee we can model two travelers, one checked bag each, roundtrip at about ${formatUsdEstimate(modeledRoundtrip)} before fare, status, card, and route exceptions.`}
+      </p>
+      <Link
+        href={checkedBagCalculatorUrl(slug)}
+        className="mt-4 inline-flex rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
+      >
+        Run the checked-bag calculator
+      </Link>
+    </section>
+  );
+}
+
+function QuickSavePanel({ items }: { items: string[] }) {
+  const topItems = items.slice(0, 3);
+
+  if (topItems.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+        Quick ways to avoid fees
+      </div>
+      <ul className="mt-3 space-y-3 text-sm leading-relaxed text-emerald-950">
+        {topItems.map((item) => (
+          <li key={item} className="border-l-4 border-emerald-300 pl-4">
+            {readerCopy(item)}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function CompareNextPanel({ links }: { links: ReferenceLink[] }) {
+  const topLinks = links.slice(0, 3);
+
+  if (topLinks.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+            Compare next
+          </div>
+          <h2 className="mt-2 text-xl font-black tracking-tight text-slate-900">
+            Check nearby fee models before you decide.
+          </h2>
+        </div>
+        <Link href="/airlines" className="text-sm font-bold text-blue-700 underline">
+          All airlines
+        </Link>
+      </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        {topLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="rounded-xl border border-slate-200 bg-white p-4 text-sm font-bold text-blue-700 underline transition hover:border-blue-400 hover:shadow-sm"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function airlineSlugsFromLinks(links: ReferenceLink[]) {
+  return links
+    .map((link) => /^\/airlines\/([^/?#]+)/.exec(link.href)?.[1])
+    .filter((value): value is string => Boolean(value));
 }
 
 function getDefaultAvoidFeeAdvice(slug: string, airlineName: string): string[] {
@@ -7855,6 +8076,8 @@ function ReferenceAirlinePage({
           </div>
         </div>
 
+        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} />
+
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
             Answer-first summary
@@ -7886,6 +8109,17 @@ function ReferenceAirlinePage({
             </div>
           </div>
         </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <BagCostTeaser
+            slug={slug}
+            airlineName={airline.name}
+            feeByBagOrdinal={numericCheckedBagFees}
+          />
+          <QuickSavePanel items={avoidFeeAdvice} />
+        </div>
+
+        <CompareNextPanel links={content.comparisonLinks} />
       </header>
 
       {content.verificationNote ? (
@@ -7909,6 +8143,12 @@ function ReferenceAirlinePage({
       />
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+
+      <UnifiedBaggageComparison
+        focusSlug={slug}
+        peerSlugs={airlineSlugsFromLinks(content.comparisonLinks)}
+        compact
+      />
 
       <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
@@ -8151,7 +8391,12 @@ function LegacyAirlinePage({
   const authorityHighlights = strategy?.authorityHighlights ?? [];
   const peerLinks = (strategy?.relatedAirlines ?? [])
     .map((peerSlug) => getAirlineBySlug(peerSlug))
-    .filter(Boolean);
+    .filter((peer): peer is NonNullable<ReturnType<typeof getAirlineBySlug>> => Boolean(peer));
+  const avoidFeeAdvice = getDefaultAvoidFeeAdvice(slug, airline.name);
+  const comparisonLinks = peerLinks.slice(0, 3).map((peer) => ({
+    href: `/airlines/${peer.slug}`,
+    label: peer.name,
+  }));
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 py-12">
@@ -8183,6 +8428,8 @@ function LegacyAirlinePage({
             </div>
           </div>
         </div>
+
+        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} />
 
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Quick summary</div>
@@ -8216,6 +8463,17 @@ function LegacyAirlinePage({
             </div>
           </div>
         </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <BagCostTeaser
+            slug={slug}
+            airlineName={airline.name}
+            feeByBagOrdinal={numericCheckedBagFees}
+          />
+          <QuickSavePanel items={avoidFeeAdvice} />
+        </div>
+
+        <CompareNextPanel links={comparisonLinks} />
       </header>
 
       {authorityHighlights.length > 0 && (
@@ -8256,6 +8514,12 @@ function LegacyAirlinePage({
       />
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+
+      <UnifiedBaggageComparison
+        focusSlug={slug}
+        peerSlugs={peerLinks.map((peer) => peer.slug)}
+        compact
+      />
 
       <section className="grid gap-6 md:grid-cols-2">
         <Link

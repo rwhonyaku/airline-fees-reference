@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAirlinesIndex } from "@/lib/data";
+import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
 
 export default function HomePage() {
   const airlines = getAirlinesIndex();
@@ -169,6 +170,10 @@ export default function HomePage() {
             Carry-on sizer comparison
           </Link>
         </div>
+      </section>
+
+      <section className="mb-16">
+        <UnifiedBaggageComparison />
       </section>
 
       <section className="mb-16 rounded-2xl border border-sky-200 bg-sky-50 p-6">

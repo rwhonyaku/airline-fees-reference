@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { calcExcessBaggageTripCost, clampInt, firstString, usd } from "@/lib/bag-cost-calculator";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
+import { JsonLd } from "@/components/JsonLd";
+import { canonical } from "@/lib/seo";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -67,6 +69,24 @@ const FEATURED_AIRLINES = [
   },
 ];
 
+const EXCESS_BAG_FAQS = [
+  {
+    question: "What is an excess baggage fee?",
+    answer:
+      "An excess baggage fee is charged when a checked bag exceeds the airline's included allowance, weight limit, size limit, or number-of-bags allowance. It may apply in addition to the normal checked-bag fee.",
+  },
+  {
+    question: "Why do overweight and oversize baggage fees vary?",
+    answer:
+      "They can vary by route, local currency, airport versus advance purchase, baggage allowance concept, aircraft limits, special-item handling, and whether the airline stacks overweight and oversize charges.",
+  },
+  {
+    question: "Can a very heavy bag be refused?",
+    answer:
+      "Yes. Many airlines have a maximum accepted checked-bag weight. Bags above that limit may need to ship as cargo instead of ordinary checked baggage.",
+  },
+];
+
 function AirlineSelect({ value }: { value: string }) {
   return (
     <select
@@ -106,6 +126,42 @@ function airlinePageHref(airlineSlug: string): string {
   return `/airlines/${encodeURIComponent(airlineSlug)}`;
 }
 
+function excessBaggageCalculatorJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+          { "@type": "ListItem", position: 2, name: "Excess baggage cost calculator", item: canonical("/tools/excess-baggage-calculator") },
+        ],
+      },
+      {
+        "@type": "WebApplication",
+        "@id": canonical("/tools/excess-baggage-calculator"),
+        name: "Excess baggage cost calculator",
+        url: canonical("/tools/excess-baggage-calculator"),
+        applicationCategory: "TravelApplication",
+        operatingSystem: "Any",
+        description:
+          "Estimate excess baggage cost for overweight and oversize checked bags and identify when route-specific airline lookup is required.",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: EXCESS_BAG_FAQS.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export default async function ExcessBaggageCalculatorPage({ searchParams }: PageProps) {
   const sp = (await searchParams) ?? {};
   const airlineSlug = firstString(sp.airline) || "american";
@@ -131,6 +187,7 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
 
   return (
     <main className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-10">
+      <JsonLd data={excessBaggageCalculatorJsonLd()} />
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
           Excess-bag cost tool
@@ -421,6 +478,18 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
           <Link href="/guides/carry-on-strictness-by-airline" className="text-blue-700 underline">
             Carry-on strictness guide
           </Link>
+        </div>
+      </section>
+
+      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-slate-950">Excess baggage calculator FAQ</h2>
+        <div className="grid gap-3">
+          {EXCESS_BAG_FAQS.map((faq) => (
+            <div key={faq.question} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <h3 className="text-base font-bold text-slate-900">{faq.question}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{faq.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
     </main>

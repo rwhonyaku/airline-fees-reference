@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
 import { FEE_HUB_STRATEGY } from "@/lib/fee-hub-strategy";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
+import { JsonLd } from "@/components/JsonLd";
+import { canonical } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -49,6 +51,140 @@ function safeDate(v: unknown): string {
 function getLatestVerifiedDate(rows: Row[]): string {
   const dates = rows.map((row) => row.lastVerified).filter((date) => date !== "Not published");
   return dates.length ? dates.sort().at(-1)! : "Not published";
+}
+
+function getFeeFaq(category: string): Array<{ question: string; answer: string }> {
+  switch (category) {
+    case "checked_baggage":
+      return [
+        {
+          question: "How much are checked baggage fees?",
+          answer:
+            "Checked baggage fees depend on airline, route, fare family, bag count, and when the bag is purchased. Some fares include a first checked bag, while Basic or low-cost fares may charge separately.",
+        },
+        {
+          question: "Why does a checked bag fee sometimes vary?",
+          answer:
+            "The price can vary because airlines separate domestic, transborder, and international routes, prepaid and airport purchase timing, fare families, and partner-operated itineraries.",
+        },
+        {
+          question: "Can a credit card remove checked bag fees?",
+          answer:
+            "Some airline credit cards publish a first checked bag benefit for the cardholder and eligible companions. The exact coverage depends on airline, reservation, route, traveler count, and card-payment rules.",
+        },
+      ];
+    case "overweight_baggage":
+      return [
+        {
+          question: "When is a checked bag overweight?",
+          answer:
+            "Many airlines begin overweight treatment above 50 lb or 23 kg, but the exact threshold and maximum accepted weight depend on the airline, cabin, route, and baggage allowance.",
+        },
+        {
+          question: "Can overweight baggage fees stack with checked bag fees?",
+          answer:
+            "Yes. The overweight charge may be added on top of the normal checked bag fee, especially when the bag is both a paid checked bag and over the standard weight limit.",
+        },
+      ];
+    case "oversize_baggage":
+      return [
+        {
+          question: "When is a checked bag oversized?",
+          answer:
+            "Many airlines screen oversize bags above 62 linear inches or 158 cm, but limits and acceptance rules vary by carrier, route, aircraft, and special-item category.",
+        },
+        {
+          question: "Can a bag be both overweight and oversized?",
+          answer:
+            "Yes. A bag can cross both weight and size thresholds, and some airlines may charge both fees or refuse very large or heavy bags as ordinary checked baggage.",
+        },
+      ];
+    default:
+      return [];
+  }
+}
+
+function breadcrumbJsonLd(title: string, href: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: canonical("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Fee categories",
+        item: canonical("/fees"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: canonical(href),
+      },
+    ],
+  };
+}
+
+function feePageJsonLd(params: {
+  title: string;
+  description: string;
+  href: string;
+  latestVerified: string;
+  rows: Row[];
+  faqs: Array<{ question: string; answer: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      breadcrumbJsonLd(params.title, params.href),
+      {
+        "@type": "WebPage",
+        "@id": canonical(params.href),
+        url: canonical(params.href),
+        name: `${params.title} fees by airline`,
+        description: params.description,
+        dateModified: params.latestVerified !== "Not published" ? params.latestVerified : undefined,
+        about: {
+          "@type": "Thing",
+          name: `${params.title} airline fees`,
+        },
+        mainEntity: params.faqs.length
+          ? {
+              "@type": "FAQPage",
+              mainEntity: params.faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
+            }
+          : undefined,
+      },
+      {
+        "@type": "ItemList",
+        name: `${params.title} fee table`,
+        numberOfItems: params.rows.length,
+        itemListElement: params.rows.slice(0, 50).map((row, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Thing",
+            name: `${row.airlineName}: ${row.amountText}`,
+            description: [row.appliesTo, row.regionOrRoute, row.conditions].filter(Boolean).join(" · "),
+            url: canonical(`/airlines/${row.slug}`),
+          },
+        })),
+      },
+    ],
+  };
 }
 
 function formatAmount(amount: unknown, currency: unknown): string {
@@ -411,6 +547,9 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
   const decisionToolCards = getDecisionToolCards(cat);
 
   const title = titleCaseFromSlug(cat);
+  const feeFaqs = getFeeFaq(cat);
+  const pageHref = `/fees/${encodeURIComponent(cat)}`;
+  const pageDescription = `${title} fees by airline, with published amounts, source links, conditions, route limits, and last verified dates.`;
   const spotlightAirlines = (strategy?.spotlightAirlines ?? [])
     .map((entry) => {
       const airline = getAirlineBySlug(entry.slug);
@@ -421,6 +560,16 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
   return (
     <main style={{ display: "grid", gap: 16 }}>
+      <JsonLd
+        data={feePageJsonLd({
+          title,
+          description: pageDescription,
+          href: pageHref,
+          latestVerified,
+          rows,
+          faqs: feeFaqs,
+        })}
+      />
       <header style={{ display: "grid", gap: 10 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "baseline" }}>
           <h1 style={{ margin: 0, fontSize: 20 }}>{title} fees by airline</h1>
@@ -569,17 +718,20 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
         <div style={{ overflowX: "auto" }}>
           <table>
+            <caption style={{ padding: 8, textAlign: "left", fontSize: 13, color: "#444" }}>
+              {title} fee rows by airline, including amount, route, timing, conditions, source, and last verified date.
+            </caption>
             <thead>
               <tr>
-                <th>Airline</th>
-                <th>Amount</th>
-                <th>Applies to</th>
-                <th>Region / route</th>
-                <th>Timing</th>
-                <th>Conditions</th>
-                <th>Source</th>
-                <th>Last verified</th>
-                <th>Next step</th>
+                <th scope="col">Airline</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Applies to</th>
+                <th scope="col">Region / route</th>
+                <th scope="col">Timing</th>
+                <th scope="col">Conditions</th>
+                <th scope="col">Source</th>
+                <th scope="col">Last verified</th>
+                <th scope="col">Next step</th>
               </tr>
             </thead>
             <tbody>
@@ -681,6 +833,20 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {feeFaqs.length ? (
+        <section style={{ display: "grid", gap: 10 }}>
+          <h2 style={{ margin: 0, fontSize: 16 }}>Common questions</h2>
+          <div style={{ display: "grid", gap: 10 }}>
+            {feeFaqs.map((faq) => (
+              <div key={faq.question} style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
+                <h3 style={{ margin: 0, fontSize: 15 }}>{faq.question}</h3>
+                <p style={{ margin: "8px 0 0", fontSize: 14, lineHeight: 1.6, color: "#444" }}>{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }

@@ -15,6 +15,8 @@ import {
   type AirlineOverrides,
   type CardsJson,
 } from "@/lib/bag-cost-calculator";
+import { JsonLd } from "@/components/JsonLd";
+import { canonical } from "@/lib/seo";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -58,12 +60,144 @@ function missingBagLabel(ordinals: number[]): string {
   return ordinals.map((n) => (n === 1 ? "first" : n === 2 ? "second" : `${n}rd`)).join(", ");
 }
 
-function scenarioHref(airlineSlug: string, travelers: number, bags: number, trips: number): string {
-  return `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=yes`;
+type RoutePreset = {
+  label: string;
+  body: string;
+  travelers: number;
+  bags: number;
+  trips: number;
+};
+
+const ROUTE_PRESETS_BY_AIRLINE: Record<string, RoutePreset[]> = {
+  zipair: [
+    {
+      label: "Los Angeles (LAX) to Tokyo (NRT)",
+      body: "Long-haul ZIPAIR setup where checked baggage is usually a separate route-priced decision.",
+      travelers: 1,
+      bags: 1,
+      trips: 1,
+    },
+    {
+      label: "San Francisco (SFO) to Tokyo (NRT)",
+      body: "Useful when comparing a low base fare against a trip that needs one checked bag.",
+      travelers: 1,
+      bags: 1,
+      trips: 1,
+    },
+    {
+      label: "Honolulu (HNL) to Tokyo (NRT)",
+      body: "Good for testing a leisure trip where baggage, seats, and add-ons can change the final total.",
+      travelers: 2,
+      bags: 1,
+      trips: 1,
+    },
+    {
+      label: "Tokyo (NRT) to Seoul (ICN)",
+      body: "Shorter ZIPAIR route context where the cabin weight limit may matter more than checked-bag math.",
+      travelers: 1,
+      bags: 0,
+      trips: 1,
+    },
+    {
+      label: "Tokyo (NRT) to Bangkok (BKK)",
+      body: "International route context for checking whether a paid weight allowance is needed before checkout.",
+      travelers: 1,
+      bags: 1,
+      trips: 1,
+    },
+    {
+      label: "Tokyo (NRT) to Singapore (SIN)",
+      body: "Use this when the fare looks cheap but checked baggage or seat choice may be part of the real price.",
+      travelers: 1,
+      bags: 1,
+      trips: 1,
+    },
+  ],
+};
+
+function scenarioHref(
+  airlineSlug: string,
+  travelers: number,
+  bags: number,
+  trips: number,
+  route?: string
+): string {
+  const params = new URLSearchParams({
+    airline: airlineSlug,
+    travelers: String(travelers),
+    bags: String(bags),
+    directions: "2",
+    trips: String(trips),
+    pay: "yes",
+  });
+
+  if (route) params.set("route", route);
+
+  return `/tools/checked-baggage-calculator?${params.toString()}`;
+}
+
+function cleanRouteLabel(raw: string | undefined): string | null {
+  const value = raw?.trim();
+  if (!value) return null;
+  return value.slice(0, 90);
 }
 
 function plural(n: number, singular: string, pluralLabel = `${singular}s`): string {
   return `${n} ${n === 1 ? singular : pluralLabel}`;
+}
+
+const CHECKED_BAG_FAQS = [
+  {
+    question: "How does the checked baggage calculator estimate cost?",
+    answer:
+      "It multiplies the selected airline's usable published checked-bag fee by travelers, bags, flight directions, and annual roundtrips. If a bag price depends on route, fare, or booking timing, the tool explains the lookup instead of inventing a number.",
+  },
+  {
+    question: "Why does the calculator sometimes refuse to quote a checked bag total?",
+    answer:
+      "Some airlines publish checked-bag prices by route, fare family, domestic versus international market, or booking channel. When the current data does not contain a usable fixed fee for the requested bag position, the tool asks for an airline-specific lookup.",
+  },
+  {
+    question: "Can an airline credit card reduce the checked bag total?",
+    answer:
+      "Some airline cards publish a first checked bag waiver for the cardholder and eligible companions. The card comparison only counts modeled bag savings and excludes points, bonuses, lounge access, and unrelated perks.",
+  },
+];
+
+function checkedBagCalculatorJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+          { "@type": "ListItem", position: 2, name: "Checked baggage cost calculator", item: canonical("/tools/checked-baggage-calculator") },
+        ],
+      },
+      {
+        "@type": "WebApplication",
+        "@id": canonical("/tools/checked-baggage-calculator"),
+        name: "Checked baggage cost calculator",
+        url: canonical("/tools/checked-baggage-calculator"),
+        applicationCategory: "TravelApplication",
+        operatingSystem: "Any",
+        description:
+          "Estimate checked baggage fees from published airline fee details and test whether a free checked bag card benefit could offset the cost.",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: CHECKED_BAG_FAQS.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
+  };
 }
 
 export default async function CheckedBaggageCalculatorPage({ searchParams }: PageProps) {
@@ -77,6 +211,8 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
   const directions = clampInt(firstString(sp.directions), 1, 2, 2);
   const roundtrips = clampInt(firstString(sp.trips), 1, 30, 1);
   const payWithCard = (firstString(sp.pay) ?? "yes") !== "no";
+  const routeLabel = cleanRouteLabel(firstString(sp.route));
+  const routePresets = ROUTE_PRESETS_BY_AIRLINE[airlineSlug] ?? [];
 
   const trip = calcCheckedBagTripCost({
     fees: airline.fees,
@@ -123,6 +259,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
 
   return (
     <main className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-10">
+      <JsonLd data={checkedBagCalculatorJsonLd()} />
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
           Baggage cost tool
@@ -164,6 +301,34 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           </Link>
         </div>
       </section>
+
+      {routePresets.length > 0 ? (
+        <section className="grid gap-4 rounded-2xl border border-blue-100 bg-blue-50 p-5">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
+              Popular route presets
+            </div>
+            <h2 className="mt-2 text-xl font-extrabold text-slate-950">
+              Start with a ZIPAIR route context, then verify the baggage quote at checkout.
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+              These presets do not assign route-specific bag prices. They set the airline, party size, and bag pattern so you can see whether the calculator can quote a total or whether ZIPAIR&apos;s route-and-timing lookup is still required.
+            </p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {routePresets.map((preset) => (
+              <Link
+                key={preset.label}
+                href={scenarioHref(airlineSlug, preset.travelers, preset.bags, preset.trips, preset.label)}
+                className="rounded-xl border border-blue-100 bg-white p-4 transition hover:border-blue-400 hover:shadow-sm"
+              >
+                <div className="text-sm font-extrabold text-blue-800 underline">{preset.label}</div>
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">{preset.body}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <form method="get" className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="grid gap-4 md:grid-cols-2">
@@ -239,6 +404,11 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
 
       <section className="grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-slate-600">Answer first</div>
+        {routeLabel ? (
+          <div className="w-fit rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-900">
+            Route context: {routeLabel}
+          </div>
+        ) : null}
         {trip.canEstimate ? (
           <>
             <h2 className="text-3xl font-extrabold text-slate-950">
@@ -250,6 +420,11 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               estimated checked-bag fees before elite status, fare bundles, included allowances, or
               route-specific exceptions.
             </p>
+            {routeLabel ? (
+              <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+                The route label helps you frame the decision, but this calculator only quotes a total when the stored fee data has a usable fixed amount for the selected airline and bag position.
+              </p>
+            ) : null}
           </>
         ) : (
           <>
@@ -262,6 +437,11 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               <span className="font-semibold">{variablePricing.reasons.join(", ")}</span> as the likely
               drivers of the final baggage price.
             </p>
+            {routeLabel ? (
+              <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+                For {routeLabel}, use ZIPAIR&apos;s checkout or manage-booking baggage screen to price the checked-bag weight allowance before assuming the base fare is cheaper.
+              </p>
+            ) : null}
           </>
         )}
         <p className="text-sm leading-relaxed text-slate-600">{trip.explanation}</p>
@@ -407,10 +587,13 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">
+            <caption className="pb-3 text-left text-xs leading-relaxed text-slate-500">
+              Checked-bag fee inputs used by this calculator for the selected airline and bag count.
+            </caption>
             <thead>
               <tr className="border-b border-slate-200 text-slate-600">
-                <th className="py-2 pr-4">Bag</th>
-                <th className="py-2 pr-4">Estimated fee</th>
+                <th scope="col" className="py-2 pr-4">Bag</th>
+                <th scope="col" className="py-2 pr-4">Estimated fee</th>
               </tr>
             </thead>
             <tbody>
@@ -448,6 +631,18 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           <Link href="/guides/airline-credit-card-baggage-benefits" className="text-blue-700 underline">
             Card baggage benefit rules
           </Link>
+        </div>
+      </section>
+
+      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-slate-950">Checked baggage calculator FAQ</h2>
+        <div className="grid gap-3">
+          {CHECKED_BAG_FAQS.map((faq) => (
+            <div key={faq.question} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <h3 className="text-base font-bold text-slate-900">{faq.question}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{faq.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
     </main>
