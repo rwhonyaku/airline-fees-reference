@@ -7,9 +7,9 @@ import { BasicEconomyDecisionTool } from "@/components/BasicEconomyDecisionTool"
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
 
 export const metadata: Metadata = {
-  title: "Basic Economy traps by airline: carry-on, seats, changes (2026) | Airline Fees Reference",
+  title: "Basic Economy Traps by Airline: Carry-On, Bags, Seats, Changes (2026)",
   description:
-    "Compare Basic Economy and low-cost entry fares by carry-on access, checked bags, seat limits, and change rules before the cheap fare gets expensive.",
+    "Compare Basic Economy fares by carry-on access, checked bag fees, seat limits, and change rules for United, Air Canada, JetBlue, Delta, American, and more.",
 };
 
 const LAST_VERIFIED = "2026-05-23";
@@ -20,6 +20,8 @@ const SOURCES = {
   americanBasic: "https://www.aa.com/i18n/travel-info/experience/seats/basic-economy.jsp",
   deltaCarryOn: "https://www.delta.com/us/en/baggage/carry-on-baggage",
   deltaFees: "https://www.delta.com/us/en/baggage/overview#changecancelfees",
+  airCanadaBags: "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
+  airCanadaSeats: "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
   jetblueBasic:
     "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
   alaskaChanges: "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
@@ -92,6 +94,7 @@ function usdRangeText(row: FeeItem | null, prefix = "From"): string {
 
 function buildGuideRows(): GuideRow[] {
   const unitedFees = getFees("united");
+  const airCanadaFees = getFees("air-canada");
   const deltaFees = getFees("delta");
   const jetblueFees = getFees("jetblue");
   const alaskaFees = getFees("alaska");
@@ -123,6 +126,26 @@ function buildGuideRows(): GuideRow[] {
     (row) =>
       safeText(row.applies_to).toLowerCase().includes("basic") &&
       safeText(row.region_or_route).includes("South America/Europe/UK/Africa/Middle East/India/Asia/Pacific")
+  );
+
+  const airCanadaBasicFirstBag = findFee(
+    airCanadaFees,
+    "checked_baggage",
+    (row) =>
+      safeText(row.applies_to).toLowerCase().includes("basic") &&
+      safeText(row.conditions).toLowerCase().includes("first checked bag")
+  );
+  const airCanadaBasicSeat = findFee(
+    airCanadaFees,
+    "seat_selection",
+    (row) =>
+      safeText(row.applies_to).toLowerCase().includes("basic") &&
+      safeText(row.conditions).toLowerCase().includes("advance seat")
+  );
+  const airCanadaBasicChange = findFee(
+    airCanadaFees,
+    "change_cancellation",
+    (row) => safeText(row.applies_to).toLowerCase().includes("basic")
   );
 
   const jetblueBasicChange = findFee(
@@ -210,6 +233,23 @@ function buildGuideRows(): GuideRow[] {
         "Delta Basic is mainly a problem when your dates are not firm, because the carry-on looks normal but the change and cancel rules are tighter.",
       sourceLabel: "Delta baggage and change rules",
       sourceHref: SOURCES.deltaFees,
+    },
+    {
+      slug: "air-canada",
+      airline: "Air Canada",
+      model: "Basic fare with paid checked-bag pressure",
+      carryOn: "One standard carry-on and one personal item are included, so the carry-on rule is not the main trap.",
+      seats: airCanadaBasicSeat
+        ? `${formatAmount(airCanadaBasicSeat.amount, airCanadaBasicSeat.currency)} for Basic advance seat selection, with price varying by route and seat type.`
+        : "Basic advance seat selection is a paid product where shown by route and seat type.",
+      changes: airCanadaBasicChange
+        ? `${safeText(airCanadaBasicChange.conditions)}.`
+        : "Basic changes and refunds are more restrictive than Standard and higher fares.",
+      whereItBreaks: airCanadaBasicFirstBag
+        ? `The Basic domestic/transborder example shows ${formatAmount(airCanadaBasicFirstBag.amount, airCanadaBasicFirstBag.currency)} each way for the first checked bag, while Standard and higher show the first bag included.`
+        : "Air Canada Basic can lose the fare comparison when a checked bag is not included.",
+      sourceLabel: "Air Canada checked baggage",
+      sourceHref: SOURCES.airCanadaBags,
     },
     {
       slug: "jetblue",
@@ -343,6 +383,45 @@ const CLASS_MODEL_CARDS: ScopeCard[] = [
   },
 ];
 
+const PRIORITY_BASIC_PATHS = [
+  {
+    airline: "United",
+    title: "Carry-on risk first",
+    body:
+      "United Basic Economy is the clearest example where the cheapest fare can fail because you need more than a personal item.",
+    links: [
+      { href: "/airlines/united", label: "United fees" },
+      {
+        href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=1&pay=yes",
+        label: "Price United bags",
+      },
+    ],
+  },
+  {
+    airline: "Air Canada",
+    title: "Basic vs Standard bag math",
+    body:
+      "Air Canada Basic keeps normal carry-on access, but checked-bag and seat rules can make Standard the better comparison.",
+    links: [
+      { href: "/airlines/air-canada", label: "Air Canada fees" },
+      {
+        href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes",
+        label: "Price Air Canada bags",
+      },
+    ],
+  },
+  {
+    airline: "JetBlue",
+    title: "Carry-on included, flexibility limited",
+    body:
+      "Blue Basic now includes a carry-on, so the bigger decision is whether the cancellation and change limits are worth the fare savings.",
+    links: [
+      { href: "/airlines/jetblue", label: "JetBlue fees" },
+      { href: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=1&pay=yes", label: "Check JetBlue card math" },
+    ],
+  },
+];
+
 const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You need a normal carry-on",
@@ -445,15 +524,15 @@ export default function BasicEconomyTrapsGuide() {
           <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
             <div className="space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
-                Basic Economy is not one simple thing. Before you book the cheapest fare, check
-                what it leaves out: a full carry-on, a checked bag, seat choice, changes, refunds,
-                or some mix of all of them.
+                Basic Economy is not one simple thing. The cheapest fare is only a good deal if it
+                still works after carry-on access, checked bag fees, seat choice, changes, and
+                refunds are included.
               </p>
               <p>
                 United is the clearest case where Basic Economy can force a bag decision right
-                away. American, Delta, and JetBlue usually keep normal carry-on access, but the
-                restrictions move to seats, bags, or flexibility. Spirit and Frontier start from a
-                lower base fare and charge separately for more of the trip.
+                away. Air Canada Basic keeps carry-on access but can change checked-bag and seat
+                math. JetBlue Blue Basic includes a carry-on now, but flexibility remains the
+                pressure point.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
@@ -483,6 +562,42 @@ export default function BasicEconomyTrapsGuide() {
           </figcaption>
         </figure>
       </header>
+
+      <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">
+              Start with these fare checks
+            </div>
+            <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+              The Basic Economy question changes by airline.
+            </h2>
+          </div>
+          <Link href="/tools/checked-baggage-calculator" className="text-sm font-bold text-blue-800 underline">
+            Open bag calculator
+          </Link>
+        </div>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {PRIORITY_BASIC_PATHS.map((item) => (
+            <div key={item.airline} className="rounded-2xl border border-blue-100 bg-white p-5">
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">{item.airline}</div>
+              <h3 className="mt-2 text-lg font-black text-slate-950">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.body}</p>
+              <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                {item.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 font-bold text-blue-800 underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <BasicEconomyDecisionTool />
 
@@ -611,6 +726,20 @@ export default function BasicEconomyTrapsGuide() {
                 </td>
                 <td className="px-4 py-4 text-slate-700">
                   The bag rule is easier. The bigger question is whether your plans might change.
+                </td>
+              </tr>
+              <tr className="border-t border-slate-100">
+                <td className="px-4 py-4 font-semibold text-slate-900">
+                  <Link href="/airlines/air-canada" className="text-blue-700 underline">
+                    Air Canada
+                  </Link>
+                </td>
+                <td className="px-4 py-4 text-slate-700">
+                  Basic still includes one standard carry-on and one personal item.
+                </td>
+                <td className="px-4 py-4 text-slate-700">
+                  The carry-on is not the main problem. Compare Basic against Standard when a checked
+                  bag, seat choice, or flexibility matters.
                 </td>
               </tr>
               <tr className="border-t border-slate-100">
@@ -917,6 +1046,16 @@ export default function BasicEconomyTrapsGuide() {
           <li>
             <a href={SOURCES.deltaFees} target="_blank" rel="noreferrer" className="text-blue-700 underline">
               Delta baggage and change/cancel overview
+            </a>
+          </li>
+          <li>
+            <a href={SOURCES.airCanadaBags} target="_blank" rel="noreferrer" className="text-blue-700 underline">
+              Air Canada checked baggage
+            </a>
+          </li>
+          <li>
+            <a href={SOURCES.airCanadaSeats} target="_blank" rel="noreferrer" className="text-blue-700 underline">
+              Air Canada advance seat selection
             </a>
           </li>
           <li>

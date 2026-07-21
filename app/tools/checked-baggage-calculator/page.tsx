@@ -25,9 +25,9 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Checked Baggage Cost Calculator and Free Bag Card Check | Airline Fees Reference",
+  title: "Checked Baggage Cost Calculator | Bag Fees and Free Checked Bag Card Check",
   description:
-    "Estimate checked baggage fees from published airline fee details, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
+    "Estimate checked baggage fees by airline, travelers, bags, and roundtrips, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -114,6 +114,27 @@ const ROUTE_PRESETS_BY_AIRLINE: Record<string, RoutePreset[]> = {
     },
   ],
 };
+
+const FEATURED_CHECKED_BAG_PATHS = [
+  {
+    href: "/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes",
+    title: "Air France baggage price lookup",
+    body:
+      "Air France extra-bag pricing is itinerary-based, so use the calculator to confirm when a route lookup is still required.",
+  },
+  {
+    href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes",
+    title: "Air Canada checked bag fee",
+    body:
+      "Good for comparing Basic against Standard when travelers need checked bags.",
+  },
+  {
+    href: "/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29",
+    title: "ZIPAIR route bag check",
+    body:
+      "ZIPAIR checked baggage is bought by weight, so route context matters before the base fare wins.",
+  },
+];
 
 function scenarioHref(
   airlineSlug: string,
@@ -271,6 +292,58 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           unquoted when the price depends on route, fare, or booking timing.
         </p>
       </header>
+
+      <section className="grid gap-4 rounded-2xl border border-blue-100 bg-blue-50 p-6">
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
+          Fast answer
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-extrabold text-slate-950">When this gives a number</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              The calculator can estimate trip and annual baggage cost when the selected airline has
+              usable fixed checked-bag fees for the requested bag count.
+            </p>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-extrabold text-slate-950">When it says lookup required</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Route-priced airlines stay unquoted when the bag fee depends on itinerary, fare
+              family, baggage concept, timing, currency, or operating carrier.
+            </p>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h2 className="text-base font-extrabold text-slate-950">When card math matters</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              If checked-bag fees repeat across travelers or trips, the tool sends you to the
+              free-checked-bag card comparison only when a modeled benefit can apply.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            High-intent checked-bag paths
+          </div>
+          <h2 className="mt-2 text-xl font-extrabold text-slate-950">
+            Start with the airline travelers are already searching.
+          </h2>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {FEATURED_CHECKED_BAG_PATHS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-blue-400 hover:bg-blue-50"
+            >
+              <div className="text-sm font-extrabold text-blue-800 underline">{item.title}</div>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">{item.body}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5">
         <div className="text-xs font-bold uppercase tracking-widest text-slate-600">Common scenarios</div>

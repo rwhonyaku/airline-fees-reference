@@ -337,9 +337,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air France includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France baggage charges depend on itinerary and fare path, so this page does not pretend there is one flat first-bag price. The amount for an extra checked bag is shown during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage fees, charges, and prices depend on itinerary, fare, and when the bag is purchased, so this page does not pretend there is one flat first-bag price. Extra checked baggage is priced during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
       restrictions:
-        "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary.",
+        "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary rather than one universal online amount.",
     },
     verificationNote:
       "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2025-12-24.",
@@ -381,7 +381,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Additional baggage",
         details:
-          "Additional checked-baggage prices are itinerary-based and shown in booking or My Bookings, with the online timing rule depending on whether the itinerary touches Canada or the USA.",
+          "Additional checked-baggage prices are itinerary-based and shown in booking or My Bookings. The useful Air France baggage price is the one shown for your exact route, fare, and purchase timing, with the online timing rule depending on whether the itinerary touches Canada or the USA.",
       },
     ],
     scenarios: [
@@ -393,10 +393,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Adding a checked bag before travel",
         details:
-          "Additional baggage pricing is itinerary-based and surfaced during purchase or in My Bookings. The practical move is to price the exact route before deciding whether Air France is cheaper than another carrier after baggage charges.",
+          "Additional baggage pricing is itinerary-based and surfaced during purchase or in My Bookings. The practical move is to price the exact route before deciding whether Air France is cheaper than another carrier after baggage fees, charges, and seat add-ons.",
       },
       {
-        title: "Arriving with excess baggage",
+        title: "Checking Air France excess baggage cost",
         details:
           "Overweight bags up to 32 kg and oversized bags over 158 cm are airport-priced by itinerary. Over 32 kg goes to cargo instead of normal checked baggage.",
       },
@@ -600,9 +600,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "One personal item is included alongside the standard carry-on. There is no separate personal-item-only fee shown here.",
       checkedBag:
-        "Air Canada check-in baggage fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
+        "Air Canada baggage fees and checked bag fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
       restrictions:
-        "Basic fares are the main restriction point: the checked-bag charge can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
+        "Basic fares are the main restriction point: the checked bag fee can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
       "Air Canada baggage, seat, and change details shown here were last verified on 2025-12-24.",
@@ -630,7 +630,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes. It also lists advance seat selection starting at CAD 10, with changes and refunds not permitted after 24 hours except in qualifying circumstances.",
+          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes. It also lists advance seat selection starting at CAD 10, with changes and refunds not permitted after 24 hours except in qualifying circumstances. This is the fare family where Air Canada checked bag fee math matters most.",
       },
       {
         name: "Standard and higher",
@@ -657,7 +657,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one bag on a Basic domestic or transborder trip",
         details:
-          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag. That is the check-in baggage fee to compare against Standard when the first bag is included there.",
+          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag. That is the Air Canada check-in baggage fee to compare against Standard when the first bag is included there.",
       },
       {
         title: "Checking two standard bags on a fare where the second bag is not included",
@@ -7224,19 +7224,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   zipair: {
     intro: {
       carryOn:
-        "ZIPAIR includes one cabin bag plus one personal item, but the two items share a combined 7 kg weight limit.",
+        "ZIPAIR includes one cabin bag plus one personal item, but both items share a combined 7 kg carry-on weight limit. That combined limit is the first rule to check before assuming a ZIPAIR trip can stay cabin-only.",
       personalItem:
-        "The personal item is not extra weight; it counts toward the same combined 7 kg cabin allowance.",
+        "The personal item is not extra weight. It counts toward the same combined 7 kg cabin allowance as the cabin bag.",
       checkedBag:
-        "Checked baggage is not included by default and is purchased by weight, with pricing driven by route and purchase timing.",
+        "ZIPAIR checked baggage is not included by default. It is purchased by weight, with the baggage price driven by route and purchase timing rather than one flat first-bag fee.",
       restrictions:
-        "ZIPAIR is an optional-service model: checked bags, seats, sports equipment, and changes are separate decisions, and unaccompanied-minor service is not offered.",
+        "ZIPAIR is an optional-service model: checked bags, extra weight, seats, sports equipment, and changes are separate decisions. Unaccompanied-minor service is not offered.",
     },
     verificationNote:
       "ZIPAIR carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
     avoidFees: [
       "Weigh cabin items together because the carry-on row uses a combined 7 kg limit across the cabin bag and personal item.",
-      "Buy checked baggage by weight before travel when needed; checked baggage is not included by default.",
+      "Buy checked baggage by weight before travel when needed; ZIPAIR checked baggage is not included by default.",
       "Choose enough checked-bag weight in advance because excess weight beyond the purchased allowance is charged at airport rates.",
       "Skip paid seat selection if seat location is not important, and do not book ZIPAIR for an unaccompanied minor because the service is not offered.",
     ],
@@ -7247,6 +7247,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/sports_equipment", label: "Sports equipment" },
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
+      { href: "/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29", label: "ZIPAIR route bag calculator" },
       { href: "/tools/excess-baggage-calculator?airline=zipair&weight=24&size=62", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic fare guide" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
@@ -7261,12 +7262,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Cabin-only travel",
         details:
-          "Cabin-only travel means one cabin bag and one personal item together up to 7 kg.",
+          "Cabin-only travel means one cabin bag and one personal item together up to 7 kg. If laptop, camera, clothing, and souvenirs push the combined weight over 7 kg, the trip may need a paid checked-bag weight allowance.",
       },
       {
         name: "Checked-baggage add-on structure",
         details:
-          "Checked baggage is purchased by weight and is not included by default.",
+          "Checked baggage is purchased by weight and is not included by default. The useful ZIPAIR baggage cost is the one shown for the exact route, weight package, and purchase timing.",
       },
       {
         name: "Seat and change products",
@@ -7278,12 +7279,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Traveling with only cabin items",
         details:
-          "The cabin-only path allows one cabin bag and one personal item together up to 7 kg.",
+          "The cabin-only path allows one cabin bag and one personal item together up to 7 kg. Weigh both together, not separately.",
       },
       {
-        title: "Adding one checked bag",
+        title: "Adding one ZIPAIR checked bag",
         details:
-          "Checked baggage is purchased by weight, with price depending on route and purchase timing.",
+          "Checked baggage is purchased by weight, with price depending on route and purchase timing. Use the route preset links before checkout to decide whether the base fare still wins.",
       },
       {
         title: "Arriving at the airport with excess checked-bag weight",
@@ -7865,6 +7866,166 @@ function CompareNextPanel({ links }: { links: ReferenceLink[] }) {
   );
 }
 
+function AirFranceBaggagePriceChecklist() {
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Air France baggage price checklist
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Check the exact route before treating Air France baggage charges as a fixed fee.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        Air France does not publish one universal baggage price for every traveler. The charge usually comes from the itinerary, fare family, whether the bag is additional or excess, and where the bag is purchased.
+      </p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {[
+          "Is checked baggage included with this fare, or are you buying an additional bag?",
+          "Does the itinerary touch Canada or the USA, where the online discount rule is different?",
+          "Will the bag stay within the ticketed weight allowance and 158 cm standard-size limit?",
+          "Are you pricing the bag during booking, in My Bookings, online check-in, or at the airport?",
+        ].map((item) => (
+          <div key={item} className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+            {item}
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link
+          href="/tools/excess-baggage-calculator?airline=air-france&bags=1&directions=2&weight=51&size=63"
+          className="font-bold text-blue-800 underline"
+        >
+          Check Air France excess baggage risk
+        </Link>
+        <Link href="/guides/international-baggage-allowance" className="font-bold text-blue-800 underline">
+          Understand international baggage allowance
+        </Link>
+        <Link href="/fees/checked_baggage" className="font-bold text-blue-800 underline">
+          Compare checked baggage fees
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function AirCanadaCheckedBagFeeChecklist() {
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Air Canada checked bag fee model
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Start with fare family: Basic is the paid-bag pressure point.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        Air Canada baggage fees are not one flat rule across every ticket. In the current data, Standard and higher fares show the first checked bag included, while the Basic domestic/transborder example shows a paid first checked bag.
+      </p>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Basic domestic/transborder
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            First checked bag: CAD 30 each way in the dataset example. Second checked bag: CAD 50 where not included.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Standard and higher
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            The first checked bag is shown as included across domestic, transborder, and international markets.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Overweight or oversize
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Air Canada lists CAD 100 to CAD 225 ranges by route; bags over 32 kg are not accepted as ordinary checked baggage.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes"
+          className="font-bold text-blue-800 underline"
+        >
+          Run Air Canada checked-bag math
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?airline=air-canada&bags=1&directions=2&weight=51&size=63"
+          className="font-bold text-blue-800 underline"
+        >
+          Check overweight or oversize risk
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="font-bold text-blue-800 underline">
+          Compare Basic fare traps
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function ZipairBaggageDecisionChecklist() {
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        ZIPAIR baggage decision check
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        If both cabin items are over 7 kg together, price checked baggage before booking.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage is bought by weight, and the final price depends on the route and purchase timing.
+      </p>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Cabin-only test
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Weigh the cabin bag and personal item together. The combined limit is 7 kg, not 7 kg per item.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Checked bag decision
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            ZIPAIR checked baggage is an add-on purchased by weight. There is no included default checked bag shown here.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Airport risk
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Extra checked-bag weight beyond the purchased allowance is charged at airport rates, and a single checked bag must stay at or below 32 kg.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29"
+          className="font-bold text-blue-800 underline"
+        >
+          Try a ZIPAIR route preset
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?airline=zipair&weight=24&size=62"
+          className="font-bold text-blue-800 underline"
+        >
+          Check ZIPAIR excess baggage risk
+        </Link>
+        <Link href="/sizer-rules?weight=7" className="font-bold text-blue-800 underline">
+          Check 7 kg cabin-bag fit
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function airlineSlugsFromLinks(links: ReferenceLink[]) {
   return links
     .map((link) => /^\/airlines\/([^/?#]+)/.exec(link.href)?.[1])
@@ -7928,15 +8089,15 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
   switch (slug) {
     case "air-canada":
       return {
-        title: "Air Canada Baggage Fees, Check-In Bag Rules, and Basic Fare Traps (2026)",
+        title: "Air Canada Baggage Fees, Checked Bag Fees, and Basic Fare Rules (2026)",
         description:
-          "Air Canada baggage fees depend on fare family and route. Standard and higher fares include the first checked bag in the current fee table, while Basic domestic/transborder examples show paid check-in baggage.",
+          "Air Canada baggage fees and checked bag fees depend on fare family and route. Standard and higher fares include the first checked bag, while Basic domestic/transborder examples show paid check-in baggage.",
       };
     case "air-france":
       return {
-        title: "Air France Baggage Charges, Excess Baggage Costs, and Carry-On Rules (2026)",
+        title: "Air France Baggage Fees, Charges, Prices, and Excess Baggage Costs (2026)",
         description:
-          "Air France baggage charges depend on itinerary, fare, and purchase path. Additional baggage is priced during booking or My Bookings, while excess baggage costs are airport-priced by itinerary.",
+          "Air France baggage fees and charges depend on itinerary, fare, and purchase path. Extra baggage prices are shown during booking or My Bookings, while excess baggage costs are airport-priced by itinerary.",
       };
     case "alaska":
       return {
@@ -7949,6 +8110,12 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         title: "Lufthansa Baggage Fees, Carry-On Allowance, and EU261 Links (2026)",
         description:
           "Lufthansa baggage rules depend on fare, cabin, and route. The page explains included carry-on, checked-bag examples, excess baggage, seat selection, and change-fee conditions.",
+      };
+    case "zipair":
+      return {
+        title: "ZIPAIR Baggage Fees, 7 kg Carry-On Limit, and Checked Bag Costs (2026)",
+        description:
+          "ZIPAIR baggage fees start with the combined 7 kg carry-on limit. Checked baggage is not included by default and is purchased by weight, with cost depending on route and timing.",
       };
     default:
       return {
@@ -8135,6 +8302,10 @@ function ReferenceAirlinePage({
           {readerCopy(content.statusUpdate.body)}
         </section>
       ) : null}
+
+      {slug === "air-france" ? <AirFranceBaggagePriceChecklist /> : null}
+      {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
+      {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
 
       <BaggageDecisionWidget
         airlineSlug={slug}
