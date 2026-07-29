@@ -152,7 +152,7 @@ const DOT_REFERENCE_SLUGS = new Set([
 
 const EU261_REFERENCE_SLUGS = new Set(["aer-lingus", "air-france", "american", "british-airways", "delta", "easyjet", "iberia", "iberia-express", "jetblue", "klm", "lufthansa", "norwegian", "ryanair", "tap-air-portugal", "united", "vueling", "zipair"]);
 
-const DECISION_SCENARIO_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue"]);
+const DECISION_SCENARIO_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "zipair"]);
 
 const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "singapore-airlines": {
@@ -7487,6 +7487,36 @@ function getAirlineScenarioLinks(slug: string, airlineName: string): Array<{
   cta: string;
 }> {
   const enc = encodeURIComponent(slug);
+
+  if (slug === "zipair") {
+    return [
+      {
+        title: "Cabin-only under 7 kg",
+        body: "Start here if the cabin bag and personal item together stay under ZIPAIR's combined 7 kg cabin allowance.",
+        href: "/sizer-rules?weight=7",
+        cta: "Check cabin-bag fit",
+      },
+      {
+        title: "One traveler, one checked bag",
+        body: "Use this when ZIPAIR's base fare looks cheap but the trip probably needs a paid checked-bag weight allowance.",
+        href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=1&bags=1&directions=2&trips=1&pay=yes`,
+        cta: "Price one bag",
+      },
+      {
+        title: "Two travelers, leisure trip",
+        body: "Best for Tokyo leisure trips where both travelers may need a checked-bag allowance instead of relying on cabin weight.",
+        href: `/tools/checked-baggage-calculator?airline=${enc}&travelers=2&bags=1&directions=2&trips=1&pay=yes`,
+        cta: "Estimate trip baggage",
+      },
+      {
+        title: "Purchased allowance is not enough",
+        body: "Use this when the bag may exceed the weight allowance you bought. ZIPAIR lists airport rates for excess weight, and a single checked bag must not exceed 32 kg.",
+        href: `/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=24&size=62`,
+        cta: "Check excess risk",
+      },
+    ];
+  }
+
   return [
     {
       title: "One traveler, one checked bag",
@@ -7526,7 +7556,7 @@ function getPopularRouteLinks(slug: string): Array<{
   const routes = [
     {
       route: "Los Angeles (LAX) to Tokyo (NRT)",
-      body: "Long-haul ZIPAIR route context for testing one checked bag before treating the base fare as the final trip price.",
+      body: "A long-haul ZIPAIR preset for testing one paid checked-bag allowance before treating the base fare as the final trip price.",
       travelers: 1,
       bags: 1,
     },
@@ -7538,7 +7568,7 @@ function getPopularRouteLinks(slug: string): Array<{
     },
     {
       route: "Honolulu (HNL) to Tokyo (NRT)",
-      body: "Good leisure-trip preset when two travelers may each need one checked bag.",
+      body: "Good leisure-trip preset when two travelers may each need one checked-bag allowance.",
       travelers: 2,
       bags: 1,
     },
@@ -7609,10 +7639,10 @@ function AirlineScenarioLinks({ slug, airlineName }: { slug: string; airlineName
             Popular ZIPAIR route starts
           </div>
           <h3 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-            Use a route preset, then confirm ZIPAIR&apos;s baggage quote.
+            Start with a common ZIPAIR route, then confirm the baggage quote.
           </h3>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
-            These links do not invent route-specific baggage prices. They prefill the decision engine with a ZIPAIR route context and bag pattern so the page can show whether a fixed estimate is possible or whether checkout lookup is required.
+            These links do not invent route-specific baggage prices. They prefill the calculator with a ZIPAIR route context and bag pattern so you can see whether the current fee table supports an estimate or whether ZIPAIR checkout is still required.
           </p>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {routeLinks.map((link) => (
@@ -7971,13 +8001,13 @@ function ZipairBaggageDecisionChecklist() {
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        ZIPAIR baggage decision check
+        ZIPAIR international baggage policy
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        If both cabin items are over 7 kg together, price checked baggage before booking.
+        ZIPAIR baggage fees depend on route, weight allowance, and when you buy the bag.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage is bought by weight, and the final price depends on the route and purchase timing.
+        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage is not included by default, so the useful baggage price is the route-specific checked-bag allowance shown during booking or manage booking, not a universal first-bag fee.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -7993,7 +8023,7 @@ function ZipairBaggageDecisionChecklist() {
             Checked bag decision
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            ZIPAIR checked baggage is an add-on purchased by weight. There is no included default checked bag shown here.
+            ZIPAIR checked baggage is an add-on purchased by weight. Use the route and weight package before comparing ZIPAIR against a legacy carrier fare.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8001,7 +8031,7 @@ function ZipairBaggageDecisionChecklist() {
             Airport risk
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Extra checked-bag weight beyond the purchased allowance is charged at airport rates, and a single checked bag must stay at or below 32 kg.
+            Extra checked-bag weight beyond the purchased allowance is charged at airport rates. A single checked bag must stay at or below 32 kg.
           </p>
         </div>
       </div>
@@ -8020,6 +8050,71 @@ function ZipairBaggageDecisionChecklist() {
         </Link>
         <Link href="/sizer-rules?weight=7" className="font-bold text-blue-800 underline">
           Check 7 kg cabin-bag fit
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function AlaskaCarryOnAndBagCheck() {
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Alaska carry-on and bag check
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Alaska does not charge for a standard carry-on bag.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        The direct answer for Alaska carry-on searches is yes, a carry-on is included: one carry-on
+        bag up to 22 x 14 x 9 inches plus one personal item are included on all fares shown here,
+        including Saver. The bigger Alaska baggage question is usually checked-bag pricing by
+        ticketing date, route, fare cabin, and eligible bag benefits.
+      </p>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Carry-on answer
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Saver still includes one carry-on and one personal item. The risk is fit and aircraft
+            space, not a listed carry-on fee.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Checked-bag date
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Most North America checked-bag pricing changed for tickets issued on or after April 10,
+            2026, so old and new reservations can price differently.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Card and status benefits
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Alaska Atmos cards, status, military eligibility, and certain resident programs can
+            change the checked-bag answer before you pay cash.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link href="/sizer-rules?height=22&width=14&depth=9" className="font-bold text-blue-800 underline">
+          Check Alaska carry-on fit
+        </Link>
+        <Link
+          href="/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes"
+          className="font-bold text-blue-800 underline"
+        >
+          Price Alaska checked bags
+        </Link>
+        <Link
+          href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes"
+          className="font-bold text-blue-800 underline"
+        >
+          Check Alaska card break-even
         </Link>
       </div>
     </section>
@@ -8305,6 +8400,7 @@ function ReferenceAirlinePage({
 
       {slug === "air-france" ? <AirFranceBaggagePriceChecklist /> : null}
       {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
+      {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
 
       <BaggageDecisionWidget

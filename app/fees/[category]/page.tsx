@@ -242,13 +242,13 @@ function getHubCopy(category: string) {
     case "checked_baggage":
       return {
         verdict:
-          "Checked bag fees can change the real trip price quickly. The biggest differences usually come from prepaid versus airport pricing, fare restrictions, and whether a card or status benefit removes the first bag fee.",
+          "Checked baggage fees usually mean one of three different things: a paid first checked bag, an included checked-bag allowance, or excess baggage after you exceed the allowance. The price depends on airline, route, fare family, bag count, purchase timing, and whether a card, status, cabin, or special exception covers the bag.",
         proTip:
-          "If the airline offers prepaid bags, compare that price with the airport rate before travel day. The same bag is often more expensive at the counter.",
+          "Start with the exact trip: airline, travelers, bags per traveler, roundtrip or one-way, and whether the bag is being bought before the airport. That is the fastest way to turn a vague fee row into a useful estimate.",
         loophole:
           "The cleanest way to avoid checked bag fees is deciding early whether the trip works with a personal item, a carry-on plan, or a bag benefit that removes the first checked bag fee.",
         whatToWatch:
-          "Watch prepaid versus airport pricing, one-way versus roundtrip math, and whether the cheapest fare makes a checked bag more likely.",
+          "Watch prepaid versus airport pricing, one-way versus roundtrip math, included international allowances, Basic or Light fare limits, and whether the cheapest fare makes a checked bag more likely.",
       };
     case "carry_on":
       return {
@@ -293,6 +293,17 @@ function getHubCopy(category: string) {
           "The cheapest workaround is often itinerary design: nonstop routing or a different airline can beat paying a high service fee on the wrong itinerary.",
         whatToWatch:
           "Check age rules, nonstop-only restrictions, route carve-outs, and carriers that simply do not offer the service.",
+      };
+    case "overweight_baggage":
+      return {
+        verdict:
+          "Overweight baggage fees usually start when a checked bag is above the airline's normal weight allowance, commonly 50 lb / 23 kg. The exact charge is airline- and route-specific, and very heavy bags may be refused or sent through cargo instead of priced as ordinary checked baggage.",
+        proTip:
+          "Weigh the bag before leaving home. If it is only slightly over the limit, moving a few pounds into another bag can be cheaper than accepting an airport overweight charge.",
+        loophole:
+          "The legitimate workaround is weight control: split items across bags, use an included carry-on or personal item when allowed, or buy the right baggage allowance before airport day if the airline sells it.",
+        whatToWatch:
+          "Watch the airline's standard allowance, higher weight bands, route or cabin exceptions, and maximum accepted checked-bag weight.",
       };
     default:
       return {
@@ -486,6 +497,140 @@ function basicEconomyHref(): string {
   return `/guides/basic-economy-traps#basic-economy-tool`;
 }
 
+function CheckedBaggageAnswerBlock() {
+  return (
+    <section
+      style={{
+        border: "1px solid #dbe1ea",
+        borderRadius: 12,
+        padding: 14,
+        background: "#fff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Direct answer
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much are checked baggage fees?</h2>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        There is not one checked-bag price across airlines. On U.S. domestic-style trips, the
+        common question is often the first and second checked bag charge. On international trips,
+        the first question is often whether your route, cabin, and fare already include an
+        allowance. Once you exceed that allowance, the cost may move into excess-baggage,
+        overweight, or oversize rules instead of a simple first-bag fee.
+      </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <Link
+          href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Price travelers x bags</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Use this when you need the likely baggage bill for a party instead of one isolated fee.
+          </div>
+        </Link>
+        <Link
+          href="/best-cards?travelers=2&bags=1&trips=2&pay=yes"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Check card break-even</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Use this when repeat first-bag fees may be high enough for a checked-bag card to matter.
+          </div>
+        </Link>
+        <Link
+          href="/guides/international-baggage-allowance"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Included allowance first</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Use this when the airline uses route, cabin, fare family, piece concept, or weight concept rules.
+          </div>
+        </Link>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+        Useful comparisons: <Link href="/airlines/air-france">Air France baggage charges</Link>,{" "}
+        <Link href="/airlines/air-canada">Air Canada checked bag fees</Link>,{" "}
+        <Link href="/airlines/alaska">Alaska checked bag fees</Link>,{" "}
+        <Link href="/airlines/zipair">ZIPAIR baggage policy</Link>, and{" "}
+        <Link href="/fees/overweight_baggage">overweight baggage fees</Link>.
+      </p>
+    </section>
+  );
+}
+
+function OverweightBaggageAnswerBlock() {
+  return (
+    <section
+      style={{
+        border: "1px solid #dbe1ea",
+        borderRadius: 12,
+        padding: 14,
+        background: "#fff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Direct answer
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much is the charge for overweight baggage?</h2>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        There is no single universal overweight baggage charge. Many airlines start overweight
+        treatment above 50 lb / 23 kg, then price the charge by airline, route, currency, cabin or
+        fare allowance, and how far over the limit the bag is. If the bag is beyond the airline&apos;s
+        maximum accepted checked-bag weight, the issue may become cargo handling or refusal rather
+        than a simple airport fee.
+      </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <Link
+          href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Bag is just over 50 lb</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Estimate a common just-over-the-limit scenario when the airline publishes usable fees.
+          </div>
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=62"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Bag is heavy but checkable</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Model a heavier checked-bag case before you reach the counter.
+          </div>
+        </Link>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12 }}>
+          <div style={{ fontWeight: 800 }}>Bag may exceed the airline maximum</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Check the airline page first. Very heavy bags may not be accepted as ordinary checked
+            baggage even if you are willing to pay.
+          </div>
+        </div>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+        Useful comparisons: <Link href="/airlines/air-france">Air France baggage fees</Link>,{" "}
+        <Link href="/airlines/air-canada">Air Canada baggage fees</Link>,{" "}
+        <Link href="/airlines/zipair">ZIPAIR baggage fees</Link>,{" "}
+        <Link href="/airlines/alaska">Alaska baggage fees</Link>, and the{" "}
+        <Link href="/guides/international-baggage-allowance">international baggage allowance explainer</Link>.
+      </p>
+    </section>
+  );
+}
+
 export function generateStaticParams() {
   const slugs = getAirlineSlugs();
   const set = new Set<string>();
@@ -652,6 +797,10 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
+
+      {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
+
+      {cat === "overweight_baggage" ? <OverweightBaggageAnswerBlock /> : null}
 
       {cat === "checked_baggage" ? (
         <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">

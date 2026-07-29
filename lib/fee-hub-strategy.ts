@@ -51,26 +51,26 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     bridgeText: "After the fee table, the most useful next step is usually the airline-specific page or guide that shows the route and age restrictions in context.",
   },
   checked_baggage: {
-    introLabel: "first checked bags that change the real trip price more than the fare shown in search.",
+    introLabel: "separating a paid first checked bag from an included allowance, then pricing the real trip by travelers, bags, and route.",
     scenarioCards: [
       {
-        title: "Airport payment is often the most expensive version",
-        body: "Legacy carriers often charge more at the counter even when the bag decision was predictable before departure.",
+        title: "Paid first bag is only one model",
+        body: "Some trips have a simple first-bag charge. Others include baggage by cabin, fare family, route, or status before any fee applies.",
       },
       {
-        title: "Low-cost carrier bag pricing depends heavily on timing",
-        body: "Spirit, Frontier, Ryanair, and easyJet all make baggage pricing a booking-timing problem, not just a packing problem.",
+        title: "Timing can change the bill",
+        body: "When an airline sells bags before travel, airport purchase can be the worst moment to solve a predictable baggage need.",
       },
       {
-        title: "Bag benefits can matter more than general card perks",
-        body: "This is the fee category where a free first checked bag can sometimes offset an annual fee for travelers who return to the same airline.",
+        title: "The useful math is party-level",
+        body: "One fee row is not enough when two travelers, roundtrips, repeat trips, or a card benefit can change the annual baggage cost.",
       },
     ],
     spotlightAirlines: [
-      { slug: "united", reason: "United is a clean example of prepaid versus airport pricing differences." },
-      { slug: "american", reason: "American shows how route-specific baggage pricing can break simple assumptions." },
-      { slug: "southwest", reason: "Southwest matters because it changes the benchmark for what an all-in fare should look like." },
-      { slug: "jetblue", reason: "JetBlue is a strong example of recurring first-bag fees that can justify card benefits." },
+      { slug: "air-france", reason: "Air France is getting baggage-charge impressions and is useful because route, fare, and excess-baggage logic matter more than one flat first-bag number." },
+      { slug: "air-canada", reason: "Air Canada is a strong example of Basic, route, fare brand, and allowance differences changing the checked-bag answer." },
+      { slug: "alaska", reason: "Alaska is useful because ticketing date, route exceptions, and card/status benefits can all change the bag math." },
+      { slug: "zipair", reason: "ZIPAIR is useful because checked baggage is purchased as an add-on by route, weight, and timing." },
     ],
     toolLinks: [
       { href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked baggage cost calculator", reason: "Best when you need a traveler-and-bag estimate instead of a raw fee row." },
@@ -79,7 +79,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       { href: "/sizer-rules", label: "Sizer rules", reason: "Avoiding a checked bag entirely is often more useful than comparing checked bag fees after the fact." },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide", reason: "Basic restrictions often make a checked bag more likely, even when the fare looked cheaper at first." },
     ],
-    bridgeText: "After checking the baggage rows, the most useful next step is usually the airline-specific fee page or a bag-benefit reference that matches the trip.",
+    bridgeText: "After checking the baggage rows, the most useful next step is usually the checked-bag calculator for cash cost, the airline page for route and fare rules, or the card-benefit reference when repeat first-bag fees are the problem.",
   },
   carry_on: {
     introLabel: "deciding whether to buy cabin space, pack smaller, or change airlines before reaching the gate.",
@@ -171,34 +171,34 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     bridgeText: "After the change-fee page, compare the airline-specific fare page and the stripped-fare guide, because flexibility problems usually start before the fee is ever charged.",
   },
   overweight_baggage: {
-    introLabel: "deciding when to repack, split the load, or change the bag plan before the airport becomes the most expensive place to solve the problem.",
+    introLabel: "checking whether a bag is just over the standard checked-bag limit or heavy enough that the airline may treat it as a special-handling problem.",
     scenarioCards: [
       {
-        title: "Overweight fees are often the fastest way to turn a normal trip into a bad one",
-        body: "The jump from a normal checked bag to a 51-pound bag is often more painful than the original bag fee itself.",
+        title: "The common warning line is 50 lb / 23 kg",
+        body: "Many airlines start overweight treatment above the normal checked-bag allowance, commonly 50 lb or 23 kg. The exact fee still depends on the airline, route, and cabin or fare allowance.",
       },
       {
-        title: "The right move is often weight-splitting, not fee acceptance",
-        body: "Southwest, Alaska, and other airlines make it obvious that shifting weight between bags is often cheaper than paying an overweight penalty.",
+        title: "The charge may stack on top of the bag fee",
+        body: "If the checked bag itself is not included, the overweight charge can be an extra penalty on top of the ordinary checked-bag price.",
       },
       {
-        title: "A carry-on plan can prevent the whole problem",
-        body: "If the traveler can stay in a strict but workable personal-item or cabin-bag setup, the overweight conversation disappears before check-in.",
+        title: "Very heavy bags may not be accepted",
+        body: "Some airlines stop treating very heavy baggage as ordinary checked luggage. If the bag is beyond the carrier's maximum accepted checked-bag weight, cargo rules or refusal can matter more than a simple fee.",
       },
     ],
     spotlightAirlines: [
-      { slug: "southwest", reason: "Southwest matters because the free-bag benchmark makes overweight penalties feel especially irrational." },
-      { slug: "delta", reason: "Delta is a good legacy benchmark for the standard 51-70 and 71-100 pound pain ladder." },
-      { slug: "frontier", reason: "Frontier shows how overweight charges can sit on top of an already expensive bag plan." },
-      { slug: "spirit", reason: "Spirit is useful because the trip can become expensive quickly when weight control breaks." },
+      { slug: "air-france", reason: "Air France is useful for searches where baggage cost depends on route, fare, and whether the bag is excess baggage rather than included allowance." },
+      { slug: "air-canada", reason: "Air Canada is a good comparison when the question is whether the issue is the first checked bag, an overweight bag, or an international allowance rule." },
+      { slug: "zipair", reason: "ZIPAIR gets search interest because international baggage fees can be purchased as add-ons and depend on the selected allowance." },
+      { slug: "alaska", reason: "Alaska is a useful U.S. benchmark for separating normal checked-bag pricing from overweight handling." },
     ],
     toolLinks: [
-      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62", label: "Overweight baggage calculator", reason: "Best when the bag is just over a common weight threshold and you need a trip-level estimate." },
-      { href: "/best-cards", label: "Card break-even calculator", reason: "The card tool matters when checked-bag costs are unavoidable and the traveler wants to lower the recurring cost of the first bag." },
-      { href: "/sizer-rules", label: "Sizer rules", reason: "The cleanest way to avoid overweight fees is often to avoid checking a bag at all when the airline's carry-on rules allow it." },
-      { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide", reason: "Strictness and bag shape determine whether a lighter carry-on plan is realistic before the airport." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62", label: "51 lb / 23 kg overweight estimate", reason: "Use this when the bag is just over a common checked-bag weight threshold and published numeric fees are available." },
+      { href: "/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=62", label: "Heavy checked-bag estimate", reason: "Use this when the bag is much heavier than a normal allowance but still needs to be checked as luggage." },
+      { href: "/fees/checked_baggage", label: "Standard checked-bag baseline", reason: "Check the normal bag fee first, because overweight charges can be added on top of the base checked-bag price." },
+      { href: "/guides/international-baggage-allowance", label: "International allowance explainer", reason: "Best when weight, route, fare family, or piece-versus-weight rules decide whether the bag is included or excess." },
     ],
-    bridgeText: "After checking overweight fees, the most useful next step is usually the airline page, the excess-baggage calculator, or the carry-on guide, because the best solution often happens before the scale, not after it.",
+    bridgeText: "After checking overweight fees, the most useful next step is usually the excess-baggage calculator plus the airline page, because the charge depends on the carrier's weight bands, route, cabin or fare allowance, and maximum accepted checked-bag weight.",
   },
   oversize_baggage: {
     introLabel: "bag shapes that could trigger a separate airport charge beyond the normal bag count.",
