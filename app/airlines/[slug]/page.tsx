@@ -337,7 +337,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air France includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France baggage fees, charges, and prices depend on itinerary, fare, and when the bag is purchased, so this page does not pretend there is one flat first-bag price. Extra checked baggage is priced during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage fees, charges, and prices depend on itinerary, fare, and when the bag is purchased, so this page does not pretend there is one flat first-bag price. If you are asking how much it costs to check a bag on Air France, first separate included allowance from an additional checked bag. Extra checked baggage is priced during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
       restrictions:
         "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary rather than one universal online amount.",
     },
@@ -382,6 +382,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         name: "Additional baggage",
         details:
           "Additional checked-baggage prices are itinerary-based and shown in booking or My Bookings. The useful Air France baggage price is the one shown for your exact route, fare, and purchase timing, with the online timing rule depending on whether the itinerary touches Canada or the USA.",
+      },
+      {
+        name: "Excess baggage",
+        details:
+          "Air France excess baggage fees for overweight or oversized bags are airport-priced by itinerary. Overweight treatment applies above the ticketed allowance and up to 32 kg; bags over 32 kg go to cargo instead of normal checked baggage.",
       },
     ],
     scenarios: [
@@ -7228,9 +7233,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The personal item is not extra weight. It counts toward the same combined 7 kg cabin allowance as the cabin bag.",
       checkedBag:
-        "ZIPAIR checked baggage is not included by default. It is purchased by weight, with the baggage price driven by route and purchase timing rather than one flat first-bag fee.",
+        "ZIPAIR checked baggage is not included by default. It is purchased as an add-on by weight, with the baggage price driven by route and purchase timing rather than one flat first-bag fee.",
       restrictions:
-        "ZIPAIR is an optional-service model: checked bags, extra weight, seats, sports equipment, and changes are separate decisions. Unaccompanied-minor service is not offered.",
+        "ZIPAIR is an optional-service model: checked bags, extra baggage weight, seats, sports equipment, and changes are separate add-on decisions. Unaccompanied-minor service is not offered.",
     },
     verificationNote:
       "ZIPAIR carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
@@ -7267,12 +7272,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Checked-baggage add-on structure",
         details:
-          "Checked baggage is purchased by weight and is not included by default. The useful ZIPAIR baggage cost is the one shown for the exact route, weight package, and purchase timing.",
+          "Checked baggage is purchased by weight and is not included by default. The useful ZIPAIR baggage cost is the add-on price shown for the exact route, weight package, and purchase timing.",
       },
       {
         name: "Seat and change products",
         details:
-          "Seat selection is listed as an optional paid product, and flight changes are listed as fee-based with fare difference possibly applying.",
+          "Seat selection is listed as an optional paid add-on, and flight changes are listed as fee-based with fare difference possibly applying.",
       },
     ],
     scenarios: [
@@ -7289,7 +7294,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Arriving at the airport with excess checked-bag weight",
         details:
-          "A single checked bag must not exceed 32 kg, and excess weight beyond the purchased allowance is charged at airport rates.",
+          "A single checked bag must not exceed 32 kg, and extra baggage weight beyond the purchased allowance is charged at airport rates.",
       },
       {
         title: "Traveling as an unaccompanied minor",
@@ -7900,32 +7905,53 @@ function AirFranceBaggagePriceChecklist() {
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        Air France baggage price checklist
+        Air France baggage charges
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        Check the exact route before treating Air France baggage charges as a fixed fee.
+        How much does Air France charge for baggage?
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        Air France does not publish one universal baggage price for every traveler. The charge usually comes from the itinerary, fare family, whether the bag is additional or excess, and where the bag is purchased.
+        Air France does not use one universal baggage price for every traveler. The useful answer depends on whether your fare already includes checked baggage, whether you are buying an additional bag, or whether the bag is excess baggage because it is overweight or oversized. The charge usually comes from the itinerary, fare family, purchase path, and airport handling rules.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         {[
-          "Is checked baggage included with this fare, or are you buying an additional bag?",
-          "Does the itinerary touch Canada or the USA, where the online discount rule is different?",
-          "Will the bag stay within the ticketed weight allowance and 158 cm standard-size limit?",
-          "Are you pricing the bag during booking, in My Bookings, online check-in, or at the airport?",
+          {
+            title: "Air France baggage fees",
+            body: "Start by checking whether your route and fare include a checked-bag allowance before looking for an add-on price.",
+          },
+          {
+            title: "Air France baggage price",
+            body: "Additional checked baggage is priced during purchase or in My Bookings, so the useful price is route- and fare-specific.",
+          },
+          {
+            title: "Air France excess baggage fees",
+            body: "Overweight and oversized bags are airport-priced by itinerary; bags over 32 kg move to cargo instead of normal checked baggage.",
+          },
+          {
+            title: "Online versus airport purchase",
+            body: "An online discount can apply at least 24 hours before departure, except flights from or to Canada and the USA use the same online and airport price.",
+          },
         ].map((item) => (
-          <div key={item} className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
-            {item}
+          <div key={item.title} className="rounded-xl border border-blue-100 bg-white p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+              {item.title}
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.body}</p>
           </div>
         ))}
       </div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link
+          href="/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes"
+          className="font-bold text-blue-800 underline"
+        >
+          Check Air France baggage price
+        </Link>
+        <Link
           href="/tools/excess-baggage-calculator?airline=air-france&bags=1&directions=2&weight=51&size=63"
           className="font-bold text-blue-800 underline"
         >
-          Check Air France excess baggage risk
+          Check Air France excess baggage fees
         </Link>
         <Link href="/guides/international-baggage-allowance" className="font-bold text-blue-800 underline">
           Understand international baggage allowance
@@ -8001,18 +8027,18 @@ function ZipairBaggageDecisionChecklist() {
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        ZIPAIR international baggage policy
+        ZIPAIR add-on prices
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        ZIPAIR baggage fees depend on route, weight allowance, and when you buy the bag.
+        What is separate from the ZIPAIR base fare?
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage is not included by default, so the useful baggage price is the route-specific checked-bag allowance shown during booking or manage booking, not a universal first-bag fee.
+        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage, extra baggage weight, sports equipment, seat selection, and flight changes are separate decisions. The useful ZIPAIR add-on price is the route-specific quote shown during booking or manage booking, not a universal first-bag fee.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Cabin-only test
+            Included cabin allowance
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             Weigh the cabin bag and personal item together. The combined limit is 7 kg, not 7 kg per item.
@@ -8020,18 +8046,42 @@ function ZipairBaggageDecisionChecklist() {
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Checked bag decision
+            Paid baggage add-on
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            ZIPAIR checked baggage is an add-on purchased by weight. Use the route and weight package before comparing ZIPAIR against a legacy carrier fare.
+            ZIPAIR checked baggage is purchased by weight. Use the exact route and weight package before comparing ZIPAIR against a legacy carrier fare.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Airport risk
+            Extra baggage fee risk
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             Extra checked-bag weight beyond the purchased allowance is charged at airport rates. A single checked bag must stay at or below 32 kg.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Seat add-on
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Seat selection is optional and chargeable. The amount depends on seat type and purchase timing.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Sports equipment
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Sports equipment is checked separately and can depend on equipment type, route, and advance purchase.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Changes
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Flight changes are listed as fee plus fare difference. Cancellations are generally not permitted unless ZIPAIR explicitly allows them.
           </p>
         </div>
       </div>

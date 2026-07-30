@@ -25,9 +25,9 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Checked Baggage Cost Calculator | Bag Fees and Free Checked Bag Card Check",
+  title: "Checked Baggage Calculator | Calculate Bag Fees by Airline",
   description:
-    "Estimate checked baggage fees by airline, travelers, bags, and roundtrips, then check whether an eligible airline credit card with a free checked bag benefit could offset the cost.",
+    "Calculate checked baggage fees by airline, travelers, bags per traveler, and roundtrip, then check whether a free checked bag card benefit could offset the cost.",
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -118,9 +118,9 @@ const ROUTE_PRESETS_BY_AIRLINE: Record<string, RoutePreset[]> = {
 const FEATURED_CHECKED_BAG_PATHS = [
   {
     href: "/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes",
-    title: "Air France baggage price lookup",
+    title: "Air France baggage fee lookup",
     body:
-      "Air France extra-bag pricing is itinerary-based, so use the calculator to confirm when a route lookup is still required.",
+      "Air France baggage charges are itinerary-based, so use this path to see when a route lookup is still required.",
   },
   {
     href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes",
@@ -130,9 +130,9 @@ const FEATURED_CHECKED_BAG_PATHS = [
   },
   {
     href: "/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29",
-    title: "ZIPAIR route bag check",
+    title: "ZIPAIR checked bag fee",
     body:
-      "ZIPAIR checked baggage is bought by weight, so route context matters before the base fare wins.",
+      "ZIPAIR checked baggage is bought by route, weight, and timing, so route context matters before the base fare wins.",
   },
 ];
 
@@ -204,7 +204,7 @@ function checkedBagCalculatorJsonLd() {
         applicationCategory: "TravelApplication",
         operatingSystem: "Any",
         description:
-          "Estimate checked baggage fees from published airline fee details and test whether a free checked bag card benefit could offset the cost.",
+          "Calculate checked baggage fees from published airline fee details and test whether a free checked bag card benefit could offset the cost.",
       },
       {
         "@type": "FAQPage",
@@ -283,14 +283,26 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
       <JsonLd data={checkedBagCalculatorJsonLd()} />
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Baggage cost tool
+          Checked bag fee tool
         </div>
-        <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage cost calculator</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-          Estimate the checked-bag bill before booking, then see whether a free checked bag card
-          could offset it. The calculator uses published airline fee details and leaves the total
-          unquoted when the price depends on route, fare, or booking timing.
+          Calculate checked baggage fees by airline, travelers, bags per traveler, and roundtrip
+          before booking. The calculator uses published airline fee details, then leaves the total
+          unquoted when the checked-bag price depends on route, fare family, allowance, currency, or
+          booking timing instead of a fixed fee.
         </p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes" className="font-semibold text-blue-700 underline">
+            Air France baggage fees
+          </Link>
+          <Link href="/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes" className="font-semibold text-blue-700 underline">
+            Air Canada checked bag fee
+          </Link>
+          <Link href="/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29" className="font-semibold text-blue-700 underline">
+            ZIPAIR checked bag fee
+          </Link>
+        </div>
       </header>
 
       <section className="grid gap-4 rounded-2xl border border-blue-100 bg-blue-50 p-6">
@@ -299,17 +311,17 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-blue-100 bg-white p-4">
-            <h2 className="text-base font-extrabold text-slate-950">When this gives a number</h2>
+            <h2 className="text-base font-extrabold text-slate-950">Calculate a checked-bag total</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              The calculator can estimate trip and annual baggage cost when the selected airline has
-              usable fixed checked-bag fees for the requested bag count.
+              Enter airline, travelers, bags per traveler, trip type, and roundtrips. The tool turns
+              usable fixed bag fees into trip and annual estimates.
             </p>
           </div>
           <div className="rounded-xl border border-blue-100 bg-white p-4">
             <h2 className="text-base font-extrabold text-slate-950">When it says lookup required</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
               Route-priced airlines stay unquoted when the bag fee depends on itinerary, fare
-              family, baggage concept, timing, currency, or operating carrier.
+              family, allowance concept, timing, currency, or operating carrier.
             </p>
           </div>
           <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -471,7 +483,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           type="submit"
           className="inline-flex w-full justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-700 md:w-fit"
         >
-          Estimate baggage cost
+          Calculate checked bag fees
         </button>
       </form>
 
