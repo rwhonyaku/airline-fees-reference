@@ -76,6 +76,11 @@ function getFeeFaq(category: string): Array<{ question: string; answer: string }
     case "overweight_baggage":
       return [
         {
+          question: "How much is the charge for overweight baggage?",
+          answer:
+            "There is no single universal overweight baggage charge. The fee depends on the airline, route, currency, cabin or fare allowance, and how far over the limit the checked bag is.",
+        },
+        {
           question: "When is a checked bag overweight?",
           answer:
             "Many airlines begin overweight treatment above 50 lb or 23 kg, but the exact threshold and maximum accepted weight depend on the airline, cabin, route, and baggage allowance.",
@@ -88,6 +93,11 @@ function getFeeFaq(category: string): Array<{ question: string; answer: string }
       ];
     case "oversize_baggage":
       return [
+        {
+          question: "How much is the charge for oversized baggage?",
+          answer:
+            "Oversized baggage charges depend on airline, route, bag dimensions, special-item rules, and whether the oversize charge stacks with the normal checked-bag fee. Some very large items may need special handling instead of ordinary checked baggage.",
+        },
         {
           question: "When is a checked bag oversized?",
           answer:
@@ -631,6 +641,102 @@ function OverweightBaggageAnswerBlock() {
   );
 }
 
+function OversizeBaggageAnswerBlock() {
+  return (
+    <section
+      style={{
+        border: "1px solid #dbe1ea",
+        borderRadius: 12,
+        padding: 14,
+        background: "#fff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Direct answer
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much is the charge for oversized baggage?</h2>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        Oversized baggage does not have one universal airline charge. Many airlines start oversize
+        screening above 62 linear inches / 158 cm, but the actual fee depends on the airline, route,
+        bag shape, special-item category, airport handling limits, and whether the oversize charge
+        is added on top of the normal checked-bag fee.
+      </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <Link
+          href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Bag is just over 62 inches</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Estimate a common oversize scenario when the airline publishes a usable numeric fee.
+          </div>
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=70&size=70"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Bag is heavy and oversized</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Check the combined-risk case where weight and size charges may both matter.
+          </div>
+        </Link>
+        <Link
+          href="/fees/checked_baggage"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Check the base bag fee</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Oversize fees may stack with, not replace, the normal checked-bag charge.
+          </div>
+        </Link>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+        Useful comparisons: <Link href="/airlines/american">American baggage fees</Link>,{" "}
+        <Link href="/airlines/delta">Delta baggage fees</Link>,{" "}
+        <Link href="/airlines/southwest">Southwest baggage fees</Link>,{" "}
+        <Link href="/airlines/air-france">Air France baggage charges</Link>, and the{" "}
+        <Link href="/guides/international-baggage-allowance">international baggage allowance explainer</Link>.
+      </p>
+    </section>
+  );
+}
+
+function getFeeMetadataCopy(category: string): Metadata {
+  switch (category) {
+    case "overweight_baggage":
+      return {
+        title: "Overweight Baggage Fees by Airline | Charges and Calculator",
+        description:
+          "Compare overweight baggage fees by airline and learn why the charge depends on route, weight band, allowance, currency, and airport handling rules.",
+      };
+    case "oversize_baggage":
+      return {
+        title: "Oversize Baggage Fees by Airline | Size Charges and Calculator",
+        description:
+          "Compare oversized baggage fees by airline and learn when size charges stack with checked-bag or overweight fees.",
+      };
+    case "checked_baggage":
+      return {
+        title: "Checked Baggage Fees by Airline | Bag Fee Calculator",
+        description:
+          "Compare checked baggage fees by airline, then use the checked bag fee calculator to estimate trip and annual bag costs.",
+      };
+    default:
+      return {
+        title: `${titleCaseFromSlug(category)} fees by airline (2026)`,
+        description:
+          "Compare published airline fees across carriers and use the related airline pages, guides, and tools to understand how the fee applies.",
+      };
+  }
+}
+
 export function generateStaticParams() {
   const slugs = getAirlineSlugs();
   const set = new Set<string>();
@@ -647,10 +753,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
-  const title = `${titleCaseFromSlug(category)} fees by airline (2026)`;
-  const description =
-    "Compare published airline fees across carriers and use the related airline pages, guides, and tools to understand how the fee applies.";
-  return { title, description };
+  return getFeeMetadataCopy(category);
 }
 
 export default async function FeeCategoryHubPage({ params }: PageProps) {
@@ -801,6 +904,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
 
       {cat === "overweight_baggage" ? <OverweightBaggageAnswerBlock /> : null}
+      {cat === "oversize_baggage" ? <OversizeBaggageAnswerBlock /> : null}
 
       {cat === "checked_baggage" ? (
         <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">

@@ -25,9 +25,9 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Checked Baggage Calculator | Calculate Bag Fees by Airline",
+  title: "Baggage Calculator | Checked Bag Fee Calculator by Airline",
   description:
-    "Calculate checked baggage fees by airline, travelers, bags per traveler, and roundtrip, then check whether a free checked bag card benefit could offset the cost.",
+    "Use the checked bag fee calculator to estimate baggage costs by airline, travelers, bags, and roundtrip, then test whether a free checked bag card benefit could offset the cost.",
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -117,6 +117,12 @@ const ROUTE_PRESETS_BY_AIRLINE: Record<string, RoutePreset[]> = {
 
 const FEATURED_CHECKED_BAG_PATHS = [
   {
+    href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=1&pay=yes",
+    title: "United baggage fee calculator",
+    body:
+      "Useful when Basic Economy or a regular United fare looks cheap but checked bags may change the trip total.",
+  },
+  {
     href: "/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes",
     title: "Air France baggage fee lookup",
     body:
@@ -182,6 +188,11 @@ const CHECKED_BAG_FAQS = [
     question: "Can an airline credit card reduce the checked bag total?",
     answer:
       "Some airline cards publish a first checked bag waiver for the cardholder and eligible companions. The card comparison only counts modeled bag savings and excludes points, bonuses, lounge access, and unrelated perks.",
+  },
+  {
+    question: "Can I use this as a United baggage fee calculator?",
+    answer:
+      "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual roundtrips. The result shows the modeled checked-bag total when the stored fee data has a usable published amount.",
   },
 ];
 
@@ -285,14 +296,18 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
           Checked bag fee tool
         </div>
-        <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage calculator</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight">Checked bag fee calculator</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-          Calculate checked baggage fees by airline, travelers, bags per traveler, and roundtrip
-          before booking. The calculator uses published airline fee details, then leaves the total
-          unquoted when the checked-bag price depends on route, fare family, allowance, currency, or
-          booking timing instead of a fixed fee.
+          Use this baggage calculator for checked bags before booking: choose an airline, enter the
+          number of travelers and bags, then see the trip total and yearly bag-fee exposure when the
+          published data supports a fixed estimate. If the checked-bag price depends on route, fare
+          family, allowance, currency, or booking timing, the tool explains the lookup instead of
+          inventing a number.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=1&pay=yes" className="font-semibold text-blue-700 underline">
+            United baggage fee calculator
+          </Link>
           <Link href="/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes" className="font-semibold text-blue-700 underline">
             Air France baggage fees
           </Link>
@@ -340,10 +355,10 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             High-intent checked-bag paths
           </div>
           <h2 className="mt-2 text-xl font-extrabold text-slate-950">
-            Start with the airline travelers are already searching.
+            Start with the checked bag fee search travelers are already making.
           </h2>
         </div>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-4">
           {FEATURED_CHECKED_BAG_PATHS.map((item) => (
             <Link
               key={item.href}
@@ -524,7 +539,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             </p>
             {routeLabel ? (
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                For {routeLabel}, use ZIPAIR&apos;s checkout or manage-booking baggage screen to price the checked-bag weight allowance before assuming the base fare is cheaper.
+                For {routeLabel}, use the airline checkout or manage-booking baggage screen to price the checked-bag allowance before assuming the base fare is cheaper.
               </p>
             ) : null}
           </>

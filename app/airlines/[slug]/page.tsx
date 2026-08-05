@@ -10,6 +10,8 @@ import { SizerCheck } from "@/components/SizerCheck";
 import { Disclaimer } from "@/components/Disclaimer";
 import { AIRLINE_STRATEGY, isCoreAirline } from "@/lib/airline-strategy";
 import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
+import { JsonLd } from "@/components/JsonLd";
+import { canonical } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -50,6 +52,11 @@ type ReferenceContent = {
   }>;
   exceptions: string[];
   comparisonLinks: ReferenceLink[];
+};
+
+type AirlineFaq = {
+  question: string;
+  answer: string;
 };
 
 const TARGET_REFERENCE_SLUGS = new Set([
@@ -7314,6 +7321,82 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   },
 };
 
+const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
+  "air-france": [
+    {
+      question: "How much does Air France charge for baggage?",
+      answer:
+        "Air France baggage charges depend on the itinerary, fare family, and purchase path. Additional checked baggage is priced during purchase or in My Bookings, while overweight and oversized baggage are airport-priced by itinerary.",
+    },
+    {
+      question: "Why does Air France not show one baggage price?",
+      answer:
+        "Air France separates included baggage allowance, additional checked baggage, and excess baggage. The final baggage price can change by route, fare, timing, and whether the itinerary touches Canada or the USA.",
+    },
+    {
+      question: "What are Air France excess baggage fees?",
+      answer:
+        "Air France excess baggage fees apply when a bag is above the ticketed weight allowance or over the standard-size limit. Overweight bags up to 32 kg and oversized bags over 158 cm are priced at the airport by itinerary.",
+    },
+    {
+      question: "How much does it cost to check a bag on Air France?",
+      answer:
+        "First check whether your fare already includes checked baggage. If you need an additional checked bag, the price is shown during purchase or in My Bookings for the exact itinerary and fare.",
+    },
+    {
+      question: "Can you save by buying Air France baggage online?",
+      answer:
+        "Air France lists an online discount for additional baggage bought at least 24 hours before departure, except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+    },
+  ],
+  zipair: [
+    {
+      question: "What is ZIPAIR baggage allowance?",
+      answer:
+        "ZIPAIR includes one cabin bag plus one personal item, but both items share a combined 7 kg carry-on weight limit. Checked baggage is not included by default and is purchased separately by weight.",
+    },
+    {
+      question: "How much is a ZIPAIR checked bag?",
+      answer:
+        "ZIPAIR checked bag fees are route-, weight-, and timing-dependent. The useful price is the add-on quote shown during booking or manage booking, not one universal first-bag fee.",
+    },
+    {
+      question: "What is the ZIPAIR checked bag weight limit?",
+      answer:
+        "ZIPAIR checked baggage is purchased by weight, and a single checked bag must not exceed 32 kg. Extra weight beyond the purchased allowance is charged at airport rates.",
+    },
+    {
+      question: "What is the ZIPAIR extra baggage fee?",
+      answer:
+        "ZIPAIR extra baggage fees depend on the route, purchased weight allowance, and whether the extra weight is handled before travel or at the airport. This page flags the lookup instead of inventing a fixed amount.",
+    },
+    {
+      question: "Does ZIPAIR have international baggage allowance?",
+      answer:
+        "ZIPAIR's international baggage model starts with the included 7 kg combined cabin allowance. Checked baggage is a separate add-on by route and weight, so international baggage allowance should be priced for the specific flight.",
+    },
+  ],
+};
+
+function airlineFaqJsonLd(slug: string) {
+  const faqs = AIRLINE_FAQS[slug];
+  if (!faqs?.length) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": canonical(`/airlines/${slug}#faq`),
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 function deriveTiming(timing: unknown): DerivedTiming {
   const raw = typeof timing === "string" ? timing.trim() : "";
   if (!raw) return { pricingUnit: "Not published", whenCharged: "Not published", extraForConditions: null };
@@ -8106,6 +8189,59 @@ function ZipairBaggageDecisionChecklist() {
   );
 }
 
+function AirlineFaqBlock({ slug }: { slug: string }) {
+  const faqs = AIRLINE_FAQS[slug];
+  if (!faqs?.length) return null;
+  const heading =
+    slug === "air-france"
+      ? "Air France baggage charges, prices, and excess baggage fees"
+      : "ZIPAIR baggage allowance, checked bags, and extra baggage fees";
+
+  return (
+    <section id="faq" className="rounded-2xl border border-slate-200 bg-white p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Baggage FAQ
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        {heading}
+      </h2>
+      <div className="mt-4 grid gap-3">
+        {faqs.map((faq) => (
+          <div key={faq.question} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <h3 className="text-base font-bold text-slate-950">{faq.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link
+          href={
+            slug === "air-france"
+              ? "/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes"
+              : "/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29"
+          }
+          className="font-bold text-blue-800 underline"
+        >
+          {slug === "air-france" ? "Check Air France baggage price" : "Price a ZIPAIR checked bag"}
+        </Link>
+        <Link
+          href={
+            slug === "air-france"
+              ? "/tools/excess-baggage-calculator?airline=air-france&bags=1&directions=2&weight=51&size=63"
+              : "/tools/excess-baggage-calculator?airline=zipair&bags=1&directions=2&weight=24&size=63"
+          }
+          className="font-bold text-blue-800 underline"
+        >
+          {slug === "air-france" ? "Check Air France excess baggage" : "Check ZIPAIR extra baggage"}
+        </Link>
+        <Link href="/guides/international-baggage-allowance" className="font-bold text-blue-800 underline">
+          International allowance guide
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function AlaskaCarryOnAndBagCheck() {
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
@@ -8240,9 +8376,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       };
     case "air-france":
       return {
-        title: "Air France Baggage Fees, Charges, Prices, and Excess Baggage Costs (2026)",
+        title: "Air France Baggage Charges, Fees, Prices, and Excess Baggage (2026)",
         description:
-          "Air France baggage fees and charges depend on itinerary, fare, and purchase path. Extra baggage prices are shown during booking or My Bookings, while excess baggage costs are airport-priced by itinerary.",
+          "Air France baggage charges depend on itinerary, fare, and purchase path. Learn how checked baggage, extra baggage, overweight, and oversized fees are priced.",
       };
     case "alaska":
       return {
@@ -8258,9 +8394,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       };
     case "zipair":
       return {
-        title: "ZIPAIR Baggage Fees, 7 kg Carry-On Limit, and Checked Bag Costs (2026)",
+        title: "ZIPAIR Baggage Allowance, Checked Bag Fee, and Extra Baggage (2026)",
         description:
-          "ZIPAIR baggage fees start with the combined 7 kg carry-on limit. Checked baggage is not included by default and is purchased by weight, with cost depending on route and timing.",
+          "ZIPAIR baggage allowance starts with a combined 7 kg cabin limit. Checked bag fees and extra baggage costs depend on route, purchased weight allowance, and timing.",
       };
     default:
       return {
@@ -8354,9 +8490,11 @@ function ReferenceAirlinePage({
   const avoidFeeAdvice = content.avoidFees ?? getDefaultAvoidFeeAdvice(slug, airline.name);
   const relatedGuides = content.relatedGuides ?? getDefaultRelatedGuides(slug);
   const numericCheckedBagFees = getNumericCheckedBagFees(fees);
+  const faqJsonLd = airlineFaqJsonLd(slug);
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12">
+      {faqJsonLd ? <JsonLd data={faqJsonLd} /> : null}
       <header className="space-y-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -8452,6 +8590,7 @@ function ReferenceAirlinePage({
       {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
       {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
+      {slug === "air-france" || slug === "zipair" ? <AirlineFaqBlock slug={slug} /> : null}
 
       <BaggageDecisionWidget
         airlineSlug={slug}

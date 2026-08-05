@@ -5,11 +5,13 @@ import { getAirlineBySlug } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
 import { BasicEconomyDecisionTool } from "@/components/BasicEconomyDecisionTool";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
+import { JsonLd } from "@/components/JsonLd";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Basic Economy Traps by Airline: Carry-On, Bags, Seats, Changes (2026)",
+  title: "Basic Economy Fees and Restrictions by Airline (2026)",
   description:
-    "Compare Basic Economy fares by carry-on access, checked bag fees, seat limits, and change rules for United, Air Canada, JetBlue, Delta, American, and more.",
+    "Compare Basic Economy fares by carry-on access, checked bag fees, seat selection, change rules, and hidden costs for United, Air Canada, JetBlue, Delta, American, and more.",
 };
 
 const LAST_VERIFIED = "2026-05-23";
@@ -55,6 +57,50 @@ type DecisionCard = {
   action: string;
   links: Array<{ href: string; label: string }>;
 };
+
+const BASIC_ECONOMY_FAQS = [
+  {
+    question: "Why are two similar flights priced differently?",
+    answer:
+      "The cheaper flight may be a more restrictive fare. Before booking, compare carry-on access, checked bag fees, seat selection, change and cancellation rules, refunds, boarding position, and whether the itinerary is operated by a partner airline.",
+  },
+  {
+    question: "Is Basic Economy worth it?",
+    answer:
+      "Basic Economy can be worth it when you only need a personal item or included carry-on, do not care where you sit, and are confident your plans will not change. It is weaker when bags, seat control, or flexibility matter.",
+  },
+  {
+    question: "Which Basic Economy fare is riskiest for carry-on bags?",
+    answer:
+      "United Basic Economy is the clearest major-airline example where the cheapest fare can limit you to a personal item. Spirit and Frontier are different low-cost models where a full-size carry-on usually costs extra.",
+  },
+];
+
+function basicEconomyJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+          { "@type": "ListItem", position: 2, name: "Basic Economy fees and restrictions", item: canonical("/guides/basic-economy-traps") },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: BASIC_ECONOMY_FAQS.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
+  };
+}
 
 function safeText(v: unknown): string {
   if (typeof v === "string" && v.trim()) return v.trim();
@@ -238,7 +284,7 @@ function buildGuideRows(): GuideRow[] {
       slug: "air-canada",
       airline: "Air Canada",
       model: "Basic fare with paid checked-bag pressure",
-      carryOn: "One standard carry-on and one personal item are included, so the carry-on rule is not the main trap.",
+      carryOn: "One standard carry-on and one personal item are included, so the carry-on rule is not the main problem.",
       seats: airCanadaBasicSeat
         ? `${formatAmount(airCanadaBasicSeat.amount, airCanadaBasicSeat.currency)} for Basic advance seat selection, with price varying by route and seat type.`
         : "Basic advance seat selection is a paid product where shown by route and seat type.",
@@ -323,7 +369,7 @@ function buildGuideRows(): GuideRow[] {
       carryOn:
         frontierCarryOn
           ? `${safeText(frontierCarryOn.conditions)}.`
-          : "Carry-on access is a paid decision path rather than a standard entitlement.",
+          : "A full-size carry-on usually has to be priced separately instead of treated as included.",
       seats: "Frontier seats matter, but bags, bundles, and late changes usually drive the bigger cost swing.",
       changes:
         frontierLateChange
@@ -388,7 +434,7 @@ const PRIORITY_BASIC_PATHS = [
     airline: "United",
     title: "Carry-on risk first",
     body:
-      "United Basic Economy is the clearest example where the cheapest fare can fail because you need more than a personal item.",
+      "United Basic Economy is the clearest example where the lowest fare may stop working because you need more than a personal item.",
     links: [
       { href: "/airlines/united", label: "United fees" },
       {
@@ -426,7 +472,7 @@ const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You need a normal carry-on",
     verdict:
-      "Be most careful with United Basic Economy, Spirit, and Frontier. American, Delta, JetBlue, Alaska, and Southwest are less likely to fail on carry-on access alone.",
+      "Be most careful with United Basic Economy, Spirit, and Frontier. American, Delta, JetBlue, Alaska, and Southwest are less likely to become a problem because of carry-on access alone.",
     action:
       "If the cheapest fare restricts the overhead bin, price the checked bag or cabin-bag add-on before treating it as cheaper.",
     links: [
@@ -480,10 +526,11 @@ export default function BasicEconomyTrapsGuide() {
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
+      <JsonLd data={basicEconomyJsonLd()} />
       <header className="space-y-6">
         <div className="flex flex-wrap items-baseline gap-3">
           <h1 className="text-4xl font-black tracking-tight text-slate-900">
-            Basic Economy traps by airline
+            Basic Economy fees and restrictions by airline
           </h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
             Last verified {LAST_VERIFIED}
@@ -532,7 +579,7 @@ export default function BasicEconomyTrapsGuide() {
                 United is the clearest case where Basic Economy can force a bag decision right
                 away. Air Canada Basic keeps carry-on access but can change checked-bag and seat
                 math. JetBlue Blue Basic includes a carry-on now, but flexibility remains the
-                pressure point.
+                thing to check before booking.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
@@ -608,7 +655,7 @@ export default function BasicEconomyTrapsGuide() {
               Decision matrix
             </div>
             <h2 className="mt-2 text-2xl font-bold text-slate-900">
-              Which Basic Economy trap matters for your trip?
+              Which Basic Economy restriction matters for your trip?
             </h2>
           </div>
           <Link href="/tools/checked-baggage-calculator" className="text-sm font-bold text-blue-700 underline">
@@ -634,6 +681,55 @@ export default function BasicEconomyTrapsGuide() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+          Two similar flights
+        </div>
+        <h2 className="mt-2 text-2xl font-bold text-slate-900">
+          If one flight is cheaper, check what the fare leaves out.
+        </h2>
+        <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+          Two flights can look almost identical in search results but behave differently after you
+          choose a fare. The lower price may remove or limit a carry-on bag, charge for checked
+          bags, delay seat selection, block changes, reduce refund options, or apply different
+          rules because a partner airline operates part of the trip.
+        </p>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <h3 className="text-base font-bold text-slate-950">Bags</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Check whether the fare includes a normal carry-on and whether the first checked bag is
+              included, paid, or route-priced.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <h3 className="text-base font-bold text-slate-950">Seats</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              If sitting together matters, compare the seat-selection cost before assuming the
+              cheaper fare is actually cheaper.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <h3 className="text-base font-bold text-slate-950">Changes and refunds</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              If the trip might move, a restrictive fare can cost more later even when bags are not
+              the problem.
+            </p>
+          </div>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-3 text-sm">
+          <Link href="/tools/checked-baggage-calculator" className="font-bold text-blue-700 underline">
+            Calculate checked bags
+          </Link>
+          <Link href="/fees/seat_selection" className="font-bold text-blue-700 underline">
+            Compare seat fees
+          </Link>
+          <Link href="/fees/change_cancellation" className="font-bold text-blue-700 underline">
+            Compare change rules
+          </Link>
         </div>
       </section>
 
@@ -925,7 +1021,7 @@ export default function BasicEconomyTrapsGuide() {
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline comparison</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          This table shows what each airline&apos;s cheapest fare is most likely to leave out.
+          This table shows what each airline&apos;s cheapest fare is most likely to restrict or sell separately.
         </p>
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
           <table className="min-w-[1100px] text-left text-sm">
