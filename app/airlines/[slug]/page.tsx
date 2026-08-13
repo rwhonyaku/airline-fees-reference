@@ -7361,6 +7361,11 @@ const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
         "ZIPAIR checked bag fees are route-, weight-, and timing-dependent. The useful price is the add-on quote shown during booking or manage booking, not one universal first-bag fee.",
     },
     {
+      question: "How do ZIPAIR Tokyo baggage fees work?",
+      answer:
+        "For Tokyo routes such as Los Angeles, San Francisco, Honolulu, Seoul, Bangkok, or Singapore to or from Narita, start with ZIPAIR's included 7 kg combined cabin allowance. Checked baggage is then purchased separately by route, weight allowance, and timing.",
+    },
+    {
       question: "What is the ZIPAIR checked bag weight limit?",
       answer:
         "ZIPAIR checked baggage is purchased by weight, and a single checked bag must not exceed 32 kg. Extra weight beyond the purchased allowance is charged at airport rates.",
@@ -8110,13 +8115,13 @@ function ZipairBaggageDecisionChecklist() {
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        ZIPAIR add-on prices
+        ZIPAIR baggage allowance and add-on prices
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        What is separate from the ZIPAIR base fare?
+        ZIPAIR baggage starts with the 7 kg cabin allowance.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage, extra baggage weight, sports equipment, seat selection, and flight changes are separate decisions. The useful ZIPAIR add-on price is the route-specific quote shown during booking or manage booking, not a universal first-bag fee.
+        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage, extra baggage weight, sports equipment, seat selection, and flight changes are separate decisions. For Tokyo routes, the useful ZIPAIR checked bag fee is the route-specific quote shown during booking or manage booking, not a universal first-bag fee.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8129,10 +8134,10 @@ function ZipairBaggageDecisionChecklist() {
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Paid baggage add-on
+            Checked bag fee
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            ZIPAIR checked baggage is purchased by weight. Use the exact route and weight package before comparing ZIPAIR against a legacy carrier fare.
+            ZIPAIR checked baggage is purchased by route and weight. Use the exact Tokyo route and weight package before comparing ZIPAIR against a legacy carrier fare.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8141,6 +8146,14 @@ function ZipairBaggageDecisionChecklist() {
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             Extra checked-bag weight beyond the purchased allowance is charged at airport rates. A single checked bag must stay at or below 32 kg.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Tokyo route check
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Common ZIPAIR baggage searches are Tokyo-route searches. The allowance model is the same, but the checked-bag quote still depends on the exact route, weight, and purchase timing.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8396,7 +8409,7 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       return {
         title: "ZIPAIR Baggage Allowance, Checked Bag Fee, and Extra Baggage (2026)",
         description:
-          "ZIPAIR baggage allowance starts with a combined 7 kg cabin limit. Checked bag fees and extra baggage costs depend on route, purchased weight allowance, and timing.",
+          "ZIPAIR baggage allowance starts with a combined 7 kg cabin limit. Checked bag fees, Tokyo route baggage, and extra baggage costs depend on route, weight allowance, and timing.",
       };
     default:
       return {

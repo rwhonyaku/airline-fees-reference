@@ -60,7 +60,17 @@ function getFeeFaq(category: string): Array<{ question: string; answer: string }
         {
           question: "How much are checked baggage fees?",
           answer:
-            "Checked baggage fees depend on airline, route, fare family, bag count, and when the bag is purchased. Some fares include a first checked bag, while Basic or low-cost fares may charge separately.",
+            "Checked baggage fees depend on airline, route, fare family, bag count, trip direction, and when the bag is purchased. Some fares include a first checked bag, while Basic, Light, or low-cost fares may charge separately.",
+        },
+        {
+          question: "Are baggage fees round trip?",
+          answer:
+            "Usually no. Baggage fees are commonly charged per direction, so a roundtrip can mean paying the checked-bag fee once on the outbound flight and again on the return flight. Always check whether the airline lists the fee as one-way, per direction, or per segment.",
+        },
+        {
+          question: "How should I compare airline baggage fees?",
+          answer:
+            "Compare the total trip cost, not only the first-bag row. Use airline, travelers, bags per traveler, one-way versus roundtrip, route, fare family, included allowance, and whether a card or status benefit removes the first checked bag.",
         },
         {
           question: "Why does a checked bag fee sometimes vary?",
@@ -252,9 +262,9 @@ function getHubCopy(category: string) {
     case "checked_baggage":
       return {
         verdict:
-          "Checked baggage fees usually mean one of three different things: a paid first checked bag, an included checked-bag allowance, or excess baggage after you exceed the allowance. The price depends on airline, route, fare family, bag count, purchase timing, and whether a card, status, cabin, or special exception covers the bag.",
+          "Checked baggage fees are usually charged per direction, not once for the whole roundtrip. The useful answer is the trip total: airline, travelers, bags per traveler, one-way versus roundtrip, fare family, route, and whether the first checked bag is included or paid separately.",
         proTip:
-          "Start with the exact trip: airline, travelers, bags per traveler, roundtrip or one-way, and whether the bag is being bought before the airport. That is the fastest way to turn a vague fee row into a useful estimate.",
+          "Start with the exact trip: airline, travelers, bags per traveler, roundtrip or one-way, and whether the bag is being bought before the airport. That is the fastest way to turn a baggage-fee comparison into a useful estimate.",
         loophole:
           "The cleanest way to avoid checked bag fees is deciding early whether the trip works with a personal item, a carry-on plan, or a bag benefit that removes the first checked bag fee.",
         whatToWatch:
@@ -523,18 +533,34 @@ function CheckedBaggageAnswerBlock() {
         <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
           Direct answer
         </div>
-        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much are checked baggage fees?</h2>
+        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much does checked baggage cost?</h2>
       </div>
 
       <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
-        There is not one checked-bag price across airlines. On U.S. domestic-style trips, the
-        common question is often the first and second checked bag charge. On international trips,
-        the first question is often whether your route, cabin, and fare already include an
-        allowance. Once you exceed that allowance, the cost may move into excess-baggage,
-        overweight, or oversize rules instead of a simple first-bag fee.
+        There is not one checked-bag price across airlines. For many U.S. domestic-style trips, the
+        useful number is the first checked bag fee multiplied by travelers and flight directions.
+        For international trips, the first question is often whether your route, cabin, and fare
+        already include an allowance. Once you exceed that allowance, the cost may move into
+        excess-baggage, overweight, or oversize rules instead of a simple first-bag fee.
+      </p>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        Baggage fees are usually not roundtrip prices. If an airline lists a checked bag fee per
+        direction, a roundtrip can mean paying once on the outbound flight and again on the return.
+        A family of four checking one bag each can therefore face eight bag charges on a roundtrip,
+        before card benefits, included allowances, or status exceptions.
       </p>
 
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <Link
+          href="/airlines/air-france"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Air France baggage charges</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Use this when the question is Air France baggage fees, baggage price, excess baggage cost, or extra baggage charges.
+          </div>
+        </Link>
         <Link
           href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
           style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
@@ -542,6 +568,15 @@ function CheckedBaggageAnswerBlock() {
           <div style={{ fontWeight: 800, textDecoration: "underline" }}>Price travelers x bags</div>
           <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
             Use this when you need the likely baggage bill for a party instead of one isolated fee.
+          </div>
+        </Link>
+        <Link
+          href="/tools/checked-baggage-calculator?travelers=4&bags=1&directions=2&trips=1&pay=yes"
+          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
+        >
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Family roundtrip bag math</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Use this when you need to see how one checked bag per traveler multiplies across both directions.
           </div>
         </Link>
         <Link
@@ -724,9 +759,9 @@ function getFeeMetadataCopy(category: string): Metadata {
       };
     case "checked_baggage":
       return {
-        title: "Checked Baggage Fees by Airline | Bag Fee Calculator",
+        title: "Checked Baggage Fees by Airline | Costs, Comparison, Calculator",
         description:
-          "Compare checked baggage fees by airline, then use the checked bag fee calculator to estimate trip and annual bag costs.",
+          "Compare checked baggage fees by airline, learn whether baggage fees are round trip, and use the checked bag fee calculator to estimate total bag costs.",
       };
     default:
       return {

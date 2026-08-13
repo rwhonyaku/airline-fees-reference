@@ -71,6 +71,11 @@ const FEATURED_AIRLINES = [
 
 const EXCESS_BAG_FAQS = [
   {
+    question: "How are Air France excess baggage fees priced?",
+    answer:
+      "Air France excess baggage charges depend on itinerary and airport handling. Overweight and oversized baggage are not one universal fee, so the useful answer is the Air France page plus the exact route-specific quote.",
+  },
+  {
     question: "What is an excess baggage fee?",
     answer:
       "An excess baggage fee is charged when a checked bag exceeds the airline's included allowance, weight limit, size limit, or number-of-bags allowance. Travelers may also search this as an extra baggage fee, overweight baggage fee, or oversize baggage fee. It may apply in addition to the normal checked-bag fee.",
@@ -248,6 +253,34 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
               overweight charges and the regular checked-bag fee.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Air France baggage charges
+          </div>
+          <h2 className="mt-2 text-xl font-extrabold text-slate-950">
+            Air France extra baggage needs the route-specific price.
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+            Searchers looking for Air France baggage cost, extra baggage fees, or excess baggage
+            price usually need one distinction first: an additional checked bag is priced during
+            booking or in My Bookings, while overweight and oversized baggage are priced at the
+            airport by itinerary.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/airlines/air-france" className="font-bold text-blue-700 underline">
+            Air France baggage fees
+          </Link>
+          <Link href="/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes" className="font-bold text-blue-700 underline">
+            Check Air France checked bag cost
+          </Link>
+          <Link href="/guides/international-baggage-allowance" className="font-bold text-blue-700 underline">
+            International baggage allowance
+          </Link>
         </div>
       </section>
 

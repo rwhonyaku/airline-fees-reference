@@ -142,6 +142,29 @@ const FEATURED_CHECKED_BAG_PATHS = [
   },
 ];
 
+const POPULAR_CALCULATOR_STARTS = [
+  {
+    href: "/tools/checked-baggage-calculator?airline=united&travelers=1&bags=1&directions=2&trips=1&pay=yes",
+    title: "United, one traveler, one checked bag",
+    body: "A clean starting point for a United roundtrip when one traveler needs one checked bag each way.",
+  },
+  {
+    href: "/tools/checked-baggage-calculator?airline=united&travelers=4&bags=1&directions=2&trips=1&pay=yes",
+    title: "United family roundtrip baggage fees",
+    body: "Shows how one checked bag per traveler can multiply across a roundtrip before waivers or included allowances.",
+  },
+  {
+    href: "/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes",
+    title: "Repeat Alaska checked-bag trips",
+    body: "Useful when deciding whether recurring first-bag fees are large enough to compare card baggage benefits.",
+  },
+  {
+    href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes",
+    title: "Air Canada Basic vs Standard bag math",
+    body: "Use this when the checked-bag question is tied to fare family rather than one universal first-bag price.",
+  },
+];
+
 function scenarioHref(
   airlineSlug: string,
   travelers: number,
@@ -193,6 +216,16 @@ const CHECKED_BAG_FAQS = [
     question: "Can I use this as a United baggage fee calculator?",
     answer:
       "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual roundtrips. The result shows the modeled checked-bag total when the stored fee data has a usable published amount.",
+  },
+  {
+    question: "Are baggage fees calculated round trip?",
+    answer:
+      "The calculator multiplies checked-bag fees by flight direction. If the airline publishes a per-direction bag fee, a roundtrip applies that fee once outbound and once again on the return.",
+  },
+  {
+    question: "What is the difference between a baggage calculator and a checked bag fee calculator?",
+    answer:
+      "This tool is focused on checked baggage fees. It does not model carry-on add-ons, overweight fees, or oversize fees; those require the related carry-on and excess-baggage tools.",
   },
 ];
 
@@ -360,6 +393,29 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         </div>
         <div className="grid gap-3 md:grid-cols-4">
           {FEATURED_CHECKED_BAG_PATHS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-blue-400 hover:bg-blue-50"
+            >
+              <div className="text-sm font-extrabold text-blue-800 underline">{item.title}</div>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">{item.body}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Popular calculator starts
+          </div>
+          <h2 className="mt-2 text-xl font-extrabold text-slate-950">
+            Start with a real bag-fee scenario.
+          </h2>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2">
+          {POPULAR_CALCULATOR_STARTS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
