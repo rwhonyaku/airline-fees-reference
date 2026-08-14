@@ -156,6 +156,53 @@ function plural(n: number, singular: string, pluralLabel = `${singular}s`): stri
   return `${n} ${n === 1 ? singular : pluralLabel}`;
 }
 
+const QUICK_SCENARIOS = [
+  {
+    label: "Solo traveler",
+    description: "1 traveler, 1 checked bag, 2 roundtrips per year",
+    airline: "united",
+    travelers: 1,
+    bags: 1,
+    trips: 2,
+  },
+  {
+    label: "Couple",
+    description: "2 travelers, 1 checked bag each, 2 roundtrips per year",
+    airline: "delta",
+    travelers: 2,
+    bags: 1,
+    trips: 2,
+  },
+  {
+    label: "Family trip pattern",
+    description: "4 travelers, 1 checked bag each, 1 roundtrip per year",
+    airline: "american",
+    travelers: 4,
+    bags: 1,
+    trips: 1,
+  },
+  {
+    label: "Repeat Alaska traveler",
+    description: "2 travelers, 1 checked bag each, 3 roundtrips per year",
+    airline: "alaska",
+    travelers: 2,
+    bags: 1,
+    trips: 3,
+  },
+];
+
+function scenarioHref(scenario: (typeof QUICK_SCENARIOS)[number]): string {
+  const params = new URLSearchParams({
+    airline: scenario.airline,
+    travelers: String(scenario.travelers),
+    bags: String(scenario.bags),
+    trips: String(scenario.trips),
+    pay: "yes",
+  });
+
+  return `/best-cards?${params.toString()}`;
+}
+
 export default async function BestCardsPage({ searchParams }: PageProps) {
   const sp: SearchParams = (await searchParams) ?? {};
 
@@ -181,12 +228,52 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   if (allCardsForAirline.length === 0) {
     return (
       <main className="mx-auto w-full max-w-5xl px-4 py-12">
-        <h1 className="text-3xl font-extrabold">Free checked bag card calculator</h1>
-        <p className="mt-3 text-slate-600">
-          This calculator does not currently have a verified free checked bag credit-card entry for{" "}
-          <strong>{airline.name}</strong>. That does not mean a baggage exception can never apply; it
-          means this site is not modeling a co-branded card waiver for this airline yet.
-        </p>
+        <section className="rounded-3xl border border-amber-200 bg-amber-50 p-6">
+          <div className="text-xs font-bold uppercase tracking-widest text-amber-800">
+            Not modeled in this calculator
+          </div>
+          <h1 className="mt-2 text-3xl font-extrabold text-slate-950">
+            No verified recurring free checked bag card is modeled for {airline.name}.
+          </h1>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+            That does not mean a baggage exception can never apply. It means this calculator does
+            not currently have a verified co-branded card entry that behaves like a reusable
+            checked-bag waiver for {airline.name}.
+          </p>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+            To be modeled here, a card needs a published checked-bag waiver, clear traveler coverage,
+            a usable annual fee, and baggage fees that can be compared against that annual fee without
+            guessing. Cards that mainly offer points, lounge access, status paths, baggage-delay
+            protection, or non-USD annual fees may still be useful, but they are not clean bag-fee
+            break-even inputs yet.
+          </p>
+        </section>
+
+        <section className="mt-6 grid gap-4 md:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <h2 className="text-lg font-bold text-slate-900">What to do instead</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Price the checked-bag bill first. If the airline uses route, fare, allowance, or
+              currency-specific pricing, the bag calculator will explain the lookup instead of
+              inventing a number.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <h2 className="text-lg font-bold text-slate-900">Why this builds trust</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              A blank card match is better than forcing a weak recommendation. The site only models
+              card savings when the bag benefit can be compared against cash checked-bag fees.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <h2 className="text-lg font-bold text-slate-900">Cards currently covered</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Current modeled or verified benefit coverage is focused on Alaska, Air Canada, American,
+              United, Delta, and JetBlue.
+            </p>
+          </div>
+        </section>
+
         <div className="mt-6 flex flex-wrap gap-3 text-sm">
           <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
             Review {airline.name} fees
@@ -196,6 +283,9 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           </Link>
           <Link href="/guides/airline-credit-card-baggage-benefits" className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
             See supported card benefits
+          </Link>
+          <Link href="/fees/checked_baggage" className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
+            Compare checked-bag fees
           </Link>
         </div>
       </main>
@@ -229,39 +319,41 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
   const topVerdict = verdictForResult(top.r);
   const topOfferUrl = safeExternalUrl(top.card.offer_url);
   const calculatorHref = `/tools/checked-baggage-calculator?airline=${encodeURIComponent(airlineSlug)}&travelers=${travelers}&bags=${bags}&directions=2&trips=${trips}&pay=${payWithCard ? "yes" : "no"}`;
+  const netLabel = top.r.netAnnualUsd >= 0 ? `save about ${usd(top.r.netAnnualUsd)}` : `come up about ${usd(Math.abs(top.r.netAnnualUsd))} short`;
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
-      <div className="flex flex-col gap-3">
-        <h1 className="text-4xl font-extrabold tracking-tight">Free checked bag card calculator</h1>
-        <p className="max-w-4xl text-sm leading-relaxed text-slate-700">
-          This is a checked-baggage break-even calculator, not a general travel-card ranking. It tests
-          whether an airline card&apos;s published free checked bag benefit is enough to cover
-          the annual fee from modeled checked-bag savings alone.
-        </p>
-        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          Enter the airline, number of travelers, checked bags, annual trips, and whether the
-          ticket is paid for with the card. This page does not include points, lounge access,
-          statement credits, or sign-up bonuses. Last verified:{" "}
-          <span className="font-medium">{LAST_VERIFIED}</span>.
-        </p>
-        <p className="text-sm leading-relaxed text-slate-600">
-          Start with the selected airline&apos;s{" "}
-          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="text-blue-700 underline">
-            fee page
-          </Link>{" "}
-          and the broader{" "}
-          <Link href="/fees/checked_baggage" className="text-blue-700 underline">
-            checked baggage fee reference
-          </Link>{" "}
-          if you want to confirm the bag fees behind the calculation. For a broader reference on
-          airline bag benefits, see{" "}
-          <Link href="/guides/airline-credit-card-baggage-benefits" className="text-blue-700 underline">
-            airline credit card baggage benefits
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-3xl">
+            <div className="text-xs font-bold uppercase tracking-widest text-blue-700">Checked-bag card math</div>
+            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-950">
+              Will a free checked bag card actually save you money?
+            </h1>
+            <p className="mt-3 text-base leading-relaxed text-slate-700">
+              For {airline.name}, this setup would produce about{" "}
+              <span className="font-bold text-slate-950">{usd(top.r.annualSavingsUsd)}</span> in modeled annual checked-bag savings before the card annual fee. After the annual fee, the top match would{" "}
+              <span className="font-bold text-slate-950">{netLabel}</span>.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              This is a baggage-fee break-even calculator, not a general travel-card ranking. It uses published checked-bag fees, card annual fees, traveler coverage, and card-payment rules. It does not count points, lounge access, statement credits, or sign-up bonuses.
+            </p>
+          </div>
+          <div className={`rounded-2xl border p-5 lg:w-72 ${topVerdict.className}`}>
+            <div className="text-xs font-bold uppercase tracking-widest">Answer first</div>
+            <div className="mt-2 text-xl font-extrabold">{topVerdict.label}</div>
+            <p className="mt-2 text-sm leading-relaxed">{topVerdict.detail}</p>
+            {top.r.breakEvenRoundtrips != null ? (
+              <p className="mt-2 text-sm leading-relaxed">
+                Breaks even after <span className="font-bold">{plural(top.r.breakEvenRoundtrips, "roundtrip")}</span> per year.
+              </p>
+            ) : null}
+          </div>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-3 text-sm">
+          <Link href="#card-inputs" className="rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700">
+            Change the inputs
           </Link>
-          .
-        </p>
-        <div className="flex flex-wrap gap-3 text-sm">
           <Link href={calculatorHref} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 underline">
             Price this baggage scenario
           </Link>
@@ -269,7 +361,22 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
             Review {airline.name} fees
           </Link>
         </div>
-      </div>
+        <p className="mt-4 text-xs leading-relaxed text-slate-500">
+          Last verified: <span className="font-medium">{LAST_VERIFIED}</span>. Start with the selected airline&apos;s{" "}
+          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="text-blue-700 underline">
+            fee page
+          </Link>
+          , the{" "}
+          <Link href="/fees/checked_baggage" className="text-blue-700 underline">
+            checked baggage fee reference
+          </Link>
+          , or the{" "}
+          <Link href="/guides/airline-credit-card-baggage-benefits" className="text-blue-700 underline">
+            credit card baggage benefit guide
+          </Link>{" "}
+          if you want to check the source context behind the math.
+        </p>
+      </section>
 
       <section className="mt-8 grid gap-4 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -292,9 +399,17 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       </section>
 
       <form
+        id="card-inputs"
         method="get"
         className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
       >
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Your baggage setup</div>
+          <h2 className="mt-1 text-2xl font-extrabold text-slate-950">Run the card break-even math</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Use the actual number of people and checked bags you expect to pay for. A card only makes sense here when the recurring bag savings beat the annual fee.
+          </p>
+        </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label className="mb-2 block text-sm font-semibold text-slate-800">Airline</label>
@@ -364,6 +479,22 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           Compare card tiers
         </button>
       </form>
+
+      <section className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+        <h2 className="text-lg font-bold text-slate-900">Try common trip patterns</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {QUICK_SCENARIOS.map((scenario) => (
+            <Link
+              key={scenario.label}
+              href={scenarioHref(scenario)}
+              className="rounded-xl border border-slate-200 bg-white p-4 text-sm hover:border-blue-200 hover:bg-blue-50"
+            >
+              <div className="font-bold text-slate-950">{scenario.label}</div>
+              <p className="mt-2 leading-relaxed text-slate-600">{scenario.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-slate-600">What the card math is testing</div>

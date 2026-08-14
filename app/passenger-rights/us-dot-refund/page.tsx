@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 
 const LAST_VERIFIED = "2026-04-27";
 
@@ -124,6 +125,8 @@ export default function UsDotRefundReferencePage() {
           </p>
         </div>
       </section>
+
+      <TravelEsimCallout compact />
 
       <section className="space-y-3">
         <h2 className="text-2xl font-bold text-slate-900">6. Sources</h2>

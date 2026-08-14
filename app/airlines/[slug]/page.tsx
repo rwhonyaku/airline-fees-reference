@@ -161,6 +161,8 @@ const EU261_REFERENCE_SLUGS = new Set(["aer-lingus", "air-france", "american", "
 
 const DECISION_SCENARIO_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "zipair"]);
 
+const CARD_DECISION_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "air-canada"]);
+
 const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "singapore-airlines": {
     intro: {
@@ -632,8 +634,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
+      { href: "/best-cards?airline=air-canada&travelers=2&bags=1&trips=2&pay=yes", label: "Aeroplan checked-bag benefit" },
       { href: "/tools/excess-baggage-calculator?airline=air-canada&bags=1&directions=2&weight=51&size=63", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
+      { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
       { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
@@ -691,7 +695,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       "The first checked bag is included on Standard and higher fares.",
       "The paid Basic example on this page is domestic and transborder, not a single universal international paid-bag baseline.",
       "No change fee is shown for Standard and higher fares before departure, though fare difference can still apply.",
-      "No Aeroplan status or co-branded-card baggage waiver is shown here.",
+      "The U.S. Chase Aeroplan Card is tracked in the card-benefit guide as a verified first-checked-bag benefit, but this airline page keeps base fare and baggage-policy rows separate from card or status waiver modeling.",
     ],
     comparisonLinks: [
       { href: "/airlines/united", label: "United Airlines" },
@@ -7929,6 +7933,63 @@ function BagCostTeaser({
   );
 }
 
+function CardSavingsDecisionPanel({
+  slug,
+  airlineName,
+}: {
+  slug: string;
+  airlineName: string;
+}) {
+  if (!CARD_DECISION_SLUGS.has(slug)) return null;
+
+  const enc = encodeURIComponent(slug);
+  const cardHref = `/best-cards?airline=${enc}&travelers=2&bags=1&trips=2&pay=yes`;
+  const calculatorHref = `/tools/checked-baggage-calculator?airline=${enc}&travelers=2&bags=1&directions=2&trips=2&pay=yes`;
+  const guideHref = "/guides/airline-credit-card-baggage-benefits";
+  const isAirCanada = slug === "air-canada";
+
+  const note = isAirCanada
+    ? "Air Canada card benefit tracking is useful, but the current Air Canada bag rows are CAD-denominated. Treat the card path as a benefit-rule check until multi-currency break-even math is added."
+    : "The card calculator uses the same airline and bag pattern, then tests whether modeled checked-bag savings beat the card annual fee before counting points, bonuses, lounge access, or unrelated perks.";
+
+  return (
+    <section className="rounded-3xl border border-emerald-200 bg-emerald-50 p-6">
+      <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div>
+          <div className="text-xs font-black uppercase tracking-[0.18em] text-emerald-800">
+            Free checked bag card check
+          </div>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+            If you fly {airlineName} repeatedly with checked bags, run the card math before paying cash.
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-700">{note}</p>
+          <p className="mt-3 text-sm leading-relaxed text-slate-700">
+            Start by pricing the bag bill for travelers and roundtrips. Then compare eligible card tiers only if the
+            checked-bag cost is recurring enough to matter.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-emerald-200 bg-white p-5">
+          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Default scenario</div>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            2 travelers, 1 checked bag each, 2 roundtrips per year.
+          </p>
+          <div className="mt-4 grid gap-3 text-sm">
+            <Link href={calculatorHref} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-bold text-blue-800 underline hover:border-blue-300">
+              Price checked bags first
+            </Link>
+            <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-3 font-bold text-white hover:bg-slate-700">
+              Test card break-even
+            </Link>
+            <Link href={guideHref} className="font-semibold text-emerald-900 underline">
+              Check benefit rules and exclusions
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function QuickSavePanel({ items }: { items: string[] }) {
   const topItems = items.slice(0, 3);
 
@@ -8610,6 +8671,8 @@ function ReferenceAirlinePage({
         airlineName={airline.name}
         feeByBagOrdinal={numericCheckedBagFees}
       />
+
+      <CardSavingsDecisionPanel slug={slug} airlineName={airline.name} />
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 
 const LAST_VERIFIED = "2026-04-27";
 
@@ -166,6 +167,8 @@ export default function Eu261ReferencePage() {
           </p>
         </div>
       </section>
+
+      <TravelEsimCallout compact />
 
       <section className="space-y-3">
         <h2 className="text-2xl font-bold text-slate-900">8. Sources</h2>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 import { getAllAirlines } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
 
@@ -369,6 +370,8 @@ export default function InternationalBaggageAllowanceGuide() {
           </div>
         </div>
       </section>
+
+      <TravelEsimCallout compact />
     </main>
   );
 }

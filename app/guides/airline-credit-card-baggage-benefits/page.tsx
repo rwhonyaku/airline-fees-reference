@@ -179,6 +179,40 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
   },
 };
 
+const MODELING_RULES = [
+  {
+    title: "Reusable bag waiver",
+    body: "The published benefit has to remove a checked-bag fee on eligible trips, not just provide points, status progress, travel credits, or baggage-delay protection.",
+  },
+  {
+    title: "Clear traveler coverage",
+    body: "The card terms need to say who is covered: cardholder only, cardholder plus one companion, or cardholder plus a larger same-reservation party.",
+  },
+  {
+    title: "A usable annual fee",
+    body: "The calculator compares checked-bag savings against the card annual fee. Cards in another currency are better handled once the tool supports that currency cleanly.",
+  },
+  {
+    title: "Bag fees we can price",
+    body: "The break-even calculator needs a usable checked-bag fee for the airline and bag position. If the airline data is route-priced or currency-mismatched, the guide can verify the benefit while limiting the math.",
+  },
+];
+
+const AIRLINE_DECISION_NOTES: Record<string, string> = {
+  alaska:
+    "Strong fit for repeat Alaska or Hawaiian flights when a first checked bag would otherwise be paid and the eligible Atmos card payment rule is satisfied.",
+  "air-canada":
+    "Useful as a verified Chase Aeroplan benefit reference; full break-even math is intentionally limited until CAD bag-fee support is modeled.",
+  american:
+    "Best for domestic American itineraries where the first checked bag would otherwise be paid for several travelers or repeat trips.",
+  united:
+    "Best when United first- or second-bag fees repeat and the traveler can satisfy United's card-payment and MileagePlus-number conditions.",
+  delta:
+    "Best when the reservation includes the eligible SkyMiles number and the traveler would otherwise pay first-bag fees, especially for groups.",
+  jetblue:
+    "Best for JetBlue Plus or Premier cardholders buying eligible JetBlue-operated flights with the card; the no-fee JetBlue Card is intentionally excluded.",
+};
+
 function usd(amount: number): string {
   return `$${Math.round(amount)}`;
 }
@@ -360,6 +394,65 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           <Link href="/best-cards" className="mt-4 inline-block text-sm font-semibold text-blue-700 underline">
             Open card calculator
           </Link>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold text-slate-900">Why a card is modeled here</h2>
+        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
+          The calculator is deliberately narrow. It only models card benefits that can be turned into
+          checked-bag savings and compared against an annual fee. That keeps the recommendation useful
+          for baggage decisions instead of drifting into a general credit-card ranking.
+        </p>
+        <div className="grid gap-4 md:grid-cols-4">
+          {MODELING_RULES.map((rule) => (
+            <div key={rule.title} className="rounded-2xl border border-slate-200 bg-white p-5">
+              <h3 className="text-base font-bold text-slate-900">{rule.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{rule.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold text-slate-900">Best use by airline</h2>
+        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
+          Start with the airline where you actually pay bag fees. Then use the card calculator only if
+          the bag cost repeats enough for the annual fee to matter.
+        </p>
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+          <table className="min-w-[900px] text-left text-sm">
+            <thead className="bg-slate-50 text-slate-600">
+              <tr>
+                <th className="px-4 py-3 font-semibold">Airline</th>
+                <th className="px-4 py-3 font-semibold">When it is worth checking</th>
+                <th className="px-4 py-3 font-semibold">Start here</th>
+              </tr>
+            </thead>
+            <tbody>
+              {airlineGroups.map(({ slug, meta }) => (
+                <tr key={slug} className="border-t border-slate-100 align-top">
+                  <td className="px-4 py-4">
+                    <Link href={meta.airlinePage} className="font-semibold text-blue-700 underline">
+                      {meta.airlineName}
+                    </Link>
+                    <div className="mt-1 text-xs text-slate-500">{meta.routeScope}</div>
+                  </td>
+                  <td className="px-4 py-4 text-slate-700">{AIRLINE_DECISION_NOTES[slug]}</td>
+                  <td className="px-4 py-4">
+                    <div className="flex flex-col gap-2">
+                      <Link href={meta.calculatorHref} className="font-semibold text-blue-700 underline">
+                        Price bags
+                      </Link>
+                      <Link href={meta.cardMathHref} className="font-semibold text-blue-700 underline">
+                        Test card math
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 

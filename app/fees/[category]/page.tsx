@@ -437,6 +437,16 @@ function getDecisionToolCards(category: string): Array<{ href: string; label: st
           body: "Check whether repeat first-bag fees can justify an eligible airline card on bag savings alone.",
         },
         {
+          href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes",
+          label: "United card bag math",
+          body: "Use this when repeat United first-bag fees are the reason you are comparing card benefits.",
+        },
+        {
+          href: "/best-cards?airline=alaska&travelers=2&bags=1&trips=3&pay=yes",
+          label: "Alaska repeat-trip math",
+          body: "Use this when recurring Alaska checked-bag fees may be high enough to beat a card annual fee.",
+        },
+        {
           href: "/guides/international-baggage-allowance",
           label: "International allowance explainer",
           body: "Best when the price or allowance depends on route, fare family, cabin, or piece-versus-weight concept.",
@@ -585,7 +595,7 @@ function CheckedBaggageAnswerBlock() {
         >
           <div style={{ fontWeight: 800, textDecoration: "underline" }}>Check card break-even</div>
           <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
-            Use this when repeat first-bag fees may be high enough for a checked-bag card to matter.
+            Use this when repeat first-bag fees may be high enough for a checked-bag card to beat its annual fee.
           </div>
         </Link>
         <Link

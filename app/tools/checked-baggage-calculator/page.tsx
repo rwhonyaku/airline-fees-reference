@@ -668,21 +668,23 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
       {trip.canEstimate ? (
         <section className="grid gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
           <div className="text-xs font-bold uppercase tracking-widest text-emerald-800">
-            Card savings bridge
+            Checked bag savings next step
           </div>
           {best ? (
             <>
               <h2 className="text-2xl font-extrabold text-slate-950">
-                {cardBridgeLabel}: about {usd(best.result.annualSavingsUsd)} in annual bag savings.
+                {cardBridgeLabel}: test whether a free checked bag card beats paying cash.
               </h2>
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                Best bag-fee match: <span className="font-bold">{best.card.name}</span>. After its annual
-                fee, the bag-only value is{" "}
+                For this setup, the best modeled bag-fee match is <span className="font-bold">{best.card.name}</span>.
+                It could remove about <span className="font-bold">{usd(best.result.annualSavingsUsd)}</span> in annual
+                checked-bag fees before the card annual fee. After the annual fee, the bag-only value is{" "}
                 <span className={best.result.netAnnualUsd >= 0 ? "font-bold text-emerald-800" : "font-bold text-rose-700"}>
                   {best.result.netAnnualUsd >= 0 ? "+" : "-"}
                   {usd(Math.abs(best.result.netAnnualUsd))}
                 </span>
-                . This excludes points, sign-up bonuses, lounge access, and unrelated perks.
+                . The card page shows the same inputs, compares eligible card tiers, and excludes points, sign-up bonuses,
+                lounge access, and unrelated perks.
               </p>
               {remainingAnnualBagCost != null ? (
                 <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
@@ -701,7 +703,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               ) : null}
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
-                  Compare eligible cards
+                  Compare cards for this bag bill
                 </Link>
                 {safeExternalUrl(best.card.offer_url) ? (
                   <a
@@ -723,8 +725,9 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
                 That can happen when this airline has no eligible card in the calculator, when the benefit requires
                 card payment and you selected no, or when the card benefit does not cover the requested bag pattern.
-                The next best move is to reduce the cash bag bill directly: compare a bag-inclusive fare, check status
-                or military exceptions, or reduce the number of checked bags.
+                You can still open the card page to see why the model did not produce a positive match. The next best
+                move is usually to reduce the cash bag bill directly: compare a bag-inclusive fare, check status or
+                military exceptions, or reduce the number of checked bags.
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 <Link href={cardHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
