@@ -156,7 +156,9 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
             Compare the bag bill before the fare wins.
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
-            Pick travelers, bags, route context, and bag size. The table estimates only when the stored fee data has a usable fixed amount; route-priced airlines stay flagged for lookup.
+            Pick travelers, bags, route context, and bag size. The table estimates only when the
+            stored fee data has a usable fixed amount. Route-priced airlines stay flagged for
+            lookup instead of showing a false $0.
           </p>
         </div>
         <Link
@@ -167,7 +169,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
         </Link>
       </div>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
         <label className="grid gap-1 text-sm font-semibold text-slate-800">
           Travelers
           <input
@@ -282,7 +284,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
                     <span className="text-lg font-black text-slate-950">{usd(row.tripCost ?? 0)}</span>
                   ) : (
                     <div>
-                      <div className="font-bold text-amber-800">Needs lookup</div>
+                      <div className="font-bold text-amber-800">Route lookup needed</div>
                       <div className="mt-1 text-xs leading-relaxed text-slate-500">
                         Missing {row.missing.map(ordinalLabel).join(", ")} bag fee.
                       </div>
@@ -341,7 +343,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
                   </Link>
                   {!row.canEstimate ? (
                     <div className="mt-2 text-xs leading-relaxed text-slate-500">
-                      Depends on {row.variableReasons.slice(0, 2).join(" and ")}.
+                      Usually depends on {row.variableReasons.slice(0, 2).join(" and ")}.
                     </div>
                   ) : null}
                 </td>

@@ -71,6 +71,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
     trips,
     pay: "yes",
   });
+  const hasKnownRows = result.known.length > 0;
 
   return (
     <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
@@ -90,7 +91,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
         </div>
 
         <div className="grid gap-4 rounded-2xl border border-blue-100 bg-white p-5">
-          <div className="grid gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 2xl:grid-cols-4">
             <label className="text-sm font-bold text-slate-800">
               Travelers
               <input
@@ -166,18 +167,37 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
               </>
             ) : (
               <>
-                <div className="text-xl font-black text-slate-950">
-                  Partial estimate: {usd(result.tripCost)} from the known bag rows.
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  The current fee rows include numeric pricing for{" "}
-                  {result.known.length
-                    ? result.known.map((ordinal) => (ordinal === 1 ? "the first bag" : ordinal === 2 ? "the second bag" : "the third bag")).join(", ")
-                    : "none of the requested bag positions"}
-                  , but the requested{" "}
-                  {result.missing.map((ordinal) => (ordinal === 1 ? "first" : ordinal === 2 ? "second" : "third")).join(" and ")}{" "}
-                  bag price still needs a route, fare, or timing lookup.
-                </p>
+                {hasKnownRows ? (
+                  <>
+                    <div className="text-xl font-black text-slate-950">
+                      Partial estimate: {usd(result.tripCost)} from known bag rows.
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                      The current fee rows include numeric pricing for{" "}
+                      {result.known
+                        .map((ordinal) =>
+                          ordinal === 1 ? "the first bag" : ordinal === 2 ? "the second bag" : "the third bag"
+                        )
+                        .join(", ")}
+                      , but the requested{" "}
+                      {result.missing
+                        .map((ordinal) => (ordinal === 1 ? "first" : ordinal === 2 ? "second" : "third"))
+                        .join(" and ")}{" "}
+                      bag price still needs a route, fare, or timing lookup.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-xl font-black text-slate-950">
+                      No broad checked-bag estimate available.
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                      {airlineName} does not publish a single broad numeric USD first-bag fee in
+                      this dataset. The price depends on route, fare, currency, purchase timing, or
+                      how the allowance is calculated.
+                    </p>
+                  </>
+                )}
                 {result.possibleCardOffset != null ? (
                   <p className="mt-2 text-sm leading-relaxed text-slate-700">
                     The known first-bag exposure is still useful for card math: an eligible card could
@@ -196,13 +216,14 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
 
           {result.canFullyEstimate || bags === 0 ? null : (
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-950">
-              <span className="font-bold">Why no single total?</span> Missing bag positions usually
-              mean the airline prices baggage by route, fare family, advance purchase, airport
-              purchase, or piece-versus-weight concept.
+              <span className="font-bold">Why no single total?</span> This usually means the
+              airline prices bags by route, fare family, advance purchase, airport purchase, or
+              piece-versus-weight rules. Treat the full calculator or airline checkout as the
+              safer next step.
             </div>
           )}
 
-          <div className="flex flex-wrap gap-3 text-sm">
+          <div className="grid gap-3 text-sm sm:grid-cols-2">
             <Link href={calculatorHref} className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
               Open full bag calculator
             </Link>
