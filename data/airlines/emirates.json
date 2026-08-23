@@ -4,66 +4,138 @@
   "iata": "EK",
   "country": "United Arab Emirates",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Emirates baggage uses weight concept on many routes and piece concept on Americas/Africa-style markets; online extra-baggage purchase can be cheaper than airport pricing, while individual items over 32 kg or 203 cm move outside normal checked baggage.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "AED",
-      "conditions": "Carry-on varies by cabin: Economy 1 piece up to 7 kg; Premium Economy 1 up to 10 kg; Business/First 2 up to 7 kg each. Size limits apply.",
+      "conditions": "Economy: 1 carry-on up to 7 kg. Premium Economy: 1 up to 10 kg. Business/First: 2 up to 7 kg each.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/cabin-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Carry-on is included, but cabin baggage that fails size or weight limits can be checked and then counted against the traveler’s checked allowance."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "AED",
-      "conditions": "Checked baggage included under the weight or piece concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Included allowance depends on route, cabin, fare type, and Skywards tier; Emirates uses weight and piece concepts.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.emirates.com/us/english/help/faq-topics/baggage-and-lost-property/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Emirates tells travelers to check the ticket or Manage Booking because the published allowance changes by route and fare."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and baggage concept",
-      "currency": "AED",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and whether the weight or piece concept applies",
+      "amount": "From USD 15 per kg or USD 100 per extra piece at airport",
+      "currency": "USD",
+      "conditions": "Extra baggage is charged by kg on weight-concept routes and by piece on piece-concept routes; online purchase can be cheaper",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.emirates.com/us/english/before-you-fly/baggage/purchase-additional-baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Airport weight-concept rates start at USD 15/kg in Emirates’ published table. Piece-concept airport rates vary by region and can be much higher; advance-purchase discounts may be 35%-60% where eligible."
+      }
     },
-
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "Depends on route; maximum 32 kg per bag",
       "currency": "AED",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "conditions": "Overweight handling depends on baggage concept; no normal checked bag may exceed 32 kg.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.emirates.com/us/english/before-you-fly/baggage/purchase-additional-baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Emirates does not accept a checked bag over 32 kg as normal checked baggage; it must be split or handled outside standard checked baggage."
+      }
     },
-
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft handling",
+      "amount": "Depends on route; items over 203 cm must go cargo/freight",
       "currency": "AED",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize fees apply within accepted checked-bag limits; items over 203 cm must go cargo or freight.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.emirates.com/ae/english/before-you-fly/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.emirates.com/us/english/before-you-fly/baggage/purchase-additional-baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "For piece-concept journeys, 150-203 cm items can trigger oversize fees; over 203 cm must be sent as cargo or freight."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "AED",
+      "conditions": "Skywards members can receive extra baggage: Silver/Gold/Platinum on weight concept; Gold/Platinum on piece concept",
+      "applies_to": "Emirates Skywards Silver, Gold, and Platinum members",
+      "region_or_route": "Emirates and eligible flydubai flights",
+      "timing": "airport check-in",
+      "source_url": "https://www.emirates.com/us/english/help/faq-topics/emirates-skywards/faq/what-is-emirates-skywards/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Emirates published baggage, additional-baggage, optional-seat, Skywards, family/minor, and fare-condition pages."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Counts within allowance; excess rates apply if over allowance",
+      "currency": "AED",
+      "conditions": "Sports equipment is accepted as checked baggage; excess rates apply if total bags or weight exceed allowance",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Emirates-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.emirates.com/us/english/before-you-fly/baggage/unusual-baggage-and-special-allowances/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Bicycles should be arranged at least 24 hours in advance; equipment above published dimensions must go as cargo or freight."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "AED",
+      "conditions": "Infant tickets include 10 kg under weight concept or 1 piece up to 23 kg under piece concept",
+      "applies_to": "Infants",
+      "region_or_route": "Emirates-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.emirates.com/us/english/help/faq-topics/baggage-and-lost-property/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant cabin items can include one necessities bag up to 5 kg and a collapsible stroller or carry-cot if cabin space allows."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +145,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.emirates.com/ae/english/manage-booking/seat-selection/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Emirates published baggage, additional-baggage, optional-seat, Skywards, family/minor, and fare-condition pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +160,12 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.emirates.com/ae/english/manage-booking/seat-selection/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Emirates published baggage, additional-baggage, optional-seat, Skywards, family/minor, and fare-condition pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
@@ -96,19 +175,27 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.emirates.com/ae/english/legal/fare-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Emirates published baggage, additional-baggage, optional-seat, Skywards, family/minor, and fare-condition pages."
+      }
     },
-
     {
       "category": "unaccompanied_minor",
-      "amount": "Depends on route and eligibility",
-      "currency": "AED",
-      "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and fare",
+      "amount": 50,
+      "currency": "USD",
+      "conditions": "Ages 5-11 must travel on an adult fare; optional service for ages 12-15 costs USD 50 per sector",
       "applies_to": "Eligible ages",
       "region_or_route": "All routes",
-      "timing": "at booking",
-      "source_url": "https://www.emirates.com/ae/english/help/family/unaccompanied-minors/",
-      "last_verified": "2025-12-24"
+      "timing": "per sector",
+      "source_url": "https://www.emirates.com/english/family/planning-your-family-trip/unaccompanied-minors/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Emirates published baggage, additional-baggage, optional-seat, Skywards, family/minor, and fare-condition pages."
+      }
     }
   ]
 }

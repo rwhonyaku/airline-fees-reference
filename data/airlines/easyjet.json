@@ -10,120 +10,256 @@
     ],
     "pro_hack": "Compare the large cabin bag price against Up Front or Extra Legroom seating. Sometimes the seat path is the cleaner way to buy the same cabin-bag entitlement."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: easyJet fee exposure is driven by the free small underseat bag, paid large cabin bag, route/date/timing-based hold-bag prices, airport/gate bag fees, sports-item size tiers, infant equipment allowance, and no UM service.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
-      "currency": "EUR",
-      "conditions": "One small cabin bag included (45 × 36 × 20 cm) that must fit under the seat in front",
+      "currency": "GBP",
+      "conditions": "Every fare includes one small underseat bag up to 45 x 36 x 20 cm and 15 kg, if the traveler can lift it",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "easyJet’s free allowance is generous by weight but strict by size: it must fit the gauge and go under the seat."
+      }
     },
     {
       "category": "carry_on",
-      "amount": "From 5.99 to 37.99",
-      "currency": "EUR",
-      "conditions": "Large cabin bag up to 15 kg; paid add-on or included with eligible seat/fare path",
+      "amount": "From 5.99",
+      "currency": "GBP",
+      "conditions": "Large cabin bag price varies by route, flight, timing, availability, fare, seat, or easyJet Plus status",
       "applies_to": "Optional add-on / seat bundle",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bags",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Large cabin bag access can come from direct add-on, fare type, Up Front/Extra Legroom seat, or membership, and availability is not guaranteed."
+      }
     },
-
+    {
+      "category": "carry_on",
+      "amount": 48,
+      "currency": "GBP",
+      "conditions": "Airport/gate bag fee for non-purchased or oversized cabin bags placed in the hold",
+      "applies_to": "Cabin bags larger than the free small-bag allowance",
+      "region_or_route": "All routes",
+      "timing": "boarding gate",
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Updated from stale value: easyJet’s current fees table lists GBP 48 for the airport bag fee at the gate/airport path."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "easyJet Plus members can add a large cabin bag free, but must add it to the booking and space can matter",
+      "applies_to": "easyJet Plus",
+      "region_or_route": "All routes",
+      "timing": "at booking / checkout",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bags",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "easyJet Plus is a cabin-bag and seat-selection benefit rather than a checked-bag waiver."
+      }
+    },
     {
       "category": "checked_baggage",
-      "amount": "From 6.99 to 49.99",
-      "currency": "EUR",
-      "conditions": "15 kg hold bag; price varies by route, season, and purchase timing",
+      "amount": "From 6.99 / 9.49 by weight tier",
+      "currency": "GBP",
+      "conditions": "15 kg hold bag is online-only; 23 kg bag can be bought online or at bag drop, with price changing by route/date/timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "easyJet sells hold luggage by weight tier. The 15 kg bag is online-only; higher weights can be added in increments before travel."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "From 9.49 to 59.99",
-      "currency": "EUR",
-      "conditions": "23 kg hold bag; price varies by route, season, and purchase timing",
-      "applies_to": "Optional add-on",
+      "amount": 40,
+      "currency": "GBP",
+      "conditions": "23 kg hold bag bought at the airport bag drop desk when not purchased in advance",
+      "applies_to": "Airport hold-bag purchase",
       "region_or_route": "All routes",
-      "timing": "at booking / manage booking",
-      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
-      "last_verified": "2025-12-24"
+      "timing": "airport bag drop",
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Updated from stale value: current easyJet table lists GBP 40 for a 23 kg hold bag at bag drop."
+      }
     },
     {
-      "category": "checked_baggage",
+      "category": "overweight_baggage",
+      "amount": "Up to 15 per 3 kg",
+      "currency": "GBP",
+      "conditions": "Additional weight for pre-booked hold luggage, bought online in 3 kg increments up to 32 kg per bag",
+      "applies_to": "Pre-booked hold luggage",
+      "region_or_route": "All routes",
+      "timing": "online before travel",
+      "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/fees-charges",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "overweight_baggage",
       "amount": 12,
-      "currency": "EUR",
-      "conditions": "Excess baggage fee per additional kg over purchased allowance",
-      "applies_to": "All fares",
+      "currency": "GBP",
+      "conditions": "Excess weight fee per kg for hold items above the pre-booked allowance; max 32 kg per item",
+      "applies_to": "Hold bags above purchased weight allowance",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/fees-charges",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed"
     },
-
+    {
+      "category": "oversize_baggage",
+      "amount": "Contact Customer Services",
+      "currency": "GBP",
+      "conditions": "Hold luggage total size must be under 275 cm; bags outside allowed dimensions are treated as oversize",
+      "applies_to": "Hold baggage outside published dimensions",
+      "region_or_route": "All routes",
+      "timing": "before travel",
+      "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/terms-and-conditions",
+      "last_verified": "2026-08-23",
+      "confidence": "not_published"
+    },
     {
       "category": "seat_selection",
       "amount": "From 0 to 24.99",
-      "currency": "EUR",
+      "currency": "GBP",
       "conditions": "Standard seat selection; free random seat assigned at check-in if not purchased",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
       "amount": "From 7.99 to 49.99",
-      "currency": "EUR",
+      "currency": "GBP",
       "conditions": "Up Front or Extra Legroom seats; price varies by route and timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
-      "currency": "EUR",
+      "currency": "GBP",
       "conditions": "Flight changes permitted for a fee plus fare difference; amount varies by route and timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/changes-and-cancellations",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
       "amount": "Not permitted",
-      "currency": "EUR",
+      "currency": "GBP",
       "conditions": "Ticket refunds not permitted except for flight cancellation or qualifying circumstances",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "after booking",
-      "source_url": "https://www.easyjet.com/en/help/booking-and-check-in/changes-and-cancellations",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23"
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": 42,
+      "currency": "GBP",
+      "conditions": "Small sports equipment up to 20 kg when bought online; airport price is GBP 47",
+      "applies_to": "Sports equipment",
+      "region_or_route": "All routes",
+      "timing": "online before travel",
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Airport sports-equipment purchase costs more than online purchase, so this is an advance-purchase fee trap."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": 50,
+      "currency": "GBP",
+      "conditions": "Large sports equipment up to 32 kg when bought online; airport price is GBP 55 and capacity is limited",
+      "applies_to": "Sports equipment",
+      "region_or_route": "All routes",
+      "timing": "online before travel",
+      "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Updated from stale value: current easyJet table lists GBP 50 online / GBP 55 airport for large sports equipment."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Lap infants get a changing bag only; seated infants/children get adult-style allowance plus two free child items",
+      "applies_to": "Infants and children",
+      "region_or_route": "All routes",
+      "timing": "per flight",
+      "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/flying-with-children",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "easyJet allows up to two child equipment items free in the hold for each infant or child."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 25,
+      "currency": "GBP",
+      "conditions": "Infant charge per infant, per flight when the infant sits on an adult's lap",
+      "applies_to": "Lap infants",
+      "region_or_route": "All routes",
+      "timing": "at booking",
+      "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/fees-charges",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The infant charge is separate from the baggage allowance for a baby changing bag."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
-      "currency": "EUR",
-      "conditions": "easyJet does not offer an Unaccompanied Minor service; passengers under 16 must travel with an adult",
+      "currency": "GBP",
+      "conditions": "easyJet has no UM escort service; passengers aged 15 and under must travel with an adult aged 16 or over",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/travelling-with-children",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.easyjet.com/en/help/boarding-and-flying/flying-with-children",
+      "last_verified": "2026-08-23"
     }
   ]
 }

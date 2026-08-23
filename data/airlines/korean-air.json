@@ -4,66 +4,119 @@
   "iata": "KE",
   "country": "South Korea",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Korean Air carry-on, free baggage tables, Brazil ticket-date split, excess-baggage purchase/refunds, service-fee tables, cumulative extra/weight/size charges, SKYPASS status, infant baggage, sports equipment, seats, and fare rules."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "KRW",
-      "conditions": "Carry-on varies by cabin: Economy gets 1 piece up to 10 kg; Prestige/First get 2 pieces up to 10 kg each. Size limits apply.",
+      "conditions": "Carry-on is cabin-based: Economy gets one 10 kg piece; Prestige/First get two 10 kg pieces",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Korean Air published carry-on, free-baggage, excess-baggage, service-fee, special-baggage, SKYPASS, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "KRW",
-      "conditions": "Checked baggage included under piece or weight concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Allowance depends on domestic/international route, cabin, Saver fare, Brazil ticket date, and codeshare rules.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/checked-baggage/free-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Korean Air has distinct tables for domestic Korea, international excluding U.S./Brazil, Americas, and Brazil tickets issued before/after June 30, 2025."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and baggage concept",
+      "amount": "Calculator/table-priced; advance purchase available",
       "currency": "KRW",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
+      "conditions": "Excess baggage can be bought online in advance; segment tables and calculator determine the charge.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.koreanair.com/contents/booking/additional-service/excess-baggage?hl=en",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Korean Air lets travelers calculate excess baggage or view segment tables; advance-purchased excess can be refunded from My Trips."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "KRW",
+      "conditions": "Morning Calm tiers can add 1 checked bag or 10 kg depending on cabin, route, and baggage system",
+      "applies_to": "Eligible SKYPASS Morning Calm, Premium, and Million Miler members",
+      "region_or_route": "Korean Air-operated flights with KE flight number; Americas Economy exclusions apply",
+      "timing": "each way",
+      "source_url": "https://www.koreanair.com/contents/skypass/benefits/tier/morning-calm?hl=en",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Morning Calm extra-bag benefit excludes Economy Class routes to/from the Americas; weight-system routes use 10 kg instead."
+      }
+    },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "From USD 50-100 for 24-32 kg in shown Americas examples",
       "currency": "KRW",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "conditions": "Extra piece, overweight, and oversize charges can stack when more than one limit is exceeded.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.koreanair.com/contents/footer/others/service-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published service-fee examples show 24-32 kg charges such as USD 50 within Americas and USD 100 on Americas-Asia/Europe/Middle East/Africa routings."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Excess-baggage rules apply",
+      "currency": "KRW",
+      "conditions": "Sports equipment is generally checked under allowance; excess charges depend on item, route, size, and cabin",
+      "applies_to": "Eligible packed sports equipment",
+      "region_or_route": "Korean Air-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Special baggage and excess baggage require staffed counter handling; they are excluded from self-service bag drop."
+      }
+    },
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft handling",
+      "amount": "From USD 75-200 for 159-203 cm in shown examples",
       "currency": "KRW",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize fees depend on route and size band; 203-292 cm items need advance approval.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.koreanair.com/contents/plan-your-travel/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.koreanair.com/contents/footer/others/service-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Korean Air publishes size bands of 159-203 cm and 204-292 cm, with higher charges for the larger band and advance approval for 203-292 cm items."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +126,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.koreanair.com/contents/plan-your-travel/seating/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Korean Air published carry-on, free-baggage, excess-baggage, service-fee, special-baggage, SKYPASS, child, seat, and fare-rule pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +141,12 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.koreanair.com/contents/plan-your-travel/seating/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Korean Air published carry-on, free-baggage, excess-baggage, service-fee, special-baggage, SKYPASS, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
@@ -96,9 +156,27 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.koreanair.com/contents/plan-your-travel/fare-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Korean Air published carry-on, free-baggage, excess-baggage, service-fee, special-baggage, SKYPASS, child, seat, and fare-rule pages."
+      }
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "KRW",
+      "conditions": "Infants get 1 baggage item on international flights plus stroller and car seat/bassinet; children match adult allowance",
+      "applies_to": "Infants and children",
+      "region_or_route": "Korean Air domestic and international flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.koreanair.com/contents/plan-your-travel/special-assistance/travel-with-children",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic infants get stroller/car-seat/bassinet items; international infants get one small baggage item plus those child items."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and eligibility",
@@ -108,7 +186,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.koreanair.com/contents/plan-your-travel/special-assistance/unaccompanied-minor",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Korean Air published carry-on, free-baggage, excess-baggage, service-fee, special-baggage, SKYPASS, child, seat, and fare-rule pages."
+      }
     }
   ]
 }

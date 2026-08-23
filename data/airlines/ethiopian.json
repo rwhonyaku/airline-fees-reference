@@ -4,61 +4,119 @@
   "iata": "ET",
   "country": "Ethiopia",
   "region": "Africa",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: Ethiopian baggage is split between route/cabin allowance, piece-market versus weight-market rules, U.S. gateway examples, ShebaMiles/Star Gold extras, infant allowance, sports handling, and route-specific excess pricing through its calculator.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Business Class has higher allowance; size limits apply",
+      "conditions": "Economy includes 1 cabin bag up to 7 kg plus a personal item; Business has higher allowance.",
       "applies_to": "All fares",
       "region_or_route": "All routes (Ethiopian Airlines–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Carry-on is included, but cabin weight and size limits still matter at check-in or boarding."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Included allowance depends on route, cabin, fare, and whether Ethiopian applies piece or weight-market rules.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.ethiopianairlines.com/information/essential-information/optional-service-charges",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian optional-service tables show both piece-market and weight-market treatment, with status benefits handled differently by concept."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route, concept, and timing dependent",
+      "amount": "From USD 225 per extra U.S.-Addis piece example",
       "currency": "USD",
-      "conditions": "Additional checked baggage purchased in advance or at airport; pricing depends on route, baggage concept, and timing",
+      "conditions": "Extra baggage is route/cabin priced by calculator or tables; U.S. gateway examples are not universal",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.ethiopianairlines.com/information/baggage-information/extra-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian routes travelers to an extra-baggage calculator for exact pricing; published U.S.-Addis and U.S.-Asmara amounts should be treated as route examples, not network-wide fees."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "ShebaMiles and Star Gold extra baggage depends on tier and whether the ticket uses piece or weight concept",
+      "applies_to": "Eligible ShebaMiles and Star Alliance Gold members",
+      "region_or_route": "Ethiopian-operated flights",
+      "timing": "each way",
+      "source_url": "https://shebamiles.ethiopianairlines.com/status-and-benefits/program-benefits",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ShebaMiles and Star Gold allowances differ between piece markets and weight markets; partner-operated segments may not follow Ethiopian's own allowance."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Route-based overweight charge",
+      "amount": "USD 100 in Economy for 23-32 kg shown U.S. example",
       "currency": "USD",
-      "conditions": "Overweight baggage applies when exceeding allowance; maximum single bag weight 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight charges depend on route concept and band; the U.S. Economy 23-32 kg amount is an example",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://s1s2s3-www.ethiopianairlines.com/et/information/essential-information/optional-service-charges",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian lists USD 100 per bag in Economy when a bag is over 23 kg and under 32 kg in the shown piece-market context."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Special-baggage charge if outside allowance",
+      "currency": "USD",
+      "conditions": "Sports equipment may travel free if it fits allowance; larger or extra items follow Ethiopian's sports schedule",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "Ethiopian-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.ethiopianairlines.com/us/information/baggage-information/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian allows some sports equipment free only if it is the second piece and stays within 23 kg/158 cm; larger or extra equipment follows special charges or cargo limits."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Depends on size band and aircraft acceptance",
       "currency": "USD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on aircraft and route",
+      "conditions": "Oversize sports items may fit baggage bands; very large or heavy items move to cargo.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.ethiopianairlines.com/us/information/baggage-information/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian sports-equipment treatment depends on 23 kg/158 cm limits, second-piece status, aircraft acceptance, and cargo thresholds."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +127,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.ethiopianairlines.com/aa/services/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Ethiopian Airlines published carry-on, optional service charges, extra baggage, ShebaMiles, special baggage, seat, and child-travel pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -80,7 +142,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ethiopianairlines.com/aa/services/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Ethiopian Airlines published carry-on, optional service charges, extra baggage, ShebaMiles, special baggage, seat, and child-travel pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -91,7 +157,26 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.ethiopianairlines.com/aa/help/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Ethiopian Airlines published carry-on, optional service charges, extra baggage, ShebaMiles, special baggage, seat, and child-travel pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Lap infants paying infant fare receive one checked bag plus one fully collapsible stroller or pushchair",
+      "applies_to": "Infants not occupying a separate seat",
+      "region_or_route": "Ethiopian-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.ethiopianairlines.com/information/essential-information/optional-service-charges",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Ethiopian states that lap infants paying the infant fare receive one checked piece plus one fully collapsible stroller or pushchair; FAQ guidance distinguishes piece and weight markets."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -102,7 +187,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.ethiopianairlines.com/aa/information/traveling-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Ethiopian Airlines published carry-on, optional service charges, extra baggage, ShebaMiles, special baggage, seat, and child-travel pages."
+      }
     }
   ]
 }

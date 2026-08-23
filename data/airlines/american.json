@@ -11,6 +11,13 @@
     ],
     "pro_hack": "Keep keys, medicine, chargers, and documents in a small personal item before boarding American regional flights, even if you expect to keep your roller bag."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against American checked-bag, newsroom, Basic Economy, card/status, military, sports, and same-day travel sources. Key model: ticket date, fare family, prepay vs airport, region, and Basic Economy restrictions."
+  },
   "fees": [
     {
       "category": "checked_baggage",
@@ -21,7 +28,11 @@
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://news.aa.com/news/news-details/2026/Customers-save-time-and-money-when-prepaying-for-checked-bags-MKG-OTH-02/",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
@@ -32,53 +43,72 @@
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://news.aa.com/news/news-details/2026/Customers-save-time-and-money-when-prepaying-for-checked-bags-MKG-OTH-02/",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "Bag 1; $45 online / $50 airport for Main Cabin tickets issued on or after April 9, 2026",
+      "conditions": "Bag 1; $45 online / $50 airport for Main Cabin tickets issued on/after Apr. 9, 2026",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 55,
       "currency": "USD",
-      "conditions": "Bag 2; $55 online / $60 airport for Main Cabin tickets issued on or after April 9, 2026",
+      "conditions": "Bag 2; $55 online / $60 airport for Main Cabin tickets issued on/after Apr. 9, 2026",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 50,
       "currency": "USD",
-      "conditions": "Bag 1; $50 online / $55 airport for Basic Economy tickets issued on or after May 18, 2026",
+      "conditions": "Bag 1; $50 online / $55 airport for Basic Economy tickets issued on/after May 18, 2026",
       "applies_to": "Basic Economy",
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 60,
       "currency": "USD",
-      "conditions": "Bag 2; $60 online / $65 airport for Basic Economy tickets issued on or after May 18, 2026",
+      "conditions": "Bag 2; $60 online / $65 airport for Basic Economy tickets issued on/after May 18, 2026",
       "applies_to": "Basic Economy",
       "region_or_route": "U.S., Canada, and short-haul international",
       "timing": "each way",
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 75,
@@ -87,8 +117,12 @@
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "U.S. ↔ Europe",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
     {
       "category": "checked_baggage",
@@ -98,10 +132,13 @@
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "U.S. ↔ Europe",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 30,
@@ -110,10 +147,13 @@
       "applies_to": "Economy",
       "region_or_route": "U.S. ↔ Central America",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 45,
@@ -122,10 +162,13 @@
       "applies_to": "Economy",
       "region_or_route": "U.S. ↔ South America",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 200,
@@ -134,22 +177,71 @@
       "applies_to": "All fares",
       "region_or_route": "International",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/customer-service/support/optional-service-fees.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American checked-bag fees depend on ticket date, fare type, route region, and whether the first two bags are prepaid online/app or paid at the airport."
+      }
     },
-
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Eligible AAdvantage cards generally cover the first bag for cardmember and companions on domestic AA-operated itineraries",
+      "applies_to": "Eligible Citi / AAdvantage cardmembers",
+      "region_or_route": "Domestic American Airlines and American Eagle-operated itineraries",
+      "timing": "each way",
+      "source_url": "https://news.aa.com/news/news-details/2026/American-Airlines-updates-bag-fees-and-Basic-Economy-fares-OPS-POL-04/default.aspx?pubDate=20260525",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The free-bag benefit should be limited to eligible domestic American Airlines itineraries and qualifying card accounts; it should not be applied to every AA-marketed itinerary."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "AAdvantage/oneworld status can waive bags by status level, but Basic Economy seat/upgrade rules can still be restricted",
+      "applies_to": "Eligible elite-status members",
+      "region_or_route": "American-marketed and operated itineraries",
+      "timing": "each way",
+      "source_url": "https://news.aa.com/news/news-details/2026/American-Airlines-updates-bag-fees-and-Basic-Economy-fares-OPS-POL-04/default.aspx?pubDate=20260525",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "military_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Active U.S. military receive 3 free bags on personal travel or 5 bags when traveling on orders",
+      "applies_to": "Active U.S. military with valid ID",
+      "region_or_route": "American-operated itineraries",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/specialty-and-sports.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Military dependents traveling on orders receive the same privilege when documentation is shown."
+      }
+    },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "conditions": "One carry-on and one personal item are included, including Basic Economy; regional aircraft may require gate-checking",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/carry-on-baggage.jsp",
-      "last_verified": "2025-12-22"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Basic Economy includes a normal carry-on, so the bigger traps are checked-bag pricing, seat selection, boarding, and flexibility."
+      }
     },
-
     {
       "category": "oversize_baggage",
       "amount": 200,
@@ -161,7 +253,6 @@
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "overweight_baggage",
       "amount": 100,
@@ -184,7 +275,86 @@
       "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
       "last_verified": "2025-12-22"
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Standard bag fee plus applicable overweight fee",
+      "currency": "USD",
+      "conditions": "Most sports equipment uses standard checked-bag fees; oversize fees are often waived when packed as specified",
+      "applies_to": "Sports and specialty equipment",
+      "region_or_route": "American-operated itineraries",
+      "timing": "at check-in",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/specialty-and-sports.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American publishes item-specific sports rules; some items, such as windsurfing equipment, can carry separate fees or freight handling."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Stroller and car seat can be checked free; international lap infants may check one small bag free",
+      "applies_to": "Infants and children",
+      "region_or_route": "American-operated itineraries",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.aa.com/web/i18n/travel-info/special-assistance/traveling-children.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Diaper bags, breast pumps, and breast-milk coolers do not count as the normal carry-on or personal item."
+      }
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Within 24 hours, changes or refund cancellation allowed if booked at least 7 days before departure",
+      "applies_to": "Basic Economy",
+      "region_or_route": "All routes booked directly with American",
+      "timing": "within 24 hours of purchase",
+      "source_url": "https://www.aa.com/pubcontent/en_US/travel-info/experience/seats/basic-economy.html",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Not allowed",
+      "currency": "USD",
+      "conditions": "After 24 hours, Basic Economy changes/refunds to original payment are not allowed except published exceptions",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Most routes",
+      "timing": "after 24 hours",
+      "source_url": "https://www.aa.com/pubcontent/en_US/travel-info/experience/seats/basic-economy.html",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "Fee may apply",
+      "currency": "USD",
+      "conditions": "AAdvantage members may cancel eligible U.S.-origin Basic Economy for travel credit for a fee before first departure",
+      "applies_to": "Basic Economy / AAdvantage members",
+      "region_or_route": "American-marketed and operated trips starting in the 50 U.S. states",
+      "timing": "before first flight departs",
+      "source_url": "https://www.aa.com/pubcontent/en_US/travel-info/experience/seats/basic-economy.html",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Severe weather or other uncontrollable events may trigger a no-change-fee travel alert waiver",
+      "applies_to": "Eligible travel-alert itineraries",
+      "region_or_route": "Alert-specific airports and dates",
+      "timing": "within published alert window",
+      "source_url": "https://www.aa.com/i18n/travel-info/travel-alerts.html",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
     {
       "category": "same_day_standby",
       "amount": 0,
@@ -207,7 +377,6 @@
       "source_url": "https://www.aa.com/i18n/travel-info/travel-tools/same-day-travel.jsp",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "seat_selection",
       "amount": "$4-$139 published range",
@@ -230,7 +399,6 @@
       "source_url": "https://www.aa.com/i18n/travel-info/experience/seats/main-cabin-extra.jsp",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 150,

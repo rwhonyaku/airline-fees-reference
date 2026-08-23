@@ -1,64 +1,145 @@
 {
   "slug": "aix-connect",
-  "name": "AIX Connect",
-  "iata": "I5",
+  "name": "AIX Connect / Air India Express",
+  "iata": "IX",
   "country": "India",
   "region": "South Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: AIX Connect is now represented through current Air India Express policy after the 2024 merger; baggage depends on Xpress fare family, domestic versus international route, direct channel add-ons, airport timing, and codeshare/combined Air India itinerary rules.",
+    "next_review_due": "2026-11-23",
+    "source_url": "https://www.airindia.com/in/en/newsroom/press-release/air-india-express-aix-connect-merger.html"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Carry-on allowance limited to 1 piece up to 7 kg; size limits apply; policy aligned with Air India Express rules",
+      "conditions": "Air India Express allows 7 kg total cabin baggage; Xtra Carry-On can raise this to 12 kg where available",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=31",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/products-and-services/carry-on-xtra",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AIX Connect legally merged into Air India Express in 2024; current baggage handling follows Air India Express rules."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by domestic and international routes",
+      "conditions": "Xpress Lite excludes checked baggage; other fare families include route-specific checked allowance",
       "applies_to": "Eligible fares",
       "region_or_route": "Domestic India / International",
       "timing": "each way",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=31",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/products-and-services/xpresslite",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Xpress Lite is hand-baggage only; Xpress Value/Classic/Flex style fares include checked baggage by route and fare."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Fare, route, slab, and channel dependent",
       "currency": "INR",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight; pre-purchase may be available",
+      "conditions": "Extra checked baggage is sold in slabs; advance purchase can differ from airport pricing and combined-itinerary rules",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=31",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/products-and-services/international-connections-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "International connecting baggage is a separate prepaid product with 8 kg, 15 kg, and 30 kg slabs and strict eligibility rules."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Weight-limit dependent",
       "currency": "INR",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
+      "conditions": "Excess over free or prepaid allowance is charged by route, fare, airport timing, and per-piece limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=31",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/support/faqs/baggage",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Special equipment handling fee applies",
+      "currency": "INR",
+      "conditions": "Out-of-gauge, oversized, sports, musical, fragile, bicycle, and large TV items are handled as Special Baggage",
+      "applies_to": "Oversized or special baggage",
+      "region_or_route": "Air India Express-operated routes",
+      "timing": "pre-book / airport check-in",
+      "source_url": "https://www.airindiaexpress.com/products-and-services/specialequipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Official Air India Express sources define oversized baggage under special equipment handling rather than as a standalone flat baggage-fee row."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Special equipment handling fee applies",
+      "currency": "INR",
+      "conditions": "Sports and bulky items can use special-equipment handling; excess weight may be charged separately",
+      "applies_to": "Sports, musical, and bulky special baggage",
+      "region_or_route": "Air India Express-operated routes",
+      "timing": "up to 2 hours before departure / airport",
+      "source_url": "https://www.airindiaexpress.com/support/faqs/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The special equipment fee is separate from any excess-baggage charge when the item exceeds the passenger allowance."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Allowance-based",
+      "currency": "INR",
+      "conditions": "Infants receive 10 kg checked allowance inside the adult allowance; strollers may be checked free when used",
+      "applies_to": "Infants and children",
+      "region_or_route": "Air India Express-operated routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.airindiaexpress.com/support/faqs/special-guests",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants receive 10 kg checked allowance inside the accompanying adult's checked baggage, not as a separate infant bag; strollers are free only when used by the travelling infant/child."
+      }
+    },
+    {
+      "category": "military_exemption",
+      "amount": "Fare benefit, not universal baggage waiver",
+      "currency": "INR",
+      "conditions": "Indian Armed Forces fares may include base-fare discounts and fare rules, not a blanket baggage waiver",
+      "applies_to": "Eligible defence passengers and dependents",
+      "region_or_route": "Domestic India",
+      "timing": "at booking / check-in verification",
+      "source_url": "https://www.airindiaexpress.com/deals?tab=specialOffers",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Kept separate from baggage waivers because the published benefit is a special fare category with verification."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Seat type and route dependent",
       "currency": "INR",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type and route",
+      "conditions": "Seat selection depends on fare family and seat type; lowest fares sell seats separately",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=32",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/products-and-services/xpresslite",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -68,19 +149,23 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=42",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindiaexpress.com/support/faqs/booking",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": "Service fee applies",
       "currency": "INR",
-      "conditions": "Unaccompanied Minor service is generally not offered; minors must travel with an accompanying adult",
-      "applies_to": "Minors",
-      "region_or_route": "All routes",
-      "timing": "at booking",
-      "source_url": "https://www.airindiaexpress.com/Content.aspx?ID=25",
-      "last_verified": "2025-12-24"
+      "conditions": "UM service is available for ages 5-12 on direct or via flights; not accepted on connections or codeshares",
+      "applies_to": "Children 5-12 traveling alone",
+      "region_or_route": "Direct and via Air India Express flights",
+      "timing": "at booking / airport documents required",
+      "source_url": "https://www.airindiaexpress.com/deals/unaccompaniedminor",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "UM service is for direct or via flights only, not connections or codeshares; forms and guardian airport presence are required."
+      }
     }
   ]
 }

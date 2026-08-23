@@ -4,61 +4,120 @@
   "iata": "HX",
   "country": "Hong Kong",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Hong Kong Airlines uses current post-April-30-2025 piece allowances, with fare-family and zone differences. Prepaid extra baggage is useful only on eligible HX-marketed and HX-operated flights and must be bought before the airport cutoff."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "HKD",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg; Business Class allowance higher; size limits apply",
+      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus small personal effects; Business Class allowance higher; size limits apply",
       "applies_to": "All fares",
       "region_or_route": "All routes (Hong Kong Airlines–operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The checked-baggage page also points travelers to ordinary cabin/carry-on limits, but the key baggage risk on HX is usually checked-bag fare family and zone rather than carry-on pricing."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "HKD",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by route and fare family",
+      "conditions": "Current allowance is piece-based and depends on zone, cabin, fare family, and HX operating carrier",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Hong Kong Airlines' table applies to HX-operated flights and excludes specified codeshares operated by OZ, HU, or CN.",
+        "confidence": "confirmed",
+        "notes": "Current tables for tickets issued on or after April 30, 2025 distinguish Zone 1/2, Zone 3, and Zone 4/5 markets and list fare-family differences such as Main/FlexiPlus versus Basic."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and purchase timing",
+      "amount": "Airport route-zone table; current/legacy timing matters",
       "currency": "HKD",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and timing",
+      "conditions": "Extra baggage depends on zone, ticket timing, and prepaid eligibility on HX-marketed/HX-operated flights",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
-      "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
-      "last_verified": "2025-12-24"
+      "timing": "prepaid at least 4 hours before departure / airport if not prepaid",
+      "source_url": "https://www.hongkongairlines.com/en_HK/valueadd/PEB",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Hong Kong Airlines says prepaid excess baggage is sold per passenger per flight, requires advance purchase, excludes interline/codeshare and some special flights, and is generally not refunded if unused."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Fortune Wings Club Silver, Gold, and Platinum extra baggage is generally one piece, subject to fare and route rules",
+      "applies_to": "Eligible Fortune Wings Club members",
+      "region_or_route": "Hong Kong Airlines-operated flights",
+      "timing": "each way",
+      "source_url": "https://content.hongkongairlines.com/en_AU/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Fortune Wings benefits depend on ticketed route and fare rules, so they should be applied after confirming the operating carrier."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "Legacy examples HKD 470-1,170 / USD 60-150 by zone",
       "currency": "HKD",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route",
+      "conditions": "Overweight fees depend on route zone and timing; overweight plus oversize charges can stack",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published extra-baggage tables show zone-based overweight examples and explicitly say excessive weight and size charges are accumulated."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Bicycle USD 80/CAD 112/AUD 130; surf/windsurf USD 100/CAD 140/AUD 160 examples",
+      "currency": "HKD",
+      "conditions": "Bicycles, surfboards, and windsurfing gear require advance notice and special handling charges",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "Hong Kong Airlines-operated flights",
+      "timing": "before travel / airport check-in",
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The official table requires bicycle pre-advice at least 48 hours before departure and says no advance reservation can make some sports equipment standby baggage."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft",
+      "amount": "Legacy example HKD 1,560 / USD 200 for 158-203 cm",
       "currency": "HKD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on aircraft and route",
+      "conditions": "Oversize depends on timing and aircraft availability; pieces above limits must be repacked or split",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.hongkongairlines.com/en_HK/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Hong Kong Airlines lists an oversize charge for 158-203 cm and warns that items beyond 32 kg/203 cm must be repacked or split."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +128,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.hongkongairlines.com/en_HK/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +139,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.hongkongairlines.com/en_HK/conditions-of-carriage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Infants without a seat receive a reduced allowance that depends on cabin, fare, route zone, and ticket timing",
+      "applies_to": "Infants without a separate seat; children and infants with seats follow passenger allowance tables",
+      "region_or_route": "Hong Kong Airlines-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant allowance can change by cabin, fare, route zone, and ticket timing; children and infants with seats follow the standard allowance tables."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +165,23 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.hongkongairlines.com/en_HK/special-assistance",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "checked_baggage_piece_allowance_2025",
+      "effective_date": "2025-04-30",
+      "verified_date": "2026-08-23",
+      "source_url": "https://content.hongkongairlines.com/en_US/fly-with-us/baggage/checkedbaggage",
+      "summary": "Hong Kong Airlines publishes current checked-baggage piece allowance tables for tickets issued on or after April 30, 2025, with separate legacy timing for older tickets."
+    },
+    {
+      "category": "prepaid_excess_baggage_2025",
+      "effective_date": "2025-04-30",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.hongkongairlines.com/en_HK/valueadd/PEB",
+      "summary": "Hong Kong Airlines lists prepaid excess-baggage piece-charge sales and travel-commencement timing from April 30, 2025, subject to HX-operated eligibility and advance-purchase rules."
     }
   ]
 }

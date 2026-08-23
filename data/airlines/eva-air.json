@@ -4,61 +4,152 @@
   "iata": "BR",
   "country": "Taiwan",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified EVA carry-on, personal item, checked baggage, prepaid excess baggage, airport/gate carry-on enforcement, sports equipment, status, seats, and change/refund caveats. Route-specific charges still depend on EVA’s calculator and the applicable baggage concept."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "TWD",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Premium Economy/Business have higher allowances; size limits apply",
+      "conditions": "Premium Economy/Economy: 1 carry-on up to 7 kg. Business cabins: 2 carry-ons up to 7 kg each.",
       "applies_to": "All fares",
       "region_or_route": "All routes (EVA Air-operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.evaair.com/en-global/fly-prepare/baggage/free-baggage/carry-on-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA says carry-ons can be checked at check-in or the boarding gate if they exceed size or weight limits; extra fees can apply if checked baggage allowance is exceeded."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "TWD",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Included allowance varies by long-haul vs short-haul route, cabin, fare family, ticket, and interline handling.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/free-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.evaair.com/en-ph/fly-prepare/baggage/free-baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA’s long-haul and short-haul tables differ; use the booked ticket or EVA baggage calculator for the exact allowance."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and piece/weight concept",
+      "amount": "Depends on EVA baggage calculator; 10% prepaid discount may apply",
       "currency": "TWD",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Additional baggage pricing depends on route, piece/weight concept, and whether it is purchased online before departure or paid at check-in.",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.evaair.com/en-us/customer-services/optional-services-and-fees/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA offers prepaid excess baggage after ticketing and up to 4 hours before departure; quantities and eligibility are limited and calculator-driven."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "TWD",
+      "conditions": "Star Alliance Gold extra baggage allowance applies only on EVA Air-operated flights with EVA Air flight numbers",
+      "applies_to": "Star Alliance Gold / eligible tiers",
+      "region_or_route": "EVA Air-operated flights",
+      "timing": "each way",
+      "source_url": "https://booking.evaair.com/flyeva/EVA/B2C/baggage-calculator.aspx?lang=en-global",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against EVA Air baggage, optional-services, prepaid-excess, special-baggage, and ticket-change/refund pages."
+      }
+    },
+    {
+      "category": "additional_baggage",
+      "amount": "10% discount when prepaid",
+      "currency": "TWD",
+      "conditions": "Prepaid excess baggage is available after ticket purchase and up to 4 hours before departure, subject to eligibility.",
+      "applies_to": "Eligible EVA Air-operated itineraries",
+      "region_or_route": "All eligible routes",
+      "timing": "after ticket purchase / up to 4 hours before departure",
+      "source_url": "https://www.evaair.com/en-gb/customer-services/faq/detail.html?FaqCategories=Prepaid-Excess-Baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA limits prepaid purchases to 5 excess pieces per passenger; each piece follows the booked cabin’s free-bag weight limit."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Counts within allowance; excess rates apply if over allowance",
+      "currency": "TWD",
+      "conditions": "Sporting equipment can count as checked baggage; overweight, oversize, and extra-piece charges depend on item and route",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "EVA Air-operated flights",
+      "timing": "advise EVA before departure",
+      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/special-baggage/sporting-equipment/Default.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA asks passengers to contact reservations before travel for some sports items; poorly packed equipment may be refused."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "No oversize charge up to 277 cm for listed sports items",
+      "currency": "TWD",
+      "conditions": "Listed sports equipment up to 277 cm can avoid oversize charge, but extra-piece and overweight rules still apply",
+      "applies_to": "Listed sports equipment",
+      "region_or_route": "EVA Air-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/special-baggage/sporting-equipment/Default.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Items over 277 cm trigger sports-equipment excess logic; items over 292 cm are accepted only if aircraft loading permits."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Depends on route and excess weight",
       "currency": "TWD",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Bags over allowance can trigger overweight fees; bags over 32 kg generally must be repacked before acceptance.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.evaair.com/en-global/fly-prepare/baggage/free-baggage/general-information/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EVA’s 32 kg single-item handling rule protects baggage handlers and applies even when total trip allowance is higher."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft",
       "currency": "TWD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize acceptance and charges depend on route, aircraft loading, and item type. Some items require contacting EVA before departure.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.evaair.com/en-us/fly-prepare/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.evaair.com/en-us/customer-services/optional-services-and-fees/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Special baggage and sports equipment can be part of the free allowance, but oversize or overweight items can trigger excess fees."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +160,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.evaair.com/en-us/fly-prepare/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against EVA Air baggage, optional-services, prepaid-excess, special-baggage, and ticket-change/refund pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,7 +175,11 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.evaair.com/en-us/customer-services/ticket-changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against EVA Air baggage, optional-services, prepaid-excess, special-baggage, and ticket-change/refund pages."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +190,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.evaair.com/en-us/customer-services/special-assistance/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against EVA Air baggage, optional-services, prepaid-excess, special-baggage, and ticket-change/refund pages."
+      }
     }
   ]
 }

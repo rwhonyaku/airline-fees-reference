@@ -4,6 +4,14 @@
   "iata": "CA",
   "country": "China",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Air China excess baggage must be interpreted by route concept. Domestic overweight/excess is formula-based from the published adult economy fare, while international itineraries rely on route-specific appendices for extra, heavy, or large pieces."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,97 @@
       "region_or_route": "All routes (Air China–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.airchina.com.cn/en/info/baggage/carry-on/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "CNY",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Included baggage depends on route, cabin, ticket, status, and domestic weight versus international piece rules",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.airchina.com.cn/en/info/baggage/checked/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://webresource.airchina.com.cn/en-US/content/travel_info/preparing/conditions/contact_us/baggage_transport/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Official domestic rules show 20 kg Economy, 30 kg Business, and 40 kg First, while international/regional allowances are route-specific and may differ by market such as Japan, Americas-related routes, and other regions."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and baggage-concept dependent",
+      "amount": "Domestic formula or international/regional route table",
       "currency": "CNY",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Domestic excess uses a fare formula; international extra baggage depends on route appendix and bag status",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.airchina.com.cn/en/info/baggage/extra/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airchina.us/US/GB/info/checked-baggage/overweight-charge.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The domestic calculation uses the published full-fare Economy benchmark, while international itineraries need the applicable route appendix rather than a universal flat amount."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "PhoenixMiles and Star Alliance extra baggage depends on route concept, cabin, fare, and status tier",
+      "applies_to": "Eligible PhoenixMiles and Star Alliance elite members",
+      "region_or_route": "Air China-operated flights",
+      "timing": "each way",
+      "source_url": "https://m.airchina.com.cn/c/invoke/xlxx%40pg",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic elite examples are published as extra pieces with weight caps, while international/regional handling follows the applicable Air China table, so the benefit is not a universal fee waiver."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Route-based overweight charge",
+      "amount": "Domestic 1.5% fare formula; international/regional route table",
       "currency": "CNY",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Domestic overweight is per kilogram; international overweight depends on route table and weight band",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airchina.com.cn/en/info/baggage/extra/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airchina.us/US/GB/info/checked-baggage/overweight-charge.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air China’s published domestic rule is formula-based, and its general conditions state excess charges depend on route, weight, size, and number of pieces."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Depends on item, route, and baggage concept",
+      "currency": "CNY",
+      "conditions": "Sports equipment needs proper packing; long or special items may need advance approval and excess-baggage charges",
+      "applies_to": "Sports equipment and special checked baggage",
+      "region_or_route": "Air China-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://webresource.airchina.com.cn/en-US/content/travel_info/preparing/luggage/check/sports_equipment/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air China special baggage requires proper packing, and long or unusual sports equipment can require advance approval or cargo handling depending on aircraft and route."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Depends on route, size, and aircraft acceptance",
       "currency": "CNY",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize charges depend on the route table and aircraft acceptance; baggage above Air China transport limits must be split or moved as cargo",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airchina.com.cn/en/info/baggage/extra/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://m.airchina.com.cn/c/invoke/xlxx%40pg",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air China publishes maximum checked-bag transport limits separately from free allowance; staying under a transport limit does not mean the bag is free."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +123,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.airchina.com.cn/en/info/seat/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +134,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.airchina.com.cn/en/info/ticket/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "Infant baggage depends on route concept; applicable routes include allowance plus a stroller, cradle, or car seat",
+      "applies_to": "Infants and children traveling on eligible tickets",
+      "region_or_route": "Air China-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://m.airchina.com.cn/c/invoke/xlxx%40pg",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic infant allowance is published separately from international/regional ticket-based allowance; a stroller or bassinet may be checked free when within ordinary checked-bag dimensions."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +160,7 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.airchina.com.cn/en/info/special/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

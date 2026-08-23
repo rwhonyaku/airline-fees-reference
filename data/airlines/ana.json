@@ -4,66 +4,134 @@
   "iata": "NH",
   "country": "Japan",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified ANA carry-on, checked baggage, prepaid extra baggage, premium-member allowance, sports-equipment oversize waiver, child/infant baggage, minor assistance, seats, and fare-rule caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Carry-on baggage allowance: up to 10 kg total including personal item; standard size limits apply (55 × 40 × 25 cm per item)",
+      "conditions": "Carry-on allowance is 10 kg total including personal item, with standard item-size limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/carry-on/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Checked baggage included; allowance depends on route, cabin, and domestic vs international rules",
+      "conditions": "Included allowance depends on route, cabin, fare, and whether the itinerary follows international or domestic rules",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ANA warns that some fares can have zero free checked pieces; that also affects child baggage on those fares."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, cabin, and baggage piece",
+      "amount": "JPY 10000-20000 / EUR 150 / USD 100-200 prepaid example",
       "currency": "JPY",
-      "conditions": "Additional checked baggage fees apply when exceeding the free allowance; fees vary by route, cabin, and baggage piece",
+      "conditions": "Extra baggage is route-priced; prepaid extra baggage covers only 1 eligible extra piece.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/international/fbag/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ANA publishes prepaid examples: within-area sectors can be JPY 10000 or USD 100, while cross-area sectors can be JPY 20000, EUR 150, or USD 200 depending on departure location."
+      }
     },
-
+    {
+      "category": "additional_baggage",
+      "amount": "1 prepaid extra piece on eligible itineraries",
+      "currency": "JPY",
+      "conditions": "Prepaid extra baggage covers 1 extra piece and must be requested at least 6 hours before departure.",
+      "applies_to": "ANA-ticketed eligible international itineraries",
+      "region_or_route": "ANA-operated international flights; US/Canada city itineraries excluded",
+      "timing": "after ticket purchase / before airport check-in",
+      "source_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/international/fbag/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Not available for itineraries with U.S./Canada cities, codeshares, other-airline operated flights, Japan-domestic-only sectors, or separate tickets."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "ANA premium members may receive extra free baggage by piece or weight depending on route and partner airline",
+      "applies_to": "Diamond, Platinum, Bronze, and Super Flyers members where eligible",
+      "region_or_route": "ANA Group, domestic, international, and Star Alliance-eligible flights",
+      "timing": "each way",
+      "source_url": "https://www.ana.co.jp/other/int/meta/0155.html?CONNECTION_KIND=us&LANG=e",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Eligible premium members can receive one extra piece or added weight depending on the route and operating carrier."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "JPY",
-      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags exceeding 32 kg are not accepted as checked baggage",
+      "conditions": "Overweight fees apply above piece limits; bags over accepted limits must be repacked or shipped.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ANA’s prepaid product solves only an extra piece, not unlimited overweight or multiple excess bags."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Sports equipment is free within allowance; oversize charge is waived for 158-292 cm but route limits apply",
+      "applies_to": "Eligible bicycles, surfboards, golf bags, fishing gear, diving gear, rackets, skis, and snowboards",
+      "region_or_route": "ANA-operated international flights",
+      "timing": "at check-in / advance contact for large items",
+      "source_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/international/bicycle/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ANA waives oversize charges for listed sports gear between 158 cm and 292 cm, but route and aircraft limits still apply."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by route and size",
       "currency": "JPY",
-      "conditions": "Checked bags with total dimensions exceeding 158 cm (L+W+H) incur an oversize fee; maximum accepted size is 203 cm",
+      "conditions": "Oversize fees depend on route and size; listed sports equipment has separate exception rules",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +141,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/seat-map/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +156,12 @@
       "region_or_route": "International",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/seat-map/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare rules, route, and ticket type",
@@ -96,9 +171,27 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/fare-rules/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Lap infants can check 1 additional bag; strollers, portable cradles, and car seats are free when used by passenger",
+      "applies_to": "Infants and children",
+      "region_or_route": "ANA-operated international flights",
+      "timing": "at check-in / bag drop",
+      "source_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/international/child/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lap infants on international flights can check one extra piece, except where the fare has zero free checked allowance."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": 0,
@@ -108,7 +201,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.ana.co.jp/en/jp/travel-information/children/child-support/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against ANA published carry-on, checked-baggage, pre-paid extra baggage, premium member, sports, child, seat, and fare-rule pages."
+      }
     }
   ]
 }

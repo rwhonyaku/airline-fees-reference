@@ -4,6 +4,14 @@
   "iata": "MF",
   "country": "China",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: XiamenAir uses domestic weight-concept rules and international/regional piece tables, with Economy fare-brand differences, route-group prices, cumulative excess charges, and special U.S./Canada handling rules for very heavy or delayed checked bags.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,114 @@
       "region_or_route": "All routes (XiamenAir-operated flights)",
       "timing": "per flight",
       "source_url": "https://www.xiamenair.com/en-cn/travel-information/baggage/carry-on-baggage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "CNY",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Allowance depends on domestic/international route, cabin, fare brand, and piece versus weight concept",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.xiamenair.com/en-cn/travel-information/baggage/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Economy allowance varies by brand: Flex, Comfort, Standard, and Light can have different free checked-bag entitlements.",
+        "confidence": "confirmed",
+        "notes": "XiamenAir domestic Economy allowance is published in kilograms, while international Economy fare brands can range from two pieces to no free checked bag."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and baggage-concept dependent",
+      "amount": "Domestic formula or international route-area table",
       "currency": "CNY",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Domestic excess uses a 1.5% per-kg formula; international extra pieces use route-group tables",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.xiamenair.com/en-cn/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://rescms.xiamenair.cn/brandnew_CN/channels/154.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "XiamenAir extra-bag pricing is not a single fee: domestic trips use a formula, while international trips use route groups and can add weight or size charges."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Route and excess-weight dependent",
+      "amount": "Examples CNY 1,000-3,000 / USD 150-440 by route group",
       "currency": "CNY",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and excess weight",
+      "conditions": "Overweight depends on route group and band; domestic routes use a per-kg fare formula",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.xiamenair.com/en-cn/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://rescms.xiamenair.cn/brandnew_CN/channels/154.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Maximum accepted weight depends on route: domestic, U.S.-involving, and other international/regional routes have different limits and approval rules.",
+        "confidence": "confirmed",
+        "notes": "International tables include 23-32 kg and 32-45 kg bands; heavier U.S.-involving bags require prior confirmation and may be refused above the published maximum."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Example CNY 1,000 / USD 150 for 159-203 cm",
       "currency": "CNY",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize depends on route group; items over 203 cm may need approval and can stack with other fees",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.xiamenair.com/en-cn/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://rescms.xiamenair.cn/brandnew_CN/channels/154.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "XiamenAir requires advance approval for some large items, and single pieces above 45 kg or 300 cm are not accepted as checked baggage."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Item and route dependent",
+      "currency": "CNY",
+      "conditions": "Sports equipment can count toward allowance only if it meets route-specific packing, size, and weight rules",
+      "applies_to": "Sports equipment",
+      "region_or_route": "XiamenAir-operated routes",
+      "timing": "before travel / airport",
+      "source_url": "https://www.xiamenair.com/en-th/article-detail?articleLink=%2Fcms-i18n-ow%2Fcms-en-th%2Fchannels%2F10438.json",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Some sports items count within free allowance, but sports equipment over 32 kg or 203 cm may require advance approval and cannot exceed XiamenAir's published maximums."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Allowance-based",
+      "currency": "CNY",
+      "conditions": "Children and seated infants follow adult allowance; lap infants may bring stroller/cradle/seat free",
+      "applies_to": "Children and infants",
+      "region_or_route": "XiamenAir-operated routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.xiamenair.com/en-th/article-detail?articleLink=%2Fcms-i18n-ow%2Fcms-en-th%2Fchannels%2F10438.json",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Children and seated infants follow adult allowance; lap infants can bring one stroller, cradle, or child seat free, with cabin use subject to space."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "Egret and eligible SkyTeam elite members receive one extra checked bag within published limits",
+      "applies_to": "Eligible Egret and SkyTeam elite members",
+      "region_or_route": "XiamenAir-operated routes",
+      "timing": "at check-in",
+      "source_url": "https://www.xiamenair.com/en-th/article-detail?articleLink=%2Fcms-i18n-ow%2Fcms-en-th%2Fchannels%2F10438.json",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The extra piece is not stackable with some other special extra-allowance categories."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +140,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.xiamenair.com/en-cn/travel-information/seats.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +151,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.xiamenair.com/en-cn/service/conditions-of-carriage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +162,16 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.xiamenair.com/en-cn/service/special-assistance.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "fuzhou_new_york_interline_baggage_2024",
+      "effective_date": "2024-04-28",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.xiamenair.com/en-us/article-detail?articleLink=%2Fcms-i18n-ow%2Fcms-en-us%2Fcontents%2F88827.json",
+      "summary": "XiamenAir publishes U.S.-route excess-baggage tariff examples effective April 28, 2024 for Fuzhou-New York itineraries and listed interline route combinations."
     }
   ]
 }

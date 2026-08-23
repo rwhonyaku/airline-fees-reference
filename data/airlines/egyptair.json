@@ -4,61 +4,116 @@
   "iata": "MS",
   "country": "Egypt",
   "region": "Africa",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: EgyptAir publishes route/channel excess tables with airport versus website/call-center prices, a 24-hour online cutoff, Africa airport-only handling, 2026 Asmara allowance limits, and separate combined overweight/oversize charging."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on baggage included; allowance depends on cabin class; size and weight limits apply",
+      "conditions": "Cabin baggage depends on cabin and route; international tables publish class-specific carry-on limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/cabin-baggage.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.egyptair.com/en/fly/baggage/pages/baggage-allowance.aspx",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included; allowance varies by cabin class, fare type, route, and frequent flyer status",
+      "conditions": "Allowance depends on route, cabin, fare rules, status, and 2026 Asmara one-piece exception",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/free-baggage-allowance.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.egyptair.com/en/fly/baggage/pages/baggage-allowance.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Effective Jan. 1, 2026, EgyptAir limits Asmara tickets to one checked piece in both Business and Economy; other routes still follow fare, route, cabin, and status tables."
+      },
+      "effective_date": "2026-01-01"
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Examples USD 30-650 airport; online/call-center can differ",
       "currency": "USD",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "Extra 23 kg pieces are route-priced; website/call-center rates apply only until 24 hours before departure",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
       "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EgyptAir separates airport prices from website/call-center prices and says Cairo/worldwide departures to Africa may be airport-only."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "EgyptAir Plus and Star Alliance Gold can add an extra piece or receive excess-baggage discounts by tier, cabin, and route",
+      "applies_to": "Eligible EgyptAir Plus and Star Alliance Gold members",
+      "region_or_route": "EgyptAir-operated and eligible Star Alliance flights",
+      "timing": "each way",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/pages/baggage-allowance.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EgyptAir Plus benefits can be an extra piece, 50% excess-fee discount, or 10 kg handbag on MS flights, depending on tier/table."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Weight-limit dependent",
+      "amount": "Examples USD 15-325; combined heavy+large can double",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "conditions": "Overweight varies by route/channel; heavy plus oversize is charged more than one excess type alone",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EgyptAir states overweight from 23-32 kg is charged in addition to the extra-bag price, and overweight plus oversize is charged double of the overweight/oversize price."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Examples USD 15-325; max 203 cm",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits is subject to oversize fees; acceptance subject to aircraft and handling constraints",
+      "conditions": "Oversize from 158-203 cm is route-priced; larger items require repacking or different handling",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/excess-baggage.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EgyptAir caps ordinary oversize at 203 cm and says excess acceptance is subject to operational space."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Within allowance, 50% excess charge, 100% excess charge, or cargo",
+      "currency": "USD",
+      "conditions": "Sports equipment may fit allowance, pay 50%/100% excess, or move as cargo depending on item",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "EgyptAir-operated flights",
+      "timing": "before travel / airport",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/sports-equipments.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Many sports items count within allowance, but bikes can trigger 100% excess and items over 32 kg or 2 m can require cargo."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +124,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.egyptair.com/en/fly/Pages/seat-selection.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +135,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.egyptair.com/en/fly/Pages/conditions-of-carriage.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +146,31 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.egyptair.com/en/fly/special-services/Pages/unaccompanied-minor.aspx",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get 1 checked piece: 10 kg on most routes or 23 kg to/from USA and Canada, plus fold-up stroller",
+      "applies_to": "Infants and children on eligible fares",
+      "region_or_route": "EgyptAir-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/pages/baggage-allowance.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "EgyptAir infant allowance is one piece: 10 kg on most routes or 23 kg to/from USA and Canada, plus a fold-up stroller."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "asmara_checked_baggage_allowance_2026",
+      "effective_date": "2026-01-01",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.egyptair.com/en/fly/baggage/Pages/baggage-allowance.aspx",
+      "summary": "EgyptAir states that tickets to and from Asmara are limited to one checked piece for both Business Class and Economy passengers effective January 1, 2026."
     }
   ]
 }

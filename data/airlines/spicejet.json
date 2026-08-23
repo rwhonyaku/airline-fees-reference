@@ -4,61 +4,114 @@
   "iata": "SG",
   "country": "India",
   "region": "South Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: SpiceJet fees are driven by domestic versus international sector tables, prepaid slabs versus airport per-kg pricing, additional-piece fees, sports/special handling, infant and UM service fees, and seasonal or aircraft/destination variation. Prebooking excess checked baggage is available before departure and is the key way to avoid airport per-kg pricing.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Carry-on allowance limited to 1 piece up to 7 kg; size limits apply",
+      "conditions": "Standard cabin baggage is 7 kg; paid Carry More On-board can add up to 5 kg where available",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.spicejet.com/Baggage.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/ExcessBaggage.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The paid cabin-baggage add-on is capped so total hand baggage cannot exceed 12 kg."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Checked baggage allowance included; allowance varies by domestic and international routes",
+      "conditions": "Free checked allowance depends on domestic versus international route and fare/sector rules",
       "applies_to": "Eligible fares",
       "region_or_route": "Domestic India / International",
       "timing": "each way",
-      "source_url": "https://www.spicejet.com/Baggage.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic checked allowance and international allowances differ, and international routes can be priced by sector-specific tables."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and weight",
+      "amount": "From INR 1,935 prepaid slab; INR 700/kg domestic airport; route tables for international",
       "currency": "INR",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "Excess can be prepaid in weight slabs before cutoff or paid per kg at airport; additional-piece fees and route tables also apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.spicejet.com/Baggage.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Official charges separate prepaid excess slabs, airport excess per kg, international sector tables, and additional-bag piece fees; domestic and international prebooking cutoffs differ."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and weight",
+      "amount": "INR 700/kg domestic airport; international route table",
       "currency": "INR",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
+      "conditions": "Overweight cost depends on route, prepaid versus airport timing, local currency, and maximum 32 kg per bag",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.spicejet.com/Baggage.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Airline discretion / airport handling",
+      "currency": "INR",
+      "conditions": "Checked bags should not exceed 158 cm total dimensions; oversized bags are accepted at SpiceJet's discretion",
+      "applies_to": "Checked baggage over published dimensions",
+      "region_or_route": "Domestic India / International",
+      "timing": "airport check-in",
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "SpiceJet publishes the 158 cm limit and discretionary handling for oversized bags, but not a universal flat oversize fee."
+      }
     },
     {
       "category": "sports_equipment",
-      "amount": "Depends on equipment and route",
+      "amount": "INR 2500 airport special-handling fee, plus baggage charges if applicable",
       "currency": "INR",
-      "conditions": "Sports equipment accepted as checked baggage; charges depend on equipment type and route",
+      "conditions": "Sports equipment and special handling can trigger item handling plus excess or additional-piece baggage fees",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / at airport",
-      "source_url": "https://www.spicejet.com/SportsEquipment.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Sports-equipment pricing should be checked against the current route and item table; oversize handling remains subject to airport acceptance."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 1899,
+      "currency": "INR",
+      "conditions": "Infant fee is charged per infant; extra infant hand-baggage allowance is separate from checked-bag rules",
+      "applies_to": "Infants and children",
+      "region_or_route": "Domestic India / International",
+      "timing": "at booking / check-in",
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Passengers travelling with infants may carry one extra hand-baggage piece up to 7 kg within the stated size limits."
+      }
     },
     {
       "category": "seat_selection",
@@ -68,8 +121,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.spicejet.com/SeatSelection.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -79,19 +132,19 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.spicejet.com/ChangeFee.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Depends on route and age",
+      "amount": 4999,
       "currency": "INR",
-      "conditions": "Unaccompanied Minor service available on select domestic routes and ages; fees and conditions vary",
+      "conditions": "Unaccompanied Minor service fee per passenger where the service is available; route and age rules still apply",
       "applies_to": "Eligible ages",
       "region_or_route": "Selected routes",
       "timing": "at booking",
-      "source_url": "https://www.spicejet.com/UnaccompaniedMinor.aspx",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.spicejet.com/FeesCharges.aspx",
+      "last_verified": "2026-08-23"
     }
   ]
 }

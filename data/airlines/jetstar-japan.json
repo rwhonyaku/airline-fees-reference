@@ -4,42 +4,105 @@
   "iata": "GK",
   "country": "Japan",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold refresh: Jetstar Japan baggage depends on GK-specific airport allowance, domestic versus international route, bundle/fare, online versus airport purchase, and connection rules where higher international charges can apply."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Carry-on allowance up to 7 kg total (two items combined); size limits apply; excess must be checked",
+      "conditions": "Standard carry-on is 7 kg total across two items; extra carry-on is limited and route-dependent",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.jetstar.com/jp/en/help/articles/what-are-the-carry-on-baggage-allowances",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.jetstar.com/jp/en/help/fare-rules",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jetstar fare and bundle inclusions vary by flight duration, aircraft, route, and upcoming carry-on changes for JQ flights."
+      }
     },
-
     {
       "category": "checked_baggage",
-      "amount": "From 3,300 to 8,800",
+      "amount": "Airport first 15 kg plus per-kg excess; cheaper online before travel",
       "currency": "JPY",
-      "conditions": "Checked baggage add-on (20–40 kg options); price varies by weight selection, route, and purchase timing",
+      "conditions": "GK airport checked baggage starts with a 15 kg allowance; extra kilograms and international connections use route rates",
       "applies_to": "Optional add-on",
       "region_or_route": "Domestic and international",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.jetstar.com/jp/en/help/articles/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.jetstar.com/jp/en/help/excess-baggage-charges-at-the-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jetstar Japan (GK) airport purchase uses a 15 kg starting checked-bag allowance, not JQ’s 20 kg airport allowance."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Airport-priced baggage",
       "currency": "JPY",
-      "conditions": "Airport baggage fees apply if no checked baggage was pre-purchased or if allowance is exceeded; higher rates apply at airport",
+      "conditions": "Airport fallback buys first 15 kg, then per-kg excess applies; online purchase is cheaper",
       "applies_to": "All fares",
       "region_or_route": "Domestic and international",
       "timing": "at airport",
-      "source_url": "https://www.jetstar.com/jp/en/help/articles/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.jetstar.com/jp/en/help/excess-baggage-charges-at-the-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jetstar Japan airport baggage starts at 15 kg, then per-kg excess applies; higher through-journey rates can apply on connections."
+      }
     },
-
+    {
+      "category": "overweight_baggage",
+      "amount": "Route and currency-specific per kg fee",
+      "currency": "JPY",
+      "conditions": "Excess is charged per kg above the GK allowance or purchased weight; international connection rules can raise the rate",
+      "applies_to": "Checked baggage above purchased allowance",
+      "region_or_route": "Jetstar Japan domestic and international flights",
+      "timing": "at airport",
+      "source_url": "https://www.jetstar.com/jp/en/help/excess-baggage-charges-at-the-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jetstar airport fees vary by airline code, route type, departure currency, and whether the trip connects domestic to international."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Route and currency-specific per item fee",
+      "currency": "JPY",
+      "conditions": "Oversized item fee applies when one side exceeds 1 metre; it does not add weight allowance",
+      "applies_to": "Oversized checked items",
+      "region_or_route": "Jetstar Japan domestic and international flights",
+      "timing": "booking / manage booking / airport",
+      "source_url": "https://www.jetstar.com/us/en/help/excess-baggage-charges-at-the-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversized handling is separate from weight allowance, so a long item can need both prepaid weight and a handling fee."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Oversized item fee plus enough checked weight",
+      "currency": "JPY",
+      "conditions": "Sports gear over 1 metre needs oversized handling and enough purchased checked weight",
+      "applies_to": "Surfboards, skis, snowboards, bikes, golf clubs, fishing rods, scuba gear, and similar items",
+      "region_or_route": "Jetstar Japan domestic and international flights",
+      "timing": "booking / manage booking / airport",
+      "source_url": "https://www.jetstar.com/au/en/help/oversized-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports gear consumes purchased checked weight; the oversized-item fee is not a substitute for buying enough baggage allowance."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": "From 500 to 1,500",
@@ -49,7 +112,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.jetstar.com/jp/en/help/articles/seating-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -60,9 +123,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jetstar.com/jp/en/help/articles/seating-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
@@ -72,7 +134,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.jetstar.com/jp/en/help/articles/fees-and-charges",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -83,9 +145,23 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.jetstar.com/jp/en/help/articles/refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Infant and child items such as prams, portable cots, highchairs, and car seats check free",
+      "applies_to": "Bookings with an infant or small child",
+      "region_or_route": "Jetstar Japan-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.jetstar.com/lk/en/help/can-i-bring-a-pram-stroller-portable-cot-or-highchair-as-checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant and small-child equipment is free separately from baggage weight, but onboard car-seat use can require advance contact and capacity limits."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -95,7 +171,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.jetstar.com/jp/en/help/articles/travelling-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

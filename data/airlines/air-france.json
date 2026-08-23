@@ -4,17 +4,28 @@
   "iata": "AF",
   "country": "France",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against Air France extra/overweight/oversize baggage, Flying Blue, seat, infant, and Kids Solo sources. Key model: fare/cabin allowance plus online-vs-airport option timing and Flying Blue tier."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Cabin allowance depends on fare: Economy includes 0 to 1 hand bag plus 1 small bag; total weight up to 12 kg; size limits apply.",
+      "conditions": "Cabin allowance depends on fare and cabin; Basic may include only a small underseat bag unless hand baggage option is added",
       "applies_to": "All fares",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "per flight",
-      "source_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
-      "last_verified": "2025-12-24"
+      "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air France Basic is the key carry-on exception: the Hand Baggage option can be purchased up to 4 hours before departure."
+      }
     },
     {
       "category": "carry_on",
@@ -27,42 +38,43 @@
       "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "checked_baggage",
       "amount": "Shown during booking / My Bookings",
       "currency": "EUR",
-      "conditions": "Additional bag up to 158 cm; weight limit depends on cabin. Price shown during purchase/My Bookings; online discount may apply.",
+      "conditions": "Additional checked bag price is shown during booking/My Bookings; online discount may apply if bought 24h+ early",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at booking / manage booking / online check-in",
-      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2025-12-24"
+      "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air France prices additional baggage by itinerary and timing. Canada/U.S. routes are an exception where online and airport price can be the same."
+      }
     },
-
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by itinerary",
       "currency": "EUR",
-      "conditions": "Oversized bag option applies over 158 cm and up to 300 cm total dimensions; price depends on itinerary and is paid at the airport.",
+      "conditions": "Oversized option applies over 158 cm up to 300 cm; airport-only price depends on itinerary",
       "applies_to": "All fares",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at airport",
-      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2025-12-24"
+      "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by itinerary",
       "currency": "EUR",
-      "conditions": "Overweight option applies above ticket allowance and up to 32 kg; price depends on itinerary and is paid at airport. Over 32 kg goes cargo.",
+      "conditions": "Overweight option applies above included allowance up to 32 kg; airport-only price depends on itinerary",
       "applies_to": "All fares",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at airport",
-      "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2025-12-24"
+      "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "last_verified": "2026-08-22"
     },
-
     {
       "category": "seat_selection",
       "amount": "Depends on route, fare, and seat type",
@@ -85,7 +97,65 @@
       "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
       "last_verified": "2025-12-24"
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Flying Blue Silver, Gold, and Platinum members receive standard seat selection benefits on eligible Air France flights",
+      "applies_to": "Flying Blue elite members",
+      "region_or_route": "Air France-operated flights",
+      "timing": "at booking / manage booking",
+      "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Flying Blue Silver/Gold/Platinum get 1 extra checked item; Platinum can get up to 2 on Air France/KLM",
+      "applies_to": "Flying Blue elite members",
+      "region_or_route": "SkyTeam flights; higher Platinum benefit on Air France and KLM",
+      "timing": "each way",
+      "source_url": "https://wwws.airfrance.fr/en/information/legal/conditions-aba",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Flying Blue baggage benefit is tier and operating-carrier dependent and adds to the ticket’s standard allowance."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Specific rate or standard-bag treatment",
+      "currency": "EUR",
+      "conditions": "Sports equipment can have item-specific rates and is excluded from the normal Additional Baggage option",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Air France-operated flights",
+      "timing": "at booking / airport",
+      "source_url": "https://wwws.airfrance.fr/en/information/legal/conditions-aba",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Additional Baggage Option terms exclude sports equipment because sports gear can have a specific rate."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Lap infants may bring 1 cabin bag and, unless fare excludes checked bags, 1 checked bag up to 10 kg",
+      "applies_to": "Infants under 2 on lap",
+      "region_or_route": "Air France-operated flights",
+      "timing": "each way",
+      "source_url": "https://wwws.airfrance.us/information/passagers/familles-enfants",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air France also allows one stroller or framed infant carrier and one car seat in the hold free of charge."
+      }
+    },
     {
       "category": "change_cancellation",
       "amount": "Depends on fare conditions",
@@ -97,7 +167,6 @@
       "source_url": "https://wwws.airfrance.fr/en/trip",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on child age and itinerary",

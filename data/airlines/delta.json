@@ -10,64 +10,166 @@
     ],
     "pro_hack": "If your plans might move, compare Basic against Main before booking. A normal carry-on allowance does not protect you from the Basic change or cancellation penalty."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against Delta baggage overview, previous-fees, Amex, Medallion, military, and change/cancel sources. Key model: ticket date, travel experience, route, card/status/military exceptions, and Basic fare penalties."
+  },
   "fees": [
     {
       "category": "checked_baggage",
+      "amount": "Paid through Delta check-in",
+      "currency": "USD",
+      "conditions": "Bags can be selected and paid during the 24-hour check-in window on delta.com, Fly Delta app, or airport kiosk",
+      "applies_to": "Checked bags",
+      "region_or_route": "All Delta routes where checked-bag purchase is available",
+      "timing": "online check-in / app / airport kiosk",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Not authorized through third parties",
+      "currency": "USD",
+      "conditions": "Delta does not authorize third-party checked-bag sales; pay through Delta check-in or airport channels",
+      "applies_to": "Checked bags",
+      "region_or_route": "All Delta routes",
+      "timing": "before departure / check-in",
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
+    },
+    {
+      "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "1st standard checked bag under 50 lbs (23 kg)",
+      "conditions": "1st standard checked bag under 50 lb for domestic Basic/Main-style fares without card/status/military exception",
       "applies_to": "Basic Economy",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 55,
       "currency": "USD",
-      "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
+      "conditions": "2nd standard checked bag under 50 lb for domestic Basic/Main-style fares without card/status/military exception",
       "applies_to": "Basic Economy",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 45,
       "currency": "USD",
-      "conditions": "1st standard checked bag under 50 lbs (23 kg)",
+      "conditions": "1st standard checked bag under 50 lb for domestic Classic/Extra-style fares without exception",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 55,
       "currency": "USD",
-      "conditions": "2nd standard checked bag under 50 lbs (23 kg)",
+      "conditions": "2nd standard checked bag under 50 lb for domestic Classic/Extra-style fares without exception",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "US domestic",
       "timing": "each way",
       "source_url": "https://www.delta.com/us/en/baggage/overview",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta checked-bag fees depend on route, travel experience, ticket purchase date, and exception paths such as Delta Amex, Medallion, premium cabin, or military."
+      }
     },
-
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "conditions": "One carry-on and one personal item are included; Basic/Main Basic keeps normal carry-on access",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.delta.com/us/en/baggage/carry-on-baggage",
-      "last_verified": "2025-12-22"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta’s Basic-style fares still allow normal carry-on; the fee risk is checked baggage and change/cancel penalties."
+      }
     },
-
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Eligible Delta SkyMiles Amex first bag free can cover up to 8 companions; Basic Card Members also get domestic second bag free",
+      "applies_to": "Eligible Delta SkyMiles Amex Basic Card Members and same-reservation companions",
+      "region_or_route": "Delta-marketed and Delta-operated eligible flights",
+      "timing": "at check-in",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/first-checked-bag-free",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta says the first-bag waiver can extend to up to eight companions; the domestic second-bag benefit is for eligible Basic Card Members, so model it separately from general companion savings."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Medallion and eligible SkyTeam status can waive bags and increase weight limits depending on fare and route",
+      "applies_to": "Eligible Delta Medallion and SkyTeam Elite members",
+      "region_or_route": "Delta-operated eligible flights",
+      "timing": "at check-in",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/medallion-baggage-allowance",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Medallion baggage benefits may extend to up to eight companions traveling on the same reservation."
+      }
+    },
+    {
+      "category": "military_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Active-duty U.S. military receive free checked bags; allowance depends on military orders versus personal travel and cabin",
+      "applies_to": "Active-duty U.S. military",
+      "region_or_route": "Delta-marketed eligible tickets",
+      "timing": "at check-in",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/military-baggage-allowance",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta publishes up to five free bags for travel on military orders; personal-travel allowances depend on cabin and embargoes."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": 200,
@@ -79,7 +181,22 @@
       "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
       "last_verified": "2025-12-22"
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Standard bag fee plus applicable excess fees",
+      "currency": "USD",
+      "conditions": "Most sports equipment uses standard checked-bag fees; overweight and oversize fees can apply by item and route",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Delta-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.delta.com/us/en/baggage/special-items/sporting-equipment",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta generally applies normal baggage allowance by cabin and region; items over 115 linear inches or 100 lb generally are not accepted."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": 100,
@@ -102,28 +219,35 @@
       "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Change/cancel fee: free",
+      "conditions": "No change/cancel fee for Classic, Extra, or Refundable tickets originating in the U.S. or Canada; fare difference can apply",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "US/Canada/Mexico/Caribbean/Central America",
       "timing": "before departure",
-      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta change/cancel fees vary by origin, destination, ticket type, purchase date, and fare difference; Basic-style fares are the main penalty exposure."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": 99,
       "currency": "USD",
-      "conditions": "Change/cancel fee",
+      "conditions": "Delta Main Basic / Comfort Basic fee for U.S./Canada-origin travel to nearby regions; fare difference can apply",
       "applies_to": "Basic Economy",
       "region_or_route": "US/Canada/Mexico/Caribbean/Central America",
       "timing": "before departure",
-      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta change/cancel fees vary by origin, destination, ticket type, purchase date, and fare difference; Basic-style fares are the main penalty exposure."
+      }
     },
     {
       "category": "change_cancellation",
@@ -133,19 +257,27 @@
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "South America/Europe/UK/Africa/Middle East/India/Asia/Pacific",
       "timing": "before departure",
-      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta change/cancel fees vary by origin, destination, ticket type, purchase date, and fare difference; Basic-style fares are the main penalty exposure."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": 199,
       "currency": "USD",
-      "conditions": "Change/cancel fee",
+      "conditions": "Delta Main Basic / Comfort Basic fee for U.S./Canada-origin long-haul regions; fare difference can apply",
       "applies_to": "Basic Economy",
       "region_or_route": "South America/Europe/UK/Africa/Middle East/India/Asia/Pacific",
       "timing": "before departure",
-      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta change/cancel fees vary by origin, destination, ticket type, purchase date, and fare difference; Basic-style fares are the main penalty exposure."
+      }
     },
     {
       "category": "change_cancellation",
@@ -155,10 +287,13 @@
       "applies_to": "Basic Economy",
       "region_or_route": "Ticket date and market dependent",
       "timing": "before departure",
-      "source_url": "https://www.delta.com/us/en/baggage/overview#changecancelfees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.delta.com/us/en/baggage/overview",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta change/cancel fees vary by origin, destination, ticket type, purchase date, and fare difference; Basic-style fares are the main penalty exposure."
+      }
     },
-
     {
       "category": "same_day_change",
       "amount": 75,
@@ -181,7 +316,6 @@
       "source_url": "https://www.delta.com/us/en/change-cancel/same-day-ticket-changes",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "seat_selection",
       "amount": "Depends on flight and seat type",
@@ -193,7 +327,6 @@
       "source_url": "https://www.delta.com/us/en/onboard/onboard-experience/seating",
       "last_verified": "2025-12-22"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 150,
@@ -204,6 +337,17 @@
       "timing": "per direction",
       "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
       "last_verified": "2025-12-19"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "checked_baggage",
+      "previous_value": "1st bag $35; 2nd bag $45",
+      "new_value": "1st bag $45; 2nd bag $55",
+      "effective_date": "2026-04-08",
+      "verified_date": "2026-08-21",
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/previous-baggage-fees",
+      "summary": "Delta lists an April 8, 2026 domestic checked-bag increase for tickets purchased on or after that date."
     }
   ]
 }

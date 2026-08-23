@@ -4,72 +4,149 @@
   "iata": "TR",
   "country": "Singapore",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": false,
+    "source_depth": "silver",
+    "last_full_review": "2026-08-22",
+    "notes": "LCC data-depth pass checked against Scoot fare-bundle, baggage, and fees-chart sources. Main traveler risk is Basic fare having no checked bag while airport and partner/interline fees remain route-specific."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance depends on fare type; Economy (Scoot, ScootPlus) includes up to 10 kg total; size limits apply",
+      "conditions": "Economy allows 2 cabin pieces up to 10 kg total; ScootPlus allows 2 pieces up to 15 kg total",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot combines a piece rule with a weight cap: 1 cabin bag plus 1 personal item, with no cabin allowance for infants."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, bundle, and timing",
+      "amount": "Depends on fare bundle, route, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage not included by default on some fares; baggage can be purchased in weight bundles; fees vary by route and timing",
+      "conditions": "Basic includes no checked bag; Value/Flex include 20 kg and ScootPlus includes 30 kg before add-ons",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/fares-fees/1000",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot baggage starts with fare bundle. Extra allowance is sold by weight and route, so route fee chart lookup matters more than a generic first-bag fee."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced above purchased allowance",
       "currency": "USD",
-      "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
+      "conditions": "Excess over purchased allowance is charged at airport rates; any single checked bag over 32 kg must be repacked",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot requires repacking if a single checked bag exceeds 32 kg, even when the total purchased allowance is higher."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Additional baggage charges or cargo handling",
+      "currency": "USD",
+      "conditions": "Standard checked bags are limited to 158 cm total dimensions; very bulky items may need cargo handling",
+      "applies_to": "Checked baggage and bulky non-standard baggage",
+      "region_or_route": "All routes",
+      "timing": "at booking / airport assessment",
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot publishes the standard checked-bag dimensions and cargo guidance for very large or bulky items, not one flat oversize fee."
+      }
     },
     {
       "category": "sports_equipment",
       "amount": "Depends on equipment, route, and bundle",
       "currency": "USD",
-      "conditions": "Sports equipment must be pre-purchased; fees depend on equipment type, route, and selected baggage bundle",
+      "conditions": "Sports gear uses purchased baggage allowance unless size or handling requirements push it into special/cargo handling",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/baggage/sports-equipment",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot generally treats sports gear as checked baggage allowance, but very bulky items may need cargo handling."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "No standard free-bag waiver published",
+      "currency": "USD",
+      "conditions": "Scoot baggage allowance is driven by fare bundle and purchased weight, not a universal elite free-bag rule",
+      "applies_to": "All travelers",
+      "region_or_route": "Scoot-operated flights",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/fares-fees/1000",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "not_published",
+        "notes": "No standard Scoot elite checked-bag waiver is modeled from the published fare and baggage tables."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Depends on seat type, fare bundle, and timing",
       "currency": "USD",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, fare bundle, and timing",
+      "conditions": "Seat selection is included in Value/Flex and ScootPlus, but Basic pays if choosing a seat in advance",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/seats",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/fares-fees/1000",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot fare bundle changes the seat-fee answer: Basic is paid seat selection, while Value/Flex include standard seat selection."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
       "currency": "USD",
-      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
+      "conditions": "Flight changes are bundle-specific: Flex includes changes, while Basic/Value/ScootPlus can require fees plus fare difference",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/fees-and-charges",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flyscoot.com/en/plan/booking-your-flight/fares-fees/1000",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot’s fees chart also notes cutoffs before departure, airport service fees, local taxes, and separate handling for interline/non-Scoot connections."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants have no cabin baggage allowance; qualifying strollers and child items may be carried or checked free",
+      "applies_to": "Infants and children on Scoot-operated flights",
+      "region_or_route": "All Scoot-operated routes",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.flyscoot.com/en/plan/before-you-fly/travel-information",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot infant travel has two separate rules: infants pay an infant fee, but qualifying strollers and child items may be checked free and do not count toward allowance."
+      }
     },
     {
       "category": "unaccompanied_minor",

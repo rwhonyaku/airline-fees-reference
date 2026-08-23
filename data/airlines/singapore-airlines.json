@@ -4,66 +4,138 @@
   "iata": "SQ",
   "country": "Singapore",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Singapore Airlines baggage depends on cabin, fare, PPS/KrisFlyer/Star Alliance status, weight versus piece concept, Canada/U.S. routing, interline most-significant-carrier rules, and pre-purchase timing.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "SGD",
-      "conditions": "Carry-on varies by cabin: Economy/Premium Economy get 1 piece up to 7 kg; Business/First get 2 pieces up to 7 kg each. Size limits apply.",
+      "conditions": "Economy/Premium Economy: 1 cabin bag up to 7 kg. Business/First/Suites: 2 bags up to 7 kg each.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/carry-on/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Carry-on is cabin-driven, not a flat fee. Oversize or overweight cabin bags can be checked and then count against the checked baggage allowance."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "SGD",
-      "conditions": "Checked baggage included under the weight or piece concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Included allowance depends on cabin, fare, status, and route; most routes use weight concept, Canada/U.S. uses piece concept.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The key traveler question is not whether Singapore includes baggage, but which concept applies: weight-based allowance outside North America, piece-based allowance for Canada/U.S. itineraries."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and piece/weight concept",
-      "currency": "SGD",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
+      "amount": "From USD 8 per kg or USD 150 per extra piece at airport",
+      "currency": "USD",
+      "conditions": "Additional baggage is per kg on weight routes and per piece on Canada/U.S. routes; pre-purchase timing changes price",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.singaporeair.com/en_UK/us/travel-info/baggage/additional-baggage-charges/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published tables use regional bands. Airport weight-concept pricing starts at USD 8/kg on the lowest Singapore-Band 1 pairing; piece-concept airport pricing is commonly USD 150+ for an extra piece, with higher bands and heavy/oversize charges."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "PPS Club members receive extra checked baggage; family on the same Singapore Airlines flight may receive the same allowance",
+      "applies_to": "PPS Club / Solitaire PPS Club",
+      "region_or_route": "Singapore Airlines-operated flights",
+      "timing": "each way",
+      "source_url": "https://kflogin.singaporeair.com/en_UK/my/ppsclub-krisflyer/ppsclub/the-ppsclub/privileges/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "KrisFlyer Elite Gold and Star Alliance Gold get 20 kg extra, or 1 extra piece on U.S.-concept itineraries",
+      "applies_to": "KrisFlyer Elite Gold / Star Alliance Gold",
+      "region_or_route": "Singapore Airlines-operated eligible flights",
+      "timing": "each way",
+      "source_url": "https://www.singaporeair.com/mpbaggagelightbox.form?articleName=baggageAllowance_turbo&locale=en_UK",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "PPS Club uses larger weight allowances or 100% extra piece allowance depending on whether the route uses weight or piece concept."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "Infants get 10 kg baggage plus one stroller or pushchair and one carry-cot or car seat checked free",
+      "applies_to": "Infants",
+      "region_or_route": "Singapore Airlines-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.singaporeair.com/mpbaggagelightbox.form?articleName=baggageAllowance_turbo&locale=en_UK",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant allowance is separate from the adult's cabin/fare allowance and follows the applicable baggage concept."
+      }
+    },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
-      "currency": "SGD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "amount": "From USD 100 for heavy-piece charge on piece routes",
+      "currency": "USD",
+      "conditions": "Piece routes charge heavy bags above allowance up to 32 kg; weight routes usually price extra kilograms",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.singaporeair.com/en_UK/se/travel-info/baggage/additional-baggage-charges/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Singapore does not use one universal overweight fee. Weight-concept routes price excess by kg; Canada/U.S. piece-concept routes price heavy pieces by regional band."
+      }
     },
-
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route and excess size",
-      "currency": "SGD",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "amount": "From USD 100 for oversized-piece charge on piece routes",
+      "currency": "USD",
+      "conditions": "Piece routes charge oversize bags above 158 cm; Canada/U.S. and partner/interline routing affect the rule",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.singaporeair.com/en_UK/se/travel-info/baggage/additional-baggage-charges/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published Singapore Airlines tables separate extra-piece, heavy-piece, and oversized-piece charges; those can stack based on route and baggage concept."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +145,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +160,44 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "SGD",
+      "conditions": "KrisFlyer Elite and PPS Club members may get free advance selection for certain Economy/Premium Economy seats",
+      "applies_to": "Eligible KrisFlyer / PPS Club tiers",
+      "region_or_route": "Singapore Airlines-operated flights",
+      "timing": "advance seat selection",
+      "source_url": "https://www.singaporeair.com/en_UK/id/flying-withus/fare-types/seat-selection/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Included within allowance",
+      "currency": "SGD",
+      "conditions": "Most sporting equipment counts toward the checked baggage allowance; excess baggage charges apply if the allowance is exceeded",
+      "applies_to": "Sports equipment",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://kflogin.singaporeair.com/en_UK/za/travel-info/baggage/non-standard-baggage/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
+    },
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
@@ -96,9 +207,12 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/fare-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and eligibility",
@@ -108,7 +222,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/special-assistance/unaccompanied-minors/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Singapore Airlines published baggage, seat, fare, and additional-baggage pages; route/fare/cabin and operating-carrier limits remain important."
+      }
     }
   ]
 }

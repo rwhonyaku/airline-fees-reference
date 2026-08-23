@@ -4,6 +4,13 @@
   "iata": "LH",
   "country": "Germany",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against Lufthansa current fees, baggage-and-fees, excess/sports baggage, Miles & More, infant, and fare-change sources. Key model: baggage calculator/fare-cabin-route plus status and USA/MSC rules."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,7 +21,11 @@
       "region_or_route": "All routes (rules may vary by origin)",
       "timing": "per flight",
       "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lufthansa carry-on is cabin-driven, but local laws and aircraft/boarding constraints can still affect handling."
+      }
     },
     {
       "category": "carry_on",
@@ -25,21 +36,27 @@
       "region_or_route": "All routes (rules may vary by origin)",
       "timing": "per flight",
       "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lufthansa carry-on is cabin-driven, but local laws and aircraft/boarding constraints can still affect handling."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Free baggage allowance depends on fare/cabin; examples include 1 piece up to 23 kg in Economy and higher premium-cabin allowances.",
+      "conditions": "Free allowance is determined by service class, fare, route, status, and ticket/receipt baggage rule",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes (allowance varies by fare/cabin/route)",
       "timing": "each way",
-      "source_url": "https://www.lufthansa.com/us/en/free-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lufthansa explicitly points travelers to the baggage calculator because allowance varies by route, travel class, fare, and status."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
@@ -49,7 +66,11 @@
       "region_or_route": "United States → Germany",
       "timing": "each way",
       "source_url": "https://www.lufthansa.com/us/en/current-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is an example scenario from Lufthansa’s current-fees page, not a universal systemwide bag price."
+      }
     },
     {
       "category": "checked_baggage",
@@ -60,30 +81,80 @@
       "region_or_route": "United States → Germany",
       "timing": "each way",
       "source_url": "https://www.lufthansa.com/us/en/current-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is an example scenario from Lufthansa’s current-fees page, not a universal systemwide bag price."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Miles & More/Star Alliance status can add bags, but Economy Light and USA/Mexico/Central America exceptions matter",
+      "applies_to": "Frequent Traveller / Senator / HON Circle",
+      "region_or_route": "Lufthansa Group / Star Alliance routes",
+      "timing": "each way",
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Status benefits differ by cabin and route; Lufthansa lists important exceptions for Economy Light and certain Americas routes."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Free if within allowance; flat sports rate if excess",
+      "currency": "EUR",
+      "conditions": "Sports gear may count within allowance; excess/special flat rates apply if it exceeds free allowance",
+      "applies_to": "Sports and special baggage",
+      "region_or_route": "Lufthansa-operated flights",
+      "timing": "register up to 72 hours before departure / airport",
+      "source_url": "https://business.lufthansagroup.com/us/en/program/experts/baggage/excess-and-sports-baggage.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lufthansa says carriage depends on cargo-hold capacity and should be registered early; confirmed booking is needed to guarantee transport."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One ski or snowboard item can travel free in addition to allowance except USA, Mexico, Central America, or Economy Light",
+      "applies_to": "Winter sports equipment",
+      "region_or_route": "Most Lufthansa-operated routes outside listed exceptions",
+      "timing": "register before travel / airport",
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The free winter-sports rule has route and fare exclusions; USA, Mexico, Central America, and Economy Light are key exceptions."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Depends on route and excess weight",
       "currency": "EUR",
-      "conditions": "Economy/Premium Economy bags above 23 kg and up to 32 kg are excess baggage; fees apply and vary by route.",
+      "conditions": "Economy/Premium Economy bags over 23 kg up to 32 kg are excess; flat rates vary by route",
       "applies_to": "Economy / Premium Economy",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.lufthansa.com/us/en/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://business.lufthansagroup.com/us/en/program/experts/baggage/excess-and-sports-baggage.html",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route and excess size",
       "currency": "EUR",
-      "conditions": "Economy/Premium Economy bags over 158 cm and up to 292 cm are excess baggage; fees apply and vary by route.",
+      "conditions": "Bags over 158 cm up to 292 cm are excess baggage; flat rates vary by route and cabin",
       "applies_to": "Economy / Premium Economy",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.lufthansa.com/us/en/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://business.lufthansagroup.com/us/en/program/experts/baggage/excess-and-sports-baggage.html",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
@@ -96,7 +167,6 @@
       "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "seat_selection",
       "amount": "Depends on fare, route, and status",
@@ -108,17 +178,16 @@
       "source_url": "https://www.lufthansa.com/az/en/advance-seat-reservation",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "change_cancellation",
       "amount": 199,
       "currency": "USD",
-      "conditions": "Economy Light international changes may cost USD 199 plus fare difference, based on Lufthansa published fee information.",
+      "conditions": "Economy Light international rebooking example: USD 199 plus fare/tax/fee difference, if conditions are met",
       "applies_to": "Economy Light",
       "region_or_route": "International (published example context)",
       "timing": "before departure",
       "source_url": "https://www.lufthansa.com/us/en/current-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22"
     },
     {
       "category": "change_cancellation",
@@ -141,6 +210,30 @@
       "timing": "before journey begins",
       "source_url": "https://www.lufthansa.com/us/en/cancellations-and-refunds",
       "last_verified": "2025-12-24"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Fully foldable buggy or pushchair may be taken free of charge and handed over before boarding at many airports",
+      "applies_to": "Infants and children",
+      "region_or_route": "Lufthansa-operated flights",
+      "timing": "airport / gate",
+      "source_url": "https://www.lufthansa.com/au/en/fliegen-mit-baby",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Bassinet reservation and accompanying seat are free where available on long-haul aircraft",
+      "applies_to": "Eligible infants",
+      "region_or_route": "Long-haul flights",
+      "timing": "before departure",
+      "source_url": "https://www.lufthansa.com/au/en/fliegen-mit-baby",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
     }
   ]
 }

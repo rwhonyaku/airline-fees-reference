@@ -11,7 +11,59 @@
     ],
     "pro_hack": "On smaller United Express regional jets, under-seat space can be tighter than the published personal-item rule suggests. Keep essentials in a soft bag that can compress."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against United carry-on, checked-bag calculator, card, Premier, sports-equipment, and change-fee sources. Key model: calculator-driven pricing by route, ticket date, fare, status, card, and operating carrier."
+  },
   "fees": [
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Personal item plus standard carry-on included on Economy and higher fares; aircraft space can still affect handling",
+      "applies_to": "Economy and higher fares",
+      "region_or_route": "Most United-operated routes",
+      "timing": "per flight",
+      "source_url": "https://www.united.com/en/us/fly/baggage/carry-on-bags.html",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United’s full-size carry-on allowance applies outside Basic Economy, but United Express aircraft can still force gate checking."
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": "Personal item only",
+      "currency": "USD",
+      "conditions": "Basic Economy is usually personal-item only; full carry-on exceptions depend on route, Premier status, or eligible card",
+      "applies_to": "Basic Economy",
+      "region_or_route": "Route and exemption dependent",
+      "timing": "per flight",
+      "source_url": "https://www.united.com/en/us/fly/baggage/carry-on-bags.html",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Basic Economy is where the carry-on trap sits: exceptions exist, so the answer must check route and traveler eligibility."
+      }
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Use United calculator",
+      "currency": "USD",
+      "conditions": "United directs travelers to its calculator because fees depend on route, cabin, status, membership, carrier, and ticket date",
+      "applies_to": "All fares",
+      "region_or_route": "All United and United Express routes",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.united.com/en/US/checked-bag-fee-calculator/any-flights",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
+    },
     {
       "category": "checked_baggage",
       "amount": 35,
@@ -21,7 +73,11 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
     {
       "category": "checked_baggage",
@@ -32,7 +88,11 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
     {
       "category": "checked_baggage",
@@ -43,7 +103,11 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
     {
       "category": "checked_baggage",
@@ -54,7 +118,11 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
     {
       "category": "checked_baggage",
@@ -65,7 +133,11 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
     {
       "category": "checked_baggage",
@@ -76,9 +148,85 @@
       "region_or_route": "Most markets",
       "timing": "each way",
       "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
-      "last_verified": "2026-04-27"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United checked-bag fees are calculator-driven. Origin, destination, cabin, status, membership, marketing/operating carrier, and ticketing date can change the answer."
+      }
     },
-
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Eligible United card benefit usually needs MileagePlus number, eligible card payment, and United-operated flight",
+      "applies_to": "Primary cardmember and 1 companion on the same reservation",
+      "region_or_route": "United and United Express-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.united.com/en/US/checked-bag-fee-calculator/any-flights",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Do not model United card benefits as universal: card type, payment method, same-reservation companion rules, and codeshare operation matter."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Premier baggage exemptions depend on status, route, cabin, and same-reservation companion rules; group bookings can be excluded",
+      "applies_to": "MileagePlus Premier members and eligible same-reservation companions",
+      "region_or_route": "United and United Express routes",
+      "timing": "each way",
+      "source_url": "https://www.united.com/en/US/checked-bag-fee-calculator/any-flights",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United’s calculator notes same-reservation companion sharing for Premier members, with exclusions such as group reservations."
+      }
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "Itinerary-priced",
+      "currency": "USD",
+      "conditions": "Overweight exposure depends on allowance: 50 lb Economy baseline, 70 lb premium/status allowances, route limits, and embargoes",
+      "applies_to": "Checked bags above ticket allowance",
+      "region_or_route": "Route and status dependent",
+      "timing": "at check-in",
+      "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United’s overweight fee should stay itinerary-priced because status and premium cabin can raise the included weight before a penalty applies."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Itinerary-priced",
+      "currency": "USD",
+      "conditions": "Oversize starts above 62 linear inches; special items, route limits, and airport acceptance rules can override normal handling",
+      "applies_to": "Checked bags above standard size allowance",
+      "region_or_route": "Route and item dependent",
+      "timing": "at check-in",
+      "source_url": "https://www.united.com/en/us/fly/baggage/checked-bags.html",
+      "last_verified": "2026-08-21",
+      "confidence": "ambiguous"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Standard or special-baggage rules apply",
+      "currency": "USD",
+      "conditions": "Sports equipment treatment depends on item type, packing, route limits, and whether the item exceeds the checked-bag allowance",
+      "applies_to": "Sports and special equipment",
+      "region_or_route": "United and United Express-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.united.com/en/cl/fly/baggage/sports-equipment.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "United publishes item-specific sports-equipment rules rather than one universal flat sports-bag fee."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 15,
@@ -123,7 +271,6 @@
       "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 150,
@@ -135,7 +282,6 @@
       "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,

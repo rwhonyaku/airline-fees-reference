@@ -4,72 +4,136 @@
   "iata": "ZG",
   "country": "Japan",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: ZIPAIR baggage is an add-on model: base fares include only 7 kg combined carry-on, checked baggage is purchased per piece and route, airport purchase can add handling cost, and each checked piece must stay within route/item limits.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Carry-on allowance includes 1 cabin bag and 1 personal item; combined weight up to 7 kg; size limits apply",
+      "conditions": "Fare includes 7 kg carry-on total; extra carry-on weight/package can raise allowance where available",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.zipair.net/en/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://flights.zipair.net/en-us/kuala-lumpur",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR’s base fare includes 7 kg carry-on only. Flex Biz and similar packages can include extra carry-on weight and seat selection on eligible routes."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route, weight, and timing dependent",
+      "amount": "Route, weight tier, and timing dependent",
       "currency": "JPY",
-      "conditions": "Checked baggage not included by default; baggage can be purchased in advance by weight; fees vary by route and timing",
+      "conditions": "Checked baggage is not included by default; buy pieces by route before travel when possible because airport handling fees can apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.zipair.net/en/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.zipair.net/ja/yakkan/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR’s tariff lists paid ancillary services; checked baggage is accepted when a paid ancillary or fare rule allows it."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport excess-weight rate",
+      "amount": "Prepaid weight tier / airport acceptance limit",
       "currency": "JPY",
-      "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
+      "conditions": "Each checked piece has a hard weight limit; excess or airport-added baggage follows route pricing and handling rules",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.zipair.net/en/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://corporate.zipair.net/ja/yakkan/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR's practical trap is pre-purchase timing: baggage is optional, and each checked piece has a published per-bag ceiling rather than an open-ended overweight path."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Not accepted above checked-bag limit",
+      "currency": "JPY",
+      "conditions": "Checked baggage over 203 cm total dimensions or 30 kg is not accepted as ordinary checked baggage",
+      "applies_to": "Checked baggage over ZIPAIR limits",
+      "region_or_route": "All routes",
+      "timing": "airport check-in",
+      "source_url": "https://corporate.zipair.net/ja/yakkan/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR's conditions of carriage state checked baggage above 203 cm total dimensions or 30 kg is not accepted."
+      }
     },
     {
       "category": "sports_equipment",
       "amount": "Equipment type and route dependent",
       "currency": "JPY",
-      "conditions": "Sports equipment must be checked and may require advance purchase; fees depend on equipment type and route",
+      "conditions": "Sports equipment is an optional paid service by item/route and remains subject to checked-bag acceptance limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.zipair.net/en/service/baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment is not a blanket free item; it follows ZIPAIR's optional-service pricing and checked-bag acceptance limits."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Seat type and timing dependent",
       "currency": "JPY",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type and timing",
+      "conditions": "Seat selection is paid unless included in an eligible package such as Flex Biz; prices vary by route and seat type",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.zipair.net/en/service/seat",
-      "last_verified": "2025-12-24"
+      "source_url": "https://lp.zipair.net/service/flexbiz/en/info/lp/2407/index.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR sells seat selection as an optional service, while Flex Biz-style packages can bundle it with extra carry-on allowance and cancellation flexibility."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
       "currency": "JPY",
-      "conditions": "Flight changes permitted with applicable fee plus fare difference; cancellations generally not permitted except where explicitly allowed",
+      "conditions": "Standard fares are generally non-refundable; Flex Biz can return value as a voucher based on cancellation timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.zipair.net/en/service/fees",
-      "last_verified": "2025-12-24"
+      "source_url": "https://lp.zipair.net/service/flexbiz/en/info/lp/2407/index.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Flex Biz changes the cancellation answer but does not create a simple cash-refund rule; voucher amount depends on timing and fees."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "U6 fares give children under 6, including infants under 2, their own seat; stroller handling is outside normal bag pricing",
+      "applies_to": "Children under 6 and passengers traveling with eligible child-care items",
+      "region_or_route": "ZIPAIR-operated flights",
+      "timing": "booking / check-in",
+      "source_url": "https://lp.zipair.net/air/iah/en/info/lp/2412/index.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ZIPAIR's U6 model is unusual for an LCC because children under 6, including infants under 2, are assigned seats rather than treated as lap infants."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +144,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.zipair.net/en/service/children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

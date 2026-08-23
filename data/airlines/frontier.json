@@ -10,6 +10,13 @@
     ],
     "pro_hack": "Compare the bundle price against the exact bag and change needs before booking. The bundle can be rational when you need both bags and flexibility."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": false,
+    "source_depth": "silver",
+    "last_full_review": "2026-08-22",
+    "notes": "Frontier pass checked against current optional-services, bag-price, bundle, elite/card, military, and family-travel sources. Main issue is route/date/timing bag pricing plus bundle and status exceptions."
+  },
   "fees": [
     {
       "category": "change_cancellation",
@@ -77,77 +84,233 @@
       "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One personal item included; must fit under the seat in front of you",
+      "conditions": "Every fare includes one personal item; boarding checks can trigger charges if it exceeds 8 x 18 x 14 in",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Frontier explicitly says personal item size is checked during boarding; this is the free-bag boundary."
+      }
     },
     {
       "category": "carry_on",
-      "amount": "Depends on purchase timing",
+      "amount": "Bag Price Checker / booking flow",
       "currency": "USD",
-      "conditions": "Carry-on bag fee varies based on purchase timing (booking, online check-in, airport, or gate)",
+      "conditions": "Carry-on price depends on route, date, and purchase timing; airport and gate purchase can cost more",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Frontier publishes a Bag Price Checker rather than one universal carry-on price; timing/channel is part of the fee model."
+      }
     },
-
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and purchase timing",
+      "amount": "Bag Price Checker / booking flow",
       "currency": "USD",
-      "conditions": "Checked bag fee varies by purchase timing and route",
+      "conditions": "Checked-bag price depends on route, date, and purchase timing; standard checked bag limit is 40 lb and 62 linear in",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Frontier’s useful checked-bag answer is traveler/date/channel-specific. Bags are non-refundable and the accurate price comes from the booking flow or Bag Price Checker."
+      }
     },
-
     {
       "category": "overweight_baggage",
       "amount": 75,
       "currency": "USD",
-      "conditions": "Bags weighing 41–50 lbs (19–23 kg)",
+      "conditions": "Bags weighing 41-50 lb; standard checked bag limit is 40 lb",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Bags weighing 51–100 lbs (23–45 kg); bags over 100 lbs not accepted",
+      "conditions": "Bags weighing 51-99.99 lb for bookings made before April 4, 2026; bags over 100 lb not accepted",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Frontier changed the 51-99.99 lb tier for bookings made on or after April 4, 2026."
+      }
     },
-
+    {
+      "category": "overweight_baggage",
+      "amount": 129,
+      "currency": "USD",
+      "conditions": "Bags weighing 51-99.99 lb for bookings made on or after April 4, 2026; bags over 100 lb not accepted",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This newer tier avoids mixing older and current booking-date rules into one misleading overweight amount."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": 75,
       "currency": "USD",
-      "conditions": "Bags measuring 63–110 linear inches (160–279 cm); bags over 110 inches not accepted",
+      "conditions": "Bags measuring 63-110 linear in; bags over 110 linear in are not accepted except assistive devices",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize is a separate charge from the route/date bag price; it can stack with overweight unless a valid exemption applies."
+      }
     },
-
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "World Mastercard benefit covers one checked bag up to 40 lb when card, booking, and traveler eligibility match",
+      "applies_to": "Eligible cardmembers",
+      "region_or_route": "Frontier-operated flights",
+      "timing": "each way",
+      "source_url": "https://faq.flyfrontier.com/help/frontier-airlines-world-mastercard-free-checked-bag-benefit-5d46762-what-if-i-have-elite-platinum-status-or-elite-diamond-status-with-frontier-airlines",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The card benefit is useful but narrow: it covers the standard 40 lb checked bag and does not replace bundle/status logic for every traveler."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Elite Gold and higher can receive carry-on or checked-bag benefits depending on tier",
+      "applies_to": "FRONTIER Miles Elite members",
+      "region_or_route": "Frontier-operated flights",
+      "timing": "each way",
+      "source_url": "https://faq.flyfrontier.com/help/what-travel-benefits-are-included-with-elite-status",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "military_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Active-duty military get one carry-on and up to two checked bags free; family benefit depends on Frontier verification rules",
+      "applies_to": "Eligible active-duty military and qualifying family on same itinerary",
+      "region_or_route": "Frontier-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Frontier optional-services wording says active-duty military may receive carry-on and up to two checked bags, with overweight/oversize waived within acceptance limits."
+      }
+    },
+    {
+      "category": "seat_selection",
+      "amount": "Shown during booking",
+      "currency": "USD",
+      "conditions": "Basic fare does not include a seat assignment; paid seat selection varies by flight and seat type",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip / check-in",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/seat-options/",
+      "last_verified": "2026-08-21",
+      "confidence": "ambiguous"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Random seat assignment if no seat is purchased",
+      "applies_to": "Basic fare",
+      "region_or_route": "All routes",
+      "timing": "check-in",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/seat-options/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Standard seat selection included with Economy bundle",
+      "applies_to": "Economy bundle",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/seat-options/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Premium seat selection included with Premium bundle",
+      "applies_to": "Premium bundle",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/seat-options/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "seat_selection",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Seat selection included for any available seat with Business bundle",
+      "applies_to": "Business bundle",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage trip",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/seat-options/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "pet_fee",
+      "amount": 149,
+      "currency": "USD",
+      "conditions": "Pet charge per pet, per direction",
+      "applies_to": "Cabin pets",
+      "region_or_route": "Frontier-operated flights",
+      "timing": "per direction",
+      "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Lap infants may travel without a seat; stroller and car seat handling follows family-travel rules",
+      "applies_to": "Infants and children",
+      "region_or_route": "Frontier-operated flights",
+      "timing": "per flight",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/family-pets/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -159,6 +322,5 @@
       "source_url": "https://www.flyfrontier.com/travel/travel-info/travel-policies/?mobile=true",
       "last_verified": "2025-12-19"
     }
-
   ]
 }

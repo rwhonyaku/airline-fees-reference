@@ -4,61 +4,125 @@
   "iata": "AM",
   "country": "Mexico",
   "region": "North America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Aeromexico baggage uses fare-brand, route-market, peak/off-peak season, cabin, status/card, purchase channel, and Basic/Light fare baggage-product tables rather than one universal checked-bag fee."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance includes 1 cabin bag and 1 personal item; weight and size limits depend on cabin and fare family",
+      "conditions": "Carry-on depends on cabin and fare; Basic and Light use separate paid extra-weight products",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://beta.aeromexico.com/en-us/travel-information/baggage/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "Aeromexico’s carry-on risk is not a universal carry-on fee; Basic and Light fares can use paid weight add-ons with region-specific pricing."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on Classic, AM Plus, Premier, and certain international fares; allowance varies by route and fare family",
+      "conditions": "Included bags depend on fare brand, route market, cabin, season, status, and card exclusions",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://beta.aeromexico.com/en-us/travel-information/baggage/baggage-allowance",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aeromexico publishes fare-specific allowances and separate Basic/Light excess tables by domestic, Canada, Central America, Caribbean, South America, Europe, and Asia markets."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and purchase timing",
+      "amount": "Route, fare, season, and timing table",
       "currency": "USD",
-      "conditions": "Checked baggage fees apply on Basic fares or when exceeding free allowance; fees vary by route and purchase timing",
+      "conditions": "Basic/Light baggage and extra bags are priced by route market, season, fare brand, and purchase channel",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / at airport",
-      "source_url": "https://www.aeromexico.com/en-us/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://beta.aeromexico.com/en-us/travel-information/baggage/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aeromexico separates Light carry-on weight, Basic carry-on weight, checked baggage, and special baggage; peak-season and route tables make a single flat price misleading."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Aeromexico Rewards elite baggage benefits depend on tier, fare, route, and whether Basic exclusions apply",
+      "applies_to": "Eligible Aeromexico Rewards and SkyTeam elite members",
+      "region_or_route": "Aeromexico-operated flights",
+      "timing": "each way",
+      "source_url": "https://beta.aeromexico.com/en-us/aeromexico-rewards/learn",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aeromexico Rewards elite tiers can include an extra bag up to 25 kg; Basic fare and route exclusions can remove the benefit."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Aeromexico card extra-bag benefits depend on card, fare, route, and fare-class exclusions",
+      "applies_to": "Eligible Aeromexico cardholders",
+      "region_or_route": "Aeromexico-operated flights",
+      "timing": "each way",
+      "source_url": "https://beta.aeromexico.com/en-us/travel-information/baggage/baggage-allowance",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aeromexico card bag benefits are not a universal waiver; Basic fares and route/fare exclusions can still apply."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "USD",
-      "conditions": "Checked bags above the standard allowance and within maximum limits incur overweight fees; bags above max weight are not accepted.",
+      "conditions": "Overweight fees depend on route market, season, fare brand, and whether the bag stays within accepted limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://aeromexico.com/en-us/travel-information/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by route and size",
       "currency": "USD",
-      "conditions": "Checked bags exceeding size limits incur oversize fees; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize fees depend on route market, season, dimensions, and aircraft or airport acceptance limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://aeromexico.com/en-us/travel-information/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "From 79 to 87",
+      "currency": "USD",
+      "conditions": "Special baggage pricing depends on item, route, season, and whether the item can replace allowance",
+      "applies_to": "Sports equipment, musical instruments, and special baggage",
+      "region_or_route": "Aeromexico-operated flights",
+      "timing": "before travel / airport",
+      "source_url": "https://beta.aeromexico.com/en-ca/travel-information/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports and special baggage pricing changes by item, route, and season; top-tier sports substitutions exclude Basic fares."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +133,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.aeromexico.com/en-us/travel-information/seats-and-cabins",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +144,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://aeromexico.com/en-us/travel-information/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +155,22 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.aeromexico.com/en-us/travel-information/passengers/unaccompanied-minors",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infant strollers fly free within published size limits; larger strollers can trigger an oversize fee",
+      "applies_to": "Infants under 2 and children traveling with strollers or car seats",
+      "region_or_route": "Aeromexico-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.aeromexico.com/en_us/family-flights",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aeromexico treats stroller size as the key trigger: oversized strollers can move from free child item to oversize-fee territory."
+      }
     }
   ]
 }

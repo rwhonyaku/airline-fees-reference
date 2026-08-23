@@ -4,50 +4,103 @@
   "iata": "AK",
   "country": "Malaysia",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": false,
+    "source_depth": "silver",
+    "last_full_review": "2026-08-22",
+    "notes": "LCC data-depth pass checked against AirAsia baggage, fare, fees, sports, and carriage sources. Strongest modeling point is that baggage is priced by carrier/route/weight/timing, not a universal first-bag fee."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance includes 1 cabin bag and 1 personal item; combined weight not exceeding 7 kg; size limits apply",
+      "conditions": "Allowance is 2 cabin pieces totaling 7 kg; Low Fare includes cabin baggage but not checked baggage",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/cabin-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/fares.html",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia fare tables show 7 kg cabin baggage across fare types; cabin enforcement risk is mainly weight and dimensions, not a posted carry-on purchase fee."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on weight tier, route, and timing",
+      "amount": "Depends on carrier, route, weight tier, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage is not included by default; fees depend on weight tier and route. Pre-booking is cheaper than airport purchase.",
+      "conditions": "Low Fare sells checked baggage as an add-on; Value/Premium fares can include 20 kg to 40 kg depending on fare",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/fares.html",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia publishes separate fee schedules by operating AirAsia carrier and route. The useful answer is the purchased weight tier and fare package, not a single first-bag amount."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Pre-purchase by weight tier and route",
+      "amount": "Airport per-kg charge after purchased allowance",
       "currency": "USD",
-      "conditions": "Single checked bag may not exceed 32 kg; excess weight must be purchased in advance as additional baggage weight",
+      "conditions": "Baggage can be upgraded before travel; excess over purchased allowance is charged at airport rates",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://support.airasia.com/s/article/How-do-I-upgrade-my-baggage-allowance-en",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia advises pre-booking or upgrading baggage before departure. Individual checked items over 32 kg are not accepted, so very heavy bags must be split."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "No single flat oversize fee published",
+      "currency": "USD",
+      "conditions": "Checked pieces must stay within AirAsia size and 32 kg item limits; acceptance is assessed against aircraft/handling rules",
+      "applies_to": "All fares",
+      "region_or_route": "All routes",
+      "timing": "at booking / airport assessment",
+      "source_url": "https://support.airasia.com/s/article/What-I-need-to-know-about-checked-baggage?language=id_ID",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "not_published",
+        "notes": "AirAsia publishes maximum dimensions and weight limits, but the fee table is route/carrier based rather than one oversize surcharge that applies everywhere."
+      }
     },
     {
       "category": "sports_equipment",
-      "amount": "Depends on equipment and route",
+      "amount": "Prebooked sports allowance by weight tier",
       "currency": "USD",
-      "conditions": "Sports equipment must be pre-booked; fees depend on equipment type and route; weight limits apply",
+      "conditions": "Listed sports items need sports allowance; regular checked baggage and sports allowance cannot be pooled",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/sports-equipment.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://support.airasia.com/s/article/flying-with-sports-items-on-airasia-flights",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia separates fragile/special-handling sports items from normal checked baggage. Golf, surfboards, bikes, ski/snowboard, and diving equipment with tanks follow the sports-equipment path."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "No universal free-bag waiver published",
+      "currency": "USD",
+      "conditions": "AirAsia Rewards does not override the fare, route, carrier, and add-on baggage pricing model",
+      "applies_to": "AirAsia Rewards members",
+      "region_or_route": "AirAsia group flights",
+      "timing": "at booking / payment",
+      "source_url": "https://www.airasia.com/aa/about-us/id/id/fees-and-charges.html",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "not_published",
+        "notes": "No published universal elite-style checked-bag waiver was modeled. Travelers should treat baggage as fare/package/add-on driven."
+      }
     },
     {
       "category": "seat_selection",
@@ -64,12 +117,28 @@
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
       "currency": "USD",
-      "conditions": "Flight changes permitted with fee plus fare difference; cancellations generally not permitted except for specific fare products or add-ons",
+      "conditions": "Changes and cancellations follow the operating carrier fare rules; add-on fees are generally non-refundable/non-transferable",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/fees-and-charges.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/terms-and-conditions-ak.html",
+      "last_verified": "2026-08-22"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants have no baggage allowance; a pram or buggy used for travel can be carried free",
+      "applies_to": "Infants without a separate seat",
+      "region_or_route": "AirAsia-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/terms-and-conditions-ak.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia treats infant baggage separately from adult add-ons: infants without a seat do not get their own baggage allowance, but a travel pram, buggy, or stroller can be carried free."
+      }
     },
     {
       "category": "unaccompanied_minor",

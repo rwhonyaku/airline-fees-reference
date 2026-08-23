@@ -4,6 +4,14 @@
   "iata": "6E",
   "country": "India",
   "region": "South Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: IndiGo baggage is allowance plus unbundled add-ons under DGCA 2026 rules; Lite/promotional fares can remove checked baggage, prepaid slabs are time-limited, and codeshare passengers must handle excess at check-in.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,40 +22,99 @@
       "region_or_route": "Domestic India / International varies",
       "timing": "per flight",
       "source_url": "https://www.goindigo.in/baggage/baggage-allowance.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route and fare type",
+      "conditions": "Domestic standard allowance is usually 15 kg in one piece; Lite, Stretch, and international routes differ",
       "applies_to": "Eligible fares",
       "region_or_route": "Domestic India / International varies",
       "timing": "each way",
       "source_url": "https://www.goindigo.in/baggage/baggage-allowance.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "IndiGo domestic standard allowance is 15 kg in one checked piece; Stretch and Stretch+ use higher two-piece allowances, and Lite/promotional fares may exclude checked bags.",
+        "confidence": "confirmed",
+        "notes": "IndiGo publishes different checked-bag allowances by fare family and destination; Stretch/Stretch+ include higher two-piece allowances while Lite can exclude checked baggage."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and timing",
+      "amount": "Prepaid kg slabs plus separate extra-piece fee",
       "currency": "INR",
-      "conditions": "Additional checked baggage can be purchased in advance or at the airport; pricing depends on route and timing",
+      "conditions": "Prepaid excess/additional pieces are optional add-ons with cutoffs; codeshare passengers can add excess only at check-in",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.goindigo.in/add-on-services/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.goindigo.in/baggage/excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Additional pieces and excess weight are separate charges: buying an extra piece does not include extra weight allowance.",
+        "confidence": "confirmed",
+        "notes": "IndiGo cites DGCA Air Transport Circular 04 of 2026 for unbundled optional add-on services; prepaid excess has domestic/international timing cutoffs."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and excess weight",
+      "amount": "Domestic airport example INR 800/kg; international varies",
       "currency": "INR",
-      "conditions": "Overweight baggage fees apply when exceeding allowance; fees depend on route and excess weight",
+      "conditions": "Airport overweight is charged per kg by route/currency; prepaid slabs are usually cheaper when available",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.goindigo.in/add-on-services/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.goindigo.in/baggage/excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Current fee tables list domestic airport excess at INR 800/kg and separate international route/currency tables."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "2500 / 4000",
+      "currency": "INR",
+      "conditions": "Special/odd-size baggage has a handling fee; excess weight or extra-piece fees can also apply",
+      "applies_to": "Special or oversized checked baggage",
+      "region_or_route": "Domestic India / International",
+      "timing": "airport check-in",
+      "source_url": "https://www.goindigo.in/travel-information/en/baggage-allowance.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Current IndiGo special-baggage page lists INR 2500 domestic and INR 4000 international, separate from any excess-baggage charge."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Pre-book / airport rate depends on sector",
+      "currency": "INR",
+      "conditions": "Sports equipment has separate handling fees; excess weight or extra-piece charges can still apply",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Domestic India / International",
+      "timing": "pre-book / airport",
+      "source_url": "https://www.goindigo.in/information/fees-and-charges.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "IndiGo limits the sports-equipment category to listed items such as golf, cricket, bicycles, surfboards, skis, snowboards, and scuba gear."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Infant fee and baggage allowance depend on sector",
+      "currency": "INR",
+      "conditions": "Infants get cabin baggage and one stroller/pram free; no checked baggage allowance for infants",
+      "applies_to": "Infants and children",
+      "region_or_route": "Domestic India / International",
+      "timing": "at booking / airport",
+      "source_url": "https://www.goindigo.in/baggage/baggage-allowance.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants receive cabin baggage allowance but no checked allowance; infant fees are listed separately by domestic/international currency table."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,7 +125,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.goindigo.in/add-on-services/seat-plus.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -69,18 +136,30 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.goindigo.in/information/fees-and-charges.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": "Service fee applies",
       "currency": "INR",
-      "conditions": "Unaccompanied Minor service not offered; minors must travel with an accompanying adult",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "at booking",
-      "source_url": "https://www.goindigo.in/information/terms-and-conditions.html",
-      "last_verified": "2025-12-24"
+      "conditions": "Unaccompanied Minor fee is published by currency; service availability and documents apply",
+      "applies_to": "Eligible children traveling alone",
+      "region_or_route": "Domestic India / International",
+      "timing": "at booking / airport",
+      "source_url": "https://www.goindigo.in/information/fees-and-charges.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Official fee table lists unaccompanied-minor charges by currency; conditions must be checked at booking."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "dgca_unbundled_addons_2026",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.goindigo.in/baggage/excess-baggage.html",
+      "summary": "IndiGo identifies excess baggage as an unbundled optional add-on under DGCA Air Transport Circular 04 of 2026."
     }
   ]
 }

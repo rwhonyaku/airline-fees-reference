@@ -4,6 +4,14 @@
   "iata": "WY",
   "country": "Oman",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: Oman Air baggage hinges on fare brand, route exceptions, weight-based allowance, advance-purchase timing, and Super Saver restrictions. Selected routes added Super Saver checked allowance in 2026, but standard fare tables can still show zero checked baggage.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -13,41 +21,100 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.omanair.com/travel-info/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://services.omanair.com/om/en/thing-to-note",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included; allowance varies by fare family, cabin class, route, and frequent flyer status",
+      "conditions": "Allowance depends on fare brand, cabin, route, and status; Super Saver can be zero or route-exception based",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.omanair.com/travel-info/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://services.omanair.com/ca/en/brand-fares",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Oman Air fare brands show Super Saver with no checked bag on standard tables, while selected routes may include checked baggage under later route-specific updates.",
+        "confidence": "confirmed",
+        "notes": "Oman Air brand fare tables show Super Saver with no checked bag, while an April 2026 update added checked allowance on selected routes including the Indian Subcontinent, Cairo, Manila, Dar es Salaam, Baghdad, and Zanzibar."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Route/timing priced; advance purchase discount",
       "currency": "USD",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "Advance purchase can be cheaper up to 8 hours before departure; Super Saver has narrower options",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.omanair.com/travel-info/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://services.omanair.com/gbl/en/purchase-now",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Oman Air encourages advance purchase up to 8 hours before departure; Super Saver has narrower online purchase options than other fares.",
+        "confidence": "confirmed",
+        "notes": "Oman Air says prepaid excess baggage can be discounted up to 8 hours before departure and is nonrefundable, with Super Saver standard-bag purchases pushed to the airport."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Sindbad Silver and Gold extra baggage depends on cabin and fare; Super Saver may receive discounts instead",
+      "applies_to": "Eligible Sindbad Silver and Gold members",
+      "region_or_route": "Oman Air-operated flights",
+      "timing": "each way",
+      "source_url": "https://sindbad.omanair.com/faqs",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sindbad extra allowance is cabin and fare-brand dependent, so it should not be modeled as a universal free-bag waiver."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Weight-limit dependent",
       "currency": "USD",
-      "conditions": "Single checked bag must not exceed 32 kg; overweight charges apply for bags exceeding standard limits",
+      "conditions": "Single checked bags may not exceed 32 kg; airport charges apply above standard limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.omanair.com/travel-info/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://services.omanair.com/om/en/thing-to-note",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oman Air’s extra-baggage rules say route, time of purchase, demand, size, and weight can affect the price; infants below two cannot buy extra baggage."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Special handling or cargo required",
+      "currency": "USD",
+      "conditions": "Bags above 32 kg or 74 inches may require special handling or cargo",
+      "applies_to": "Checked baggage over published size or weight limits",
+      "region_or_route": "All routes",
+      "timing": "airport check-in / cargo handling",
+      "source_url": "https://services.omanair.com/om/en/thing-to-note",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oman Air publishes size and weight thresholds, but not one universal oversize fee amount."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Can count within allowance; special option available",
+      "currency": "USD",
+      "conditions": "Sporting, musical, and TV items may count within allowance; special-baggage options can apply",
+      "applies_to": "Sports equipment, musical instruments, and special baggage",
+      "region_or_route": "Oman Air-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://services.omanair.com/sd/en/baggage-policy",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports and musical items may travel inside allowance, but special-baggage options and airport handling can apply by item and route."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,7 +125,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.omanair.com/travel-info/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -69,7 +136,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.omanair.com/travel-info/fees-and-charges",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infant allowance and extra-bag eligibility depend on fare; infants cannot buy extra baggage",
+      "applies_to": "Infants below 2 and children on eligible fares",
+      "region_or_route": "Oman Air-operated flights",
+      "timing": "booking / check-in",
+      "source_url": "https://extras.omanair.com/jsp/TGP/TGP_Rules.jsp?airlineCode=WY&tgProductId=8",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants below two cannot buy extra baggage under Oman Air's extra-baggage option terms."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +162,16 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.omanair.com/travel-info/special-assistance/unaccompanied-minor",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "selected_route_economy_baggage_allowance_2026",
+      "effective_date": "2026-04-22",
+      "verified_date": "2026-08-23",
+      "source_url": "https://services.omanair.com/it/en/PressRelease/oman-air-enhances-economy-fare-bundles-with-increased-baggage-allowance-on-selected-routes",
+      "summary": "Oman Air announced increased Economy checked-baggage allowance on selected routes, including Super Saver checked allowance on listed markets, in a press release dated April 22, 2026."
     }
   ]
 }

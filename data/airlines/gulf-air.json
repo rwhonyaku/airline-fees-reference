@@ -4,6 +4,14 @@
   "iata": "GF",
   "country": "Bahrain",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: Gulf Air baggage depends on fare family, Falconflyer tier, final destination, route zone, timing, and whether excess baggage is prepaid more than 24 hours before departure or handled at airport rates.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -13,41 +21,98 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.gulfair.com/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.gulfair.com/help/baggage/baggage-information",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on most fares; allowance varies by cabin class, fare family, and route",
+      "conditions": "Checked allowance depends on ticket fare family, cabin, Falconflyer tier, final destination, and operator",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.gulfair.com/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.gulfair.com/help/baggage/baggage-information",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "For itineraries with partner-operated or separate-ticket segments, the operating airline's baggage allowance can apply instead of Gulf Air's allowance.",
+        "notes": "Gulf Air tells travelers to calculate allowance by route, fare type, and Falconflyer status; partner-operated or separate-ticket segments can use another airline’s rules."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Zone table; cheaper more than 24 hours before departure",
       "currency": "USD",
-      "conditions": "Excess baggage fees apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "Prepaid excess is route-zone priced; within-24-hour and airport handling can cost more",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.gulfair.com/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.gulfair.com/en/transparency/fees-and-services",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Gulf Air’s fee table uses zone pairs and timing; prepaid rates are not available at the airport, where standard rates apply."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "Depends on Falconflyer tier and route",
+      "currency": "USD",
+      "conditions": "Allowance depends on ticket fare family, Falconflyer membership, and final destination",
+      "applies_to": "Eligible Falconflyer members",
+      "region_or_route": "Gulf Air-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.gulfair.com/help/baggage/baggage-information",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Falconflyer miles can be used for excess baggage in some cases, but tier benefits and redemption should not be modeled as one universal waiver."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Weight-limit dependent",
+      "amount": "Example USD 60 per 23-32 kg piece",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "conditions": "Overweight charges apply above standard piece weight; no single bag may exceed 32 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.gulfair.com/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.gulfair.com/en/transparency/fees-and-services",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Gulf Air’s optional-services table lists an overweight fee for bags between 23 kg and 32 kg, while baggage information caps single pieces at 32 kg."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Additional charges apply",
+      "currency": "USD",
+      "conditions": "Oversize above 158 cm triggers additional charges; over-32 kg bags must be repacked",
+      "applies_to": "Checked baggage over published size limits",
+      "region_or_route": "All Gulf Air-operated routes",
+      "timing": "at airport / excess baggage purchase",
+      "source_url": "https://www.gulfair.com/help/baggage/baggage-information",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Gulf Air publishes the 158 cm threshold and states oversize bags incur additional charges, but exact pricing depends on route and baggage context."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Free for some items within limits; excess charges apply",
+      "currency": "USD",
+      "conditions": "Sports and musical items may travel as checked baggage; oversize or cargo rules can still apply",
+      "applies_to": "Sports equipment, musical instruments, and special baggage",
+      "region_or_route": "Gulf Air-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.gulfair.com/help/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Many sports items are permitted as checked baggage, but oversize fees, TV charges, cargo limits, and operating restrictions can still apply."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,7 +123,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.gulfair.com/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -69,7 +134,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.gulfair.com/fare-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get one checked piece plus stroller/car seat; U.S.-operated flights use a different infant weight limit",
+      "applies_to": "Infants under 2 and children traveling with child items",
+      "region_or_route": "Gulf Air-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.gulfair.com/help/baggage/baggage-information",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants under 2 receive one checked piece up to 10 kg plus stroller and car seat; U.S.-operated flights use a 15 kg checked-piece limit."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +160,7 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.gulfair.com/special-assistance/unaccompanied-minor",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

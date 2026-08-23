@@ -4,64 +4,127 @@
   "iata": "LS",
   "country": "United Kingdom",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Jet2 includes both an underseat item and a 10 kg cabin bag, while hold luggage is dynamically priced by booking path, route, and timing. The main fee traps are airport/gate charges for extra cabin baggage and the stepped excess-weight charge above the purchased hold allowance."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "One small under-seat bag included (up to 40 × 30 × 15 cm)",
+      "conditions": "Small under-seat bag is included; it is checked at airport and boarding gates",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.jet2.com/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.jet2.com/en/FAQs?category=baggage-allowances-and-fees&topic=baggage-and-sports-equipment",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "One cabin bag up to 10 kg (56 × 45 × 25 cm) included",
+      "conditions": "One 10 kg cabin bag is included; extra or oversize hand baggage is charged at airport/gate",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.jet2.com/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.jet2.com/en/FAQs?category=baggage-allowances-and-fees&topic=baggage-and-sports-equipment",
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "checked_baggage",
       "amount": "From 8 to 60",
       "currency": "GBP",
-      "conditions": "22 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "22 kg hold bag price varies by route, season, and booking path; up to three bags per person",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jet2.com/baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jet2 displays hold-bag prices during booking; each single hold bag has a 32 kg absolute maximum."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "From 12 to 75",
       "currency": "GBP",
-      "conditions": "26 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "26 kg hold bag price varies by route, season, and booking path; buy before airport when possible",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jet2.com/baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jet2 prices hold baggage dynamically rather than publishing one fixed route-wide amount; airport purchase should be treated as the riskier path."
+      }
     },
     {
-      "category": "checked_baggage",
+      "category": "overweight_baggage",
       "amount": 12,
       "currency": "GBP",
-      "conditions": "Excess baggage fee per additional kg over purchased allowance",
-      "applies_to": "All fares",
+      "conditions": "Excess baggage above purchased checked allowance; charged per kg up to 4 kg, then flat fee up to 22 kg",
+      "applies_to": "Hold luggage above purchased allowance",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.jet2.com/baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Excess weight is charged per kg for the first 4 kg of excess, then a flat fee applies up to the stated allowance."
+      }
     },
-
+    {
+      "category": "overweight_baggage",
+      "amount": "45 / 55",
+      "currency": "GBP/EUR",
+      "conditions": "Flat excess fee after first 4 kg of excess weight, up to 22 kg total allowance",
+      "applies_to": "Hold luggage above purchased allowance",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://www.jet2.com/en/FAQs?category=baggage-allowances-and-fees&topic=baggage-and-sports-equipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jet2 publishes a flat airport excess step after the first 4 kg; no single bag may exceed 32 kg."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "45 / 55",
+      "currency": "GBP/EUR",
+      "conditions": "Additional or oversized hand baggage beyond free allowance; charged per item at airport or gate",
+      "applies_to": "Cabin baggage exceeding free allowance",
+      "region_or_route": "All routes",
+      "timing": "airport / gate",
+      "source_url": "https://www.jet2.com/en/FAQs?category=baggage-allowances-and-fees&topic=baggage-and-sports-equipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Additional or oversized hand baggage beyond the free allowance is an airport/gate fee, not an online add-on."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Booking-path priced",
+      "currency": "GBP",
+      "conditions": "Bikes and golf bags are paid extras; other sports equipment depends on space and must be added by contact",
+      "applies_to": "Sports equipment, musical instruments, and outsize items",
+      "region_or_route": "Jet2-operated flights",
+      "timing": "booking / contact centre",
+      "source_url": "https://www.jet2.com/en/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports fees and weight allowances vary by item; many items are 22 kg, while bikes/surfboards can use 32 kg."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": "From 0 to 12",
@@ -71,7 +134,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.jet2.com/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -82,9 +145,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jet2.com/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
@@ -94,7 +156,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.jet2.com/terms",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Infant items and up to two child/infant equipment items are free, but excess items/weight cost more",
+      "applies_to": "Infants and children traveling with equipment",
+      "region_or_route": "Jet2-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.jet2.com/en/faqs?category=child-infant-equipment&topic=travelling-with-children-and-infants",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Jet2 allows two child/infant equipment items free per child/infant; extra items follow excess baggage rules."
+      }
     },
     {
       "category": "change_cancellation",
@@ -105,9 +182,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.jet2.com/terms",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -117,7 +193,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.jet2.com/travelling-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

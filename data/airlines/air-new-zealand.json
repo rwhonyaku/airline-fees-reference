@@ -4,61 +4,134 @@
   "iata": "NZ",
   "country": "New Zealand",
   "region": "Oceania",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Air New Zealand baggage depends on seat-only versus bag-inclusive fares, Air NZ-only ticketing/operation, Koru/Airpoints/Star status, departure country, prepaid timing, and partner/codeshare exclusions. Prepaid bags are the savings path; airport excess handles extra, heavy, and large items."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "NZD",
-      "conditions": "Economy: 1 carry-on bag up to 7 kg plus 1 personal item; Business and Premium Economy have higher allowances; size limits apply",
+      "conditions": "Economy carry-on is 7 kg plus personal item; status and higher cabins can change allowance",
       "applies_to": "All fares",
       "region_or_route": "All routes (Air New Zealand-operated flights)",
       "timing": "per flight",
       "source_url": "https://www.airnewzealand.co.nz/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Carry-on is included if within Air New Zealand size and weight limits; status can add allowance on eligible flights."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "NZD",
-      "conditions": "Checked baggage included on most fares; allowance varies by route, cabin, and fare family",
+      "conditions": "Checked baggage is included except seat-only fares; confirmed allowance appears in Manage Booking",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.airnewzealand.co.nz/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airnewzealand.com/checked-in-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air New Zealand’s public tool is guidance; the e-ticket and Manage Booking show the confirmed allowance, especially where status or partner rules are involved."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on route and timing",
       "currency": "NZD",
-      "conditions": "Additional checked baggage can be purchased in advance or at the airport; pricing varies by route and timing",
+      "conditions": "Extra bags are cheaper prepaid; eligibility requires Air NZ ticketing/operation and advance timing",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.airnewzealand.co.nz/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airnewzealand.com/en-nz/travel-info/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Prepaid Extra Bags are only available on journeys solely ticketed and operated by Air New Zealand; codeshare and partner flights can require airport excess under ticket rules."
+      }
+    },
+    {
+      "category": "additional_baggage",
+      "amount": "From 30 to 135",
+      "currency": "USD",
+      "conditions": "Prepaid Extra Bags are cheaper than airport excess fees and priced by domestic, regional, or long-haul route",
+      "applies_to": "Eligible Air New Zealand-ticketed and operated flights",
+      "region_or_route": "Domestic New Zealand, regional, and long-haul routes",
+      "timing": "up to 3 hours before departure / online",
+      "source_url": "https://www.airnewzealand.com/optional-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published optional-fee tables give USD prepaid bands, but live Manage Booking can be more specific for the route and ticket."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "NZD",
+      "conditions": "Koru, Airpoints Gold/Elite, and Star Alliance Gold extra allowance depends on ticketing and operating carrier",
+      "applies_to": "Eligible Koru, Airpoints, and Star Alliance Gold members",
+      "region_or_route": "Eligible Air New Zealand-operated flights",
+      "timing": "per flight / at check-in",
+      "source_url": "https://www.airnewzealand.com/en-nz/travel-info/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Koru Gold/Platinum/Black and Airpoints Gold/Elite benefits depend on eligible status and Air New Zealand operation."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "NZD",
-      "conditions": "Overweight baggage applies to bags exceeding allowance up to 32 kg; fees vary by route; bags over 32 kg must be shipped as cargo",
+      "conditions": "Overweight/oversize fees are airport-priced by departure country; items over 32 kg must be repacked",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airnewzealand.co.nz/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airnewzealand.com/optional-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "U.S. departures show a specific overweight/oversize fee when Air New Zealand baggage rules apply; other countries use local tables."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by route and aircraft",
       "currency": "NZD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize fees are airport-priced by departure country unless a prepaid option applies before travel",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airnewzealand.co.nz/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airnewzealand.com/optional-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air New Zealand treats oversized and overweight items as airport excess unless the item can be covered with Prepaid Extra Bags."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Prepaid bag or airport excess fee",
+      "currency": "NZD",
+      "conditions": "Sports gear usually counts as a bag; oversize or overweight charges apply if it exceeds allowance",
+      "applies_to": "Sports equipment and bulky special items",
+      "region_or_route": "Air New Zealand-operated flights",
+      "timing": "prepaid before travel / airport",
+      "source_url": "https://www.airnewzealand.com/en-nz/travel-info/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Most sports gear counts as a checked bag; if the allowance is not enough, Prepaid Extra Bags are the cheaper path where eligible."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +142,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.airnewzealand.co.nz/seat-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -80,7 +153,22 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.airnewzealand.co.nz/seat-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "NZD",
+      "conditions": "Infant fares include one carry-on but no checked bag; two approved child items travel free",
+      "applies_to": "Infants and children",
+      "region_or_route": "Air New Zealand-operated flights",
+      "timing": "at check-in / bag drop",
+      "source_url": "https://www.airnewzealand.com/en-nz/travel-info/children-travelling/before-you-fly",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant fares do not include checked baggage or prepaid extra bags; up to two approved child items travel free."
+      }
     },
     {
       "category": "change_cancellation",
@@ -91,7 +179,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.airnewzealand.co.nz/changes-and-cancellations",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -102,7 +190,7 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.airnewzealand.co.nz/unaccompanied-minors",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

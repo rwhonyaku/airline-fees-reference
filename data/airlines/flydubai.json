@@ -4,50 +4,133 @@
   "iata": "FZ",
   "country": "United Arab Emirates",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": false,
+    "source_depth": "silver",
+    "last_full_review": "2026-08-22",
+    "notes": "flydubai pass checked against official hand-baggage, checked-baggage, special-baggage, and baggage overview pages. Main issue is fare type plus weight/piece concept and airport channel."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance includes 1 cabin bag up to 7 kg; size limits apply; Business Class includes additional allowance",
+      "conditions": "Economy includes 1 cabin bag up to 7 kg; Business includes 2 pieces totaling 14 kg with 7 kg per piece",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.flydubai.com/en/plan/baggage/hand-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/hand-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai also permits one small personal item within published dimensions; cabin enforcement becomes expensive if the bag reaches the gate over limit."
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": 55,
+      "currency": "USD",
+      "conditions": "Gate fee applies per item when hand baggage exceeds size or weight; local taxes may apply",
+      "applies_to": "Oversized or overweight hand baggage",
+      "region_or_route": "All routes",
+      "timing": "at boarding gate",
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/hand-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai publishes AED 200 / USD 55 per item for hand baggage over the permitted limits at the gate."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route, fare, and weight dependent",
+      "amount": "Depends on fare, route, baggage concept, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage is included only with certain fare types; baggage can be purchased in weight options; fees vary by route and fare",
+      "conditions": "Some fares include checked baggage; extra weight can be bought online up to 6 hours before eligible flights",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.flydubai.com/en/plan/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/check-in-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai is not one flat first-bag fee. The answer changes by fare type, route, whether the itinerary uses weight or piece concept, and whether baggage is bought before airport arrival."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport excess-weight rate",
+      "amount": "Airport rate by destination if over allowance",
       "currency": "USD",
-      "conditions": "Single checked bag may not exceed 32 kg; excess weight beyond purchased allowance charged at airport rates",
+      "conditions": "Excess weight over allowance is charged at airport destination rates; single checked bag max is 32 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.flydubai.com/en/plan/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/check-in-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Airport rates vary by destination, and more than 3 checked pieces can trigger an extra handling fee before excess-weight charges."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Oversize fee or cargo handling depends on baggage concept",
+      "currency": "USD",
+      "conditions": "Weight concept over 203 cm goes cargo; piece concept 150-203 cm can be charged, over 203 cm goes cargo",
+      "applies_to": "Checked baggage over published size limits",
+      "region_or_route": "flydubai-operated and partner-ticketed itineraries",
+      "timing": "at airport / cargo handling",
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/check-in-baggage",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai publishes different oversize thresholds for weight-concept and piece-concept itineraries rather than one single flat fee."
+      }
     },
     {
       "category": "sports_equipment",
       "amount": "Route and equipment dependent",
       "currency": "USD",
-      "conditions": "Sports equipment must be pre-booked as special baggage; fees depend on route and equipment type",
+      "conditions": "Sports equipment can count as checked baggage, but space, size, excess weight, and cargo cutoffs still apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
-      "timing": "at booking / manage booking",
-      "source_url": "https://www.flydubai.com/en/plan/baggage/special-baggage",
-      "last_verified": "2025-12-24"
+      "timing": "notify at least 24 hours before departure / airport",
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/check-in-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sporting equipment is allowed as checked baggage, but acceptance depends on hold space; very large items move to cargo rather than normal baggage."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Allowance-based",
+      "currency": "USD",
+      "conditions": "Infant hand and checked allowances apply only where the fare includes baggage; child seats need advance booking",
+      "applies_to": "Infants and children",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.flydubai.com/en/flying-with-us/baggage/hand-baggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai publishes infant hand and checked allowances only where the fare includes baggage."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Skywards extra baggage depends on tier and whether the itinerary uses weight concept or piece concept",
+      "applies_to": "Eligible Emirates Skywards members",
+      "region_or_route": "Emirates and flydubai-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.emirates.com/us/english/help/faq-topics/emirates-skywards/faq/can-i-use-my-emirates-skywards-membership-to-enjoy-benefits-on-flydubai-flights/",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Skywards benefits can apply across Emirates/flydubai, but baggage privileges differ by concept and should not be treated as a universal flat bag waiver."
+      }
     },
     {
       "category": "seat_selection",
@@ -64,12 +147,12 @@
       "category": "change_cancellation",
       "amount": "Fare-type and route dependent",
       "currency": "USD",
-      "conditions": "Change and cancellation fees depend on fare type and route; fare difference may apply",
+      "conditions": "Change and cancellation costs depend on fare type, route, timing, and fare difference",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.flydubai.com/en/plan/fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-22"
     },
     {
       "category": "unaccompanied_minor",

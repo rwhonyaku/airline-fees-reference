@@ -4,66 +4,119 @@
   "iata": "CX",
   "country": "Hong Kong",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Cathay carry-on, baggage calculator, prepaid extra baggage, piece/weight system, Cathay/oneworld status benefits, heavy/oversize handling, sports equipment, infant baggage, seats, and fare-rule caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "HKD",
-      "conditions": "Carry-on varies by cabin: Economy/Premium Economy get 1 piece up to 7 kg; Business/First get 2 pieces up to 7 kg each. Size limits apply.",
+      "conditions": "Carry-on is cabin-based; Economy/Premium Economy get one 7 kg piece, while Business/First get two",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.cathaypacific.com/cx/en_HK/baggage/carry-on-baggage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cathay separately publishes cabin-baggage rules; partner-operated flights can have different carry-on treatment."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "HKD",
-      "conditions": "Checked baggage included under the piece or weight concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Included allowance depends on e-ticket, route, cabin, fare, status, and piece versus weight system",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.cathaypacific.com/cx/en_HK/baggage/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://flights.cathaypacific.com/en_GB/baggage/baggage-calculator.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cathay tells travelers to use the e-ticket, Manage Booking, or baggage calculator because allowance can differ on partner or upgraded itineraries."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and baggage concept",
+      "amount": "Per-piece; up to 10% prepaid discount on eligible routes",
       "currency": "HKD",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
+      "conditions": "Prepaid extra baggage is per piece, up to 3 extra pieces, and must be bought 24+ hours before departure.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.cathaypacific.com/cx/en_HK/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.cathaypacific.com/cx/en_US/manage-booking/travel-extras/prepaid-extra-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Eligibility is narrow: selected Cathay-marketed/operated/ticketed routes only, ticket 160, and exclusions include India routes and some U.S./Canada stopover/multi-city bookings."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Cathay Gold/Diamond and oneworld Sapphire/Emerald can receive extra baggage by weight or piece system",
+      "applies_to": "Eligible Cathay and oneworld elite members",
+      "region_or_route": "Cathay and oneworld eligible itineraries",
+      "timing": "each way",
+      "source_url": "https://www.cathaypacific.com/cx/en_US/rewards-and-partnerships/oneworld/frequent-flyer-benefits.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cathay and oneworld extra allowance follows the itinerary baggage system; weight-system and piece-system routes do not calculate the same way."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Depends on route and excess weight",
       "currency": "HKD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "conditions": "Heavy-bag charges are paid at check-in; a single bag over 32 kg is not accepted as checked baggage.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.cathaypacific.com/cx/en_HK/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://flights.cathaypacific.com/en_GB/baggage/baggage-calculator.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cathay’s calculator remains the correct source for the route-specific charge; the fixed rule is the 32 kg single-bag acceptance limit."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Sports equipment can count within allowance; route rules and a 203 cm sports-item length limit can apply",
+      "applies_to": "Eligible packed sports equipment",
+      "region_or_route": "Piece-system and weight-system routes",
+      "timing": "at check-in",
+      "source_url": "https://www.cathaypacific.com/cx/en_CN/baggage/sports-equipment.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Bicycles should be confirmed at least 72 hours before departure because aircraft space is limited and first-come, first-served."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft handling",
       "currency": "HKD",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize or overweight baggage needs special handling; single-bag size and weight limits still apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.cathaypacific.com/cx/en_HK/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://flights.cathaypacific.com/en_GB/baggage/baggage-calculator.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cathay uses the baggage calculator for route-specific oversize charges, and aircraft/airport handling can affect acceptance."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +126,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.cathaypacific.com/cx/en_HK/manage-booking/seats.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Cathay Pacific published carry-on, baggage calculator, prepaid-extra-baggage, sports, oneworld, infant, seats, and fare-rule pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +141,12 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.cathaypacific.com/cx/en_HK/manage-booking/seats.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Cathay Pacific published carry-on, baggage calculator, prepaid-extra-baggage, sports, oneworld, infant, seats, and fare-rule pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
@@ -96,9 +156,27 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.cathaypacific.com/cx/en_HK/legal-and-privacy/fare-rules.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Cathay Pacific published carry-on, baggage calculator, prepaid-extra-baggage, sports, oneworld, infant, seats, and fare-rule pages."
+      }
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "HKD",
+      "conditions": "Lap infants can receive 1 free checked bag; allowance depends on ticket, cabin, route, and baggage concept",
+      "applies_to": "Infants not occupying a seat",
+      "region_or_route": "Cathay-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.cathaypacific.com/cx/en_CA/faqs/baggage/check-in-baggage-allowance/is-there-extra-free-baggage-allowance-if-i-travel-with-an-infant.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant allowance is not one flat global number because Cathay distinguishes piece-system and weight-system itineraries."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and eligibility",
@@ -108,7 +186,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.cathaypacific.com/cx/en_HK/travel-information/special-assistance/unaccompanied-minors.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Cathay Pacific published carry-on, baggage calculator, prepaid-extra-baggage, sports, oneworld, infant, seats, and fare-rule pages."
+      }
     }
   ]
 }

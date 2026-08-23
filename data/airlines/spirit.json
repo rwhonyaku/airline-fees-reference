@@ -6,142 +6,199 @@
   "region": "North America",
   "unique_insights": {
     "traps": [
-      "Spirit's cheapest path depends on solving bags early. Carry-on and checked-bag prices can change by route and purchase timing."
+      "Spirit is an inactive archival record. It should not be used for booking current flights; keep it for historical fee context, refunds, and comparison pages."
     ],
-    "pro_hack": "If a trip needs a carry-on or checked bag, compare the bundle or travel option before booking instead of adding bags late."
+    "pro_hack": "For current travel, compare active alternatives such as Frontier, Southwest, JetBlue, American, Delta, or United instead of relying on Spirit fee rows."
+  },
+  "data_quality": {
+    "status": "ceased_operations",
+    "gold_standard": false,
+    "source_depth": "silver",
+    "last_full_review": "2026-08-22",
+    "notes": "Spirit began an orderly wind-down on May 2, 2026 and all flights were cancelled. Fee rows are retained only for historical/refund/comparison context.",
+    "source_url": "https://www.spiritrestructuring.com/",
+    "operations_ceased": "2026-05-02"
   },
   "fees": [
     {
       "category": "change_cancellation",
       "amount": "Depends on fare difference",
       "currency": "USD",
-      "conditions": "Value: change or cancellation fee applies; fare difference may apply",
+      "conditions": "Archival: Value: change or cancellation fee applies; fare difference may apply",
       "applies_to": "Value",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Premium Economy: no change or cancel fees; fare difference may apply",
+      "conditions": "Archival: Premium Economy: no change or cancel fees; fare difference may apply",
       "applies_to": "Premium Economy",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Spirit First: no change or cancel fees; fare difference may apply",
+      "conditions": "Archival: Spirit First: no change or cancel fees; fare difference may apply",
       "applies_to": "Spirit First",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One personal item included; must fit completely under the seat in front of you",
+      "conditions": "Archival: One personal item included; must fit completely under the seat in front of you",
       "applies_to": "Value / Premium Economy / Spirit First",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01149",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "carry_on",
       "amount": "Depends on purchase timing",
       "currency": "USD",
-      "conditions": "Value: carry-on bag fee varies based on purchase timing (online booking, online check-in, airport counter, or gate)",
+      "conditions": "Archival: Value carry-on pricing varied by route and timing before Spirit's May 2026 wind-down",
       "applies_to": "Value",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on bag included with Premium Economy travel option",
+      "conditions": "Archival: Carry-on bag included with Premium Economy travel option",
       "applies_to": "Premium Economy",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on bag included with Spirit First travel option",
+      "conditions": "Archival: Carry-on bag included with Spirit First travel option",
       "applies_to": "Spirit First",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on route and purchase timing",
       "currency": "USD",
-      "conditions": "Value and Premium Economy: checked bag fee varies based on purchase timing and route",
+      "conditions": "Archival: checked-bag prices varied by route and timing before Spirit's May 2026 wind-down",
       "applies_to": "Value / Premium Economy",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.spiritrestructuring.com/guests",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "First checked bag included with Spirit First travel option",
+      "conditions": "Archival: First checked bag included with Spirit First travel option",
       "applies_to": "Spirit First",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-US/category/article/KA-01534",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Depends on excess weight",
       "currency": "USD",
-      "conditions": "Overweight bag fees apply for bags exceeding standard weight limits; maximum accepted weight is 100 lbs",
+      "conditions": "Archival: Overweight bag fees apply for bags exceeding standard weight limits; maximum accepted weight is 100 lbs",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on excess size",
       "currency": "USD",
-      "conditions": "Oversize bag fees apply for bags exceeding standard size limits; maximum accepted size is 80 linear inches",
+      "conditions": "Archival: Oversize bag fees apply for bags exceeding standard size limits; maximum accepted size is 80 linear inches",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01147",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 10-14); direct domestic flights only, including Puerto Rico and the U.S. Virgin Islands",
+      "conditions": "Archival: Unaccompanied minor service fee (ages 10-14); direct domestic flights only, including Puerto Rico and the U.S. Virgin Islands",
       "applies_to": "All fares",
       "region_or_route": "Domestic direct flights only",
       "timing": "each way",
       "source_url": "https://customersupport.spirit.com/en-us/category/article/KA-01160",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-05-06",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Spirit fee data is no longer live booking guidance because Spirit announced an immediate wind-down and all flights cancelled on May 2, 2026."
+      }
     }
   ]
 }

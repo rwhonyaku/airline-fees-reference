@@ -4,6 +4,13 @@
   "iata": "TG",
   "country": "Thailand",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Thai Airways 2026 piece-concept baggage rules, ROP/Star Alliance baggage tables, interline/codeshare caveats, sports/special-baggage unit pricing, infant U.S./Canada piece allowance, seats, and fare-rule caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,29 +21,54 @@
       "region_or_route": "All routes (Thai Airways–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.thaiairways.com/en_TH/plan/baggage/carry_on_baggage.page",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Thai Airways published carry-on, checked baggage, special baggage, ROP baggage, seat, ticket-condition, and minor-service pages."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "THB",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Free allowance depends on route concept, cabin, fare, and 2026 ticket/travel effective dates.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.thaiairways.com/en_TH/plan/baggage/checked_baggage.page",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.thaiairways.com/en-th/content/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "Thai Airways lists new checked-baggage rules for sales/ticketing from 25 Nov 2025 and travel from 2 Mar 2026."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Route-based excess baggage",
       "currency": "THB",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Excess baggage is route-priced and can differ for weight-concept, piece-concept, U.S./Canada, and interline trips",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.thaiairways.com/en_TH/plan/baggage/excess_baggage.page",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.thaiairways.com/en-th/content/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "For multi-airline itineraries, Thai says partner or marketing-carrier baggage rules may apply, especially for codeshares involving the U.S."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "THB",
+      "conditions": "ROP/Star Alliance extra baggage depends on tier and cabin; Platinum can receive 2 extra pieces.",
+      "applies_to": "Eligible Royal Orchid Plus Gold and Platinum members",
+      "region_or_route": "Eligible Thai Airways itineraries; interline rules may differ",
+      "timing": "each way",
+      "source_url": "https://www.thaiairways.com/en-gb/content/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "ROP Platinum can receive 2 extra pieces; ROP Gold/Star Alliance Gold and ROP Silver receive 1 piece with cabin-specific weights under 2026 piece-concept rules."
+      }
     },
     {
       "category": "overweight_baggage",
@@ -46,19 +78,42 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.thaiairways.com/en_TH/plan/baggage/excess_baggage.page",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.thaiairways.com/en-th/content/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Thai Airways published carry-on, checked baggage, special baggage, ROP baggage, seat, ticket-condition, and minor-service pages."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "USD 80-180 / THB 760-6255 special-unit examples",
+      "currency": "USD",
+      "conditions": "Sports/special baggage uses unit pricing when over allowance; requests must be made 3 working days ahead.",
+      "applies_to": "Bicycles, golf, ski, diving, musical instruments, and other special baggage",
+      "region_or_route": "Thai Airways-operated flights; item-specific exceptions apply",
+      "timing": "request at least 48 hours before departure",
+      "source_url": "https://www.thaiairways.com/en-us/content/baggage/special-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Thai special-baggage examples include USD 80/THB 2780 for a bicycle unit and USD 180/THB 6255 for many international special-baggage units under 2026 rules."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Route and aircraft dependent",
       "currency": "THB",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize depends on item, route, aircraft, and whether piece-concept special-unit pricing applies.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.thaiairways.com/en_TH/plan/baggage/excess_baggage.page",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.thaiairways.com/en-us/content/baggage/special-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Thai special baggage above 32 kg or 330 cm is not accepted. Some equipment types have aircraft limits and nonrefundable unit charges."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +124,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.thaiairways.com/en_TH/plan/seat.page",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Thai Airways published carry-on, checked baggage, special baggage, ROP baggage, seat, ticket-condition, and minor-service pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,7 +139,26 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.thaiairways.com/en_TH/plan/ticket_conditions.page",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Thai Airways published carry-on, checked baggage, special baggage, ROP baggage, seat, ticket-condition, and minor-service pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "THB",
+      "conditions": "Lap infants on USA/Canada piece-concept routes receive 1 checked bag up to 23 kg and 115 cm",
+      "applies_to": "Infants under 2 not occupying a seat",
+      "region_or_route": "Thai Airways international sectors to/from USA and Canada",
+      "timing": "each way",
+      "source_url": "https://www.thaiairways.com/en-th/content/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The 23 kg infant piece applies specifically to USA/Canada piece-concept routes; other itineraries follow the relevant baggage concept."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +169,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.thaiairways.com/en_TH/special_assistance/unaccompanied_minors.page",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Thai Airways published carry-on, checked baggage, special baggage, ROP baggage, seat, ticket-condition, and minor-service pages."
+      }
     }
   ]
 }

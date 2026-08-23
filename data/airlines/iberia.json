@@ -4,66 +4,123 @@
   "iata": "IB",
   "country": "Spain",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Iberia is a fare-brand and route-based baggage model. Basic fares are the main no-bag exposure; included allowance is separate from paid additional bags, overweight, and irregular-shaped baggage. Online purchase can be cheaper than airport purchase, and Iberia Group or partner operation can change the controlling rule."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One cabin bag included plus one personal item; weight limits depend on cabin, generally 10 kg in Economy and higher in premium cabins.",
+      "conditions": "Cabin bag and personal item are included; weight and piece rules vary by cabin and operating carrier",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.iberia.com/en/luggage/hand-luggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia’s cabin allowance is generally included, but the exact weight allowance differs by cabin and Iberia Group operating carrier."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Checked baggage included on Economy Standard/Flex and premium cabins; allowance varies by route and fare brand",
+      "conditions": "Included allowance depends on fare brand, cabin, route, and whether the flight is Iberia Group-operated",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.iberia.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberia.com/us/luggage/allowance-in-hold/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia is not a flat-fee model. The free allowance changes by cabin, fare brand, route, and status; Basic is the main no-bag exposure."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "From 15 to 70",
+      "amount": "Online/airport route table",
       "currency": "EUR",
-      "conditions": "Checked baggage fee on Basic fares or additional bags; price varies by route and purchase timing",
+      "conditions": "Basic fares and extra bags are priced by route, timing, season, and purchase channel",
       "applies_to": "Basic fares / additional bags",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.iberia.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberia.com/us/luggage/allowance-in-hold/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia shows additional-bag prices by itinerary rather than one universal fee; online purchase is usually the cleaner path before airport pricing applies."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Iberia Club and oneworld baggage benefits depend on tier, cabin, existing allowance, and Iberia Group operation",
+      "applies_to": "Eligible Iberia Club and oneworld members",
+      "region_or_route": "Iberia Group-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.iberia.com/us/luggage/allowance-in-hold/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Plus Gold/oneworld Sapphire and higher can receive an extra 23 kg bag when allowance includes 0 or 1 checked bag."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "EUR",
-      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
+      "conditions": "Overweight applies above 23 kg up to 32 kg; extra bags added beyond allowance may have separate limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.iberia.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberia.com/us/luggage/allowance-in-hold/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia’s standard checked piece is 23 kg with a 32 kg hard ceiling; overweight availability and fee treatment vary by route and bag type."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Included or excess-baggage dependent",
+      "currency": "EUR",
+      "conditions": "Sports gear may count within allowance for eligible Iberia Club tiers; otherwise special or excess-baggage rules apply",
+      "applies_to": "Sports equipment and musical instruments",
+      "region_or_route": "Iberia Group-operated flights",
+      "timing": "before travel / airport",
+      "source_url": "https://www.iberia.com/us/luggage/allowance-in-hold/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Club sports-equipment benefit does not extend to oneworld-only members; special-baggage charges can still apply otherwise."
+      }
+    },
     {
       "category": "oversize_baggage",
-      "amount": "Airport-priced by route and size",
+      "amount": "Irregular-shape route charge",
       "currency": "EUR",
-      "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Standard checked pieces must stay within 158 linear cm; irregular-shaped baggage has separate route charges",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.iberia.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://agencias.iberia.com/en-us/informacion-viaje/equipajes/equipaje-facturable/",
+      "effective_date": "2026-01-28",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia publishes separate irregular-shaped baggage charges by route zone, so oversize exposure is not just a normal extra-bag price."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +130,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.iberia.com/en/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -84,9 +141,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.iberia.com/en/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare brand and route",
@@ -96,7 +152,23 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.iberia.com/en/fares-and-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Child/infant tickets generally follow adult allowance plus a stroller/car seat; some routes publish exceptions",
+      "applies_to": "Children 2-11 and infants traveling with an adult",
+      "region_or_route": "Iberia-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.iberia.com/us/fly-with-iberia/children-and-infants/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "For flights to or from Bolivia, Iberia publishes a separate one-piece infant-ticket allowance."
+      }
     },
     {
       "category": "change_cancellation",
@@ -107,9 +179,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.iberia.com/en/fares-and-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and age",
@@ -119,7 +190,16 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.iberia.com/en/travel-with-children/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "irregular_shaped_baggage_charge_2026",
+      "effective_date": "2026-01-28",
+      "verified_date": "2026-08-23",
+      "source_url": "https://agencias.iberia.com/en-us/informacion-viaje/equipajes/equipaje-facturable/",
+      "summary": "Iberia publishes route-zone charges for irregular-shaped baggage separate from the normal checked-bag allowance and additional-bag flow."
     }
   ]
 }

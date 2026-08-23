@@ -4,6 +4,13 @@
   "iata": "B6",
   "country": "US",
   "region": "North America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against JetBlue legal fee table, adding-bags, card/status, and Blue Basic policy sources. Key model: peak/off-peak date bands, 24-hour savings window, route family, and card/status exemptions."
+  },
   "unique_insights": {
     "traps": [
       "JetBlue bag pricing is no longer a single flat number: the first two checked bags can change by travel date and by when you add the bag."
@@ -15,23 +22,31 @@
       "category": "checked_baggage",
       "amount": "45-49",
       "currency": "USD",
-      "conditions": "1st checked bag; early purchase price varies by off-peak vs peak travel dates",
+      "conditions": "1st bag more than 24h before departure; off-peak vs peak dates change the price",
       "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "59-69",
       "currency": "USD",
-      "conditions": "2nd checked bag; early purchase price varies by off-peak vs peak travel dates",
+      "conditions": "2nd bag more than 24h before departure; off-peak vs peak dates change the price",
       "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
+      }
     },
     {
       "category": "checked_baggage",
@@ -41,8 +56,12 @@
       "applies_to": "Blue Plus",
       "region_or_route": "U.S., Caribbean, Central America",
       "timing": "each way",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
+      }
     },
     {
       "category": "checked_baggage",
@@ -53,62 +72,127 @@
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "3rd checked bag",
+      "conditions": "3rd checked bag and beyond",
       "applies_to": "All fares",
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-07-01"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": 200,
+      "amount": "200-210",
       "currency": "USD",
-      "conditions": "4th checked bag and beyond",
+      "conditions": "3rd or more checked bag on transatlantic routes; price varies by off-peak versus peak travel dates",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "Transatlantic",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue publishes transatlantic third-plus bag pricing in USD, GBP, and EUR with peak and off-peak date bands."
+      }
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on bag and one personal item permitted; size and placement requirements apply",
+      "conditions": "One carry-on and one personal item are included on all fares, including Blue Basic since Sept. 6, 2024",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "effective_date": "2024-09-06",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Blue Basic no longer blocks a normal carry-on; JetBlue’s current fee exposure is checked bags, peak dates, and Blue Basic flexibility."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Bags measuring 63-80 linear inches (160-203 cm); bags over 80 inches are not accepted",
+      "conditions": "Airport-collected oversize fee for 63-80 linear inches; over 80 inches not accepted",
       "applies_to": "All fares",
       "region_or_route": "Most routes",
       "timing": "each way",
-      "source_url": "https://www.jetblue.com/help/checked-bags",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Bags weighing 51-99 lbs (23-45 kg); bags weighing 100 lbs or more are not accepted",
+      "conditions": "Airport-collected overweight fee; each applicable category can stack, and some destinations restrict overweight bags",
       "applies_to": "All fares",
       "region_or_route": "Most routes",
       "timing": "each way",
-      "source_url": "https://www.jetblue.com/help/checked-bags",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue says excess, oversize, and overweight fees can stack; overweight bags may be refused on specific Caribbean destinations."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "JetBlue Plus/Premier first-bag benefit covers cardmember and up to 3 companions on JetBlue-operated flights only",
+      "applies_to": "Eligible JetBlue Plus or Premier cardmembers",
+      "region_or_route": "JetBlue-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Codeshare and partner-operated flights are excluded from the JetBlue card free-bag benefit."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": "Not modeled",
+      "currency": "USD",
+      "conditions": "JetBlue no-annual-fee card is excluded because official fee tables do not show a free checked-bag benefit",
+      "applies_to": "JetBlue Card",
+      "region_or_route": "JetBlue-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This note prevents the calculator from implying that every JetBlue-branded card waives checked-bag fees."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Mosaic benefit changes by tier: Mosaic 1 gets first bag, while Mosaic 2-4 get first and second bags",
+      "applies_to": "TrueBlue Mosaic members",
+      "region_or_route": "U.S., Latin America, Caribbean, Canada, and transatlantic routes",
+      "timing": "each way",
+      "source_url": "https://www.jetblue.com/legal/fees",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
     },
     {
       "category": "seat_selection",
@@ -164,6 +248,17 @@
       "timing": "each way",
       "source_url": "https://www.jetblue.com/help/unaccompanied-minors-umnr",
       "last_verified": "2025-12-19"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "carry_on",
+      "previous_value": "Blue Basic did not include a standard carry-on bag unless another qualifying product was purchased",
+      "new_value": "Blue Basic includes one standard carry-on bag and one personal item",
+      "effective_date": "2024-09-06",
+      "verified_date": "2026-08-21",
+      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+      "summary": "JetBlue announced that all customers, including Blue Basic customers, receive one free carry-on beginning September 6, 2024."
     }
   ]
 }

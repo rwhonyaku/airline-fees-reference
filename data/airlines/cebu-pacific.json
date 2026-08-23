@@ -4,50 +4,104 @@
   "iata": "5J",
   "country": "Philippines",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Cebu Pacific is an add-on model with GO bundle differences, prepaid 20 kg baggage, online 4 kg upgrades, airport/gate fallback rates, baggage pooling on the same booking, and mobile-app-only CEB Special Baggage.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance includes up to 7 kg total for cabin baggage; size limits apply",
+      "conditions": "Hand-carry is included up to 7 kg total; size limits apply and checked bags depend on fare bundle/add-ons",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cebu Pacific publishes hand-carry, small under-seat item, and checked-bag dimensions in the same baggage-guidelines page."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on weight tier and route",
+      "amount": "Online 20 kg from PHP 1,000 domestic / PHP 2,000 short-haul / PHP 3,000 long-haul",
       "currency": "USD",
-      "conditions": "Checked baggage is not included by default; fees depend on weight tier (20 kg, 32 kg, 40 kg) and route; pre-purchase available",
+      "conditions": "Checked baggage is bundle/add-on based; buying online before travel is cheaper than airport or gate purchase",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cebu Pacific should not be described as a simple first-bag-fee airline: the user must check the GO bundle first, then the purchased weight bucket."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced per kilo over allowance",
+      "amount": "Airport excess from PHP 700/1,100/1,700 per kg by route group",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding purchased allowance is charged per kilo at airport rates; single bag maximum weight limits apply",
+      "conditions": "Excess above purchased allowance is charged per kg at airport; online 4 kg upgrades are cheaper when available",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.cebupacificair.com/pages/travel-info/baggage-information",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The practical advice is to buy or upgrade the checked-bag add-on before check-in when weight is predictable, because excess at the airport is the fallback."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Airport and add-on dependent",
+      "currency": "USD",
+      "conditions": "Odd-size items may need CEB Oversized/Special Baggage; airport handling can cost more",
+      "applies_to": "Checked baggage above standard dimensions",
+      "region_or_route": "All routes",
+      "timing": "mobile app up to 2 hours before departure / airport",
+      "source_url": "https://help.cebupacificair.com/article/ceb-special-baggage-143767",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The special-baggage add-on is separate from ordinary checked-bag weight; route, size, and availability still matter."
+      }
     },
     {
       "category": "sports_equipment",
-      "amount": "Depends on equipment and route",
+      "amount": "One 20 kg special item; excess charged separately",
       "currency": "USD",
-      "conditions": "Sports equipment must be pre-booked; charges depend on equipment type and route; weight limits apply",
+      "conditions": "CEB Special/Sports Baggage is app-only, limited to one 20 kg item per sector; excess weight is charged separately",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.cebupacificair.com/pages/travel-info/sports-equipment",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.cebupacificair.com/article/ceb-special-baggage-143767",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "CEB Special Baggage is limited to one 20 kg item per passenger per sector; extra weight is charged separately."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "Points/payment benefit, not baggage waiver",
+      "currency": "USD",
+      "conditions": "Go Rewards points can pay for baggage and add-ons, but membership does not publish a universal free checked bag",
+      "applies_to": "Go Rewards members",
+      "region_or_route": "Cebu Pacific-operated flights",
+      "timing": "at booking / payment",
+      "source_url": "https://help.cebupacificair.com/article/how-to-earn-and-redeem-go-rewards-points-122977",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Go Rewards can be used as a payment/points mechanism, but it is not a published free-bag status waiver."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,7 +112,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.cebupacificair.com/pages/travel-info/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -69,18 +123,33 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.cebupacificair.com/pages/travel-info/fees-and-charges",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Lap infants receive no baggage allowance; a stroller, seat, or bassinet can be checked free",
+      "applies_to": "Infants without a separate seat",
+      "region_or_route": "All Cebu Pacific-operated routes",
+      "timing": "at check-in",
+      "source_url": "https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lap infants have no baggage allowance; free stroller/seat/bassinet check-in is separate from checked baggage allowance."
+      }
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": "Fee applies where service is available",
       "currency": "USD",
-      "conditions": "Unaccompanied Minor service is not offered; minors must travel with an accompanying adult",
+      "conditions": "UM service requires the form at least 24 hours before departure, fee payment, documents, and airport handoff",
       "applies_to": "Minors",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.cebupacificair.com/pages/travel-info/children-and-infants",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.cebupacificair.com/article/requirements-for-minors-traveling-alone-120865",
+      "last_verified": "2026-08-23"
     }
   ]
 }

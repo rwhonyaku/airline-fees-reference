@@ -4,6 +4,14 @@
   "iata": "UL",
   "country": "Sri Lanka",
   "region": "South Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: SriLankan uses weight concept on most routes and piece concept for Americas itineraries, with online prepaid baggage discounts and separate oversize/sports handling.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,114 @@
       "region_or_route": "All routes (SriLankan Airlines–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/baggage-information/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Allowance depends on route concept, cabin, fare family, and operating carrier",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/baggage-information/checked-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "SriLankan uses weight concept on most routes and piece concept for North, Central, and South America; partner-operated itineraries can override this.",
+        "confidence": "confirmed",
+        "notes": "SriLankan uses weight concept on most routes and piece concept for North, Central, and South America, so a single checked-bag price is misleading."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and baggage-concept dependent",
+      "amount": "Online 5-50 kg blocks or airport route rate",
       "currency": "USD",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Prepaid extra baggage is discounted online and can be bought up to 3 hours before departure",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/baggage-information/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://srilankanstg.srilankan.com/en_uk/special-offers/pre-purchase-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Pre-purchased additional baggage is discounted from airport rates and can be added through Manage My Booking up to 3 hours before departure.",
+        "confidence": "confirmed",
+        "notes": "SriLankan prepaid baggage is sold in 5 kg blocks up to 50 kg online, with published discount bands versus airport rates on weight-system routes."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Route-based overweight charge",
+      "amount": "Route concept and airport-rate dependent",
       "currency": "USD",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight depends on weight versus piece concept; airport per-kg rates apply after prepaid allowance",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/baggage-information/excess-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "SriLankan FAQs confirm travelers can buy prepaid baggage and then pay additional airport excess at a per-kg rate if still overweight."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": 50,
       "currency": "USD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize fee applies above 158 cm; aircraft acceptance still controls carriage",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/baggage-information/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/luggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published oversize policy lists USD 50 per oversized bag, but aircraft acceptance still controls whether the item travels."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Weight or piece concept dependent",
+      "currency": "USD",
+      "conditions": "Sporting equipment treatment depends on item type and weight or piece concept",
+      "applies_to": "Sporting equipment",
+      "region_or_route": "All routes",
+      "timing": "at booking / airport",
+      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/luggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "SriLankan publishes sports equipment rules separately from standard oversize baggage and varies treatment by baggage concept."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Allowance-based",
+      "currency": "USD",
+      "conditions": "Infant checked allowance differs by weight vs piece concept; stroller may count if checked",
+      "applies_to": "Infants and children",
+      "region_or_route": "All routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.srilankan.com/en_uk/Corporate/faq-details?type=14",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants generally receive 10 kg checked allowance; Americas piece-concept routes use one piece up to 23 kg, and strollers may count if checked."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "FlySmiLes and oneworld elite baggage privileges depend on tier, cabin, and itinerary",
+      "applies_to": "Eligible FlySmiLes and oneworld members",
+      "region_or_route": "SriLankan-operated and eligible alliance itineraries",
+      "timing": "at check-in",
+      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/luggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published baggage page points elite travelers to FlySmiLes and oneworld benefit tables rather than one universal waiver."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +140,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +151,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/ticket-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +162,7 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.srilankan.com/en_uk/plan-and-book/special-assistance",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

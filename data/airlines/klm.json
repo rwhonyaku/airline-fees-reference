@@ -4,53 +4,122 @@
   "iata": "KL",
   "country": "Netherlands",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified KLM Basic/Light/Standard/Flex baggage rules, small-bag versus hand-baggage split, checked baggage, extra baggage, seat options, Flying Blue benefits, infant baggage, sports equipment, and change/refund caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Economy includes 1 hand bag plus 1 accessory, total weight up to 12 kg. Dimensions apply; allowance varies by cabin.",
+      "conditions": "Basic includes only a small underseat bag. Light/Standard/Flex include small bag plus hand baggage, 12 kg combined.",
       "applies_to": "All fares",
       "region_or_route": "All routes (KLM-operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.klm.com/information/baggage/hand-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.klm.com/information/baggage/hand-baggage-allowance",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM now makes the small-bag/hand-baggage distinction explicit. Basic is the fee-risk fare because hand baggage is not included."
+      }
     },
     {
       "category": "carry_on",
       "amount": "Shown during booking / My Trip",
       "currency": "EUR",
-      "conditions": "Hand baggage option for Economy Light; price shown during booking and in My Trip; must be purchased before check-in closes.",
+      "conditions": "Basic fares can buy 1 hand-baggage piece in My Trip up to 4 hours before departure.",
       "applies_to": "Economy Light",
       "region_or_route": "All routes (KLM-operated flights)",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.klm.com/information/baggage/hand-baggage-allowance",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM says the price is shown in My Trip; the published rule is timing and eligibility, not one global amount."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": "Included on eligible fares",
       "currency": "EUR",
-      "conditions": "Checked baggage included on Standard, Flex, and premium fares; allowance varies by route and cabin",
+      "conditions": "Checked bags vary by route, fare type, and class; Economy may include 0-2 pieces up to 23 kg each.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.klm.com/information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.klm.com/information/legal/fees-paid-options/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM’s own paid-options page says Economy/Premium Comfort can be 0-2 checked pieces depending on route, fare, and travel class."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Shown during booking / My Trip",
       "currency": "EUR",
-      "conditions": "Additional checked bag up to 158 cm; rates shown during booking/My Trip. Online advance discount may apply, with route exceptions.",
+      "conditions": "Extra checked baggage is purchased during booking or in My Trip; price depends on itinerary and timing.",
       "applies_to": "All fares (where additional bags permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / online check-in",
-      "source_url": "https://www.klm.com/information/baggage/extra-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.klm.com/information/legal/fees-paid-options/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM publishes the purchase channel and discount context, but directs travelers to booking/My Trip for route-specific prices."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Flying Blue Silver/Gold get 1 extra checked bag; Platinum/Ultimate get 2 extra bags on KLM/Air France flights",
+      "applies_to": "Flying Blue Elite members",
+      "region_or_route": "KLM and Air France flights",
+      "timing": "each way",
+      "source_url": "https://www.klm.com/information/legal/fees-paid-options/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Included, route-priced, or reservation-required by item",
+      "currency": "EUR",
+      "conditions": "Sports equipment rules depend on item type: some count as checked bags, while bicycles require route-priced transport",
+      "applies_to": "Sports and special baggage",
+      "region_or_route": "KLM-operated flights",
+      "timing": "My Trip / before departure",
+      "source_url": "https://www.klm.com/information/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM says bicycles should be reserved as early as possible and no later than 48 hours before departure."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Flying Blue elite members can take 1 golf bag on top of standard allowance on eligible KLM/Air France partner flights",
+      "applies_to": "Flying Blue Ultimate / Platinum / Gold / Silver",
+      "region_or_route": "KLM, Air France, Air Corsica, Air Mauritius, and Aircalin",
+      "timing": "each way",
+      "source_url": "https://www.klm.com/information/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is a sports-equipment-specific Flying Blue benefit and does not replace the general extra checked-bag benefit."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by itinerary",
@@ -60,7 +129,11 @@
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.klm.com/information/baggage/extra-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
     },
     {
       "category": "overweight_baggage",
@@ -71,9 +144,12 @@
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.klm.com/information/baggage/extra-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": "Depends on route, fare, seat, and timing",
@@ -83,7 +159,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.klm.com/information/travel-class-extra-options/seat-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -94,21 +174,43 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.klm.com/information/travel-class-extra-options/seat-options",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Flying Blue Ultimate, Platinum, and Gold get one free hand baggage option on Economy Basic",
+      "applies_to": "Flying Blue Gold / Platinum / Ultimate",
+      "region_or_route": "KLM and Air France-operated flights",
+      "timing": "airport check-in",
+      "source_url": "https://www.klm.nl/en/information/legal/extra-options/extra-baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
+    },
     {
       "category": "change_cancellation",
       "amount": "Depends on fare rules",
       "currency": "EUR",
-      "conditions": "Change and cancellation conditions depend on fare rules; fare difference may apply",
+      "conditions": "Changes and refunds depend on ticket type; Basic/Light are more restrictive, Flex is usually most flexible.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.klm.com/information/refund-exchange",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.klm.com/information/ticket-services/ticket-options",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KLM ticket options give examples such as Standard intra-Europe changes for EUR 70 and intercontinental Light changes for EUR 200/300, but exceptions by route remain."
+      }
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on age and itinerary",
@@ -118,7 +220,43 @@
       "region_or_route": "Age and itinerary dependent",
       "timing": "per direction",
       "source_url": "https://www.klm.com/information/assistance-health/children-travelling-alone",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Lap infants get 1 hand baggage item; non-Light tickets include 1 checked bag up to 10 kg",
+      "applies_to": "Infants under 2 on lap",
+      "region_or_route": "KLM-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.klm.nl/en/information/kids",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One buggy, stroller, or back carrier is free for each child",
+      "applies_to": "Infants and children",
+      "region_or_route": "KLM-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.klm.nl/en/information/kids",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against KLM published baggage, ticket-options, paid-options, kids, special-baggage, seat-options, and refund/exchange pages."
+      }
     }
   ]
 }

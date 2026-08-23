@@ -4,61 +4,117 @@
   "iata": "CI",
   "country": "Taiwan",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: China Airlines baggage is best modeled as route-zone and cabin/fare-family logic, with a prepaid excess-baggage discount on eligible CI/Mandarin itineraries and separate elite-member allowance rules. No flat checked-bag price should be inferred across markets.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "TWD",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Premium Economy/Business have higher allowances; size limits apply",
+      "conditions": "Economy includes 1 cabin bag up to 7 kg plus 1 personal item; premium cabins have higher allowances.",
       "applies_to": "All fares",
       "region_or_route": "All routes (China Airlines–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/baggage/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Carry-on is cabin-based; excess cabin items can be checked and then count against the checked allowance."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "TWD",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Free allowance is piece-based and varies by route, cabin, booking class, reward ticket, and first carrier.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.china-airlines.com/at/en/prepare-for-the-fly/information/baggage/checked-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "China Airlines publishes route and booking-class tables; some trans-Tasman Discount/Basic economy tickets can have zero checked pieces."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and piece/weight concept",
+      "amount": "Zone-priced; 5% prepaid discount",
       "currency": "TWD",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Prepaid excess is zone-priced and discounted when eligible; availability depends on ticket, operator, itinerary, and timing",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
-      "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "timing": "after ticketing / before departure / airport if not prepaid",
+      "source_url": "https://www.china-airlines.com/us/en/itinerary-booking/add-ons/purchase-excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "China Airlines sells prepaid excess baggage by route zone with a published discount, but the exact charge still depends on the itinerary and whether the flight qualifies for online prepaid purchase."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "TWD",
+      "conditions": "Dynasty Flyer Gold/Emerald get 1 extra piece; Paragon gets 2 extra pieces on eligible operated flights",
+      "applies_to": "Eligible Dynasty Flyer elite members",
+      "region_or_route": "China Airlines and Mandarin Airlines self-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.china-airlines.com/cn/en/member/planning/introduction/membership-benefits",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Gold/Emerald receive one extra piece and Paragon receives two extra pieces on eligible CI/Mandarin operated international flights."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Depends on route and excess weight",
       "currency": "TWD",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight fees apply by itinerary when a piece exceeds cabin limits; pieces over 32 kg are generally refused.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.china-airlines.com/au/en/prepare-for-the-fly/information/baggage/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "China Airlines separates extra-piece, overweight, oversize, and special-baggage rules, so one flat overweight fee would be misleading."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": 0,
+      "currency": "TWD",
+      "conditions": "Sports equipment may count within free allowance; excess or two-piece equivalent fees apply for oversize cases",
+      "applies_to": "Eligible packed sporting equipment",
+      "region_or_route": "China Airlines-operated flights",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.china-airlines.com/tw/en/prepare-for-the-fly/information/baggage/special-baggage?tab=sportingequipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment may count within allowance, but over-292 cm items can be charged as two pieces unless listed as dimension-exempt special sports equipment."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft",
       "currency": "TWD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize fees are itinerary-zone based; pets, instruments, and sports equipment follow separate rules.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.china-airlines.com/au/en/prepare-for-the-fly/information/baggage/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports and special baggage can use different rules from ordinary prepaid excess baggage and may need advance handling."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +125,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against China Airlines published baggage, prepaid excess baggage, membership, special baggage, infant, seats, and ticket-rule pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,7 +140,26 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/ticket-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against China Airlines published baggage, prepaid excess baggage, membership, special baggage, infant, seats, and ticket-rule pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "TWD",
+      "conditions": "Infants get 1 checked piece; either a collapsible stroller or car seat can be checked free",
+      "applies_to": "Infants and children",
+      "region_or_route": "China Airlines-operated flights",
+      "timing": "at check-in / bag drop",
+      "source_url": "https://www.china-airlines.com/uk/en/prepare-for-the-fly/special-assistance/pregnant-and-child?tab=Infant",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants not occupying a seat receive one piece at the corresponding adult cabin weight/size, plus either a stroller or car seat, not both."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +170,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.china-airlines.com/us/en/fly/prepare-for-the-fly/special-assistance",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against China Airlines published baggage, prepaid excess baggage, membership, special baggage, infant, seats, and ticket-rule pages."
+      }
     }
   ]
 }

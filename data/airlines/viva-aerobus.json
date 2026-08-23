@@ -4,72 +4,134 @@
   "iata": "VB",
   "country": "Mexico",
   "region": "North America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Viva Aerobus baggage is bundle-driven: every fare includes a personal item, Light/Extra/Smart add different cabin or checked weight, Baby Package changes infant baggage handling, and special equipment follows larger hard-case limits.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on depends on fare bundle; Zero includes only a personal item, while Light, Smart, and Extra include 1 carry-on bag.",
+      "conditions": "All fares include a personal item; Light/Extra include 10 kg carry-on and Smart can raise cabin allowance to 15 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/baggage-policy",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/what-can-i-bring-on-the-plane/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Viva’s practical carry-on answer is bundle-driven. A personal item is included, while Light/Extra/Smart expand cabin baggage and check-in timing."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on fare bundle, route, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage not included on Zero fare; fees depend on fare bundle, route, and purchase timing",
+      "conditions": "Zero/Light exclude checked bags; Extra includes 15 kg and Smart includes 25 kg, with add-on prices by route/timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/baggage-policy",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/baggage-policies/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Viva’s checked-bag answer depends on bundle and weight: Extra includes a lighter first checked bag, while Smart includes a heavier checked bag. Add-on prices vary by route and purchase timing."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "Tier benefit, not universal",
+      "currency": "USD",
+      "conditions": "Doters baggage and seat benefits depend on tier and fare bundle; Zero can be excluded",
+      "applies_to": "Eligible Doters members",
+      "region_or_route": "Viva-operated flights",
+      "timing": "at booking / check-in",
+      "source_url": "https://blog.vivaaerobus.com/beneficios-puntos-doters/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Doters perks are useful only when the tier, fare bundle, and booking path match the benefit; they should not be modeled as a universal baggage waiver."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by weight allowance",
+      "amount": "Airport-priced above bundle allowance",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight allowance incur overweight charges; maximum per-bag weight limits apply",
+      "conditions": "Charges apply when a checked bag exceeds the purchased or included weight; heavier items can hit acceptance limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/baggage-policy",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/baggage-policies/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Viva publishes bundle weight limits and special-equipment limits, but not a single universal overweight amount suitable for all routes and channels."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Airport-priced by aircraft and handling limits",
+      "amount": "Airport-priced if outside checked-bag dimensions",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits is subject to oversize fees; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Standard checked bags are limited to 158 linear cm; special equipment can use separate hard-case limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/baggage-policy",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/baggage-policies/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize handling is separate from normal bundle baggage because sports and musical equipment may travel under a larger special-equipment framework."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Included only if within purchased allowance",
+      "currency": "USD",
+      "conditions": "Sports or musical equipment can travel as carry-on or checked baggage if shape, weight, hard case, and 32 kg/319 cm limits fit",
+      "applies_to": "Sports equipment, musical instruments, and special equipment",
+      "region_or_route": "Viva-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://blog.vivaaerobus.com/en/baggage-policies/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Sports and musical equipment can travel as carry-on or checked baggage depending on shape, size, and weight; hard cases are expected, and items can trigger extra fees above the purchased allowance."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Depends on seat type, route, and timing",
       "currency": "USD",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
+      "conditions": "Seat selection depends on bundle: Smart includes regular/front-row selection, while lower bundles can pay by seat type",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/seating",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/make-flight-changes/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Smart changes the seat-fee answer because regular/front-of-plane selection is bundled; otherwise the price depends on seat type and route."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
       "currency": "USD",
-      "conditions": "Flight changes may require a fee plus fare difference; cancellations are generally limited by fare rules.",
+      "conditions": "Light/Extra allow limited changes without penalty; Smart allows unlimited changes, but fare difference can still apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.vivaaerobus.com/en-us/travel-info/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "source_url": "https://blog.vivaaerobus.com/en/make-flight-changes/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The useful traveler distinction is not simply “change fee”: Viva’s bundle determines how many penalty-free changes are available and whether only fare difference remains."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +142,22 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.vivaaerobus.com/en-us/travel-info/children-and-infants",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": "Optional Baby Package",
+      "currency": "USD",
+      "conditions": "Baby Package can add diaper bag, stroller handling, and priority check-in; otherwise infant items follow adult baggage setup",
+      "applies_to": "Infants under 2 traveling with an adult",
+      "region_or_route": "Viva-operated flights",
+      "timing": "at booking / check-in",
+      "source_url": "https://blog.vivaaerobus.com/en/fly-with-baby/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Lap infants do not get their own carry-on allowance; Viva treats the diaper bag as part of the adult's carry-on setup unless the Baby Package changes the included items."
+      }
     }
   ]
 }

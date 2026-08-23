@@ -4,75 +4,168 @@
   "iata": "W6",
   "country": "Hungary",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Wizz Air is a weight-tier and priority-access model. Basic fare includes only the 40 x 30 x 20 cm underseat bag, WIZZ Priority adds the overhead trolley, checked bags are sold as 10/20/26/32 kg products, and airport excess can add per-kg handling cost."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One small personal item included (40 × 30 × 20 cm) that must fit under the seat in front",
+      "conditions": "Basic fare includes one underseat bag; overhead trolley access requires WIZZ Priority or an eligible bundle",
       "applies_to": "Basic fare",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/cabin-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Wizz’s free cabin allowance is the underseat bag. The overhead trolley bag is the paid/priority trigger and is the common surprise cost."
+      }
     },
     {
       "category": "carry_on",
-      "amount": "From 5 to 60",
+      "amount": "EUR 10-60 online; EUR 65-75 airport",
       "currency": "EUR",
-      "conditions": "WIZZ Priority includes 1 small personal item and 1 trolley bag up to 10 kg. Price varies by route, season, and purchase timing.",
+      "conditions": "WIZZ Priority adds a 10 kg trolley bag; price changes by route, season, availability, and purchase timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/information-and-services/wizz-services/wizz-priority",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WIZZ Priority is both a boarding/cabin-bag product and a capacity-sensitive add-on; airport purchase is materially more expensive than online purchase."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": "From 10 to 75",
       "currency": "EUR",
-      "conditions": "10 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "10 kg checked bag; maximum one per passenger and price changes by route, season, and timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": "From 15 to 85",
       "currency": "EUR",
-      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "20 kg checked bag; price changes by route, season, purchase channel, and timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Route, season, channel, and timing dependent",
+      "currency": "EUR",
+      "conditions": "26 kg checked bag; price changes by route, season, purchase channel, and timing",
+      "applies_to": "Optional add-on",
+      "region_or_route": "All routes",
+      "timing": "at booking / manage booking",
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Wizz sells 26 kg as a distinct checked-bag tier between the 20 kg and 32 kg products, so the right answer is selected-weight dependent."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "From 25 to 95",
       "currency": "EUR",
-      "conditions": "32 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "32 kg checked bag; price changes by route, season, purchase channel, and timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
-      "amount": 13,
+      "amount": "Additional fees apply",
       "currency": "EUR",
-      "conditions": "Excess baggage fee per additional kg over purchased allowance",
-      "applies_to": "All fares",
+      "conditions": "Checked-bag choices are 10, 20, 26, or 32 kg; extra bags and excess depend on selected tier",
+      "applies_to": "Checked bags above purchased allowance",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Basic fare includes no checked baggage. WIZZ Go/Plus bundles include checked baggage, while standalone bags are sold by selected weight tier; up to six pieces can be purchased."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": "Online baggage discount, not waiver",
+      "currency": "EUR",
+      "conditions": "WIZZ Discount Club can reduce eligible baggage prices but does not make baggage universally free",
+      "applies_to": "Eligible WIZZ Discount Club members and companions",
+      "region_or_route": "Eligible Wizz Air flights",
+      "timing": "at booking / online",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/memberships/wizz-discount-club",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "WIZZ Discount Club reduces eligible online baggage prices rather than waiving baggage entirely; the savings depend on the route, season, purchased bag, and whether companions are on the same booking."
+      }
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": "EUR 13/kg airport surcharge if accepted",
+      "currency": "EUR",
+      "conditions": "Excess above selected 10/20/26/32 kg tier triggers fees; no checked bag may exceed 32 kg",
+      "applies_to": "Checked bags above purchased weight allowance",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The practical advice is to buy the correct weight tier before travel because the airline prices by tier, caps any one bag at 32 kg, and charges airport excess by kg."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Additional fees apply",
+      "currency": "EUR",
+      "conditions": "Checked bags must stay within 149 x 119 x 171 cm; larger items need special-baggage handling or may be refused",
+      "applies_to": "Checked bags above published size limits",
+      "region_or_route": "All routes",
+      "timing": "at airport",
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/baggage-allowance/checked-in-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Wizz publishes maximum checked dimensions, but item type matters: sports and special baggage use a separate service rather than normal checked-bag pricing."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Additional fee",
+      "currency": "EUR",
+      "conditions": "Sports equipment requires a special-baggage service and must be added during booking or at least 3 hours preflight",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "Wizz Air-operated flights",
+      "timing": "booking / at least 3h before departure",
+      "source_url": "https://wizzair.com/en-gb/help-centre/booking-information-and-services/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Sports equipment is a paid special-baggage service and must be added during booking or at least 3 hours before departure; the published limit is 149 x 119 x 171 cm and 32 kg."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": "From 0 to 30",
@@ -82,7 +175,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -93,9 +186,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": 40,
@@ -105,7 +197,22 @@
       "region_or_route": "All routes",
       "timing": "more than 14 days before departure",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Children follow normal baggage rules; one pushchair, travel cot, or car seat can be checked free when tagged",
+      "applies_to": "Infants under 2 and children 2-14",
+      "region_or_route": "Wizz Air-operated flights",
+      "timing": "at booking / boarding",
+      "source_url": "https://static-uat-cloud.origin.wizzair.com/en-gb/help-centre/booking-information-and-services/with-children/childrens-baggage",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Children aged 2 to 14 follow the general baggage policy; one foldable pushchair, travel cot, or car seat can be checked free for a child when tagged for hold transport."
+      }
     },
     {
       "category": "change_cancellation",
@@ -116,7 +223,7 @@
       "region_or_route": "All routes",
       "timing": "within 14 days of departure",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -127,9 +234,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -139,7 +245,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/travel-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

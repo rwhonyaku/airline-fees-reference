@@ -4,61 +4,126 @@
   "iata": "AT",
   "country": "Morocco",
   "region": "Africa",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Royal Air Maroc uses a piece model with cash extra-bag tables, prepaid first-piece timing, Safar Flyer mileage awards, route exceptions, and strict per-piece handling; weight cannot be pooled between pieces."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on baggage included; allowance depends on cabin class; size and weight limits apply",
+      "conditions": "Carry-on allowance depends on cabin and route; standard size and weight limits apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.royalairmaroc.com/int-en/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.royalairmaroc.com/uk-en/baggage-information",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on most fares; allowance varies by cabin class, fare family, route, and frequent flyer status",
+      "conditions": "Allowance uses piece concept and depends on route, fare product, cabin, status, and high-season sector rules",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.royalairmaroc.com/int-en/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://pre.royalairmaroc.com/fr-fr/bagages-en-soute",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "RAM states Eco Essential can mean no bag on short/medium haul but one 23 kg bag on long-haul/transit, with some high-season one-piece exceptions."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Examples 560 MAD/66 EUR prepaid; higher route tables",
       "currency": "USD",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "Excess is route-table priced; prepaid first-piece pricing applies only on eligible routes and timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.royalairmaroc.com/ao-en/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "RAM excess depends on route zone and whether the item is an extra piece, overweight, oversize, or special baggage; some routes are excluded from the general table."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "Miles redemption, not universal cash waiver",
+      "currency": "USD",
+      "conditions": "Safar Flyer can redeem miles for one extra 23 kg piece or up to 9 kg overweight by zone",
+      "applies_to": "Eligible Safar Flyer members with enough miles",
+      "region_or_route": "Royal Air Maroc-operated flights",
+      "timing": "before travel",
+      "source_url": "https://royalairmaroc.com/us-en/safar-flyer/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Safar Flyer excess-baggage awards are non-transferable, limited to one award on the same flight for the member, and zone priced in miles."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Weight-limit dependent",
+      "amount": "Examples 640-1,265 MAD / 66-135 EUR by route",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum per-bag weight applies",
+      "conditions": "Overweight is charged per piece and route; baggage weight cannot be pooled between checked pieces",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.royalairmaroc.com/ao-en/excess-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Official tables distinguish extra piece, overweight, and oversize charges; travelers should price the exact origin-destination pair."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Examples 580-1,150 MAD / 60-120 EUR by route",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limitations",
+      "conditions": "Oversize 158-203 cm is route-priced; items above 203 cm must move as freight",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.royalairmaroc.com/int-en/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.royalairmaroc.com/ao-en/excess-baggage",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "580 MAD to 350 EUR/USD/CAD",
+      "currency": "MAD",
+      "conditions": "Sports-equipment fees vary by zone, weight, and dimensions; some golf, kitesurf, and fishing gear can be free",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Royal Air Maroc-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.royalairmaroc.com/td-fr/equipements-sport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment fees are zone-based; golf, kitesurf, and fishing gear can be free only within RAM’s listed limits."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get a separate 10 kg allowance plus one collapsible stroller or carrycot free",
+      "applies_to": "Infants",
+      "region_or_route": "Royal Air Maroc-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.royalairmaroc.com/int-en/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants receive a separate 10 kg allowance not included in the accompanying adult allowance, plus stroller or carrycot."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +134,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.royalairmaroc.com/int-en/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +145,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.royalairmaroc.com/int-en/fare-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "additional_baggage",
+      "amount": "Booking-path priced",
+      "currency": "USD",
+      "conditions": "Royal Air Maroc sells extra baggage in Manage Booking; final price depends on itinerary and baggage type",
+      "applies_to": "Passengers adding baggage after booking",
+      "region_or_route": "Royal Air Maroc-operated flights",
+      "timing": "manage booking",
+      "source_url": "https://www.royalairmaroc.com/us-en/booking/manage-booking",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "ambiguous",
+        "notes": "Manage Booking shows itinerary-specific extra baggage pricing; public pages do not provide one universal cash amount."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +171,7 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.royalairmaroc.com/int-en/special-assistance/unaccompanied-minor",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

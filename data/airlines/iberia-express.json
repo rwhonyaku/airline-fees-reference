@@ -4,66 +4,135 @@
   "iata": "I2",
   "country": "Spain",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Iberia Express separates included allowance from paid baggage. The Express pack is the main no-checked-bag fare; 15, 23, and 32 kg bags can be added, online/check-in purchase can be cheaper than the airport, and special handling applies to bulky or heavy items."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One cabin bag included (up to 56 × 40 × 25 cm) plus one personal item; weight limits depend on fare (generally up to 10 kg in Economy)",
+      "conditions": "Cabin bag and personal item are included; size/weight rules are fare and cabin dependent",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.iberiaexpress.com/en/luggage/hand-luggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Express includes hand baggage, but airport handling and cabin storage can depend on aircraft and boarding constraints."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Checked baggage included on Comfort and Business fares; allowance varies by route and fare",
+      "conditions": "Only Express fare lacks checked luggage; other fare packages can include 23 kg depending on route and fare",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Express says only the Express pack does not include checked luggage; fare package and route determine whether a bag is already included."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "From 15 to 70",
+      "amount": "Online/airport route table",
       "currency": "EUR",
-      "conditions": "Checked baggage fee on Basic fares or for additional bags; price varies by route and purchase timing",
+      "conditions": "Express fare bags and additional bags are priced by route, weight tier, timing, and purchase channel",
       "applies_to": "Basic fares / additional bags",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Express offers 15, 23, and 32 kg checked-bag options; adding baggage during online check-in can be discounted versus airport purchase."
+      }
     },
-
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and weight",
+      "amount": 60,
       "currency": "EUR",
-      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
+      "conditions": "Fee applies when a checked bag exceeds the purchased weight tier; single bags are capped at 32 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Express publishes a EUR 60 excess-weight fee for bags above the purchased weight limit."
+      }
     },
-
     {
       "category": "oversize_baggage",
-      "amount": "Airport-priced by route and size",
+      "amount": 150,
       "currency": "EUR",
-      "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Certain bulky/heavy items above normal limits may be accepted as special or oversized baggage",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.iberiaexpress.com/en/luggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "General oversize handling depends on item type and aircraft; Iberia Express publishes EUR 150 for certain 32-45 kg bulky/heavy items."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "From 40 to 150",
+      "currency": "EUR",
+      "conditions": "Special baggage needs advance space reservation; fee depends on item type and whether status exceptions apply",
+      "applies_to": "Sports equipment, musical instruments, bulky baggage",
+      "region_or_route": "Iberia Express-operated routes",
+      "timing": "reserve at least 24 hours before check-in / airport",
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Most sports and musical equipment is charged at the airport unless covered by Iberia Plus status exceptions."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Same allowance as adult ticket",
+      "currency": "EUR",
+      "conditions": "Child and infant tickets get adult allowance plus one collapsible stroller under Iberia Express exceptions",
+      "applies_to": "Children and infants",
+      "region_or_route": "Iberia Express-operated routes",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This follows Iberia Express checked-baggage exceptions for child and infant tickets."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Iberia Plus and eligible oneworld elites may add a bag; special-baggage exceptions are narrower",
+      "applies_to": "Eligible Iberia Plus and oneworld members",
+      "region_or_route": "Iberia Express-operated routes",
+      "timing": "at check-in",
+      "source_url": "https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Iberia Plus status can add baggage; special-baggage treatment is limited to Iberia Plus tiers, not all oneworld elites."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +142,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.iberiaexpress.com/en/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -84,9 +153,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.iberiaexpress.com/en/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare and route",
@@ -96,7 +164,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.iberiaexpress.com/en/fares-and-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -107,9 +175,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.iberiaexpress.com/en/fares-and-conditions/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -119,7 +186,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.iberiaexpress.com/en/travel-with-children/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

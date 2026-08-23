@@ -4,94 +4,137 @@
   "iata": "UK",
   "country": "India",
   "region": "South Asia",
+  "data_quality": {
+    "status": "ceased_operations",
+    "gold_standard": true,
+    "source_depth": "archival",
+    "last_full_review": "2026-08-23",
+    "ceased_operations_date": "2024-11-12",
+    "successor_airline": "Air India",
+    "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+    "notes": "Gold archival review: Vistara no longer operates as a standalone airline. From Nov. 12, 2024, former Vistara flights are booked/managed through Air India, often identified as AI 2XXX flights; use current Air India rules for live travel.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Carry-on allowance included; Economy and Premium Economy up to 7 kg, Business Class up to 10 kg; size limits apply",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "per flight",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "conditions": "Archival Vistara reference only; current former-Vistara flights use Air India carry-on rules",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Checked baggage included; allowance varies by cabin class, fare family, and route",
-      "applies_to": "Eligible fares",
-      "region_or_route": "All routes",
-      "timing": "each way",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "conditions": "Archival allowance only; current AI 2XXX flights are booked and serviced through Air India channels",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/newsroom/press-release/vistara-experience-post-merger.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Use current Air India policy",
       "currency": "INR",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "at airport / pre-purchase",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "conditions": "Do not price current excess baggage from old Vistara tables; check Air India for current route and fare rules",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/newsroom/press-release/vistara-experience-post-merger.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Weight-limit dependent",
+      "amount": "Use current Air India policy",
       "currency": "INR",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "at airport",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/baggage/excess-baggage",
-      "last_verified": "2025-12-24"
+      "conditions": "Old Vistara overweight rules are archival; current AI 2XXX travel follows Air India published baggage policy",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "seat_selection",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Standard seat selection included on most fares; premium or preferred seats may incur additional charges",
-      "applies_to": "Eligible fares",
-      "region_or_route": "All routes",
-      "timing": "at booking / manage booking",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/seating",
-      "last_verified": "2025-12-24"
+      "conditions": "Archival Vistara seating only; current seating is managed through Air India booking channels",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "seat_selection",
-      "amount": "Seat type and route dependent",
+      "amount": "Use current Air India policy",
       "currency": "INR",
-      "conditions": "Preferred or extra legroom seats are chargeable; fees vary by seat type and route",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "at booking / manage booking",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/seating",
-      "last_verified": "2025-12-24"
+      "conditions": "Old Vistara preferred-seat fees are archival; current AI 2XXX seating depends on Air India fare and seat rules",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Fare-family and route dependent",
       "currency": "INR",
-      "conditions": "Change and cancellation fees depend on fare family and route; lowest fares are the most restrictive",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
-      "timing": "before departure",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "conditions": "Old Vistara fare rules are archival; current changes/refunds depend on Air India ticket and fare rules",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": "Age and routing dependent",
       "currency": "INR",
-      "conditions": "Unaccompanied Minor service available on select routes and age groups; fees and conditions vary",
-      "applies_to": "Eligible ages",
-      "region_or_route": "Selected routes",
-      "timing": "at booking",
-      "source_url": "https://www.airvistara.com/in/en/travel-information/special-assistance/unaccompanied-minors",
-      "last_verified": "2025-12-24"
+      "conditions": "Old Vistara UM rules are archival; current assistance depends on Air India policy and route eligibility",
+      "applies_to": "Historical Vistara / current Air India-managed AI 2XXX context",
+      "region_or_route": "Former Vistara network",
+      "timing": "archival; current travel uses Air India policy",
+      "source_url": "https://www.airindia.com/in/en/vistara-air-india-merger-faqs.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "archival",
+        "notes": "Do not use old Vistara fee rows as live policy; current bookings are managed by Air India after the merger."
+      }
     }
   ]
 }

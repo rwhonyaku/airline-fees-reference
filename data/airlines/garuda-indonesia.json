@@ -4,6 +4,14 @@
   "iata": "GA",
   "country": "Indonesia",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Garuda is in a baggage-concept transition. Existing excess tables are priced in 5 kg increments effective June 12, 2026, while tickets purchased or issued from September 1, 2026 move to a piece concept on Garuda-operated flights."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,99 @@
       "region_or_route": "All routes (Garuda Indonesia–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "IDR",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Free allowance depends on ticket issue date: older/current tickets use kg; Sept. 1, 2026+ tickets use pieces",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.garuda-indonesia.com/jp/en/new-baggage-policy",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Garuda says the piece concept applies to all Garuda-operated flights for tickets purchased or issued on or after September 1, 2026.",
+        "confidence": "confirmed",
+        "notes": "Garuda’s official transition page says the piece concept applies to Garuda-operated flights for tickets purchased or issued on or after September 1, 2026; before that, many tables remain weight-based."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and piece/weight concept",
+      "amount": "Per-5kg route-zone table before transition; piece concept after transition",
       "currency": "IDR",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Before the transition, excess baggage is sold in 5 kg increments by domestic or international zone",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/baggage/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.garuda-indonesia.com/static/en/garuda-indonesia-experience/baggage-info.html?lang=en&loc=id&v=00ceaf58-baa3-4833-9dbb-047baf490165",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Current excess-baggage tables are effective June 12, 2026 and use domestic/international route zones priced per 5 kg.",
+        "confidence": "confirmed",
+        "notes": "Garuda’s June 12, 2026 table prices domestic and outbound Indonesia international excess baggage by 5 kg zone bands, not by one flat first-bag amount."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "IDR",
+      "conditions": "GarudaMiles and SkyTeam elites get extra baggage; ticket-date rules change with the September 1, 2026 piece-concept transition",
+      "applies_to": "Eligible GarudaMiles and SkyTeam elite members",
+      "region_or_route": "Garuda Indonesia-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.garuda-indonesia.com/static/en/garuda-indonesia-experience/baggage-info.html?lang=en&loc=id&v=00ceaf58-baa3-4833-9dbb-047baf490165",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "GarudaMiles benefits change with ticket purchase date: kg-based before September 1, 2026 and additional-piece/discount logic after the transition."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "Examples IDR 220,000-714,000 per 5 kg before transition",
       "currency": "IDR",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight cost follows ticket date: 5 kg zone pricing before transition, piece rules after transition",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.garuda-indonesia.com/static/en/garuda-indonesia-experience/baggage-info.html?lang=en&loc=id&v=00ceaf58-baa3-4833-9dbb-047baf490165",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Because Garuda is changing from weight concept to piece concept, the ticket issue date is a real pricing condition, not a footnote."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Depends on route and excess-baggage schedule",
+      "currency": "IDR",
+      "conditions": "Sports and bulky baggage depends on ticket-date concept, route-zone excess table, aircraft, and packing",
+      "applies_to": "Special, fragile, bulky, or excess baggage",
+      "region_or_route": "Garuda Indonesia-operated flights",
+      "timing": "before travel / airport check-in",
+      "source_url": "https://www.garuda-indonesia.com/static/en/garuda-indonesia-experience/baggage-info.html?lang=en&loc=id&v=00ceaf58-baa3-4833-9dbb-047baf490165",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Garuda’s public baggage materials route special and bulky baggage back through checked/excess baggage rules; the applicable charge changes with route zone and ticket-date concept."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft",
       "currency": "IDR",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize acceptance and fees depend on ticket-date concept, route, aircraft, and cargo handling limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The practical traveler check is ticket date first, then route zone and item size; Garuda-operated flights and codeshares should not be mixed."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +125,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +136,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.garuda-indonesia.com/id/en/help-center/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "IDR",
+      "conditions": "Infants without a seat receive a checked allowance plus stroller, infant basket, or car seat subject to cabin space",
+      "applies_to": "Infants without a separate seat; children and infants with seats follow the applicable cabin allowance",
+      "region_or_route": "Garuda Indonesia-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.garuda-indonesia.com/static/en/garuda-indonesia-experience/baggage-info.html?lang=en&loc=id&v=00ceaf58-baa3-4833-9dbb-047baf490165",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant and child-item treatment should be read with the ticket-date transition because Garuda is moving from weight to piece concept."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +162,7 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.garuda-indonesia.com/id/en/travel-information/special-assistance",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

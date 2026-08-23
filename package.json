@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "validate:data": "node scripts/validate-data.mjs",
+    "audit:data-gold": "node scripts/audit-gold-airline-data.mjs",
     "new:airline": "node scripts/new-airline.mjs",
     "publish:prod": "sh scripts/publish-prod.sh"
   },

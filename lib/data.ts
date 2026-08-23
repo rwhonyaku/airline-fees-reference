@@ -24,16 +24,26 @@ const AIRLINES_DIR = path.join(process.cwd(), "data", "airlines");
 const ALLOWED_CATEGORIES = new Set<string>([
   // Core
   "checked_baggage",
+  "checked_baggage_included",
+  "additional_baggage",
   "seat_selection",
   "change_cancellation",
   "unaccompanied_minor",
 
   // Expansion (common high-volume categories)
   "carry_on",
+  "personal_item",
   "overweight_baggage",
   "oversize_baggage",
   "same_day_change",
   "same_day_standby",
+  "award_ticket",
+  "pet_fee",
+  "sports_equipment",
+  "infant_child",
+  "military_exemption",
+  "status_exemption",
+  "credit_card_exemption",
 ]);
 
 /**

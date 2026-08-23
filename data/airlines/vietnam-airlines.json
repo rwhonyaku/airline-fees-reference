@@ -4,61 +4,117 @@
   "iata": "VN",
   "country": "Vietnam",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Vietnam Airlines carry-on route splits, free checked-baggage tables, domestic 2026 excess update, international peak/zone excess rates, overweight/oversize tables, Lotusmiles/SkyTeam benefits, infant baggage, special baggage, seats, and change/refund caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "VND",
-      "conditions": "Economy Class: 1 carry-on bag up to 10 kg plus 1 personal item; Premium Economy and Business Class have higher allowances; size limits apply",
+      "conditions": "Economy/Premium Economy carry-on is 10-12 kg by route; Business is 18 kg; ATR72 flights are 7 kg.",
       "applies_to": "All fares",
       "region_or_route": "All routes (Vietnam Airlines–operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.vietnamairlines.com/us/en/travel-information/baggage/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://enews.vietnamairlines.com/2026/01/travel-tips-what-members-need-to-know-about-baggage-regulations/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Vietnam Airlines distinguishes Americas/Europe/Australia-connected routes from other routes for carry-on weight; ATR72 aircraft use a lower 7 kg allowance."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "VND",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Included allowance depends on route, cabin, fare family, baggage concept, and Lotusmiles/SkyTeam status",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.vietnamairlines.com/us/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "Vietnam Airlines uses route-specific baggage allowance tables; Americas routes and other international/domestic routes can differ."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, timing, and baggage concept",
+      "amount": "From VND 650000 domestic or USD 110 international off-peak",
       "currency": "VND",
-      "conditions": "Additional checked baggage can be purchased in advance or at the airport; pricing depends on route, baggage concept, and timing",
+      "conditions": "Standard excess baggage is route/season priced; airport domestic rate changed for tickets from 1 June 2026.",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.vietnamairlines.com/us/en/travel-information/baggage/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.vietnamairlines.com/sg/en/travel-information/baggage/excess-baggage/excess-baggage-fee-at-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic standard excess is VND 650000 for tickets issued/changed from 1 June 2026. International off-peak zones start at USD 110 and peak examples can be higher."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "VND",
+      "conditions": "Lotusmiles Titanium/Gold get 1 extra 23 kg piece; Platinum/Million Miler get 2 extra pieces",
+      "applies_to": "Eligible Lotusmiles and SkyTeam elite members",
+      "region_or_route": "Vietnam Airlines-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.vietnamairlines.com/mm/en/travel-information/baggage/baggage-allowance-checked-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lotusmiles Titanium/Gold receive one extra 23 kg piece, while Platinum/Million Miler receive two extra pieces where eligible."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "From VND 800000 domestic or USD 80 international",
       "currency": "VND",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight piece is 23-32 kg; domestic and international airport tables apply by zone.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.vietnamairlines.com/us/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.vietnamairlines.com/sg/en/travel-information/baggage/excess-baggage/excess-baggage-fee-at-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Vietnam Airlines publishes domestic overweight at VND 800000 and international zone pricing from USD 80 to USD 200."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Special-baggage charge applies",
+      "currency": "VND",
+      "conditions": "Special baggage, including sports equipment and bicycles, is charged separately unless an exception applies",
+      "applies_to": "Sports equipment, bulky baggage, bicycles, strollers, wheelchairs, and cabin-seat baggage",
+      "region_or_route": "Vietnam Airlines-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.vietnamairlines.com/vn/en/travel-information/baggage/special-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Special baggage is separate from regular checked-bag pricing and can include bicycles, strollers, wheelchairs, bulky items, and cabin-seat baggage."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft",
+      "amount": "From VND 800000 domestic or USD 110 international",
       "currency": "VND",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize piece is 158-203 cm; airport tables apply by domestic or international zone.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.vietnamairlines.com/us/en/travel-information/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.vietnamairlines.com/sg/en/travel-information/baggage/excess-baggage/excess-baggage-fee-at-airport",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Vietnam Airlines publishes domestic oversize at VND 800000 and international zone pricing from USD 110 to USD 260."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +125,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.vietnamairlines.com/us/en/travel-information/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Vietnam Airlines published baggage, DOT baggage-fee, excess baggage, special baggage, infant/children, Lotusmiles, seats, and changes/refunds pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,7 +140,26 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.vietnamairlines.com/us/en/help-center/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Vietnam Airlines published baggage, DOT baggage-fee, excess baggage, special baggage, infant/children, Lotusmiles, seats, and changes/refunds pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "VND",
+      "conditions": "Lap infants get 1 checked piece: 23 kg to/from Americas or 10 kg on other routes, plus stroller",
+      "applies_to": "Infants under 2 not occupying a separate seat",
+      "region_or_route": "Vietnam Airlines-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.vietnamairlines.com/us/en/travel-information/special-services/infants-children",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant checked allowance differs sharply by route: one 23 kg piece to/from the Americas, but 10 kg on many other routes."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +170,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.vietnamairlines.com/us/en/travel-information/special-assistance/unaccompanied-minors",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Vietnam Airlines published baggage, DOT baggage-fee, excess baggage, special baggage, infant/children, Lotusmiles, seats, and changes/refunds pages."
+      }
     }
   ]
 }

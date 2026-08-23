@@ -4,50 +4,102 @@
   "iata": "9C",
   "country": "China",
   "region": "East Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Spring Airlines baggage is fare-package, route-distance, purchase-channel, membership-level, and timing driven, with online baggage usually cheaper than airport counter pricing after the Aug. 16, 2026 pricing update.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "CNY",
-      "conditions": "Carry-on baggage allowance limited to 1 piece; weight and size limits depend on fare type; some basic fares may restrict cabin baggage",
+      "conditions": "Carry-on weight and dimensions depend on ticket class; stricter low-fare limits can apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://en.ch.com/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://en.ch.com/static/InternalTermsConditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Spring publishes ticket-class carry-on limits in its carriage terms, including smaller limits for SpringSaver/SpringFlexi."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "CNY",
-      "conditions": "Checked baggage included only on select fare products; allowance varies by purchased package",
+      "conditions": "Free checked allowance depends on ticket class, route distance, and whether the fare package includes baggage",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://en.ch.com/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://en.ch.com/static/InternalTermsConditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "SpringSaver has no free checked baggage, while SpringFlexi may or may not include baggage depending on package."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Weight package and route dependent",
+      "amount": "Weight slab, route distance, and channel dependent",
       "currency": "CNY",
-      "conditions": "Checked baggage must be purchased separately on most fares; fees depend on weight package and route",
+      "conditions": "Purchased baggage price depends on route type, distance band, weight slab, membership level, and online versus airport timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://en.ch.com/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://news.springairlines.cn/news/2026-06-16-00-00.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Spring’s 2026 pricing notice says final purchasable allowance and price are shown in official booking channels; online purchase is usually cheaper than airport purchase."
+      },
+      "effective_date": "2026-08-16"
     },
     {
       "category": "overweight_baggage",
-      "amount": "Purchased-allowance dependent",
+      "amount": "Weight slab, route distance, and airport timing dependent",
       "currency": "CNY",
-      "conditions": "Checked bags exceeding purchased allowance incur overweight charges; maximum per-bag weight limits apply",
+      "conditions": "Excess charges use distance bands and weight slabs; airport counter pricing is usually higher than online purchase",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://en.ch.com/service/baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://news.springairlines.cn/news/2026-06-16-00-00.html",
+      "last_verified": "2026-08-23",
+      "effective_date": "2026-08-16"
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Route and airport dependent",
+      "currency": "CNY",
+      "conditions": "Checked bags usually must not exceed 40 x 60 x 100 cm; larger bags may be accepted within 203 cm total dimensions",
+      "applies_to": "Checked baggage over standard dimensions",
+      "region_or_route": "Domestic / international-regional routes",
+      "timing": "airport check-in",
+      "source_url": "https://en.ch.com/static/InternalTermsConditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Spring publishes standard and expanded checked-bag dimensions, with different maximum weights for domestic and international/regional routes."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Handled as checked baggage; excess charges apply",
+      "currency": "CNY",
+      "conditions": "Golf, ski, fishing, and sports equipment are generally handled as checked baggage with proper packing",
+      "applies_to": "Sports equipment and special checked baggage",
+      "region_or_route": "Spring Airlines-operated routes",
+      "timing": "airport check-in",
+      "source_url": "https://en.ch.com/static/InternalTermsConditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment is handled as general checked baggage when properly packed; Spring may refuse items unsuitable for aircraft or packaging condition."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,7 +110,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://en.ch.com/service/seat",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -69,7 +121,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://en.ch.com/service/ticket",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "CNY",
+      "conditions": "Infants have no free baggage allowance, but one pushchair may be checked free per infant",
+      "applies_to": "Infants without a separate seat",
+      "region_or_route": "Spring Airlines-operated routes",
+      "timing": "at check-in",
+      "source_url": "https://en.ch.com/static/InternalTermsConditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants have no free baggage allowance; one pushchair is free, and a seat-occupying infant may bring an additional car seat free."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +147,16 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://en.ch.com/service/children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "baggage_pricing_system_2026",
+      "effective_date": "2026-08-16",
+      "verified_date": "2026-08-23",
+      "source_url": "https://news.springairlines.cn/news/2026-06-16-00-00.html",
+      "summary": "Spring Airlines introduced a baggage pricing structure based on route type, distance, purchase scenario, and weight tiers, with online purchase generally cheaper than airport counter purchase."
     }
   ]
 }

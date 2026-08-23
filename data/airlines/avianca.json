@@ -4,72 +4,123 @@
   "iata": "AV",
   "country": "Colombia",
   "region": "South America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Avianca baggage is fare-family and route driven, with domestic Basic personal-item-only rules, international Light carry-on inclusion for tickets bought on or after Jan. 27, 2026, seasonal baggage caps, partner-airline caveats, infant date changes, and sports-equipment replacement rules."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Economy: 1 carry-on bag up to 10 kg plus 1 personal item; size limits apply; allowance varies by fare family",
+      "conditions": "Carry-on depends on fare family; international Light fares now include a 10 kg carry-on, while domestic Basic starts with a personal item",
       "applies_to": "All fares",
       "region_or_route": "All routes (Avianca-operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.avianca.com/us/en/travel-information/baggage/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.avianca.com/en/about-us/corporate-news/2026/february-2",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Avianca announced that Light fares on international flights within the Americas include a personal item and 10 kg carry-on for tickets purchased on or after Jan. 27, 2026; domestic Basic remains personal-item only."
+      },
+      "effective_date": "2026-01-27"
     },
     {
       "category": "carry_on",
       "amount": "Depends on route and timing",
       "currency": "USD",
-      "conditions": "Basic fare includes personal item only; carry-on bag available for purchase; price varies by route and timing",
+      "conditions": "Paid carry-on applies mainly to Basic-style gaps; price depends on route, channel, timing, and peak season",
       "applies_to": "Basic fare",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.avianca.com/us/en/travel-information/baggage/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/13080259544219-What-is-carry-on-baggage-and-how-can-I-purchase-it",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on Classic and Flex fares; allowance varies by route and cabin",
+      "conditions": "Checked baggage is included only on eligible fare families and varies by route, cabin, and operator",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.avianca.com/us/en/travel-information/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Avianca says partner-airline baggage allowances, size limits, and weight restrictions can differ on mixed itineraries."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, weight, and timing",
+      "amount": "Route, weight, channel, and timing table",
       "currency": "USD",
-      "conditions": "Checked baggage not included on Basic fare; fees vary by route, baggage weight, and timing",
+      "conditions": "Basic-style checked baggage is paid; price varies by route, weight, channel, timing, and peak season",
       "applies_to": "Basic fare",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
       "source_url": "https://www.avianca.com/us/en/travel-information/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Avianca’s checked-bag prices are timing and route sensitive, and selected 2026 holiday/peak periods cap checked-bag acceptance on listed routes."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "LifeMiles, Smiles, and Star Alliance Gold baggage benefits depend on status, fare, and route",
+      "applies_to": "Eligible LifeMiles, Smiles, and Star Alliance Gold members",
+      "region_or_route": "Avianca-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.avianca.com/en/my-booking/prepare-your-trip/baggage/elite-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "uncertain",
+        "notes": "Avianca publishes elite baggage links but benefit details can change by LifeMiles, Smiles, Star Alliance status, fare, and route."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by route and weight",
       "currency": "USD",
-      "conditions": "Overweight baggage fees apply for bags exceeding the allowance up to 32 kg; pricing depends on route",
+      "conditions": "Overweight charges are airport-priced by route and band; Europe routes cap overweight at 32 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.avianca.com/us/en/travel-information/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/13081216698907-What-happens-if-my-baggage-is-overweight-or-exceeds-the-permitted-dimensions",
+      "last_verified": "2026-08-23"
     },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by route and aircraft",
       "currency": "USD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; fees and acceptance depend on route and aircraft",
+      "conditions": "Oversize charges are airport-priced by route and season; bags over 230 linear cm need cargo",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.avianca.com/us/en/travel-information/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/13081216698907-What-happens-if-my-baggage-is-overweight-or-exceeds-the-permitted-dimensions",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Fare, route, and item dependent",
+      "currency": "USD",
+      "conditions": "Sports gear can replace a carry-on or first checked bag on eligible fares; Basic and airport timing can add cost",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "Avianca-operated flights",
+      "timing": "up to 48h before departure / airport",
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/13082634010139-Can-I-bring-my-sports-equipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Classic, Flex, and Business fares can replace the first checked bag with eligible sports equipment; Basic requires buying the relevant bag."
+      }
     },
     {
       "category": "seat_selection",
@@ -80,7 +131,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.avianca.com/us/en/travel-information/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -91,7 +142,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.avianca.com/us/en/travel-information/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -102,7 +153,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.avianca.com/us/en/help-center/changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -113,7 +164,38 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.avianca.com/us/en/travel-information/special-assistance/unaccompanied-minors/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get one free personal item; checked-bag allowance depends on fare and ticket purchase date",
+      "applies_to": "Infants under 2 and children up to 11",
+      "region_or_route": "Avianca-operated flights",
+      "timing": "check-in / boarding",
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/16926502855835-What-is-the-baggage-allowance-for-children-and-babies",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Current infant rules changed for tickets bought on/after Dec. 19, 2025; older eligible fares keep one 10 kg infant checked item."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "international_light_carry_on_2026",
+      "effective_date": "2026-01-27",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.avianca.com/en/about-us/corporate-news/2026/february-2",
+      "summary": "Avianca announced that Light fare tickets for international flights across the Americas purchased on or after January 27, 2026 include a personal item and one carry-on bag up to 10 kg."
+    },
+    {
+      "category": "seasonal_checked_bag_caps_2026_2027",
+      "effective_date": "2026-06-05",
+      "verified_date": "2026-08-23",
+      "source_url": "https://ayuda.avianca.com/hc/en-us/articles/13080382443803-Where-can-I-buy-checked-baggage",
+      "summary": "Avianca publishes seasonal maximum checked-baggage limits on selected routes for travel windows beginning June 5, 2026 and continuing across later 2026-2027 holiday periods."
     }
   ]
 }

@@ -4,64 +4,127 @@
   "iata": "DY",
   "country": "Norway",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Norwegian is a fare-family baggage model. LowFare has no checked bag, LowFare+ includes one 23 kg bag, Flex includes two 23 kg bags, and paid bags should be added before the 4-hour cutoff. Overweight is a separate airport charge per kg per leg above 23 kg."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One small personal item included (30 × 20 × 38 cm) that must fit under the seat in front",
+      "conditions": "LowFare includes only an under-seat item; overhead cabin baggage is a fare or paid-benefit issue",
       "applies_to": "LowFare",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.norwegian.com/en/travel-info/baggage/hand-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One cabin bag up to 10 kg (55 × 40 × 23 cm) included",
+      "conditions": "LowFare+ and Flex include overhead cabin baggage; Reward benefits can also add it when active",
       "applies_to": "LowFare+, Flex",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.norwegian.com/en/travel-info/baggage/hand-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "checked_baggage",
       "amount": "From 9.90 to 59.90",
       "currency": "EUR",
-      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "LowFare has no checked bag; paid bag price varies by route, season, and purchase timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.norwegian.com/us/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Norwegian says LowFare includes no checked bags, LowFare+ includes one 23 kg bag, and Flex includes two 23 kg bags."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "From 17.90 to 74.90",
       "currency": "EUR",
-      "conditions": "23 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "23 kg bag price varies by route, season, and timing; add online before check-in to avoid higher rates",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Norwegian lets travelers add checked baggage up to 4 hours before departure; airport overweight is charged separately by kg and leg."
+      }
     },
     {
-      "category": "checked_baggage",
-      "amount": 12,
+      "category": "status_exemption",
+      "amount": 0,
       "currency": "EUR",
-      "conditions": "Excess baggage fee per additional kg over purchased allowance",
-      "applies_to": "All fares",
+      "conditions": "Norwegian Reward members can unlock one 23 kg checked bag after the 16-flight benefit threshold",
+      "applies_to": "Eligible Norwegian Reward members",
+      "region_or_route": "Eligible Norwegian flights",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.norwegian.com/en/reward/benefits/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Norwegian Reward free checked baggage is a selected/active benefit, requires the Reward number, and stays subject to bag limits."
+      }
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 15,
+      "currency": "USD",
+      "conditions": "Checked bags over 23 kg; charged per kg, per leg, up to 32 kg maximum per bag",
+      "applies_to": "Checked bags above standard allowance",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.norwegian.com/en/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.norwegian.com/us/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Norwegian charges excess at the airport per kg per leg above 23 kg, with a 32 kg single-bag maximum."
+      }
     },
-
+    {
+      "category": "oversize_baggage",
+      "amount": "Not published as separate flat fee",
+      "currency": "USD",
+      "conditions": "Checked bags must not exceed 250 x 79 x 112 cm with max circumference 300 cm",
+      "applies_to": "Checked bags above published size limits",
+      "region_or_route": "All routes",
+      "timing": "before travel / bag drop",
+      "source_url": "https://www.norwegian.com/us/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "not_published",
+        "notes": "Norwegian publishes accepted maximum dimensions but not a separate universal flat oversize fee."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "From 40 to 45",
+      "currency": "EUR",
+      "conditions": "Most published sports items cost less online than at airport; excess weight is charged per kg",
+      "applies_to": "Sports equipment and special checked items",
+      "region_or_route": "All routes",
+      "timing": "online before travel / airport",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/sports-equipment/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment must be ordered as special baggage, not ordinary checked baggage, and airport purchase costs more."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": "From 0 to 20",
@@ -71,7 +134,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.norwegian.com/en/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -82,9 +145,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.norwegian.com/en/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
@@ -94,7 +156,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.norwegian.com/en/travel-info/booking-changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Infants get 5 kg checked baggage plus a car seat or stroller; children follow ticket allowance",
+      "applies_to": "Infants under 2 and children 2-11",
+      "region_or_route": "Norwegian-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.norwegian.com/us/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants get 5 kg checked baggage plus one car seat/stroller but no normal cabin-bag allowance beyond in-flight baby food."
+      }
     },
     {
       "category": "change_cancellation",
@@ -105,9 +182,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.norwegian.com/en/travel-info/booking-changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -117,7 +193,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.norwegian.com/en/travel-info/travel-with-children/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

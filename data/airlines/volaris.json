@@ -4,61 +4,115 @@
   "iata": "Y4",
   "country": "Mexico",
   "region": "North America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Volaris is fare/bundle/card driven: Zero is personal-item only, Basic includes a 15 kg checked bag but no carry-on, Plus includes carry-on and a 25 kg checked bag, and INVEX benefits have channel/cardholder/group/codeshare limits.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on depends on fare bundle; Zero and Basic include only a personal item, while Plus and Premium include 1 carry-on bag.",
+      "conditions": "Zero and Basic include only a personal item; Plus includes carry-on, and paid add-ons or INVEX benefits can add it",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Volaris carry-on is not a universal free item. The fare family, More Baggage combo, and INVEX card benefit can change what is included."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on fare bundle, route, and timing",
       "currency": "USD",
-      "conditions": "Checked baggage not included on Zero and Basic fares; fees depend on fare bundle, route, and purchase timing",
+      "conditions": "Basic includes one 15 kg checked bag, Plus includes one 25 kg bag, and extra bags are paid add-ons by timing/channel",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Volaris checked-bag pricing depends on fare family, route, timing, and add-ons. Included bags can be 15 kg or 25 kg by fare, while separately purchased checked bags use the 25 kg standard limit."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "INVEX baggage benefits require eligible card payment, cardholder travel, direct channel, non-group booking, and no codeshare",
+      "applies_to": "Eligible Volaris INVEX cardholders and companions",
+      "region_or_route": "Eligible Volaris-operated flights",
+      "timing": "at booking",
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/invex/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "INVEX can be valuable, but it is not a blanket waiver: benefits depend on fare type, card type, cardholder travel, eligible channel, and reservation type."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Airport-priced by weight allowance",
       "currency": "USD",
-      "conditions": "Checked bags exceeding weight allowance incur overweight fees; single bag maximum weight limits apply",
+      "conditions": "Overweight applies above purchased/included allowance; maximum accepted checked-bag weight is 45 kg including excess",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Volaris publishes standard 25 kg checked-bag limits and a 45 kg absolute limit including excess; fee amounts sit in route/service fee tables."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by aircraft and handling limits",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits is subject to oversize charges; acceptance depends on aircraft and handling capabilities",
+      "conditions": "Oversize applies above 158 linear cm; musical instruments and sports equipment use separate maximum dimensions and handling rules",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.volaris.com/en-us/travel-info/baggage-policy/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/?id=2608",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Special baggage service or checked-bag replacement",
+      "currency": "USD",
+      "conditions": "A purchased extra bag can be replaced by sports gear within limits; larger sports items use special baggage rules",
+      "applies_to": "Sports equipment and musical instruments",
+      "region_or_route": "Volaris-operated flights",
+      "timing": "booking / add services / airport",
+      "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/?id=2608",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports gear can either replace an added checked bag within standard limits or move into the special-equipment framework with higher dimension limits and possible extra fees."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Depends on seat type, fare bundle, route, and timing",
       "currency": "USD",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, fare bundle, route, and timing",
+      "conditions": "Seat selection cost depends on fare, seat type, route, and whether a bundle such as More Speed includes standard seats",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.volaris.com/en-us/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://cms.volaris.com/en/travel-info/optional-services/package-deals",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Volaris bundles can include standard seat selection while excluding first row or emergency exit seats, so seat-fee exposure depends on the exact seat chosen."
+      }
     },
     {
       "category": "change_cancellation",
@@ -69,7 +123,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.volaris.com/en-us/travel-info/changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +134,22 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.volaris.com/en-us/travel-info/children-and-infants/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": "Seasonally priced Baby Combo",
+      "currency": "USD",
+      "conditions": "Baby Combo adds a diaper bag and one documented infant item; price appears during booking and varies by season",
+      "applies_to": "Infants under 2 traveling with an adult",
+      "region_or_route": "Volaris-operated flights",
+      "timing": "at booking",
+      "source_url": "https://cms.volaris.com/en/travel-info/special-services/minors-under-2-years-old/",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Baby Combo is an optional add-on shown during booking; it covers one diaper bag up to 10 kg plus one documented infant item, and the price varies by travel season."
+      }
     }
   ]
 }

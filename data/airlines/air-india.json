@@ -4,61 +4,137 @@
   "iata": "AI",
   "country": "India",
   "region": "South Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Air India baggage depends on cabin, fare, route, weight-versus-piece concept, prepaid versus airport excess, Maharaja Club tier, sports handling, and post-Vistara AI 2XXX integration.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Business and First Class allowances higher; size limits apply",
+      "conditions": "1 cabin bag plus 1 small personal item. Economy/Premium Economy: 7 kg; Business/First: 10 kg.",
       "applies_to": "All fares",
       "region_or_route": "All routes (Air India-operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage/cabin-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/cabin-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air India publishes excess cabin-baggage charges when cabin baggage must be checked: domestic INR 3000 or international USD 75 if the combined checked allowance is exceeded."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by route (piece vs weight concept), cabin, and fare family",
+      "conditions": "Included allowance depends on route, cabin, fare family, status, and whether the itinerary uses weight or piece concept",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "For Air India, the ticketed allowance matters more than a generic airline-wide rule. Interline and codeshare itineraries can follow another carrier’s baggage rules."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and piece/weight concept",
+      "amount": "From INR 700 per kg domestic; from USD 17 per kg international weight concept",
       "currency": "INR",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route and baggage concept",
+      "conditions": "Excess is per kg on weight routes and per piece/heavy piece on piece routes; prepaid excess can save money",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Domestic India excess baggage is published as INR 700/kg before taxes. International weight-concept rates vary by region; piece-concept markets such as USA/Canada use per-piece tables."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "Depends on route; piece-concept heavy bags charged above 23 kg",
       "currency": "INR",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and excess weight",
+      "conditions": "Overweight charges depend on baggage concept; piece-route bags are charged above 23 kg and cannot exceed 32 kg.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air India publishes separate weight-concept per-kg rates and piece-concept heavy-piece rules, so one flat overweight number would be misleading."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft",
       "currency": "INR",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize fees depend on route, aircraft handling, and whether the item is normal checked baggage or special baggage.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize handling is not a single universal fee; Air India points passengers to excess-baggage and special-baggage rules based on route and item."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Maharaja Club adds baggage: Silver gets 5 kg on weight concept; Gold/Platinum get 20 kg or 1 extra 23 kg piece",
+      "applies_to": "Maharaja Club Silver, Gold, and Platinum members",
+      "region_or_route": "Air India and eligible Star Alliance routes",
+      "timing": "airport check-in",
+      "source_url": "https://www.airindia.com/in/en/maharaja-club/about/tiers-benefits.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Silver applies on Air India only; Gold and Platinum have Star Alliance eligibility where the fare has free baggage allowance."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "INR 2375 / USD 45-70 / CAD 63.5-100 handling fee",
+      "currency": "INR",
+      "conditions": "Sports equipment counts toward free allowance, but a route-based special-handling fee can apply",
+      "applies_to": "Sports equipment accepted as checked baggage",
+      "region_or_route": "Domestic, international, and Canada-specific routes",
+      "timing": "airport / pre-book at least 6 hours before departure",
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/special-baggage.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Handling fee can be waived for eligible Flex and Business fares when sports equipment is pre-booked; airport purchases do not get the waiver."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "INR",
+      "conditions": "Infant cabin items up to 5 kg may include food, feeding bottles, and a carry-on tote for food and bottles",
+      "applies_to": "Infants",
+      "region_or_route": "Air India-operated flights",
+      "timing": "per flight",
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/cabin-baggage.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is cabin-item allowance; checked infant allowance depends on ticket and route baggage concept."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +145,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.airindia.com/in/en/travel-information/seats.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Air India published baggage, excess-baggage, special-baggage, seats, and changes/refunds pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,18 +160,36 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.airindia.com/in/en/help/changes-and-refunds.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Air India published baggage, excess-baggage, special-baggage, seats, and changes/refunds pages."
+      }
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Depends on age, route, and eligibility",
+      "amount": "From 5000 INR / 100-150 USD / 210 CAD",
       "currency": "INR",
-      "conditions": "Unaccompanied Minor service available for eligible ages; fees, documentation, and routing restrictions apply",
+      "conditions": "Unaccompanied minors pay full adult fare plus a per-sector handling fee based on destination region",
       "applies_to": "Eligible ages",
       "region_or_route": "All routes",
       "timing": "per direction",
-      "source_url": "https://www.airindia.com/in/en/travel-information/special-assistance.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.airindia.com/in/en/travel-information/first-time-flyers/unaccompanied-minors.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Air India published baggage, excess-baggage, special-baggage, seats, and changes/refunds pages."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "vistara_merger_ai2xxx_2024",
+      "effective_date": "2024-11-12",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.airindia.com/in/en/newsroom/press-release/vistara-experience-post-merger.html",
+      "summary": "Former Vistara flights moved into Air India after November 12, 2024 and are identifiable in booking as AI 2XXX flights."
     }
   ]
 }

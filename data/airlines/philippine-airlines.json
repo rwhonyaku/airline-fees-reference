@@ -4,6 +4,14 @@
   "iata": "PR",
   "country": "Philippines",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: PAL baggage must distinguish ticketed free allowance, prepaid baggage, airport excess baggage, domestic per-kilo pricing, international piece tables, and cumulative excess rules.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,127 @@
       "region_or_route": "All routes (Philippine Airlines–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/baggageinformation/carryonbaggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "PHP",
-      "conditions": "Free checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Each ticket has its own FBA; allowance can differ by domestic/international route, cabin, and concept",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/baggageinformation/checkedbaggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "PAL warns that the free baggage allowance on one ticket may not carry over to a connecting flight with a lower allowance."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and timing dependent",
+      "amount": "Domestic per-kg or international route table",
       "currency": "PHP",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route, baggage concept, and timing",
+      "conditions": "Airport excess uses PAL route tables; weight, piece, and oversize charges can be cumulative",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/baggageinformation/excessbaggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/international-flights/international-excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "PAL publishes separate domestic and international excess-baggage tables and states that multiple excess categories can stack."
+      }
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "Domestic PHP 825-2,750; international route table",
+      "currency": "PHP",
+      "conditions": "Prepaid baggage is per sector and must be bought up to 4 hours before departure; rates vary by route",
+      "applies_to": "Eligible PR-operated and PR-marketed flights",
+      "region_or_route": "Philippines domestic / International",
+      "timing": "booking to 4 hours before departure",
+      "source_url": "https://www.philippineairlines.com/us/en/mypal-travel-boost/mypal-baggage-plus/prepaid-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Effective February 26, 2026, PAL domestic prepaid examples range from PHP 825 for 15 kg to PHP 2,750 for 50 kg; international pieces are route-priced."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Route-based overweight charge",
+      "amount": "Route-table or per-kilo charge",
       "currency": "PHP",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight depends on domestic versus international route and the applicable weight or piece system",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/baggageinformation/excessbaggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/international-flights/international-excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "PAL caps individual checked bags at 32 kg for prepaid/excess handling; passengers may need to repack above limit."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Route and baggage-system dependent",
       "currency": "PHP",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize can trigger an added charge and may stack with excess piece or overweight charges",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/baggageinformation/excessbaggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/international-flights/international-excess-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize should be treated as a separate trigger, not a substitute for overweight or extra-piece charges."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Route and equipment dependent",
+      "currency": "PHP",
+      "conditions": "Sports equipment may use normal allowance or special fees depending on item, route, and baggage concept",
+      "applies_to": "Sports equipment",
+      "region_or_route": "PAL and PAL Express-operated flights",
+      "timing": "advance purchase / check-in",
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/special-baggage/sports-equipment.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "PAL separates sports-equipment handling from normal prepaid baggage; Mabuhay elite sports benefits apply only to listed sports."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": "Allowance-based",
+      "currency": "PHP",
+      "conditions": "Infant baggage and stroller handling depend on route allowance, available cabin space, and whether the item is checked",
+      "applies_to": "Infants and children",
+      "region_or_route": "PAL and PAL Express-operated flights",
+      "timing": "at booking / check-in",
+      "source_url": "https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant and stroller handling depends on ticketed route, space, and whether the item travels in cabin or checked baggage."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "PHP",
+      "conditions": "Mabuhay Miles elite extra baggage depends on tier and whether the route uses weight or piece concept",
+      "applies_to": "Eligible Mabuhay Miles elite members",
+      "region_or_route": "PAL and PAL Express-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.philippineairlines.com/ph/en/about-us/terms-and-conditions.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Mabuhay elite baggage differs by piece versus weight system and cannot be pooled with other passengers."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +153,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +164,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.philippineairlines.com/en/ph/home/help/changesandrefunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +175,7 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.philippineairlines.com/en/ph/home/travelinformation/specialassistance",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

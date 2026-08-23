@@ -4,64 +4,151 @@
   "iata": "EI",
   "country": "Ireland",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Aer Lingus fees split sharply between Europe and transatlantic service: small personal item is universal, 10 kg carry-on access is entitlement/add-on based, checked-bag prices vary by route, season, and timing, and overweight is per-kg in Europe but per-bag transatlantic. Aer Lingus Regional now follows the 10 kg carry-on model, with smaller-aircraft limits."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "One small personal item included (up to 33 × 25 × 20 cm) that must fit under the seat in front",
+      "conditions": "Small personal item is included for everyone; 10 kg bag handling depends on route and fare",
       "applies_to": "Saver fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.aerlingus.com/prepare/bags/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aer Lingus separates the under-seat personal item from the 10 kg bag; Saver travelers can usually check the 10 kg bag free instead of bringing it onboard."
+      }
     },
     {
       "category": "carry_on",
-      "amount": "From 6.99 to 35.99",
+      "amount": "From 9.99",
       "currency": "EUR",
-      "conditions": "10 kg cabin bag; included with Plus, Advantage, and AerSpace or sold as an add-on. Price varies by route and timing.",
+      "conditions": "10 kg bag onboard is paid or included; Saver gate presentation without entitlement triggers a hold fee",
       "applies_to": "Optional add-on / bundled fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.aerlingus.com/prepare/bags/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "effective_date": "2026-03-03",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aer Lingus extended the 10 kg carry-on policy to Aer Lingus Regional from March 3, 2026, but Regional flights use smaller/7 kg aircraft limits."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "AerClub Silver, Platinum, and Concierge members get the 10 kg carry-on bag included for the member only",
+      "applies_to": "Eligible AerClub members",
+      "region_or_route": "Aer Lingus-operated flights",
+      "timing": "per flight",
+      "source_url": "https://www.aerlingus.com/prepare/bags/carry-on-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AerClub Silver, Platinum, and Concierge get the 10 kg carry-on benefit for the member only, including Regional flights after the 2026 extension."
+      }
+    },
     {
       "category": "checked_baggage",
       "amount": "From 14.99 to 59.99",
       "currency": "EUR",
-      "conditions": "20 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "20 kg bag price varies by route, season, purchase timing, and Europe versus transatlantic rules",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.aerlingus.com/prepare/bags/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aer Lingus publishes bands for 20 kg bags but the controlling model is route, season, and purchase timing; passengers on partner itineraries may not be able to buy all bags online."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "From 19.99 to 74.99",
       "currency": "EUR",
-      "conditions": "25 kg checked bag; price varies by route, season, and purchase timing",
+      "conditions": "25 kg bag price varies by route, season, timing, and partner-itinerary purchase limits",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.aerlingus.com/prepare/bags/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "On partner-airline itineraries, Aer Lingus may allow only one bag online; extra bags may need local airport payment."
+      }
     },
     {
-      "category": "checked_baggage",
-      "amount": 12,
+      "category": "overweight_baggage",
+      "amount": 10,
       "currency": "EUR",
-      "conditions": "Excess baggage fee per additional kg over purchased allowance",
-      "applies_to": "All fares",
-      "region_or_route": "All routes",
+      "conditions": "Europe flights charge excess above purchased allowance per kg at the airport",
+      "applies_to": "Checked bags above purchased allowance",
+      "region_or_route": "Within Europe",
       "timing": "at airport",
       "source_url": "https://www.aerlingus.com/prepare/bags/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Europe flights use a per-kg airport charge above purchased allowance; no single bag may exceed 32 kg."
+      }
     },
-
+    {
+      "category": "overweight_baggage",
+      "amount": "75 / 68 / 100 / 100",
+      "currency": "EUR/GBP/USD/CAD",
+      "conditions": "North America overweight is per bag per direction for 23-32 kg pieces",
+      "applies_to": "Checked bags above standard transatlantic allowance",
+      "region_or_route": "Europe to/from North America",
+      "timing": "per direction",
+      "source_url": "https://www.aerlingus.com/prepare/bags/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is the main traveler trap: the same overweight bag is modeled differently on short-haul Europe and North America itineraries."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Not published as separate flat fee",
+      "currency": "EUR",
+      "conditions": "Maximum checked-bag dimensions are 158 cm; Aer Lingus does not publish a separate flat oversize fee",
+      "applies_to": "Checked bags above published size limit",
+      "region_or_route": "All routes",
+      "timing": "before travel / bag drop",
+      "source_url": "https://www.aerlingus.com/prepare/bags/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "not_published",
+        "notes": "Aer Lingus publishes the 158 cm maximum and handling limits but not a universal flat oversize fee separate from baggage/excess handling."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": 40,
+      "currency": "EUR",
+      "conditions": "Sports equipment up to 23 kg within Europe when booked online; airport price is EUR 50",
+      "applies_to": "Eligible sports equipment",
+      "region_or_route": "Within Europe",
+      "timing": "online before travel",
+      "source_url": "https://www.aerlingus.com/localized/en/modals/baggage-information.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Within Europe, online sports-equipment purchase is cheaper than airport purchase; bicycles/diving/windsurfing cannot be booked online."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": "From 0 to 20",
@@ -71,7 +158,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.aerlingus.com/prepare/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -82,9 +169,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.aerlingus.com/prepare/seats/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
@@ -93,8 +179,12 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.aerlingus.com/support/booking-flexibility/changing-your-booking/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.aerlingus.com/support/booking-flexibility/booking-service-fees/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Aer Lingus publishes booking service fees separately from fare rules; change cost can include service fee plus fare difference and channel differences."
+      }
     },
     {
       "category": "change_cancellation",
@@ -105,9 +195,23 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.aerlingus.com/support/booking-flexibility/cancelling-your-booking/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One collapsible buggy or stroller plus one car seat, booster seat, or travel cot is free",
+      "applies_to": "Infant and child bookings",
+      "region_or_route": "Aer Lingus-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.aerlingus.com/hub/?p=45088",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants include 10 kg checked baggage plus free stroller and one car seat/booster/travel cot; child equipment is separate from paid adult bags."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and age",
@@ -117,7 +221,16 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.aerlingus.com/prepare/travelling-with-children/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "regional_10kg_carry_on_extension_2026",
+      "effective_date": "2026-03-03",
+      "verified_date": "2026-08-23",
+      "source_url": "https://mediacentre.aerlingus.com/pressrelease/details/108/24816",
+      "summary": "Aer Lingus extended its 10 kg carry-on policy to Aer Lingus Regional flights from March 3, 2026, while keeping smaller-aircraft carry-on limits in place."
     }
   ]
 }

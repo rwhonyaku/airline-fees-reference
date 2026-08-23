@@ -4,66 +4,119 @@
   "iata": "JL",
   "country": "Japan",
   "region": "Asia-Pacific",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified JAL carry-on, international checked allowance, excess baggage examples, domestic excess fees, JMB/oneworld status, infant baggage, sports-equipment acceptance, seats, and fare rules."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Carry-on baggage allowance: up to 10 kg total including personal item; size limits apply (generally up to 55 × 40 × 25 cm per item)",
+      "conditions": "Carry-on is included up to 10 kg total including personal item; size limits apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/carryon/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against JAL published carry-on, international checked-baggage, domestic excess-baggage, JMB miles payment, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Checked baggage included; allowance depends on route and cabin. Economy is typically up to 23 kg per piece; premium cabins higher.",
+      "conditions": "Included international allowance depends on cabin, status, infant seat use, and JAL/partner operation",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JAL international Economy/Premium Economy typically includes two 23 kg pieces, while premium cabins use heavier piece limits."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, cabin, and number of pieces",
+      "amount": "From JPY 5000 domestic or JPY 20000 international example",
       "currency": "JPY",
-      "conditions": "Additional checked baggage fees apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces",
+      "conditions": "Extra baggage fees vary by area pair and issue: extra piece, overweight, oversize, or itinerary split.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JAL shows international examples where Osaka-Tokyo-London through-check extra piece is JPY 20000 plus JPY 10000 overweight; domestic excess is JPY 440/kg."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "JMB and oneworld members can receive extra checked baggage; allowance varies by cabin, status, and JGC membership",
+      "applies_to": "Eligible JMB and oneworld elite members",
+      "region_or_route": "JAL Group and oneworld eligible itineraries",
+      "timing": "each way",
+      "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JAL international status allowance can raise Economy/Premium Economy to 3 pieces; JMB Crystal without JGC has a lighter 23 kg limit."
+      }
+    },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and weight",
+      "amount": "From JPY 1000 / JPY 10000 by international area example",
       "currency": "JPY",
-      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags exceeding 32 kg are not accepted as checked baggage",
+      "conditions": "Overweight fees depend on area pair and whether the bag is 23-32 kg or 32-45 kg where accepted.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JAL international examples show much higher overweight fees than within-Japan international-condition sectors; route context is essential."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Sports equipment may be accepted if aircraft cargo space permits; packing and aircraft length limits apply",
+      "applies_to": "Eligible sports equipment and musical instruments",
+      "region_or_route": "JAL domestic flights; international rules differ by itinerary",
+      "timing": "at check-in",
+      "source_url": "https://www.jal.co.jp/jp/en/dom/baggage/checked/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports-equipment acceptance depends on aircraft cargo-space limits and packing, so valid equipment can still be refused if space is unavailable."
+      }
+    },
     {
       "category": "oversize_baggage",
-      "amount": "Airport-priced by route and size",
+      "amount": "From JPY 5000 where international conditions apply within Japan",
       "currency": "JPY",
-      "conditions": "Checked bags with total dimensions exceeding 158 cm (L+W+H) incur an oversize fee; maximum accepted size is 203 cm",
+      "conditions": "Oversize charges depend on area pair; some bulky items require inquiry before travel.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JAL generally does not accept a single checked piece over 200 x 90 x 90 cm because of airport restrictions."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +126,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jal.co.jp/jp/en/inter/service/seat/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against JAL published carry-on, international checked-baggage, domestic excess-baggage, JMB miles payment, child, seat, and fare-rule pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +141,12 @@
       "region_or_route": "International",
       "timing": "at booking / manage booking",
       "source_url": "https://www.jal.co.jp/jp/en/inter/service/seat/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against JAL published carry-on, international checked-baggage, domestic excess-baggage, JMB miles payment, child, seat, and fare-rule pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare rules and route",
@@ -96,9 +156,27 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.jal.co.jp/jp/en/inter/fare/fare_rule/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against JAL published carry-on, international checked-baggage, domestic excess-baggage, JMB miles payment, child, seat, and fare-rule pages."
+      }
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "JPY",
+      "conditions": "Lap infants receive 1 checked piece; stroller, baby carriage, and child seat are free when used by the passenger",
+      "applies_to": "Infants and children",
+      "region_or_route": "JAL-operated international flights",
+      "timing": "at check-in / bag drop",
+      "source_url": "https://www.jal.co.jp/jp/en/inter/baggage/checked/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lap infants receive one piece, with the weight limit tied to the accompanying adult cabin; used strollers/car seats are free."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": 0,
@@ -108,7 +186,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.jal.co.jp/jp/en/inter/support/children/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against JAL published carry-on, international checked-baggage, domestic excess-baggage, JMB miles payment, child, seat, and fare-rule pages."
+      }
     }
   ]
 }

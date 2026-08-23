@@ -4,66 +4,116 @@
   "iata": "TP",
   "country": "Portugal",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: TAP baggage depends on fare family, route, purchase channel, advance-purchase timing, season, and high-season restrictions. Discount fares can exclude checked baggage; included allowance, extra bags, overweight, and oversize charges must be read as separate decisions."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Carry-on depends on fare and cabin; Economy generally includes 1 cabin bag plus a personal item. Size and weight limits apply.",
+      "conditions": "Hand baggage depends on fare, cabin, route, and size/weight limits; enforcement is at airport",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.flytap.com/en-us/baggage/hand-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Checked baggage included on Economy Classic/Plus and premium cabins; allowance varies by route and fare family",
+      "conditions": "Included checked baggage depends on fare family, route, cabin, status, and Discount fare exclusions",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flytap.com/en-us/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "TAP Discount fares can exclude checked baggage, while Classic/Plus and premium cabins include more by route."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "From 20 to 85",
+      "amount": "From EUR 30 online; route/channel/season priced",
       "currency": "EUR",
-      "conditions": "Checked baggage fee on Discount fares or additional bags; price varies by route and purchase timing",
+      "conditions": "Extra baggage starts from EUR 30 online but varies by channel, advance timing, route, and season",
       "applies_to": "Discount fares / additional bags",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.flytap.com/en-us/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flytap.com/en-st/information/baggage/hold-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "TAP says extra-bag fees vary by purchase channel, how far in advance the purchase is made, trip date, origin, and destination; high season can restrict some excess baggage."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "TAP Miles&Go Gold includes extra baggage; sports inclusion depends on fare, destination, and status",
+      "applies_to": "Eligible TAP Miles&Go members",
+      "region_or_route": "TAP-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.flytap.com/en-us/miles-and-go",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "TAP Miles&Go and sports inclusion depend on fare, destination, allowance limits, and status; all must line up."
+      }
+    },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and weight",
+      "amount": "Examples EUR 60+ short-haul; route/season priced",
       "currency": "EUR",
-      "conditions": "Checked bags weighing more than 23 kg and up to 32 kg incur an overweight fee; bags over 32 kg are not accepted",
+      "conditions": "Overweight from 23-32 kg is charged by route and season; high-season restrictions can apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.flytap.com/en-us/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flytap.com/en-st/information/baggage/hold-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published examples start around EUR 60 on some short-haul routes and rise substantially on long-haul/intercontinental routes, especially when combined with extra-bag charges."
+      }
     },
-
     {
       "category": "oversize_baggage",
       "amount": "Airport-priced by route and size",
       "currency": "EUR",
-      "conditions": "Checked bags exceeding 158 cm (L+W+H) incur an oversize fee; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize above 158 cm is charged by route and season; airport handling can block acceptance",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.flytap.com/en-us/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flytap.com/en-st/information/baggage/hold-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "TAP publishes separate scenarios for included baggage, extra baggage, overweight, oversize, and bags that are both heavy and large."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "From 45",
+      "currency": "EUR",
+      "conditions": "Sports equipment can count within allowance up to limits; extra pieces vary by channel, date, and route",
+      "applies_to": "Sports equipment and special checked baggage",
+      "region_or_route": "TAP-operated flights",
+      "timing": "up to 24h before departure / airport",
+      "source_url": "https://www.flytap.com/en-gm/information/baggage/sports-equipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment counts within allowance only up to 32 kg and 158 cm; larger or extra items follow route/channel prices."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +123,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.flytap.com/en-us/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -84,19 +134,33 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.flytap.com/en-us/seat-selection",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
       "currency": "EUR",
-      "conditions": "Change and cancellation fees depend on fare family and route; Discount fares are generally the most restrictive; fare difference may apply",
+      "conditions": "Change and cancellation rules depend on fare family, route, and whether the fare is Discount",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.flytap.com/en-us/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "Infant and child hold baggage depends on fare; Discount fares can exclude checked pieces",
+      "applies_to": "Infants under 2 and children 2-11",
+      "region_or_route": "TAP-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.flytap.com/en-st/information/babies-and-children",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant and child checked baggage depends on fare family; Discount fares can exclude checked baggage."
+      }
     },
     {
       "category": "change_cancellation",
@@ -107,9 +171,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.flytap.com/en-us/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and age",
@@ -119,7 +182,7 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.flytap.com/en-us/travel-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

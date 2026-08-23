@@ -196,6 +196,50 @@ function plural(n: number, singular: string, pluralLabel = `${singular}s`): stri
   return `${n} ${n === 1 ? singular : pluralLabel}`;
 }
 
+function feePressureLabel(annualBagCost: number | null): {
+  label: string;
+  className: string;
+  explanation: string;
+} {
+  if (annualBagCost == null) {
+    return {
+      label: "Lookup required",
+      className: "border-amber-200 bg-amber-50 text-amber-900",
+      explanation: "The airline prices this baggage setup by route, fare, timing, or allowance rules.",
+    };
+  }
+
+  if (annualBagCost >= 250) {
+    return {
+      label: "High bag-fee exposure",
+      className: "border-rose-200 bg-rose-50 text-rose-900",
+      explanation: "This is large enough to compare fare bundles, status/card waivers, or a different packing plan.",
+    };
+  }
+
+  if (annualBagCost >= 100) {
+    return {
+      label: "Meaningful bag-fee exposure",
+      className: "border-amber-200 bg-amber-50 text-amber-900",
+      explanation: "This is worth checking against a bag-inclusive fare or eligible free checked bag benefit.",
+    };
+  }
+
+  if (annualBagCost > 0) {
+    return {
+      label: "Low bag-fee exposure",
+      className: "border-emerald-200 bg-emerald-50 text-emerald-900",
+      explanation: "The cash fee may be simpler than changing fares or products unless you repeat this trip often.",
+    };
+  }
+
+  return {
+    label: "No checked-bag exposure",
+    className: "border-emerald-200 bg-emerald-50 text-emerald-900",
+    explanation: "With zero checked bags selected, this setup has no modeled checked-bag cost.",
+  };
+}
+
 const CHECKED_BAG_FAQS = [
   {
     question: "How does the checked baggage calculator estimate cost?",
@@ -314,6 +358,9 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
   const bestAnnualSavings = best?.result.annualSavingsUsd ?? 0;
   const remainingAnnualBagCost =
     annualBagCost != null && best ? Math.max(0, annualBagCost - bestAnnualSavings) : null;
+  const pressure = feePressureLabel(annualBagCost);
+  const bagMathLine = `${plural(travelers, "traveler")} x ${plural(bags, "bag")} each way x ${directions === 2 ? "roundtrip" : "one-way"} x ${plural(roundtrips, "annual trip")}`;
+  const shouldCompareCards = Boolean(best && best.result.annualSavingsUsd > 0);
   const cardBridgeLabel =
     best && best.result.netAnnualUsd >= 0
       ? "Card comparison is worth your time"
@@ -550,6 +597,21 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
           </div>
         </div>
 
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-800">
+            Route or fare context <span className="font-normal text-slate-500">(optional)</span>
+          </label>
+          <input
+            name="route"
+            defaultValue={routeLabel ?? ""}
+            placeholder="Example: LAX to Tokyo, Basic fare, buying bag online"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+          />
+          <p className="mt-2 text-xs leading-relaxed text-slate-500">
+            This does not force a price. It keeps the route or fare context visible when the airline needs a route-specific lookup.
+          </p>
+        </div>
+
         <button
           type="submit"
           className="inline-flex w-full justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-700 md:w-fit"
@@ -602,6 +664,10 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
         )}
         <p className="text-sm leading-relaxed text-slate-600">{trip.explanation}</p>
 
+        <div className={`rounded-xl border px-4 py-3 text-sm font-semibold ${pressure.className}`}>
+          {pressure.label}: {pressure.explanation}
+        </div>
+
         {trip.canEstimate ? (
           <div className="grid gap-3 pt-2 md:grid-cols-3">
             <div className="rounded-xl border border-slate-200 bg-white p-4">
@@ -633,6 +699,50 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             </div>
           </div>
         ) : null}
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+          Decision engine
+        </div>
+        <h2 className="text-2xl font-extrabold text-slate-950">
+          What this baggage setup means
+        </h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Bag math</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{bagMathLine}</p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Cost confidence</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              {trip.canEstimate
+                ? "The calculator found usable fixed checked-bag amounts for the selected bag count."
+                : `The ${missingBagLabel(trip.missingBagOrdinals)} bag needs airline checkout or route-table pricing.`}
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Best next move</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              {trip.canEstimate && shouldCompareCards
+                ? "Compare eligible free checked bag cards only after checking the bag-only savings against the annual fee."
+                : trip.canEstimate
+                  ? "Compare the cash fee against a bag-inclusive fare before changing products."
+                  : "Price the exact itinerary in the airline checkout flow before trusting the base fare."}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
+            Open {airline.name} fee page
+          </Link>
+          <Link href="/tools/excess-baggage-calculator" className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
+            Check overweight or oversize fees
+          </Link>
+          <Link href={cardHref} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
+            Test card break-even
+          </Link>
+        </div>
       </section>
 
       {!trip.canEstimate ? (
@@ -753,25 +863,48 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               <tr className="border-b border-slate-200 text-slate-600">
                 <th scope="col" className="py-2 pr-4">Bag</th>
                 <th scope="col" className="py-2 pr-4">Estimated fee</th>
+                <th scope="col" className="py-2 pr-4">Confidence</th>
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: Math.max(1, bags) }, (_, index) => index + 1).map((ordinal) => (
-                <tr key={ordinal} className="border-b border-slate-100">
-                  <td className="py-3 pr-4 font-semibold text-slate-900">
-                    {ordinal === 1 ? "First" : ordinal === 2 ? "Second" : "Third"} checked bag
-                  </td>
-                  <td className="py-3 pr-4 text-slate-700">
-                    {trip.feeByBagOrdinal.has(ordinal) ? usd(trip.feeByBagOrdinal.get(ordinal) ?? 0) : "Needs route lookup"}
-                  </td>
-                </tr>
-              ))}
+              {Array.from({ length: Math.max(1, bags) }, (_, index) => index + 1).map((ordinal) => {
+                const estimate = trip.feeEstimateByBagOrdinal.get(ordinal);
+                return (
+                  <tr key={ordinal} className="border-b border-slate-100">
+                    <td className="py-3 pr-4 font-semibold text-slate-900">
+                      {ordinal === 1 ? "First" : ordinal === 2 ? "Second" : "Third"} checked bag
+                    </td>
+                    <td className="py-3 pr-4 text-slate-700">
+                      {estimate ? usd(estimate.amountUsd) : "Needs route lookup"}
+                    </td>
+                    <td className="py-3 pr-4 text-slate-700">
+                      {estimate ? (
+                        <span
+                          className={
+                            estimate.confidence === "exact_published_fee"
+                              ? "inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-800"
+                              : "inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-xs font-bold text-amber-800"
+                          }
+                        >
+                          {estimate.label}
+                        </span>
+                      ) : (
+                        <span className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-xs font-bold text-amber-800">
+                          Route or fare lookup
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
           The calculator prefers current, broad-market USD fees and avoids special-case prices such
           as intra-island or long-haul routes when broader domestic or North America pricing exists.
+          If the airline publishes a USD range, the estimate uses the lower end and labels it as a
+          conservative lower-bound estimate.
         </p>
       </section>
 

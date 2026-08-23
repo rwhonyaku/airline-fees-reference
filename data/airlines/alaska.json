@@ -10,6 +10,13 @@
     ],
     "pro_hack": "Before paying for a standard bag, check whether your fare, Alaska card, Mileage Plan or Atmos status, military eligibility, or Hawaii-resident program already covers it."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against Alaska checked-bag, optional-fee, card/status, sports-equipment, and 2026 policy-change sources. Key model: ticketing date, region, Hawaii/Alaska programs, card/status, and partner operation change the bag answer."
+  },
   "fees": [
     {
       "category": "checked_baggage",
@@ -17,10 +24,14 @@
       "currency": "USD",
       "conditions": "1st checked bag; North America; ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -28,10 +39,14 @@
       "currency": "USD",
       "conditions": "2nd checked bag; North America; ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -39,10 +54,14 @@
       "currency": "USD",
       "conditions": "3rd checked bag on North American flights ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -50,10 +69,14 @@
       "currency": "USD",
       "conditions": "4th and additional checked bags on North American flights ticketed before April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -61,10 +84,14 @@
       "currency": "USD",
       "conditions": "1st checked bag under 50 lbs (23 kg) on North American flights ticketed on or after April 10, 2026; no online/mobile prepay discount",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -72,10 +99,14 @@
       "currency": "USD",
       "conditions": "2nd checked bag under 50 lbs (23 kg) on North American flights ticketed on or after April 10, 2026; no online/mobile prepay discount",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -83,10 +114,14 @@
       "currency": "USD",
       "conditions": "3rd checked bag on North American flights ticketed on or after April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -94,10 +129,14 @@
       "currency": "USD",
       "conditions": "4th and additional checked bags on North American flights ticketed on or after April 10, 2026",
       "applies_to": "Main Cabin and Saver",
-      "region_or_route": "Most routes",
+      "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -108,7 +147,11 @@
       "region_or_route": "Intra-island (wholly within the state of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -119,7 +162,11 @@
       "region_or_route": "Intra-island (wholly within the state of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -130,7 +177,11 @@
       "region_or_route": "Asia",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -141,7 +192,11 @@
       "region_or_route": "Asia",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -152,7 +207,11 @@
       "region_or_route": "Europe",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -163,7 +222,11 @@
       "region_or_route": "Europe",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -174,7 +237,11 @@
       "region_or_route": "Oceania (Australia, New Zealand and Pacific Islands outside of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "checked_baggage",
@@ -185,32 +252,113 @@
       "region_or_route": "Oceania (Australia, New Zealand and Pacific Islands outside of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-06-10"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Oversized bag fee",
+      "conditions": "Oversize applies above 62 linear inches; sports-equipment exceptions and combined overweight/oversize charges can change the final fee",
       "applies_to": "All fares",
       "region_or_route": "Most routes",
       "timing": "each way",
-      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-06-10"
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Alaska’s oversize answer is not just a standalone fee because some approved sports equipment has the oversize fee waived, while combined overweight/oversize rows have separate charges."
+      }
     },
-
+    {
+      "category": "overweight_baggage",
+      "amount": 300,
+      "currency": "USD",
+      "conditions": "Oversized and overweight checked bag up to 70 lbs; combined charge remained unchanged in Apr 2026 update",
+      "applies_to": "Checked bags that are both oversized and overweight",
+      "region_or_route": "North American Alaska and Hawaiian flights",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 400,
+      "currency": "USD",
+      "conditions": "Oversized and overweight checked bag 71-100 lbs; combined charge remained unchanged in Apr 2026 update",
+      "applies_to": "Checked bags that are both oversized and overweight",
+      "region_or_route": "North American Alaska and Hawaiian flights",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Eligible Alaska/Atmos/Hawaiian cardholders can get first checked bag free for themselves and up to 6 guests on qualifying operated flights",
+      "applies_to": "Eligible cardholders on the same reservation",
+      "region_or_route": "Qualifying Alaska, Hawaiian, Horizon, and SkyWest-operated flights",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Card benefit should be modeled only where the eligible cardholder, same reservation, and qualifying Alaska/Hawaiian/Horizon/SkyWest-operated flight conditions are met."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Atmos status can include free checked bags by tier; partner/onworld benefits depend on operating carrier and itinerary",
+      "applies_to": "Eligible Atmos Rewards status members",
+      "region_or_route": "Eligible Alaska, Hawaiian, and partner itineraries",
+      "timing": "each way",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Atmos Silver starts with one free checked bag; higher tiers add more free checked bags and stronger partner benefits."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Standard checked-bag fee",
+      "currency": "USD",
+      "conditions": "Most listed sports equipment travels for the standard checked-bag fee when properly packed; oversize fee is waived",
+      "applies_to": "Approved sports equipment",
+      "region_or_route": "Alaska-ticketed itineraries beginning on Alaska",
+      "timing": "at check-in",
+      "source_url": "https://news.alaskaair.com/guest-experience/sports-equipment-update/",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Status, First Class, Club 49, or eligible card benefits can cover approved sports equipment within the checked-bag allowance."
+      }
+    },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on up to 22 x 14 x 9 inches plus one smaller personal item",
+      "conditions": "One standard carry-on plus one smaller personal item are included, including Saver, subject to aircraft space",
       "applies_to": "All fares (including Saver)",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://news.alaskaair.com/alaska-airlines/how-to-travel-like-an-alaska-airlines-pro/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/carry-on-luggage",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Saver fare still includes normal carry-on access; Alaska’s more meaningful fee exposure is checked baggage and seat/fare flexibility."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -233,7 +381,6 @@
       "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -256,7 +403,6 @@
       "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
       "last_verified": "2025-12-19"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 100,
@@ -269,6 +415,18 @@
       "last_verified": "2025-12-19"
     },
     {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Child car seat and stroller travel free; qualifying collapsible stroller-wagons also travel free",
+      "applies_to": "Infants and children",
+      "region_or_route": "Alaska-operated flights",
+      "timing": "at check-in / bag drop",
+      "source_url": "https://www.alaskaair.com/content/partial/travel-info/policies/children-infants-and-children/_common/_free-baggage",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
       "category": "unaccompanied_minor",
       "amount": 35,
       "currency": "USD",
@@ -278,6 +436,17 @@
       "timing": "one-way",
       "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
       "last_verified": "2025-12-19"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "checked_baggage",
+      "previous_value": "1st bag $40; 2nd bag $45; 3rd-plus bag $150; $5 online/mobile prepay discount",
+      "new_value": "1st bag $45; 2nd bag $55; 3rd-plus bag $200; no online/mobile prepay discount",
+      "effective_date": "2026-04-10",
+      "verified_date": "2026-08-21",
+      "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
+      "summary": "Alaska lists April 10, 2026 checked-bag increases for North American Alaska and Hawaiian flights and removes the prepay discount."
     }
   ]
 }

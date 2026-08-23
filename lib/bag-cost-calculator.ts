@@ -26,6 +26,12 @@ export type AirlineOverrides = Record<
 
 export type CardsJson = { cards: Card[] };
 
+export type CheckedBagFeeEstimate = {
+  amountUsd: number;
+  confidence: "exact_published_fee" | "conservative_lower_bound";
+  label: string;
+};
+
 export function usd(n: number): string {
   return `$${Math.round(n)}`;
 }
@@ -95,7 +101,45 @@ function currentRuleScore(row: FeeItem): number {
   return score;
 }
 
-export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number | null {
+function parseUsdEstimate(amount: FeeItem["amount"]): CheckedBagFeeEstimate | null {
+  if (typeof amount === "number" && Number.isFinite(amount)) {
+    return {
+      amountUsd: amount,
+      confidence: "exact_published_fee",
+      label: "Exact published USD fee",
+    };
+  }
+  if (typeof amount !== "string") return null;
+
+  const value = amount.trim();
+  const range = value.match(/^(?:from\s+)?(?:usd|\$)?\s*(\d+(?:\.\d+)?)\s*(?:[-–]|to)\s*(?:usd|\$)?\s*(\d+(?:\.\d+)?)/i);
+  if (range) {
+    const low = Number(range[1]);
+    const high = Number(range[2]);
+    if (!Number.isFinite(low) || !Number.isFinite(high)) return null;
+    return {
+      amountUsd: Math.min(low, high),
+      confidence: "conservative_lower_bound",
+      label: "Lower end of published USD range",
+    };
+  }
+
+  const from = value.match(/^from\s+(?:usd|\$)?\s*(\d+(?:\.\d+)?)(?:\s|$)/i);
+  if (from) {
+    const low = Number(from[1]);
+    return Number.isFinite(low)
+      ? {
+          amountUsd: low,
+          confidence: "conservative_lower_bound",
+          label: "Published starting USD fee",
+        }
+      : null;
+  }
+
+  return null;
+}
+
+export function findCheckedBagFeeEstimateUsd(fees: FeeItem[], ordinal: number): CheckedBagFeeEstimate | null {
   const matches = fees.filter((row) => {
     if (row.category !== "checked_baggage") return false;
     if (row.currency && row.currency.toUpperCase() !== "USD") return false;
@@ -104,7 +148,7 @@ export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number |
     const appliesTo = typeof row.applies_to === "string" ? row.applies_to.toLowerCase() : "";
     if (appliesTo.includes("blue plus")) return false;
 
-    return typeof row.amount === "number" && Number.isFinite(row.amount);
+    return parseUsdEstimate(row.amount) != null;
   });
 
   if (!matches.length) return null;
@@ -115,7 +159,11 @@ export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number |
     return scoreB - scoreA;
   })[0];
 
-  return typeof row.amount === "number" ? row.amount : null;
+  return parseUsdEstimate(row.amount);
+}
+
+export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number | null {
+  return findCheckedBagFeeEstimateUsd(fees, ordinal)?.amountUsd ?? null;
 }
 
 export function getCheckedBagFeeMap(fees: FeeItem[], maxBags: number): Map<number, number> {
@@ -123,6 +171,15 @@ export function getCheckedBagFeeMap(fees: FeeItem[], maxBags: number): Map<numbe
   for (let ordinal = 1; ordinal <= maxBags; ordinal += 1) {
     const fee = findCheckedBagFeeUsd(fees, ordinal);
     if (fee != null) map.set(ordinal, fee);
+  }
+  return map;
+}
+
+export function getCheckedBagFeeEstimateMap(fees: FeeItem[], maxBags: number): Map<number, CheckedBagFeeEstimate> {
+  const map = new Map<number, CheckedBagFeeEstimate>();
+  for (let ordinal = 1; ordinal <= maxBags; ordinal += 1) {
+    const estimate = findCheckedBagFeeEstimateUsd(fees, ordinal);
+    if (estimate != null) map.set(ordinal, estimate);
   }
   return map;
 }
@@ -135,12 +192,16 @@ export function calcCheckedBagTripCost(params: {
 }): {
   canEstimate: boolean;
   feeByBagOrdinal: Map<number, number>;
+  feeEstimateByBagOrdinal: Map<number, CheckedBagFeeEstimate>;
   tripCostUsd: number;
   perDirectionCostUsd: number;
   missingBagOrdinals: number[];
   explanation: string;
 } {
-  const feeByBagOrdinal = getCheckedBagFeeMap(params.fees, params.bagsPerTravelerPerDirection);
+  const feeEstimateByBagOrdinal = getCheckedBagFeeEstimateMap(params.fees, params.bagsPerTravelerPerDirection);
+  const feeByBagOrdinal = new Map(
+    Array.from(feeEstimateByBagOrdinal.entries()).map(([ordinal, estimate]) => [ordinal, estimate.amountUsd] as const)
+  );
   const missingBagOrdinals: number[] = [];
   let perTravelerPerDirection = 0;
 
@@ -154,6 +215,7 @@ export function calcCheckedBagTripCost(params: {
     return {
       canEstimate: true,
       feeByBagOrdinal,
+      feeEstimateByBagOrdinal,
       tripCostUsd: 0,
       perDirectionCostUsd: 0,
       missingBagOrdinals,
@@ -168,11 +230,12 @@ export function calcCheckedBagTripCost(params: {
   return {
     canEstimate,
     feeByBagOrdinal,
+    feeEstimateByBagOrdinal,
     tripCostUsd,
     perDirectionCostUsd,
     missingBagOrdinals,
     explanation: canEstimate
-      ? "This estimate uses published USD checked-bag fees and multiplies them by travelers and flight directions."
+      ? "This estimate uses published USD checked-bag fees, or the lower end of a published USD range, and multiplies that by travelers and flight directions."
       : "This airline's checked-bag pricing needs a route or fare lookup because one or more requested bag positions are route-, fare-, timing-, or market-dependent.",
   };
 }

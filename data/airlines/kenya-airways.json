@@ -4,6 +4,14 @@
   "iata": "KQ",
   "country": "Kenya",
   "region": "Africa",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Kenya Airways is piece-concept driven on KQ-operated flights, with e-ticket/DCS control on interline itineraries, limited group pooling by bag count but not weight, Asante tier benefits, and points redemption for one extra bag."
+  },
   "fees": [
     {
       "category": "carry_on",
@@ -14,51 +22,95 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/cabin-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included; allowance varies by cabin class, route, fare family, and frequent flyer status",
+      "conditions": "Free allowance is route and cabin based on KQ-operated flights; interline trips can use IATA MSC rules",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/free-baggage-allowance/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.kenya-airways.com/en/plan/baggage-information/baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Kenya Airways states the allowance in the ticket, trip summary, or departure-control system controls when interline or codeshare flights are involved.",
+        "confidence": "confirmed",
+        "notes": "KQ route/cabin tables are only indications for KQ-operated flights; tickets, trip summaries, DCS, and interline or codeshare rules can override the public table."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "Route/piece/weight priced; points redemption also available",
       "currency": "USD",
-      "conditions": "Excess baggage fees apply when exceeding free allowance; charges vary by route and weight",
+      "conditions": "Excess varies by route, piece count, and weight; Asante points can redeem one standard extra bag",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://asante.kenya-airways.com/pages/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Pooling can combine number of bags for families/groups, but not weight per piece; special baggage can still trigger charges.",
+        "confidence": "confirmed",
+        "notes": "Asante redemption is a useful alternative to cash on eligible KQ flights, but it covers a standard extra bag and does not erase overweight or special-baggage rules."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Asante Ruby gets a first-extra-bag discount; Silver, Gold, and Platinum get one extra piece",
+      "applies_to": "Eligible Asante Rewards members",
+      "region_or_route": "Kenya Airways and eligible SkyTeam flights",
+      "timing": "each way",
+      "source_url": "https://asante.kenya-airways.com/pages/benefits",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Asante benefits distinguish Ruby discount from elite extra-piece benefits; the extra piece remains subject to standard size and weight limits."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Weight-limit dependent",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "conditions": "Overweight is per piece; pooling can combine bag count but not exceed weight on one piece",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.kenya-airways.com/en/plan/baggage-information/baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "KQ explicitly says families/groups can pool number of bags, but not weight per piece, so one 26 kg bag can still be overweight."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Route and aircraft dependent",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize acceptance depends on dimensions, aircraft, airport handling, and whether the item is special baggage",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.kenya-airways.com/prepare-for-travel/baggage-information/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.kenya-airways.com/en/plan/baggage-information/baggage-allowance/",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Route and item dependent",
+      "currency": "USD",
+      "conditions": "Sports equipment may count as a standard piece, but special charges or cargo handling can apply",
+      "applies_to": "Sports equipment and special baggage",
+      "region_or_route": "Kenya Airways-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.kenya-airways.com/en-us/plan/baggage-information/special-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports groups may pool bag count, but special baggage and overweight pieces can still be charged separately."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +121,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.kenya-airways.com/prepare-for-travel/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -80,7 +132,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.kenya-airways.com/prepare-for-travel/changes-and-refunds/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +143,22 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://www.kenya-airways.com/prepare-for-travel/special-assistance/unaccompanied-minor/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get one collapsible stroller and one car seat free in addition to cabin baggage allowance",
+      "applies_to": "Infants traveling with an adult",
+      "region_or_route": "Kenya Airways-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.kenya-airways.com/en-gb/plan/baggage-information/baggage-allowance/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants receive a stroller and car seat free in addition to cabin allowance; this does not override route-specific checked-bag rules."
+      }
     }
   ]
 }

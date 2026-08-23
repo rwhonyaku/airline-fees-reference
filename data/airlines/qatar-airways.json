@@ -4,66 +4,90 @@
   "iata": "QR",
   "country": "Qatar",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: Qatar Airways baggage varies by cabin, fare family, Privilege Club/oneworld status, weight versus piece concept, Africa/Americas piece routes, ticketing carrier, and operated-flight restrictions.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "QAR",
-      "conditions": "Carry-on varies by cabin: Economy gets 1 piece up to 7 kg; Business/First get 2 pieces up to 7 kg each. Size limits apply.",
+      "conditions": "Economy: 1 carry-on up to 7 kg. Business/First: 2 carry-ons with a combined 15 kg allowance.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.qatarairways.com/en/baggage/hand-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/tradeportal/en-gb/bookingnticketing/Baggage-info.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Qatar’s carry-on allowance is cabin-driven. Economy is lower than premium cabins, and hand-baggage enforcement can push excess items into checked baggage."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "QAR",
-      "conditions": "Checked baggage included under the piece or weight concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Checked baggage is included, but pieces and weight depend on route, cabin, fare family, and status benefits.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.qatarairways.com/en/baggage/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/en-us/baggage/allowance.html#tab1-4",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Qatar publishes fare-type tables, but the exact allowance should be read from the booking/ticket because Africa/Americas piece concept differs from weight-concept markets."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and baggage concept",
-      "currency": "QAR",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and number of pieces or weight",
+      "amount": "From USD 20 per kg or USD 130 per extra piece at airport",
+      "currency": "USD",
+      "conditions": "Additional baggage is per kg on weight-concept routes and per piece on Africa/Americas piece routes; ticketing rules apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.qatarairways.com/en/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/en/baggage/excess.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published airport rates start at USD 20/kg on the lowest weight-concept table pairing and USD 130 for some piece-concept extra-bag cases; actual price depends on route region, cabin, and aircraft limits."
+      }
     },
-
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
-      "currency": "QAR",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "amount": "From USD 75 on piece-concept overweight bags",
+      "currency": "USD",
+      "conditions": "Piece routes charge overweight bags between 23 kg and 32 kg; weight routes price additional baggage by kg.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.qatarairways.com/en/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/en/baggage/excess.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "A single checked piece must not exceed 32 kg; heavier bags must be broken down into lighter pieces."
+      }
     },
-
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft handling",
-      "currency": "QAR",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "amount": "From USD 75 on piece-concept oversize bags",
+      "currency": "USD",
+      "conditions": "Piece routes charge oversize bags between 158 cm and 300 cm; other routes follow the applicable excess table.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.qatarairways.com/en/baggage/excess-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/en/baggage/excess.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Qatar separates extra-piece, overweight, oversize, and combined extra/oversize/overweight charges; these can stack based on the itinerary."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +97,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.qatarairways.com/en/manage-booking/seat-selection.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qatar Airways baggage allowance, additional-baggage, optional-services, Privilege Club, family, and fare-rule pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,9 +112,60 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.qatarairways.com/en/manage-booking/seat-selection.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qatar Airways baggage allowance, additional-baggage, optional-services, Privilege Club, family, and fare-rule pages."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "QAR",
+      "conditions": "Privilege Club Silver/Gold/Platinum get 15/20/25 kg extra, or 1/1/2 extra pieces where piece concept applies",
+      "applies_to": "Privilege Club Silver, Gold, and Platinum",
+      "region_or_route": "Qatar Airways marketed and operated routes",
+      "timing": "each way",
+      "source_url": "https://www.qatarairways.com/en-qa/Privilege-Club/member_benefits.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Privilege Club extra baggage follows Qatar Airways baggage policy and applies on routes marketed and operated by Qatar Airways."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "QAR",
+      "conditions": "Platinum, Gold, and equivalent oneworld members may get complimentary seat selection for travelers in the same booking",
+      "applies_to": "Eligible status members",
+      "region_or_route": "All eligible Qatar Airways flights",
+      "timing": "at booking / manage booking",
+      "source_url": "https://www.qatarairways.com/en-so/optional-services-and-fees.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qatar Airways baggage allowance, additional-baggage, optional-services, Privilege Club, family, and fare-rule pages."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Included within allowance; special-baggage rates if over allowance",
+      "currency": "QAR",
+      "conditions": "Sports equipment counts toward allowance where within limits; excess rates apply by weight or piece concept.",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Qatar Airways-operated flights",
+      "timing": "at booking / before travel",
+      "source_url": "https://www.qatarairways.com/en-nz/optional-services-and-fees.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports-equipment rates differ from generic baggage on some routes and should be checked before booking when the item is large or heavy."
+      }
+    },
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
@@ -96,19 +175,43 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.qatarairways.com/en/legal/fare-rules.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qatar Airways baggage allowance, additional-baggage, optional-services, Privilege Club, family, and fare-rule pages."
+      }
     },
-
     {
       "category": "unaccompanied_minor",
-      "amount": "Depends on route and eligibility",
+      "amount": "Adult fare required",
       "currency": "QAR",
-      "conditions": "Unaccompanied Minor service available for eligible ages; fees and conditions vary by route and fare",
+      "conditions": "Young Solo Traveler/UM applies on Qatar-operated flights; Economy UM requires adult fare and escort service costs a return fare",
       "applies_to": "Eligible ages",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.qatarairways.com/en/travel-alerts/unaccompanied-minor.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qatarairways.com/tradeportal/en-na/specialservices/Children-and-Infants.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qatar Airways baggage allowance, additional-baggage, optional-services, Privilege Club, family, and fare-rule pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "QAR",
+      "conditions": "Infants get 1 piece up to 23 kg to/from Africa/Americas or 10 kg elsewhere, plus one baby item free",
+      "applies_to": "Infants",
+      "region_or_route": "All eligible routes",
+      "timing": "each way",
+      "source_url": "https://www.qatarairways.com/en-qa/family/child-fares-baggage.html",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants are not entitled to hand baggage; the free baby item can be a stroller, car seat, or collapsible carrycot."
+      }
     }
   ]
 }

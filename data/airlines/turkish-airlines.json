@@ -4,66 +4,119 @@
   "iata": "TK",
   "country": "Turkey",
   "region": "Europe / Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Turkish carry-on, fare-package baggage, extra-baggage calculator rules, piece-vs-weight concept, MSC/stopover caveats, Miles&Smiles baggage, sports equipment, infant baggage, seats, and fare-change rules."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on varies by cabin: Economy gets 1 piece up to 8 kg; Business gets 2 pieces up to 8 kg each. Size limits apply.",
+      "conditions": "Carry-on is cabin-based: Economy gets one 8 kg piece; Business gets two 8 kg pieces",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Turkish Airlines published carry-on, excess-baggage, fare-rules, Miles&Smiles, sports-equipment, infant, seat, and minor-service pages."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included under piece or weight concept depending on route; allowance varies by cabin and fare family",
+      "conditions": "Included allowance varies by route, fare package, cabin, and piece versus weight baggage concept",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.turkishairlines.com/en-int/any-questions/free-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.turkishairlines.com/en-jp/any-questions/fare-rules/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Turkish fare rules state baggage conditions vary by flight track/package, especially for EcoFly routes with no checked allowance."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and baggage concept",
+      "amount": "Calculator-priced by route, transfer, carrier, timing, and concept",
       "currency": "USD",
-      "conditions": "Excess baggage charges apply when exceeding the free allowance; fees vary by route, cabin, and whether the piece or weight concept applies",
+      "conditions": "Extra baggage is route-priced and depends on piece/weight concept, MSC rules, stopovers, and timing.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Turkish says the calculator is informational and exceptions can apply for joint flights, MSC rules, stopovers, domestic connections, and TRNC cases."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Miles&Smiles tiers add 10 kg, 20 kg, 25 kg, or 1 extra piece depending on tier and baggage concept",
+      "applies_to": "Classic Plus, Elite, and Elite Plus members",
+      "region_or_route": "Turkish Airlines-operated domestic and international flights",
+      "timing": "each way",
+      "source_url": "https://www.turkishairlines.com/en-us/miles-and-smiles/program-content/benefits-and-privileges/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Miles&Smiles allowance changes by tier and whether the itinerary uses piece or weight concept."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Depends on route and excess weight",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; maximum accepted weight per bag is 32 kg",
+      "conditions": "Single checked pieces cannot exceed 32 kg; heavier allowance must be split into separate bags.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Turkish does not publish one universal overweight fee because the route’s registered-baggage concept controls the excess calculation."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Special-charge table by route and equipment",
+      "currency": "EUR",
+      "conditions": "Sports equipment is not normal extra baggage; it uses separate sales-office/special-charge rules",
+      "applies_to": "Eligible sports equipment",
+      "region_or_route": "Türkiye/TRNC and international transfer zones",
+      "timing": "online up to 2 hours before flight / sales office",
+      "source_url": "https://www.turkishairlines.com/en-th/any-questions/sports-equipment/special-charges/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Turkish separates sports equipment and instruments from ordinary extra baggage; online extra-bag rules do not model these items."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft handling",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard size limits are subject to oversize charges; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Large or special items depend on route, aircraft, and item-specific rules rather than one flat fee.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize and special-item handling is better modeled through Turkish’s calculator plus the sports/special-charge tables."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -73,7 +126,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/seat-selection/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Turkish Airlines published carry-on, excess-baggage, fare-rules, Miles&Smiles, sports-equipment, infant, seat, and minor-service pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -84,21 +141,42 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/seat-selection/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Turkish Airlines published carry-on, excess-baggage, fare-rules, Miles&Smiles, sports-equipment, infant, seat, and minor-service pages."
+      }
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare family and route",
       "currency": "USD",
-      "conditions": "Change and cancellation fees depend on fare family and route; promotional fares are generally the most restrictive",
+      "conditions": "Change, cancellation, refund, and baggage package rules vary by route and fare package",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.turkishairlines.com/en-int/any-questions/change-ticket/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.turkishairlines.com/en-jp/any-questions/fare-rules/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Turkish Airlines published carry-on, excess-baggage, fare-rules, Miles&Smiles, sports-equipment, infant, seat, and minor-service pages."
+      }
     },
-
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants get 10 kg or 23 kg by baggage concept plus a foldable stroller on most international/piece routes",
+      "applies_to": "Infant passengers",
+      "region_or_route": "Turkish Airlines-operated flights; EcoFly exceptions apply",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.turkishairlines.com/en-kt/any-questions/infants-and-children/infant-passenger/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant allowance is 10 kg on weight-system routes or one 23 kg piece on piece-system routes, except EcoFly no-bag routes."
+      }
+    },
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on route and age",
@@ -108,7 +186,11 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.turkishairlines.com/en-int/any-questions/unaccompanied-minor/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Turkish Airlines published carry-on, excess-baggage, fare-rules, Miles&Smiles, sports-equipment, infant, seat, and minor-service pages."
+      }
     }
   ]
 }

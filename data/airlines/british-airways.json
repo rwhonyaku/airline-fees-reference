@@ -4,66 +4,113 @@
   "iata": "BA",
   "country": "UK",
   "region": "Europe",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against British Airways baggage essentials, family baggage, sports equipment, status allowance, seating, and fare-rule sources. Key model: cabin/fare allowance, Basic hand-baggage-only fares, partner operation, and status exceptions."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "One cabin bag (maximum 56 × 45 × 25 cm) and one personal item (maximum 40 × 30 × 15 cm) permitted; weight limits apply",
+      "conditions": "One cabin bag and one handbag/personal item are included; cabin bag may be placed in hold if space is limited",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
-      "last_verified": "2025-12-24"
+      "source_url": "https://hotline.britishairways.com/content/en/us/information/baggage-essentials",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "British Airways guarantees the smaller handbag in cabin, while the larger cabin bag may need hold placement depending on space."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "Checked baggage included in fare; allowance depends on cabin and fare type",
+      "conditions": "Checked allowance depends on cabin, fare type, route, status, and whether a partner airline operates the flight",
       "applies_to": "Most fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
-      "last_verified": "2025-12-24"
+      "source_url": "https://hotline.britishairways.com/content/en/us/information/baggage-essentials",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "British Airways uses cabin/fare allowance rather than a flat first-bag fee. Hand-baggage-only Basic fares are the main no-checked-bag case."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on route, cabin, and booking time",
       "currency": "GBP",
-      "conditions": "Checked baggage fee applies on fares without an included checked bag; price varies by route, cabin, and booking time",
+      "conditions": "Basic/hand-baggage-only fares pay for checked bags; price depends on route, cabin, booking channel, and timing",
       "applies_to": "Basic fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
-      "last_verified": "2025-12-24"
+      "source_url": "https://hotline.britishairways.com/content/en/us/information/baggage-essentials",
+      "last_verified": "2026-08-22"
     },
-
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "BA Club/oneworld allowances depend on tier and traveler being on the booking; Basic fare exclusions apply",
+      "applies_to": "Eligible status members",
+      "region_or_route": "British Airways-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.britishairways.com/content/information/help/faq/baggage/executive-club-allowance",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "British Airways says the status member must be travelling on the booking; group bookings and infants without seats are excluded."
+      }
+    },
     {
       "category": "overweight_baggage",
       "amount": "Not permitted",
       "currency": "GBP",
-      "conditions": "Single checked bag must not exceed 32 kg; bags over 32 kg are not accepted as checked baggage",
+      "conditions": "A single checked bag cannot exceed 32 kg; anything above must be repacked or shipped outside normal baggage",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
-      "last_verified": "2025-12-24"
+      "source_url": "https://hotline.britishairways.com/content/en/us/information/baggage-essentials",
+      "last_verified": "2026-08-22"
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Included if within allowance; extra bag fee if allowance is used",
+      "currency": "GBP",
+      "conditions": "Sports gear can count as checked baggage if within allowance; extra-bag fee or cargo applies after limits",
+      "applies_to": "Sports equipment",
+      "region_or_route": "British Airways-operated flights",
+      "timing": "after booking / check-in",
+      "source_url": "https://hotline.britishairways.com/content/information/baggage-essentials/sports-equipment.html",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "British Airways asks travelers to tell the airline about sports equipment after booking; items beyond size/weight limits must go as cargo."
+      }
+    },
     {
       "category": "oversize_baggage",
       "amount": "Depends on item and route",
       "currency": "GBP",
-      "conditions": "Oversize items accepted within maximum dimensions of 190 × 75 × 65 cm; handling fees may apply depending on item and route",
+      "conditions": "Out-of-gauge bags may be accepted up to 190 x 75 x 65 cm; notify BA early and use out-of-gauge drop",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials",
-      "last_verified": "2025-12-24"
+      "source_url": "https://hotline.britishairways.com/content/en/us/information/baggage-essentials",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "BA’s oversize rule is handling-based rather than one universal fee; some large fragile electronics must go cargo even within dimensions."
+      }
     },
-
     {
       "category": "seat_selection",
       "amount": 0,
@@ -97,7 +144,6 @@
       "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "change_cancellation",
       "amount": "Depends on fare rules",
@@ -109,7 +155,6 @@
       "source_url": "https://www.britishairways.com/en-gb/information/legal/fare-rules",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
@@ -120,6 +165,30 @@
       "timing": "at booking",
       "source_url": "https://www.britishairways.com/en-gb/information/family-travel/children-flying",
       "last_verified": "2025-12-24"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Infant without a seat gets one 23 kg checked bag except on hand-baggage-only Basic fares",
+      "applies_to": "Infants under 2 without a seat",
+      "region_or_route": "British Airways-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.britishairways.com/content/en/information/family-travel/baggage",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "GBP",
+      "conditions": "Each infant/child may check up to 2 essential extras even on hand-baggage-only Basic fares",
+      "applies_to": "Infants and children",
+      "region_or_route": "British Airways-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.britishairways.com/content/en/information/family-travel/baggage",
+      "last_verified": "2026-08-22",
+      "confidence": "confirmed"
     }
   ]
 }

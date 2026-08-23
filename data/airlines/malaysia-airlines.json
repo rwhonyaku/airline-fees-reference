@@ -4,61 +4,116 @@
   "iata": "MH",
   "country": "Malaysia",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Malaysia Airlines 2026 allowance updates, weight-vs-piece baggage concept, Enrich/oneworld status tables, extra baggage 20% online discount, per-kg and piece examples, special-baggage/cargo limits, infant baggage, seats, and change/refund caveats."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "MYR",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Business and Business Suite have higher allowances; size limits apply",
+      "conditions": "Economy includes 1 cabin bag up to 7 kg plus 1 personal item; premium cabins have higher allowances.",
       "applies_to": "All fares",
       "region_or_route": "All routes (Malaysia Airlines–operated flights)",
       "timing": "per flight",
       "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/cabin-baggage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "Infant-related cabin extras are separate from checked-bag allowance and must remain within the cabin-baggage weight framework."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "MYR",
-      "conditions": "Checked baggage allowance included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Included allowance depends on cabin, fare family, route, baggage concept, and Enrich/oneworld status.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/checked-baggage.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "notes": "Malaysia Airlines uses weight concept on many routes and piece concept for Africa/Americas, with 2026 Enrich/oneworld allowance updates and route exclusions."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route, timing, and baggage concept",
+      "amount": "From USD 15/kg weight concept or USD 280/piece Africa/Americas",
       "currency": "MYR",
-      "conditions": "Additional checked baggage may be purchased in advance or at the airport; pricing depends on route, baggage concept, and timing",
+      "conditions": "Extra baggage is route/concept priced; online or call-centre purchase gets 20% off up to 24h before departure.",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
-      "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/extra-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published examples include USD 15/kg in Zone 1 weight concept, higher cross-zone rates, and USD 280 per piece for Africa/Americas piece concept."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "MYR",
+      "conditions": "Enrich and oneworld extra allowance depends on tier, cabin, fare family, and excluded routes",
+      "applies_to": "Eligible Enrich and oneworld elite members",
+      "region_or_route": "Malaysia Airlines-operated flights; exclusions apply",
+      "timing": "each way",
+      "source_url": "https://enrich.malaysiaairlines.com/enrich/news/baggage-allowance/baggage-allowance-updates.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Enrich Silver gains 10 kg on Malaysia Airlines flights; oneworld Ruby follows purchased allowance, while Sapphire/Emerald benefits differ by cabin."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route and excess weight",
+      "amount": "From USD 83 piece-concept overweight example",
       "currency": "MYR",
-      "conditions": "Overweight baggage fees apply when exceeding allowance up to 32 kg; fees depend on route and baggage concept",
+      "conditions": "Overweight is route/concept priced; piece-concept Africa/Americas lists an up-to-32 kg surcharge.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/extra-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Malaysia Airlines lists USD 83 overweight up to 32 kg for Economy piece-concept travel to Africa or the Americas."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "May incur surcharge",
+      "currency": "MYR",
+      "conditions": "Special baggage over 158 cm or 32 kg may incur surcharge; items over 204 cm may need cargo handling",
+      "applies_to": "Sports equipment, musical instruments, bulky baggage, and other special items",
+      "region_or_route": "Malaysia Airlines-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.malaysiaairlines.com/tw/en/travel-info/baggage/special-baggage.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Special baggage over 158 cm or 32 kg can incur surcharge; items over 204 cm may need cargo rather than normal check-in."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Depends on route, size, and aircraft",
       "currency": "MYR",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft",
+      "conditions": "Oversize or bulky baggage over 158 cm or 32 kg may incur surcharge; over 204 cm may need cargo.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/baggage/additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.malaysiaairlines.com/fr/en/travel-info/baggage-old.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Malaysia Airlines says items over 204 cm may need MASKargo or another logistics provider rather than normal baggage handling."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +124,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/seats.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Malaysia Airlines published cabin baggage, checked baggage, extra baggage, Enrich baggage updates, special baggage, terms, seats, and changes/refunds pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -80,7 +139,26 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.malaysiaairlines.com/my/en/help/changes-and-refunds.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Malaysia Airlines published cabin baggage, checked baggage, extra baggage, Enrich baggage updates, special baggage, terms, seats, and changes/refunds pages."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "MYR",
+      "conditions": "Infant travelers may bring one checked suitcase plus one foldable stroller/carriage/basket within published limits",
+      "applies_to": "Infants and children",
+      "region_or_route": "Malaysia Airlines-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.malaysiaairlines.com/fr/en/travel-info/baggage-old.html",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Cabin infant extras are separate from the checked suitcase allowance and must remain within the cabin-baggage rules."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +169,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.malaysiaairlines.com/my/en/travel-info/special-assistance.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Malaysia Airlines published cabin baggage, checked baggage, extra baggage, Enrich baggage updates, special baggage, terms, seats, and changes/refunds pages."
+      }
     }
   ]
 }

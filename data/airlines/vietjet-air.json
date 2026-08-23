@@ -4,50 +4,90 @@
   "iata": "VJ",
   "country": "Vietnam",
   "region": "Southeast Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold refresh: VietJet baggage is route-group, fare-family, weight-package, and timing driven; Eco is mostly unbundled while Deluxe/SkyBoss/Business can include checked baggage, and advance purchase tables differ from airport handling.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on allowance includes 1 cabin bag up to 7 kg; size limits apply; additional small personal item permitted",
+      "conditions": "Eco/Deluxe include 7 kg carry-on; SkyBoss/Business can include more; priority carry-on is a paid route-priced add-on",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.vietjetair.com/en/pages/carry-on-baggage-1607054973954",
-      "last_verified": "2025-12-24"
+      "source_url": "https://seo.vietjetair.com/en/pages/fare-rules-1607053453722",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Vietjet publishes a separate 2 kg priority carry-on service for eligible Eco/Deluxe passengers on most route groups, so cabin-fee exposure is partly fare and route dependent."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on weight package, route, and timing",
+      "amount": "From VND 200,000 domestic 20 kg advance package; route-group table internationally",
       "currency": "USD",
-      "conditions": "Checked baggage not included by default; baggage can be purchased in weight packages (20 kg, 30 kg, 40 kg); fees vary by route and timing",
+      "conditions": "Eco checked baggage is paid; included or purchased allowance depends on fare, route group, weight package, and timing",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.vietjetair.com/en/pages/checked-baggage-1607054942727",
-      "last_verified": "2025-12-24"
+      "source_url": "https://seo.vietjetair.com/en/pages/fee-and-charges-1599130343851",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "VietJet says advance checked-baggage services purchased from Feb. 10, 2025 use route-group tables with different domestic, direct international, and connecting prices."
+      },
+      "effective_date": "2025-02-10"
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced per kilo over allowance",
+      "amount": "Airport per-kg charge by route group",
       "currency": "USD",
-      "conditions": "Single checked bag must not exceed 32 kg; excess weight beyond purchased allowance charged per kilogram at airport rates",
+      "conditions": "Airport excess is charged per kg after checked-baggage allowance/package rules; route groups and 32 kg piece limits apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.vietjetair.com/en/pages/checked-baggage-1607054942727",
-      "last_verified": "2025-12-24"
+      "source_url": "https://seo.vietjetair.com/en/pages/fee-and-charges-1599130343851",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The fee table distinguishes advance baggage packages from airport overweight-per-kg charges; at the airport, a checked-baggage package may need to be bought before overweight is charged."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Advance package or airport service fee by route group",
+      "currency": "VND",
+      "conditions": "Oversized baggage has separate advance packages and airport service fees by route group; checked allowance is still required",
+      "applies_to": "Oversized checked baggage",
+      "region_or_route": "Domestic / international route groups",
+      "timing": "advance purchase / airport check-in",
+      "source_url": "https://seo.vietjetair.com/en/pages/fee-and-charges-1599130343851",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Vietjet publishes oversized baggage service charges and separate prebooked oversized baggage packages by route group and weight; airport purchase requires buying a checked-baggage package before overweight charges are applied."
+      }
     },
     {
       "category": "sports_equipment",
-      "amount": "Depends on equipment and route",
+      "amount": "Oversized baggage package or airport service fee",
       "currency": "USD",
-      "conditions": "Sports equipment requires advance purchase; fees depend on equipment type and route; weight and size limits apply",
+      "conditions": "Sports and bulky items follow oversized-baggage handling, route-group package limits, and 32 kg per-piece limits",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.vietjetair.com/en/pages/sports-equipment-1607054986126",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.vietjetair.com/en/pages/fee-and-charges-1599130343851",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "For Vietjet, sports-equipment cost is best modeled through oversized baggage service plus purchased baggage weight rather than a universal sports-item fee."
+      }
     },
     {
       "category": "seat_selection",
@@ -58,18 +98,33 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.vietjetair.com/en/pages/seat-selection-1607055009390",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
       "amount": "Fee plus fare difference",
       "currency": "USD",
-      "conditions": "Flight changes may require a fee plus fare difference; cancellation rules depend on fare terms",
+      "conditions": "Change fees and fare differences depend on fare family, route, and timing before departure",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.vietjetair.com/en/pages/fees-and-charges-1607055039783",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.vietjetair.com/en/pages/to-have-a-good-flight-1599448842652/fare-rules-1607053453722",
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infants are not entitled to baggage allowance; strollers, wheelchairs, and mobility aids travel free",
+      "applies_to": "Infants without a separate seat",
+      "region_or_route": "Vietjet-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.vietjetair.com/vi/pages/to-have-a-good-flight-1599448842652/baggage-service-1608369253127",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "note": "Infants do not receive a baggage allowance, but stroller and mobility-aid handling is carved out from normal paid baggage service."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -80,7 +135,16 @@
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.vietjetair.com/en/pages/children-and-infants-1607055067461",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "advance_baggage_fee_table_2025",
+      "effective_date": "2025-02-10",
+      "verified_date": "2026-08-23",
+      "source_url": "https://seo.vietjetair.com/en/pages/fee-and-charges-1599130343851",
+      "summary": "VietJet’s official fee table identifies advance baggage services purchased from Feb. 10, 2025 with route-group and weight-package pricing."
     }
   ]
 }

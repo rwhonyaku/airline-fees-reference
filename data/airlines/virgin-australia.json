@@ -4,61 +4,114 @@
   "iata": "VA",
   "country": "Australia",
   "region": "Oceania",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Virgin Australia baggage depends on fare type, cabin, Velocity tier, operated versus partner flights, peak/off-peak travel dates, sector count, booking currency, and whether baggage is bought online or at the airport."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "AUD",
-      "conditions": "Carry-on baggage included; allowance and weight limits depend on fare type and aircraft",
+      "conditions": "Economy includes one 8 kg cabin bag plus personal item; Business, Economy X, and eligible Velocity tiers may get 14 kg combined",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/carry-on-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "AUD",
-      "conditions": "Checked baggage included on Choice, Flex, and Business fares; allowance varies by fare type and status",
+      "conditions": "Choice, Flex, and Business include checked baggage; Lite is carry-on only unless a bag is bought",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Virgin Australia fare tables separate Lite from Choice/Flex/Business, and partner-operated flights can use different baggage rules."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and purchase timing",
+      "amount": "Date, sector, route, and channel dependent",
       "currency": "AUD",
-      "conditions": "Checked baggage fees apply on Lite fares or when exceeding allowance; prices vary by route and purchase timing",
+      "conditions": "Additional bags are priced per piece and sector; airport purchase, peak dates, and booking currency can change price",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / at airport",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/checked-baggage/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Virgin Australia publishes 2025-2027 peak travel windows; additional-bag prices can rise for peak dates and are charged per piece, per sector, in the booking currency."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Velocity baggage benefits depend on fare, route, tier, and operating carrier; Lite can still limit baggage",
+      "applies_to": "Eligible Velocity Frequent Flyer members",
+      "region_or_route": "Virgin Australia-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Velocity benefits depend on fare, tier, route, and whether Virgin Australia or a partner operates the flight."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Airport-priced by route and weight",
+      "amount": "65 domestic / 110 short-haul international",
       "currency": "AUD",
-      "conditions": "Checked bags exceeding standard weight limits may incur an overweight fee; maximum weight limits apply",
+      "conditions": "Overweight fees apply per piece above 23 kg up to 32 kg; domestic and short-haul international rates differ",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.virginaustralia.com/cn/en/travel-info/baggage/checked-baggage/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Virgin Australia publishes AUD 65 domestic and AUD/NZD 110 short-haul international overweight fees for operated flights; partner flights use partner rules.",
+        "notes": "Virgin Australia-operated flights publish domestic and short-haul international overweight fees, but partner flights use partner baggage rules."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Airport-priced by route and handling limits",
+      "amount": "Overweight or freight handling may apply",
       "currency": "AUD",
-      "conditions": "Checked baggage exceeding size limits may be subject to oversize fees or handling restrictions",
+      "conditions": "Oversized items can travel within allowance, but over-32 kg freight handling and aircraft limits control acceptance",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/excess-baggage/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/oversized-fragile-items/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Oversized items are not one universal flat fee; the key trigger is weight over allowance, over-32 kg freight handling, and aircraft size limits."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Counts toward allowance; overweight fees may apply",
+      "currency": "AUD",
+      "conditions": "Sports gear counts toward allowance when accepted; overweight, freight, and aircraft limits can still apply",
+      "applies_to": "Sports equipment, fragile items, and oversized baggage",
+      "region_or_route": "Virgin Australia-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.virginaustralia.com/au/en/travel-info/baggage/oversized-fragile-items/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sporting and fragile items may be accepted as oversized baggage, but over-32 kg items go as freight and aircraft type can limit acceptance."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +122,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -80,7 +133,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/seating/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -91,7 +144,46 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.virginaustralia.com/au/en/travel-info/fare-types/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Infant and child item allowances depend on fare; Lite excludes the checked-bag special infant item",
+      "applies_to": "Infants and children traveling with special items",
+      "region_or_route": "Virgin Australia-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.virginaustralia.com/us/en/travel-info/specific-travel/children/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infants may check special infant items free, but the 23 kg checked-bag item is excluded when the accompanying adult is on Economy Lite."
+      }
+    },
+    {
+      "category": "unaccompanied_minor",
+      "amount": "Service eligibility depends on route and age",
+      "currency": "AUD",
+      "conditions": "UM service is available on domestic and international short-haul operated flights; not on connections",
+      "applies_to": "Eligible children and young persons travelling alone",
+      "region_or_route": "Virgin Australia-operated domestic and international short-haul flights",
+      "timing": "at booking / before travel",
+      "source_url": "https://www.virginaustralia.com/us/en/travel-info/specific-travel/children/",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Virgin Australia distinguishes Unaccompanied Minor assistance from Young Person Travelling Alone bookings; connecting flights are not eligible for UM service."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "published_peak_baggage_windows_2026",
+      "effective_date": "2026-04-03",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.virginaustralia.com/cn/en/travel-info/baggage/checked-baggage/",
+      "summary": "Virgin Australia publishes 2026 peak-season checked-baggage pricing windows, including Apr. 3-19, Jun. 27-Jul. 19, Sep. 19-Oct. 11, and Dec. 12, 2026-Jan. 27, 2027."
     }
   ]
 }

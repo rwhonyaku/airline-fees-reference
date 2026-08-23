@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://airline-fees.com/schemas/fee.schema.json",
+  "title": "Airline fee or policy row",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "category",
+    "amount",
+    "currency",
+    "conditions",
+    "applies_to",
+    "region_or_route",
+    "timing",
+    "source_url",
+    "last_verified"
+  ],
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "Stable policy category key. Current pages support the core categories; future gold-standard data may add policy-only categories before public pages use them.",
+      "enum": [
+        "checked_baggage",
+        "checked_baggage_included",
+        "additional_baggage",
+        "carry_on",
+        "personal_item",
+        "overweight_baggage",
+        "oversize_baggage",
+        "seat_selection",
+        "change_cancellation",
+        "same_day_change",
+        "same_day_standby",
+        "award_ticket",
+        "pet_fee",
+        "sports_equipment",
+        "infant_child",
+        "unaccompanied_minor",
+        "military_exemption",
+        "status_exemption",
+        "credit_card_exemption"
+      ]
+    },
+    "amount": {
+      "description": "Published amount when fixed. Use a short string only when the airline publishes a range, a booking-path price, included allowance, or a non-price rule.",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string", "minLength": 1 }
+      ]
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 3,
+      "description": "ISO-like currency code for priced rows. Use the airline's published currency; keep existing site currency codes stable."
+    },
+    "conditions": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short factual label explaining the rule. No advice, speculation, or marketing copy."
+    },
+    "applies_to": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Fare, cabin, passenger type, bag number, or product to which the row applies."
+    },
+    "region_or_route": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Route scope such as US domestic, transatlantic, within Europe, Air France-operated flights, or all routes."
+    },
+    "timing": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Purchase or application timing: at booking, manage booking, online check-in, airport, gate, before departure, after 24h, per direction, each way."
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary airline-published source URL whenever possible."
+    },
+    "last_verified": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Date the row was checked against the source, in YYYY-MM-DD."
+    },
+    "effective_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Date the fee or policy took effect when the airline publishes it."
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Human-readable source label, such as United checked-bag policy."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["confirmed", "ambiguous", "not_published"],
+      "description": "Use confirmed for direct source support; ambiguous when the source confirms variability but not the exact amount; not_published when the airline does not publish a value."
+    },
+    "calc": {
+      "type": "object",
+      "description": "Optional structured calculator hints. These should never override the published source row.",
+      "additionalProperties": true,
+      "properties": {
+        "bag_number": { "type": "integer", "minimum": 1 },
+        "directionality": { "type": "string", "enum": ["each_way", "round_trip", "per_segment", "per_direction"] },
+        "purchase_channel": { "type": "string", "enum": ["online", "airport", "gate", "booking", "manage_booking", "check_in"] },
+        "max_weight_lbs": { "type": "number" },
+        "max_weight_kg": { "type": "number" },
+        "max_linear_inches": { "type": "number" },
+        "max_linear_cm": { "type": "number" }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional short factual note. Do not put page-level advice here."
+    }
+  }
+}

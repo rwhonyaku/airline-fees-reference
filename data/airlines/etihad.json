@@ -4,61 +4,118 @@
   "iata": "EY",
   "country": "United Arab Emirates",
   "region": "Middle East",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold pass verified Etihad ticket-date fare rules, Basic no-checked-bag rule, extra-baggage discounts, weight-vs-piece deadlines, partner/codeshare caveats, Etihad Guest baggage benefits, infant equipment, special equipment, seating, and change/refund rules."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Economy Class: 1 cabin bag up to 7 kg plus 1 personal item; Business and First Class have higher allowances; size limits apply",
+      "conditions": "Cabin allowance depends on fare, cabin, ticket date, and route; published fare tables changed in 2026.",
       "applies_to": "All fares",
       "region_or_route": "All routes (Etihad-operated flights)",
       "timing": "per flight",
-      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/cabin-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/help/faq/fares",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad fare inclusions changed by ticket issue/reissue dates, including 18 June 2026 and 9 April 2026 tables."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on most fares; allowance varies by route (piece or weight concept), cabin, and fare family",
+      "conditions": "Basic fares include no checked baggage; other allowances depend on fare, destination, cabin, and ticket date.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/help/faq/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad states Basic fares do not include checked baggage and Etihad Guest free-bag benefits do not apply to Basic."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route, concept, and timing dependent",
+      "amount": "Save up to 65% online; route/concept priced",
       "currency": "USD",
-      "conditions": "Additional checked baggage bought in advance; price varies by route, baggage concept, and timing. Online rates are lower than airport rates.",
+      "conditions": "Extra baggage is route-priced; online discount ends 4h before weight routes or 30h before piece routes.",
       "applies_to": "All fares (where additional bags permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/help/faq/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad FAQ says Manage Booking/call-centre purchase can save up to 65%; optional-fee page separately references online excess purchase up to 30h before flight."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": "Tier benefit or discount, not universal",
+      "currency": "USD",
+      "conditions": "Etihad Guest baggage benefits depend on tier choices and fare eligibility; Basic fares may be excluded",
+      "applies_to": "Eligible Etihad Guest members",
+      "region_or_route": "Etihad-operated flights",
+      "timing": "before travel",
+      "source_url": "https://www.etihad.com/en-ie/etihadguest/tiers-and-benefits",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad Guest baggage benefit depends on tier and Custom Benefit selection, so it is not a guaranteed universal waiver."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": "Route-based overweight charge",
       "currency": "USD",
-      "conditions": "Overweight fees apply above ticket allowance; max single bag is 32 kg. Fees depend on route and baggage concept.",
+      "conditions": "Overweight charges are paid at airport by excess-baggage rates; each extra piece must stay within 32 kg",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/help/faq/baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Etihad published baggage FAQ, fares, optional-service fees, seating, Etihad Guest, children, and changes/refunds pages."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Depends on item, route, and allowance",
+      "currency": "USD",
+      "conditions": "Sports equipment can count within allowance; excess pieces or weight trigger extra-baggage charges",
+      "applies_to": "Sports equipment and special checked items",
+      "region_or_route": "Etihad-operated flights",
+      "timing": "before travel / check-in",
+      "source_url": "https://www.etihad.com/en/help/baggage-information/special-equipment-and-other-items",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Special equipment can count within allowance only when packed and within limits; extra pieces or weight use extra-baggage rules."
+      }
     },
     {
       "category": "oversize_baggage",
       "amount": "Route and aircraft dependent",
       "currency": "USD",
-      "conditions": "Oversize baggage applies to items exceeding standard size limits; acceptance and fees depend on route and aircraft; payment at airport",
+      "conditions": "Oversize and excess baggage are route-priced; partner or codeshare flights may use another carrier’s fees.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/legal/optional-service-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad notes partner-airline and EY codeshare optional fees can differ; travelers should check the operating carrier."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,7 +126,11 @@
       "region_or_route": "All routes",
       "timing": "at booking / check-in",
       "source_url": "https://www.etihad.com/en/fly-etihad/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Etihad published baggage FAQ, fares, optional-service fees, seating, Etihad Guest, children, and changes/refunds pages."
+      }
     },
     {
       "category": "seat_selection",
@@ -80,18 +141,41 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.etihad.com/en/fly-etihad/seating",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Etihad published baggage FAQ, fares, optional-service fees, seating, Etihad Guest, children, and changes/refunds pages."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Fare-family and route dependent",
       "currency": "USD",
-      "conditions": "Change and cancellation fees depend on fare family and route; fare difference may apply",
+      "conditions": "Change/cancel rules depend on fare, route, timing, and ticket date; Basic/Value are most restrictive.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://www.etihad.com/en/help/changes-and-refunds",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.etihad.com/en/help/faq/fares",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Etihad fare tables show Basic is not changeable/cancellable, Value has fees, Comfort has fees or refunds in some cases, and Deluxe is most flexible."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Infant allowance depends on route and fare; one pushchair, carrycot, or car seat is free",
+      "applies_to": "Infants and children on eligible fares",
+      "region_or_route": "Etihad-operated flights",
+      "timing": "at check-in / boarding",
+      "source_url": "https://www.etihad.com/en-za/fly-etihad/flying-with-children",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Infant allowance varies by fare and route; one pushchair, carrycot, or car seat is free on Etihad-operated flights."
+      }
     },
     {
       "category": "unaccompanied_minor",
@@ -102,7 +186,11 @@
       "region_or_route": "All routes",
       "timing": "per direction",
       "source_url": "https://www.etihad.com/en/fly-etihad/travelling-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Etihad published baggage FAQ, fares, optional-service fees, seating, Etihad Guest, children, and changes/refunds pages."
+      }
     }
   ]
 }

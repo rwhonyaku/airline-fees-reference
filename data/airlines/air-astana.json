@@ -4,61 +4,134 @@
   "iata": "KC",
   "country": "Kazakhstan",
   "region": "Central Asia",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: Air Astana is fare-family driven: Economy Basic has no checked bag, higher fares include pieces, and MyBAGGAGE works only on Air Astana-operated flights with timing and piece limits."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Carry-on baggage included; Economy Class up to 8 kg, Business Class up to 12 kg; size limits apply",
+      "conditions": "Carry-on is included; cabin and fare determine the weight limit, and infant items may count separately when allowed",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://airastana.com/nld-en/information/carry-on-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.airastana.com/hc/en-gb/sections/4417865670930-Hand-luggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air Astana publishes a separate hand-luggage help section, including infant stroller/crib cabin limits and personal-item treatment."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Checked baggage included on most fares; allowance varies by fare family, cabin class, route, and Nomad Club status",
+      "conditions": "Allowance depends on fare family and cabin: Economy Basic has no checked bag, while Classic/Plus include pieces",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
-      "source_url": "https://airastana.com/nld-en/information/checked-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.airastana.com/hc/en-gb/sections/4417879675666-Baggage-rules-and-regulations",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air Astana lists Economy Basic at 0 kg, Classic at one 23 kg piece, Plus at two 23 kg pieces, with higher cabin allowances."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Route and weight dependent",
+      "amount": "MyBAGGAGE route/timing rate; up to 10 extra pieces",
       "currency": "USD",
-      "conditions": "Excess baggage charges apply when exceeding free allowance; fees vary by route and weight",
+      "conditions": "MyBAGGAGE is for Air Astana-operated flights only; less than 36 hours means airport rates",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport / pre-purchase",
-      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.airastana.com/hc/en-gb/articles/6875771171474-MyBAGGAGE-terms-conditions",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air Astana says prepaid additional baggage is non-transferable, unavailable on interline/codeshare flights, and can cover up to 10 additional pieces."
+      }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Weight-limit dependent",
+      "amount": "Airport rate; cargo above 32 kg",
       "currency": "USD",
-      "conditions": "Checked bags exceeding standard weight limits incur overweight charges; single bag maximum weight applies",
+      "conditions": "Bags over ticket allowance incur excess charges; undivided items over 32 kg must move as cargo",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.airastana.com/hc/en-gb/sections/4416955661202-MyBAGGAGE-service-extra-baggage",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The key traveler distinction is extra pieces versus overweight: MyBAGGAGE can add pieces, but any one item over 32 kg is outside ordinary checked baggage."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Route and aircraft dependent",
+      "amount": "Approval and airport-rate dependent",
       "currency": "USD",
-      "conditions": "Checked baggage exceeding size limits may incur oversize fees; acceptance subject to aircraft and airport handling limits",
+      "conditions": "Items over 158 cm need prior approval and are paid at airport rates, not prepaid",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://airastana.com/nld-en/information/additional-baggage",
-      "last_verified": "2025-12-24"
+      "source_url": "https://help.airastana.com/hc/en-gb/sections/4417879675666-Baggage-rules-and-regulations",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Oversize baggage is not simply an online add-on; Air Astana treats non-standard approved items as airport-handled charges."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Route and equipment dependent",
+      "currency": "USD",
+      "conditions": "Sports and special equipment requires prior approval and secure packing; airport charges may apply",
+      "applies_to": "Sports and special equipment",
+      "region_or_route": "Air Astana-operated routes",
+      "timing": "request before travel / airport",
+      "source_url": "https://help.airastana.com/hc/en-gb/sections/4417879675666-Baggage-rules-and-regulations",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports and special equipment can require prior booking/approval; accepted non-standard charges are handled at the airport."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Children under 2 without a seat have different baggage treatment; stroller return depends on airport handling",
+      "applies_to": "Children and infants",
+      "region_or_route": "All routes",
+      "timing": "at booking / airport",
+      "source_url": "https://help.airastana.com/hc/en-gb/articles/4417971904914-I-m-flying-with-a-baby-Can-I-use-a-baby-stroller-all-the-way-to-the-gangway",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "A stroller is free when traveling with a child; cabin stroller/crib limits and car-seat use depend on whether the infant has a seat."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Nomad Club Silver, Gold, and Diamond members receive extra baggage allowance by tier",
+      "applies_to": "Eligible Nomad Club members",
+      "region_or_route": "Air Astana-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://help.airastana.com/hc/en-gb/articles/4416950106386-What-are-the-baggage-allowance-privileges-for-Nomad-Club-members",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Nomad Club benefits are tiered: Silver adds one piece, while Gold/Diamond add two pieces, with cabin weight limits still applying."
+      }
     },
     {
       "category": "seat_selection",
@@ -69,18 +142,18 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://airastana.com/global-en/booking-manage/myseat",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
       "amount": "Fare-rule based",
       "currency": "USD",
-      "conditions": "Change and cancellation fees depend on fare rules, ticket type, and route; fare difference may apply",
+      "conditions": "Rebooking cost depends on fare rules, route, and timing; fare difference may apply",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://help.airastana.com/hc/en-gb/articles/6842167383186-I-want-to-change-my-flight-date-how-much-does-it-cost-to-rebook",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "unaccompanied_minor",
@@ -91,7 +164,7 @@
       "region_or_route": "Selected routes",
       "timing": "at booking",
       "source_url": "https://airastana.com/global-en/information/travelling-with-children",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

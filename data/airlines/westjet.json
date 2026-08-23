@@ -4,76 +4,146 @@
   "iata": "WS",
   "country": "Canada",
   "region": "North America",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "next_review_due": "2026-11-23",
+    "notes": "Gold review: WestJet baggage pricing depends on fare, region, ticket date, taxes, prepay/check-in/airport timing, UltraBasic carry-on restrictions, the highest-single-benefit rule, RBC card eligibility, and stacked sports-equipment fees. Prepaying online up to 24 hours before departure is the lowest-cost checked-bag path when available."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "CAD",
-      "conditions": "One carry-on bag and one personal item included; size and weight limits apply; enforcement may vary by aircraft",
+      "conditions": "UltraBasic is personal-item only except Europe/Asia or Extended Comfort; other fares include carry-on plus personal item",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.westjet.com/en-ca/baggage/carry-on",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.westjet.com/en-aw/baggage/carry-on",
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "checked_baggage",
       "amount": 0,
       "currency": "CAD",
-      "conditions": "First checked bag included on EconoFlex, Premium, and Business fares; allowance varies by route and fare brand",
+      "conditions": "Included checked bags depend on fare, cabin, route, ticket date, card/status benefit, and highest-benefit rule",
       "applies_to": "Eligible fares",
       "region_or_route": "Domestic, transborder, international",
       "timing": "each way",
-      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.westjet.com/en-us/flights/fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet applies the highest single baggage benefit that applies to the booking; benefits do not stack."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": 35,
+      "amount": "From 55 to 124",
       "currency": "CAD",
-      "conditions": "First checked bag fee on Econo fares; fees may vary by route",
+      "conditions": "First-bag price depends on fare, region, taxes, ticket date, and whether prepaid, online, or airport paid",
       "applies_to": "Econo fares",
-      "region_or_route": "Domestic and transborder",
+      "region_or_route": "Canada/U.S., Latin Caribbean/Mexico, Europe/Asia, other destinations",
       "timing": "each way",
-      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.westjet.com/en-us/flights/fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet publishes ranges because taxes vary by departure airport; prepaid online pricing is the cheapest tier, with check-in and airport purchase higher."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": 50,
+      "amount": "From 70 to 159",
       "currency": "CAD",
-      "conditions": "Second checked bag fee where not included; fees may vary by route",
+      "conditions": "Second-bag price depends on fare, region, taxes, ticket date, and payment timing",
       "applies_to": "Applicable fares",
-      "region_or_route": "Domestic and transborder",
+      "region_or_route": "Canada/U.S., Latin Caribbean/Mexico, Europe/Asia, other destinations",
       "timing": "each way",
-      "source_url": "https://www.westjet.com/en-ca/baggage/checked",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.westjet.com/en-us/flights/fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Third/fourth bags can be unavailable for UltraBasic prepay but available later at higher check-in or airport rates."
+      }
     },
-
+    {
+      "category": "status_exemption",
+      "amount": "Lower prepaid bag pricing or tier benefit",
+      "currency": "CAD",
+      "conditions": "WestJet Rewards bag benefits depend on tier, fare, route, and whether the member ID is on the booking",
+      "applies_to": "Eligible WestJet Rewards members",
+      "region_or_route": "WestJet-operated flights",
+      "timing": "booking / manage trips / check-in",
+      "source_url": "https://www.westjet.com/en-ca/rewards/tiers/teal",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet tier and card bag benefits apply instead of normal fare-type fees; multiple bag benefits do not combine."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "WestJet RBC World Elite primary cardholder and up to 8 guests get a first bag when payment and ID rules are met",
+      "applies_to": "Eligible WestJet RBC World Elite Mastercard cardholders",
+      "region_or_route": "Eligible WestJet bookings",
+      "timing": "at check-in",
+      "source_url": "https://www.westjet.com/en-ca/rewards/credit-cards/world-elite",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Primary cardholder Rewards ID must be on the reservation and the eligible card/payment rules must be met; partner, group, and third-party bookings can fall outside the benefit."
+      }
+    },
     {
       "category": "overweight_baggage",
-      "amount": "From 100 to 150",
+      "amount": "From 150 to 177",
       "currency": "CAD",
-      "conditions": "Overweight checked bag (23–32 kg); bags over 32 kg are not accepted",
+      "conditions": "Overweight bag fee applies from 23 to 32 kg; bags over 32 kg are not accepted",
       "applies_to": "All fares",
       "region_or_route": "Domestic, transborder, international",
       "timing": "at airport",
       "source_url": "https://www.westjet.com/en-ca/baggage/checked",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet publishes the same CAD 150-177 range for overweight charges; exact total varies by tax/departure airport."
+      }
     },
     {
       "category": "oversize_baggage",
-      "amount": "From 100 to 150",
+      "amount": "From 150 to 177",
       "currency": "CAD",
-      "conditions": "Oversize checked bag (over 158 cm L+W+H); acceptance subject to aircraft and airport handling limits",
+      "conditions": "Oversize bag fee applies over 158 cm linear; acceptance depends on aircraft and airport handling limits",
       "applies_to": "All fares",
       "region_or_route": "Domestic, transborder, international",
       "timing": "at airport",
       "source_url": "https://www.westjet.com/en-ca/baggage/checked",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet publishes the same CAD 150-177 range for oversize charges; sports equipment can also trigger handling fees."
+      }
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Standard bag fees plus possible handling fee",
+      "currency": "CAD",
+      "conditions": "Sports gear counts as checked baggage; extra, overweight, oversize, and handling fees can stack",
+      "applies_to": "Sports equipment and special checked items",
+      "region_or_route": "WestJet-operated flights",
+      "timing": "at airport",
+      "source_url": "https://www.westjet.com/en-ca/baggage/sports",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet can stack standard bag, extra-piece, overweight, oversize, and item handling charges for sports equipment."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 0,
@@ -83,7 +153,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.westjet.com/en-ca/flights/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -94,7 +164,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.westjet.com/en-ca/flights/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "seat_selection",
@@ -105,9 +175,8 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.westjet.com/en-ca/flights/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -117,7 +186,22 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "Lap infants get two equipment pieces free; fare-paying children get one equipment item beyond fare allowance",
+      "applies_to": "Lap-held infants and fare-paying children or infants",
+      "region_or_route": "WestJet-operated flights",
+      "timing": "gate check / check-in",
+      "source_url": "https://www.westjet.com/en-ca/baggage/allowance",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "WestJet baggage calculator does not apply to lap infants; child-equipment rules must be read separately."
+      }
     },
     {
       "category": "change_cancellation",
@@ -128,7 +212,7 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
     {
       "category": "change_cancellation",
@@ -139,9 +223,8 @@
       "region_or_route": "All routes",
       "timing": "after booking",
       "source_url": "https://www.westjet.com/en-ca/changes-cancellations",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 100,
@@ -151,7 +234,7 @@
       "region_or_route": "Domestic and international",
       "timing": "per direction",
       "source_url": "https://www.westjet.com/en-ca/children/unaccompanied-minor",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23"
     }
   ]
 }

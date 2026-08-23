@@ -4,39 +4,105 @@
   "iata": "QF",
   "country": "Australia",
   "region": "Oceania",
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-23",
+    "notes": "Gold review: Qantas baggage depends on domestic versus international market, Americas piece rules, pre-purchase eligibility, airport excess pricing, Qantas/oneworld status, QF-operated limits, interline rules, and the June 9, 2026 additional-baggage price increase.",
+    "next_review_due": "2026-11-23"
+  },
   "fees": [
     {
       "category": "checked_baggage",
-      "amount": 150,
+      "amount": 161,
       "currency": "AUD",
-      "conditions": "Airport excess baggage charge for each extra checked bag beyond the published allowance on Australian domestic flights",
+      "conditions": "Airport excess charge for each extra domestic Australia checked bag beyond allowance from 9 June 2026.",
       "applies_to": "All passengers",
       "region_or_route": "Domestic Australia",
       "timing": "at airport",
-      "source_url": "https://www.qantas.com/us/en/travel-info/baggage/additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qantas.com/en-au/baggage/pre-purchase-additional",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Qantas raised Australian domestic airport excess-bag charges from June 9, 2026; pre-purchase is usually cheaper when available.",
+        "notes": "Qantas states Additional Baggage prices increased from June 9, 2026 for Australian domestic and international flights, excluding Australian territory islands."
+      },
+      "effective_date": "2026-06-09"
     },
     {
       "category": "overweight_baggage",
-      "amount": 60,
+      "amount": 64,
       "currency": "AUD",
-      "conditions": "Airport heavy bag charge for each piece weighing over 23kg (50lbs) on Australian domestic flights",
+      "conditions": "Airport heavy charge for each domestic Australia piece over 23 kg and up to 32 kg.",
       "applies_to": "All passengers",
       "region_or_route": "Domestic Australia",
       "timing": "at airport",
-      "source_url": "https://www.qantas.com/us/en/travel-info/baggage/additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qantas.com/en-au/baggage/pre-purchase-additional",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "No single checked item may exceed 32 kg; heavy charges are separate from extra-piece charges on domestic itineraries.",
+        "notes": "Heavy charge is separate from extra-piece charge. No single checked item may exceed 32 kg."
+      }
+    },
+    {
+      "category": "oversize_baggage",
+      "amount": "Route and airport handling-specific",
+      "currency": "AUD",
+      "conditions": "Oversize or special baggage handling depends on route, aircraft, and item type; no single flat public fee applies",
+      "applies_to": "Checked items above ordinary baggage dimensions",
+      "region_or_route": "All routes",
+      "timing": "before travel / airport",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "ambiguous",
+        "notes": "Qantas publishes size limits and special-item guidance, but oversize treatment depends on item, aircraft, route, and whether freight is required."
+      }
     },
     {
       "category": "checked_baggage",
-      "amount": "Depends on route and weight increment",
+      "amount": "From A$21/kg international or A$315 per Americas piece",
       "currency": "AUD",
-      "conditions": "Pre-purchase additional baggage in weight increments; charges vary by route and weight increment",
+      "conditions": "Pre-purchase varies by route, cabin, status, and operator; airport rates differ by piece vs weight market",
       "applies_to": "All passengers",
       "region_or_route": "International / Domestic",
       "timing": "at booking",
-      "source_url": "https://www.qantas.com/agencyconnect/nz/en/policy-and-guidelines/baggage-information/pre-purchase-additional-baggage.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.qantas.com/en-au/baggage/pre-purchase-additional",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "Additional baggage is only available in advance for eligible Qantas-operated flights and is not available for many codeshare/interline situations.",
+        "notes": "Additional baggage can be bought in advance only on eligible Qantas-operated QF-code flights; codeshare, interline, and same-day partner connections can block pre-purchase."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Qantas Frequent Flyer, Qantas Club, and oneworld baggage benefits depend on route, cabin, and tier",
+      "applies_to": "Eligible Qantas Frequent Flyer, Qantas Club, and oneworld members",
+      "region_or_route": "Qantas-operated flights",
+      "timing": "each way",
+      "source_url": "https://www.qantas.com/en-au/baggage/checked",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Qantas status and Qantas Club allowances are not cumulative and apply only to specified Qantas-operated/QF-ticketed flights."
+      }
+    },
+    {
+      "category": "sports_equipment",
+      "amount": "Counts toward allowance; excess or freight charges may apply",
+      "currency": "AUD",
+      "conditions": "Sports equipment can be checked within allowance, but extra, oversize, or aircraft-limited items may cost more",
+      "applies_to": "Sports equipment and special checked items",
+      "region_or_route": "Qantas-operated flights",
+      "timing": "before travel / airport",
+      "source_url": "https://www.qantas.com/en-gb/baggage/sporting-equipment",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports equipment can count toward allowance, but extra pieces, weight, dimensions, and aircraft limits can still trigger charges or freight."
+      }
     },
     {
       "category": "change_cancellation",
@@ -47,7 +113,11 @@
       "region_or_route": "Domestic Australia",
       "timing": "before departure",
       "source_url": "https://www.qantas.com/au/en/book-a-trip/flights/schedule-of-fees.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qantas published baggage allowance, pre-purchase additional baggage, sporting equipment, and schedule-of-fees pages."
+      }
     },
     {
       "category": "change_cancellation",
@@ -58,29 +128,97 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.qantas.com/au/en/book-a-trip/flights/schedule-of-fees.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qantas published baggage allowance, pre-purchase additional baggage, sporting equipment, and schedule-of-fees pages."
+      }
     },
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "AUD",
-      "conditions": "Carry-on allowance included; size and weight limits apply per Qantas baggage policy",
+      "conditions": "Carry-on is included, but size, weight, and piece limits depend on route, cabin, and aircraft.",
       "applies_to": "All passengers",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Qantas carry-on is not a fee by default; enforcement risk comes from weight, dimensions, and aircraft/storage limits."
+      }
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "AUD",
+      "conditions": "Infant allowance depends on route; Qantas also allows free stroller, cot, and car-seat items",
+      "applies_to": "Infants under 2 and children 2-11",
+      "region_or_route": "Qantas-operated flights",
+      "timing": "at check-in",
+      "source_url": "https://www.qantas.com/en-au/baggage/checked",
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "International infant allowance differs on North/South America routes; free child items such as stroller, cot, and car seat remain separate from standard allowance."
+      }
     },
     {
       "category": "checked_baggage",
       "amount": "Depends on itinerary, cabin, and status",
       "currency": "AUD",
-      "conditions": "Free checked baggage allowance varies by itinerary, cabin class, and frequent flyer status",
+      "conditions": "Free checked allowance depends on itinerary, cabin, status, Qantas Club, and interline rules.",
       "applies_to": "All passengers",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-08-23",
+      "data_quality": {
+        "note": "For interline itineraries, the first flight number or U.S./Canada origin-destination rules can determine whose baggage rules apply.",
+        "notes": "The allowance shown during booking is decisive; U.S./Canada itineraries can use first-flight-number rules to determine whose baggage policy applies across the ticket."
+      }
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 0 to 64",
+      "currency": "USD",
+      "conditions": "Standard seat fee by route on or after July 1, 2026; complimentary in listed domestic, fare, cabin, status, and check-in cases",
+      "applies_to": "Qantas-operated flights where seat selection is chargeable",
+      "region_or_route": "International / domestic",
+      "timing": "after booking / manage booking / check-in",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qantas published baggage allowance, pre-purchase additional baggage, sporting equipment, and schedule-of-fees pages."
+      }
+    },
+    {
+      "category": "seat_selection",
+      "amount": "From 16 to 328",
+      "currency": "USD",
+      "conditions": "Economy Plus, extra legroom, bassinet, or forward seat fee by route on or after July 1, 2026",
+      "applies_to": "Paid seat products",
+      "region_or_route": "International / domestic",
+      "timing": "after booking / manage booking",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "last_verified": "2026-08-23",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Verified against Qantas published baggage allowance, pre-purchase additional baggage, sporting equipment, and schedule-of-fees pages."
+      }
+    }
+  ],
+  "policy_change_history": [
+    {
+      "category": "additional_baggage_price_increase_2026",
+      "effective_date": "2026-06-09",
+      "verified_date": "2026-08-23",
+      "source_url": "https://www.qantas.com/en-us/baggage/allowances-and-fees",
+      "summary": "Qantas states that Additional Baggage costs on Australian domestic and international flights increased from June 9, 2026, excluding flights to and from Australian territory islands."
     }
   ]
 }

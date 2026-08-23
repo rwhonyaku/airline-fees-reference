@@ -10,19 +10,29 @@
     ],
     "pro_hack": "If you are checking bags on Southwest, compare the bag fees against the fare upgrade. Choice Extra can be rational when the first two checked bags would otherwise be paid."
   },
+  "data_quality": {
+    "status": "active",
+    "gold_standard": true,
+    "source_depth": "gold",
+    "last_full_review": "2026-08-22",
+    "notes": "Priority airline gold pass refreshed against Southwest optional-fee, fare, card/status, military, sports, and infant pages. Key model: post-April 2026 fare type plus card/status/military exceptions replaced the old universal free-bags story."
+  },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carryon up to 10 x 16 x 24 inches plus one smaller personal item included",
+      "conditions": "Carryon plus personal item remain free across fare types; checked-bag benefits now vary by fare/status/card/military path",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest still includes normal carry-on access; the big 2026 change is paid checked bags for lower fare families."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 35,
@@ -32,7 +42,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -43,9 +57,12 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 35,
@@ -55,7 +72,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -66,7 +87,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -77,7 +102,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -88,7 +117,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -99,7 +132,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -110,7 +147,53 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
+    },
+    {
+      "category": "credit_card_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Rapid Rewards cardmember first-bag benefit requires RR number at booking and covers up to 8 same-reservation passengers",
+      "applies_to": "Eligible Rapid Rewards cardmembers",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-21",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The card benefit does not make the second bag free; Southwest’s table keeps second-bag pricing separate for cardmembers."
+      }
+    },
+    {
+      "category": "status_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "A-List first bag free; A-List Preferred first and second bags free, extending to up to 8 same-reservation passengers",
+      "applies_to": "Rapid Rewards A-List / A-List Preferred",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "military_exemption",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "Active-duty military customers receive first and second checked bags free",
+      "applies_to": "Eligible active-duty military customers",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest lists active-duty military separately from fare, status, and cardmember checked-bag benefits."
+      }
     },
     {
       "category": "checked_baggage",
@@ -121,7 +204,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -132,7 +219,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -143,7 +234,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -154,7 +249,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -165,7 +264,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -176,7 +279,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -187,7 +294,11 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
     {
       "category": "checked_baggage",
@@ -198,9 +309,12 @@
       "region_or_route": "All routes",
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
-      "last_verified": "2026-05-06"
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
-
     {
       "category": "checked_baggage",
       "amount": 150,
@@ -209,10 +323,13 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest checked-bag fees now depend on fare family, ticket/change date, and exception path such as Choice Extra, A-List, cardmember, or active-duty military."
+      }
     },
-
     {
       "category": "oversize_baggage",
       "amount": 200,
@@ -221,8 +338,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
@@ -232,8 +349,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "overweight_baggage",
@@ -243,8 +360,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22"
     },
     {
       "category": "oversize_baggage",
@@ -254,10 +371,24 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "one-way",
-      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22"
     },
-
+    {
+      "category": "sports_equipment",
+      "amount": "Standard bag fee plus any overweight fee",
+      "currency": "USD",
+      "conditions": "Sports equipment uses standard checked-bag fees; qualifying sports oversize fee waived up to 115 linear inches",
+      "applies_to": "Sports equipment",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "one-way",
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html?clk=HC_DOT_P2079_OptionalTravelCharges",
+      "last_verified": "2026-08-22",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Sports gear can still trigger standard bag and overweight fees; only the qualifying oversize charge is waived."
+      }
+    },
     {
       "category": "seat_selection",
       "amount": 0,
@@ -280,7 +411,6 @@
       "source_url": "https://www.southwest.com/fare-information/",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "change_cancellation",
       "amount": 0,
@@ -292,7 +422,6 @@
       "source_url": "https://www.southwest.com/fare-information/",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "same_day_change",
       "amount": 0,
@@ -315,7 +444,6 @@
       "source_url": "https://www.southwest.com/fare-information/",
       "last_verified": "2025-12-24"
     },
-
     {
       "category": "unaccompanied_minor",
       "amount": 100,
@@ -337,6 +465,30 @@
       "timing": "one-way",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
       "last_verified": "2025-12-24"
+    },
+    {
+      "category": "infant_child",
+      "amount": 0,
+      "currency": "USD",
+      "conditions": "One stroller and one child restraint system may be checked free when traveling with a child",
+      "applies_to": "Infants and children",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "each way",
+      "source_url": "https://support.southwest.com/helpcenter/s/article/flying-with-infants",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "infant_child",
+      "amount": "No separate bag allowance",
+      "currency": "USD",
+      "conditions": "Lap Child may not check or carry on baggage",
+      "applies_to": "Lap Child",
+      "region_or_route": "Southwest-operated flights",
+      "timing": "per flight",
+      "source_url": "https://support.southwest.com/helpcenter/s/article/flying-with-infants",
+      "last_verified": "2026-08-21",
+      "confidence": "confirmed"
     }
   ]
 }
