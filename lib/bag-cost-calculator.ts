@@ -61,13 +61,37 @@ export function firstString(v: string | string[] | undefined): string | undefine
 
 function feeOrdinalScore(row: FeeItem, ordinal: number): number {
   const cond = typeof row.conditions === "string" ? row.conditions.toLowerCase() : "";
-  if (ordinal === 1 && (cond.includes("first checked bag") || cond.includes("1st checked bag") || cond.includes("bag 1"))) {
+  if (ordinal === 1 && (
+    cond.includes("first checked bag") ||
+    cond.includes("1st checked bag") ||
+    cond.includes("1st standard checked bag") ||
+    cond.includes("first standard checked bag") ||
+    cond.includes("1st bag") ||
+    cond.includes("first bag") ||
+    cond.includes("bag 1")
+  )) {
     return 80;
   }
-  if (ordinal === 2 && (cond.includes("2nd checked bag") || cond.includes("second checked bag") || cond.includes("bag 2"))) {
+  if (ordinal === 2 && (
+    cond.includes("2nd checked bag") ||
+    cond.includes("second checked bag") ||
+    cond.includes("2nd standard checked bag") ||
+    cond.includes("second standard checked bag") ||
+    cond.includes("2nd bag") ||
+    cond.includes("second bag") ||
+    cond.includes("bag 2")
+  )) {
     return 80;
   }
-  if (ordinal === 3 && (cond.includes("3rd checked bag") || cond.includes("third checked bag") || cond.includes("bag 3"))) {
+  if (ordinal === 3 && (
+    cond.includes("3rd checked bag") ||
+    cond.includes("third checked bag") ||
+    cond.includes("3rd standard checked bag") ||
+    cond.includes("third standard checked bag") ||
+    cond.includes("3rd bag") ||
+    cond.includes("third bag") ||
+    cond.includes("bag 3")
+  )) {
     return 80;
   }
   return 0;
