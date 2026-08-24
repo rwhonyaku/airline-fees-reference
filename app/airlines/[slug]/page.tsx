@@ -59,6 +59,24 @@ type AirlineFaq = {
   answer: string;
 };
 
+const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
+  "air-france": {
+    h1: "Air France baggage fees: checked, extra, and overweight bags",
+    verdict:
+      "Air France baggage costs depend on the fare and itinerary. Additional bags may cost less when purchased online in advance, while overweight and oversized bags are priced at the airport for the specific route.",
+  },
+  "air-canada": {
+    h1: "Air Canada baggage fees by fare and route",
+    verdict:
+      "Air Canada includes a first checked bag on Standard and higher fares in the examples tracked here, while Basic domestic and transborder fares show a paid first bag. Compare the fare upgrade against the roundtrip bag cost before booking.",
+  },
+  zipair: {
+    h1: "ZIPAIR baggage fees and 7 kg carry-on allowance",
+    verdict:
+      "ZIPAIR includes 7 kg of combined cabin baggage, but checked bags are purchased separately by route and weight. Buying the right allowance before travel is the main way to avoid excess-weight charges at the airport.",
+  },
+};
+
 const TARGET_REFERENCE_SLUGS = new Set([
   "southwest",
   "american",
@@ -351,7 +369,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary rather than one universal online amount.",
     },
     verificationNote:
-      "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2025-12-24.",
+      "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2026-08-22.",
     avoidFees: [
       "If booking Basic, confirm whether the larger hand-baggage item is included or whether the Hand Baggage option is required before comparing the fare against a higher bundle.",
       "Buy additional baggage online at least 24 hours before departure when the route allows the discount; flights from or to Canada and the USA do not get a different online price.",
@@ -8444,15 +8462,15 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
   switch (slug) {
     case "air-canada":
       return {
-        title: "Air Canada Baggage Fees, Checked Bag Fees, and Basic Fare Rules (2026)",
+        title: "Air Canada Baggage Fees 2026: Checked Bag Costs by Fare",
         description:
-          "Air Canada baggage fees and checked bag fees depend on fare family and route. Standard and higher fares include the first checked bag, while Basic domestic/transborder examples show paid check-in baggage.",
+          "Check Air Canada baggage fees by fare and route, including first and second checked bags, Basic fare costs, overweight charges, and calculator links.",
       };
     case "air-france":
       return {
-        title: "Air France Baggage Charges, Fees, Prices, and Excess Baggage (2026)",
+        title: "Air France Baggage Fees 2026: Checked, Extra & Overweight Bags",
         description:
-          "Air France baggage charges depend on itinerary, fare, and purchase path. Learn how checked baggage, extra baggage, overweight, and oversized fees are priced.",
+          "Check Air France baggage fees by fare and route, including checked bags, extra baggage, overweight charges, and when buying online can cost less.",
       };
     case "alaska":
       return {
@@ -8468,9 +8486,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       };
     case "zipair":
       return {
-        title: "ZIPAIR Baggage Allowance, Checked Bag Fee, and Extra Baggage (2026)",
+        title: "ZIPAIR Baggage Fees 2026: 7 kg Carry-On & Checked Bags",
         description:
-          "ZIPAIR baggage allowance starts with a combined 7 kg cabin limit. Checked bag fees, Tokyo route baggage, and extra baggage costs depend on route, weight allowance, and timing.",
+          "ZIPAIR includes a combined 7 kg cabin allowance. Check route-based checked bag prices, extra baggage rules, overweight fees, and when advance purchase matters.",
       };
     default:
       return {
@@ -8565,6 +8583,7 @@ function ReferenceAirlinePage({
   const relatedGuides = content.relatedGuides ?? getDefaultRelatedGuides(slug);
   const numericCheckedBagFees = getNumericCheckedBagFees(fees);
   const faqJsonLd = airlineFaqJsonLd(slug);
+  const searchEntryCopy = SEARCH_ENTRY_COPY[slug];
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12">
@@ -8580,7 +8599,7 @@ function ReferenceAirlinePage({
               <span className="text-slate-900">{airline.name}</span>
             </nav>
             <h1 className="text-5xl font-black tracking-tight text-slate-900">
-              {airline.name} baggage fees and fare rules
+              {searchEntryCopy?.h1 ?? `${airline.name} baggage fees and fare rules`}
             </h1>
           </div>
           <div className="flex gap-3 rounded-lg border border-slate-200 bg-slate-100 p-3 text-xs font-mono">
@@ -8601,6 +8620,17 @@ function ReferenceAirlinePage({
         </div>
 
         <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} />
+
+        {searchEntryCopy ? (
+          <section className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+              The verdict
+            </div>
+            <p className="mt-2 max-w-4xl text-base font-semibold leading-relaxed text-slate-900">
+              {searchEntryCopy.verdict}
+            </p>
+          </section>
+        ) : null}
 
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
@@ -8716,7 +8746,15 @@ function ReferenceAirlinePage({
         </section>
 
         <section className="space-y-3">
-          <h3 className="text-xl font-bold text-slate-900">Checked baggage fees</h3>
+          <h3 className="text-xl font-bold text-slate-900">
+            {slug === "air-france"
+              ? "Air France checked baggage fees"
+              : slug === "air-canada"
+                ? "Air Canada checked baggage fees"
+                : slug === "zipair"
+                  ? "ZIPAIR checked baggage fees"
+                  : "Checked baggage fees"}
+          </h3>
           <p className="text-sm leading-relaxed text-slate-600">
             See also the <Link href="/fees/checked_baggage" className="underline">checked baggage fee reference</Link>. For a side-by-side baseline comparison, review{" "}
             <InlineComparisonLinks links={content.comparisonLinks} />.
@@ -8730,7 +8768,15 @@ function ReferenceAirlinePage({
 
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-3">
-            <h3 className="text-xl font-bold text-slate-900">Excess and overweight baggage</h3>
+            <h3 className="text-xl font-bold text-slate-900">
+              {slug === "air-france"
+                ? "Air France extra and overweight baggage costs"
+                : slug === "air-canada"
+                  ? "Air Canada overweight baggage charges"
+                  : slug === "zipair"
+                    ? "ZIPAIR extra and overweight baggage fees"
+                    : "Excess and overweight baggage"}
+            </h3>
             <FeeRowsTable
               rows={overweightRows}
               emptyMessage="No dedicated overweight-baggage row is shown for this airline yet."
