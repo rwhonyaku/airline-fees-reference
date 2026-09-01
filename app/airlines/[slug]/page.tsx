@@ -364,12 +364,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air France includes one small bag with maximum dimensions of 40 x 30 x 15 cm, even where the larger hand-baggage allowance depends on fare.",
       checkedBag:
-        "Air France baggage fees, charges, and prices depend on itinerary, fare, and when the bag is purchased, so this page does not pretend there is one flat first-bag price. If you are asking how much it costs to check a bag on Air France, first separate included allowance from an additional checked bag. Extra checked baggage is priced during purchase or in My Bookings, with an online discount at least 24 hours before departure except on flights from or to Canada and the USA, where the online and airport prices are the same.",
+        "Air France baggage fees depend on the operating carrier, itinerary, cabin, fare, and purchase channel. Premium can include up to two 23 kg checked bags depending on ticket conditions, while the published short- and medium-haul Business product includes two 32 kg bags. Economy allowance remains ticket-specific, so the booking confirmation is the controlling source.",
       restrictions:
-        "The fee traps are timing, fare family, and airport handling. Basic Economy can turn hand baggage into an add-on, Economy Light has seat-selection restrictions, and Air France excess baggage costs for overweight or oversized bags are airport-priced by itinerary rather than one universal online amount.",
+        "The main traps are assuming an Air France flight number means Air France baggage rules, treating a cabin maximum as a universal fare allowance, and waiting until the airport. Partner-operated segments can use different rules; additional bags are route-priced; overweight and oversized options are airport-only.",
     },
     verificationNote:
-      "Air France baggage, seat, change, and Kids Solo details shown here were last verified on 2026-08-22.",
+      "Air France baggage allowances, additional-bag purchase rules, and overweight/oversize limits shown here were checked against official Air France sources on 2026-08-31. Air France does not publish one universal extra-bag price, so route-specific amounts are intentionally not invented.",
     avoidFees: [
       "If booking Basic, confirm whether the larger hand-baggage item is included or whether the Hand Baggage option is required before comparing the fare against a higher bundle.",
       "Buy additional baggage online at least 24 hours before departure when the route allows the discount; flights from or to Canada and the USA do not get a different online price.",
@@ -383,6 +383,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/oversize_baggage", label: "Oversized baggage" },
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
+      { href: "/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes", label: "Checked baggage calculator" },
       { href: "/tools/excess-baggage-calculator?airline=air-france&bags=1&directions=2&weight=51&size=63", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
@@ -440,6 +441,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     exceptions: [
       "The additional-baggage online discount rule has an exception for flights from or to Canada and the USA, where the online price is the same as the airport price.",
+      "The Additional Baggage option does not cover lap infants, animals, or sports equipment; those use separate rules or rates.",
+      "For partner-operated or mixed-carrier itineraries, check the operating carrier. Air France says baggage allowances can differ and recommends following the strictest rule when segments differ.",
       "Passengers with reduced mobility, children traveling alone, listed Flying Blue status members, companions on the same booking, and Flex fares have free standard seat-selection treatment.",
       "Bags over 32 kg must be handled via cargo.",
       "No Air France co-branded credit-card baggage waiver is shown here.",
@@ -7370,6 +7373,11 @@ const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
       answer:
         "Air France lists an online discount for additional baggage bought at least 24 hours before departure, except on flights from or to Canada and the USA, where the online and airport prices are the same.",
     },
+    {
+      question: "What is Air France's international baggage allowance?",
+      answer:
+        "There is no single international allowance across every Air France ticket. The included number of checked bags depends on the cabin, fare, itinerary, and operating carrier. Air France says to use the baggage allowance shown on the ticket and to check partner-airline rules for partner-operated segments.",
+    },
   ],
   zipair: [
     {
@@ -8069,45 +8077,163 @@ function CompareNextPanel({ links }: { links: ReferenceLink[] }) {
 }
 
 function AirFranceBaggagePriceChecklist() {
+  const officialSources = [
+    {
+      href: "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      label: "Authorized baggage: weight, size, and allowance",
+      supports: "Cabin pieces, combined weights, dimensions, Basic-fare hand baggage, and partner-flight warning",
+    },
+    {
+      href: "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      label: "Extra, oversized, and overweight baggage options",
+      supports: "Purchase channels, 24-hour discount rule, 158/300 cm limits, and 32 kg ceiling",
+    },
+    {
+      href: "https://wwws.airfrance.us/information/legal/conditions-aba",
+      label: "Additional Baggage option terms",
+      supports: "Eligibility, exclusions, payment, connection treatment, and Flying Blue conditions",
+    },
+    {
+      href: "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
+      label: "Premium cabin benefits",
+      supports: "Up to two checked bags of 23 kg each, subject to ticket conditions",
+    },
+    {
+      href: "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
+      label: "Short- and medium-haul Business experience",
+      supports: "Two checked bags of 32 kg each on the published Business product",
+    },
+  ];
+
   return (
-    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
-      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        Air France baggage charges
+    <section className="space-y-6 rounded-3xl border border-blue-200 bg-blue-50 p-5 md:p-7">
+      <div>
+        <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+          Answer first
+        </div>
+        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+          What will Air France charge me for baggage?
+        </h2>
+        <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+          Air France does not publish one baggage price that works for every ticket. First check the
+          included allowance on your booking; then price an additional bag for the exact itinerary.
+          Extra bags can be bought online, but overweight and oversized bags are priced and paid for
+          at the airport.
+        </p>
       </div>
-      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        How much does Air France charge for baggage?
-      </h2>
-      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        Air France does not use one universal baggage price for every traveler. The useful answer depends on whether your fare already includes checked baggage, whether you are buying an additional bag, or whether the bag is excess baggage because it is overweight or oversized. The charge usually comes from the itinerary, fare family, purchase path, and airport handling rules.
-      </p>
-      <div className="mt-4 grid gap-3 md:grid-cols-2">
-        {[
-          {
-            title: "Air France baggage fees",
-            body: "Start by checking whether your route and fare include a checked-bag allowance before looking for an add-on price.",
-          },
-          {
-            title: "Air France baggage price",
-            body: "Additional checked baggage is priced during purchase or in My Bookings, so the useful price is route- and fare-specific.",
-          },
-          {
-            title: "Air France excess baggage fees",
-            body: "Overweight and oversized bags are airport-priced by itinerary; bags over 32 kg move to cargo instead of normal checked baggage.",
-          },
-          {
-            title: "Online versus airport purchase",
-            body: "An online discount can apply at least 24 hours before departure, except flights from or to Canada and the USA use the same online and airport price.",
-          },
-        ].map((item) => (
-          <div key={item.title} className="rounded-xl border border-blue-100 bg-white p-4">
-            <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-              {item.title}
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.body}</p>
-          </div>
-        ))}
+
+      <div className="overflow-x-auto rounded-2xl border border-blue-100 bg-white">
+        <table className="min-w-[680px] w-full border-collapse text-left text-sm">
+          <thead className="border-b border-slate-200 bg-slate-50 text-slate-900">
+            <tr>
+              <th className="px-4 py-3">Situation</th>
+              <th className="px-4 py-3">What Air France publishes</th>
+              <th className="px-4 py-3">Where the price comes from</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-slate-700">
+            <tr>
+              <td className="px-4 py-3 font-bold text-slate-950">Included checked baggage</td>
+              <td className="px-4 py-3">Varies by ticket, fare, cabin, itinerary, and operating carrier.</td>
+              <td className="px-4 py-3">Your booking confirmation or My Bookings.</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-bold text-slate-950">Additional checked bag</td>
+              <td className="px-4 py-3">Up to 23 kg in Economy/Premium or 32 kg in Business/La Première; maximum 158 cm total dimensions.</td>
+              <td className="px-4 py-3">Displayed during booking or in My Bookings for the itinerary.</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-bold text-slate-950">Overweight bag</td>
+              <td className="px-4 py-3">Above the ticketed weight allowance, but no more than 32 kg.</td>
+              <td className="px-4 py-3">Itinerary-based price, paid at the airport.</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-bold text-slate-950">Oversized bag</td>
+              <td className="px-4 py-3">Over 158 cm and no more than 300 cm total dimensions.</td>
+              <td className="px-4 py-3">Itinerary-based price, paid at the airport.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+
+      <div>
+        <h3 className="text-lg font-black text-slate-950">Published allowance by cabin</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">
+          These are cabin limits Air France publishes, not a promise that every fare includes the
+          maximum. The ticket remains controlling.
+        </p>
+        <div className="mt-3 overflow-x-auto rounded-2xl border border-blue-100 bg-white">
+          <table className="min-w-[720px] w-full border-collapse text-left text-sm">
+            <thead className="border-b border-slate-200 bg-slate-50 text-slate-900">
+              <tr>
+                <th className="px-4 py-3">Cabin / fare</th>
+                <th className="px-4 py-3">Cabin baggage</th>
+                <th className="px-4 py-3">Checked baggage evidence</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tr>
+                <td className="px-4 py-3 font-bold text-slate-950">Economy</td>
+                <td className="px-4 py-3">0–1 hand bag by fare + 1 small bag; 12 kg combined.</td>
+                <td className="px-4 py-3">Ticket-specific. An additional standard bag may weigh up to 23 kg.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-bold text-slate-950">Economy Basic</td>
+                <td className="px-4 py-3">Small bag included; eligible routes can require a paid Hand Baggage option for the overhead bag.</td>
+                <td className="px-4 py-3">Ticket-specific; do not infer a checked bag from the cabin name.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-bold text-slate-950">Premium</td>
+                <td className="px-4 py-3">2 hand bags + 1 small bag; 12 kg combined.</td>
+                <td className="px-4 py-3">Up to 2 checked bags of 23 kg each, depending on ticket conditions.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-bold text-slate-950">Business</td>
+                <td className="px-4 py-3">2 hand bags + 1 small bag; 18 kg combined.</td>
+                <td className="px-4 py-3">Published short/medium-haul product: 2 checked bags of 32 kg each.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-bold text-slate-950">La Première</td>
+                <td className="px-4 py-3">2 hand bags + 1 small bag; 18 kg combined.</td>
+                <td className="px-4 py-3">Ticket-specific here; an additional bag may weigh up to 32 kg.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-bold text-slate-950">Buy early when the route qualifies</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Additional bags bought online by card at least 24 hours before departure may be cheaper.
+            Flights to or from Canada and the United States use the same online and airport price.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-bold text-slate-950">Check the operating carrier</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            These allowances apply to Air France-operated flights. On a partner-operated or mixed
+            itinerary, Air France says the allowance may differ and recommends following the strictest rule.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-bold text-slate-950">Additional-bag exclusions</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            The standard Additional Baggage option is not sold for lap infants, animals, or sports
+            equipment. Separate conditions or rates apply.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-bold text-slate-950">Hard acceptance limits</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Bags above 32 kg or 300 cm total dimensions move outside ordinary checked baggage and
+            require Air France Cargo handling.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3 text-sm">
         <Link
           href="/tools/checked-baggage-calculator?airline=air-france&travelers=1&bags=1&directions=2&trips=1&pay=yes"
           className="font-bold text-blue-800 underline"
@@ -8126,6 +8252,26 @@ function AirFranceBaggagePriceChecklist() {
         <Link href="/fees/checked_baggage" className="font-bold text-blue-800 underline">
           Compare checked baggage fees
         </Link>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5">
+        <h3 className="font-black text-slate-950">Official sources and method</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">
+          Last reviewed 2026-08-31. Values below come from Air France-published pages. Where Air
+          France exposes a price only after route and fare selection, this page reports the lookup
+          method instead of a fabricated universal amount. No effective date is shown because these
+          source pages do not publish one for the current rules.
+        </p>
+        <ul className="mt-4 space-y-3 text-sm text-slate-700">
+          {officialSources.map((source) => (
+            <li key={source.href} className="border-l-4 border-slate-200 pl-4">
+              <a href={source.href} target="_blank" rel="noreferrer" className="font-bold text-blue-800 underline">
+                {source.label}
+              </a>
+              <span className="block mt-1">{source.supports}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -8471,6 +8617,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         title: "Air France Baggage Fees 2026: Checked, Extra & Overweight Bags",
         description:
           "Check Air France baggage fees by fare and route, including checked bags, extra baggage, overweight charges, and when buying online can cost less.",
+        alternates: {
+          canonical: canonical("/airlines/air-france"),
+        },
       };
     case "alaska":
       return {
@@ -8586,7 +8735,7 @@ function ReferenceAirlinePage({
   const searchEntryCopy = SEARCH_ENTRY_COPY[slug];
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12">
+    <main className={`mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12 ${slug === "air-france" ? "min-w-0 max-w-full overflow-x-hidden" : ""}`}>
       {faqJsonLd ? <JsonLd data={faqJsonLd} /> : null}
       <header className="space-y-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -8632,37 +8781,41 @@ function ReferenceAirlinePage({
           </section>
         ) : null}
 
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-          <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-            Answer-first summary
+        {slug === "air-france" ? (
+          <AirFranceBaggagePriceChecklist />
+        ) : (
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
+            <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+              Answer-first summary
+            </div>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  Carry-on allowance
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.carryOn)}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  Personal item rules
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.personalItem)}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  Checked bag baseline
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.checkedBag)}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  Notable restrictions
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.restrictions)}</p>
+              </div>
+            </div>
           </div>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                Carry-on allowance
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.carryOn)}</p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                Personal item rules
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.personalItem)}</p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                Checked bag baseline
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.checkedBag)}</p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                Notable restrictions
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.restrictions)}</p>
-            </div>
-          </div>
-        </div>
+        )}
 
         <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
           <BagCostTeaser
@@ -8690,7 +8843,6 @@ function ReferenceAirlinePage({
         </section>
       ) : null}
 
-      {slug === "air-france" ? <AirFranceBaggagePriceChecklist /> : null}
       {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
       {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}

@@ -8,23 +8,79 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-22",
-    "notes": "Priority airline gold pass refreshed against Air France extra/overweight/oversize baggage, Flying Blue, seat, infant, and Kids Solo sources. Key model: fare/cabin allowance plus online-vs-airport option timing and Flying Blue tier."
+    "last_full_review": "2026-08-31",
+    "notes": "Gold-standard review refreshed against Air France cabin allowance, Premium and short/medium-haul Business allowance, additional-baggage terms, and extra/overweight/oversize baggage sources. Exact bag prices remain itinerary-, fare-, currency-, and purchase-channel dependent."
   },
+  "baggage_allowance_evidence": [
+    {
+      "cabin": "Premium",
+      "included_checked_bags": "Up to 2 pieces, depending on ticket conditions",
+      "max_weight_kg_per_piece": 23,
+      "route_scope": "Air France-operated flights where the Premium product is offered",
+      "source_url": "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
+      "source_name": "Air France Premium cabin benefits",
+      "last_verified": "2026-08-31"
+    },
+    {
+      "cabin": "Business",
+      "included_checked_bags": "2 pieces",
+      "max_weight_kg_per_piece": 32,
+      "route_scope": "Air France short- and medium-haul flights",
+      "source_url": "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
+      "source_name": "Air France short- and medium-haul Business experience",
+      "last_verified": "2026-08-31"
+    }
+  ],
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Cabin allowance depends on fare and cabin; Basic may include only a small underseat bag unless hand baggage option is added",
-      "applies_to": "All fares",
+      "conditions": "0 to 1 hand baggage item by fare, plus 1 small bag; combined maximum 12 kg. Hand baggage maximum 55 x 35 x 25 cm.",
+      "applies_to": "Economy cabin",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "per flight",
-      "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2026-08-22",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "source_name": "Air France authorized baggage: weight, size, and allowance",
+      "last_verified": "2026-08-31",
+      "calc": {
+        "max_weight_kg": 12
+      },
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air France Basic is the key carry-on exception: the Hand Baggage option can be purchased up to 4 hours before departure."
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "2 hand baggage items plus 1 small bag; combined maximum 12 kg. Each hand baggage item may measure up to 55 x 35 x 25 cm.",
+      "applies_to": "Premium cabin",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "source_name": "Air France authorized baggage: weight, size, and allowance",
+      "last_verified": "2026-08-31",
+      "confidence": "confirmed",
+      "calc": {
+        "max_weight_kg": 12
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "2 hand baggage items plus 1 small bag; combined maximum 18 kg. Each hand baggage item may measure up to 55 x 35 x 25 cm.",
+      "applies_to": "Business and La Première cabins",
+      "region_or_route": "All routes (Air France-operated flights)",
+      "timing": "per flight",
+      "source_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "source_name": "Air France authorized baggage: weight, size, and allowance",
+      "last_verified": "2026-08-31",
+      "confidence": "confirmed",
+      "calc": {
+        "max_weight_kg": 18
       }
     },
     {
@@ -36,18 +92,21 @@
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at booking / manage booking",
       "source_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2025-12-24"
+      "source_name": "Air France additional baggage and hand baggage options",
+      "last_verified": "2026-08-31"
     },
     {
       "category": "checked_baggage",
       "amount": "Shown during booking / My Bookings",
       "currency": "EUR",
-      "conditions": "Additional checked bag price is shown during booking/My Bookings; online discount may apply if bought 24h+ early",
+      "conditions": "Price shown during booking or My Bookings; online card purchase at least 24 hours before departure may be discounted.",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at booking / manage booking / online check-in",
       "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2026-08-22",
+      "source_name": "Air France additional baggage option terms",
+      "last_verified": "2026-08-31",
+      "notes": "The Additional Baggage option excludes lap infants, animals, and sports equipment; separate rules or rates apply.",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air France prices additional baggage by itinerary and timing. Canada/U.S. routes are an exception where online and airport price can be the same."
@@ -62,7 +121,12 @@
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at airport",
       "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2026-08-22"
+      "source_name": "Air France extra, oversized, and overweight baggage options",
+      "last_verified": "2026-08-31",
+      "confidence": "confirmed",
+      "calc": {
+        "max_linear_cm": 300
+      }
     },
     {
       "category": "overweight_baggage",
@@ -73,7 +137,12 @@
       "region_or_route": "All routes (Air France-operated flights)",
       "timing": "at airport",
       "source_url": "https://wwws.airfrance.fr/en/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      "last_verified": "2026-08-22"
+      "source_name": "Air France extra, oversized, and overweight baggage options",
+      "last_verified": "2026-08-31",
+      "confidence": "confirmed",
+      "calc": {
+        "max_weight_kg": 32
+      }
     },
     {
       "category": "seat_selection",
