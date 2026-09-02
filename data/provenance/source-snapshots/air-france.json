@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0-pilot",
+  "dataset_id": "air-france.baggage-policy.pilot",
+  "checks": [
+    {
+      "check_id": "check.src.air-france.authorized-baggage.2026-09-01.222e7107ce6e",
+      "source_id": "src.air-france.authorized-baggage",
+      "requested_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "fetched_url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "checked_at": "2026-09-01",
+      "sha256": "222e7107ce6e82949f4b7584ca5ed6ca74f612b624d509f32baa65fa2962f985",
+      "normalized_character_count": 6449
+    },
+    {
+      "check_id": "check.src.air-france.extra-baggage.2026-09-01.8e9bf9e30399",
+      "source_id": "src.air-france.extra-baggage",
+      "requested_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "fetched_url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "checked_at": "2026-09-01",
+      "sha256": "8e9bf9e303999b660ef3223cff7fae07333071d012f5c71a229e7bbb4acf9959",
+      "normalized_character_count": 6788
+    },
+    {
+      "check_id": "check.src.air-france.additional-baggage-terms.2026-09-01.1bcb63a7e76a",
+      "source_id": "src.air-france.additional-baggage-terms",
+      "requested_url": "https://wwws.airfrance.us/information/legal/conditions-aba",
+      "fetched_url": "https://wwws.airfrance.us/information/legal/conditions-aba",
+      "checked_at": "2026-09-01",
+      "sha256": "1bcb63a7e76af83bee02f9cb6527bdb1694338dcdbf3a75861e807c63d301991",
+      "normalized_character_count": 12817
+    },
+    {
+      "check_id": "check.src.air-france.premium-cabin.2026-09-01.e970041dd9cb",
+      "source_id": "src.air-france.premium-cabin",
+      "requested_url": "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
+      "fetched_url": "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
+      "checked_at": "2026-09-01",
+      "sha256": "e970041dd9cb955adfb31cda9dc8ca434fe2cd72d76a3782e198413711dbfa27",
+      "normalized_character_count": 4684
+    },
+    {
+      "check_id": "check.src.air-france.business-short-medium.2026-09-01.855e849d82fd",
+      "source_id": "src.air-france.business-short-medium",
+      "requested_url": "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
+      "fetched_url": "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
+      "checked_at": "2026-09-01",
+      "sha256": "855e849d82fd81b47dd93f76f4521fd32ae632edb20b4442162a896ae005d2f0",
+      "normalized_character_count": 3758
+    }
+  ]
+}

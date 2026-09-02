@@ -128,7 +128,9 @@ function main() {
     process.exit(1);
   }
 
-  const files = fs.readdirSync(PROVENANCE_DIR).filter((file) => file.endsWith(".json"));
+  const files = fs
+    .readdirSync(PROVENANCE_DIR)
+    .filter((file) => file.endsWith(".json") && file !== "review-queue.json");
   let failed = false;
   for (const file of files.sort()) {
     const errors = validateFile(file);

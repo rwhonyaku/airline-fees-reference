@@ -12,6 +12,8 @@ import { AIRLINE_STRATEGY, isCoreAirline } from "@/lib/airline-strategy";
 import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
 import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
+import { buildProvenanceSummary } from "@/lib/provenance-summary.mjs";
+import airFranceProvenance from "@/data/provenance/air-france.json";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -8077,33 +8079,8 @@ function CompareNextPanel({ links }: { links: ReferenceLink[] }) {
 }
 
 function AirFranceBaggagePriceChecklist() {
-  const officialSources = [
-    {
-      href: "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
-      label: "Authorized baggage: weight, size, and allowance",
-      supports: "Cabin pieces, combined weights, dimensions, Basic-fare hand baggage, and partner-flight warning",
-    },
-    {
-      href: "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
-      label: "Extra, oversized, and overweight baggage options",
-      supports: "Purchase channels, 24-hour discount rule, 158/300 cm limits, and 32 kg ceiling",
-    },
-    {
-      href: "https://wwws.airfrance.us/information/legal/conditions-aba",
-      label: "Additional Baggage option terms",
-      supports: "Eligibility, exclusions, payment, connection treatment, and Flying Blue conditions",
-    },
-    {
-      href: "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
-      label: "Premium cabin benefits",
-      supports: "Up to two checked bags of 23 kg each, subject to ticket conditions",
-    },
-    {
-      href: "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
-      label: "Short- and medium-haul Business experience",
-      supports: "Two checked bags of 32 kg each on the published Business product",
-    },
-  ];
+  const verification = buildProvenanceSummary(airFranceProvenance);
+  const statusLabel = verification.verificationStatus === "verified" ? "Verified" : "Needs review";
 
   return (
     <section className="space-y-6 rounded-3xl border border-blue-200 bg-blue-50 p-5 md:p-7">
@@ -8255,20 +8232,50 @@ function AirFranceBaggagePriceChecklist() {
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white p-5">
-        <h3 className="font-black text-slate-950">Official sources and method</h3>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+              {statusLabel}
+            </div>
+            <h3 className="mt-1 font-black text-slate-950">Sources and verification</h3>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-bold">
+            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-900">
+              Last verified {verification.lastVerified}
+            </span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">
+              {verification.verifiedClaimCount} verified claims
+            </span>
+          </div>
+        </div>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
-          Last reviewed 2026-08-31. Values below come from Air France-published pages. Where Air
-          France exposes a price only after route and fare selection, this page reports the lookup
-          method instead of a fabricated universal amount. No effective date is shown because these
-          source pages do not publish one for the current rules.
+          Checked against Air France-published information. Coverage includes {verification.coverage.join(", ")}.
+          Where Air France exposes a price only after route and fare selection, this page reports the
+          lookup method instead of inventing a universal amount. The current sources do not publish
+          one effective date for all of these rules.
         </p>
+        {verification.reviewItems.length > 0 ? (
+          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+            {verification.reviewItems.length} policy claim{verification.reviewItems.length === 1 ? " is" : "s are"} under review.
+            Previously verified information remains visible until the review is complete.
+          </div>
+        ) : null}
+        <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
+          {verification.coverage.map((category) => (
+            <span key={category} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">
+              {category}
+            </span>
+          ))}
+        </div>
         <ul className="mt-4 space-y-3 text-sm text-slate-700">
-          {officialSources.map((source) => (
-            <li key={source.href} className="border-l-4 border-slate-200 pl-4">
-              <a href={source.href} target="_blank" rel="noreferrer" className="font-bold text-blue-800 underline">
-                {source.label}
+          {verification.officialSources.map((source) => (
+            <li key={source.sourceId} className="border-l-4 border-slate-200 pl-4">
+              <a href={source.url} target="_blank" rel="noreferrer" className="font-bold text-blue-800 underline">
+                {source.title}
               </a>
-              <span className="block mt-1">{source.supports}</span>
+              <span className="mt-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {source.classification === "primary_policy_source" ? "Primary policy source" : "Supporting official source"}
+              </span>
             </li>
           ))}
         </ul>

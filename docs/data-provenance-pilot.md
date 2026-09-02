@@ -60,10 +60,45 @@ Run:
 ```sh
 pnpm run validate:provenance
 pnpm run test:provenance
+pnpm run test:provenance-summary
 ```
 
 The validator checks identifiers, revision ordering, official-source ownership, source hierarchy, evidence references, date formats, verification requirements, and duplicate records.
 The test simulates an automation-detected policy change in memory. It confirms that the previous verified revision is retained, the proposal is not publishable, automated approval fails, and broken revision lineage is rejected. The synthetic value is never written to the fixture.
+
+## Read-only summary adapter
+
+`lib/provenance-summary.mjs` validates a dataset before producing any output. Its publishable claim list contains only verified revisions. Review items expose identifiers and workflow status, but never the unverified assertion value.
+
+Page-level status is deterministic:
+
+- `verified`: every latest revision is verified
+- `review_pending`: at least one proposed change is waiting for review
+- `needs_recheck`: at least one claim is marked `needs_recheck` or `source_changed`
+- `unable_to_verify`: at least one claim cannot currently be verified
+
+A pending proposal or changed source leaves the preceding verified revision available and marks it as having a newer review item. This supports a future public caution without replacing a known verified fact with an unreviewed assertion.
+
+Source labels are also deterministic. Hierarchy ranks 1–3 are `primary_policy_source`; other Air France-published sources are `supporting_official_source`.
+
+## Source monitoring and review queue
+
+`scripts/monitor-provenance-sources.mjs` fetches official sources and fingerprints normalized readable text. Scripts, styles, SVG, comments, tags, and whitespace do not affect the fingerprint. The monitor never edits policy claims.
+
+Commands:
+
+```sh
+pnpm run test:provenance-monitor
+pnpm run monitor:provenance
+pnpm run monitor:provenance:write
+node scripts/monitor-provenance-sources.mjs --initialize
+```
+
+The default command is a dry run. `--initialize` creates missing baselines without creating review items. `--write` appends source checks and creates an open review item when a fingerprint differs from the latest stored check.
+
+Snapshot checks live under `data/provenance/source-snapshots/`. Review items live in `data/provenance/review-queue.json`. Both use deterministic identifiers so retrying the same observation does not create duplicates.
+
+A review item records hashes, check identifiers, affected claim identifiers, and the required reviewer action. It deliberately does not copy observed wording into a policy assertion. A human must inspect the source and append a verified claim revision separately.
 
 ## Deliberate limitations
 
