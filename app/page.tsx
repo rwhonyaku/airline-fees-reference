@@ -4,7 +4,7 @@ import { getAirlinesIndex } from "@/lib/data";
 import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
 
 export default function HomePage() {
-  const airlines = getAirlinesIndex();
+  const airlines = getAirlinesIndex().filter((airline) => airline.slug !== "spirit");
   const previewAirlines = airlines.slice(0, 12);
 
   return (
@@ -55,6 +55,19 @@ export default function HomePage() {
               Methodology
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="mb-16 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+        <div className="flex flex-col gap-3 text-sm text-slate-700 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <span>Official airline sources</span>
+            <span>Date-stamped policy records</span>
+            <span>Uncertain prices clearly labeled</span>
+          </div>
+          <Link href="/methodology" className="shrink-0 font-bold text-blue-700 underline">
+            How verification works
+          </Link>
         </div>
       </section>
 

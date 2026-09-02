@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-slate-50 text-slate-900 antialiased">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Navigation */}
-          <nav className="flex items-center justify-between py-6 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 px-4 rounded-b-xl shadow-sm">
+          <nav className="sticky top-0 z-50 flex flex-col items-start justify-between gap-4 rounded-b-xl border-b border-slate-200 bg-white/90 px-4 py-5 shadow-sm backdrop-blur-md sm:flex-row sm:items-center">
             <Link href="/" className="group flex items-center gap-2">
               <div className="bg-blue-600 p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors">
                 <span className="text-white font-bold text-xl leading-none" aria-hidden="true">✈</span>
@@ -59,15 +59,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </span>
             </Link>
 
-            <div className="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
-              <Link href="/guides/basic-economy-traps" className="hover:text-blue-600">
-                Basic Economy Guide
+            <div className="flex w-full gap-5 overflow-x-auto pb-1 text-sm font-semibold text-slate-600 sm:w-auto sm:pb-0 md:gap-6">
+              <Link href="/airlines" className="hover:text-blue-600">
+                Airlines
+              </Link>
+              <Link href="/fees" className="hover:text-blue-600">
+                Fees &amp; Baggage
               </Link>
               <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600">
-                Bag Calculator
+                Calculators
               </Link>
-              <Link href="/sizer-rules" className="hover:text-blue-600">
-                Sizer Rules
+              <Link href="/passenger-rights/eu261" className="hover:text-blue-600">
+                Passenger Rights
               </Link>
             </div>
           </nav>
@@ -82,54 +85,48 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
             {/* Related planning tools */}
             <aside className="lg:col-span-4 space-y-6">
-              <div className="bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl p-6 text-white shadow-xl shadow-blue-200/50">
-                <h3 className="text-xl font-bold mb-2">Never Pay For Bags Again</h3>
-                <p className="text-blue-100 text-sm mb-6">
-                  Estimate your checked-bag bill, then compare cards only when the savings justify it.
+              <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 shadow-sm">
+                <h3 className="mb-2 text-xl font-bold text-slate-950">Could a card benefit offset your bag fees?</h3>
+                <p className="mb-6 text-sm leading-relaxed text-slate-700">
+                  Compare recurring checked-bag savings with the card&apos;s annual fee. Points and unrelated perks are excluded.
                 </p>
                 <Link
-                  href="/tools/checked-baggage-calculator"
-                  className="block w-full py-3 bg-white text-blue-700 font-bold text-center rounded-xl hover:bg-blue-50 transition-colors"
+                  href="/best-cards"
+                  className="block w-full rounded-xl border border-blue-300 bg-white py-3 text-center font-bold text-blue-800 transition-colors hover:border-blue-500"
                 >
-                  Price Your Bags
+                  Check bag-fee math
                 </Link>
               </div>
 
               <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
                 <h4 className="font-bold text-slate-900 mb-4">Useful Fee References</h4>
-                <ul className="space-y-3 text-sm text-slate-600">
-                  <li className="flex gap-2">
-                    ✅{" "}
+                <ul className="divide-y divide-slate-100 text-sm text-slate-600">
+                  <li className="py-3 first:pt-0">
                     <Link href="/sizer-rules" className="hover:text-blue-600 underline">
                       Sizer enforcement guide
                     </Link>
                   </li>
-                  <li className="flex gap-2">
-                    ✅{" "}
+                  <li className="py-3">
                     <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600 underline">
                       Checked baggage calculator
                     </Link>
                   </li>
-                  <li className="flex gap-2">
-                    ✅{" "}
+                  <li className="py-3">
                     <Link href="/tools/excess-baggage-calculator" className="hover:text-blue-600 underline">
                       Overweight and oversize calculator
                     </Link>
                   </li>
-                  <li className="flex gap-2">
-                    ✅{" "}
+                  <li className="py-3">
                     <Link href="/best-cards" className="hover:text-blue-600 underline">
-                      Free checked bag calculator
+                      Card bag-benefit calculator
                     </Link>
                   </li>
-                  <li className="flex gap-2">
-                    ✅{" "}
+                  <li className="py-3">
                     <Link href="/airlines" className="hover:text-blue-600 underline">
                       Airline fee guides
                     </Link>
                   </li>
-                  <li className="flex gap-2">
-                    ✅{" "}
+                  <li className="pt-3">
                     <Link href="/guides/travel-esims" className="hover:text-blue-600 underline">
                       Travel eSIM decision guide
                     </Link>
