@@ -9,9 +9,12 @@ export type ProvenanceSourceSummary = {
 };
 
 export type ProvenanceReviewItem = {
-  claimId: string;
+  origin: "claim_revision" | "source_monitor";
+  reviewId?: string;
+  claimId: string | null;
+  affectedClaimIds?: string[];
   category: string;
-  revisionId: string;
+  revisionId: string | null;
   status: "needs_recheck" | "source_changed" | "potential_change_detected" | "unable_to_verify";
   detectedAt: string;
 };
@@ -42,4 +45,4 @@ export type ProvenanceSummary = {
   publishableClaims: PublishableProvenanceClaim[];
 };
 
-export function buildProvenanceSummary(dataset: unknown): ProvenanceSummary;
+export function buildProvenanceSummary(dataset: unknown, reviewQueue?: unknown): ProvenanceSummary;

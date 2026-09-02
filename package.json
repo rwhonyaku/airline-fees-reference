@@ -13,8 +13,10 @@
     "test:provenance": "node tests/provenance-pilot.mjs",
     "test:provenance-summary": "node tests/provenance-summary.mjs",
     "test:provenance-monitor": "node tests/provenance-monitor.mjs",
+    "test:provenance-review": "node tests/provenance-review.mjs",
     "monitor:provenance": "node scripts/monitor-provenance-sources.mjs",
     "monitor:provenance:write": "node scripts/monitor-provenance-sources.mjs --write",
+    "review:provenance": "node scripts/review-provenance.mjs",
     "audit:data-gold": "node scripts/audit-gold-airline-data.mjs",
     "new:airline": "node scripts/new-airline.mjs",
     "publish:prod": "sh scripts/publish-prod.sh"

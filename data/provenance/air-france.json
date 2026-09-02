@@ -22,7 +22,8 @@
       "title": "Authorized baggage: weight, size, and allowance",
       "url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
       "locale": "en-US",
-      "accessed_at": "2026-08-31"
+      "accessed_at": "2026-08-31",
+      "monitoring": { "policy_regions": [{ "region_id": "cabin-allowance", "start_marker": "This information is for reference only and applies only to flights operated by Air France.", "end_marker": "You can carry liquids, pastes, and creams in the cabin", "claim_ids": ["air-france.cabin.economy-allowance", "air-france.cabin.premium-allowance", "air-france.cabin.business-first-allowance", "air-france.itinerary.operating-carrier-qualification"] }] }
     },
     {
       "source_id": "src.air-france.extra-baggage",
@@ -32,7 +33,8 @@
       "title": "Extra, oversized, and overweight baggage options",
       "url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
       "locale": "en-US",
-      "accessed_at": "2026-08-31"
+      "accessed_at": "2026-08-31",
+      "monitoring": { "policy_regions": [{ "region_id": "baggage-options", "start_marker": "Our Baggage options", "end_marker": "Customer service Customer service", "claim_ids": ["air-france.basic.hand-baggage-option", "air-france.additional-bag.standard-limits", "air-france.additional-bag.price-lookup", "air-france.additional-bag.advance-purchase", "air-france.overweight.acceptance", "air-france.oversize.acceptance", "air-france.checked.cargo-threshold"] }] }
     },
     {
       "source_id": "src.air-france.additional-baggage-terms",
@@ -42,7 +44,8 @@
       "title": "Additional Baggage option terms",
       "url": "https://wwws.airfrance.us/information/legal/conditions-aba",
       "locale": "en-US",
-      "accessed_at": "2026-08-31"
+      "accessed_at": "2026-08-31",
+      "monitoring": { "policy_regions": [{ "region_id": "additional-baggage-terms", "start_marker": "Eligibility conditions", "end_marker": "Terms and conditions of the Hand baggage option", "claim_ids": ["air-france.additional-bag.standard-limits", "air-france.additional-bag.advance-purchase", "air-france.additional-bag.exclusions"] }] }
     },
     {
       "source_id": "src.air-france.premium-cabin",
@@ -52,7 +55,8 @@
       "title": "Premium cabin benefits",
       "url": "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
       "locale": "en-US",
-      "accessed_at": "2026-08-31"
+      "accessed_at": "2026-08-31",
+      "monitoring": { "policy_regions": [{ "region_id": "premium-baggage", "start_marker": "Take all the baggage you need", "end_marker": "The Air France experience also means", "claim_ids": ["air-france.checked.premium-included"] }] }
     },
     {
       "source_id": "src.air-france.business-short-medium",
@@ -62,7 +66,8 @@
       "title": "Short- and medium-haul Business experience",
       "url": "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
       "locale": "en-US",
-      "accessed_at": "2026-08-31"
+      "accessed_at": "2026-08-31",
+      "monitoring": { "policy_regions": [{ "region_id": "business-baggage", "start_marker": "Perks for your baggage", "end_marker": "Our lounges", "claim_ids": ["air-france.checked.business-short-medium-included"] }] }
     }
   ],
   "claims": [

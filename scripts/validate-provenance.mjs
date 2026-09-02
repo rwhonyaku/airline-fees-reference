@@ -106,6 +106,23 @@ export function validateDataset(dataset) {
     }
   }
 
+  for (const [sourceIndex, source] of (dataset.sources ?? []).entries()) {
+    const regions = source.monitoring?.policy_regions;
+    if (!Array.isArray(regions) || regions.length === 0) {
+      errors.push(`sources[${sourceIndex}]: monitoring_regions_missing`);
+      continue;
+    }
+    const regionIds = new Set();
+    regions.forEach((region, regionIndex) => {
+      const label = `sources[${sourceIndex}].monitoring.policy_regions[${regionIndex}]`;
+      if (!region.region_id || regionIds.has(region.region_id)) errors.push(`${label}: duplicate_or_missing_region_id`);
+      regionIds.add(region.region_id);
+      if (!region.start_marker?.trim() || !region.end_marker?.trim()) errors.push(`${label}: markers_missing`);
+      if (!Array.isArray(region.claim_ids) || region.claim_ids.length === 0) errors.push(`${label}: claim_ids_missing`);
+      if (region.claim_ids?.some((claimId) => !claimIds.has(claimId))) errors.push(`${label}: unknown_claim_id`);
+    });
+  }
+
   return errors;
 }
 

@@ -6,12 +6,14 @@ import {
   compareSourceCheck,
   createSourceCheck,
   latestSourceCheck,
+  validateReviewQueue,
 } from "../lib/provenance-monitor.mjs";
 import { validateDataset } from "./validate-provenance.mjs";
 
 const args = new Set(process.argv.slice(2));
 const initialize = args.has("--initialize");
-const write = initialize || args.has("--write");
+const initializeRegions = args.has("--initialize-regions");
+const write = initialize || initializeRegions || args.has("--write");
 const today = new Intl.DateTimeFormat("en-CA", {
   timeZone: "America/Los_Angeles",
   year: "numeric",
@@ -51,6 +53,10 @@ const datasets = fs
 
 let reviewQueue = readJson(reviewQueuePath, { schema_version: "0.1.0-pilot", items: [] });
 let failures = 0;
+const queueErrors = validateReviewQueue(reviewQueue, datasets.map(({ data }) => data));
+if (queueErrors.length > 0) {
+  throw new Error(`Invalid review queue:\n${queueErrors.join("\n")}`);
+}
 
 for (const { file, data: dataset } of datasets) {
   const errors = validateDataset(dataset);
@@ -82,11 +88,16 @@ for (const { file, data: dataset } of datasets) {
         console.log(`BASE ${source.source_id}: run with --initialize to establish a baseline`);
         continue;
       }
+      if (comparison.outcome === "region_baseline_required" && !initializeRegions) {
+        console.log(`REGN ${source.source_id}: run with --initialize-regions to add policy-region baselines`);
+        continue;
+      }
 
-      console.log(`${comparison.outcome === "unchanged" ? "OK  " : initialize ? "INIT" : "FLAG"} ${source.source_id}`);
+      const baselineRun = initialize || initializeRegions;
+      console.log(`${comparison.outcome === "unchanged" ? "OK  " : baselineRun ? "INIT" : comparison.outcome === "page_changed_only" ? "INFO" : "FLAG"} ${source.source_id}${baselineRun ? "" : `: ${comparison.outcome}`}`);
       if (write) {
         snapshotStore = appendUniqueCheck(snapshotStore, observedCheck);
-        reviewQueue = appendUniqueReview(reviewQueue, comparison.reviewItem);
+        if (!baselineRun) reviewQueue = appendUniqueReview(reviewQueue, comparison.reviewItem);
       }
     } catch (error) {
       failures += 1;
@@ -97,6 +108,10 @@ for (const { file, data: dataset } of datasets) {
   if (write) writeJsonAtomic(snapshotPath, snapshotStore);
 }
 
-if (write) writeJsonAtomic(reviewQueuePath, reviewQueue);
+if (write) {
+  const updatedQueueErrors = validateReviewQueue(reviewQueue, datasets.map(({ data }) => data));
+  if (updatedQueueErrors.length > 0) throw new Error(`Monitor produced an invalid review queue:\n${updatedQueueErrors.join("\n")}`);
+  writeJsonAtomic(reviewQueuePath, reviewQueue);
+}
 if (!write) console.log("Dry run only; no snapshots or review items were written.");
 if (failures > 0) process.exit(2);

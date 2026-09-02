@@ -14,6 +14,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 import { buildProvenanceSummary } from "@/lib/provenance-summary.mjs";
 import airFranceProvenance from "@/data/provenance/air-france.json";
+import provenanceReviewQueue from "@/data/provenance/review-queue.json";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -8079,8 +8080,8 @@ function CompareNextPanel({ links }: { links: ReferenceLink[] }) {
 }
 
 function AirFranceBaggagePriceChecklist() {
-  const verification = buildProvenanceSummary(airFranceProvenance);
-  const statusLabel = verification.verificationStatus === "verified" ? "Verified" : "Needs review";
+  const verification = buildProvenanceSummary(airFranceProvenance, provenanceReviewQueue);
+  const statusLabel = verification.verificationStatus === "verified" ? "Verified" : "Needs recheck";
 
   return (
     <section className="space-y-6 rounded-3xl border border-blue-200 bg-blue-50 p-5 md:p-7">

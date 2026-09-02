@@ -92,6 +92,7 @@ pnpm run test:provenance-monitor
 pnpm run monitor:provenance
 pnpm run monitor:provenance:write
 node scripts/monitor-provenance-sources.mjs --initialize
+node scripts/monitor-provenance-sources.mjs --initialize-regions
 ```
 
 The default command is a dry run. `--initialize` creates missing baselines without creating review items. `--write` appends source checks and creates an open review item when a fingerprint differs from the latest stored check.
@@ -99,6 +100,26 @@ The default command is a dry run. `--initialize` creates missing baselines witho
 Snapshot checks live under `data/provenance/source-snapshots/`. Review items live in `data/provenance/review-queue.json`. Both use deterministic identifiers so retrying the same observation does not create duplicates.
 
 A review item records hashes, check identifiers, affected claim identifiers, and the required reviewer action. It deliberately does not copy observed wording into a policy assertion. A human must inspect the source and append a verified claim revision separately.
+
+Each source also defines one or more policy regions using reviewed start and end markers. Checks retain both a whole-page fingerprint and independent fingerprints for each policy region. After adding or changing region definitions, `--initialize-regions` appends region-aware baselines without rewriting the earlier whole-page baseline.
+
+Change classifications are:
+
+- `page_changed_only`: the whole page changed but monitored policy regions did not; queued for low-priority inspection without changing the public badge
+- `policy_region_changed`: a monitored policy region changed; public verification becomes `Needs recheck`
+- `source_structure_changed`: a required policy-region marker disappeared; public verification becomes `Needs recheck`
+
+Open source-monitor review items are read by the provenance summary adapter. They change the Air France verification panel to `Needs recheck` while leaving the previous verified facts visible. Resolved and dismissed items do not affect the public status.
+
+Human review commands:
+
+```sh
+pnpm run review:provenance -- list
+pnpm run review:provenance -- show <review-id>
+pnpm run review:provenance -- resolve <review-id> --reviewer <id> --resolution nonmaterial_change --note "Navigation changed; policy did not."
+```
+
+Resolution outcomes are `policy_updated`, `nonmaterial_change`, `source_restored`, and `unable_to_verify`. A `policy_updated` resolution requires `--claim-revision <revision-id>`. Resolution appends human review metadata to the existing queue item; items are never deleted.
 
 ## Deliberate limitations
 
