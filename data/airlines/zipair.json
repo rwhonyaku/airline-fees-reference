@@ -8,8 +8,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: ZIPAIR baggage is an add-on model: base fares include only 7 kg combined carry-on, checked baggage is purchased per piece and route, airport purchase can add handling cost, and each checked piece must stay within route/item limits.",
+    "last_full_review": "2026-09-01",
+    "notes": "ZIPAIR baggage is an add-on model: base fares include two cabin items weighing 7 kg combined, every checked piece is charged by route, airport purchase adds a processing fee, and each checked piece must be 30 kg or less and no larger than 203 cm total dimensions.",
     "next_review_due": "2026-11-23"
   },
   "fees": [
@@ -17,12 +17,12 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "JPY",
-      "conditions": "Fare includes 7 kg carry-on total; extra carry-on weight/package can raise allowance where available",
+      "conditions": "Fare includes two cabin items weighing 7 kg combined; an extra 8 kg can be purchased up to 24 hours before departure for a 15 kg combined maximum, but not at the airport",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://flights.zipair.net/en-us/kuala-lumpur",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
+      "last_verified": "2026-09-01",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR’s base fare includes 7 kg carry-on only. Flex Biz and similar packages can include extra carry-on weight and seat selection on eligible routes."
@@ -30,14 +30,14 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "Route, weight tier, and timing dependent",
+      "amount": "Route and direction dependent",
       "currency": "JPY",
-      "conditions": "Checked baggage is not included by default; buy pieces by route before travel when possible because airport handling fees can apply",
+      "conditions": "Every checked piece is chargeable by route, including the first; each piece may weigh up to 30 kg and measure up to 203 cm total dimensions; maximum five pieces",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://corporate.zipair.net/ja/yakkan/",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
+      "last_verified": "2026-09-01",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR’s tariff lists paid ancillary services; checked baggage is accepted when a paid ancillary or fare rule allows it."
@@ -45,17 +45,17 @@
     },
     {
       "category": "overweight_baggage",
-      "amount": "Prepaid weight tier / airport acceptance limit",
+      "amount": "No overweight tier above 30 kg",
       "currency": "JPY",
-      "conditions": "Each checked piece has a hard weight limit; excess or airport-added baggage follows route pricing and handling rules",
+      "conditions": "Repack baggage so every piece is 30 kg or less; an unpurchased additional piece at the airport incurs the route checked-bag fee plus a processing fee",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://corporate.zipair.net/ja/yakkan/",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
+      "last_verified": "2026-09-01",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "ZIPAIR's practical trap is pre-purchase timing: baggage is optional, and each checked piece has a published per-bag ceiling rather than an open-ended overweight path."
+        "notes": "ZIPAIR does not publish an overweight surcharge band above its 30 kg per-piece limit. The practical remedy is another paid piece, not paying to make one bag heavier."
       }
     },
     {
@@ -67,7 +67,7 @@
       "region_or_route": "All routes",
       "timing": "airport check-in",
       "source_url": "https://corporate.zipair.net/ja/yakkan/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-01",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR's conditions of carriage state checked baggage above 203 cm total dimensions or 30 kg is not accepted."

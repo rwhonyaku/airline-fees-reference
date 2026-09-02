@@ -74,9 +74,9 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
       "Air Canada includes a first checked bag on Standard and higher fares in the examples tracked here, while Basic domestic and transborder fares show a paid first bag. Compare the fare upgrade against the roundtrip bag cost before booking.",
   },
   zipair: {
-    h1: "ZIPAIR baggage fees and 7 kg carry-on allowance",
+    h1: "ZIPAIR baggage fees: checked bag prices and 7 kg carry-on",
     verdict:
-      "ZIPAIR includes 7 kg of combined cabin baggage, but checked bags are purchased separately by route and weight. Buying the right allowance before travel is the main way to avoid excess-weight charges at the airport.",
+      "ZIPAIR includes two cabin items weighing 7 kg combined. Every checked bag costs extra, with a route-specific price covering one piece up to 30 kg; an unpurchased bag at the airport also attracts a processing fee.",
   },
 };
 
@@ -7273,7 +7273,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "ZIPAIR is an optional-service model: checked bags, extra baggage weight, seats, sports equipment, and changes are separate add-on decisions. Unaccompanied-minor service is not offered.",
     },
     verificationNote:
-      "ZIPAIR carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "ZIPAIR carry-on, checked-bag, excess-baggage, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2026-09-01.",
     avoidFees: [
       "Weigh cabin items together because the carry-on row uses a combined 7 kg limit across the cabin bag and personal item.",
       "Buy checked baggage by weight before travel when needed; ZIPAIR checked baggage is not included by default.",
@@ -7329,7 +7329,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Arriving at the airport with excess checked-bag weight",
         details:
-          "A single checked bag must not exceed 32 kg, and extra baggage weight beyond the purchased allowance is charged at airport rates.",
+          "ZIPAIR does not publish a normal overweight tier above 30 kg. Repack so every piece is 30 kg or less; an additional unpurchased piece is charged the route's checked-bag fee plus an airport processing fee.",
       },
       {
         title: "Traveling as an unaccompanied minor",
@@ -7401,12 +7401,12 @@ const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
     {
       question: "What is the ZIPAIR checked bag weight limit?",
       answer:
-        "ZIPAIR checked baggage is purchased by weight, and a single checked bag must not exceed 32 kg. Extra weight beyond the purchased allowance is charged at airport rates.",
+        "A ZIPAIR checked-bag purchase covers one piece up to 30 kg. ZIPAIR permits up to five checked pieces, each no larger than 203 cm in total dimensions, and does not publish a standard overweight tier above 30 kg.",
     },
     {
       question: "What is the ZIPAIR extra baggage fee?",
       answer:
-        "ZIPAIR extra baggage fees depend on the route, purchased weight allowance, and whether the extra weight is handled before travel or at the airport. This page flags the lookup instead of inventing a fixed amount.",
+        "Each additional ZIPAIR checked piece is charged separately at the route price. If you arrive with more pieces than you purchased, ZIPAIR charges the additional checked-bag fee plus a separate airport processing fee; airport payment is by credit card.",
     },
     {
       question: "Does ZIPAIR have international baggage allowance?",
@@ -8345,24 +8345,69 @@ function AirCanadaCheckedBagFeeChecklist() {
 }
 
 function ZipairBaggageDecisionChecklist() {
+  const checkedBagPrices = [
+    ["Tokyo (NRT) → Los Angeles / San Francisco / San Jose", "¥7,000"],
+    ["Los Angeles / San Francisco / San Jose → Tokyo (NRT)", "$54"],
+    ["Tokyo (NRT) → Honolulu", "¥6,000"],
+    ["Honolulu → Tokyo (NRT)", "$46"],
+    ["Tokyo (NRT) → Manila / Bangkok / Singapore", "¥5,000"],
+    ["Manila → Tokyo (NRT)", "$38"],
+    ["Bangkok → Tokyo (NRT)", "฿1,270"],
+    ["Singapore → Tokyo (NRT)", "S$51"],
+    ["Tokyo (NRT) → Seoul", "¥4,000"],
+    ["Seoul → Tokyo (NRT)", "₩38,100"],
+  ] as const;
+
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
         ZIPAIR baggage allowance and add-on prices
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        ZIPAIR baggage starts with the 7 kg cabin allowance.
+        What ZIPAIR will charge for baggage
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        ZIPAIR&apos;s cheapest path is clean only when the cabin bag and personal item together stay within the combined 7 kg allowance. Checked baggage, extra baggage weight, sports equipment, seat selection, and flight changes are separate decisions. For Tokyo routes, the useful ZIPAIR checked bag fee is the route-specific quote shown during booking or manage booking, not a universal first-bag fee.
+        The base fare includes two cabin items weighing 7 kg combined. Checked baggage starts with the first piece: each route price below covers one bag up to 30 kg and 203 cm total dimensions. You may buy up to five pieces. If you reach the airport with an unpurchased piece, ZIPAIR adds a processing fee to the applicable checked-bag price.
       </p>
+      <div className="mt-4 overflow-hidden rounded-xl border border-blue-100 bg-white">
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm">
+            <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+              <tr>
+                <th className="px-4 py-3 font-bold">Route</th>
+                <th className="whitespace-nowrap px-4 py-3 font-bold">One checked bag, up to 30 kg</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              {checkedBagPrices.map(([route, price]) => (
+                <tr key={route}>
+                  <td className="px-4 py-3">{route}</td>
+                  <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">{price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="border-t border-blue-100 bg-slate-50 px-4 py-3 text-xs leading-relaxed text-slate-600">
+          Prices are per piece and direction. ZIPAIR may convert fees using its exchange rate for the selected payment currency. Confirm the current quote before paying. Source:{" "}
+          <a
+            href="https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-blue-700 underline"
+          >
+            ZIPAIR official baggage fee table
+          </a>
+          .
+        </div>
+      </div>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
             Included cabin allowance
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Weigh the cabin bag and personal item together. The combined limit is 7 kg, not 7 kg per item.
+            Two items are allowed: 40 × 25 × 55 cm and 35 × 25 × 45 cm. Their combined free weight is 7 kg, not 7 kg per item.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8370,23 +8415,23 @@ function ZipairBaggageDecisionChecklist() {
             Checked bag fee
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            ZIPAIR checked baggage is purchased by route and weight. Use the exact Tokyo route and weight package before comparing ZIPAIR against a legacy carrier fare.
+            Every piece is chargeable, including the first. Each purchased bag may weigh up to 30 kg; up to five pieces are allowed per passenger.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Extra baggage fee risk
+            Extra or overweight bag
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Extra checked-bag weight beyond the purchased allowance is charged at airport rates. A single checked bag must stay at or below 32 kg.
+            There is no published overweight band above 30 kg. Repack into another paid piece; airport purchases also incur a processing fee and require a credit card.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Tokyo route check
+            Paid carry-on weight
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Common ZIPAIR baggage searches are Tokyo-route searches. The allowance model is the same, but the checked-bag quote still depends on the exact route, weight, and purchase timing.
+            ZIPAIR sells an extra 8 kg of cabin weight, raising the combined allowance to 15 kg. Buy it at least 24 hours before departure; it is not sold at the airport.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8643,9 +8688,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       };
     case "zipair":
       return {
-        title: "ZIPAIR Baggage Fees 2026: 7 kg Carry-On & Checked Bags",
+        title: "ZIPAIR Baggage Fees 2026: Bag Prices & 7 kg Carry-On",
         description:
-          "ZIPAIR includes a combined 7 kg cabin allowance. Check route-based checked bag prices, extra baggage rules, overweight fees, and when advance purchase matters.",
+          "See ZIPAIR checked bag prices by route, the 7 kg carry-on rule, 30 kg checked-bag limit, extra bag charges, dimensions, and airport purchase rules.",
       };
     default:
       return {
