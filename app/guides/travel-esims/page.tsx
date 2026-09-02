@@ -6,9 +6,12 @@ import { canonical } from "@/lib/seo";
 const LAST_VERIFIED = "2026-06-30";
 
 export const metadata: Metadata = {
-  title: "Travel eSIM Decision Guide: When It Is Worth Buying Before You Fly",
+  title: "Travel eSIM Guide: When to Buy One Before You Fly",
   description:
-    "A practical travel eSIM decision guide for international flyers: when to buy before departure, when roaming is enough, and what to check before paying.",
+    "Decide whether you need a travel eSIM, compare it with roaming and local SIMs, and avoid activation, coverage, and refund problems.",
+  alternates: {
+    canonical: canonical("/guides/travel-esims"),
+  },
 };
 
 const DECISION_ROWS = [
@@ -16,37 +19,37 @@ const DECISION_ROWS = [
     situation: "International arrival where you need maps, rideshare, or messaging immediately",
     verdict: "Usually worth buying before departure",
     reason:
-      "The value is not only data price. It is avoiding the airport SIM counter and having working data before you leave arrivals.",
+      "You can use maps and contact your ride or hotel as soon as you land, without relying on airport Wi-Fi or finding a SIM counter.",
   },
   {
     situation: "Short domestic trip or a route fully covered by your normal plan",
     verdict: "Usually skip",
     reason:
-      "An eSIM solves international data friction. If your existing plan already covers the trip at no meaningful extra cost, the add-on may be clutter.",
+      "If your existing plan already covers the trip at a reasonable price, another data plan adds setup without solving a problem.",
   },
   {
     situation: "Multi-country itinerary",
     verdict: "Compare regional versus country plans",
     reason:
-      "A country plan can be cheaper for one destination, while a regional plan can be cleaner when border crossings or connections create coverage gaps.",
+      "A country plan can be cheaper for one destination. A regional plan is often simpler when you cross borders or have a long layover elsewhere.",
   },
   {
     situation: "Tight connection, delay risk, or late-night arrival",
     verdict: "Buy before travel if the price is reasonable",
     reason:
-      "The risk is being stranded without data when airline apps, hotel messages, rideshare, and rebooking tools matter most.",
+      "Mobile data is especially useful when you need airline updates, hotel messages, a ride, or a last-minute rebooking.",
   },
   {
     situation: "Destination where airport Wi-Fi, kiosks, or SIM counters may be unreliable",
     verdict: "Usually buy before departure",
     reason:
-      "The value is avoiding a fragile arrival-day dependency. If the first hour after landing matters, preloaded data can be worth more than chasing the cheapest plan.",
+      "Preloading a plan avoids depending on airport Wi-Fi or an open SIM counter during the first hour after landing.",
   },
   {
     situation: "Long stay in one country with easy local SIM access",
     verdict: "Compare against local SIM",
     reason:
-      "A local SIM can still win on price or large data allowance. The eSIM wins when setup speed and arrival certainty matter more than squeezing the lowest per-GB cost.",
+      "A local SIM may offer more data for less. An eSIM is usually easier when you need service immediately on arrival.",
   },
   {
     situation: "Phone is locked or eSIM support is uncertain",
@@ -70,7 +73,7 @@ const BUY_BEFORE_TRAVEL = [
   "You have a late-night arrival, tight connection, or realistic delay/rebooking risk.",
   "Your trip crosses multiple countries and you do not want to manage local SIM shopping in each place.",
   "Your home roaming price is unclear, expensive, or easy to trigger accidentally.",
-  "You need a backup data path for airline apps, baggage updates, hotel messages, or passenger-rights documentation.",
+  "You want backup internet access for airline apps, baggage updates, hotel messages, or rebooking.",
 ];
 
 const SKIP_OR_WAIT = [
@@ -128,7 +131,7 @@ const REAL_WORLD_SCENARIOS = [
     title: "Late arrival after an international flight",
     verdict: "Buy before departure if the price is reasonable.",
     body:
-      "The eSIM is buying certainty: maps, rideshare, train routing, hotel messages, and airline updates before you depend on airport Wi-Fi.",
+      "You can use maps, request a ride, check train routes, message your hotel, and receive airline updates without depending on airport Wi-Fi.",
   },
   {
     title: "Two-country Europe trip",
@@ -140,13 +143,13 @@ const REAL_WORLD_SCENARIOS = [
     title: "Family trip with one main planner",
     verdict: "At least one reliable data line is useful.",
     body:
-      "You may not need every traveler to buy an eSIM. The higher-value decision is making sure the person handling maps, messages, tickets, and disruption has data on arrival.",
+      "Not every traveler needs a separate eSIM. Make sure at least the person handling maps, messages, and tickets has data on arrival.",
   },
   {
     title: "Long stay with local SIM access",
     verdict: "Wait if setup is easy and you do not need data immediately.",
     body:
-      "For longer trips, a local SIM can beat a travel eSIM on price or data amount. The tradeoff is arrival-day friction.",
+      "For longer trips, a local SIM can cost less or include more data. The tradeoff is waiting until arrival to buy and activate it.",
   },
 ];
 
@@ -159,7 +162,7 @@ const FAQS = [
   {
     question: "Should I buy a country eSIM or a regional eSIM?",
     answer:
-      "A country eSIM can be better for one destination, while a regional eSIM can be cleaner for multi-country itineraries, long layovers, or border crossings. Compare coverage, validity period, data amount, activation timing, and refund rules before buying.",
+      "A country eSIM can cost less for one destination, while a regional eSIM is often simpler for multi-country itineraries, long layovers, or border crossings. Compare coverage, validity period, data amount, activation timing, and refund rules before buying.",
   },
   {
     question: "What should I check before buying a travel eSIM?",
@@ -181,7 +184,7 @@ function travelEsimJsonLd() {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
-          { "@type": "ListItem", position: 2, name: "Travel eSIM decision guide", item: canonical("/guides/travel-esims") },
+          { "@type": "ListItem", position: 2, name: "Travel eSIM guide", item: canonical("/guides/travel-esims") },
         ],
       },
       {
@@ -212,7 +215,7 @@ export default function TravelEsimsGuidePage() {
           <span className="text-slate-900">Travel eSIMs</span>
         </nav>
         <h1 className="text-4xl font-black tracking-tight text-slate-900">
-          Travel eSIM decision guide: when to buy data before you fly
+          Travel eSIM guide: when to buy one before you fly
         </h1>
         <div className="text-sm text-slate-500">Last verified: {LAST_VERIFIED}</div>
         <p className="max-w-3xl text-base leading-relaxed text-slate-700">
@@ -225,14 +228,13 @@ export default function TravelEsimsGuidePage() {
 
       <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Answer-first verdict
+          Quick answer
         </div>
         <p className="mt-3 text-sm leading-relaxed text-slate-700">
-          A travel eSIM is not automatically a money-saver. Its best use is risk control: data at
-          the moment you land, before you have found airport Wi-Fi, a local SIM counter, or a hotel
-          desk. If your trip depends on airline apps, maps, messaging, train tickets, rideshare, or
-          same-day rebooking, buying before departure can be rational even when it is not the
-          absolute cheapest data option.
+          A travel eSIM is not always the cheapest choice. It is most useful when you need mobile
+          data as soon as you land, before you can reach reliable Wi-Fi or buy a local SIM. Buying
+          before departure can be worthwhile if you will immediately need airline apps, maps,
+          messages, train tickets, rideshare, or rebooking tools.
         </p>
       </section>
 
@@ -323,15 +325,15 @@ export default function TravelEsimsGuidePage() {
 
       <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Provider links later
+          Compare plans carefully
         </div>
         <h2 className="mt-2 text-2xl font-bold text-slate-900">
-          How this page should evaluate eSIM providers when monetization is added
+          What to look for in an eSIM provider
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-          Provider links can fit this site later, but only if they help travelers make the data
-          decision. The right standard is not the biggest bonus or the loudest offer; it is whether
-          the plan terms are clear enough to prevent arrival-day problems.
+          Do not choose a plan from the headline data allowance alone. Check that the provider
+          clearly explains where the plan works, when it activates, whether speeds are limited,
+          and what happens if you cannot use it.
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {PROVIDER_EVALUATION.map((item) => (
@@ -343,7 +345,7 @@ export default function TravelEsimsGuidePage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">How this connects to flight disruption</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Why connectivity matters during disruption</h2>
         <p className="text-sm leading-relaxed text-slate-700">
           Connectivity matters most when the trip stops going to plan. A delay, gate change,
           misconnect, baggage issue, or hotel message can turn airport Wi-Fi into the weak link.
@@ -382,9 +384,9 @@ export default function TravelEsimsGuidePage() {
       </section>
 
       <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
-        This page is a decision framework, not a provider ranking. Add eSIM provider links only
-        after plan coverage, activation rules, refund terms, and disclosure language have been
-        verified.
+        Before buying, verify coverage, activation timing, data limits, hotspot rules, and refund
+        terms on the provider&apos;s website. Plan details can change, and a data-only eSIM may not
+        include a local phone number or SMS.
       </section>
     </main>
   );
