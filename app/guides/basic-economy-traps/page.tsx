@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { getAirlineBySlug } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
@@ -9,12 +8,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Basic Economy Fees and Restrictions by Airline (2026)",
+  title: "Basic Economy vs Bundles: Fees by Airline (2026)",
   description:
-    "Compare Basic Economy fares by carry-on access, checked bag fees, seat selection, change rules, and hidden costs for United, Air Canada, JetBlue, Delta, American, and more.",
+    "Compare Basic Economy and value bundles by carry-on, checked bags, seats, and change rules. Use the calculator to see which fare costs less for your trip.",
 };
 
-const LAST_VERIFIED = "2026-05-23";
+const LAST_VERIFIED = "2026-09-02";
 
 const SOURCES = {
   unitedBasic: "https://www.united.com/en/us/fly/travel/inflight/basic-economy.html",
@@ -29,9 +28,8 @@ const SOURCES = {
   alaskaChanges: "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
   southwestFares: "https://www.southwest.com/fare-information/",
   southwestFees: "https://www.southwest.com/html/customer-service/travel-fees.html",
-  spiritOptions: "https://customersupport.spirit.com/en-US/category/article/KA-01534",
   frontierBags: "https://www.flyfrontier.com/travel/travel-info/bag-options/",
-  frontierChanges: "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
+  frontierBundles: "https://www.flyfrontier.com/travel/travel-info/bundle-save/?mobile=true",
 };
 
 type GuideRow = {
@@ -44,11 +42,6 @@ type GuideRow = {
   whereItBreaks: string;
   sourceLabel: string;
   sourceHref: string;
-};
-
-type ScopeCard = {
-  title: string;
-  body: string;
 };
 
 type DecisionCard = {
@@ -72,7 +65,17 @@ const BASIC_ECONOMY_FAQS = [
   {
     question: "Which Basic Economy fare is riskiest for carry-on bags?",
     answer:
-      "United Basic Economy is the clearest major-airline example where the cheapest fare can limit you to a personal item. Spirit and Frontier are different low-cost models where a full-size carry-on usually costs extra.",
+      "United Basic Economy is the clearest major-airline example where the cheapest fare can limit you to a personal item. Frontier Basic is a different low-cost model where a full-size carry-on and seat assignment cost extra unless a bundle includes them.",
+  },
+  {
+    question: "Is Basic Economy or a value bundle cheaper for a city break?",
+    answer:
+      "Add every required carry-on, checked-bag, and seat fee across all travelers and both directions. A bundle is cheaper when its total fare premium plus any excluded add-ons is lower than those separate Basic-fare charges.",
+  },
+  {
+    question: "How do baggage policies differ among low-cost airlines?",
+    answer:
+      "The free allowance, purchase timing, weight limit, and bundle inclusions differ. Some low-cost fares include only a personal item, while a higher bundle may add a carry-on, checked bags, or both. Compare the exact itinerary instead of assuming every low-cost fare uses the same baggage model.",
   },
 ];
 
@@ -145,7 +148,6 @@ function buildGuideRows(): GuideRow[] {
   const jetblueFees = getFees("jetblue");
   const alaskaFees = getFees("alaska");
   const southwestFees = getFees("southwest");
-  const spiritFees = getFees("spirit");
   const frontierFees = getFees("frontier");
 
   const unitedBasicSeat = findFee(
@@ -164,6 +166,7 @@ function buildGuideRows(): GuideRow[] {
     "change_cancellation",
     (row) =>
       safeText(row.applies_to).toLowerCase().includes("basic") &&
+      !safeText(row.applies_to).toLowerCase().includes("non-basic") &&
       safeText(row.region_or_route).includes("US/Canada/Mexico/Caribbean/Central America")
   );
   const deltaBasicChangeLong = findFee(
@@ -171,6 +174,7 @@ function buildGuideRows(): GuideRow[] {
     "change_cancellation",
     (row) =>
       safeText(row.applies_to).toLowerCase().includes("basic") &&
+      !safeText(row.applies_to).toLowerCase().includes("non-basic") &&
       safeText(row.region_or_route).includes("South America/Europe/UK/Africa/Middle East/India/Asia/Pacific")
   );
 
@@ -220,17 +224,6 @@ function buildGuideRows(): GuideRow[] {
       safeText(row.conditions).toLowerCase().includes("1st checked bag")
   );
 
-  const spiritValueCarryOn = findFee(
-    spiritFees,
-    "carry_on",
-    (row) => safeText(row.applies_to).toLowerCase() === "value"
-  );
-  const spiritValueChange = findFee(
-    spiritFees,
-    "change_cancellation",
-    (row) => safeText(row.applies_to).toLowerCase() === "value"
-  );
-
   const frontierCarryOn = findFee(
     frontierFees,
     "carry_on",
@@ -262,9 +255,9 @@ function buildGuideRows(): GuideRow[] {
       carryOn: "One carry-on bag and one personal item remain allowed on Basic Economy.",
       seats: "American lists seat prices by seat product rather than one separate Basic Economy seat fee here.",
       changes:
-        "This guide does not show a separate Basic Economy change fee for American, so the main things to price are bags, seats, and fare-family limits.",
+        "After 24 hours, changes and refunds to the original payment method are generally not allowed; qualifying AAdvantage members may cancel eligible U.S.-origin trips for a fee and receive credit.",
       whereItBreaks:
-        "American Basic Economy usually gets less attractive when route-specific bag prices or paid seats are added.",
+        "Basic fares bought from May 18, 2026 have higher domestic and short-haul checked-bag prices, and advance seat selection costs extra.",
       sourceLabel: "American Basic Economy",
       sourceHref: SOURCES.americanBasic,
     },
@@ -345,24 +338,6 @@ function buildGuideRows(): GuideRow[] {
       sourceHref: SOURCES.southwestFares,
     },
     {
-      slug: "spirit",
-      airline: "Spirit",
-      model: "Low-cost fare with paid add-ons",
-      carryOn:
-        spiritValueCarryOn
-          ? `${safeText(spiritValueCarryOn.conditions)}.`
-          : "The cheap Spirit path is personal-item-first, not full cabin-bag access by default.",
-      seats: "For Spirit, the bigger question is usually whether you need to buy bags or a bundle, not just whether a seat costs extra.",
-      changes:
-        spiritValueChange
-          ? `${safeText(spiritValueChange.conditions)}.`
-          : "Value is the Spirit fare shown here with more paid add-ons.",
-      whereItBreaks:
-        "Spirit gets expensive quickly when the trip needs a carry-on, a checked bag, or flexibility after booking.",
-      sourceLabel: "Spirit travel options",
-      sourceHref: SOURCES.spiritOptions,
-    },
-    {
       slug: "frontier",
       airline: "Frontier",
       model: "Low-cost fare with paid add-ons",
@@ -377,107 +352,21 @@ function buildGuideRows(): GuideRow[] {
           : "Basic Fare / Standard is the more restrictive Frontier fare shown here.",
       whereItBreaks:
         "Frontier's cheap fare usually gets expensive when you add a cabin bag, checked bag, or change close to departure.",
-      sourceLabel: "Frontier change policy",
-      sourceHref: SOURCES.frontierChanges,
+      sourceLabel: "Frontier bundles",
+      sourceHref: SOURCES.frontierBundles,
     },
   ];
 }
-
-const SCOPE_CARDS: ScopeCard[] = [
-  {
-    title: "Carry-on access",
-    body:
-      "Some airlines still allow a full carry-on on the cheapest fare. Others allow only a small personal item, which can force you to pay for a checked bag or a carry-on add-on.",
-  },
-  {
-    title: "Seat limitations",
-    body:
-      "Seat fees matter most when you need to sit with someone, avoid a middle seat, or control a tight connection.",
-  },
-  {
-    title: "Change and cancellation limits",
-    body:
-      "A cheap fare is risky when your dates are not firm. Change and cancellation rules can matter more than the bag policy.",
-  },
-  {
-    title: "Route and long-haul differences",
-    body:
-      "International trips can use different bag prices, cancellation rules, and route exceptions. Check the exact route before assuming the domestic rule applies.",
-  },
-];
-
-const CLASS_MODEL_CARDS: ScopeCard[] = [
-  {
-    title: "Basic Economy with a carry-on limit",
-    body:
-      "United is the clearest example: the cheapest fare can limit you to a personal item, then add seat and flexibility limits on top.",
-  },
-  {
-    title: "Basic Economy with carry-on included",
-    body:
-      "American, Delta, and JetBlue still allow a normal carry-on, so the bigger questions are seats, checked bags, and change or cancellation rules.",
-  },
-  {
-    title: "Lowest fare under another name",
-    body:
-      "Alaska Saver and Southwest Basic Fare are not identical to United Basic Economy, but they can still change what is included.",
-  },
-  {
-    title: "Low-cost fare with paid add-ons",
-    body:
-      "Spirit and Frontier do not work like legacy-airline Basic Economy. The low fare often assumes you will buy only the add-ons you need.",
-  },
-];
-
-const PRIORITY_BASIC_PATHS = [
-  {
-    airline: "United",
-    title: "Carry-on risk first",
-    body:
-      "United Basic Economy is the clearest example where the lowest fare may stop working because you need more than a personal item.",
-    links: [
-      { href: "/airlines/united", label: "United fees" },
-      {
-        href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=1&pay=yes",
-        label: "Price United bags",
-      },
-    ],
-  },
-  {
-    airline: "Air Canada",
-    title: "Basic vs Standard bag math",
-    body:
-      "Air Canada Basic keeps normal carry-on access, but checked-bag and seat rules can make Standard the better comparison.",
-    links: [
-      { href: "/airlines/air-canada", label: "Air Canada fees" },
-      {
-        href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=1&pay=yes",
-        label: "Price Air Canada bags",
-      },
-    ],
-  },
-  {
-    airline: "JetBlue",
-    title: "Carry-on included, flexibility limited",
-    body:
-      "Blue Basic now includes a carry-on, so the bigger decision is whether the cancellation and change limits are worth the fare savings.",
-    links: [
-      { href: "/airlines/jetblue", label: "JetBlue fees" },
-      { href: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=1&pay=yes", label: "Check JetBlue card math" },
-    ],
-  },
-];
 
 const DECISION_CARDS: DecisionCard[] = [
   {
     title: "You need a normal carry-on",
     verdict:
-      "Be most careful with United Basic Economy, Spirit, and Frontier. American, Delta, JetBlue, Alaska, and Southwest are less likely to become a problem because of carry-on access alone.",
+      "Be most careful with United Basic Economy and Frontier Basic. American, Delta, JetBlue, Alaska, and Southwest are less likely to become a problem because of carry-on access alone.",
     action:
       "If the cheapest fare restricts the overhead bin, price the checked bag or cabin-bag add-on before treating it as cheaper.",
     links: [
       { href: "/airlines/united", label: "United fee page" },
-      { href: "/airlines/spirit", label: "Spirit fee page" },
       { href: "/airlines/frontier", label: "Frontier fee page" },
       { href: "/fees/carry_on", label: "Carry-on reference" },
     ],
@@ -497,7 +386,7 @@ const DECISION_CARDS: DecisionCard[] = [
   {
     title: "Your plans might change",
     verdict:
-      "Delta, United, JetBlue, Spirit, and Frontier can all become expensive when the trip changes. Carry-on access does not solve a restrictive fare.",
+      "Delta, United, JetBlue, and Frontier can all become expensive when the trip changes. Carry-on access does not solve a restrictive fare.",
     action:
       "If your dates are uncertain, compare the next fare family before buying the cheapest result.",
     links: [
@@ -520,6 +409,48 @@ const DECISION_CARDS: DecisionCard[] = [
     ],
   },
 ];
+
+function AirlineComparisonTable({ rows }: { rows: GuideRow[] }) {
+  return (
+    <section className="space-y-4">
+      <div>
+        <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Compare first</div>
+        <h2 className="mt-2 text-2xl font-bold text-slate-900">Basic Economy restrictions by airline</h2>
+        <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
+          The lowest fare is not the same product across airlines. Start with the restriction most likely to create an extra cost, then use the calculator with prices from your itinerary.
+        </p>
+      </div>
+      <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table className="min-w-[900px] text-left text-sm">
+          <thead className="bg-slate-50 text-slate-600">
+            <tr>
+              <th className="px-4 py-3 font-semibold">Airline / lowest fare</th>
+              <th className="px-4 py-3 font-semibold">Carry-on</th>
+              <th className="px-4 py-3 font-semibold">Change / cancel</th>
+              <th className="px-4 py-3 font-semibold">Main cost trap</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.slug} className="border-t border-slate-100 align-top">
+                <td className="px-4 py-4">
+                  <Link href={`/airlines/${row.slug}`} className="font-bold text-blue-700 underline">{row.airline}</Link>
+                  <div className="mt-1 text-xs text-slate-500">{row.model}</div>
+                </td>
+                <td className="px-4 py-4 text-slate-700">{row.carryOn}</td>
+                <td className="px-4 py-4 text-slate-700">{row.changes}</td>
+                <td className="px-4 py-4 text-slate-700">
+                  {row.whereItBreaks}
+                  <div className="mt-2"><a href={row.sourceHref} target="_blank" rel="noreferrer" className="text-xs font-semibold text-blue-700 underline">Official source</a></div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
 
 export default function BasicEconomyTrapsGuide() {
   const rows = buildGuideRows();
@@ -593,60 +524,44 @@ export default function BasicEconomyTrapsGuide() {
           </div>
         </section>
 
-        <figure className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-          <div className="relative aspect-[16/9] w-full">
-            <Image
-              src="/images/basic-economy-airport-departures.png"
-              alt="Airport departures monitor above baggage drop and check-in signs"
-              fill
-              sizes="(min-width: 1024px) 896px, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <figcaption className="border-t border-slate-100 px-5 py-3 text-xs leading-relaxed text-slate-500">
-            Basic Economy only works when the fare still makes sense after bags, seats, and airport
-            rules are included.
-          </figcaption>
-        </figure>
       </header>
 
-      <section className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
-        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div>
-            <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">
-              Start with these fare checks
-            </div>
-            <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-              The Basic Economy question changes by airline.
-            </h2>
-          </div>
-          <Link href="/tools/checked-baggage-calculator" className="text-sm font-bold text-blue-800 underline">
-            Open bag calculator
-          </Link>
-        </div>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          {PRIORITY_BASIC_PATHS.map((item) => (
-            <div key={item.airline} className="rounded-2xl border border-blue-100 bg-white p-5">
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-500">{item.airline}</div>
-              <h3 className="mt-2 text-lg font-black text-slate-950">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.body}</p>
-              <div className="mt-4 flex flex-wrap gap-2 text-sm">
-                {item.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 font-bold text-blue-800 underline"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <AirlineComparisonTable rows={rows} />
 
       <BasicEconomyDecisionTool />
+
+      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Low-cost bundle example</div>
+        <h2 className="mt-2 text-2xl font-bold text-slate-900">Frontier Basic vs Economy, Premium, and Business</h2>
+        <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+          Frontier is the cleanest current example of the decision. Basic includes a personal item; a carry-on and seat assignment cost extra. Economy adds a carry-on, standard seat, and no change/cancel fee. Premium substitutes a premium seat and priority boarding. Business also adds two 50 lb checked bags and an UpFront Plus seat.
+        </p>
+        <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-200">
+          <table className="min-w-[720px] text-left text-sm">
+            <thead className="bg-slate-50 text-slate-600">
+              <tr>
+                <th className="px-4 py-3 font-semibold">Frontier option</th>
+                <th className="px-4 py-3 font-semibold">Carry-on</th>
+                <th className="px-4 py-3 font-semibold">Seat</th>
+                <th className="px-4 py-3 font-semibold">Checked bags</th>
+                <th className="px-4 py-3 font-semibold">Change/cancel fee</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tr><td className="px-4 py-3 font-bold text-slate-950">Basic</td><td className="px-4 py-3">Paid</td><td className="px-4 py-3">Paid</td><td className="px-4 py-3">Paid</td><td className="px-4 py-3">Applies</td></tr>
+              <tr><td className="px-4 py-3 font-bold text-slate-950">Economy</td><td className="px-4 py-3">Included</td><td className="px-4 py-3">Standard included</td><td className="px-4 py-3">Paid</td><td className="px-4 py-3">None</td></tr>
+              <tr><td className="px-4 py-3 font-bold text-slate-950">Premium</td><td className="px-4 py-3">Included</td><td className="px-4 py-3">Premium included</td><td className="px-4 py-3">Paid</td><td className="px-4 py-3">None</td></tr>
+              <tr><td className="px-4 py-3 font-bold text-slate-950">Business</td><td className="px-4 py-3">Included</td><td className="px-4 py-3">UpFront Plus</td><td className="px-4 py-3">Two at 50 lb</td><td className="px-4 py-3">None</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-slate-700">
+          <strong>City-break rule:</strong> multiply every separate bag and seat fee by travelers and flight directions. Buy the bundle when that total exceeds the bundle fare difference—provided you actually need what it includes.
+        </p>
+        <p className="mt-3 text-xs text-slate-500">
+          Verified against <a href={SOURCES.frontierBundles} target="_blank" rel="noreferrer" className="font-semibold text-blue-700 underline">Frontier&apos;s official bundle comparison</a>. Fare differences and optional-service prices vary by itinerary.
+        </p>
+      </section>
 
       <section id="decision-matrix" className="space-y-4">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
@@ -730,35 +645,6 @@ export default function BasicEconomyTrapsGuide() {
           <Link href="/fees/change_cancellation" className="font-bold text-blue-700 underline">
             Compare change rules
           </Link>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">What Basic Economy usually changes</h2>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {SCOPE_CARDS.map((card) => (
-            <div key={card.title} className="rounded-2xl border border-slate-200 bg-white p-5">
-              <h3 className="text-lg font-bold text-slate-900">{card.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{card.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">These fares are not all the same product</h2>
-        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          Airlines use similar-looking cheap fares in very different ways. One airline may limit
-          your carry-on, another may allow the bag but make changes expensive, and another may push
-          more costs into paid add-ons.
-        </p>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {CLASS_MODEL_CARDS.map((card) => (
-            <div key={card.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <h3 className="text-lg font-bold text-slate-900">{card.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">{card.body}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -853,10 +739,6 @@ export default function BasicEconomyTrapsGuide() {
               </tr>
               <tr className="border-t border-slate-100">
                 <td className="px-4 py-4 font-semibold text-slate-900">
-                  <Link href="/airlines/spirit" className="text-blue-700 underline">
-                    Spirit
-                  </Link>{" "}
-                  /{" "}
                   <Link href="/airlines/frontier" className="text-blue-700 underline">
                     Frontier
                   </Link>
@@ -968,8 +850,8 @@ export default function BasicEconomyTrapsGuide() {
                 routes and USD 200 on transatlantic itineraries; changes are not allowed.
               </li>
               <li>
-                <strong>Spirit / Frontier:</strong> the low fare is the restrictive product. The
-                important question is how much flexibility you would have to buy later.
+                <strong>Frontier:</strong> Basic is the restrictive product. Economy, Premium, and
+                Business bundles remove change/cancel fees, though fare differences can still apply.
               </li>
             </ul>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
@@ -1015,65 +897,6 @@ export default function BasicEconomyTrapsGuide() {
               is not purely domestic.
             </li>
           </ul>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Airline-by-airline comparison</h2>
-        <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          This table shows what each airline&apos;s cheapest fare is most likely to restrict or sell separately.
-        </p>
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-          <table className="min-w-[1100px] text-left text-sm">
-            <thead className="bg-slate-50 text-slate-600">
-              <tr>
-                <th className="px-4 py-3 font-semibold">Airline</th>
-                <th className="px-4 py-3 font-semibold">Fare type</th>
-                <th className="px-4 py-3 font-semibold">Carry-on path</th>
-                <th className="px-4 py-3 font-semibold">Seat treatment</th>
-                <th className="px-4 py-3 font-semibold">Change / cancel baseline</th>
-                <th className="px-4 py-3 font-semibold">What can make it more expensive</th>
-                <th className="px-4 py-3 font-semibold">Related pages</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.slug} className="border-t border-slate-100 align-top">
-                  <td className="px-4 py-4 font-semibold text-slate-900">
-                    <Link href={`/airlines/${row.slug}`} className="text-blue-700 underline">
-                      {row.airline}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-4 text-slate-700">{row.model}</td>
-                  <td className="px-4 py-4 text-slate-700">{row.carryOn}</td>
-                  <td className="px-4 py-4 text-slate-700">{row.seats}</td>
-                  <td className="px-4 py-4 text-slate-700">{row.changes}</td>
-                  <td className="px-4 py-4 text-slate-700">{row.whereItBreaks}</td>
-                  <td className="px-4 py-4 text-slate-700">
-                    <div className="flex flex-col gap-2">
-                      <Link href={`/airlines/${row.slug}`} className="text-blue-700 underline">
-                        Fee page
-                      </Link>
-                      <Link
-                        href={`/airlines/${row.slug}/how-to-beat-fees`}
-                        className="text-blue-700 underline"
-                      >
-                        Fee guide
-                      </Link>
-                      <a
-                        href={row.sourceHref}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-700 underline"
-                      >
-                        {row.sourceLabel}
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 
@@ -1170,13 +993,8 @@ export default function BasicEconomyTrapsGuide() {
             </a>
           </li>
           <li>
-            <a href={SOURCES.spiritOptions} target="_blank" rel="noreferrer" className="text-blue-700 underline">
-              Spirit travel options
-            </a>
-          </li>
-          <li>
-            <a href={SOURCES.frontierChanges} target="_blank" rel="noreferrer" className="text-blue-700 underline">
-              Frontier change policy
+            <a href={SOURCES.frontierBundles} target="_blank" rel="noreferrer" className="text-blue-700 underline">
+              Frontier bundle comparison
             </a>
           </li>
         </ul>
