@@ -1,0 +1,322 @@
+{
+  "schema_version": "0.1.0-pilot",
+  "dataset_id": "air-france.baggage-policy.pilot",
+  "subject": {
+    "type": "airline",
+    "slug": "air-france",
+    "name": "Air France"
+  },
+  "source_hierarchy": [
+    { "rank": 1, "type": "airline_policy_page", "label": "Airline fee or policy page" },
+    { "rank": 2, "type": "airline_conditions_or_tariff", "label": "Airline conditions or tariff" },
+    { "rank": 3, "type": "airline_booking_or_calculator", "label": "Airline booking flow or baggage calculator" },
+    { "rank": 4, "type": "airline_help_center", "label": "Airline help center" },
+    { "rank": 5, "type": "other_official_airline_publication", "label": "Other official airline publication" }
+  ],
+  "sources": [
+    {
+      "source_id": "src.air-france.authorized-baggage",
+      "type": "airline_policy_page",
+      "hierarchy_rank": 1,
+      "publisher": "Air France",
+      "title": "Authorized baggage: weight, size, and allowance",
+      "url": "https://wwws.airfrance.us/information/bagages/bagage-cabine-soute",
+      "locale": "en-US",
+      "accessed_at": "2026-08-31"
+    },
+    {
+      "source_id": "src.air-france.extra-baggage",
+      "type": "airline_policy_page",
+      "hierarchy_rank": 1,
+      "publisher": "Air France",
+      "title": "Extra, oversized, and overweight baggage options",
+      "url": "https://wwws.airfrance.us/information/bagages/bagages-supplementaires-plus-grands-plus-lourds",
+      "locale": "en-US",
+      "accessed_at": "2026-08-31"
+    },
+    {
+      "source_id": "src.air-france.additional-baggage-terms",
+      "type": "airline_conditions_or_tariff",
+      "hierarchy_rank": 2,
+      "publisher": "Air France",
+      "title": "Additional Baggage option terms",
+      "url": "https://wwws.airfrance.us/information/legal/conditions-aba",
+      "locale": "en-US",
+      "accessed_at": "2026-08-31"
+    },
+    {
+      "source_id": "src.air-france.premium-cabin",
+      "type": "other_official_airline_publication",
+      "hierarchy_rank": 5,
+      "publisher": "Air France",
+      "title": "Premium cabin benefits",
+      "url": "https://wwws.airfrance.us/information/prepare/voyager-en-premium",
+      "locale": "en-US",
+      "accessed_at": "2026-08-31"
+    },
+    {
+      "source_id": "src.air-france.business-short-medium",
+      "type": "other_official_airline_publication",
+      "hierarchy_rank": 5,
+      "publisher": "Air France",
+      "title": "Short- and medium-haul Business experience",
+      "url": "https://wwws.airfrance.us/information/cabines/business/court-et-moyen-courrier",
+      "locale": "en-US",
+      "accessed_at": "2026-08-31"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "air-france.cabin.economy-allowance",
+      "subject": "air-france",
+      "category": "carry_on",
+      "fact_type": "cabin_baggage_allowance",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.cabin.economy-allowance.2026-08-31",
+          "assertion": { "hand_baggage_items": "0_or_1_by_fare", "small_bag_items": 1, "combined_max_weight_kg": 12, "hand_bag_max_dimensions_cm": [55, 35, 25] },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Economy"], "fare_families": ["varies_by_fare"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.authorized-baggage", "supports": ["assertion.hand_baggage_items", "assertion.small_bag_items", "assertion.combined_max_weight_kg", "assertion.hand_bag_max_dimensions_cm"], "source_locator": "Cabin baggage by travel cabin" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the published Economy cabin allowance." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.cabin.premium-allowance",
+      "subject": "air-france",
+      "category": "carry_on",
+      "fact_type": "cabin_baggage_allowance",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.cabin.premium-allowance.2026-08-31",
+          "assertion": { "hand_baggage_items": 2, "small_bag_items": 1, "combined_max_weight_kg": 12, "hand_bag_max_dimensions_cm": [55, 35, 25] },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Premium"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.authorized-baggage", "supports": ["assertion.hand_baggage_items", "assertion.small_bag_items", "assertion.combined_max_weight_kg", "assertion.hand_bag_max_dimensions_cm"], "source_locator": "Cabin baggage by travel cabin" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the published Premium cabin allowance." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.cabin.business-first-allowance",
+      "subject": "air-france",
+      "category": "carry_on",
+      "fact_type": "cabin_baggage_allowance",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.cabin.business-first-allowance.2026-08-31",
+          "assertion": { "hand_baggage_items": 2, "small_bag_items": 1, "combined_max_weight_kg": 18, "hand_bag_max_dimensions_cm": [55, 35, 25] },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Business", "La Première"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.authorized-baggage", "supports": ["assertion.hand_baggage_items", "assertion.small_bag_items", "assertion.combined_max_weight_kg", "assertion.hand_bag_max_dimensions_cm"], "source_locator": "Cabin baggage by travel cabin" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the published Business and La Première cabin allowance." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.checked.premium-included",
+      "subject": "air-france",
+      "category": "checked_baggage",
+      "fact_type": "included_checked_baggage",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.checked.premium-included.2026-08-31",
+          "assertion": { "included_pieces_max": 2, "max_weight_kg_per_piece": 23, "qualification": "depends_on_ticket_conditions" },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Premium"], "fare_families": ["varies_by_ticket"], "markets": ["all"], "routes": ["where_premium_is_offered"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.premium-cabin", "supports": ["assertion.included_pieces_max", "assertion.max_weight_kg_per_piece", "assertion.qualification"], "source_locator": "Baggage allowance" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the Premium checked-baggage allowance." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.checked.business-short-medium-included",
+      "subject": "air-france",
+      "category": "checked_baggage",
+      "fact_type": "included_checked_baggage",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.checked.business-short-medium-included.2026-08-31",
+          "assertion": { "included_pieces": 2, "max_weight_kg_per_piece": 32 },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Business"], "fare_families": ["all"], "markets": ["all"], "routes": ["short_haul", "medium_haul"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.business-short-medium", "supports": ["assertion.included_pieces", "assertion.max_weight_kg_per_piece"], "source_locator": "Baggage allowance" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the short- and medium-haul Business checked-baggage allowance." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.basic.hand-baggage-option",
+      "subject": "air-france",
+      "category": "carry_on",
+      "fact_type": "paid_hand_baggage_option",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.basic.hand-baggage-option.2026-08-31",
+          "assertion": { "price": "shown_during_booking_or_in_my_bookings", "purchase_deadline_hours_before_departure": 4 },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Economy"], "fare_families": ["Basic"], "markets": ["eligible_markets"], "routes": ["eligible_routes"], "passenger_types": ["standard_passenger"], "purchase_channels": ["booking", "my_bookings"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.price", "assertion.purchase_deadline_hours_before_departure"], "source_locator": "Hand Baggage option" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the Basic fare Hand Baggage option." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.additional-bag.standard-limits",
+      "subject": "air-france",
+      "category": "additional_baggage",
+      "fact_type": "additional_bag_acceptance_limits",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.additional-bag.standard-limits.2026-08-31",
+          "assertion": { "economy_premium_max_weight_kg": 23, "business_first_max_weight_kg": 32, "max_linear_dimensions_cm": 158 },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["Economy", "Premium", "Business", "La Première"], "fare_families": ["where_additional_baggage_is_permitted"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["booking", "my_bookings", "online_check_in", "airport"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.economy_premium_max_weight_kg", "assertion.business_first_max_weight_kg", "assertion.max_linear_dimensions_cm"], "source_locator": "Additional baggage option" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of standard additional-bag limits." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.additional-bag.price-lookup",
+      "subject": "air-france",
+      "category": "additional_baggage",
+      "fact_type": "route_dependent_price",
+      "review_cadence": "monthly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.additional-bag.price-lookup.2026-08-31",
+          "assertion": { "fixed_public_price": null, "pricing_basis": "itinerary_and_purchase_path", "price_display": ["booking", "my_bookings"] },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["where_additional_baggage_is_permitted"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["booking", "my_bookings"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.fixed_public_price", "assertion.pricing_basis", "assertion.price_display"], "source_locator": "Purchase an additional baggage option" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" }, "notes": "A universal amount is intentionally not inferred." },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of Air France's itinerary-specific price lookup." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.additional-bag.advance-purchase",
+      "subject": "air-france",
+      "category": "additional_baggage",
+      "fact_type": "advance_purchase_discount",
+      "review_cadence": "monthly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.additional-bag.advance-purchase.2026-08-31",
+          "assertion": { "minimum_hours_before_departure": 24, "discount_result": "may_be_discounted", "excluded_markets": ["Canada", "United States"] },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["where_additional_baggage_is_permitted"], "markets": ["all_except_Canada_and_United_States"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["online_card_payment"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.minimum_hours_before_departure", "assertion.discount_result", "assertion.excluded_markets"], "source_locator": "Online purchase timing and Canada/United States exception" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of advance-purchase timing and the Canada/United States exception." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.overweight.acceptance",
+      "subject": "air-france",
+      "category": "overweight_baggage",
+      "fact_type": "overweight_bag_rule",
+      "review_cadence": "monthly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.overweight.acceptance.2026-08-31",
+          "assertion": { "trigger": "above_ticketed_weight_allowance", "max_weight_kg": 32, "price": "airport_priced_by_itinerary", "payment_channel": "airport" },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["airport"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.trigger", "assertion.max_weight_kg", "assertion.price", "assertion.payment_channel"], "source_locator": "Overweight baggage option" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the overweight baggage rule." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.oversize.acceptance",
+      "subject": "air-france",
+      "category": "oversize_baggage",
+      "fact_type": "oversize_bag_rule",
+      "review_cadence": "monthly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.oversize.acceptance.2026-08-31",
+          "assertion": { "trigger_linear_dimensions_cm_over": 158, "max_linear_dimensions_cm": 300, "price": "airport_priced_by_itinerary", "payment_channel": "airport" },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["airport"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.trigger_linear_dimensions_cm_over", "assertion.max_linear_dimensions_cm", "assertion.price", "assertion.payment_channel"], "source_locator": "Oversized baggage option" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the oversize baggage rule." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.checked.cargo-threshold",
+      "subject": "air-france",
+      "category": "checked_baggage",
+      "fact_type": "cargo_referral_threshold",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.checked.cargo-threshold.2026-08-31",
+          "assertion": { "weight_kg_over": 32, "linear_dimensions_cm_over": 300, "handling": "air_france_cargo" },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["standard_passenger"], "purchase_channels": ["cargo"] },
+          "evidence": [{ "source_id": "src.air-france.extra-baggage", "supports": ["assertion.weight_kg_over", "assertion.linear_dimensions_cm_over", "assertion.handling"], "source_locator": "Maximum baggage limits" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the cargo referral thresholds." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.additional-bag.exclusions",
+      "subject": "air-france",
+      "category": "additional_baggage",
+      "fact_type": "product_eligibility_exclusion",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.additional-bag.exclusions.2026-08-31",
+          "assertion": { "excluded_passengers": ["lap_infants"], "excluded_items": ["animals", "sports_equipment"], "result": "separate_conditions_or_rates_apply" },
+          "scope": { "operating_carriers": ["Air France"], "marketing_carriers": [], "cabins": ["all"], "fare_families": ["all"], "markets": ["all"], "routes": ["all"], "passenger_types": ["lap_infant", "standard_passenger"], "purchase_channels": ["additional_baggage_option"] },
+          "evidence": [{ "source_id": "src.air-france.additional-baggage-terms", "supports": ["assertion.excluded_passengers", "assertion.excluded_items", "assertion.result"], "source_locator": "Eligibility and exclusions" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of Additional Baggage option exclusions." }
+        }
+      ]
+    },
+    {
+      "claim_id": "air-france.itinerary.operating-carrier-qualification",
+      "subject": "air-france",
+      "category": "baggage_policy_scope",
+      "fact_type": "operating_carrier_qualification",
+      "review_cadence": "quarterly",
+      "revisions": [
+        {
+          "revision_id": "rev.air-france.itinerary.operating-carrier-qualification.2026-08-31",
+          "assertion": { "air_france_allowance_applies_to": "air_france_operated_flights", "partner_allowance_may_differ": true, "traveler_instruction": "check_operating_carrier_and_follow_strictest_rule" },
+          "scope": { "operating_carriers": ["Air France", "partner_airline"], "marketing_carriers": ["Air France", "partner_airline"], "cabins": ["all"], "fare_families": ["all"], "markets": ["all"], "routes": ["codeshare_and_mixed_carrier_itineraries"], "passenger_types": ["standard_passenger"], "purchase_channels": [] },
+          "evidence": [{ "source_id": "src.air-france.authorized-baggage", "supports": ["assertion.air_france_allowance_applies_to", "assertion.partner_allowance_may_differ", "assertion.traveler_instruction"], "source_locator": "Flights provided by partner airlines" }],
+          "verification": { "status": "verified", "detected_at": "2026-08-31", "checked_at": "2026-08-31", "verified_at": "2026-08-31", "reviewed_by": { "type": "human", "identifier": "editorial-review" } },
+          "validity": { "effective_from": null, "effective_to": null, "effective_date_status": "not_published" },
+          "change": { "kind": "initial", "supersedes_revision_id": null, "summary": "Initial pilot capture of the operating-carrier qualification for baggage allowances." }
+        }
+      ]
+    }
+  ]
+}
