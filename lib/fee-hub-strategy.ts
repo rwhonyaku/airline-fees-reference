@@ -94,13 +94,12 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
       {
         title: "Europe LCCs and US ULCCs are the key comparison set",
-        body: "Ryanair, easyJet, Spirit, and Frontier show why cabin-bag access needs to be priced before the fare is compared.",
+        body: "Ryanair, easyJet, and Frontier show why cabin-bag access needs to be priced before the fare is compared.",
       },
     ],
     spotlightAirlines: [
-      { slug: "spirit", reason: "Spirit is where the personal-item game determines whether the fare stays cheap." },
-      { slug: "frontier", reason: "Frontier is useful because timing and bundle choice change the outcome fast." },
-      { slug: "ryanair", reason: "Ryanair is one of the clearest examples of paid cabin-bag monetization." },
+      { slug: "frontier", reason: "Frontier is where personal-item limits and bundle choice determine the real fare." },
+      { slug: "ryanair", reason: "Ryanair is one of the clearest examples of a fare with paid cabin-bag access." },
       { slug: "easyjet", reason: "easyJet matters because seat bundles can effectively include the larger bag." },
     ],
     toolLinks: [
@@ -120,7 +119,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
         body: "Many carriers price non-legroom seats as if they were a real upgrade simply because they are closer to the front or window/aisle inventory is thin.",
       },
       {
-        title: "Entry fares weaponize seat discomfort",
+        title: "Entry fares can exclude seat choice",
         body: "Basic or stripped-down fares use seating uncertainty to push travelers back into paid choices they thought they had avoided.",
       },
       {
@@ -149,7 +148,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
         body: "A fare can say no change fee and still become expensive once fare difference, credits, or locked restrictions show up.",
       },
       {
-        title: "Low-cost carriers monetize timing and rescue behavior",
+        title: "Late changes can cost more on low-cost fares",
         body: "Frontier, Ryanair, and easyJet are useful because they show how late changes and stripped fares turn flexibility into a paid product.",
       },
       {
@@ -158,9 +157,9 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
     ],
     spotlightAirlines: [
-      { slug: "united", reason: "United is a clean example of non-Basic flexibility versus Basic lockout." },
+      { slug: "united", reason: "United clearly distinguishes non-Basic flexibility from Basic Economy restrictions." },
       { slug: "delta", reason: "Delta shows how Basic can still carry meaningful change and cancellation pain even on a polished product." },
-      { slug: "frontier", reason: "Frontier's timing ladder is one of the clearest examples of change policy as a pricing weapon." },
+      { slug: "frontier", reason: "Frontier clearly shows how timing and bundle choice affect change costs." },
       { slug: "ryanair", reason: "Ryanair is a strong benchmark for airlines that still price flexibility like a premium add-on." },
     ],
     toolLinks: [

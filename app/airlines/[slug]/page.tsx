@@ -8,13 +8,14 @@ import type { FeeItem } from "@/lib/types";
 import { RelatedTools } from "@/components/RelatedTools";
 import { SizerCheck } from "@/components/SizerCheck";
 import { Disclaimer } from "@/components/Disclaimer";
-import { AIRLINE_STRATEGY, isCoreAirline } from "@/lib/airline-strategy";
+import { AIRLINE_STRATEGY, hasActiveStrategyPage, isCoreAirline } from "@/lib/airline-strategy";
 import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
 import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 import { buildProvenanceSummary } from "@/lib/provenance-summary.mjs";
 import airFranceProvenance from "@/data/provenance/air-france.json";
 import provenanceReviewQueue from "@/data/provenance/review-queue.json";
+import { getVerificationFreshness } from "@/lib/freshness";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -3587,7 +3588,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/airlines/viva-aerobus", label: "Viva Aerobus" },
       { href: "/airlines/aeromexico", label: "Aeromexico" },
       { href: "/airlines/frontier", label: "Frontier Airlines" },
-      { href: "/airlines/spirit", label: "Spirit Airlines" },
     ],
   },
   "viva-aerobus": {
@@ -3674,7 +3674,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/airlines/volaris", label: "Volaris" },
       { href: "/airlines/aeromexico", label: "Aeromexico" },
       { href: "/airlines/frontier", label: "Frontier Airlines" },
-      { href: "/airlines/spirit", label: "Spirit Airlines" },
     ],
   },
   jet2: {
@@ -4193,7 +4192,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   etihad: {
     intro: {
       carryOn:
-        "Etihad includes cabin baggage on the rows shown here. Economy is listed with one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
+        "Etihad includes cabin baggage. Economy is listed with one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
       personalItem:
         "The personal item is included with the Economy carry-on row, so the practical issue is keeping the main cabin bag within Etihad's weight and size limits.",
       checkedBag:
@@ -4202,12 +4201,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Etihad fee risks are exceeding the included allowance, waiting until the airport to handle extra baggage, paid seat selection on Value fares, and fare-family change or cancellation rules.",
     },
     verificationNote:
-      "The Etihad carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "Etihad carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor policies were last checked on 2025-12-24.",
     avoidFees: [
       "Check whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
       "Buy additional baggage before the airport where possible; the data says online rates are lower than airport rates.",
       "Keep each checked bag at or below 32 kg because heavier bags are not treated as ordinary checked baggage.",
-      "Compare Value against Comfort or Deluxe when seat selection matters, because standard seat selection is included on Comfort and Deluxe fares in the rows shown here.",
+      "Compare Value against Comfort or Deluxe when seat selection matters, because standard seat selection is included on Comfort and Deluxe fares in the published policy.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -4234,7 +4233,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Comfort / Deluxe",
         details:
-          "Standard seat selection is included on Comfort and Deluxe fares in the rows shown here.",
+          "Standard seat selection is included on Comfort and Deluxe fares in the published policy.",
       },
       {
         name: "Extra baggage",
@@ -4449,7 +4448,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   flydubai: {
     intro: {
       carryOn:
-        "flydubai includes one cabin bag up to 7 kg on the rows shown here, with Business Class including an additional allowance.",
+        "flydubai includes one cabin bag up to 7 kg, with Business Class including an additional allowance.",
       personalItem:
         "The cabin-bag issue is the 7 kg Economy allowance. If the bag is heavier, the trip can shift into checked or excess baggage.",
       checkedBag:
@@ -4458,7 +4457,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main flydubai fee risks are buying a fare without the baggage you need, underbuying checked-bag weight, airport excess-weight charges, paid Economy seat selection, and fare-type change rules.",
     },
     verificationNote:
-      "The flydubai carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor rows shown here were last verified on 2025-12-24.",
+      "flydubai carry-on, checked-bag, overweight, sports-equipment, seat, change/cancellation, and unaccompanied-minor policies were last checked on 2025-12-24.",
     avoidFees: [
       "Check whether the fare includes checked baggage before treating the base fare as the real trip price.",
       "Buy the correct checked-bag weight option before travel when baggage is needed.",
@@ -6899,7 +6898,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       "Basic Fare and Standard show a USD 0 change amount when the request is made 60 or more days before departure.",
     ],
     comparisonLinks: [
-      { href: "/airlines/spirit", label: "Spirit Airlines" },
       { href: "/airlines/southwest", label: "Southwest Airlines" },
       { href: "/airlines/ryanair", label: "Ryanair" },
       { href: "/airlines/easyjet", label: "easyJet" },
@@ -6993,7 +6991,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     comparisonLinks: [
       { href: "/airlines/easyjet", label: "easyJet" },
       { href: "/airlines/frontier", label: "Frontier Airlines" },
-      { href: "/airlines/spirit", label: "Spirit Airlines" },
       { href: "/airlines/jetblue", label: "JetBlue" },
     ],
   },
@@ -7085,7 +7082,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     comparisonLinks: [
       { href: "/airlines/ryanair", label: "Ryanair" },
       { href: "/airlines/frontier", label: "Frontier Airlines" },
-      { href: "/airlines/spirit", label: "Spirit Airlines" },
       { href: "/airlines/jetblue", label: "JetBlue" },
     ],
   },
@@ -7472,21 +7468,24 @@ function safeText(v: unknown): string {
 
 function readerCopy(text: string): string {
   return text
-    .replaceAll("The current dataset does not publish", "The current fee table does not show")
-    .replaceAll("This dataset does not publish", "This fee table does not show")
-    .replaceAll("The dataset does not publish", "The fee table does not show")
-    .replaceAll("this dataset", "the current fee table")
-    .replaceAll("This dataset", "This fee table")
-    .replaceAll("the dataset", "the current fee table")
-    .replaceAll("The dataset", "The current fee table")
-    .replaceAll("current dataset", "current fee table")
+    .replaceAll("The current dataset does not publish", "The official sources reviewed do not provide")
+    .replaceAll("This dataset does not publish", "The official sources reviewed do not provide")
+    .replaceAll("The dataset does not publish", "The official sources reviewed do not provide")
+    .replaceAll("this dataset", "the official sources reviewed")
+    .replaceAll("This dataset", "The official sources reviewed")
+    .replaceAll("the dataset", "the official sources reviewed")
+    .replaceAll("The dataset", "The official sources reviewed")
+    .replaceAll("current dataset", "official sources reviewed")
+    .replaceAll("current fee table", "published policy")
+    .replaceAll("fee table", "published policy")
+    .replaceAll("rows shown here", "published policy details shown here")
     .replaceAll("published rows shown on this page", "published fees shown here")
     .replaceAll("published rows included in the current fee table", "published fees included here")
     .replaceAll("published rows below", "published fees below")
     .replaceAll("Published rows below", "Published fees below")
     .replaceAll("row-level source checks", "source checks for the fees")
     .replaceAll("Last verified support on this page comes from", "Last verified dates come from")
-    .replaceAll("does not publish", "does not show");
+    .replaceAll("does not publish", "does not provide a broadly applicable price for");
 }
 
 function safeUrl(v: unknown): string | null {
@@ -7505,6 +7504,14 @@ function getLatestVerifiedDate(fees: FeeItem[]): string {
     .map((fee) => (typeof fee.last_verified === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fee.last_verified) ? fee.last_verified : ""))
     .filter(Boolean);
   return dates.length ? dates.sort().at(-1)! : "Not published";
+}
+
+function getOldestVerifiedDate(fees: FeeItem[]): string {
+  const dates = fees
+    .map((fee) => (typeof fee.last_verified === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fee.last_verified) ? fee.last_verified : ""))
+    .filter(Boolean)
+    .sort();
+  return dates.at(0) ?? "Not published";
 }
 
 function formatAmount(amount: unknown, currency: unknown): string {
@@ -7768,7 +7775,7 @@ function AirlineScenarioLinks({ slug, airlineName }: { slug: string; airlineName
             Start with a common ZIPAIR route, then confirm the baggage quote.
           </h3>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
-            These links do not invent route-specific baggage prices. They prefill the calculator with a ZIPAIR route context and bag pattern so you can see whether the current fee table supports an estimate or whether ZIPAIR checkout is still required.
+            These links do not invent route-specific baggage prices. They prefill the calculator with a ZIPAIR route and bag plan, then show whether a reliable estimate is possible or ZIPAIR checkout is still required.
           </p>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {routeLinks.map((link) => (
@@ -7891,11 +7898,20 @@ function InlineComparisonLinks({ links }: { links: ReferenceLink[] }) {
 function VerificationTrustBar({
   airlineName,
   latestVerified,
+  oldestVerified,
 }: {
   airlineName: string;
   latestVerified: string;
+  oldestVerified: string;
 }) {
   const reportHref = `/contact?subject=${encodeURIComponent(`${airlineName} policy changed`)}`;
+  const freshness = getVerificationFreshness(oldestVerified);
+  const statusClass = {
+    green: "border-emerald-200 text-emerald-900",
+    amber: "border-amber-300 text-amber-950",
+    red: "border-rose-300 text-rose-950",
+    slate: "border-slate-300 text-slate-800",
+  }[freshness.tone];
 
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm shadow-sm">
@@ -7904,8 +7920,8 @@ function VerificationTrustBar({
           <span className="rounded-full border border-blue-200 bg-white px-3 py-1 font-bold text-blue-900">
             Last verified: {latestVerified}
           </span>
-          <span className="rounded-full border border-emerald-200 bg-white px-3 py-1 font-bold text-emerald-900">
-            Current as of {latestVerified}
+          <span className={`rounded-full border bg-white px-3 py-1 font-bold ${statusClass}`} title={freshness.detail}>
+            Status: {freshness.label}
           </span>
         </div>
         <div className="flex flex-col gap-2 text-slate-700 sm:flex-row sm:items-center">
@@ -7937,7 +7953,7 @@ function BagCostTeaser({
   feeByBagOrdinal: [number, number][];
 }) {
   const firstBagFee = feeByBagOrdinal.find(([ordinal]) => ordinal === 1)?.[1];
-  const modeledRoundtrip = firstBagFee == null ? null : firstBagFee * 2 * 2;
+  const estimatedRoundtrip = firstBagFee == null ? null : firstBagFee * 2 * 2;
 
   return (
     <section className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
@@ -7948,9 +7964,9 @@ function BagCostTeaser({
         Price a common {airlineName} roundtrip before booking.
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
-        {modeledRoundtrip == null
+        {estimatedRoundtrip == null
           ? `${airlineName} bag costs need a route, fare, or baggage-concept lookup before a useful total can be quoted.`
-          : `Using the published first-bag fee we can model two travelers, one checked bag each, roundtrip at about ${formatUsdEstimate(modeledRoundtrip)} before fare, status, card, and route exceptions.`}
+          : `For two travelers with one checked bag each, the published first-bag fee produces an estimated roundtrip total of ${formatUsdEstimate(estimatedRoundtrip)} before fare, status, card, and route exceptions.`}
       </p>
       <Link
         href={checkedBagCalculatorUrl(slug)}
@@ -7979,7 +7995,7 @@ function CardSavingsDecisionPanel({
 
   const note = isAirCanada
     ? "Air Canada card benefit tracking is useful, but the current Air Canada bag rows are CAD-denominated. Treat the card path as a benefit-rule check until multi-currency break-even math is added."
-    : "The card calculator uses the same airline and bag pattern, then tests whether modeled checked-bag savings beat the card annual fee before counting points, bonuses, lounge access, or unrelated perks.";
+    : "The card calculator uses the same airline and bag pattern, then tests whether calculated checked-bag savings beat the card annual fee before counting points, bonuses, lounge access, or unrelated perks.";
 
   return (
     <section className="rounded-3xl border border-emerald-200 bg-emerald-50 p-6">
@@ -8295,7 +8311,7 @@ function AirCanadaCheckedBagFeeChecklist() {
         Start with fare family: Basic is the paid-bag pressure point.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        Air Canada baggage fees are not one flat rule across every ticket. In the current data, Standard and higher fares show the first checked bag included, while the Basic domestic/transborder example shows a paid first checked bag.
+        Air Canada baggage fees are not one flat rule across every ticket. Standard and higher fares can include the first checked bag, while the Basic domestic/transborder example has a paid first checked bag.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8303,7 +8319,7 @@ function AirCanadaCheckedBagFeeChecklist() {
             Basic domestic/transborder
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            First checked bag: CAD 30 each way in the dataset example. Second checked bag: CAD 50 where not included.
+            First checked bag: CAD 30 each way in this published example. Second checked bag: CAD 50 where not included.
           </p>
         </div>
         <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -8678,7 +8694,7 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       return {
         title: "Alaska Airlines Baggage Fees and Carry-On Rules (2026)",
         description:
-          "Alaska does not charge a carry-on fee in the current fee table: one carry-on and one personal item are included, including Saver. Checked-bag fees depend on ticket date and route.",
+          "Alaska does not charge a standard carry-on fee: one carry-on and one personal item are included, including Saver. Checked-bag fees depend on ticket date and route.",
       };
     case "lufthansa":
       return {
@@ -8772,7 +8788,11 @@ function ReferenceAirlinePage({
   fees: FeeItem[];
 }) {
   const latestVerified = getLatestVerifiedDate(fees);
+  const oldestVerified = getOldestVerifiedDate(fees);
   const content = REFERENCE_AIRLINE_CONTENT[slug];
+  const travelerExceptions = content.exceptions.filter(
+    (item) => !/co-branded card baggage waiver|card baggage waiver/i.test(item),
+  );
   const carryOnRows = getRowsByCategory(fees, "carry_on");
   const checkedRows = getRowsByCategory(fees, "checked_baggage");
   const overweightRows = getRowsByCategory(fees, "overweight_baggage");
@@ -8821,7 +8841,7 @@ function ReferenceAirlinePage({
           </div>
         </div>
 
-        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} />
+        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} oldestVerified={oldestVerified} />
 
         {searchEntryCopy ? (
           <section className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
@@ -9095,9 +9115,9 @@ function ReferenceAirlinePage({
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">When fees may not apply</h2>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-          {content.exceptions.length > 0 ? (
+          {travelerExceptions.length > 0 ? (
             <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
-              {content.exceptions.map((item) => (
+              {travelerExceptions.map((item) => (
                 <li key={item} className="border-l-4 border-slate-300 pl-4">
                   {readerCopy(item)}
                 </li>
@@ -9105,7 +9125,7 @@ function ReferenceAirlinePage({
             </ul>
           ) : (
             <p className="text-sm leading-relaxed text-slate-700">
-              No explicit fee-waiver exception is identified in the published rows shown on this page.
+              No broadly applicable fee-waiver exception was identified in the official sources reviewed.
             </p>
           )}
         </div>
@@ -9148,7 +9168,7 @@ function ReferenceAirlinePage({
         <Disclaimer />
         <div className="space-y-2 text-xs text-slate-400">
           <p>
-            This reference reflects the published fee rows and linked source documents available for this airline.
+            This reference reflects the published policy details and linked official sources available for this airline.
           </p>
         </div>
       </div>
@@ -9166,6 +9186,7 @@ function LegacyAirlinePage({
   fees: FeeItem[];
 }) {
   const latestVerified = getLatestVerifiedDate(fees);
+  const oldestVerified = getOldestVerifiedDate(fees);
   const strategy = AIRLINE_STRATEGY[slug];
   const insightTraps = airline.unique_insights?.traps ?? [];
   const insightHack = airline.unique_insights?.pro_hack;
@@ -9212,7 +9233,7 @@ function LegacyAirlinePage({
           </div>
         </div>
 
-        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} />
+        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} oldestVerified={oldestVerified} />
 
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Quick summary</div>
@@ -9305,15 +9326,17 @@ function LegacyAirlinePage({
       />
 
       <section className="grid gap-6 md:grid-cols-2">
-        <Link
-          href={`/airlines/${slug}/how-to-beat-fees`}
-          className="group rounded-2xl border border-blue-100 bg-blue-50 p-6 transition hover:bg-blue-600"
-        >
-          <h2 className="text-lg font-bold text-blue-900 group-hover:text-white">How to beat {airline.name} fees</h2>
-          <p className="mt-2 text-sm leading-relaxed text-blue-800 group-hover:text-blue-50">
-            Go from the fee table to practical choices: traps, workarounds, bag math, and what to do before checkout.
-          </p>
-        </Link>
+        {hasActiveStrategyPage(slug) ? (
+          <Link
+            href={`/airlines/${slug}/how-to-beat-fees`}
+            className="group rounded-2xl border border-blue-100 bg-blue-50 p-6 transition hover:bg-blue-600"
+          >
+            <h2 className="text-lg font-bold text-blue-900 group-hover:text-white">How to beat {airline.name} fees</h2>
+            <p className="mt-2 text-sm leading-relaxed text-blue-800 group-hover:text-blue-50">
+              Go from the published policy to practical choices, bag math, and what to do before checkout.
+            </p>
+          </Link>
+        ) : null}
 
         <div className="rounded-2xl border border-slate-200 bg-slate-900 p-6 text-white">
           <div className="text-xs font-bold uppercase tracking-widest text-blue-300">Related references</div>
@@ -9368,7 +9391,7 @@ function LegacyAirlinePage({
       <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-6">
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-            <h2 className="text-2xl font-bold text-slate-900">Published fee rows</h2>
+            <h2 className="text-2xl font-bold text-slate-900">Published fees and policy details</h2>
             <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-tighter text-slate-500">
               {fees.length} verified rows
             </div>
@@ -9433,9 +9456,11 @@ function LegacyAirlinePage({
               The fee table is most useful when you read it alongside the airline fee guide, fare rules, and related baggage references.
             </p>
             <div className="mt-4 grid gap-3 text-sm">
-              <Link href={`/airlines/${slug}/how-to-beat-fees`} className="font-semibold text-blue-700 underline">
-                Go to the {airline.name} fee guide
-              </Link>
+              {hasActiveStrategyPage(slug) ? (
+                <Link href={`/airlines/${slug}/how-to-beat-fees`} className="font-semibold text-blue-700 underline">
+                  Go to the {airline.name} fee guide
+                </Link>
+              ) : null}
               <Link href={`/tools/checked-baggage-calculator?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&directions=2&trips=2&pay=yes`} className="font-semibold text-blue-700 underline">
                 Estimate checked-bag cost
               </Link>
@@ -9505,6 +9530,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const airline = getAirlineBySlug(slug);
   if (!airline) return { title: "Airline not found" };
 
+  if (slug === "spirit") {
+    return {
+      title: "Spirit Airlines fee page archived",
+      description: "Archived Spirit Airlines fee reference. Spirit's official site says the airline is winding down operations.",
+      robots: { index: false, follow: true },
+      alternates: { canonical: canonical("/airlines/spirit") },
+    };
+  }
+
   const strategy = AIRLINE_STRATEGY[slug];
   return getAirlineMetadataCopy(slug, airline.name, strategy?.verdict);
 }
@@ -9513,6 +9547,24 @@ export default async function AirlinePage({ params }: PageProps) {
   const { slug } = await params;
   const airline = getAirlineBySlug(slug);
   if (!airline) notFound();
+
+  if (slug === "spirit") {
+    return (
+      <main className="mx-auto w-full max-w-3xl px-6 py-16">
+        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-8">
+          <div className="text-xs font-bold uppercase tracking-widest text-amber-800">Archived airline page</div>
+          <h1 className="mt-3 text-4xl font-black tracking-tight text-slate-950">Spirit Airlines fee reference is no longer active</h1>
+          <p className="mt-4 leading-relaxed text-slate-700">
+            Spirit&apos;s official website states that the airline is winding down operations and that its flights are cancelled. We have removed Spirit from active comparisons, calculators, and strategy guides so historical fee information is not mistaken for a current booking option.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+            <a href="https://www.spirit.com/" target="_blank" rel="noreferrer" className="text-blue-800 underline">Check Spirit&apos;s official notice</a>
+            <Link href="/airlines" className="text-blue-800 underline">Browse active airline pages</Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   const fees = (airline.fees ?? []) as FeeItem[];
 

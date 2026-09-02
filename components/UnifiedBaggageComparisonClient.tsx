@@ -256,7 +256,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
       <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-200">
         <table className="w-full min-w-[860px] border-collapse bg-white text-left text-sm">
           <caption className="bg-slate-50 px-4 py-3 text-left text-xs leading-relaxed text-slate-500">
-            Side-by-side checked-bag estimates for the selected setup. Card savings are modeled only from checked-bag waiver data already in this site.
+            Side-by-side checked-bag estimates for the selected setup. Card savings appear only when a verified checked-bag waiver applies.
           </caption>
           <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
             <tr>
@@ -319,7 +319,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
                       Check card rules
                     </Link>
                   ) : (
-                    <span className="text-slate-500">No modeled card</span>
+                    <span className="text-slate-500">No eligible card benefit</span>
                   )}
                 </td>
                 <td className="px-4 py-4 align-top">
@@ -355,7 +355,7 @@ export function UnifiedBaggageComparisonClient({ airlines, focusSlug, compact = 
 
       {!compact ? (
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
-          This comparison is intentionally conservative. It compares broad published checked-bag rows and modeled card baggage waivers; exact route, date, fare family, partner operation, and airport purchase rules still need final confirmation before payment.
+          This comparison uses published checked-bag prices and verified card baggage waivers. Confirm the exact route, date, fare family, operating carrier, and purchase channel before payment.
         </p>
       ) : null}
     </section>

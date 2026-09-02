@@ -5,7 +5,6 @@ export const CORE_10_SLUGS = [
   "southwest",
   "jetblue",
   "alaska",
-  "spirit",
   "frontier",
   "ryanair",
   "easyjet",
@@ -51,8 +50,8 @@ function authorityHighlights(highlights: StrategyHighlight[]): StrategyHighlight
 
 export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
   united: {
-    verdict: "United is beatable if you manage bag timing, avoid Basic lockouts, and refuse airport pricing for predictable add-ons.",
-    whyItWins: "United monetizes procrastination: airport bag payment, Basic Economy restrictions, and paid seat anxiety all punish travelers who wait.",
+    verdict: "United fees are easier to control when you price bags before the airport and compare Basic Economy with the next fare before booking.",
+    whyItWins: "Airport bag prices can be higher, while Basic Economy and paid seat selection can change the all-in cost.",
     feeEngine: "The main stack is Basic fare plus bag plus seat plus lost flexibility, with regional-jet edge cases making the carry-on story worse.",
     toolReason: "United is one of the clearest cases where bag-fee card break-even math can beat paying cash repeatedly.",
     relatedGuides: [
@@ -62,8 +61,8 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     ],
     relatedAirlines: ["american", "delta"],
     authorityHighlights: authorityHighlights([
-      { title: "Airport pricing is a designed penalty", body: "United is unusually clear about punishing the traveler who waits to pay for a checked bag, so timing is part of the product.", href: "/fees/checked_baggage", cta: "See bag timing" },
-      { title: "Basic Economy is a lockout product", body: "United is one of the cleanest examples of an airline using Basic restrictions to force the traveler back into paid normality.", href: "/guides/basic-economy-traps", cta: "See Basic traps" },
+      { title: "Airport bag payment can cost more", body: "United publishes different baggage prices by purchase channel, so timing is part of the price comparison.", href: "/fees/checked_baggage", cta: "See bag timing" },
+      { title: "Basic Economy removes flexibility", body: "United Basic Economy can limit cabin-bag access and post-booking options, depending on the itinerary and exceptions.", href: "/guides/basic-economy-traps", cta: "See Basic traps" },
       { title: "Regional aircraft details matter", body: "United Express edge cases change whether the bag plan works and whether under-seat space behaves like the website implies.", href: "/sizer-rules", cta: "Check enforcement" },
     ]),
   },
@@ -81,12 +80,12 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     authorityHighlights: authorityHighlights([
       { title: "Premium feel does not mean low fee pressure", body: "Delta is strong at turning an orderly product into a reason to say yes to upsells that feel harmless in isolation.", href: "/fees/seat_selection", cta: "Inspect seat pricing" },
       { title: "Basic risk is flexibility risk", body: "Delta's entry fare looks more reasonable than many rivals until plans move and the real price gap appears in change behavior.", href: "/guides/basic-economy-traps", cta: "Compare Basic tradeoffs" },
-      { title: "Bag shape still changes outcomes", body: "Delta's gate culture can reward soft, compressible bags over rigid rollers even when the published rule looks neutral.", href: "/sizer-rules", cta: "See sizer reality" },
+      { title: "Bag shape still changes outcomes", body: "A soft, compressible bag can be easier to fit within Delta's published dimensions than a rigid roller near the limit.", href: "/sizer-rules", cta: "Check bag fit" },
     ]),
     playbookSections: playbookSections([
       { id: "bags", title: "1) Bags: Delta is straightforward until the trip stops being standard", body: "Delta's first-bag pricing is not the trap by itself. The trap is assuming Delta's polished brand means the bag cost stays simple once the bag gets heavier, larger, or attached to the wrong fare.", tip: "Treat Delta as a baseline airline. If another airline charges more for a normal first bag, compare all-in cost before assuming the cheaper ticket wins." },
       { id: "basic", title: "2) Basic Economy: the restriction is flexibility, not just comfort", body: "Delta Basic can still look manageable at booking, but the change and cancellation rules are where the real price gap shows up.", tip: "If the trip might move, compare non-Basic Delta against the likely cost of being stuck with the cheapest fare." },
-      { id: "seats", title: "3) Seats: Delta monetizes polish well", body: "Preferred and nicer-position seats feel harmless on Delta because the product looks premium. That is exactly why the upsell works.", tip: "Pay for Delta seating only when the seat solves a real problem, not because the cabin map makes a normal seat feel scarce." },
+      { id: "seats", title: "3) Seats: compare the benefit with the price", body: "Preferred and extra-legroom seats are separate products. Their value depends on location, space, flight length, and the traveler.", tip: "Pay for Delta seating only when the seat solves a specific comfort or location need." },
       { id: "changes", title: "4) Changes: free can still be expensive", body: "Delta's no-change-fee language sounds generous, but fare difference still controls the real cost and Basic can still become the bad decision fast.", tip: "Make sure you bought the right fare before the schedule gets unstable." },
     ]),
   },
@@ -104,7 +103,7 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     authorityHighlights: authorityHighlights([
       { title: "Regional flying changes the risk profile", body: "American Eagle edge cases make the trip more operationally sensitive than the base fare table suggests, especially when the bag leaves your sight.", href: "/sizer-rules", cta: "Review carry-on reality" },
       { title: "Route-specific bag pricing matters", body: "American is a bad airline for casual baggage assumptions because region and route change the real price fast.", href: "/fees/checked_baggage", cta: "Compare baggage rows" },
-      { title: "Seat products blur together by design", body: "Preferred and Main Cabin Extra can make the normal seat feel artificially low-value when the real difference is not always meaningful.", href: "/fees/seat_selection", cta: "Inspect seat fees" },
+      { title: "Seat products are not equivalent", body: "Preferred and Main Cabin Extra can differ in location, space, and benefits, so compare the actual feature before paying.", href: "/fees/seat_selection", cta: "Inspect seat fees" },
     ]),
     playbookSections: playbookSections([
       { id: "bags", title: "1) Bags: route context matters more on American than many travelers expect", body: "American's baggage pricing moves around by region more than the traveler expects. Domestic logic does not always survive a transatlantic or Latin America itinerary.", tip: "Never assume your last American bag fee is the right benchmark for the next route." },
@@ -140,7 +139,7 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     relatedGuides: [{ href: "/guides/basic-economy-traps", label: "Basic Economy traps" }, { href: "/fees/seat_selection", label: "Seat selection fees" }, { href: "/fees/checked_baggage", label: "Checked bag fee guide" }],
     relatedAirlines: ["alaska", "southwest"],
     authorityHighlights: authorityHighlights([
-      { title: "Bag timing is more important than it looks", body: "JetBlue can punish late bag decisions in a way that makes a normal-feeling fare stop being normal.", href: "/fees/checked_baggage", cta: "Review bag timing" },
+      { title: "Bag timing changes the price", body: "JetBlue baggage prices can increase close to departure, so a late purchase can change the fare comparison.", href: "/fees/checked_baggage", cta: "Review bag timing" },
       { title: "Blue Basic is quieter than it looks", body: "The restrictions are presented more gently than on a ULCC, but the all-in math still gets expensive when the traveler expected a normal trip.", href: "/guides/basic-economy-traps", cta: "See Basic fare traps" },
       { title: "Seat upgrades need actual justification", body: "JetBlue's comfort branding makes premium seats sound rational. Sometimes they are. The trap is assuming every upsell is.", href: "/fees/seat_selection", cta: "Inspect seat options" },
     ]),
@@ -170,26 +169,13 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
       { id: "changes", title: "4) Changes: route and fare details still matter", body: "Alaska's policy language is clearer than many rivals, but post-booking flexibility still depends on exactly what was bought.", tip: "For uncertain trips, use Alaska's clarity as part of the value equation, not just the ticket price." },
     ]),
   },
-  spirit: {
-    verdict: "Spirit is not cheap by default. It is only cheap when you win the personal-item game and avoid every human-touchpoint surcharge in the funnel.",
-    whyItWins: "On Spirit, fees are not side revenue. They are the product.",
-    feeEngine: "Carry-on, checked bag timing, airport printing, and size enforcement are the main profit levers.",
-    toolReason: "Spirit works best when travelers compare the total add-on cost against a more normal airline and then check sizer risk before thinking about a card.",
-    relatedGuides: [{ href: "/sizer-rules", label: "Sizer enforcement reality" }, { href: "/fees/carry_on", label: "Carry-on fee guide" }, { href: "/fees/checked_baggage", label: "Checked bag fee guide" }],
-    relatedAirlines: ["frontier", "ryanair"],
-    authorityHighlights: authorityHighlights([
-      { title: "This is a personal-item discipline airline", body: "Spirit only works when the bag stays out of the machine. Once the traveler loses the personal-item game, the headline fare stops mattering.", href: "/fees/carry_on", cta: "See carry-on logic" },
-      { title: "Human touchpoints are part of the fee model", body: "Spirit makes money from extra decisions and avoidable friction, which is why the user journey matters more than the isolated fee row.", href: "/guides/basic-economy-traps", cta: "See stripped-fare logic" },
-      { title: "Sizer culture is the product", body: "This airline is one of the clearest reasons the site needs enforcement pages and not just published dimensions.", href: "/sizer-rules", cta: "Review enforcement reality" },
-    ]),
-  },
   frontier: {
     verdict: "Frontier is a fee-logic airline: if you buy the wrong bundle at the wrong time, the fare that looked cheapest stops being a bargain very quickly.",
-    whyItWins: "Frontier's revenue model depends on separating normal travel behavior into paid decisions.",
+    whyItWins: "Frontier sells carry-ons, checked bags, seats, and flexibility separately or through bundles.",
     feeEngine: "Carry-on, checked bags, change timing, and bundle pricing do most of the damage.",
     toolReason: "Frontier users need clear comparison paths more than generic product recommendations, which makes the sizer and fee guides the right bridge.",
     relatedGuides: [{ href: "/sizer-rules", label: "Sizer enforcement reality" }, { href: "/fees/carry_on", label: "Carry-on fee guide" }, { href: "/fees/change_cancellation", label: "Change and cancellation guide" }],
-    relatedAirlines: ["spirit", "ryanair"],
+    relatedAirlines: ["ryanair", "easyjet"],
     authorityHighlights: authorityHighlights([
       { title: "Bundle timing is the whole story", body: "Frontier's base fare tells you almost nothing by itself. The real decision is when and how you buy back normal travel behavior.", href: "/fees/carry_on", cta: "Review bag and bundle logic" },
       { title: "Late fixes are where the airline wins", body: "Frontier behaves like a timing ladder. The later the traveler solves the problem, the more likely the airline gets paid.", href: "/fees/change_cancellation", cta: "See timing pressure" },
@@ -202,7 +188,7 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     feeEngine: "Priority boarding, cabin-bag access, checked bag timing, and change fees create the real trip price.",
     toolReason: "Ryanair is a strong use case for sizer-first advice because enforcement risk changes the cost equation before any other tool does.",
     relatedGuides: [{ href: "/sizer-rules", label: "Sizer enforcement reality" }, { href: "/fees/carry_on", label: "Carry-on fee guide" }, { href: "/guides/basic-economy-traps", label: "Basic fare traps" }],
-    relatedAirlines: ["easyjet", "spirit"],
+    relatedAirlines: ["easyjet", "frontier"],
     authorityHighlights: authorityHighlights([
       { title: "Start with the bag, not the fare", body: "The free Ryanair allowance is the small under-seat bag. If that is not enough, the real fare is the fare plus the right bag option.", href: "/fees/carry_on", cta: "See cabin-bag economics" },
       { title: "Airport fixes are expensive", body: "Ryanair is least forgiving when the traveler waits until the airport to solve bags, seats, or changes.", href: "/guides/basic-economy-traps", cta: "See stripped-fare traps" },
@@ -246,6 +232,14 @@ export const AIRLINE_STRATEGY: Record<string, AirlineStrategy> = {
     ]),
   },
 };
+
+export const ACTIVE_STRATEGY_SLUGS = Object.entries(AIRLINE_STRATEGY)
+  .filter(([slug, strategy]) => slug === "united" || Boolean(strategy.playbookSections))
+  .map(([slug]) => slug);
+
+export function hasActiveStrategyPage(slug: string): boolean {
+  return ACTIVE_STRATEGY_SLUGS.includes(slug);
+}
 
 export function isCoreAirline(slug: string): boolean {
   return CORE_10_SLUGS.includes(slug as (typeof CORE_10_SLUGS)[number]);

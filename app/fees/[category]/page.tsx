@@ -7,6 +7,7 @@ import { FEE_HUB_STRATEGY } from "@/lib/fee-hub-strategy";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
 import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
+import { hasActiveStrategyPage } from "@/lib/airline-strategy";
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -273,7 +274,7 @@ function getHubCopy(category: string) {
     case "carry_on":
       return {
         verdict:
-          "Carry-on rules are really enforcement rules. The published dimensions matter, but the real money is won or lost on whether the airline monetizes cabin access aggressively.",
+          "Carry-on rules combine size limits, fare entitlement, purchase timing, and enforcement. Check all four before relying on cabin-only travel.",
         proTip:
           "Treat bag shape as part of the cost decision. Soft, compressible bags often outperform rigid rollers even when the claimed dimensions look similar.",
         loophole:
@@ -284,7 +285,7 @@ function getHubCopy(category: string) {
     case "seat_selection":
       return {
         verdict:
-          "Seat fees are airlines selling anxiety. Many preferred seats are not meaningfully better; they are just normal seats priced like a problem-solving tool.",
+          "A preferred seat may change location without adding legroom. Confirm the actual benefit before paying for the label.",
         proTip:
           "If you are going to pay for a seat, re-check inventory at online check-in. Booking-time seat pricing is often the worst moment to buy.",
         loophole:
@@ -328,7 +329,7 @@ function getHubCopy(category: string) {
     default:
       return {
         verdict:
-          "This fee category is where airlines monetize confusion. Do not judge the fare in isolation; price the trip as fare plus likely add-ons.",
+          "These fees can make a low fare more expensive than the alternative. Compare the fare plus the add-ons the trip actually needs.",
         proTip:
           "Check the airline page after this table to see how the rule behaves on your fare class and route.",
         loophole:
@@ -363,7 +364,7 @@ function getContextualBridge(category: string) {
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
           Carry-on decisions get easier when you pair this page with the{" "}
           <Link href="/guides/carry-on-strictness-by-airline">carry-on strictness guide</Link>, then check{" "}
-          <Link href="/airlines/spirit">Spirit</Link>, <Link href="/airlines/frontier">Frontier</Link>, and{" "}
+          <Link href="/airlines/frontier">Frontier</Link> and{" "}
           <Link href="/airlines/ryanair">Ryanair</Link> before using{" "}
           <Link href="/sizer-rules">Sizer rules</Link> to test whether your bag survives real enforcement.
         </p>
@@ -391,8 +392,7 @@ function getContextualBridge(category: string) {
       return (
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "#444" }}>
           Overweight-bag decisions are usually fixed before the airport scale, so compare{" "}
-          <Link href="/airlines/southwest">Southwest</Link>, <Link href="/airlines/frontier">Frontier</Link>, and{" "}
-          <Link href="/airlines/spirit">Spirit</Link>, use the{" "}
+          <Link href="/airlines/southwest">Southwest</Link> and <Link href="/airlines/frontier">Frontier</Link>, use the{" "}
           <Link href="/tools/excess-baggage-calculator">overweight and oversize baggage calculator</Link>, then check{" "}
           <Link href="/guides/carry-on-strictness-by-airline">carry-on strictness by airline</Link> and{" "}
           <Link href="/sizer-rules">Sizer rules</Link> if repacking into a carry-on plan is still realistic.
@@ -1001,9 +1001,11 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                   <Link href={`/airlines/${entry!.slug}`} style={{ textDecoration: "underline" }}>
                     Fee page
                   </Link>
-                  <Link href={`/airlines/${entry!.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
-                    Fee guide
-                  </Link>
+                  {hasActiveStrategyPage(entry!.slug) ? (
+                    <Link href={`/airlines/${entry!.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
+                      Fee guide
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             ))}
@@ -1017,7 +1019,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         <div style={{ overflowX: "auto" }}>
           <table>
             <caption style={{ padding: 8, textAlign: "left", fontSize: 13, color: "#444" }}>
-              {title} fee rows by airline, including amount, route, timing, conditions, source, and last verified date.
+              {title} details by airline, including amount, route, timing, conditions, source, and last checked date.
             </caption>
             <thead>
               <tr>
@@ -1083,9 +1085,11 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                           Basic fare risk
                         </Link>
                       ) : null}
-                      <Link href={`/airlines/${encodeURIComponent(row.slug)}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
-                        Fee guide
-                      </Link>
+                      {hasActiveStrategyPage(row.slug) ? (
+                        <Link href={`/airlines/${encodeURIComponent(row.slug)}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
+                          Fee guide
+                        </Link>
+                      ) : null}
                     </div>
                   </td>
                 </tr>

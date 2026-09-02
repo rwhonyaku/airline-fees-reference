@@ -1,7 +1,8 @@
 // components/ModernTableWrapper.tsx - NEW (safe)
 import { FeeTable } from "./Table";
+import type { FeeRow } from "@/lib/types";
 
-export function ModernTableWrapper({ rows }: { rows: any[] }) {
+export function ModernTableWrapper({ rows }: { rows: FeeRow[] }) {
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
       <div className="overflow-x-auto">

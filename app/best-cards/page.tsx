@@ -116,9 +116,9 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
 
   if (r.netAnnualUsd >= 0) {
     return {
-      label: "Worth it on modeled bag fees alone",
+      label: "Worth it on calculated bag savings alone",
       detail:
-        "The modeled checked-bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
+        "The calculated checked-bag savings cover the annual fee before counting points, credits, lounge access, or other perks.",
       className: "border-emerald-200 bg-emerald-50 text-emerald-950",
     };
   }
@@ -230,10 +230,10 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
       <main className="mx-auto w-full max-w-5xl px-4 py-12">
         <section className="rounded-3xl border border-amber-200 bg-amber-50 p-6">
           <div className="text-xs font-bold uppercase tracking-widest text-amber-800">
-            Not modeled in this calculator
+            No reliable bag-fee comparison available
           </div>
           <h1 className="mt-2 text-3xl font-extrabold text-slate-950">
-            No verified recurring free checked bag card is modeled for {airline.name}.
+            No verified recurring free checked bag card is available for {airline.name} in this calculator.
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
             That does not mean a baggage exception can never apply. It means this calculator does
@@ -241,7 +241,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
             checked-bag waiver for {airline.name}.
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-            To be modeled here, a card needs a published checked-bag waiver, clear traveler coverage,
+            To qualify for comparison, a card needs a published checked-bag waiver, clear traveler coverage,
             a usable annual fee, and baggage fees that can be compared against that annual fee without
             guessing. Cards that mainly offer points, lounge access, status paths, baggage-delay
             protection, or non-USD annual fees may still be useful, but they are not clean bag-fee
@@ -268,7 +268,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
             <h2 className="text-lg font-bold text-slate-900">Cards currently covered</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Current modeled or verified benefit coverage is focused on Alaska, Air Canada, American,
+              Current verified benefit coverage is focused on Alaska, Air Canada, American,
               United, Delta, and JetBlue.
             </p>
           </div>
@@ -332,7 +332,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
             </h1>
             <p className="mt-3 text-base leading-relaxed text-slate-700">
               For {airline.name}, this setup would produce about{" "}
-              <span className="font-bold text-slate-950">{usd(top.r.annualSavingsUsd)}</span> in modeled annual checked-bag savings before the card annual fee. After the annual fee, the top match would{" "}
+              <span className="font-bold text-slate-950">{usd(top.r.annualSavingsUsd)}</span> in calculated annual checked-bag savings before the card annual fee. After the annual fee, the top match would{" "}
               <span className="font-bold text-slate-950">{netLabel}</span>.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -500,7 +500,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         <div className="text-xs font-bold uppercase tracking-widest text-slate-600">What the card math is testing</div>
         <h2 className="text-2xl font-extrabold text-slate-950">
           {top.r.eligible
-            ? `About ${usd(top.r.annualSavingsUsd)} in modeled annual checked-bag savings for the top match.`
+            ? `About ${usd(top.r.annualSavingsUsd)} in calculated annual checked-bag savings for the top match.`
             : "This airline needs a first-bag fee lookup before card math can be trusted."}
         </h2>
         <div className="grid gap-3 md:grid-cols-3">
@@ -539,7 +539,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         {top.r.breakEvenRoundtrips != null ? (
           <p className="mt-2 max-w-3xl text-sm leading-relaxed">
             This card breaks even after{" "}
-            <span className="font-bold">{plural(top.r.breakEvenRoundtrips, "roundtrip")}</span> per year on modeled
+            <span className="font-bold">{plural(top.r.breakEvenRoundtrips, "roundtrip")}</span> per year on calculated
             checked-bag savings alone.
           </p>
         ) : null}
@@ -573,7 +573,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
         </div>
 
         <div className="mt-3 text-sm text-slate-700">
-          This is not a general card recommendation. It only compares modeled checked-bag savings
+          This is not a general card recommendation. It only compares calculated checked-bag savings
           against the annual fee. Delta second-bag savings are counted only when the selected bag
           pattern and fee data support that comparison.
         </div>

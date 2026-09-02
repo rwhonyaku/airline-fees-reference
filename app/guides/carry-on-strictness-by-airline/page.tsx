@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
+import { hasActiveStrategyPage } from "@/lib/airline-strategy";
 
 export const metadata: Metadata = {
   title: "Carry-on strictness by airline (2026) | Airline Fees Reference",
@@ -30,7 +31,7 @@ const STRICTNESS_ROWS: StrictnessRow[] = [
     slug: "alaska",
     airline: "Alaska",
     tier: "Low",
-    summary: "Alaska is relatively straightforward on carry-ons, which makes it useful when comparing against carriers that monetize bag anxiety.",
+    summary: "Alaska is relatively straightforward on carry-ons, making it a useful comparison with fares that charge separately for cabin bags.",
     travelerMove: "Treat Alaska as the comparison point when another airline needs paid cabin access or creates under-seat uncertainty.",
   },
   {
@@ -44,42 +45,35 @@ const STRICTNESS_ROWS: StrictnessRow[] = [
     slug: "delta",
     airline: "Delta",
     tier: "Medium",
-    summary: "Delta is not a hard-enforcement airline by default, but gate culture can turn against rigid rollers on full flights.",
+    summary: "Delta publishes a standard carry-on allowance, but full flights can still lead to gate-checking when overhead space runs out.",
     travelerMove: "If the flight is full, a soft-sided bag is often a smarter play than a boxy roller that invites a pre-tag.",
   },
   {
     slug: "american",
     airline: "American",
     tier: "High",
-    summary: "American is increasingly about agent discretion, especially on regional segments where the carry-on can become a baggage-claim problem fast.",
+    summary: "American's published allowance is straightforward, but regional aircraft can have less cabin storage and may require gate-checking larger carry-ons.",
     travelerMove: "Do not treat every American gate-check as jetbridge pickup. Keep essentials on-person if a regional aircraft is involved.",
   },
   {
     slug: "united",
     airline: "United",
     tier: "High",
-    summary: "United becomes much stricter when Basic Economy or regional aircraft constraints enter the picture, and the airport is where bad assumptions get punished.",
+    summary: "United rules become more restrictive when Basic Economy or regional-aircraft constraints apply.",
     travelerMove: "If you are on Basic or a small regional aircraft, build the bag plan around the most restrictive version of the rule, not the most optimistic one.",
-  },
-  {
-    slug: "spirit",
-    airline: "Spirit",
-    tier: "Extreme",
-    summary: "Spirit is strict because the lowest fare is built around a small personal item, not a normal overhead-bin bag.",
-    travelerMove: "A compressible personal item matters more than almost any other trip variable on Spirit.",
   },
   {
     slug: "frontier",
     airline: "Frontier",
     tier: "Extreme",
-    summary: "Frontier treats cabin access as a revenue product, so strictness is part of how the business model works.",
-    travelerMove: "Assume you need a plan before the airport. Late fixes are exactly what Frontier wants.",
+    summary: "Frontier Basic includes a personal item, while a larger cabin bag requires a separate purchase or an eligible bundle.",
+    travelerMove: "Choose the correct bag or bundle before the airport, when pricing is generally clearer and may be lower.",
   },
   {
     slug: "ryanair",
     airline: "Ryanair",
     tier: "Extreme",
-    summary: "Ryanair is one of the clearest examples of strict carry-on monetization, especially when the booking starts in the free personal-item lane.",
+    summary: "Ryanair's free allowance is a small personal bag; larger cabin-bag access requires an eligible paid option.",
     travelerMove: "Decide early whether you are truly traveling inside the free allowance or whether you need to buy the bag path upfront.",
   },
   {
@@ -98,7 +92,6 @@ const CORE_LINKS = [
   { href: "/airlines/southwest", label: "Southwest" },
   { href: "/airlines/jetblue", label: "JetBlue" },
   { href: "/airlines/alaska", label: "Alaska" },
-  { href: "/airlines/spirit", label: "Spirit" },
   { href: "/airlines/frontier", label: "Frontier" },
   { href: "/airlines/ryanair", label: "Ryanair" },
   { href: "/airlines/easyjet", label: "easyJet" },
@@ -159,7 +152,7 @@ export default function CarryOnStrictnessGuide() {
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
             <div style={{ fontWeight: 700, marginBottom: 8 }}>Extreme</div>
             <div style={{ fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Strictness is part of the revenue model. If you are trying to improvise at the gate, you are already behind.
+              Published limits and purchase timing both matter. Resolve uncertain bag size or entitlement before reaching the gate.
             </div>
           </div>
         </div>
@@ -190,9 +183,13 @@ export default function CarryOnStrictnessGuide() {
                   <td>{row.summary}</td>
                   <td>{row.travelerMove}</td>
                   <td style={{ whiteSpace: "nowrap" }}>
-                    <Link href={`/airlines/${row.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
-                      Fee guide
-                    </Link>
+                    {hasActiveStrategyPage(row.slug) ? (
+                      <Link href={`/airlines/${row.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
+                        Fee guide
+                      </Link>
+                    ) : (
+                      <Link href={`/airlines/${row.slug}`} style={{ textDecoration: "underline" }}>Airline policy</Link>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -259,7 +256,7 @@ export default function CarryOnStrictnessGuide() {
               </Link>
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-              Check the published carry-on fee rows and airline-specific bag paths after deciding strictness matters.
+              Check the published carry-on fees and airline-specific bag paths after deciding strictness matters.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>

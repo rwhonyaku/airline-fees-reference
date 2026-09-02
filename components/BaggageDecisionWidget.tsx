@@ -84,7 +84,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
             Estimate the bag-fee hit before you book.
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-700">
-            Use the current published fee rows for {airlineName} to test a simple scenario. If the
+            Use the current published fees for {airlineName} to test a simple scenario. If the
             price depends on route, fare, or purchase timing, this module will send you to the full
             calculator instead of pretending there is one universal fee.
           </p>
@@ -159,8 +159,8 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
                 </p>
                 {result.possibleCardOffset != null ? (
                   <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                    If an eligible card covers the first checked bag for this party, the modeled
-                    first-bag exposure is about <span className="font-bold">{usd(result.possibleCardOffset)}</span>{" "}
+                    If an eligible card covers the first checked bag for this party, the calculated
+                    first-bag cost is about <span className="font-bold">{usd(result.possibleCardOffset)}</span>{" "}
                     per year before annual fees.
                   </p>
                 ) : null}
@@ -173,7 +173,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
                       Partial estimate: {usd(result.tripCost)} from known bag rows.
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                      The current fee rows include numeric pricing for{" "}
+                      Published prices are available for{" "}
                       {result.known
                         .map((ordinal) =>
                           ordinal === 1 ? "the first bag" : ordinal === 2 ? "the second bag" : "the third bag"
@@ -192,8 +192,7 @@ export function BaggageDecisionWidget({ airlineSlug, airlineName, feeByBagOrdina
                       No broad checked-bag estimate available.
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                      {airlineName} does not publish a single broad numeric USD first-bag fee in
-                      this dataset. The price depends on route, fare, currency, purchase timing, or
+                      {airlineName} does not publish one broadly applicable USD first-bag fee. The price depends on route, fare, currency, purchase timing, or
                       how the allowance is calculated.
                     </p>
                   </>

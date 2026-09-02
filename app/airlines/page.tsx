@@ -19,7 +19,6 @@ const PRIORITY_AIRLINES = [
   "southwest",
   "jetblue",
   "alaska",
-  "spirit",
   "frontier",
   "ryanair",
   "easyjet",
@@ -71,7 +70,7 @@ function AirlineCard({ airline }: { airline: AirlineSummary }) {
 }
 
 export default function AirlinesIndexPage() {
-  const airlines = getAirlinesIndex();
+  const airlines = getAirlinesIndex().filter((airline) => airline.slug !== "spirit");
   const latestVerified = getLatestVerifiedAcrossAirlines();
   const priorityAirlines = pickAirlines(airlines, PRIORITY_AIRLINES);
   const internationalAirlines = pickAirlines(airlines, INTERNATIONAL_AIRLINES);

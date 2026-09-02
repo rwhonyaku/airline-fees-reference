@@ -263,11 +263,10 @@ export default function InternationalBaggageAllowanceGuide() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Examples from the current fee rows</h2>
+        <h2 className="text-2xl font-bold text-slate-900">How international allowances vary by airline</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          These are not invented fares. They are source-linked checked-baggage rows already used by
-          the site, surfaced here because their conditions mention route, fare family, cabin, piece
-          concept, weight concept, or purchase-path behavior.
+          These official examples show why the answer can change by route, fare family, cabin,
+          piece allowance, total weight, or purchase channel.
         </p>
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
           <table className="min-w-[1040px] text-left text-sm">
@@ -277,7 +276,7 @@ export default function InternationalBaggageAllowanceGuide() {
                 <th className="px-4 py-3 font-semibold">Amount label</th>
                 <th className="px-4 py-3 font-semibold">Applies to</th>
                 <th className="px-4 py-3 font-semibold">Route / region</th>
-                <th className="px-4 py-3 font-semibold">Why it varies</th>
+                <th className="px-4 py-3 font-semibold">Rules that affect the answer</th>
                 <th className="px-4 py-3 font-semibold">Source</th>
                 <th className="px-4 py-3 font-semibold">Next step</th>
               </tr>
@@ -356,7 +355,7 @@ export default function InternationalBaggageAllowanceGuide() {
           <h2 className="text-2xl font-bold text-slate-900">Next useful tools</h2>
           <div className="mt-4 grid gap-3 text-sm">
             <Link href="/fees/checked_baggage" className="font-semibold text-blue-800 underline">
-              Compare checked-baggage fee rows
+              Compare checked-baggage policies
             </Link>
             <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" className="font-semibold text-blue-800 underline">
               Price checked-bag costs

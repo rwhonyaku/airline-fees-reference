@@ -168,9 +168,9 @@
     },
     {
       "category": "credit_card_exemption",
-      "amount": "Not modeled",
+      "amount": "Not applicable",
       "currency": "USD",
-      "conditions": "JetBlue no-annual-fee card is excluded because official fee tables do not show a free checked-bag benefit",
+      "conditions": "JetBlue does not publish a recurring free checked-bag benefit for its no-annual-fee card",
       "applies_to": "JetBlue Card",
       "region_or_route": "JetBlue-operated flights",
       "timing": "each way",

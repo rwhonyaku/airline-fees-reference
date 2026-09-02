@@ -3,6 +3,7 @@ import { FEE_CATEGORIES } from "@/content/fee-categories";
 import { getAirlineBySlug } from "@/lib/data";
 import { FEE_HUB_STRATEGY } from "@/lib/fee-hub-strategy";
 import { getLatestVerifiedAcrossAirlines } from "@/lib/freshness";
+import { hasActiveStrategyPage } from "@/lib/airline-strategy";
 
 export const metadata = {
   title: "Airline fee guides and traps | Airline Fees Reference",
@@ -17,7 +18,7 @@ export default function FeeCategoriesIndexPage() {
     "seat_selection",
   ] as const;
 
-  const spotlightAirlines = ["united", "delta", "spirit", "ryanair"]
+  const spotlightAirlines = ["united", "delta", "frontier", "ryanair"]
     .map((slug) => getAirlineBySlug(slug))
     .filter(Boolean);
 
@@ -186,12 +187,11 @@ export default function FeeCategoriesIndexPage() {
                 <Link href={`/airlines/${airline!.slug}`} style={{ textDecoration: "underline" }}>
                   Fee page
                 </Link>
-                <Link
-                  href={`/airlines/${airline!.slug}/how-to-beat-fees`}
-                  style={{ textDecoration: "underline" }}
-                >
-                  Fee guide
-                </Link>
+                {hasActiveStrategyPage(airline!.slug) ? (
+                  <Link href={`/airlines/${airline!.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
+                    Fee guide
+                  </Link>
+                ) : null}
               </div>
             </div>
           ))}

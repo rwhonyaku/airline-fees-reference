@@ -11,29 +11,29 @@ export default function AboutPage() {
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-12">
       <h1 className="text-4xl font-black text-slate-900 mb-6 tracking-tight">
-        The Mission: Making Travel Costs Transparent
+        Helping travelers avoid airline fee traps
       </h1>
 
       <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
         <p>
-          In 2026, the "sticker price" of a flight is rarely the final price. Between unbundled baggage tiers, seat selection surcharges, and varying sizer rules, calculating the true cost of travel has become nearly impossible for the average passenger.
+          The advertised fare is often only the start. Baggage, seat, flexibility, and airport-service rules can change which flight is actually cheaper.
         </p>
 
         <p>
-          <strong>Airline-Fees.com</strong> was created to fix this. We provide a standardized, independent database that cuts through the noise of airline marketing to show you the actual documented fees.
+          <strong>Airline-Fees.com</strong> turns official airline policies into practical comparisons and calculators. When a single price does not apply, we say what changes the answer instead of inventing a universal fee.
         </p>
 
         <section className="bg-slate-50 border-l-4 border-slate-400 p-8 my-10 rounded-r-xl">
           <h2 className="text-slate-900 font-bold text-xl mb-3">Our Data Process</h2>
           <p className="mb-4">
-            We don't guess, and we don't crowdsource. Our data is pulled directly from official airline fee schedules and primary help centers. 
+            We don&apos;t guess, and we don&apos;t use third-party travel sites as authority. Fee claims are tied to official airline policy pages, tariffs, calculators, or help centers.
           </p>
           <ul className="list-disc pl-5 space-y-2 text-base">
             <li>
               <strong>Standardized Format:</strong> We take the confusing jargon from 80+ different airlines and translate it into a single, easy-to-read interface.
             </li>
             <li>
-              <strong>Date Stamped:</strong> Each entry includes a "Last Verified" date so you know exactly how fresh the data is.
+              <strong>Date stamped:</strong> Each entry includes a last-checked date, and older records are marked for recheck rather than presented as current.
             </li>
           </ul>
         </section>

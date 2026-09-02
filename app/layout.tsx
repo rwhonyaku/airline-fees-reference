@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </main>
 
-            {/* Monetization Sidebar */}
+            {/* Related planning tools */}
             <aside className="lg:col-span-4 space-y-6">
               <div className="bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl p-6 text-white shadow-xl shadow-blue-200/50">
                 <h3 className="text-xl font-bold mb-2">Never Pay For Bags Again</h3>

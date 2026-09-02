@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
-import { getLatestVerifiedDateFromFees } from "@/lib/freshness";
+import { getAirlineBySlug } from "@/lib/data";
+import { getLatestVerifiedDateFromFees, getVerificationFreshness } from "@/lib/freshness";
 import type { FeeItem } from "@/lib/types";
 import { RelatedTools } from "@/components/RelatedTools";
-import { AIRLINE_STRATEGY } from "@/lib/airline-strategy";
+import { ACTIVE_STRATEGY_SLUGS, AIRLINE_STRATEGY } from "@/lib/airline-strategy";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -44,47 +44,6 @@ function findFee(fees: FeeItem[], category: string, predicate?: (row: FeeItem) =
   if (!rows.length) return null;
   if (!predicate) return rows[0];
   return rows.find(predicate) ?? null;
-}
-
-function buildGenericSections(airlineName: string, strategyText?: string) {
-  return [
-    {
-      id: "bags",
-      title: "1) Bags: check the bag cost before you book",
-      body:
-        strategyText ??
-        `${airlineName} bag costs can change the real price of the trip, especially if the fare does not include the baggage you plan to bring.`,
-      tip: "Price your likely bags before checkout. If baggage wipes out the fare savings, compare a different fare or airline before buying.",
-    },
-    {
-      id: "basic",
-      title: "2) Basic or entry fares: check what the fare removes",
-      body:
-        "The lowest fare may remove something you normally expect, such as seat choice, flexibility, or cabin-bag access.",
-      tip: "Compare the next fare up when you need a bag, a seat assignment, or a realistic chance to change plans.",
-    },
-    {
-      id: "seats",
-      title: "3) Seats: separate must-have seats from nice-to-have seats",
-      body:
-        "Seat fees are easiest to overspend on when the seat only slightly improves the trip. Extra-legroom and preferred seats are not the same thing.",
-      tip: "Pay early only when sitting together, location, or legroom is important enough to justify the added cost.",
-    },
-    {
-      id: "changes",
-      title: "4) Changes: remember that fare difference can still matter",
-      body:
-        "A no-change-fee rule does not mean changes are free. Fare difference, fare restrictions, and basic-fare limits can still make a changed trip expensive.",
-      tip: "If your plans may move, compare the flexible fare against the cost of losing or rebooking the cheap fare.",
-    },
-    {
-      id: "stack",
-      title: "Add the likely extras before comparing fares",
-      body:
-        "The fare is only one part of the price. Bags, seats, and flexibility can make the lower fare a worse deal.",
-      tip: "Use the calculator links after you know which extras are likely for your trip.",
-    },
-  ];
 }
 
 function decisionToolLinks(slug: string) {
@@ -144,7 +103,7 @@ function getScenarioCards(slug: string, airlineName: string) {
 }
 
 export function generateStaticParams() {
-  return getAirlineSlugs().map((slug) => ({ slug }));
+  return ACTIVE_STRATEGY_SLUGS.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -164,11 +123,13 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
   if (!airline) notFound();
 
   const strategy = AIRLINE_STRATEGY[slug];
+  if (!strategy || !ACTIVE_STRATEGY_SLUGS.includes(slug)) notFound();
   const fees = (airline.fees ?? []) as FeeItem[];
   const insights = airline.unique_insights;
   const insightTraps = Array.isArray(insights?.traps) ? insights.traps.filter(Boolean) : [];
   const insightProHack = safeText(insights?.pro_hack);
   const latestVerified = getLatestVerifiedDateFromFees(fees);
+  const freshness = getVerificationFreshness(latestVerified);
 
   const bag1 = findFee(fees, "checked_baggage", (r) =>
     safeText(r.conditions).toLowerCase().includes("first checked bag") ||
@@ -198,7 +159,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
   const peers = (strategy?.relatedAirlines ?? [])
     .map((peerSlug) => getAirlineBySlug(peerSlug))
     .filter(Boolean);
-  const genericSections = strategy?.playbookSections ?? buildGenericSections(airline.name, strategy?.feeEngine);
+  const genericSections = strategy.playbookSections ?? [];
   const toolLinks = decisionToolLinks(slug);
   const scenarioCards = getScenarioCards(slug, airline.name);
 
@@ -208,7 +169,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
         <div className="flex flex-wrap items-baseline gap-3">
           <h1 className="text-4xl font-black tracking-tight text-slate-900">How to beat {airline.name} fees</h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            Last verified {latestVerified}
+            Last checked {latestVerified} · {freshness.label}
           </span>
         </div>
 
@@ -314,7 +275,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
             <h2 className="text-xl font-bold text-slate-900">1) Bags: stop paying the airport penalty</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
-                United’s domestic bag fees are classic behavior pricing. The airport price is worse because United wants the revenue before you arrive.
+                United publishes higher airport bag prices on applicable itineraries, so paying earlier can reduce a predictable cost.
               </p>
               <ul className="list-disc space-y-2 pl-5">
                 <li>
@@ -340,7 +301,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
             <h2 className="text-xl font-bold text-slate-900">2) Basic Economy: where restrictions start to matter</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
-                United Basic Economy is not just a cheaper ticket. It is a restriction bundle designed to push you back into paying for normal travel behavior.
+                United Basic Economy is not just a cheaper ticket. It can also restrict carry-on access, seat choice, and post-booking flexibility.
               </p>
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <strong>Traveler move:</strong> if plans are even slightly uncertain, buy out of Basic. The non-Basic fare often costs less than one bad change or one bag-plus-seat combo.
@@ -379,7 +340,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
           <section className="rounded-2xl border border-slate-200 bg-white p-6">
             <h2 className="text-xl font-bold text-slate-900">4) Changes: the non-Basic premium can be worth pricing</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
-              <p>United’s real flexibility value is not “free changes.” It is staying in the game instead of locking yourself out.</p>
+              <p>United’s flexibility value depends on retaining the option to change the ticket, even when a fare difference still applies.</p>
               <ul className="list-disc space-y-2 pl-5">
                 <li>
                   Non-Basic: <strong>{changeFlex ? safeText(changeFlex.conditions) : "No change fee; fare difference applies"}</strong>
@@ -444,7 +405,7 @@ export default async function HowToBeatFeesPage({ params }: PageProps) {
       <RelatedTools slug={slug} />
 
       <footer className="text-sm leading-relaxed text-slate-500">
-        This page uses published fee rows plus route, fare, and baggage context. When a carrier does not publish one clear price, the guide points you to the specific lookup or calculator instead of guessing.
+        This page uses published fees plus route, fare, and baggage context. When a carrier does not publish one clear price, the guide points you to the specific lookup or calculator instead of guessing.
       </footer>
     </main>
   );

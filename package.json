@@ -18,6 +18,7 @@
     "monitor:provenance:write": "node scripts/monitor-provenance-sources.mjs --write",
     "review:provenance": "node scripts/review-provenance.mjs",
     "audit:data-gold": "node scripts/audit-gold-airline-data.mjs",
+    "audit:freshness": "node scripts/audit-freshness.mjs",
     "new:airline": "node scripts/new-airline.mjs",
     "publish:prod": "sh scripts/publish-prod.sh"
   },

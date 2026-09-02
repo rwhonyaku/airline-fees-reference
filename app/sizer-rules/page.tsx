@@ -247,7 +247,7 @@ export default async function SizerRules({ searchParams }: PageProps) {
                 <td className="p-4 border-b border-slate-100">{riskLabel("medium")}</td>
               </tr>
               <tr className="bg-rose-50/40">
-                <td className="p-4 border-b border-slate-100 font-semibold">US low-cost carriers (Spirit / Frontier)</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">US low-cost carriers (for example, Frontier)</td>
                 <td className="p-4 border-b border-slate-100">Personal item is included; larger bags usually cost extra</td>
                 <td className="p-4 border-b border-slate-100">A bag that looks too large is more likely to be checked against the sizer</td>
                 <td className="p-4 border-b border-slate-100">{riskLabel("extreme")}</td>

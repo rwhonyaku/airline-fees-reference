@@ -295,7 +295,7 @@ function buildGuideRows(): GuideRow[] {
       airline: "JetBlue",
       model: "Blue Basic with carry-on included",
       carryOn: "Blue Basic includes one carry-on bag and one personal item under JetBlue's current policy.",
-      seats: "Standard-seat inclusion is shown for Blue, Blue Plus, and Blue Extra; this guide does not show a separate Blue Basic standard-seat fee.",
+      seats: "Blue Basic seat selection depends on the itinerary and selected seat; an unselected seat is assigned later.",
       changes:
         jetblueBasicChange
           ? `${safeText(jetblueBasicChange.conditions)}.`
@@ -309,7 +309,7 @@ function buildGuideRows(): GuideRow[] {
       slug: "alaska",
       airline: "Alaska",
       model: "Saver fare",
-      carryOn: "Saver still includes one carry-on bag and one personal item in the rows shown here.",
+      carryOn: "Saver includes one carry-on bag and one personal item.",
       seats: "Standard seat selection is published at USD 0 in Main Cabin, with preferred seats separately variable.",
       changes:
         alaskaChange
@@ -329,7 +329,7 @@ function buildGuideRows(): GuideRow[] {
         southwestBasicSeat
           ? `${safeText(southwestBasicSeat.conditions)}.`
           : "Seat treatment changes by fare family rather than through a classic Basic Economy seat fee.",
-      changes: "The current fee rows show no cancellation fee across fares, with same-day rules varying by fare family.",
+      changes: "Southwest does not charge a cancellation fee, while same-day options vary by fare family.",
       whereItBreaks:
         southwestBasicBag
           ? `Southwest Basic is no longer automatically a free-checked-bag fare. The current Basic Fare first checked bag row is ${formatAmount(southwestBasicBag.amount, southwestBasicBag.currency)} one-way on later bookings.`

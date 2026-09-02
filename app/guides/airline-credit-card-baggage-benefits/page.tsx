@@ -43,17 +43,17 @@ const EXCLUDED_CARD_NOTES = [
   {
     card: "Citi / AAdvantage Globe Mastercard",
     reason:
-      "Not modeled in the break-even calculator because the current official card page emphasizes lounge passes, earning, status-related benefits, and credits rather than a recurring checked-bag waiver like the Platinum Select card.",
+      "Not included in the break-even calculator because the current official card page emphasizes lounge passes, earning, status-related benefits, and credits rather than a recurring checked-bag waiver like the Platinum Select card.",
   },
   {
     card: "United Gateway Card",
     reason:
-      "Not modeled as a repeat per-trip waiver because its checked-bag language is framed as earning two checked bags each year, not as a normal cardmember-plus-companion bag waiver on every eligible trip.",
+      "Not treated as a repeat per-trip waiver because its checked-bag language is framed as earning two checked bags each year, not as a normal cardmember-plus-companion bag waiver on every eligible trip.",
   },
   {
     card: "JetBlue Card",
     reason:
-      "Not modeled because the no-annual-fee JetBlue Card does not publish a free checked bag benefit. The JetBlue Plus and Premier cards are the JetBlue cards that fit the baggage break-even model.",
+      "Not included because the no-annual-fee JetBlue Card does not publish a free checked bag benefit. The JetBlue Plus and Premier cards are the JetBlue cards that support a baggage break-even comparison.",
   },
   {
     card: "Canadian Aeroplan cards",
@@ -63,12 +63,12 @@ const EXCLUDED_CARD_NOTES = [
   {
     card: "HSBC Star Alliance Credit Card",
     reason:
-      "Not modeled as an Air Canada checked-bag card because its baggage value comes through earned Star Alliance status and extra allowance rules, not a simple recurring first-bag waiver tied directly to Air Canada card travel.",
+      "Not included as an Air Canada checked-bag card because its baggage value comes through earned Star Alliance status and extra allowance rules, not a simple recurring first-bag waiver tied directly to Air Canada card travel.",
   },
   {
     card: "Chase Avios cards",
     reason:
-      "Not modeled because the British Airways, Aer Lingus, and Iberia Chase Avios cards do not publish a recurring free checked bag waiver. Their baggage-related protections are delay or lost-luggage coverage, which is different from avoiding checked-bag fees.",
+      "Not included because the British Airways, Aer Lingus, and Iberia Chase Avios cards do not publish a recurring free checked bag waiver. Their baggage-related protections are delay or lost-luggage coverage, which is different from avoiding checked-bag fees.",
   },
   {
     card: "No-annual-fee and points-only cards",
@@ -107,7 +107,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     coreLimits: [
       "The Chase Aeroplan Card publishes first checked bag free up to 50 lb for the cardmember and up to 8 companions on the same reservation.",
       "The benefit applies when travel originates on an Air Canada flight.",
-      "Air Canada baggage fees in this dataset are CAD-denominated, so the card is listed as a verified benefit while full break-even math waits for multi-currency support.",
+      "Air Canada baggage fees are CAD-denominated, so the card is listed as a verified benefit but the calculator does not make a USD break-even claim without currency conversion.",
       "This is a first-checked-bag benefit, not an overweight, oversized, or second-bag waiver.",
     ],
   },
@@ -173,7 +173,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     coreLimits: [
       "JetBlue Plus and Premier publish first checked bag free for the cardholder and up to 3 companions on the same reservation.",
       "This model treats the benefit as requiring the JetBlue flight to be purchased with the eligible card.",
-      "The no-annual-fee JetBlue Card is not modeled because it does not publish a free checked bag benefit.",
+      "The no-annual-fee JetBlue Card is not included because it does not publish a free checked bag benefit.",
       "This is a first-checked-bag benefit, not an overweight, oversized, or second-bag waiver.",
     ],
   },
@@ -202,7 +202,7 @@ const AIRLINE_DECISION_NOTES: Record<string, string> = {
   alaska:
     "Strong fit for repeat Alaska or Hawaiian flights when a first checked bag would otherwise be paid and the eligible Atmos card payment rule is satisfied.",
   "air-canada":
-    "Useful as a verified Chase Aeroplan benefit reference; full break-even math is intentionally limited until CAD bag-fee support is modeled.",
+    "Useful as a verified Chase Aeroplan benefit reference; a USD break-even claim is withheld because the relevant bag fees are in CAD.",
   american:
     "Best for domestic American itineraries where the first checked bag would otherwise be paid for several travelers or repeat trips.",
   united:
@@ -389,7 +389,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Step 3</div>
           <h2 className="mt-2 text-lg font-bold text-slate-900">Run break-even math</h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Compare modeled checked-bag savings against the card&apos;s annual fee before counting points, credits, or perks.
+            Compare calculated checked-bag savings against the card&apos;s annual fee before counting points, credits, or perks.
           </p>
           <Link href="/best-cards" className="mt-4 inline-block text-sm font-semibold text-blue-700 underline">
             Open card calculator
@@ -398,9 +398,9 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Why a card is modeled here</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Why a card qualifies for comparison</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          The calculator is deliberately narrow. It only models card benefits that can be turned into
+          The calculator is deliberately narrow. It only includes card benefits that can be turned into
           checked-bag savings and compared against an annual fee. That keeps the recommendation useful
           for baggage decisions instead of drifting into a general credit-card ranking.
         </p>
@@ -457,10 +457,10 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Cards intentionally not modeled here</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Cards not included in the calculator</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
           Some airline cards have useful travel benefits but do not fit this site&apos;s recurring
-          checked-bag waiver model. Those cards can still be worth considering; they just should not
+          recurring checked-bag-waiver comparison. Those cards can still be worth considering; they just should not
           be treated as clean baggage-fee break-even inputs.
         </p>
         <div className="grid gap-4 md:grid-cols-3">

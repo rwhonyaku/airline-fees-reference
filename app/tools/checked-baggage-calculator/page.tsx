@@ -236,7 +236,7 @@ function feePressureLabel(annualBagCost: number | null): {
   return {
     label: "No checked-bag exposure",
     className: "border-emerald-200 bg-emerald-50 text-emerald-900",
-    explanation: "With zero checked bags selected, this setup has no modeled checked-bag cost.",
+    explanation: "With zero checked bags selected, this setup has no checked-bag cost.",
   };
 }
 
@@ -249,17 +249,17 @@ const CHECKED_BAG_FAQS = [
   {
     question: "Why does the calculator sometimes refuse to quote a checked bag total?",
     answer:
-      "Some airlines publish checked-bag prices by route, fare family, domestic versus international market, or booking channel. When the current data does not contain a usable fixed fee for the requested bag position, the tool asks for an airline-specific lookup.",
+      "Some airlines publish checked-bag prices by route, fare family, domestic versus international market, or booking channel. When no reliable fixed fee applies to the requested bag, the tool directs you to an airline-specific lookup.",
   },
   {
     question: "Can an airline credit card reduce the checked bag total?",
     answer:
-      "Some airline cards publish a first checked bag waiver for the cardholder and eligible companions. The card comparison only counts modeled bag savings and excludes points, bonuses, lounge access, and unrelated perks.",
+      "Some airline cards publish a first checked bag waiver for the cardholder and eligible companions. The comparison counts only verified bag savings and excludes points, bonuses, lounge access, and unrelated perks.",
   },
   {
     question: "Can I use this as a United baggage fee calculator?",
     answer:
-      "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual roundtrips. The result shows the modeled checked-bag total when the stored fee data has a usable published amount.",
+      "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual roundtrips. The result calculates the checked-bag total when a broadly applicable published price is available.",
   },
   {
     question: "Are baggage fees calculated round trip?",
@@ -423,7 +423,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             <h2 className="text-base font-extrabold text-slate-950">When card math matters</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
               If checked-bag fees repeat across travelers or trips, the tool sends you to the
-              free-checked-bag card comparison only when a modeled benefit can apply.
+              free-checked-bag card comparison only when a verified benefit can apply.
             </p>
           </div>
         </div>
@@ -651,7 +651,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
             </h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
               The missing piece is the {missingBagLabel(trip.missingBagOrdinals)} checked-bag amount.
-              For {airline.name}, the published rows point to{" "}
+              For {airline.name}, the published policy points to{" "}
               <span className="font-semibold">{variablePricing.reasons.join(", ")}</span> as the likely
               drivers of the final baggage price.
             </p>
@@ -786,7 +786,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
                 {cardBridgeLabel}: test whether a free checked bag card beats paying cash.
               </h2>
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                For this setup, the best modeled bag-fee match is <span className="font-bold">{best.card.name}</span>.
+                For this setup, the strongest eligible bag-fee match is <span className="font-bold">{best.card.name}</span>.
                 It could remove about <span className="font-bold">{usd(best.result.annualSavingsUsd)}</span> in annual
                 checked-bag fees before the card annual fee. After the annual fee, the bag-only value is{" "}
                 <span className={best.result.netAnnualUsd >= 0 ? "font-bold text-emerald-800" : "font-bold text-rose-700"}>
@@ -798,7 +798,7 @@ export default async function CheckedBaggageCalculatorPage({ searchParams }: Pag
               </p>
               {remainingAnnualBagCost != null ? (
                 <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-                  With this input, the modeled cash bag bill is {annualBagCost != null ? usd(annualBagCost) : "-"} per
+                  With this input, the calculated cash bag bill is {annualBagCost != null ? usd(annualBagCost) : "-"} per
                   year. The card benefit would leave about{" "}
                   <span className="font-bold">{usd(remainingAnnualBagCost)}</span> in annual checked-bag fees
                   before considering the card&apos;s annual fee.

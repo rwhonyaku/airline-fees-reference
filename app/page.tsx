@@ -196,7 +196,7 @@ export default function HomePage() {
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
           <div className="mb-2 text-lg font-bold text-slate-900">What this site is</div>
           <div className="text-sm leading-relaxed text-slate-600">
-            A structured airline policy reference: published fee rows where available, plus route,
+            A structured airline policy reference: published fees where available, plus route,
             fare, and baggage context that changes how those fees apply.
           </div>
         </div>
