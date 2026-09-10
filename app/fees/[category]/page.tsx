@@ -8,6 +8,7 @@ import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallou
 import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 import { hasActiveStrategyPage } from "@/lib/airline-strategy";
+import { getVerificationFreshness } from "@/lib/freshness";
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -52,6 +53,11 @@ function safeDate(v: unknown): string {
 function getLatestVerifiedDate(rows: Row[]): string {
   const dates = rows.map((row) => row.lastVerified).filter((date) => date !== "Not published");
   return dates.length ? dates.sort().at(-1)! : "Not published";
+}
+
+function getOldestVerifiedDate(rows: Row[]): string {
+  const dates = rows.map((row) => row.lastVerified).filter((date) => date !== "Not published");
+  return dates.length ? dates.sort().at(0)! : "Not published";
 }
 
 function getFeeFaq(category: string): Array<{ question: string; answer: string }> {
@@ -432,24 +438,14 @@ function getDecisionToolCards(category: string): Array<{ href: string; label: st
           body: "Turn travelers, bags, trip type, and annual trips into a baggage-cost estimate when the published fees include a usable price.",
         },
         {
-          href: "/best-cards?travelers=2&bags=1&trips=2&pay=yes",
-          label: "Card break-even calculator",
-          body: "Check whether repeat first-bag fees can justify an eligible airline card on bag savings alone.",
-        },
-        {
-          href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes",
-          label: "United card bag math",
-          body: "Use this when repeat United first-bag fees are the reason you are comparing card benefits.",
-        },
-        {
-          href: "/best-cards?airline=alaska&travelers=2&bags=1&trips=3&pay=yes",
-          label: "Alaska repeat-trip math",
-          body: "Use this when recurring Alaska checked-bag fees may be high enough to beat a card annual fee.",
-        },
-        {
           href: "/guides/international-baggage-allowance",
           label: "International allowance explainer",
           body: "Best when the price or allowance depends on route, fare family, cabin, or piece-versus-weight concept.",
+        },
+        {
+          href: "/tools/excess-baggage-calculator",
+          label: "Overweight and oversize calculator",
+          body: "Use this after confirming the base allowance when weight or dimensions may create an additional charge.",
         },
       ];
     case "carry_on":
@@ -543,66 +539,60 @@ function CheckedBaggageAnswerBlock() {
         <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
           Direct answer
         </div>
-        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>How much does checked baggage cost?</h2>
+        <h2 style={{ margin: "6px 0 0", fontSize: 20 }}>What will the airline charge for a checked bag?</h2>
       </div>
 
       <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
-        There is not one checked-bag price across airlines. For many U.S. domestic-style trips, the
-        useful number is the first checked bag fee multiplied by travelers and flight directions.
-        For international trips, the first question is often whether your route, cabin, and fare
-        already include an allowance. Once you exceed that allowance, the cost may move into
-        excess-baggage, overweight, or oversize rules instead of a simple first-bag fee.
+        First determine whether your ticket already includes baggage. If it does not, the price can
+        depend on the airline, route, fare, bag number, purchase timing, and currency. A published
+        first-bag price should then be multiplied by travelers and directions—not treated as the
+        price for the whole trip.
       </p>
 
       <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
-        Baggage fees are usually not roundtrip prices. If an airline lists a checked bag fee per
-        direction, a roundtrip can mean paying once on the outbound flight and again on the return.
-        A family of four checking one bag each can therefore face eight bag charges on a roundtrip,
-        before card benefits, included allowances, or status exceptions.
+        On international itineraries, cabin and fare rules may include one or more bags before a fee
+        applies. Additional, overweight, and oversized baggage can follow separate pricing rules, so
+        the airline&apos;s itinerary-specific lookup may be the only reliable exact answer.
       </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))" }}>
+        {[
+          ["Fixed fee per direction", "A published first- or second-bag price is charged on each direction of travel."],
+          ["Included by fare or cabin", "The ticket includes an allowance before additional-bag charges begin."],
+          ["Route-priced baggage", "The airline calculates the price from the itinerary, market, fare, or purchase channel."],
+          ["Excess baggage rules", "Extra pieces, excess weight, or excess size use a different charge from the standard bag."],
+        ].map(([title, body]) => (
+          <div key={title} style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+            <div style={{ fontWeight: 800, color: "#0f172a" }}>{title}</div>
+            <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>{body}</div>
+          </div>
+        ))}
+      </div>
 
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
         <Link
           href="/airlines/air-france"
           style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
         >
-          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Air France baggage charges</div>
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Route or fare controls the price</div>
           <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
-            Use this when the question is Air France baggage fees, baggage price, excess baggage cost, or extra baggage charges.
+            Air France is a useful example: included allowance and extra-bag pricing depend on the ticket and itinerary.
           </div>
         </Link>
         <Link
           href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
           style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
         >
-          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Price travelers x bags</div>
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Calculate the full trip</div>
           <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
             Use this when you need the likely baggage bill for a party instead of one isolated fee.
-          </div>
-        </Link>
-        <Link
-          href="/tools/checked-baggage-calculator?travelers=4&bags=1&directions=2&trips=1&pay=yes"
-          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
-        >
-          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Family roundtrip bag math</div>
-          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
-            Use this when you need to see how one checked bag per traveler multiplies across both directions.
-          </div>
-        </Link>
-        <Link
-          href="/best-cards?travelers=2&bags=1&trips=2&pay=yes"
-          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
-        >
-          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Check card break-even</div>
-          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
-            Use this when repeat first-bag fees may be high enough for a checked-bag card to beat its annual fee.
           </div>
         </Link>
         <Link
           href="/guides/international-baggage-allowance"
           style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, color: "#0f172a", textDecoration: "none" }}
         >
-          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Included allowance first</div>
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>Check included allowance first</div>
           <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
             Use this when the airline uses route, cabin, fare family, piece concept, or weight concept rules.
           </div>
@@ -811,6 +801,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
   const rows: Row[] = [];
   for (const slug of getAirlineSlugs()) {
+    if (slug === "spirit") continue;
     const airline = getAirlineBySlug(slug);
     if (!airline) continue;
 
@@ -836,13 +827,19 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
   rows.sort((a, b) => b.lastVerified.localeCompare(a.lastVerified));
   const latestVerified = getLatestVerifiedDate(rows);
+  const oldestVerified = getOldestVerifiedDate(rows);
+  const coverageFreshness = getVerificationFreshness(oldestVerified);
+  const officialSourceCount = new Set(rows.map((row) => row.sourceUrl).filter(Boolean)).size;
+  const needsRecheckCount = rows.filter(
+    (row) => getVerificationFreshness(row.lastVerified).label === "Needs recheck",
+  ).length;
   const contextualBridge = getContextualBridge(cat);
   const decisionToolCards = getDecisionToolCards(cat);
 
   const title = titleCaseFromSlug(cat);
   const feeFaqs = getFeeFaq(cat);
   const pageHref = `/fees/${encodeURIComponent(cat)}`;
-  const pageDescription = `${title} fees by airline, with published amounts, source links, conditions, route limits, and last verified dates.`;
+  const pageDescription = `${title} fees by airline, with published amounts, official source links, conditions, route limits, and last checked dates.`;
   const spotlightAirlines = (strategy?.spotlightAirlines ?? [])
     .map((entry) => {
       const airline = getAirlineBySlug(entry.slug);
@@ -866,7 +863,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       <header style={{ display: "grid", gap: 10 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "baseline" }}>
           <h1 style={{ margin: 0, fontSize: 20 }}>{title} fees by airline</h1>
-          <span style={{ fontSize: 12, color: "#555" }}>Last verified: {latestVerified}</span>
+          <span style={{ fontSize: 12, color: "#555" }}>Latest source check: {latestVerified}</span>
         </div>
 
         <nav style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 13 }}>
@@ -876,18 +873,37 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           <Link href="/methodology">Methodology</Link>
         </nav>
 
-        <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
-          <div>{hub.verdict}</div>
+        {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
 
-          {strategy && (
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 12, color: "#334155" }}>
+          <span style={{ border: "1px solid #cbd5e1", borderRadius: 999, padding: "5px 10px", background: "#fff" }}>
+            {officialSourceCount} official source{officialSourceCount === 1 ? "" : "s"}
+          </span>
+          <span style={{ border: "1px solid #cbd5e1", borderRadius: 999, padding: "5px 10px", background: "#fff" }} title={coverageFreshness.detail}>
+            Coverage status: {coverageFreshness.label}
+          </span>
+          {needsRecheckCount > 0 ? (
+            <span style={{ border: "1px solid #fca5a5", borderRadius: 999, padding: "5px 10px", background: "#fff1f2", color: "#881337" }}>
+              {needsRecheckCount} record{needsRecheckCount === 1 ? "" : "s"} need recheck
+            </span>
+          ) : null}
+          <Link href="/methodology" style={{ padding: "5px 2px", fontWeight: 700 }}>How verification works</Link>
+        </div>
+
+        <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
+          {cat !== "checked_baggage" ? <div>{hub.verdict}</div> : null}
+
+          {strategy && cat !== "checked_baggage" ? (
             <div style={{ border: "1px solid #dbe1ea", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
               <strong>Best for:</strong> {strategy.introLabel}
             </div>
-          )}
+          ) : null}
 
-          <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
-            <strong>Quick check:</strong> {hub.proTip}
-          </div>
+          {cat !== "checked_baggage" ? (
+            <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
+              <strong>Quick check:</strong> {hub.proTip}
+            </div>
+          ) : null}
 
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
             <strong>Common way to avoid the fee:</strong> {hub.loophole}
@@ -896,8 +912,6 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           <div style={{ fontSize: 13, color: "#444" }}>
             <strong>What to watch:</strong> {hub.whatToWatch}
           </div>
-
-          {contextualBridge}
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 13, color: "#444" }}>
             <span>
@@ -945,8 +959,6 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
-
-      {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
 
       {cat === "overweight_baggage" ? <OverweightBaggageAnswerBlock /> : null}
       {cat === "oversize_baggage" ? <OversizeBaggageAnswerBlock /> : null}
@@ -1016,8 +1028,8 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       <section style={{ display: "grid", gap: 10 }}>
         <h2 style={{ margin: 0, fontSize: 16 }}>Published fees and sources</h2>
 
-        <div style={{ overflowX: "auto" }}>
-          <table>
+        <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+          <table style={{ minWidth: 1180 }}>
             <caption style={{ padding: 8, textAlign: "left", fontSize: 13, color: "#444" }}>
               {title} details by airline, including amount, route, timing, conditions, source, and last checked date.
             </caption>
@@ -1030,7 +1042,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                 <th scope="col">Timing</th>
                 <th scope="col">Conditions</th>
                 <th scope="col">Source</th>
-                <th scope="col">Last verified</th>
+                <th scope="col">Last checked</th>
                 <th scope="col">Next step</th>
               </tr>
             </thead>
@@ -1057,7 +1069,12 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                       "Not published"
                     )}
                   </td>
-                  <td style={{ whiteSpace: "nowrap" }}>{row.lastVerified}</td>
+                  <td style={{ whiteSpace: "nowrap" }} title={getVerificationFreshness(row.lastVerified).detail}>
+                    {row.lastVerified}
+                    <div style={{ marginTop: 4, fontSize: 11, color: getVerificationFreshness(row.lastVerified).tone === "red" ? "#be123c" : "#64748b" }}>
+                      {getVerificationFreshness(row.lastVerified).label}
+                    </div>
+                  </td>
                   <td>
                     <div style={{ display: "grid", gap: 6, minWidth: 150 }}>
                       {cat === "checked_baggage" ? (
