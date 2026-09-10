@@ -9,23 +9,39 @@
     "gold_standard": true,
     "source_depth": "gold",
     "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: Air Canada baggage depends on fare family, route region, purchase date, Aeroplan/card/status benefits, partner operation, and Canadian tax-inclusive fee ranges.",
-    "next_review_due": "2026-11-23"
+    "notes": "Gold refresh: Air Canada baggage depends on fare family, route region, purchase date, Aeroplan/card/status benefits, and partner operation. Carry-on, checked-baggage, excess-baggage, and card-benefit records were rechecked 2026-09-09; other categories retain their record-level dates.",
+    "next_review_due": "2026-12-09"
   },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "CAD",
-      "conditions": "One standard carry-on and one personal item are included; aircraft, fare enforcement, and gate checks can affect handling",
-      "applies_to": "All fares",
+      "conditions": "Standard carry-on 23 x 40 x 55 cm plus personal item 33 x 43 x 16 cm; affected Economy Basic itineraries are excluded",
+      "applies_to": "Most fares and eligible Economy Basic itineraries",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/carry-on.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Air Canada includes carry-on across fare families, but enforcement is still size/fit driven at airports and on smaller aircraft."
+        "notes": "Do not generalize this allowance to every Economy Basic ticket; use the separate personal-item-only record and official lookup."
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "CAD",
+      "conditions": "Personal item only on affected Basic tickets bought Jan. 3, 2025 or later; an international connection may restore carry-on",
+      "applies_to": "Economy Basic on affected itineraries",
+      "region_or_route": "Route-dependent; confirm with Air Canada's carry-on lookup",
+      "timing": "per flight",
+      "source_url": "https://www.aircanada.com/us/en/ado/home/plan/baggage/carry-on.html",
+      "last_verified": "2026-09-09",
+      "effective_date": "2025-01-03",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air Canada publishes an exception rather than a paid carry-on price; the exact allowance must be checked against the itinerary."
       }
     },
     {
@@ -37,7 +53,7 @@
       "region_or_route": "Domestic, transborder, international",
       "timing": "each way",
       "source_url": "https://www.aircanada.com/pa/en/ado/home/book/travel-news-and-updates/baggage-fee-changes.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air Canada’s 2026 changes make purchase date and route group important; do not treat Standard/Flex/Basic as one universal allowance."
@@ -48,11 +64,11 @@
       "amount": 45,
       "currency": "CAD",
       "conditions": "1st bag for Basic/Standard on short-haul fares bought on/after Apr. 13, 2026; taxes may apply",
-      "applies_to": "Basic fares",
+      "applies_to": "Economy Basic / Standard",
       "region_or_route": "Canada/U.S./Mexico/Caribbean/Central America",
       "timing": "each way",
       "source_url": "https://www.aircanada.com/pa/en/ado/home/book/travel-news-and-updates/baggage-fee-changes.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "This row models the April 13, 2026 Air Canada short-haul change. Flex keeps first bag free while Basic and Standard pay."
@@ -68,7 +84,7 @@
       "region_or_route": "Canada/U.S./Mexico/Caribbean/Central America",
       "timing": "each way",
       "source_url": "https://www.aircanada.com/pa/en/ado/home/book/travel-news-and-updates/baggage-fee-changes.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air Canada separates the first-bag answer by fare family but the second-bag short-haul fee applies across Basic, Standard, and Flex."
@@ -84,7 +100,7 @@
       "region_or_route": "Canada/U.S. to Africa, Asia/South Pacific, Europe, Middle East, South America",
       "timing": "each way",
       "source_url": "https://www.aircanada.com/pa/en/ado/home/book/travel-news-and-updates/baggage-fee-changes.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air Canada long-haul update differs from short-haul: Basic pays for first bag, while Standard/Flex include first bag."
@@ -100,7 +116,7 @@
       "region_or_route": "Canada/U.S. to Africa, Asia/South Pacific, Europe, Middle East, South America",
       "timing": "each way",
       "source_url": "https://www.aircanada.com/pa/en/ado/home/book/travel-news-and-updates/baggage-fee-changes.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "This row keeps Air Canada’s May 14, 2026 long-haul second-bag rule separate from domestic/transborder pricing."
@@ -116,7 +132,7 @@
       "region_or_route": "Domestic, transborder, international",
       "timing": "at airport",
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
-      "last_verified": "2026-08-23"
+      "last_verified": "2026-09-09"
     },
     {
       "category": "oversize_baggage",
@@ -127,7 +143,7 @@
       "region_or_route": "Domestic, transborder, international",
       "timing": "at airport",
       "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
-      "last_verified": "2026-08-23"
+      "last_verified": "2026-09-09"
     },
     {
       "category": "credit_card_exemption",
@@ -137,8 +153,8 @@
       "applies_to": "Eligible Aeroplan credit cardholders",
       "region_or_route": "Air Canada / Rouge / Express-operated flights",
       "timing": "airport check-in",
-      "source_url": "https://www.aircanada.com/ca/en/aco/home/aeroplan/credit-cards.html",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/aeroplan/credit-cards/td/check-in.html",
+      "last_verified": "2026-09-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Benefit excludes gate-checked bags and check-in with another airline; it does not create an extra bag if the first bag is already free."

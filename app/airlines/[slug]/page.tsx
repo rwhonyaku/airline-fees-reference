@@ -72,7 +72,12 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
   "air-canada": {
     h1: "Air Canada baggage fees by fare and route",
     verdict:
-      "Air Canada includes a first checked bag on Standard and higher fares in the examples tracked here, while Basic domestic and transborder fares show a paid first bag. Compare the fare upgrade against the roundtrip bag cost before booking.",
+      "Air Canada does not have one universal baggage price. On current short-haul fares, Basic and Standard can charge CAD/USD 45 for the first bag; on current long-haul fares, Basic can charge CAD/USD 90 while Standard and Flex include the first bag. Check the route, fare, and ticket-purchase date before comparing fares.",
+  },
+  alaska: {
+    h1: "Alaska Airlines baggage fees: checked bags and carry-on rules",
+    verdict:
+      "For most North America tickets issued on or after April 10, 2026, Alaska charges $45 for the first checked bag, $55 for the second, and $200 for each third-plus bag. Saver still includes one carry-on and one personal item. Hawaii, international, First Class, status, card, military, and resident-program rules can change the answer.",
   },
   zipair: {
     h1: "ZIPAIR baggage fees: checked bag prices and 7 kg carry-on",
@@ -635,21 +640,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-canada": {
     intro: {
       carryOn:
-        "Air Canada includes one standard carry-on and one personal item on all fares. The real risk is not a carry-on fee; it is whether the bag fits the size limits on the aircraft and airport you are using.",
+        "Most Air Canada fares include one standard carry-on and one personal item. Some Economy Basic itineraries purchased on or after January 3, 2025 allow only one personal item; an onward international connection can change that allowance. Check the carry-on lookup for the exact ticket before bringing an overhead bag.",
       personalItem:
-        "One personal item is included alongside the standard carry-on. There is no separate personal-item-only fee shown here.",
+        "One personal item is included. On affected Economy Basic itineraries it may be the only included cabin item, so a backpack that exceeds Air Canada's 33 × 43 × 16 cm personal-item limit can create a gate-check problem.",
       checkedBag:
-        "Air Canada baggage fees and checked bag fees depend first on fare family and route. Standard and higher fares show the first checked bag included across domestic, transborder, and international markets, while the Basic domestic/transborder example shown here lists CAD 30 for the first checked bag and CAD 50 for the second bag where it is not included.",
+        "For short-haul fares purchased on or after April 13, 2026, Basic and Standard charge CAD/USD 45 for the first bag and CAD/USD 60 for the second; Flex includes the first bag and charges CAD/USD 60 for the second. For listed long-haul fares purchased on or after May 14, 2026, Basic charges CAD/USD 90 then 120, while Standard and Flex include the first bag and charge CAD/USD 120 for the second. Taxes may apply.",
       restrictions:
         "Basic fares are the main restriction point: the checked bag fee can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
-      "Air Canada baggage, seat, and change details shown here were last verified on 2025-12-24.",
+      "Air Canada carry-on, checked-baggage, excess-baggage, and Aeroplan card-benefit claims were rechecked against Air Canada on 2026-09-09. Seat and change details retain their record-level 2026-08-23 verification dates.",
     avoidFees: [
-      "Do not compare Basic against Standard using base fare alone. On the domestic/transborder example, Basic has a paid first checked bag while Standard and higher show the first bag included.",
-      "Use the checked-bag calculator for parties with bags because the answer changes quickly when more than one traveler checks luggage.",
+      "Do not assume Standard always includes the first bag: on current short-haul fares, Basic and Standard both charge CAD/USD 45. Flex is the first of these three fare families with an included first bag.",
+      "Use Air Canada's baggage calculator for the exact itinerary. The fee changes by route, fare, purchase date, and operating carrier, so a generic trip-cost calculator should not invent one universal total.",
       "Keep bags under Air Canada's standard weight and size limits; overweight and oversize charges move into route-based ranges and bags over 32 kg are not accepted as ordinary checked baggage.",
-      "Avoid Basic when you may need to change or refund after 24 hours, because Basic changes and refunds are not permitted except in qualifying circumstances.",
+      "If an eligible Aeroplan card benefit applies, check in with Air Canada before security. It can cover the first bag for up to nine people on the same reservation, but it does not cover a bag first presented at the gate.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -671,12 +676,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Basic",
         details:
-          "Basic shows the first checked bag at CAD 30 on domestic and transborder routes. It also lists advance seat selection starting at CAD 10, with changes and refunds not permitted after 24 hours except in qualifying circumstances. This is the fare family where Air Canada checked bag fee math matters most.",
+          "On the current published tiers, Basic charges CAD/USD 45 for the first short-haul bag or CAD/USD 90 for the first listed long-haul bag. Some Basic itineraries also limit the included cabin allowance to one personal item. This is the fare family where both checked- and carry-on rules need an itinerary-specific check.",
       },
       {
-        name: "Standard and higher",
+        name: "Standard and Flex",
         details:
-          "Standard, Flex, Comfort, Latitude, Premium Economy, and Business show the first checked bag included, with no change fee listed before departure for Standard and higher fares.",
+          "Standard does not universally include the first bag: it pays CAD/USD 45 on the current short-haul tier but includes the first bag on the listed long-haul tier. Flex includes the first bag in both published groups. Higher cabins and fares can have different allowances.",
       },
       {
         name: "Preferred and extra-legroom seating",
@@ -686,24 +691,24 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "International route differences",
         details:
-          "Checked-baggage allowance treatment applies across domestic, transborder, and international markets, but the paid Basic first-bag example shown here is specifically domestic and transborder. There is no fixed international paid first-bag number shown outside that example.",
+          "Air Canada's listed long-haul tier covers Canada or the U.S. to Africa, Asia/South Pacific, Europe, the Middle East, and South America. Other itineraries, codeshares, and tickets issued before the effective dates can produce a different answer, so the booking confirmation remains controlling.",
       },
     ],
     scenarios: [
       {
         title: "Traveling with only cabin baggage",
         details:
-          "Air Canada includes one standard carry-on and one personal item, but aircraft size and airport enforcement still matter.",
+          "Check Economy Basic carefully. Some affected tickets include only one personal item, while an onward international connection can restore the standard carry-on allowance.",
       },
       {
-        title: "Checking one bag on a Basic domestic or transborder trip",
+        title: "Checking one bag on a current short-haul fare",
         details:
-          "The Basic domestic and transborder example shows CAD 30 each way for the first checked bag. That is the Air Canada check-in baggage fee to compare against Standard when the first bag is included there.",
+          "Basic and Standard charge CAD/USD 45 each way for the first bag on fares purchased on or after April 13, 2026. Flex includes it, so compare the Flex fare premium against the roundtrip bag cost rather than assuming Standard solves the fee.",
       },
       {
-        title: "Checking two standard bags on a fare where the second bag is not included",
+        title: "Checking bags on a current long-haul fare",
         details:
-          "The domestic and transborder example shows CAD 50 each way for the second checked bag where the second bag is not included.",
+          "Basic charges CAD/USD 90 for the first bag and 120 for the second on the listed long-haul markets. Standard and Flex include the first bag but charge CAD/USD 120 for the second on fares purchased on or after May 14, 2026.",
       },
       {
         title: "Checking an overweight bag",
@@ -717,10 +722,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "The first checked bag is included on Standard and higher fares.",
-      "The paid Basic example on this page is domestic and transborder, not a single universal international paid-bag baseline.",
+      "The published 2026 amounts apply only to the listed route groups and tickets purchased on or after their effective dates.",
+      "Codeshare and interline itineraries can follow the first operating carrier's baggage rules rather than the Air Canada baseline.",
+      "A stopover longer than 24 hours can cause baggage fees to be assessed again.",
       "No change fee is shown for Standard and higher fares before departure, though fare difference can still apply.",
-      "The U.S. Chase Aeroplan Card is tracked in the card-benefit guide as a verified first-checked-bag benefit, but this airline page keeps base fare and baggage-policy rows separate from card or status waiver modeling.",
+      "An eligible Aeroplan card's first-bag benefit applies at Air Canada check-in and does not add another free bag when the ticket already includes the first one.",
     ],
     comparisonLinks: [
       { href: "/airlines/united", label: "United Airlines" },
@@ -6649,7 +6655,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Saver is the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
     },
     verificationNote:
-      "The newest Alaska checked-baggage and oversize details on this page were verified against official Alaska sources on 2026-06-10. Carry-on details were last verified on 2025-12-24, while seat, cancellation, and unaccompanied minor details were last verified on 2025-12-19.",
+      "Alaska carry-on, checked-baggage, overweight/oversize, and card-benefit claims were rechecked against Alaska-published sources on 2026-09-10. Seat, cancellation, and unaccompanied-minor details retain their record-level dates.",
     avoidFees: [
       "Use the ticketing date first. Alaska's North America checked-bag pricing changed on April 10, 2026, so an old reservation and a new reservation can price differently.",
       "Do not treat Alaska as one domestic bag ladder. Wholly within Hawaii, First Class, and international Main Cabin examples have their own baggage treatment.",
@@ -7346,6 +7352,60 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
 };
 
 const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
+  alaska: [
+    {
+      question: "How much does Alaska Airlines charge for checked baggage?",
+      answer:
+        "For most North America tickets issued on or after April 10, 2026, Alaska charges $45 for the first checked bag, $55 for the second, and $200 for each third or additional bag. Route, cabin, ticket date, status, card benefits, and resident programs can change those amounts.",
+    },
+    {
+      question: "Does Alaska Airlines charge for a carry-on?",
+      answer:
+        "No standard carry-on fee is published. Saver and Main Cabin include one carry-on up to 22 by 14 by 9 inches plus one personal item, although Saver boards last and overhead space is first come, first served.",
+    },
+    {
+      question: "Does Alaska Saver include a checked bag?",
+      answer:
+        "Saver uses the same standard checked-baggage allowance as Main Cabin, which means a checked bag is normally paid on North America routes unless a card, status, cabin, military, or route-specific exception applies.",
+    },
+    {
+      question: "Can I save money by prepaying Alaska baggage online?",
+      answer:
+        "Not under the current North America structure for tickets issued on or after April 10, 2026. Alaska removed the previous $5 online or mobile prepayment discount when the new fees took effect.",
+    },
+    {
+      question: "Are Alaska baggage fees different for Hawaii or international flights?",
+      answer:
+        "Yes. Wholly intra-Hawaii travel retains a $30 first bag and $40 second bag, while Alaska publishes separate Main Cabin allowances for Asia, Europe, and Oceania. Check the itinerary instead of applying the North America ladder universally.",
+    },
+  ],
+  "air-canada": [
+    {
+      question: "How much does Air Canada charge for a checked bag?",
+      answer:
+        "It depends on route, fare, and ticket date. For current published short-haul tiers, Basic and Standard charge CAD/USD 45 for the first bag and 60 for the second; Flex includes the first bag. On listed long-haul tiers, Basic charges CAD/USD 90 then 120, while Standard and Flex include the first bag and charge 120 for the second. Taxes may apply.",
+    },
+    {
+      question: "Does Air Canada Standard include a checked bag?",
+      answer:
+        "Not universally. Standard pays for the first bag on Air Canada's current short-haul tier but includes it on the listed long-haul tier. Use the baggage calculator or booking confirmation for the exact itinerary.",
+    },
+    {
+      question: "Does Air Canada Basic include a carry-on?",
+      answer:
+        "Some Economy Basic itineraries purchased on or after January 3, 2025 include only one personal item. An onward international connection can change the allowance, so check the official carry-on lookup for the ticket.",
+    },
+    {
+      question: "What is Air Canada's overweight baggage fee?",
+      answer:
+        "Air Canada publishes route-dependent overweight charges in a CAD 100 to 225 range for bags over 23 kg and up to 32 kg. The normal checked-bag fee may also apply, and heavier bags must travel as cargo rather than ordinary checked baggage.",
+    },
+    {
+      question: "Does an Aeroplan credit card give a free checked bag?",
+      answer:
+        "Eligible Aeroplan cardholders and up to eight companions on the same reservation can receive one free checked bag up to 23 kg on Air Canada, Rouge, or Express flights. The bag must be presented at Air Canada check-in before security; gate-checked bags are excluded.",
+    },
+  ],
   "air-france": [
     {
       question: "How much does Air France charge for baggage?",
@@ -8302,43 +8362,50 @@ function AirFranceBaggagePriceChecklist() {
 }
 
 function AirCanadaCheckedBagFeeChecklist() {
+  const tiers = [
+    ["Short-haul Basic", "CAD/USD 45", "CAD/USD 60", "Purchased Apr. 13, 2026 or later"],
+    ["Short-haul Standard", "CAD/USD 45", "CAD/USD 60", "Purchased Apr. 13, 2026 or later"],
+    ["Short-haul Flex", "Included", "CAD/USD 60", "Purchased Apr. 13, 2026 or later"],
+    ["Listed long-haul Basic", "CAD/USD 90", "CAD/USD 120", "Purchased May 14, 2026 or later"],
+    ["Listed long-haul Standard / Flex", "Included", "CAD/USD 120", "Purchased May 14, 2026 or later"],
+  ] as const;
+
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
         Air Canada checked bag fee model
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        Start with fare family: Basic is the paid-bag pressure point.
+        What will Air Canada charge for checked baggage?
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        Air Canada baggage fees are not one flat rule across every ticket. Standard and higher fares can include the first checked bag, while the Basic domestic/transborder example has a paid first checked bag.
+        Start with route group, fare, and purchase date. These are Air Canada&apos;s current published economy tiers; prices are per direction, shown in CAD or USD depending on departure market, and taxes may apply.
       </p>
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Basic domestic/transborder
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            First checked bag: CAD 30 each way in this published example. Second checked bag: CAD 50 where not included.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Standard and higher
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            The first checked bag is shown as included across domestic, transborder, and international markets.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Overweight or oversize
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Air Canada lists CAD 100 to CAD 225 ranges by route; bags over 32 kg are not accepted as ordinary checked baggage.
-          </p>
-        </div>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
+        <table className="w-full min-w-[700px] text-left text-sm">
+          <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+            <tr>
+              <th className="px-4 py-3">Fare / route</th>
+              <th className="px-4 py-3">First bag</th>
+              <th className="px-4 py-3">Second bag</th>
+              <th className="px-4 py-3">Applies to</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-slate-700">
+            {tiers.map(([fare, first, second, applies]) => (
+              <tr key={fare}>
+                <th className="px-4 py-3 font-bold text-slate-900">{fare}</th>
+                <td className="px-4 py-3">{first}</td>
+                <td className="px-4 py-3">{second}</td>
+                <td className="px-4 py-3">{applies}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <p className="mt-3 text-xs leading-relaxed text-slate-600">
+        Short-haul means travel within Canada; between Canada and the U.S.; or from Canada/U.S. to Mexico, the Caribbean, or Central America. The listed long-haul group covers Canada/U.S. to Africa, Asia/South Pacific, Europe, the Middle East, or South America. Older tickets and other itineraries may use different rules.
+      </p>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link
           href="/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes"
@@ -8550,47 +8617,60 @@ function AirlineFaqBlock({ slug }: { slug: string }) {
 }
 
 function AlaskaCarryOnAndBagCheck() {
+  const currentFees = [
+    ["Most North America", "$45", "$55", "$200 each"],
+    ["Wholly within Hawaii", "$30", "$40", "Check itinerary"],
+    ["Asia, Main Cabin", "Included", "Included", "Check itinerary"],
+    ["Europe, Main Cabin", "Included", "$100", "Check itinerary"],
+    ["Oceania, Main Cabin", "Included", "Included", "Check itinerary"],
+  ] as const;
+
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        Alaska carry-on and bag check
+        Alaska baggage answer
       </div>
       <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        Alaska does not charge for a standard carry-on bag.
+        Most current North America tickets cost $45 for the first bag.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        The direct answer for Alaska carry-on searches is yes, a carry-on is included: one carry-on
-        bag up to 22 x 14 x 9 inches plus one personal item are included on all fares shown here,
-        including Saver. The bigger Alaska baggage question is usually checked-bag pricing by
-        ticketing date, route, fare cabin, and eligible bag benefits.
+        For most North America flights ticketed on or after April 10, 2026, the first checked bag is
+        $45, the second is $55, and third-plus bags are $200 each way. Tickets issued earlier use the
+        former $40 / $45 / $150 ladder. Alaska no longer discounts these current fees for online or
+        mobile prepayment.
       </p>
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Carry-on answer
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Saver still includes one carry-on and one personal item. The risk is fit and aircraft
-            space, not a listed carry-on fee.
-          </p>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
+        <table className="w-full min-w-[620px] text-left text-sm">
+          <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+            <tr>
+              <th className="px-4 py-3">Route / cabin</th>
+              <th className="px-4 py-3">First bag</th>
+              <th className="px-4 py-3">Second bag</th>
+              <th className="px-4 py-3">Third+</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-slate-700">
+            {currentFees.map(([route, first, second, third]) => (
+              <tr key={route}>
+                <th className="px-4 py-3 font-bold text-slate-900">{route}</th>
+                <td className="px-4 py-3">{first}</td>
+                <td className="px-4 py-3">{second}</td>
+                <td className="px-4 py-3">{third}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="text-slate-900">Carry-on:</strong> Saver and Main Cabin include one
+          22 × 14 × 9 inch carry-on plus one personal item. Saver boards last, so overhead space is
+          not guaranteed even though the allowance is included.
         </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Checked-bag date
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Most North America checked-bag pricing changed for tickets issued on or after April 10,
-            2026, so old and new reservations can price differently.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Card and status benefits
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Alaska Atmos cards, status, military eligibility, and certain resident programs can
-            change the checked-bag answer before you pay cash.
-          </p>
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="text-slate-900">Check benefits before paying:</strong> eligible Atmos
+          cards, status, military rules, Club 49, Huaka&apos;i, and First Class allowances can override
+          the standard cash fee.
         </div>
       </div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
@@ -8679,7 +8759,10 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       return {
         title: "Air Canada Baggage Fees 2026: Checked Bag Costs by Fare",
         description:
-          "Check Air Canada baggage fees by fare and route, including first and second checked bags, Basic fare costs, overweight charges, and calculator links.",
+          "Check Air Canada baggage fees by route and fare: current short-haul and long-haul first- and second-bag prices, Basic carry-on limits, and excess-bag rules.",
+        alternates: {
+          canonical: canonical("/airlines/air-canada"),
+        },
       };
     case "air-france":
       return {
@@ -8694,7 +8777,10 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
       return {
         title: "Alaska Airlines Baggage Fees and Carry-On Rules (2026)",
         description:
-          "Alaska does not charge a standard carry-on fee: one carry-on and one personal item are included, including Saver. Checked-bag fees depend on ticket date and route.",
+          "Alaska baggage fees for 2026: $45 first bag and $55 second bag on most current North America tickets, plus Saver carry-on and route exceptions.",
+        alternates: {
+          canonical: canonical("/airlines/alaska"),
+        },
       };
     case "lufthansa":
       return {
