@@ -85,16 +85,16 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     introLabel: "deciding whether to buy cabin space, pack smaller, or change airlines before reaching the gate.",
     scenarioCards: [
       {
-        title: "This is really an enforcement page",
-        body: "Carry-on pricing matters because airlines differ widely in whether they treat the bag as included, optional, or a paid add-on.",
+        title: "First identify the free item",
+        body: "A personal item and an overhead-bin carry-on are different products. The cheapest fare may include only the smaller under-seat item.",
       },
       {
         title: "Bag shape beats bag marketing",
         body: "A soft bag that actually compresses is often more valuable than a roller marketed with optimistic dimensions.",
       },
       {
-        title: "Europe LCCs and US ULCCs are the key comparison set",
-        body: "Ryanair, easyJet, and Frontier show why cabin-bag access needs to be priced before the fare is compared.",
+        title: "Price cabin access before checkout",
+        body: "Frontier, Ryanair, and easyJet show why an apparently cheap fare should be compared only after the required cabin-bag path is added.",
       },
     ],
     spotlightAirlines: [

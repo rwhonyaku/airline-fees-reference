@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": false,
     "source_depth": "silver",
-    "last_full_review": "2026-08-22",
-    "notes": "Frontier pass checked against current optional-services, bag-price, bundle, elite/card, military, and family-travel sources. Main issue is route/date/timing bag pricing plus bundle and status exceptions."
+    "last_full_review": "2026-09-10",
+    "notes": "Frontier baggage and bundle pass rechecked against current optional-services, Bag Price Checker, and bundle sources. Main issue is route/date/timing pricing plus the difference between Basic, Economy/Premium, and Business baggage inclusion."
   },
   "fees": [
     {

@@ -8,9 +8,9 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: Air India baggage depends on cabin, fare, route, weight-versus-piece concept, prepaid versus airport excess, Maharaja Club tier, sports handling, and post-Vistara AI 2XXX integration.",
-    "next_review_due": "2026-11-23"
+    "last_full_review": "2026-09-10",
+    "notes": "Gold refresh: domestic allowances and excess charges were rechecked after Air India introduced its select-route Basic fare. Air India baggage depends on cabin, fare, route, weight-versus-piece concept, prepaid versus airport excess, Maharaja Club tier, sports handling, and operating carrier.",
+    "next_review_due": "2026-12-10"
   },
   "fees": [
     {
@@ -32,60 +32,60 @@
       "category": "checked_baggage",
       "amount": 0,
       "currency": "INR",
-      "conditions": "Included allowance depends on route, cabin, fare family, status, and whether the itinerary uses weight or piece concept",
-      "applies_to": "Eligible fares",
-      "region_or_route": "All routes",
+      "conditions": "Domestic Economy Value includes 15 kg, Classic 20 kg, and Flex 25 kg. The select-route Economy Basic trial also includes 15 kg.",
+      "applies_to": "Domestic Economy fares",
+      "region_or_route": "Within India on Air India-operated flights",
       "timing": "each way",
-      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines.html",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/checked-baggage-allowance.html",
+      "last_verified": "2026-09-10",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "For Air India, the ticketed allowance matters more than a generic airline-wide rule. Interline and codeshare itineraries can follow another carrier’s baggage rules."
+        "notes": "Passengers with less than 25 kg of free allowance are limited to one checked piece; those with at least 25 kg may check two. International, interline, codeshare, and Air India Express rules can differ."
       }
     },
     {
       "category": "checked_baggage",
-      "amount": "From INR 700 per kg domestic; from USD 17 per kg international weight concept",
+      "amount": "INR 800 per kg at the airport",
       "currency": "INR",
-      "conditions": "Excess is per kg on weight routes and per piece/heavy piece on piece routes; prepaid excess can save money",
-      "applies_to": "All fares (where additional bags are permitted)",
-      "region_or_route": "All routes",
+      "conditions": "Charged per kg above the free allowance; taxes and any separate piece-count charge are additional.",
+      "applies_to": "Domestic itineraries exceeding the ticketed allowance",
+      "region_or_route": "Within India on Air India-operated flights",
       "timing": "at booking / manage booking / airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-10",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Domestic India excess baggage is published as INR 700/kg before taxes. International weight-concept rates vary by region; piece-concept markets such as USA/Canada use per-piece tables."
+        "notes": "Air India publishes INR 800/kg as the domestic airport rate. Eligible 098-ticketed Air India itineraries can prepay and save up to 20%; interline and codeshare flights are excluded."
       }
     },
     {
       "category": "overweight_baggage",
-      "amount": "Depends on route; piece-concept heavy bags charged above 23 kg",
-      "currency": "INR",
-      "conditions": "Overweight charges depend on baggage concept; piece-route bags are charged above 23 kg and cannot exceed 32 kg.",
+      "amount": "USD 90–130 or CAD 190 to/from India",
+      "currency": "USD",
+      "conditions": "Piece-concept charge for an Economy or Premium Economy bag over 23 kg and up to 32 kg.",
       "applies_to": "All fares",
-      "region_or_route": "All routes",
+      "region_or_route": "India–Europe: USD 100; India–Japan/Korea: USD 90; India–USA: USD 130; India–Canada: CAD 190",
       "timing": "at airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-10",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Air India publishes separate weight-concept per-kg rates and piece-concept heavy-piece rules, so one flat overweight number would be misleading."
+        "notes": "USD figures exclude applicable taxes; the CAD figure includes applicable taxes. Other international origin/destination combinations use a larger region matrix."
       }
     },
     {
       "category": "oversize_baggage",
-      "amount": "Depends on route, size, and aircraft",
+      "amount": "INR 2,000 domestic; USD 125 international; CAD 180 Canada",
       "currency": "INR",
-      "conditions": "Oversize fees depend on route, aircraft handling, and whether the item is normal checked baggage or special baggage.",
+      "conditions": "Applies above 158 cm/62 in. Ordinary checked baggage over 200 cm/78 in must travel as cargo.",
       "applies_to": "All fares",
-      "region_or_route": "All routes",
+      "region_or_route": "Within India; international excluding Canada; Canada",
       "timing": "at airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-10",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Oversize handling is not a single universal fee; Air India points passengers to excess-baggage and special-baggage rules based on route and item."
+        "notes": "The domestic and USD amounts exclude applicable taxes; CAD includes applicable taxes. Air India publishes separate special-baggage acceptance limits."
       }
     },
     {

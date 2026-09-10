@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-22",
-    "notes": "Priority airline gold pass refreshed against Southwest optional-fee, fare, card/status, military, sports, and infant pages. Key model: post-April 2026 fare type plus card/status/military exceptions replaced the old universal free-bags story."
+    "last_full_review": "2026-09-10",
+    "notes": "Priority airline gold pass rechecked against Southwest's current optional-fee table. Key model: U.S. Mainland ticket/change date plus fare, card, status, package, and military exceptions replaced the old universal free-bags story."
   },
   "fees": [
     {

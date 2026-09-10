@@ -84,6 +84,21 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
     verdict:
       "ZIPAIR includes two cabin items weighing 7 kg combined. Every checked bag costs extra, with a route-specific price covering one piece up to 30 kg; an unpurchased bag at the airport also attracts a processing fee.",
   },
+  "air-india": {
+    h1: "Air India baggage fees: excess, extra, and checked bags",
+    verdict:
+      "Air India usually includes checked baggage, then charges excess differently by itinerary. Within India, airport excess weight is INR 800 per kg before applicable taxes; international weight-concept routes charge per kg, while piece-concept routes charge for an additional, heavy, or oversized piece.",
+  },
+  frontier: {
+    h1: "Frontier baggage fees: carry-on, checked bags, and bundles",
+    verdict:
+      "Every Frontier ticket includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on and standard checked bag cost extra on Basic unless a bundle or benefit includes them; live prices vary by route, date, and when you buy.",
+  },
+  southwest: {
+    h1: "Southwest baggage fees: checked bags and free carry-on",
+    verdict:
+      "Southwest still includes one carry-on and one personal item, but it no longer gives every fare two free checked bags. On current U.S. Mainland Basic, Choice, and Choice Preferred bookings, the first checked bag is $45 each way and the second is $55; Choice Extra includes both.",
+  },
 };
 
 const TARGET_REFERENCE_SLUGS = new Set([
@@ -475,7 +490,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic is now the clear restriction point: no seat selection, no included first bag, and no free same-day change unless the fare is upgraded.",
     },
     verificationNote:
-      "The newest Southwest checked-baggage details shown here were last verified on 2026-04-28. Carry-on, seat, change, and cancellation details were last verified on 2025-12-19.",
+      "Southwest carry-on and current U.S. Mainland checked-baggage prices and waiver paths were rechecked against Southwest on 2026-09-10. Other fee rows retain their record-level verification dates.",
     avoidFees: [
       "Do not assume Southwest still means two checked bags for every fare. Compare Basic, Choice, and Choice Preferred against Choice Extra if anyone in the party is checking bags.",
       "For U.S. Mainland bookings, check the ticketing or change date before relying on a baggage amount; Southwest separates bookings before and after April 9, 2026.",
@@ -552,16 +567,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air India includes one personal item alongside the cabin bag allowance on Air India-operated flights.",
       checkedBag:
-        "Air India is mainly an allowance airline, not a flat first-bag-fee airline. Checked baggage is included on most eligible fares, while additional baggage is purchased separately under route-based piece or weight concept rules.",
+        "Air India is an allowance airline, not a flat first-bag-fee airline. Domestic Economy Value includes 15 kg, Classic 20 kg, and Flex 25 kg; the select-route Economy Basic trial also includes 15 kg. International allowances depend on route, fare, cabin, and whether the ticket uses weight or piece concept.",
       restrictions:
-        "Air India's main restrictions are operational rather than one fixed fee ladder: cabin baggage is explicitly tied to Air India-operated flights, while extra baggage, seat selection, and changes all depend on route, fare family, or timing.",
+        "The costly mistake is treating every kilogram and piece alike. Domestic airport excess is INR 800 per kg before applicable taxes, but piece-concept itineraries can charge separately for an extra piece, weight above 23 kg, and size above 158 cm.",
     },
     verificationNote:
-      "Air India baggage, seat, and change details shown here were last verified on 2025-12-24.",
+      "Air India checked-baggage allowances and excess, overweight, oversize, and prepayment rules were rechecked against Air India on 2026-09-10. Other fee rows retain their record-level verification dates.",
     avoidFees: [
       "Confirm whether the itinerary uses the piece concept or weight concept before buying extra baggage; the excess-baggage path depends on that structure.",
       "Treat the Economy 7 kg cabin-bag limit as a real packing constraint on Air India-operated flights. If the bag is close, solve the weight before the airport.",
-      "Buy additional baggage before airport handling when the route permits it, but do not assume one universal add-on amount because pricing remains route-based.",
+      "For eligible 098-ticketed Air India flights, prepay excess baggage through Manage Booking up to two hours before departure and save up to 20% versus airport pricing. Interline and codeshare flights are excluded.",
       "For partner-operated or mixed itineraries, check the operating carrier rules because this cabin-baggage guidance is for Air India-operated flights.",
     ],
     relatedGuides: [
@@ -577,9 +592,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Domestic Economy",
         details:
-          "Economy cabin baggage is one cabin bag up to 7 kg plus one personal item on Air India-operated flights. Checked baggage is still included on most eligible fares, but the actual allowance depends on route and whether the itinerary uses the piece or weight concept.",
+          "Value includes 15 kg, Classic 20 kg, and Flex 25 kg of checked baggage. The optional Basic fare being trialled on select domestic routes also includes 15 kg. Below 25 kg of free allowance, Air India permits one checked piece; at 25 kg or more, it permits two.",
       },
       {
         name: "Premium cabins",
@@ -587,9 +602,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Business and First Class have higher cabin baggage allowances, but premium-cabin checked-bag and change-fee treatment is not reduced to one universal ladder here.",
       },
       {
-        name: "Allowance and purchase path",
+        name: "International and purchase path",
         details:
-          "The useful split on this page is between included allowance and purchased excess. Additional baggage can be bought in advance or at the airport, but pricing stays route-based rather than becoming one fixed amount.",
+          "International allowances and charges use either weight or piece concept. Eligible Air India tickets beginning 098 can prepay additional weight or pieces and save up to 20%, but the final price shown during purchase controls and a return flight requires a separate purchase.",
       },
       {
         name: "Partner or non-Air India operations",
@@ -611,12 +626,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Buying extra baggage in advance",
         details:
-          "Additional checked baggage is purchasable both before travel and at the airport, but the amount stays route-based because there is no one universal INR add-on figure.",
+          "Eligible 098-ticketed Air India itineraries can prepay extra baggage up to two hours before departure. A single bag's higher weight allowance can be purchased up to 32 kg until six hours before departure. Interline and codeshare flights do not qualify.",
       },
       {
-        title: "Checking an overweight bag",
+        title: "Exceeding a domestic allowance",
         details:
-          "Overweight baggage is a variable airport fee that depends on route and excess weight, up to the 32 kg acceptance limit.",
+          "The current domestic airport rate is INR 800 per excess kg before applicable taxes. If the free allowance is below 25 kg, a separate piece-count limit also matters because only one checked piece is permitted.",
+      },
+      {
+        title: "Checking a heavy piece internationally",
+        details:
+          "On published piece-concept routes to or from India, a 23–32 kg piece costs USD 100 for Europe, USD 90 for Japan or Korea, USD 130 for the USA, or CAD 190 for Canada. Other international city pairs use Air India's regional matrix.",
       },
       {
         title: "Flying on a partner-operated itinerary",
@@ -625,10 +645,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Checked baggage is included on most eligible fares rather than handled as one fixed universal paid first-bag rule.",
-      "Additional baggage may be purchased in advance or at the airport where the route permits it, but no fixed extra-bag number is shown here.",
+      "Domestic Economy allowances are fare-specific: Value and select-route Basic include 15 kg, Classic 20 kg, and Flex 25 kg.",
+      "An Air India domestic segment on the same ticket as an Air India international segment receives the international allowance. Separate Air India tickets can also qualify when the connection is within 24 hours.",
+      "No ordinary checked bag may exceed 32 kg. Bags over 158 cm are oversized; Air India publishes INR 2,000 domestic, USD 125 international excluding Canada, and CAD 180 for Canada.",
       "Business and First Class have higher cabin-baggage allowances.",
-      "No elite-status or co-branded-card baggage waiver is shown here for Air India.",
+      "Maharaja Club Gold and Platinum add one 23 kg piece on piece-concept routes or 20 kg on weight-concept routes; Silver adds 5 kg only on eligible weight-concept Air India flights.",
     ],
     comparisonLinks: [
       { href: "/airlines/eva-air", label: "EVA Air" },
@@ -6837,7 +6858,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic Fare and Standard use a timed change-fee ladder and a USD 99 cancellation fee, while Economy, Premium, and Business bundles show no change or cancellation fee.",
     },
     verificationNote:
-      "Frontier change and cancellation details shown here were last verified on 2025-12-19. Carry-on, checked-bag, overweight, and oversize details were last verified on 2025-12-22.",
+      "Frontier carry-on, checked-bag, bundle, overweight, and oversize rules were rechecked against Frontier on 2026-09-10. Change and cancellation rows retain their record-level verification dates.",
     avoidFees: [
       "Decide on bags before checkout. Frontier's carry-on and checked-bag pricing is timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
       "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; those bundles show no change or cancellation fee.",
@@ -6864,7 +6885,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy / Premium / Business bundle",
         details:
-          "These bundles show no change or cancellation fee before departure.",
+          "Economy includes a personal item, carry-on, standard seat, and no change/cancel fee. Premium adds a premium seat and early boarding. Business adds two checked bags up to 50 lbs each and UpFront Plus seating.",
       },
       {
         name: "Personal-item-only travel",
@@ -6891,7 +6912,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking an overweight bag",
         details:
-          "Overweight pricing is USD 75 each way for 41-50 lbs and USD 100 each way for 51-100 lbs.",
+          "Overweight pricing is USD 75 each way for 41-50 lbs. For bookings made on or after April 4, 2026, a 51-99.99 lb bag costs USD 129 each way; older bookings retain the USD 100 tier.",
       },
       {
         title: "Changing a Basic Fare itinerary close to departure",
@@ -6900,7 +6921,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       },
     ],
     exceptions: [
-      "Economy, Premium, and Business bundles show no change fee and no cancellation fee.",
+      "Economy and Premium include a carry-on but not a checked bag; Business includes two checked bags up to 50 lbs each.",
+      "Frontier checks personal-item and carry-on dimensions during boarding. An item outside the limit can trigger an additional charge.",
+      "Overweight and oversize charges are separate from the route- and timing-dependent base bag price.",
       "Basic Fare and Standard show a USD 0 change amount when the request is made 60 or more days before departure.",
     ],
     comparisonLinks: [
@@ -8764,6 +8787,20 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
           canonical: canonical("/airlines/air-canada"),
         },
       };
+    case "frontier":
+      return {
+        title: "Frontier Baggage Fees 2026: Carry-On, Checked Bags & Bundles",
+        description:
+          "Check Frontier personal-item and carry-on rules, route-dependent checked-bag pricing, bundle inclusions, and current overweight and oversize charges.",
+        alternates: { canonical: canonical("/airlines/frontier") },
+      };
+    case "southwest":
+      return {
+        title: "Southwest Baggage Fees 2026: Checked Bags & Carry-On Rules",
+        description:
+          "See current Southwest first- and second-bag prices by fare, free carry-on rules, Choice Extra allowance, and card, status, and military exceptions.",
+        alternates: { canonical: canonical("/airlines/southwest") },
+      };
     case "air-france":
       return {
         title: "Air France Baggage Fees 2026: Checked, Extra & Overweight Bags",
@@ -8787,12 +8824,27 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         title: "Lufthansa Baggage Fees, Carry-On Allowance, and EU261 Links (2026)",
         description:
           "Lufthansa baggage rules depend on fare, cabin, and route. The page explains included carry-on, checked-bag examples, excess baggage, seat selection, and change-fee conditions.",
+        alternates: {
+          canonical: canonical("/airlines/lufthansa"),
+        },
       };
     case "zipair":
       return {
         title: "ZIPAIR Baggage Fees 2026: Bag Prices & 7 kg Carry-On",
         description:
           "See ZIPAIR checked bag prices by route, the 7 kg carry-on rule, 30 kg checked-bag limit, extra bag charges, dimensions, and airport purchase rules.",
+        alternates: {
+          canonical: canonical("/airlines/zipair"),
+        },
+      };
+    case "eva-air":
+      return {
+        title: "EVA Air Baggage Fees: Allowance, Extra Bags & Carry-On (2026)",
+        description:
+          "Check EVA Air baggage allowances, the 7 kg Economy carry-on limit, prepaid excess-baggage discount, and route-dependent extra, overweight, and oversize rules.",
+        alternates: {
+          canonical: canonical("/airlines/eva-air"),
+        },
       };
     default:
       return {
@@ -8800,6 +8852,9 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         description:
           fallback ??
           `Published baggage, seat, and service fees for ${airlineName}, plus practical guidance on the biggest fee traps.`,
+        alternates: {
+          canonical: canonical(`/airlines/${slug}`),
+        },
       };
   }
 }

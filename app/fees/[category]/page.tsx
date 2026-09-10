@@ -90,6 +90,29 @@ function getFeeFaq(category: string): Array<{ question: string; answer: string }
             "Some airline credit cards publish a first checked bag benefit for the cardholder and eligible companions. The exact coverage depends on airline, reservation, route, traveler count, and card-payment rules.",
         },
       ];
+    case "carry_on":
+      return [
+        {
+          question: "Do airlines charge for carry-on bags?",
+          answer:
+            "Some do. Many full-service fares include an overhead-bin carry-on, while ultra-low-cost and some Basic fares include only a smaller personal item. The airline, fare, route, bag size, and purchase timing determine the answer.",
+        },
+        {
+          question: "Is a personal item the same as a carry-on bag?",
+          answer:
+            "No. A personal item normally must fit under the seat and has a smaller size limit. A full-size carry-on normally uses the overhead bin and may require a paid fare, bundle, seat product, or separate bag purchase.",
+        },
+        {
+          question: "When is the cheapest time to buy a carry-on bag?",
+          answer:
+            "When the airline sells carry-on access separately, buying during the original booking is commonly safer than waiting until check-in, the airport, or the gate. Use the airline's live price because route and timing can change the amount.",
+        },
+        {
+          question: "Can an oversized personal item be charged as a carry-on?",
+          answer:
+            "Yes. If the free personal item exceeds its published dimensions, the airline can treat it as a paid carry-on or checked bag. Gate pricing may be less forgiving than booking-time pricing.",
+        },
+      ];
     case "overweight_baggage":
       return [
         {
@@ -280,13 +303,13 @@ function getHubCopy(category: string) {
     case "carry_on":
       return {
         verdict:
-          "Carry-on rules combine size limits, fare entitlement, purchase timing, and enforcement. Check all four before relying on cabin-only travel.",
+          "Airlines do not all include a full-size carry-on. Many fares include an overhead-bin bag, but Frontier, Ryanair, easyJet, and some Basic fares separate the free under-seat personal item from paid cabin-bag access. Check entitlement, dimensions, weight, and purchase timing before comparing fares.",
         proTip:
           "Treat bag shape as part of the cost decision. Soft, compressible bags often outperform rigid rollers even when the claimed dimensions look similar.",
         loophole:
           "On some airlines, buying the right seat or bundle is actually a cheaper way to buy cabin-bag access than paying for the bag as a standalone add-on.",
         whatToWatch:
-          "Check whether the fare includes a full cabin bag, only a personal item, or a paid upgrade path that changes the all-in fare.",
+          "Check whether the fare includes a full cabin bag or only a personal item, whether a bundle or seat adds overhead access, and what happens if the bag is rejected at the gate.",
       };
     case "seat_selection":
       return {
@@ -744,30 +767,42 @@ function OversizeBaggageAnswerBlock() {
 }
 
 function getFeeMetadataCopy(category: string): Metadata {
+  const href = `/fees/${category}`;
   switch (category) {
     case "overweight_baggage":
       return {
         title: "Overweight Baggage Fees by Airline | Charges and Calculator",
         description:
           "Compare overweight baggage fees by airline and learn why the charge depends on route, weight band, allowance, currency, and airport handling rules.",
+        alternates: { canonical: canonical(href) },
       };
     case "oversize_baggage":
       return {
         title: "Oversize Baggage Fees by Airline | Size Charges and Calculator",
         description:
           "Compare oversized baggage fees by airline and learn when size charges stack with checked-bag or overweight fees.",
+        alternates: { canonical: canonical(href) },
       };
     case "checked_baggage":
       return {
         title: "Checked Baggage Fees by Airline | Costs, Comparison, Calculator",
         description:
           "Compare checked baggage fees by airline, learn whether baggage fees are round trip, and use the checked bag fee calculator to estimate total bag costs.",
+        alternates: { canonical: canonical(href) },
+      };
+    case "carry_on":
+      return {
+        title: "Carry-On Bag Fees by Airline | Personal Item vs Carry-On",
+        description:
+          "See which airline fares include a carry-on, when only a personal item is free, and how bag size, bundles, purchase timing, and gate enforcement change the cost.",
+        alternates: { canonical: canonical(href) },
       };
     default:
       return {
         title: `${titleCaseFromSlug(category)} fees by airline (2026)`,
         description:
           "Compare published airline fees across carriers and use the related airline pages, guides, and tools to understand how the fee applies.",
+        alternates: { canonical: canonical(href) },
       };
   }
 }
