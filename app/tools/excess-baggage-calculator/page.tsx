@@ -13,9 +13,12 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Excess Baggage Calculator | Extra, Overweight, and Oversize Bag Fees",
+  title: "Overweight & Oversize Baggage Fee Calculator",
   description:
-    "Estimate extra baggage, overweight baggage, and oversize baggage fees, and see when route-specific airline lookup is required.",
+    "Check whether a bag is overweight, oversized, or both; estimate supported airline fees and identify when an itinerary-specific quote is required.",
+  alternates: {
+    canonical: canonical("/tools/excess-baggage-calculator"),
+  },
 };
 
 const FEATURED_AIRLINES = [
@@ -40,7 +43,7 @@ const FEATURED_AIRLINES = [
     label: "Air India extra baggage",
     detail:
       "Air India can depend on route and baggage concept, so extra baggage should be checked against the specific itinerary.",
-    weight: 33,
+    weight: 51,
     size: 63,
   },
   {
@@ -48,7 +51,7 @@ const FEATURED_AIRLINES = [
     label: "ZIPAIR extra baggage fee",
     detail:
       "ZIPAIR checked baggage is bought by weight, and extra baggage weight beyond the purchased allowance is handled separately at airport rates.",
-    weight: 24,
+    weight: 68,
     size: 63,
   },
   {
@@ -56,7 +59,7 @@ const FEATURED_AIRLINES = [
     label: "EVA Air extra baggage",
     detail:
       "EVA Air usually starts from included allowance, then excess baggage depends on piece or weight concept rules.",
-    weight: 33,
+    weight: 51,
     size: 63,
   },
   {
@@ -78,7 +81,7 @@ const EXCESS_BAG_FAQS = [
   {
     question: "What is an excess baggage fee?",
     answer:
-      "An excess baggage fee is charged when a checked bag exceeds the airline's included allowance, weight limit, size limit, or number-of-bags allowance. Travelers may also search this as an extra baggage fee, overweight baggage fee, or oversize baggage fee. It may apply in addition to the normal checked-bag fee.",
+      "An excess baggage fee can mean an additional bag, an overweight bag, or an oversized bag. This tool calculates supported weight and size charges. Use the checked-bag calculator when the bag is within normal limits but exceeds the included number of pieces.",
   },
   {
     question: "Why do overweight and oversize baggage fees vary?",
@@ -150,7 +153,7 @@ function excessBaggageCalculatorJsonLd() {
         applicationCategory: "TravelApplication",
         operatingSystem: "Any",
         description:
-          "Estimate extra baggage, overweight baggage, and oversize baggage fees and identify when route-specific airline lookup is required.",
+          "Check overweight and oversize baggage charges and identify when route-specific airline lookup is required.",
       },
       {
         "@type": "FAQPage",
@@ -195,17 +198,17 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
       <JsonLd data={excessBaggageCalculatorJsonLd()} />
       <header className="grid gap-3">
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
-          Extra baggage fee tool
+          Overweight and oversize fee tool
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight">
           Excess baggage calculator
         </h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-          Estimate extra baggage, overweight baggage, and oversize baggage fees before the airport
-          scale. Use this when your checked bag is over 50 lb, over 62 linear inches, or outside the
-          allowance you bought. When an airline prices excess baggage by route, fare allowance,
+          Check overweight and oversize baggage charges before the airport scale. Use this when your
+          checked bag is over 50 lb, over 62 linear inches, or both. If you are adding another bag
+          that remains within the normal limits, use the checked-bag calculator instead. When an airline prices excess baggage by route, fare allowance,
           currency, purchase timing, or airport handling, the tool says so instead of inventing a
-          fake number.
+          unsupported number.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link href={checkedBagHref(airlineSlug)} className="font-semibold text-blue-700 underline">
@@ -234,8 +237,8 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
           <div className="rounded-xl border border-blue-100 bg-white p-4">
             <h2 className="text-base font-extrabold text-slate-950">Extra baggage fee</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              Use the checked-bag calculator first when you are adding another normal checked bag.
-              Use this tool when the bag is too heavy, too large, or outside the allowance you bought.
+              Adding another normal-size bag is a bag-count question, not an overweight question.
+              Use the checked-bag calculator for the first, second, or additional standard bag.
             </p>
           </div>
           <div className="rounded-xl border border-blue-100 bg-white p-4">
@@ -378,8 +381,8 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
           <>
             <h2 className="text-3xl font-extrabold text-slate-950">This bag does not cross the common excess-bag thresholds.</h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-              The entered weight is at or below 50 lb and the entered size is at or below 62 linear
-              inches, so this tool does not model an overweight or oversize charge.
+              The entered weight is at or below the tool&apos;s 50 lb screening point and the entered size
+              is at or below 62 linear inches. Check the airline page if your ticket has a lower weight allowance.
             </p>
           </>
         ) : result.canEstimate ? (
@@ -483,10 +486,20 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
 
       <section className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
+        {result.combined ? (
+          <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <div className="text-xs font-bold uppercase tracking-widest text-blue-700">Combined overweight and oversize charge</div>
+            <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.combined.fee)}</div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{rowSummary(result.combined.row)}</p>
+            <p className="mt-2 text-xs leading-relaxed text-slate-600">Used once per bag instead of adding separate overweight and oversize fees.</p>
+          </div>
+        ) : null}
         <div className="grid gap-3 md:grid-cols-2">
           <div className="rounded-xl border border-slate-200 p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Overweight</div>
-            {needsOverweight ? (
+            {result.combined ? (
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">Included in the combined charge above.</p>
+            ) : needsOverweight ? (
               result.overweight ? (
                 <>
                   <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.overweight.fee)}</div>
@@ -502,7 +515,9 @@ export default async function ExcessBaggageCalculatorPage({ searchParams }: Page
 
           <div className="rounded-xl border border-slate-200 p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Oversize</div>
-            {needsOversize ? (
+            {result.combined ? (
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">Included in the combined charge above.</p>
+            ) : needsOversize ? (
               result.oversize ? (
                 <>
                   <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.oversize.fee)}</div>

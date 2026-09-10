@@ -16,6 +16,7 @@ import {
 } from "@/lib/bag-cost-calculator";
 import fs from "fs/promises";
 import path from "path";
+import { canonical } from "@/lib/seo";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -23,12 +24,15 @@ type PageProps = {
   searchParams?: Promise<SearchParams>;
 };
 
-const LAST_VERIFIED = "2026-07-14";
+const PAGE_REVIEWED = "2026-09-10";
 
 export const metadata: Metadata = {
   title: "Free Checked Bag Card Calculator | Airline Fees Reference",
   description:
     "Calculate whether an airline credit card's free checked bag benefit offsets its annual fee using published bag fees, traveler coverage, and card-payment rules.",
+  alternates: {
+    canonical: canonical("/best-cards"),
+  },
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
@@ -362,7 +366,7 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
           </Link>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
-          Last verified: <span className="font-medium">{LAST_VERIFIED}</span>. Start with the selected airline&apos;s{" "}
+          Page reviewed: <span className="font-medium">{PAGE_REVIEWED}</span>. Individual benefit-check dates appear with each card. Start with the selected airline&apos;s{" "}
           <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="text-blue-700 underline">
             fee page
           </Link>
@@ -574,8 +578,8 @@ export default async function BestCardsPage({ searchParams }: PageProps) {
 
         <div className="mt-3 text-sm text-slate-700">
           This is not a general card recommendation. It only compares calculated checked-bag savings
-          against the annual fee. Delta second-bag savings are counted only when the selected bag
-          pattern and fee data support that comparison.
+          against the annual fee. Delta&apos;s domestic second-bag waiver is not counted because it
+          applies to eligible Basic Card Members rather than every companion covered by the first-bag benefit.
         </div>
 
         {top.r.breakEvenRoundtrips != null && (

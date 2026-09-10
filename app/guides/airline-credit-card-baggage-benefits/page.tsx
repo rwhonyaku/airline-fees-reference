@@ -2,14 +2,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Credit cards with free checked bags: airline baggage benefit rules (2026) | Airline Fees Reference",
   description:
     "Which airline credit cards include free checked bags, how many travelers are covered, where route limits apply, and when the bag benefit can outweigh the annual fee.",
+  alternates: {
+    canonical: canonical("/guides/airline-credit-card-baggage-benefits"),
+  },
 };
 
-const LAST_VERIFIED = "2026-07-14";
+const PAGE_REVIEWED = "2026-09-10";
 
 type Card = {
   id: string;
@@ -39,41 +43,21 @@ type AirlineGuideMeta = {
   coreLimits: string[];
 };
 
-const EXCLUDED_CARD_NOTES = [
+const NON_WAIVER_EXAMPLES = [
   {
-    card: "Citi / AAdvantage Globe Mastercard",
+    card: "Points, credits, and lounge access",
     reason:
-      "Not included in the break-even calculator because the current official card page emphasizes lounge passes, earning, status-related benefits, and credits rather than a recurring checked-bag waiver like the Platinum Select card.",
+      "These benefits may be valuable, but they do not erase a checked-bag charge and therefore should not be counted as baggage savings.",
   },
   {
-    card: "United Gateway Card",
+    card: "Baggage-delay or lost-luggage coverage",
     reason:
-      "Not treated as a repeat per-trip waiver because its checked-bag language is framed as earning two checked bags each year, not as a normal cardmember-plus-companion bag waiver on every eligible trip.",
+      "Insurance or reimbursement after a disruption is different from a fee waiver applied when the bag is checked.",
   },
   {
-    card: "JetBlue Card",
+    card: "Status pathways and one-time benefits",
     reason:
-      "Not included because the no-annual-fee JetBlue Card does not publish a free checked bag benefit. The JetBlue Plus and Premier cards are the JetBlue cards that support a baggage break-even comparison.",
-  },
-  {
-    card: "Canadian Aeroplan cards",
-    reason:
-      "TD, American Express, and CIBC Aeroplan cards can publish Air Canada bag benefits, but this calculator currently models USD annual fees. They should wait for CAD annual-fee support instead of being forced into a USD break-even table.",
-  },
-  {
-    card: "HSBC Star Alliance Credit Card",
-    reason:
-      "Not included as an Air Canada checked-bag card because its baggage value comes through earned Star Alliance status and extra allowance rules, not a simple recurring first-bag waiver tied directly to Air Canada card travel.",
-  },
-  {
-    card: "Chase Avios cards",
-    reason:
-      "Not included because the British Airways, Aer Lingus, and Iberia Chase Avios cards do not publish a recurring free checked bag waiver. Their baggage-related protections are delay or lost-luggage coverage, which is different from avoiding checked-bag fees.",
-  },
-  {
-    card: "No-annual-fee and points-only cards",
-    reason:
-      "Excluded unless the published benefit behaves like a reusable checked-bag waiver that can be compared against cash baggage fees.",
+      "A status boost, annual certificate, or limited number of bag credits needs different math from a reusable waiver and is not treated as one here.",
   },
 ];
 
@@ -139,7 +123,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     routeScope: "United-operated flights",
     coreLimits: [
       "United requires the primary cardmember's MileagePlus number on the reservation.",
-      "In this model, the ticket must be purchased with the eligible card for the bag benefit to apply.",
+      "The ticket must be purchased with the eligible card for the bag benefit to apply.",
       "The benefit applies to standard checked bags, not overweight or oversized bags.",
     ],
   },
@@ -155,8 +139,8 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     routeScope: "Delta and Delta Connection segments when checking in with Delta",
     coreLimits: [
       "Reservation must include the Basic Card Member's SkyMiles number.",
-      "This model does not require ticket payment with the Delta card; the key published condition is the eligible cardmember's SkyMiles number on the reservation.",
-      "Delta publishes first checked bag free on domestic and international Delta flights and second checked bag free on domestic Delta flights.",
+      "The first-bag calculation uses the eligible cardmember's SkyMiles number and covers the cardmember plus up to 8 same-reservation companions.",
+      "The domestic second-bag waiver is narrower: it covers eligible Basic Card Members, not all companions. It is disclosed here but excluded from calculator savings.",
       "Codeshare flights and passengers already receiving a free checked bag through fare, status, or military eligibility are not covered by this benefit line.",
     ],
   },
@@ -172,7 +156,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     routeScope: "Eligible JetBlue-operated flights purchased with a JetBlue Plus or Premier card",
     coreLimits: [
       "JetBlue Plus and Premier publish first checked bag free for the cardholder and up to 3 companions on the same reservation.",
-      "This model treats the benefit as requiring the JetBlue flight to be purchased with the eligible card.",
+      "The JetBlue flight must be purchased with the eligible card for the benefit used here.",
       "The no-annual-fee JetBlue Card is not included because it does not publish a free checked bag benefit.",
       "This is a first-checked-bag benefit, not an overweight, oversized, or second-bag waiver.",
     ],
@@ -218,9 +202,6 @@ function usd(amount: number): string {
 }
 
 function bagBenefitLabel(card: Card): string {
-  if (card.airline_slug === "delta" && card.free_checked_bags >= 2) {
-    return "First bag free; second bag free on domestic Delta flights";
-  }
   return card.free_checked_bags >= 2
     ? "First and second checked bags free"
     : "First checked bag free";
@@ -265,7 +246,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             Credit cards with free checked bags
           </h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            Last verified {LAST_VERIFIED}
+            Page reviewed {PAGE_REVIEWED}
           </span>
         </div>
 
@@ -457,14 +438,13 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Cards not included in the calculator</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Benefits that do not erase a bag fee</h2>
         <p className="max-w-4xl text-sm leading-relaxed text-slate-600">
-          Some airline cards have useful travel benefits but do not fit this site&apos;s recurring
-          recurring checked-bag-waiver comparison. Those cards can still be worth considering; they just should not
-          be treated as clean baggage-fee break-even inputs.
+          A card can be useful without providing a recurring checked-bag waiver. These benefits are
+          intentionally kept out of the bag-fee calculation so the result does not overstate savings.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
-          {EXCLUDED_CARD_NOTES.map((item) => (
+          {NON_WAIVER_EXAMPLES.map((item) => (
             <div key={item.card} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
               <h3 className="text-lg font-bold text-slate-900">{item.card}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.reason}</p>
@@ -538,7 +518,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
                     <td className="px-4 py-4 text-slate-700">
                       <div>Verified against the airline card and baggage policy pages listed below.</div>
                       <div className="mt-2 text-xs text-slate-500">
-                        Card link verified {card.last_offer_verified ?? LAST_VERIFIED}
+                        Benefit and card link checked {card.last_offer_verified ?? "date unavailable"}
                       </div>
                     </td>
                   </tr>

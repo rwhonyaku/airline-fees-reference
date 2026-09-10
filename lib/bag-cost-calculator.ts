@@ -340,6 +340,11 @@ function parseRangeFromText(text: string, unitPattern: string): { min: number; m
   return null;
 }
 
+function isCombinedExcessRow(row: FeeItem): boolean {
+  const text = [row.conditions, row.applies_to, row.notes].filter(Boolean).join(" ").toLowerCase();
+  return text.includes("oversized and overweight") || text.includes("overweight and oversized");
+}
+
 export function findExcessBaggageFee(params: {
   fees: FeeItem[];
   category: "overweight_baggage" | "oversize_baggage";
@@ -352,7 +357,7 @@ export function findExcessBaggageFee(params: {
   const rows = params.fees.filter((row) => {
     if (row.category !== params.category) return false;
     if (row.currency && row.currency.toUpperCase() !== "USD") return false;
-    return typeof row.amount === "number" && Number.isFinite(row.amount);
+    return typeof row.amount === "number" && Number.isFinite(row.amount) && !isCombinedExcessRow(row);
   });
 
   if (!rows.length) return null;
@@ -381,6 +386,30 @@ export function findExcessBaggageFee(params: {
     : null;
 }
 
+function findCombinedExcessFee(fees: FeeItem[], weightLbs: number): { fee: number; row: FeeItem } | null {
+  const rows = fees.filter((row) =>
+    (row.category === "overweight_baggage" || row.category === "oversize_baggage") &&
+    (!row.currency || row.currency.toUpperCase() === "USD") &&
+    typeof row.amount === "number" &&
+    Number.isFinite(row.amount) &&
+    isCombinedExcessRow(row)
+  );
+
+  const ranged = rows
+    .map((row) => {
+      const text = [row.conditions, row.applies_to, row.notes].filter(Boolean).join(" ");
+      const explicit = parseRangeFromText(text, "lbs");
+      const upTo = /up to\s+(\d+)\s*lbs/i.exec(text);
+      const range = explicit ?? (upTo ? { min: 51, max: Number(upTo[1]) } : null);
+      return { row, range };
+    })
+    .filter(({ range }) => range && weightLbs >= range.min && weightLbs <= range.max)
+    .sort((a, b) => feeRowScore(b.row) - feeRowScore(a.row));
+
+  const row = ranged[0]?.row;
+  return row && typeof row.amount === "number" ? { fee: row.amount, row } : null;
+}
+
 export function calcExcessBaggageTripCost(params: {
   fees: FeeItem[];
   bagCount: number;
@@ -390,6 +419,7 @@ export function calcExcessBaggageTripCost(params: {
 }): {
   overweight: ReturnType<typeof findExcessBaggageFee>;
   oversize: ReturnType<typeof findExcessBaggageFee>;
+  combined: ReturnType<typeof findCombinedExcessFee>;
   totalUsd: number | null;
   canEstimate: boolean;
   warnings: string[];
@@ -405,31 +435,31 @@ export function calcExcessBaggageTripCost(params: {
 
   const needsOverweight = params.weightLbs > 50;
   const needsOversize = params.linearInches > 62;
-  const canEstimate = (!needsOverweight || overweight != null) && (!needsOversize || oversize != null);
+  const combined = needsOverweight && needsOversize
+    ? findCombinedExcessFee(params.fees, params.weightLbs)
+    : null;
+  const canEstimate = combined != null || ((!needsOverweight || overweight != null) && (!needsOversize || oversize != null));
   const warnings: string[] = [];
 
-  if (needsOverweight && !overweight) {
+  if (needsOverweight && !overweight && !combined) {
     warnings.push("The overweight fee needs a route-, allowance-, or currency-specific lookup.");
   }
-  if (needsOversize && !oversize) {
+  if (needsOversize && !oversize && !combined) {
     warnings.push("The oversize fee needs a route-, allowance-, or currency-specific lookup.");
   }
-  if (overweight?.matchedBy === "fallback_numeric_row" || oversize?.matchedBy === "fallback_numeric_row") {
+  if (!combined && (overweight?.matchedBy === "fallback_numeric_row" || oversize?.matchedBy === "fallback_numeric_row")) {
     warnings.push("At least one estimate uses the broadest numeric USD row because the row does not publish a clean matching range.");
   }
-  if (overweight && oversize) {
-    const combinedText = [overweight.row.conditions, oversize.row.conditions].join(" ").toLowerCase();
-    if (combinedText.includes("oversized and overweight") || combinedText.includes("overweight and oversized")) {
-      warnings.push("This airline may publish a combined oversized-and-overweight charge, so confirm whether the fees stack or are capped before travel.");
-    } else {
-      warnings.push("Some airlines stack overweight and oversize charges; others publish combined special-item rules. Confirm the final airport charge before relying on the estimate.");
-    }
+  if (combined) {
+    warnings.push("This estimate uses the airline's published combined overweight-and-oversize charge once; it does not add the separate fees again.");
+  } else if (overweight && oversize) {
+    warnings.push("Some airlines stack overweight and oversize charges; others publish combined special-item rules. Confirm the final airport charge before relying on the estimate.");
   }
 
-  const perBag = (overweight?.fee ?? 0) + (oversize?.fee ?? 0);
+  const perBag = combined?.fee ?? ((overweight?.fee ?? 0) + (oversize?.fee ?? 0));
   const totalUsd = canEstimate ? perBag * params.bagCount * params.directions : null;
 
-  return { overweight, oversize, totalUsd, canEstimate, warnings };
+  return { overweight, oversize, combined, totalUsd, canEstimate, warnings };
 }
 
 export function calcCardBagOffset(params: {

@@ -112,17 +112,17 @@
       "airline_slug": "delta",
       "tier": "entry",
       "annual_fee_usd": 150,
-      "free_checked_bags": 2,
+      "free_checked_bags": 1,
       "applies_to_travelers": 9,
       "requires_purchase_with_card": false,
       "notes": [
         "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
-        "Delta publishes a second checked bag free benefit on domestic Delta flights."
+        "Eligible Basic Card Members also receive a second checked bag free on domestic Delta-operated itineraries; companions do not share that second-bag waiver. This narrower benefit is not included in calculator savings."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-07-14"
+      "last_offer_verified": "2026-09-10"
     },
     {
       "id": "delta_platinum",
@@ -130,18 +130,18 @@
       "airline_slug": "delta",
       "tier": "mid",
       "annual_fee_usd": 350,
-      "free_checked_bags": 2,
+      "free_checked_bags": 1,
       "applies_to_travelers": 9,
       "requires_purchase_with_card": false,
       "notes": [
         "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
-        "Delta publishes a second checked bag free benefit on domestic Delta flights.",
+        "Eligible Basic Card Members also receive a second checked bag free on domestic Delta-operated itineraries; companions do not share that second-bag waiver. This narrower benefit is not included in calculator savings.",
         "Includes a companion certificate after renewal, but that is not part of the bag-value model."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-07-14"
+      "last_offer_verified": "2026-09-10"
     },
     {
       "id": "delta_reserve",
@@ -149,18 +149,18 @@
       "airline_slug": "delta",
       "tier": "premium",
       "annual_fee_usd": 650,
-      "free_checked_bags": 2,
+      "free_checked_bags": 1,
       "applies_to_travelers": 9,
       "requires_purchase_with_card": false,
       "notes": [
         "First checked bag free for the Basic Card Member and up to 8 companions on the same reservation when the reservation includes the member's SkyMiles number.",
-        "Delta publishes a second checked bag free benefit on domestic Delta flights.",
+        "Eligible Basic Card Members also receive a second checked bag free on domestic Delta-operated itineraries; companions do not share that second-bag waiver. This narrower benefit is not included in calculator savings.",
         "Includes premium travel benefits outside the bag-fee model."
       ],
       "offer_url": "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
       "offer_label": "Check issuer terms",
       "issuer_disclosure": "Issuer terms can change. Verify annual fee, baggage benefit, eligibility, and application terms before applying.",
-      "last_offer_verified": "2026-07-14"
+      "last_offer_verified": "2026-09-10"
     },
     {
       "id": "jetblue_plus",
