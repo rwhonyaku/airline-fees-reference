@@ -66,8 +66,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/fees" className="hover:text-blue-600">
                 Fees &amp; Baggage
               </Link>
-              <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600">
-                Calculators
+              <Link href="/tools/true-trip-cost" className="hover:text-blue-600">
+                Compare Trip Cost
               </Link>
               <Link href="/passenger-rights/eu261" className="hover:text-blue-600">
                 Passenger Rights
@@ -104,6 +104,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <li className="py-3 first:pt-0">
                     <Link href="/sizer-rules" className="hover:text-blue-600 underline">
                       Sizer enforcement guide
+                    </Link>
+                  </li>
+                  <li className="py-3">
+                    <Link href="/tools/true-trip-cost" className="hover:text-blue-600 underline">
+                      True trip cost calculator
                     </Link>
                   </li>
                   <li className="py-3">

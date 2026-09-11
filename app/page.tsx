@@ -31,8 +31,14 @@ export default function HomePage() {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/airlines"
+              href="/tools/true-trip-cost"
               className="w-full rounded-lg bg-white px-6 py-3 text-center font-bold text-slate-950 transition-all hover:bg-blue-50 sm:w-auto"
+            >
+              Compare True Trip Cost
+            </Link>
+            <Link
+              href="/airlines"
+              className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
             >
               Find Fee Traps by Airline
             </Link>

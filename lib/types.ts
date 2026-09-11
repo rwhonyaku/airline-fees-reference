@@ -84,6 +84,9 @@ export type Airline = {
   icao?: string;
   country?: string;
   region?: string;
+  data_quality?: {
+    status?: string;
+  };
   unique_insights?: {
     traps?: string[];
     pro_hack?: string;
