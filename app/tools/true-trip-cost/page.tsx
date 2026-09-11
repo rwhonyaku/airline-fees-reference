@@ -27,14 +27,14 @@ export default function TrueTripCostPage() {
     <JsonLd data={{ "@context": "https://schema.org", "@type": "WebApplication", name: "True Trip Cost Calculator", url: canonical("/tools/true-trip-cost"), applicationCategory: "TravelApplication", operatingSystem: "Any" }} />
     <header className="grid gap-3">
       <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Flight comparison tool</div>
-      <h1 className="text-4xl font-black tracking-tight">What will this flight actually cost?</h1>
-      <p className="max-w-3xl leading-relaxed text-slate-700">Compare two flights you actually found. Enter each advertised fare and the choices your trip requires; the calculator turns the headline price into a realistic total for the whole party.</p>
+      <h1 className="text-4xl font-black tracking-tight">Compare the true cost of two flights</h1>
+      <p className="max-w-3xl leading-relaxed text-slate-700">Enter two fares you found, then add the bags, seats, and extras your trip actually needs. The calculator shows which option costs less for the whole party.</p>
     </header>
     <TrueTripCostCalculator airlines={airlines} />
     <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
-      <h2 className="text-xl font-black text-slate-950">What the result does—and does not—claim</h2>
-      <p className="mt-3">Usable published USD checked-bag rows can provide a baseline estimate. Route-, fare-, currency-, or booking-dependent prices must be entered from the airline checkout, and the comparison remains incomplete until they are. Carry-on and seat charges are traveler-entered in this first version because those products frequently vary by itinerary and timing.</p>
-      <p className="mt-3">A zero means you entered zero or selected no bags; it does not prove an airline benefit applies. Verify fare inclusions, operating carrier, status, and card conditions on the linked airline page.</p>
+      <h2 className="text-xl font-black text-slate-950">Before you trust the total</h2>
+      <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. If a bag price cannot be determined without your route or fare, the calculator will ask for it instead of treating the bag as free.</p>
+      <p className="mt-3">Select “included or waived” only when your fare, cabin, status, or card benefit covers the bags shown. For roundtrips, the calculator assumes the same fee applies in both directions.</p>
       <div className="mt-4 flex flex-wrap gap-4 font-bold text-blue-700 underline"><Link href="/fees/checked_baggage">Checked baggage reference</Link><Link href="/fees/carry_on">Carry-on reference</Link><Link href="/methodology">Data methodology</Link></div>
     </section>
   </main>;
