@@ -16,6 +16,7 @@ import { buildProvenanceSummary } from "@/lib/provenance-summary.mjs";
 import airFranceProvenance from "@/data/provenance/air-france.json";
 import provenanceReviewQueue from "@/data/provenance/review-queue.json";
 import { getVerificationFreshness } from "@/lib/freshness";
+import { CarryOnRecommendations } from "@/components/CarryOnRecommendations";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -9102,6 +9103,7 @@ function ReferenceAirlinePage({
             rows={carryOnRows}
             emptyMessage="No dedicated carry-on fee row is shown for this airline yet."
           />
+          <CarryOnRecommendations airlineSlug={slug} airlineName={airline.name} />
         </section>
 
         <section className="space-y-3">

@@ -1,40 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useSyncExternalStore } from "react";
 import { compareBagToRules, extractSizerRules, formatDims } from "@/lib/carry-on-sizer";
 import { clampInt } from "@/lib/bag-cost-calculator";
 import type { ToolAirline } from "@/lib/tool-airline";
 
-type GearItem = {
-  id: string;
-  type: string;
-  title: string;
-  why_it_works: string;
-  offer_url?: string;
-};
-
 const LAST_VERIFIED = "2026-02-16";
-
-export type GearGroup = { type: string; items: GearItem[] };
-
-function titleForType(type: string): string {
-  switch (type) {
-    case "soft_personal_item":
-      return "Soft-sided personal item";
-    case "underseat_backpack":
-      return "Under-seat backpack";
-    case "foldable_duffel":
-      return "Foldable “weight-split” duffel";
-    case "luggage_scale":
-      return "Digital luggage scale";
-    case "compact_roller":
-      return "Compact roller";
-    default:
-      return type.replace(/_/g, " ");
-  }
-}
 
 function riskLabel(risk: "low" | "medium" | "high" | "extreme") {
   const map: Record<string, { label: string; cls: string }> = {
@@ -82,10 +54,8 @@ function getServerLocationSearch() {
 
 export function SizerRulesClient({
   airlines,
-  gearGroups,
 }: {
   airlines: ToolAirline[];
-  gearGroups: GearGroup[];
 }) {
   const queryString = useSyncExternalStore(
     subscribeToLocation,
@@ -126,7 +96,7 @@ export function SizerRulesClient({
             Bag fit checker
           </a>
           <a href="#gear" className="text-blue-700 underline">
-            Recommended gear
+            Carry-on shortlist
           </a>
           <Link href="/guides/basic-economy-traps" className="text-blue-700 underline">
             Basic Economy guide
@@ -313,71 +283,10 @@ export function SizerRulesClient({
         </div>
       </section>
 
-      <section id="gear" className="mt-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <div>
-            <h2 className="text-2xl font-bold">Recommended gear</h2>
-            <p className="text-slate-600 mt-1">
-              These bag types are easier to fit into sizers and under seats. Where a product link is
-              available, it appears below.
-            </p>
-          </div>
-          <div className="text-xs text-slate-500">
-            Disclosure: some outbound links may be affiliate links. It does not change your price.
-          </div>
-        </div>
-
-        <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="relative aspect-[16/9] w-full">
-            <Image
-              src="/images/premium-carry-on-gate.png"
-              alt="Premium carry-on suitcase waiting near an airport gate"
-              fill
-              sizes="(min-width: 1024px) 896px, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <figcaption className="border-t border-slate-100 px-5 py-3 text-xs leading-relaxed text-slate-500">
-            Bag shape matters before anyone measures it: rigid rollers are easier to spot, while
-            softer bags are usually easier to fit.
-          </figcaption>
-        </figure>
-
-        {gearGroups.length === 0 ? (
-          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-700">
-            No gear references are listed on this page yet.
-          </div>
-        ) : (
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {gearGroups.map((group) => (
-              <div key={group.type} className="rounded-2xl border border-slate-200 bg-white p-6">
-                <div className="text-sm font-bold text-slate-900">{titleForType(group.type)}</div>
-
-                <div className="mt-4 space-y-4">
-                  {group.items.map((item) => (
-                    <div key={item.id} className="rounded-xl border border-slate-100 p-4">
-                      <div className="font-semibold text-slate-900">{item.title}</div>
-                      <div className="mt-1 text-sm text-slate-700 leading-relaxed">{item.why_it_works}</div>
-
-                      <div className="mt-3">
-                        {item.offer_url ? (
-                          <a
-                            href={item.offer_url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-700"
-                          >
-                            View offer
-                          </a>
-                        ) : null}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+      <section id="gear" className="mt-12 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-2xl font-bold">Need a bag with verified exterior measurements?</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">Our carry-on shortlist compares six specific bags using manufacturer-published exterior dimensions, including wheels and handles. It also shows when a product marketed as a carry-on exceeds an airline&apos;s published limit.</p>
+        <Link href="/recommended-carry-on-luggage" className="mt-4 inline-flex rounded-xl bg-blue-700 px-4 py-2 text-sm font-bold text-white hover:bg-blue-800">Compare recommended carry-ons</Link>
 
         <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50 p-8">
           <h3 className="text-xl font-bold text-slate-950">Next: choose the cheapest workable bag plan</h3>

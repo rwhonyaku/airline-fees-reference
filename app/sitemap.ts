@@ -50,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/privacy",
     "/sizer-rules",
+    "/recommended-carry-on-luggage",
     "/tools/checked-baggage-calculator",
     "/tools/excess-baggage-calculator",
     "/tools/true-trip-cost",

@@ -46,8 +46,14 @@ function parseDimensionTriplets(text: string): [number, number, number][] {
   });
 }
 
-function ruleKind(row: FeeItem): "personal_item" | "cabin_bag" {
+function ruleKind(row: FeeItem, dimensionIndex: number, parsedCount: number): "personal_item" | "cabin_bag" {
   const text = [row.conditions, row.applies_to, row.notes].filter(Boolean).join(" ").toLowerCase();
+  if (text.includes("standard carry-on") && parsedCount > 1) {
+    return dimensionIndex === 0 ? "cabin_bag" : "personal_item";
+  }
+  if (text.includes("hand baggage maximum") || text.includes("each hand baggage item") || text.includes("carry-on item up to")) {
+    return "cabin_bag";
+  }
   if (text.includes("personal item") || text.includes("small cabin bag") || text.includes("under-seat") || text.includes("under seat")) {
     return "personal_item";
   }
@@ -65,11 +71,11 @@ export function extractSizerRules(airlines: ToolAirline[]): SizerRule[] {
       const parsed = parseDimensionTriplets(rawText);
       if (!parsed.length) continue;
 
-      for (const dimensionsIn of parsed) {
+      for (const [dimensionIndex, dimensionsIn] of parsed.entries()) {
         rules.push({
           airlineSlug: airline.slug,
           airlineName: airline.name,
-          kind: ruleKind(row),
+          kind: ruleKind(row, dimensionIndex, parsed.length),
           dimensionsIn,
           rawText: row.conditions,
           sourceUrl: row.source_url,
