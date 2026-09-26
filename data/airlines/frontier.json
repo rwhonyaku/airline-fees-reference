@@ -14,7 +14,7 @@
     "status": "active",
     "gold_standard": false,
     "source_depth": "silver",
-    "last_full_review": "2026-09-10",
+    "last_full_review": "2026-09-25",
     "notes": "Frontier baggage and bundle pass rechecked against current optional-services, Bag Price Checker, and bundle sources. Main issue is route/date/timing pricing plus the difference between Basic, Economy/Premium, and Business baggage inclusion."
   },
   "fees": [
@@ -93,7 +93,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier explicitly says personal item size is checked during boarding; this is the free-bag boundary."
@@ -108,7 +108,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier publishes a Bag Price Checker rather than one universal carry-on price; timing/channel is part of the fee model."
@@ -123,7 +123,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier’s useful checked-bag answer is traveler/date/channel-specific. Bags are non-refundable and the accurate price comes from the booking flow or Bag Price Checker."
@@ -138,7 +138,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22"
+      "last_verified": "2026-09-25"
     },
     {
       "category": "overweight_baggage",
@@ -149,7 +149,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier changed the 51-99.99 lb tier for bookings made on or after April 4, 2026."
@@ -164,7 +164,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "This newer tier avoids mixing older and current booking-date rules into one misleading overweight amount."
@@ -179,7 +179,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Oversize is a separate charge from the route/date bag price; it can stack with overweight unless a valid exemption applies."
@@ -221,7 +221,7 @@
       "region_or_route": "Frontier-operated flights",
       "timing": "each way",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-25",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier optional-services wording says active-duty military may receive carry-on and up to two checked bags, with overweight/oversize waived within acceptance limits."

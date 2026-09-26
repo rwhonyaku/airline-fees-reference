@@ -6849,16 +6849,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   frontier: {
     intro: {
       carryOn:
-        "Frontier's cabin baseline is one personal item at USD 0. A full-size carry-on is a paid add-on whose amount depends on purchase timing, so the bag decision belongs at booking, not at the gate.",
+        "Frontier includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on up to 24 × 16 × 10 inches and 35 lbs is a paid add-on on Basic; its price depends on the trip and when it is purchased, so the bag decision belongs at booking, not at the gate.",
       personalItem:
-        "The free item must fit under the seat in front of you. A roller bag or overhead-bin bag is a separate paid decision.",
+        "The free 14 × 18 × 8 inch item must fit under the seat. Frontier says its size is checked during boarding, so an overpacked personal item can turn the cheapest fare into a gate charge.",
       checkedBag:
-        "Checked baggage is not included by default in the base model. The checked-bag amount depends on route and purchase timing, while overweight and oversize fees have separate dollar amounts.",
+        "Basic does not include a checked bag. A standard checked bag is limited to 40 lbs and 62 linear inches, and its base price depends on travel date and purchase timing. Overweight and oversize charges are added separately.",
       restrictions:
         "Basic Fare and Standard use a timed change-fee ladder and a USD 99 cancellation fee, while Economy, Premium, and Business bundles show no change or cancellation fee.",
     },
     verificationNote:
-      "Frontier carry-on, checked-bag, bundle, overweight, and oversize rules were rechecked against Frontier on 2026-09-10. Change and cancellation rows retain their record-level verification dates.",
+      "Frontier carry-on, checked-bag, bundle, overweight, and oversize rules were rechecked against Frontier on 2026-09-25. Change and cancellation rows retain their record-level verification dates.",
     avoidFees: [
       "Decide on bags before checkout. Frontier's carry-on and checked-bag pricing is timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
       "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; those bundles show no change or cancellation fee.",
@@ -6885,7 +6885,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy / Premium / Business bundle",
         details:
-          "Economy includes a personal item, carry-on, standard seat, and no change/cancel fee. Premium adds a premium seat and early boarding. Business adds two checked bags up to 50 lbs each and UpFront Plus seating.",
+          "Economy includes a personal item, carry-on, standard seat, and no change/cancel fee. Premium adds a premium seat and Board First with overhead-bin space. Business adds two checked bags up to 50 lbs each and UpFront Plus seating. Bundle prices still vary by itinerary.",
       },
       {
         name: "Personal-item-only travel",
@@ -6907,7 +6907,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking one standard bag",
         details:
-          "The checked-bag amount depends on route and purchase timing, so the price shown during booking or online check-in can be the useful number, not a universal first-bag fee.",
+          "A standard checked bag is capped at 40 lbs and 62 linear inches. The amount depends on travel date and purchase timing, so the Bag Price Checker or booking flow is the useful quote—not a universal first-bag fee.",
       },
       {
         title: "Checking an overweight bag",
