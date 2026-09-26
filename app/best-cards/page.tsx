@@ -24,10 +24,15 @@ async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {
 export default async function BestCardsPage() {
   const cardsJson = await readJsonFile<CardsJson>("data/cards/cards.json");
   const overrides = await readJsonFile<AirlineOverrides>("data/cards/airline_overrides.json");
+  const airlines = getAllAirlines().map(({ slug, name, fees }) => ({
+    slug,
+    name,
+    fees: fees.filter((fee) => fee.category === "checked_baggage"),
+  }));
 
   return (
     <BestCardsClient
-      airlines={getAllAirlines()}
+      airlines={airlines}
       cards={cardsJson.cards}
       overrides={overrides}
     />

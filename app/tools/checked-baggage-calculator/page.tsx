@@ -62,7 +62,11 @@ function checkedBagCalculatorJsonLd() {
 }
 
 export default async function CheckedBaggageCalculatorPage() {
-  const airlines = getAllAirlines();
+  const airlines = getAllAirlines().map(({ slug, name, fees }) => ({
+    slug,
+    name,
+    fees: fees.filter((fee) => fee.category === "checked_baggage"),
+  }));
   const cardsJson = await readJsonFile<CardsJson>("data/cards/cards.json");
   const overrides = await readJsonFile<AirlineOverrides>("data/cards/airline_overrides.json");
 

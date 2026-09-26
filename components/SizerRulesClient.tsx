@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSyncExternalStore } from "react";
 import { compareBagToRules, extractSizerRules, formatDims } from "@/lib/carry-on-sizer";
 import { clampInt } from "@/lib/bag-cost-calculator";
-import type { Airline } from "@/lib/types";
+import type { ToolAirline } from "@/lib/tool-airline";
 
 type GearItem = {
   id: string;
@@ -84,7 +84,7 @@ export function SizerRulesClient({
   airlines,
   gearGroups,
 }: {
-  airlines: Airline[];
+  airlines: ToolAirline[];
   gearGroups: GearGroup[];
 }) {
   const queryString = useSyncExternalStore(

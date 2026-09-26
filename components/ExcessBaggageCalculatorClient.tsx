@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { calcExcessBaggageTripCost, clampInt, usd } from "@/lib/bag-cost-calculator";
 import { EXCESS_BAG_FAQS } from "@/lib/excess-bag-calculator-content";
-import type { Airline } from "@/lib/types";
+import type { ToolAirline } from "@/lib/tool-airline";
 
 const FEATURED_AIRLINES = [
   {
@@ -57,7 +57,7 @@ const FEATURED_AIRLINES = [
   },
 ];
 
-function AirlineSelect({ airlines, value }: { airlines: Airline[]; value: string }) {
+function AirlineSelect({ airlines, value }: { airlines: ToolAirline[]; value: string }) {
   return (
     <select
       name="airline"
@@ -108,7 +108,7 @@ function getServerLocationSearch() {
   return "";
 }
 
-export function ExcessBaggageCalculatorClient({ airlines }: { airlines: Airline[] }) {
+export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirline[] }) {
   const queryString = useSyncExternalStore(
     subscribeToLocation,
     getLocationSearch,

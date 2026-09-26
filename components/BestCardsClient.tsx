@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import type { Airline, FeeItem } from "@/lib/types";
+import type { FeeItem } from "@/lib/types";
+import type { ToolAirline } from "@/lib/tool-airline";
 import {
   calcCardBagOffset,
   clampInt,
@@ -110,7 +111,7 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
   };
 }
 
-function AirlineSelect({ airlines, value }: { airlines: Airline[]; value: string }) {
+function AirlineSelect({ airlines, value }: { airlines: ToolAirline[]; value: string }) {
   return (
     <select
       name="airline"
@@ -197,7 +198,7 @@ export function BestCardsClient({
   cards,
   overrides,
 }: {
-  airlines: Airline[];
+  airlines: ToolAirline[];
   cards: Card[];
   overrides: AirlineOverrides;
 }) {

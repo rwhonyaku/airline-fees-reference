@@ -56,7 +56,13 @@ function excessBaggageCalculatorJsonLd() {
 }
 
 export default function ExcessBaggageCalculatorPage() {
-  const airlines = getAllAirlines();
+  const airlines = getAllAirlines().map(({ slug, name, fees }) => ({
+    slug,
+    name,
+    fees: fees.filter(
+      (fee) => fee.category === "overweight_baggage" || fee.category === "oversize_baggage"
+    ),
+  }));
 
   return (
     <>

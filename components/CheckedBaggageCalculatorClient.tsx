@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import type { Airline } from "@/lib/types";
+import type { ToolAirline } from "@/lib/tool-airline";
 import { CHECKED_BAG_FAQS } from "@/lib/checked-bag-calculator-content";
 import {
   calcCardBagOffset,
@@ -16,7 +16,7 @@ import {
 } from "@/lib/bag-cost-calculator";
 
 type CheckedBaggageCalculatorClientProps = {
-  airlines: Airline[];
+  airlines: ToolAirline[];
   cards: Card[];
   overrides: AirlineOverrides;
 };
@@ -34,7 +34,7 @@ function getServerLocationSearch() {
   return "";
 }
 
-function AirlineSelect({ airlines, value }: { airlines: Airline[]; value: string }) {
+function AirlineSelect({ airlines, value }: { airlines: ToolAirline[]; value: string }) {
   return (
     <select
       name="airline"

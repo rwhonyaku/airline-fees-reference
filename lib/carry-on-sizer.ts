@@ -1,4 +1,5 @@
-import type { Airline, FeeItem } from "@/lib/types";
+import type { FeeItem } from "@/lib/types";
+import type { ToolAirline } from "@/lib/tool-airline";
 
 export type BagDimensions = {
   heightIn: number;
@@ -53,7 +54,7 @@ function ruleKind(row: FeeItem): "personal_item" | "cabin_bag" {
   return "cabin_bag";
 }
 
-export function extractSizerRules(airlines: Airline[]): SizerRule[] {
+export function extractSizerRules(airlines: ToolAirline[]): SizerRule[] {
   const rules: SizerRule[] = [];
 
   for (const airline of airlines) {

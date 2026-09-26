@@ -50,6 +50,11 @@ async function getGearForSection(section: string): Promise<GearGroup[]> {
 
 export default async function SizerRulesPage() {
   const gearGroups = await getGearForSection("sizer_rules");
+  const airlines = getAllAirlines().map(({ slug, name, fees }) => ({
+    slug,
+    name,
+    fees: fees.filter((fee) => fee.category === "carry_on"),
+  }));
 
-  return <SizerRulesClient airlines={getAllAirlines()} gearGroups={gearGroups} />;
+  return <SizerRulesClient airlines={airlines} gearGroups={gearGroups} />;
 }
