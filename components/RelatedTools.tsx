@@ -22,24 +22,28 @@ export function RelatedTools({ slug }: { slug: string }) {
           <Link
             className="rounded-lg border border-blue-100 bg-blue-50 p-3 font-semibold text-blue-800 hover:border-blue-300"
             href={`/tools/checked-baggage-calculator?${bagScenario}`}
+            prefetch={false}
           >
             Price a checked-bag trip
           </Link>
           <Link
             className="rounded-lg border border-emerald-100 bg-emerald-50 p-3 font-semibold text-emerald-900 hover:border-emerald-300"
             href={`/best-cards?${cardScenario}`}
+            prefetch={false}
           >
             Run card break-even
           </Link>
           <Link
             className="rounded-lg border border-slate-200 bg-slate-50 p-3 font-semibold text-slate-800 hover:border-slate-300"
             href={`/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=51&size=63`}
+            prefetch={false}
           >
             Check overweight or oversize risk
           </Link>
           <Link
             className="rounded-lg border border-slate-200 bg-slate-50 p-3 font-semibold text-slate-800 hover:border-slate-300"
             href="/sizer-rules?height=22&width=14&depth=9"
+            prefetch={false}
           >
             Check carry-on sizer risk
           </Link>

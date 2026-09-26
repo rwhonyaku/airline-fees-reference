@@ -92,6 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </p>
                 <Link
                   href="/best-cards"
+                  prefetch={false}
                   className="block w-full rounded-xl border border-blue-300 bg-white py-3 text-center font-bold text-blue-800 transition-colors hover:border-blue-500"
                 >
                   Check bag-fee math
@@ -102,7 +103,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <h4 className="font-bold text-slate-900 mb-4">Useful Fee References</h4>
                 <ul className="divide-y divide-slate-100 text-sm text-slate-600">
                   <li className="py-3 first:pt-0">
-                    <Link href="/sizer-rules" className="hover:text-blue-600 underline">
+                    <Link href="/sizer-rules" prefetch={false} className="hover:text-blue-600 underline">
                       Sizer enforcement guide
                     </Link>
                   </li>
@@ -112,17 +113,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     </Link>
                   </li>
                   <li className="py-3">
-                    <Link href="/tools/checked-baggage-calculator" className="hover:text-blue-600 underline">
+                    <Link href="/tools/checked-baggage-calculator" prefetch={false} className="hover:text-blue-600 underline">
                       Checked baggage calculator
                     </Link>
                   </li>
                   <li className="py-3">
-                    <Link href="/tools/excess-baggage-calculator" className="hover:text-blue-600 underline">
+                    <Link href="/tools/excess-baggage-calculator" prefetch={false} className="hover:text-blue-600 underline">
                       Overweight and oversize calculator
                     </Link>
                   </li>
                   <li className="py-3">
-                    <Link href="/best-cards" className="hover:text-blue-600 underline">
+                    <Link href="/best-cards" prefetch={false} className="hover:text-blue-600 underline">
                       Card bag-benefit calculator
                     </Link>
                   </li>

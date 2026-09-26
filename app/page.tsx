@@ -44,12 +44,14 @@ export default function HomePage() {
             </Link>
             <Link
               href="/sizer-rules"
+              prefetch={false}
               className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
             >
               Check Sizer Rules
             </Link>
             <Link
               href="/tools/checked-baggage-calculator"
+              prefetch={false}
               className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
             >
               Bag Cost Calculator
@@ -172,18 +174,21 @@ export default function HomePage() {
         <div className="mt-5 grid gap-3 md:grid-cols-3">
           <Link
             href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
+            prefetch={false}
             className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
           >
             Checked baggage cost calculator
           </Link>
           <Link
             href="/tools/excess-baggage-calculator"
+            prefetch={false}
             className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
           >
             Overweight and oversize baggage calculator
           </Link>
           <Link
             href="/sizer-rules?height=22&width=14&depth=9"
+            prefetch={false}
             className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
           >
             Carry-on sizer comparison

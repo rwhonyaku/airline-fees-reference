@@ -24,7 +24,7 @@ export function CheckedBaggageCalculatorCallout({
         quotes a total only when the current fee details support it, and explains what to look up when
         the airline prices bags by route, fare, or purchase timing.
       </p>
-      <Link href={href} className="mt-4 inline-flex text-sm font-bold text-blue-800 underline">
+      <Link href={href} prefetch={false} className="mt-4 inline-flex text-sm font-bold text-blue-800 underline">
         Estimate checked-bag cost
       </Link>
     </section>

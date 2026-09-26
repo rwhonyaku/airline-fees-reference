@@ -53,13 +53,13 @@ export default function FeeCategoriesIndexPage() {
             <Link href="/guides/basic-economy-traps" style={{ textDecoration: "underline" }}>
               Basic Economy guide
             </Link>
-            <Link href="/sizer-rules" style={{ textDecoration: "underline" }}>
+            <Link href="/sizer-rules" prefetch={false} style={{ textDecoration: "underline" }}>
               Sizer rules
             </Link>
-            <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
+            <Link href="/tools/checked-baggage-calculator" prefetch={false} style={{ textDecoration: "underline" }}>
               Checked baggage cost calculator
             </Link>
-            <Link href="/best-cards" style={{ textDecoration: "underline" }}>
+            <Link href="/best-cards" prefetch={false} style={{ textDecoration: "underline" }}>
               Card break-even calculator
             </Link>
           </div>
@@ -95,17 +95,17 @@ export default function FeeCategoriesIndexPage() {
                 </div>
                 {key === "checked_baggage" ? (
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                    <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" style={{ textDecoration: "underline" }}>
+                    <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" prefetch={false} style={{ textDecoration: "underline" }}>
                       Price a bag scenario
                     </Link>
-                    <Link href="/best-cards?travelers=2&bags=1&trips=2&pay=yes" style={{ textDecoration: "underline" }}>
+                    <Link href="/best-cards?travelers=2&bags=1&trips=2&pay=yes" prefetch={false} style={{ textDecoration: "underline" }}>
                       Test card break-even
                     </Link>
                   </div>
                 ) : null}
                 {key === "carry_on" ? (
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                    <Link href="/sizer-rules?height=22&width=14&depth=9" style={{ textDecoration: "underline" }}>
+                    <Link href="/sizer-rules?height=22&width=14&depth=9" prefetch={false} style={{ textDecoration: "underline" }}>
                       Check bag fit
                     </Link>
                     <Link href="/guides/basic-economy-traps#basic-economy-tool" style={{ textDecoration: "underline" }}>
@@ -118,7 +118,7 @@ export default function FeeCategoriesIndexPage() {
                     <Link href="/guides/basic-economy-traps" style={{ textDecoration: "underline" }}>
                       Check fare restrictions
                     </Link>
-                    <Link href="/tools/checked-baggage-calculator" style={{ textDecoration: "underline" }}>
+                    <Link href="/tools/checked-baggage-calculator" prefetch={false} style={{ textDecoration: "underline" }}>
                       Price bag add-ons too
                     </Link>
                   </div>

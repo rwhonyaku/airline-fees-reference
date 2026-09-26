@@ -13,6 +13,10 @@ type PageProps = {
   }>;
 };
 
+export function generateStaticParams() {
+  return COMPARE_TABLES.map((table) => ({ table: table.id }));
+}
+
 function categoryNextSteps(category: string): Array<{ href: string; label: string; body: string }> {
   switch (category) {
     case "checked_baggage":

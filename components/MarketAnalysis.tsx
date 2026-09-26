@@ -19,6 +19,7 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
         </div>
         <Link
           href="/tools/checked-baggage-calculator"
+          prefetch={false}
           className="shrink-0 rounded-full bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500"
         >
           Price bags
@@ -51,7 +52,7 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
             A bag that technically fits can still get noticed if it is rigid, overpacked, or hard to slide into a sizer.
           </p>
-          <Link href="/sizer-rules" className="mt-4 inline-block text-sm font-bold text-white underline">
+          <Link href="/sizer-rules" prefetch={false} className="mt-4 inline-block text-sm font-bold text-white underline">
             Check sizer risk
           </Link>
         </div>
@@ -88,7 +89,7 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
           <p className="text-sm leading-relaxed text-slate-300">
             Price the bags first, then run the card break-even calculator only if the annual savings could beat the fee.
           </p>
-          <Link href="/best-cards" className="mt-4 inline-block text-sm font-bold text-white underline">
+          <Link href="/best-cards" prefetch={false} className="mt-4 inline-block text-sm font-bold text-white underline">
             Run card break-even
           </Link>
         </div>

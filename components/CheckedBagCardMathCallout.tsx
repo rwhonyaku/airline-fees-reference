@@ -28,10 +28,10 @@ export function CheckedBagCardMathCallout({
         requirements.
       </p>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
-        <Link href={calculatorHref} className="font-bold text-blue-800 underline">
+        <Link href={calculatorHref} prefetch={false} className="font-bold text-blue-800 underline">
           Estimate checked-bag cost first
         </Link>
-        <Link href={href} className="font-bold text-emerald-900 underline">
+        <Link href={href} prefetch={false} className="font-bold text-emerald-900 underline">
           Run card break-even math
         </Link>
         <Link href="/guides/airline-credit-card-baggage-benefits" className="font-semibold text-blue-700 underline">

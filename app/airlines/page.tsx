@@ -101,7 +101,7 @@ export default function AirlinesIndexPage() {
           <Link href="/fees/checked_baggage" className="font-medium text-blue-700 underline">
             Checked baggage reference
           </Link>
-          <Link href="/tools/checked-baggage-calculator" className="font-medium text-blue-700 underline">
+          <Link href="/tools/checked-baggage-calculator" prefetch={false} className="font-medium text-blue-700 underline">
             Checked baggage calculator
           </Link>
           <Link href="/guides/basic-economy-traps" className="font-medium text-blue-700 underline">
@@ -110,7 +110,7 @@ export default function AirlinesIndexPage() {
           <Link href="/guides/international-baggage-allowance" className="font-medium text-blue-700 underline">
             International baggage allowance
           </Link>
-          <Link href="/best-cards" className="font-medium text-blue-700 underline">
+          <Link href="/best-cards" prefetch={false} className="font-medium text-blue-700 underline">
             Free checked bag calculator
           </Link>
         </div>
@@ -157,13 +157,13 @@ export default function AirlinesIndexPage() {
       <section className="my-12 rounded-lg border border-blue-100 bg-blue-50 p-6">
         <h2 className="text-lg font-black text-slate-900">Not sure where to start?</h2>
         <div className="mt-4 grid gap-4 text-sm md:grid-cols-3">
-          <Link href="/tools/checked-baggage-calculator" className="font-semibold text-blue-700 underline">
+          <Link href="/tools/checked-baggage-calculator" prefetch={false} className="font-semibold text-blue-700 underline">
             Price a checked-bag trip
           </Link>
-          <Link href="/tools/excess-baggage-calculator" className="font-semibold text-blue-700 underline">
+          <Link href="/tools/excess-baggage-calculator" prefetch={false} className="font-semibold text-blue-700 underline">
             Check overweight or oversize risk
           </Link>
-          <Link href="/best-cards" className="font-semibold text-blue-700 underline">
+          <Link href="/best-cards" prefetch={false} className="font-semibold text-blue-700 underline">
             Test card break-even
           </Link>
         </div>
