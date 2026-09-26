@@ -466,7 +466,11 @@ export function CheckedBaggageCalculatorClient({
         </section>
       ) : null}
 
-      <form method="get" className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <form
+        key={`${airlineSlug}-${travelers}-${bags}-${directions}-${roundtrips}-${payWithCard}-${routeLabel ?? ""}`}
+        method="get"
+        className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+      >
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label className="mb-2 block text-sm font-semibold text-slate-800">Airline</label>
