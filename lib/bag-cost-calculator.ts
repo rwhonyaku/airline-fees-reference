@@ -190,6 +190,29 @@ export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number |
   return findCheckedBagFeeEstimateUsd(fees, ordinal)?.amountUsd ?? null;
 }
 
+export function findUniversalCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number | null {
+  const matches = fees.filter((row) => {
+    if (row.category !== "checked_baggage") return false;
+    if (row.currency?.toUpperCase() !== "USD") return false;
+    if (feeOrdinalScore(row, ordinal) <= 0) return false;
+    if (typeof row.amount !== "number" || !Number.isFinite(row.amount)) return false;
+
+    const appliesTo = typeof row.applies_to === "string" ? row.applies_to.trim().toLowerCase() : "";
+    const route = typeof row.region_or_route === "string" ? row.region_or_route.trim().toLowerCase() : "";
+    const conditions = typeof row.conditions === "string" ? row.conditions.trim().toLowerCase() : "";
+
+    if (!appliesTo.includes("all fares")) return false;
+    if (!(route === "all routes" || route.includes("all routes"))) return false;
+    if (conditions.includes("booked and ticketed before") || conditions.includes("tickets purchased before")) return false;
+
+    return true;
+  });
+
+  if (!matches.length) return null;
+  matches.sort((a, b) => currentRuleScore(b) - currentRuleScore(a));
+  return matches[0].amount as number;
+}
+
 export function getCheckedBagFeeMap(fees: FeeItem[], maxBags: number): Map<number, number> {
   const map = new Map<number, number>();
   for (let ordinal = 1; ordinal <= maxBags; ordinal += 1) {

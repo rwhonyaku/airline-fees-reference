@@ -142,7 +142,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
               </label> : null}
               {bags > 0 && !flight.bagsIncluded && result.automaticBagTotal == null ? <label className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm font-bold">Checked-bag total for the whole trip
                 <input type="number" min={0} step="0.01" required value={flight.manualBagFee ?? ""} onChange={(event) => updateFlight(index, { manualBagFee: optionalNumberValue(event.target.value) })} placeholder="Enter checkout total" className="mt-2 w-full rounded-xl border-amber-300 bg-white" />
-                <span className="mt-2 block font-normal text-amber-900">Route, fare, or timing prevents a reliable automatic quote. Enter the airline checkout total.</span>
+                <span className="mt-2 block font-normal text-amber-900">Enter the bag total shown by the airline for this route, fare, and purchase time. The calculator will not substitute a fee from a different market or fare family.</span>
               </label> : null}
               <label className="text-sm font-bold">Carry-on fee per traveler, each way
                 <input type="number" min={0} step="0.01" required value={flight.carryOnFee ?? ""} onChange={(event) => updateFlight(index, { carryOnFee: optionalNumberValue(event.target.value) })} placeholder="Enter 0 if none" className="mt-2 w-full rounded-xl border-slate-300" />
@@ -156,7 +156,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
             </div>
             <dl className="mt-5 grid gap-2 border-t border-slate-200 pt-4 text-sm">
               <div className="flex justify-between gap-4"><dt>Fare</dt><dd>{result.fareTotal == null ? "Enter fare" : money(result.fareTotal)}</dd></div>
-              <div className="flex justify-between gap-4"><dt>Checked bags {flight.bagsIncluded ? "(included)" : result.automaticBagTotal != null ? "(estimated)" : ""}</dt><dd>{result.bagTotal == null ? "Enter amount" : money(result.bagTotal)}</dd></div>
+              <div className="flex justify-between gap-4"><dt>Checked bags {flight.bagsIncluded ? "(included)" : result.automaticBagTotal != null ? "(published universal fee)" : ""}</dt><dd>{result.bagTotal == null ? "Enter amount" : money(result.bagTotal)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Carry-ons</dt><dd>{result.carryTotal == null ? "Enter amount" : money(result.carryTotal)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Seats</dt><dd>{result.seatTotal == null ? "Enter amount" : money(result.seatTotal)}</dd></div>
               <div className="flex justify-between gap-4 border-t border-slate-200 pt-3 text-lg font-black"><dt>True trip cost</dt><dd>{result.total == null ? "Incomplete" : money(result.total)}</dd></div>

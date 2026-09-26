@@ -3,7 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { TrueTripCostCalculator } from "@/components/TrueTripCostCalculator";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
-import { findCheckedBagFeeUsd } from "@/lib/bag-cost-calculator";
+import { findUniversalCheckedBagFeeUsd } from "@/lib/bag-cost-calculator";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -18,8 +18,8 @@ export default function TrueTripCostPage() {
     .map((airline) => ({
       slug: airline.slug,
       name: airline.name,
-      firstBagUsd: findCheckedBagFeeUsd(airline.fees, 1),
-      secondBagUsd: findCheckedBagFeeUsd(airline.fees, 2),
+      firstBagUsd: findUniversalCheckedBagFeeUsd(airline.fees, 1),
+      secondBagUsd: findUniversalCheckedBagFeeUsd(airline.fees, 2),
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
