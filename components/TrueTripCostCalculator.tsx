@@ -10,6 +10,14 @@ type AirlineOption = {
   secondBagUsd: number | null;
 };
 
+type ComparisonPreset = {
+  label: string;
+  detail: string;
+  route: string;
+  airlineA: string;
+  airlineB: string;
+};
+
 type FlightInput = {
   airline: string;
   fare: number | null;
@@ -34,15 +42,14 @@ function optionalNumberValue(value: string) {
   return numberValue(value);
 }
 
-export function TrueTripCostCalculator({ airlines }: { airlines: AirlineOption[] }) {
-  const initialA = airlines.find((airline) => airline.slug === "alaska")?.slug ?? airlines[0]?.slug ?? "";
-  const initialB = airlines.find((airline) => airline.slug === "southwest")?.slug ?? airlines[1]?.slug ?? initialA;
+export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlines: AirlineOption[]; comparisonPresets: ComparisonPreset[] }) {
   const [travelers, setTravelers] = useState(2);
   const [directions, setDirections] = useState(2);
   const [bags, setBags] = useState(1);
+  const [route, setRoute] = useState("");
   const [flights, setFlights] = useState<FlightInput[]>([
-    { airline: initialA, fare: null, bagsIncluded: false, manualBagFee: null, carryOnFee: null, seatFee: null, otherTripFees: 0 },
-    { airline: initialB, fare: null, bagsIncluded: false, manualBagFee: null, carryOnFee: null, seatFee: null, otherTripFees: 0 },
+    { airline: "", fare: null, bagsIncluded: false, manualBagFee: null, carryOnFee: null, seatFee: null, otherTripFees: 0 },
+    { airline: "", fare: null, bagsIncluded: false, manualBagFee: null, carryOnFee: null, seatFee: null, otherTripFees: 0 },
   ]);
 
   const results = useMemo(() => flights.map((flight) => {
@@ -70,8 +77,34 @@ export function TrueTripCostCalculator({ airlines }: { airlines: AirlineOption[]
     setFlights((current) => current.map((flight, flightIndex) => flightIndex === index ? { ...flight, ...patch } : flight));
   }
 
+  function applyPreset(preset: ComparisonPreset) {
+    setRoute(preset.route);
+    setFlights((current) => current.map((flight, index) => ({
+      ...flight,
+      airline: index === 0 ? preset.airlineA : preset.airlineB,
+    })));
+  }
+
   return (
     <section className="grid gap-6" aria-label="True trip cost calculator">
+      <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5">
+        <div>
+          <h2 className="text-lg font-black text-slate-950">Start with flights that actually compete</h2>
+          <p className="mt-1 text-sm leading-relaxed text-slate-600">Choose two flights you found for the same route and dates. The examples below are overlapping markets, not recommendations or live fare quotes.</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {comparisonPresets.map((preset) => (
+            <button key={preset.route} type="button" onClick={() => applyPreset(preset)} className="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-left text-sm hover:border-blue-400 hover:bg-blue-50">
+              <span className="block font-black text-slate-950">{preset.label}</span>
+              <span className="mt-1 block text-slate-600">{preset.detail}</span>
+            </button>
+          ))}
+        </div>
+        <label className="text-sm font-bold text-slate-800">Route being compared
+          <input value={route} onChange={(event) => setRoute(event.target.value)} placeholder="Example: Los Angeles (LAX)–Tokyo (NRT)" className="mt-2 w-full rounded-xl border-slate-300" />
+        </label>
+      </div>
+
       <div className="grid gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-5 sm:grid-cols-3">
         <label className="text-sm font-bold text-slate-800">Travelers
           <input type="number" min={1} max={9} step={1} value={travelers} onChange={(event) => setTravelers(Math.min(9, Math.max(1, Math.round(numberValue(event.target.value)))))} className="mt-2 w-full rounded-xl border-slate-300" />
@@ -96,6 +129,7 @@ export function TrueTripCostCalculator({ airlines }: { airlines: AirlineOption[]
             <div className="mt-4 grid gap-4">
               <label className="text-sm font-bold">Airline
                 <select value={flight.airline} onChange={(event) => updateFlight(index, { airline: event.target.value })} className="mt-2 w-full rounded-xl border-slate-300">
+                  <option value="">Choose an airline</option>
                   {airlines.map((airline) => <option key={airline.slug} value={airline.slug}>{airline.name}</option>)}
                 </select>
               </label>
@@ -127,7 +161,7 @@ export function TrueTripCostCalculator({ airlines }: { airlines: AirlineOption[]
               <div className="flex justify-between gap-4"><dt>Seats</dt><dd>{result.seatTotal == null ? "Enter amount" : money(result.seatTotal)}</dd></div>
               <div className="flex justify-between gap-4 border-t border-slate-200 pt-3 text-lg font-black"><dt>True trip cost</dt><dd>{result.total == null ? "Incomplete" : money(result.total)}</dd></div>
             </dl>
-            <Link href={`/airlines/${flight.airline}`} className="mt-4 inline-block text-sm font-bold text-blue-700 underline">Check the airline rules and sources</Link>
+            {flight.airline ? <Link href={`/airlines/${flight.airline}`} className="mt-4 inline-block text-sm font-bold text-blue-700 underline">Check the airline rules and sources</Link> : null}
           </article>;
         })}
       </div>

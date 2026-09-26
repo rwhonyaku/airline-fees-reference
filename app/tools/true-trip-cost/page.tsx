@@ -23,6 +23,23 @@ export default function TrueTripCostPage() {
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const comparisonPresets = [
+    {
+      label: "Los Angeles–Tokyo",
+      detail: "ZIPAIR vs Japan Airlines",
+      route: "Los Angeles (LAX)–Tokyo (NRT)",
+      airlineA: "zipair",
+      airlineB: "jal",
+    },
+    {
+      label: "Denver–Las Vegas",
+      detail: "Frontier vs Southwest",
+      route: "Denver (DEN)–Las Vegas (LAS)",
+      airlineA: "frontier",
+      airlineB: "southwest",
+    },
+  ].filter((preset) => airlines.some((airline) => airline.slug === preset.airlineA) && airlines.some((airline) => airline.slug === preset.airlineB));
+
   return <main className="grid gap-8">
     <JsonLd data={{ "@context": "https://schema.org", "@type": "WebApplication", name: "True Trip Cost Calculator", url: canonical("/tools/true-trip-cost"), applicationCategory: "TravelApplication", operatingSystem: "Any" }} />
     <header className="grid gap-3">
@@ -30,7 +47,7 @@ export default function TrueTripCostPage() {
       <h1 className="text-4xl font-black tracking-tight">Compare the true cost of two flights</h1>
       <p className="max-w-3xl leading-relaxed text-slate-700">Enter two fares you found, then add the bags, seats, and extras your trip actually needs. The calculator shows which option costs less for the whole party.</p>
     </header>
-    <TrueTripCostCalculator airlines={airlines} />
+    <TrueTripCostCalculator airlines={airlines} comparisonPresets={comparisonPresets} />
     <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
       <h2 className="text-xl font-black text-slate-950">Before you trust the total</h2>
       <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. If a bag price cannot be determined without your route or fare, the calculator will ask for it instead of treating the bag as free.</p>
