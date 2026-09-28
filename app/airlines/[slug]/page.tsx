@@ -17,6 +17,7 @@ import airFranceProvenance from "@/data/provenance/air-france.json";
 import provenanceReviewQueue from "@/data/provenance/review-queue.json";
 import { getVerificationFreshness } from "@/lib/freshness";
 import { CarryOnRecommendations } from "@/components/CarryOnRecommendations";
+import { isFeeCategoryKey } from "@/content/fee-categories";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -10142,9 +10143,13 @@ function LegacyAirlinePage({
                   return (
                     <tr key={idx} className="transition-colors hover:bg-slate-50">
                       <td className="px-4 py-4 font-bold text-blue-600">
-                        <Link href={`/fees/${item.category}`} className="hover:underline">
-                          {prettyCategoryLabel(item.category)}
-                        </Link>
+                        {isFeeCategoryKey(item.category) ? (
+                          <Link href={`/fees/${item.category}`} className="hover:underline">
+                            {prettyCategoryLabel(item.category)}
+                          </Link>
+                        ) : (
+                          <span className="text-slate-700">{prettyCategoryLabel(item.category)}</span>
+                        )}
                       </td>
                       <td className="whitespace-nowrap px-4 py-4 font-mono font-bold text-slate-900">
                         {formatContextualAmount(item)}

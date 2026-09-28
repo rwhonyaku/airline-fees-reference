@@ -47,17 +47,7 @@ const fareTopics = [
   {
     href: "/fees/change_cancellation",
     label: "Changes and cancellations",
-    body: "Separate a waived change fee from the fare difference, credit restrictions, and nonrefundable value.",
-  },
-  {
-    href: "/fees/same_day_change",
-    label: "Same-day changes",
-    body: "Compare confirmed-change charges with standby rules, status waivers, and route restrictions.",
-  },
-  {
-    href: "/fees/same_day_standby",
-    label: "Same-day standby",
-    body: "Check whether standby is free, restricted to certain fares, or available only on eligible routes.",
+    body: "Separate a waived change fee from fare differences, credits, same-day options, standby rules, and nonrefundable value.",
   },
   {
     href: "/fees/unaccompanied_minor",

@@ -13,11 +13,6 @@ export const FEE_CATEGORIES: ReadonlyArray<FeeCategory> = Object.freeze([
 
   { key: "seat_selection", label: "Seat selection" },
   { key: "change_cancellation", label: "Change / cancellation" },
-  { key: "same_day_change", label: "Same-day change" },
-
-  // Added: present in data + should have category pages
-  { key: "same_day_standby", label: "Same-day standby" },
-
   { key: "unaccompanied_minor", label: "Unaccompanied minor" },
 ]);
 

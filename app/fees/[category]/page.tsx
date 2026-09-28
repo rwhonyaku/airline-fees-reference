@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 import { hasActiveStrategyPage } from "@/lib/airline-strategy";
 import { getVerificationFreshness } from "@/lib/freshness";
+import { FEE_CATEGORY_KEYS } from "@/content/fee-categories";
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -284,6 +285,14 @@ function titleCaseFromSlug(s: string): string {
     .split("_")
     .map((p) => (p ? p.charAt(0).toUpperCase() + p.slice(1) : p))
     .join(" ");
+}
+
+function belongsToPublicCategory(itemCategory: string, pageCategory: string): boolean {
+  if (itemCategory === pageCategory) return true;
+  return (
+    pageCategory === "change_cancellation" &&
+    (itemCategory === "same_day_change" || itemCategory === "same_day_standby")
+  );
 }
 
 function getHubCopy(category: string) {
@@ -941,18 +950,10 @@ function getFeeMetadataCopy(category: string): Metadata {
 }
 
 export function generateStaticParams() {
-  const slugs = getAirlineSlugs();
-  const set = new Set<string>();
-  for (const slug of slugs) {
-    const airline = getAirlineBySlug(slug);
-    for (const fee of airline?.fees ?? []) {
-      if (fee.category) set.add(fee.category);
-    }
-  }
-  return Array.from(set)
-    .sort()
-    .map((category) => ({ category }));
+  return FEE_CATEGORY_KEYS.map((category) => ({ category }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
@@ -974,7 +975,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
     if (!airline) continue;
 
     for (const item of airline.fees ?? []) {
-      if (item.category !== cat) continue;
+      if (!belongsToPublicCategory(item.category, cat)) continue;
 
       rows.push({
         slug,
