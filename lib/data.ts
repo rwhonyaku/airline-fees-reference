@@ -56,7 +56,6 @@ const ALLOWED_CATEGORIES = new Set<string>([
 const CATEGORY_ALIASES: Record<string, FeeCategoryKey> = {
   additional_baggage: "checked_baggage",
   checked_baggage_included: "checked_baggage",
-  sports_equipment: "checked_baggage",
 };
 
 /**

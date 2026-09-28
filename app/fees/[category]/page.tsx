@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
@@ -633,6 +632,70 @@ function CheckedBaggageAnswerBlock() {
   );
 }
 
+function CheckedBaggageDecisionGuide() {
+  return (
+    <section
+      style={{
+        border: "1px solid #bfdbfe",
+        borderRadius: 12,
+        padding: 14,
+        background: "#eff6ff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#1d4ed8" }}>
+          Calculate the real trip cost
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>Do not compare one-way, one-bag prices</h2>
+      </div>
+
+      <div style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff" }}>
+        <div style={{ fontSize: 13, color: "#475569" }}>Round-trip checked-bag total</div>
+        <div style={{ marginTop: 6, fontWeight: 800, color: "#0f172a", lineHeight: 1.5 }}>
+          Fee per direction × travelers checking bags × 2 directions
+        </div>
+        <div style={{ marginTop: 6, fontSize: 14, color: "#334155", lineHeight: 1.6 }}>
+          Example: $45 × 2 travelers × 2 directions = <strong>$180 added to the trip</strong>.
+          If each traveler checks two bags, add the first- and second-bag prices before multiplying.
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <div style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>1. Check what the fare includes</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            A fare with a bag included can beat a lower headline fare once every traveler and direction is counted.
+          </div>
+        </div>
+        <div style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>2. Identify the pricing model</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Some airlines publish a fixed fee. Others price bags by route, fare, weight, currency, or purchase timing.
+          </div>
+        </div>
+        <div style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>3. Test the excess-fee risk</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Overweight and oversize charges may stack with the base checked-bag fee rather than replace it.
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+        <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes">
+          Calculate checked bags
+        </Link>
+        <Link href="/guides/international-baggage-allowance">Understand international allowances</Link>
+        <Link href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=51&size=62">
+          Check excess-baggage risk
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function OverweightBaggageAnswerBlock() {
   return (
     <section
@@ -897,7 +960,9 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       />
       <header style={{ display: "grid", gap: 10 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "baseline" }}>
-          <h1 style={{ margin: 0, fontSize: 20 }}>{title} fees by airline</h1>
+          <h1 style={{ margin: 0, fontSize: 20 }}>
+            {cat === "checked_baggage" ? "Checked baggage fees and allowances by airline" : `${title} fees by airline`}
+          </h1>
           <span style={{ fontSize: 12, color: "#555" }}>Latest source check: {latestVerified}</span>
         </div>
 
@@ -909,6 +974,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </nav>
 
         {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
+        {cat === "checked_baggage" ? <CheckedBaggageDecisionGuide /> : null}
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 12, color: "#334155" }}>
           <span style={{ border: "1px solid #cbd5e1", borderRadius: 999, padding: "5px 10px", background: "#fff" }}>
@@ -956,7 +1022,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </section>
       </header>
 
-      {decisionToolCards.length > 0 ? (
+      {decisionToolCards.length > 0 && cat !== "checked_baggage" ? (
         <section
           style={{
             border: "1px solid #bfdbfe",
@@ -998,27 +1064,9 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       {cat === "overweight_baggage" ? <OverweightBaggageAnswerBlock /> : null}
       {cat === "oversize_baggage" ? <OversizeBaggageAnswerBlock /> : null}
 
-      {cat === "checked_baggage" ? (
-        <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="relative aspect-[16/9] w-full">
-            <Image
-              src="/images/checked-baggage-drop.png"
-              alt="Checked bags lined up at an airport baggage drop counter"
-              fill
-              sizes="(min-width: 1024px) 896px, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <figcaption className="border-t border-slate-100 px-5 py-3 text-xs leading-relaxed text-slate-500">
-            The baggage counter is where delayed decisions become expensive. If a checked bag is
-            likely, compare prepaid pricing, fare rules, and card waivers before airport day.
-          </figcaption>
-        </figure>
-      ) : null}
-
       {cat === "checked_baggage" ? <CheckedBagCardMathCallout /> : null}
 
-      {strategy && (
+      {strategy && cat !== "checked_baggage" && (
         <section style={{ display: "grid", gap: 12 }}>
           <h2 style={{ margin: 0, fontSize: 16 }}>Common situations</h2>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
@@ -1032,7 +1080,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </section>
       )}
 
-      {spotlightAirlines.length > 0 && (
+      {cat !== "checked_baggage" && spotlightAirlines.length > 0 && (
         <section style={{ display: "grid", gap: 12 }}>
           <h2 style={{ margin: 0, fontSize: 16 }}>Airline pages to compare next</h2>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
@@ -1061,7 +1109,16 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       )}
 
       <section style={{ display: "grid", gap: 10 }}>
-        <h2 style={{ margin: 0, fontSize: 16 }}>Published fees and sources</h2>
+        <h2 id="published-fees" style={{ margin: 0, fontSize: 16 }}>
+          {cat === "checked_baggage" ? "Official checked-baggage records" : "Published fees and sources"}
+        </h2>
+
+        {cat === "checked_baggage" ? (
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+            This is a source registry, not a universal price chart. Read the route, fare, timing, and conditions columns
+            together; a number shown for one itinerary may not apply to another.
+          </p>
+        ) : null}
 
         <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
           <table style={{ minWidth: 1180 }}>
@@ -1160,7 +1217,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         {contextualBridge}
       </section>
 
-      {strategy && (
+      {strategy && cat !== "checked_baggage" && (
         <section
           style={{
             border: "1px solid #ddd",
