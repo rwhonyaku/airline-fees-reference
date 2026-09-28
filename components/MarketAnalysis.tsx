@@ -11,10 +11,10 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
       <div className="mb-8 flex flex-col items-start gap-4 border-b border-slate-700 pb-6 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-            Start with the fees most likely to change the fare
+            Start with the cost decision
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            Across {count} airline pages, these are the places where the cheapest ticket often stops being the cheapest trip.
+            Across {count} airline pages, use these checks to find when the cheapest ticket stops being the cheapest trip.
           </p>
         </div>
         <Link
@@ -32,10 +32,10 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
             Checked bags
           </span>
           <div className="mt-2 text-2xl font-black leading-tight text-blue-300">
-            Buy bags before the airport
+            Price bags before booking
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            Many airlines charge more, or give you fewer options, when baggage is handled at the airport.
+            Count travelers, bags, and directions, then check whether the exact fare already includes an allowance.
           </p>
           <Link href="/fees/checked_baggage" className="mt-4 inline-block text-sm font-bold text-white underline">
             Compare checked-bag rules
@@ -47,10 +47,10 @@ export function MarketAnalysis({ count }: MarketAnalysisProps) {
             Carry-on bags
           </span>
           <div className="mt-2 text-2xl font-black leading-tight text-blue-300">
-            Soft bags are safer
+            Measure the bag, not the label
           </div>
           <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            A bag that technically fits can still get noticed if it is rigid, overpacked, or hard to slide into a sizer.
+            Compare outside dimensions—including wheels, handles, and pockets—with the airline&apos;s published limit.
           </p>
           <Link href="/sizer-rules" prefetch={false} className="mt-4 inline-block text-sm font-bold text-white underline">
             Check sizer risk

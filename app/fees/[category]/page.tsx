@@ -696,6 +696,76 @@ function CheckedBaggageDecisionGuide() {
   );
 }
 
+function CarryOnAnswerBlock() {
+  return (
+    <section
+      style={{
+        border: "1px solid #dbe1ea",
+        borderRadius: 12,
+        padding: 14,
+        background: "#fff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Direct answer
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 20 }}>Is a carry-on included—or only a personal item?</h2>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        Those are different allowances. A personal item must fit under the seat; a full-size carry-on normally uses the
+        overhead bin. Many fares include both, but some Basic and low-cost fares include only the smaller personal item.
+        Check the fare entitlement before comparing bag dimensions or advertised prices.
+      </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>1. Entitlement</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Confirm whether the exact fare includes an overhead bag, only an under-seat item, or neither.
+          </div>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>2. Outside dimensions</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            Measure wheels, handles, and pockets. A product name such as “international carry-on” does not prove compliance.
+          </div>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>3. Weight limit</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            A dimension-compliant bag can still fail the rule when the airline also publishes a cabin-bag weight cap.
+          </div>
+        </div>
+        <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+          <div style={{ fontWeight: 800, color: "#0f172a" }}>4. Purchase timing</div>
+          <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+            If cabin access is sold separately, compare the booking price with any bundle or seat that includes it before airport day.
+          </div>
+        </div>
+      </div>
+
+      <div style={{ border: "1px solid #bfdbfe", borderRadius: 10, padding: 12, background: "#eff6ff" }}>
+        <div style={{ fontWeight: 800, color: "#1e3a8a" }}>The cheapest-looking fare can lose on bag math</div>
+        <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.6, color: "#334155" }}>
+          For a roundtrip, multiply any required cabin-bag charge by travelers and directions. Then compare that total with
+          a fare, bundle, or competing airline that already includes the bag you need.
+        </div>
+      </div>
+
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+        <Link href="/sizer-rules?height=22&width=14&depth=9">Compare actual bag dimensions</Link>
+        <Link href="/guides/carry-on-strictness-by-airline">Check enforcement context</Link>
+        <Link href="/guides/basic-economy-traps#basic-economy-tool">Compare a restricted fare</Link>
+        <Link href="/recommended-carry-on-luggage">See dimension-verified bag options</Link>
+      </div>
+    </section>
+  );
+}
+
 function OverweightBaggageAnswerBlock() {
   return (
     <section
@@ -961,7 +1031,11 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       <header style={{ display: "grid", gap: 10 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "baseline" }}>
           <h1 style={{ margin: 0, fontSize: 20 }}>
-            {cat === "checked_baggage" ? "Checked baggage fees and allowances by airline" : `${title} fees by airline`}
+            {cat === "checked_baggage"
+              ? "Checked baggage fees and allowances by airline"
+              : cat === "carry_on"
+                ? "Carry-on bag fees and personal-item rules by airline"
+                : `${title} fees by airline`}
           </h1>
           <span style={{ fontSize: 12, color: "#555" }}>Latest source check: {latestVerified}</span>
         </div>
@@ -975,6 +1049,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
         {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
         {cat === "checked_baggage" ? <CheckedBaggageDecisionGuide /> : null}
+        {cat === "carry_on" ? <CarryOnAnswerBlock /> : null}
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 12, color: "#334155" }}>
           <span style={{ border: "1px solid #cbd5e1", borderRadius: 999, padding: "5px 10px", background: "#fff" }}>
@@ -992,27 +1067,31 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </div>
 
         <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
-          {cat !== "checked_baggage" ? <div>{hub.verdict}</div> : null}
+          {cat !== "checked_baggage" && cat !== "carry_on" ? <div>{hub.verdict}</div> : null}
 
-          {strategy && cat !== "checked_baggage" ? (
+          {strategy && cat !== "checked_baggage" && cat !== "carry_on" ? (
             <div style={{ border: "1px solid #dbe1ea", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
               <strong>Best for:</strong> {strategy.introLabel}
             </div>
           ) : null}
 
-          {cat !== "checked_baggage" ? (
+          {cat !== "checked_baggage" && cat !== "carry_on" ? (
             <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
               <strong>Quick check:</strong> {hub.proTip}
             </div>
           ) : null}
 
-          <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
-            <strong>Common way to avoid the fee:</strong> {hub.loophole}
-          </div>
+          {cat !== "carry_on" ? (
+            <>
+              <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
+                <strong>Common way to avoid the fee:</strong> {hub.loophole}
+              </div>
 
-          <div style={{ fontSize: 13, color: "#444" }}>
-            <strong>What to watch:</strong> {hub.whatToWatch}
-          </div>
+              <div style={{ fontSize: 13, color: "#444" }}>
+                <strong>What to watch:</strong> {hub.whatToWatch}
+              </div>
+            </>
+          ) : null}
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 13, color: "#444" }}>
             <span>
@@ -1022,7 +1101,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </section>
       </header>
 
-      {decisionToolCards.length > 0 && cat !== "checked_baggage" ? (
+      {decisionToolCards.length > 0 && cat !== "checked_baggage" && cat !== "carry_on" ? (
         <section
           style={{
             border: "1px solid #bfdbfe",
@@ -1066,7 +1145,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
       {cat === "checked_baggage" ? <CheckedBagCardMathCallout /> : null}
 
-      {strategy && cat !== "checked_baggage" && (
+      {strategy && cat !== "checked_baggage" && cat !== "carry_on" && (
         <section style={{ display: "grid", gap: 12 }}>
           <h2 style={{ margin: 0, fontSize: 16 }}>Common situations</h2>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
@@ -1080,7 +1159,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </section>
       )}
 
-      {cat !== "checked_baggage" && spotlightAirlines.length > 0 && (
+      {cat !== "checked_baggage" && cat !== "carry_on" && spotlightAirlines.length > 0 && (
         <section style={{ display: "grid", gap: 12 }}>
           <h2 style={{ margin: 0, fontSize: 16 }}>Airline pages to compare next</h2>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
@@ -1110,13 +1189,24 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
 
       <section style={{ display: "grid", gap: 10 }}>
         <h2 id="published-fees" style={{ margin: 0, fontSize: 16 }}>
-          {cat === "checked_baggage" ? "Official checked-baggage records" : "Published fees and sources"}
+          {cat === "checked_baggage"
+            ? "Official checked-baggage records"
+            : cat === "carry_on"
+              ? "Official carry-on and personal-item records"
+              : "Published fees and sources"}
         </h2>
 
         {cat === "checked_baggage" ? (
           <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
             This is a source registry, not a universal price chart. Read the route, fare, timing, and conditions columns
             together; a number shown for one itinerary may not apply to another.
+          </p>
+        ) : null}
+
+        {cat === "carry_on" ? (
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+            Read the fare, route, dimensions, weight, and timing together. A zero amount means the stated allowance is
+            included for that record; it does not prove that every fare on the airline includes an overhead bag.
           </p>
         ) : null}
 
@@ -1214,10 +1304,10 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           the next question is usually whether the fare restriction changes the real trip cost.
         </div>
 
-        {contextualBridge}
+        {cat !== "carry_on" ? contextualBridge : null}
       </section>
 
-      {strategy && cat !== "checked_baggage" && (
+      {strategy && cat !== "checked_baggage" && cat !== "carry_on" && (
         <section
           style={{
             border: "1px solid #ddd",

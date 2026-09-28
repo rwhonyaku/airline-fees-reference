@@ -1,200 +1,180 @@
 import Link from "next/link";
-import { FEE_CATEGORIES } from "@/content/fee-categories";
-import { getAirlineBySlug } from "@/lib/data";
-import { FEE_HUB_STRATEGY } from "@/lib/fee-hub-strategy";
+import type { Metadata } from "next";
 import { getLatestVerifiedAcrossAirlines } from "@/lib/freshness";
-import { hasActiveStrategyPage } from "@/lib/airline-strategy";
+import { canonical } from "@/lib/seo";
 
-export const metadata = {
-  title: "Airline fee guides and traps | Airline Fees Reference",
+export const metadata: Metadata = {
+  title: "Airline Fee Guides | Baggage, Seats and Fare Traps",
+  description:
+    "Understand which airline fees can change the real trip cost, then compare official baggage, seat, change, and special-travel rules.",
+  alternates: { canonical: canonical("/fees") },
 };
 
-export default function FeeCategoriesIndexPage() {
-  const latestVerified = getLatestVerifiedAcrossAirlines();
-  const featuredCategories = [
-    "checked_baggage",
-    "carry_on",
-    "change_cancellation",
-    "seat_selection",
-  ] as const;
+const baggageTopics = [
+  {
+    href: "/fees/checked_baggage",
+    label: "Checked baggage",
+    body: "Calculate the party-level, round-trip cost and check whether the fare already includes an allowance.",
+  },
+  {
+    href: "/fees/carry_on",
+    label: "Carry-on and personal items",
+    body: "Separate free under-seat entitlement from overhead-bin access, then check size, weight, and timing.",
+  },
+  {
+    href: "/fees/overweight_baggage",
+    label: "Overweight baggage",
+    body: "Check the airline's weight bands and maximum before an airport repack becomes the only practical option.",
+  },
+  {
+    href: "/fees/oversize_baggage",
+    label: "Oversize baggage",
+    body: "Determine whether the size charge stacks with the normal bag fee and whether the item is accepted at all.",
+  },
+  {
+    href: "/fees/sports_equipment",
+    label: "Sports equipment",
+    body: "Check whether the item uses the normal allowance, a special fee, or airline-specific handling limits.",
+  },
+] as const;
 
-  const spotlightAirlines = ["united", "delta", "frontier", "ryanair"]
-    .map((slug) => getAirlineBySlug(slug))
-    .filter(Boolean);
+const fareTopics = [
+  {
+    href: "/fees/seat_selection",
+    label: "Seat selection",
+    body: "Decide whether the charge buys a meaningful seat benefit or merely repairs a restrictive fare.",
+  },
+  {
+    href: "/fees/change_cancellation",
+    label: "Changes and cancellations",
+    body: "Separate a waived change fee from the fare difference, credit restrictions, and nonrefundable value.",
+  },
+  {
+    href: "/fees/same_day_change",
+    label: "Same-day changes",
+    body: "Compare confirmed-change charges with standby rules, status waivers, and route restrictions.",
+  },
+  {
+    href: "/fees/same_day_standby",
+    label: "Same-day standby",
+    body: "Check whether standby is free, restricted to certain fares, or available only on eligible routes.",
+  },
+  {
+    href: "/fees/unaccompanied_minor",
+    label: "Unaccompanied minors",
+    body: "Confirm the age band, whether the service is required, and whether connections are permitted before comparing fares.",
+  },
+] as const;
 
+function TopicGrid({ topics }: { topics: ReadonlyArray<{ href: string; label: string; body: string }> }) {
   return (
-    <main style={{ display: "grid", gap: 20 }}>
-      <header style={{ display: "grid", gap: 10 }}>
-        <h1 style={{ margin: 0, fontSize: 24 }}>Airline fee guides and traps</h1>
-        <div style={{ maxWidth: 860, fontSize: 14, lineHeight: 1.7, color: "#333" }}>
-          Use fee categories to confirm the charge, then compare the airline pages and related
-          references that affect the real trip price.
-        </div>
-        <div style={{ fontSize: 12, color: "#555" }}>Last verified: {latestVerified}</div>
-        <div
+    <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))" }}>
+      {topics.map((topic) => (
+        <Link
+          key={topic.href}
+          href={topic.href}
           style={{
-            display: "grid",
-            gap: 8,
             border: "1px solid #dbe1ea",
             borderRadius: 12,
             padding: 14,
-            background: "#f8fafc",
-            fontSize: 14,
-            lineHeight: 1.6,
-            color: "#334155",
+            background: "#fff",
+            color: "#0f172a",
+            textDecoration: "none",
           }}
         >
-          <div>
-            <strong>How to use this page:</strong> start with the fee type most likely to affect
-            your trip, then move into the airline pages and related references where the rule
-            changes by fare, route, or timing.
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 13 }}>
-            <Link href="/guides/basic-economy-traps" style={{ textDecoration: "underline" }}>
-              Basic Economy guide
-            </Link>
-            <Link href="/sizer-rules" prefetch={false} style={{ textDecoration: "underline" }}>
-              Sizer rules
-            </Link>
-            <Link href="/tools/checked-baggage-calculator" prefetch={false} style={{ textDecoration: "underline" }}>
-              Checked baggage cost calculator
-            </Link>
-            <Link href="/best-cards" prefetch={false} style={{ textDecoration: "underline" }}>
-              Card break-even calculator
-            </Link>
-          </div>
+          <div style={{ fontWeight: 800, textDecoration: "underline" }}>{topic.label}</div>
+          <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>{topic.body}</div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+export default function FeeCategoriesIndexPage() {
+  const latestVerified = getLatestVerifiedAcrossAirlines();
+
+  return (
+    <main style={{ display: "grid", gap: 22 }}>
+      <header style={{ display: "grid", gap: 10 }}>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Fee decision center
         </div>
+        <h1 style={{ margin: 0, fontSize: 24 }}>Find the airline fee that changes your trip cost</h1>
+        <p style={{ margin: 0, maxWidth: 820, fontSize: 14, lineHeight: 1.7, color: "#334155" }}>
+          Start with the charge your trip is likely to trigger—not a generic airline list. Each topic combines official
+          source records with the fare, route, timing, and traveler conditions that determine whether the fee applies.
+        </p>
+        <div style={{ fontSize: 12, color: "#555" }}>Latest source verification across the database: {latestVerified}</div>
       </header>
 
-      <section style={{ display: "grid", gap: 12 }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>Highest-value fee entry points</h2>
-        <div
-          style={{
-            display: "grid",
-            gap: 12,
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          }}
-        >
-          {featuredCategories.map((key) => {
-            const strategy = FEE_HUB_STRATEGY[key];
-            const category = FEE_CATEGORIES.find((item) => item.key === key);
-            if (!category || !strategy) return null;
-
-            return (
-              <div
-                key={key}
-                style={{ border: "1px solid #ddd", borderRadius: 12, padding: 14, background: "#fff" }}
-              >
-                <div style={{ fontWeight: 700 }}>
-                  <Link href={`/fees/${key}`} style={{ textDecoration: "underline" }}>
-                    {category.label}
-                  </Link>
-                </div>
-                <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
-                  {strategy.introLabel}
-                </div>
-                {key === "checked_baggage" ? (
-                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                    <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes" prefetch={false} style={{ textDecoration: "underline" }}>
-                      Price a bag scenario
-                    </Link>
-                    <Link href="/best-cards?travelers=2&bags=1&trips=2&pay=yes" prefetch={false} style={{ textDecoration: "underline" }}>
-                      Test card break-even
-                    </Link>
-                  </div>
-                ) : null}
-                {key === "carry_on" ? (
-                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                    <Link href="/sizer-rules?height=22&width=14&depth=9" prefetch={false} style={{ textDecoration: "underline" }}>
-                      Check bag fit
-                    </Link>
-                    <Link href="/guides/basic-economy-traps#basic-economy-tool" style={{ textDecoration: "underline" }}>
-                      Check Basic fare risk
-                    </Link>
-                  </div>
-                ) : null}
-                {key === "seat_selection" ? (
-                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                    <Link href="/guides/basic-economy-traps" style={{ textDecoration: "underline" }}>
-                      Check fare restrictions
-                    </Link>
-                    <Link href="/tools/checked-baggage-calculator" prefetch={false} style={{ textDecoration: "underline" }}>
-                      Price bag add-ons too
-                    </Link>
-                  </div>
-                ) : null}
-              </div>
-            );
-          })}
+      <section
+        style={{
+          display: "grid",
+          gap: 12,
+          border: "1px solid #bfdbfe",
+          borderRadius: 12,
+          padding: 14,
+          background: "#eff6ff",
+        }}
+      >
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#1d4ed8" }}>
+            Start with the decision
+          </div>
+          <h2 style={{ margin: "6px 0 0", fontSize: 18 }}>What are you trying to prevent?</h2>
         </div>
-      </section>
-
-      <section style={{ display: "grid", gap: 12 }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>All fee-topic pages</h2>
-        <div
-          style={{
-            display: "grid",
-            gap: 12,
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          }}
-        >
-          {FEE_CATEGORIES.map((c) => {
-            const strategy = FEE_HUB_STRATEGY[c.key];
-            return (
-              <div
-                key={c.key}
-                style={{ border: "1px solid #ddd", borderRadius: 12, padding: 14, background: "#fff" }}
-              >
-                <div style={{ fontWeight: 700 }}>
-                  <Link href={`/fees/${c.key}`} style={{ textDecoration: "underline" }}>
-                    {c.label}
-                  </Link>
-                </div>
-                <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "#555" }}>
-                  {strategy?.bridgeText ??
-                    "Check the fee page to understand the charge, then move into the airline-specific page before booking."}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section style={{ display: "grid", gap: 12 }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>Airline pages worth checking after the fee topic</h2>
-        <div
-          style={{
-            display: "grid",
-            gap: 12,
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          }}
-        >
-          {spotlightAirlines.map((airline) => (
-            <div
-              key={airline!.slug}
-              style={{ border: "1px solid #ddd", borderRadius: 12, padding: 14, background: "#fff" }}
-            >
-              <div style={{ fontWeight: 700 }}>
-                <Link href={`/airlines/${airline!.slug}`} style={{ textDecoration: "underline" }}>
-                  {airline!.name}
-                </Link>
-              </div>
-              <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "#555" }}>
-                Start with the fee topic, then compare the airline page and fee guide once you know
-                which rule affects your trip.
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10, fontSize: 13 }}>
-                <Link href={`/airlines/${airline!.slug}`} style={{ textDecoration: "underline" }}>
-                  Fee page
-                </Link>
-                {hasActiveStrategyPage(airline!.slug) ? (
-                  <Link href={`/airlines/${airline!.slug}/how-to-beat-fees`} style={{ textDecoration: "underline" }}>
-                    Fee guide
-                  </Link>
-                ) : null}
-              </div>
+        <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+          <Link href="/tools/true-trip-cost" style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff", color: "#1e3a8a", textDecoration: "none" }}>
+            <div style={{ fontWeight: 800, textDecoration: "underline" }}>A cheap fare becoming expensive</div>
+            <div style={{ marginTop: 7, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+              Compare advertised fares after adding the bags, seats, travelers, and directions the trip actually needs.
             </div>
-          ))}
+          </Link>
+          <Link href="/sizer-rules?height=22&width=14&depth=9" style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff", color: "#1e3a8a", textDecoration: "none" }}>
+            <div style={{ fontWeight: 800, textDecoration: "underline" }}>A bag failing the published limit</div>
+            <div style={{ marginTop: 7, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+              Compare the bag&apos;s outside dimensions with published carry-on and personal-item rules.
+            </div>
+          </Link>
+          <Link href="/guides/basic-economy-traps" style={{ border: "1px solid #dbeafe", borderRadius: 10, padding: 12, background: "#fff", color: "#1e3a8a", textDecoration: "none" }}>
+            <div style={{ fontWeight: 800, textDecoration: "underline" }}>A restricted fare creating add-ons</div>
+            <div style={{ marginTop: 7, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>
+              Test whether the savings survive baggage, seat, and flexibility restrictions.
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <section style={{ display: "grid", gap: 12 }}>
+        <div>
+          <h2 style={{ margin: 0, fontSize: 18 }}>Baggage decisions</h2>
+          <p style={{ margin: "5px 0 0", fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+            Begin with the normal allowance, then check whether weight, size, item type, or purchase timing creates another charge.
+          </p>
+        </div>
+        <TopicGrid topics={baggageTopics} />
+      </section>
+
+      <section style={{ display: "grid", gap: 12 }}>
+        <div>
+          <h2 style={{ margin: 0, fontSize: 18 }}>Fare add-ons and flexibility</h2>
+          <p style={{ margin: "5px 0 0", fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+            These charges are often consequences of the fare chosen, so compare the restriction with the cost of buying a better fare.
+          </p>
+        </div>
+        <TopicGrid topics={fareTopics} />
+      </section>
+
+      <section style={{ border: "1px solid #dbe1ea", borderRadius: 12, padding: 14, background: "#f8fafc", display: "grid", gap: 9 }}>
+        <h2 style={{ margin: 0, fontSize: 17 }}>Already know the airline?</h2>
+        <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+          Use the airline page for its verified records, qualifications, and official sources. Priority airlines also have
+          tactical guides explaining which charges are most avoidable.
+        </p>
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+          <Link href="/airlines">Browse airline pages</Link>
+          <Link href="/methodology">How records are verified</Link>
+          <Link href="/tools/checked-baggage-calculator">Calculate checked-bag cost</Link>
         </div>
       </section>
     </main>

@@ -6,7 +6,9 @@ import { getLatestVerifiedAcrossAirlines } from "@/lib/freshness";
 import type { AirlineSummary } from "@/lib/types";
 
 export const metadata = {
-  title: "Airlines Fee Index 2026 | Verified Baggage & Service Costs",
+  title: "Airline Fee and Baggage Policy Pages | Official Sources",
+  description:
+    "Find airline baggage and fee pages with official sources, verified dates, fare qualifications, and practical tools for comparing the real trip cost.",
   alternates: {
     canonical: canonical("/airlines"),
   },
@@ -37,6 +39,28 @@ const INTERNATIONAL_AIRLINES = [
   "qatar-airways",
 ];
 
+const AIRLINE_REASONS: Record<string, string> = {
+  united: "Compare Basic Economy restrictions, checked-bag costs, and the value of moving to a less restrictive fare.",
+  delta: "Check how the fare, route, bag number, and eligible card or status benefit change the baggage total.",
+  american: "Separate the published bag price from route exceptions, fare rules, and excess-baggage exposure.",
+  southwest: "Check the current included allowance and fare benefits instead of relying on the airline's former baggage policy.",
+  jetblue: "Compare fare-level baggage treatment and any eligible card benefit before assuming the lowest fare wins.",
+  alaska: "Check ticketing date, route exceptions, Saver treatment, and eligible card or status benefits together.",
+  frontier: "Price the personal-item limit, overhead bag, seat, and bundle before comparing its headline fare.",
+  ryanair: "Separate the free small personal item from paid cabin-bag access and airport handling charges.",
+  easyjet: "Compare the included under-seat bag with large-cabin-bag access through a seat, bundle, or separate purchase.",
+  "air-canada": "Check whether the exact Basic itinerary includes an overhead bag and how route and fare brand affect checked baggage.",
+  "air-france": "Use the ticket and itinerary allowance first; additional-bag pricing is not one universal amount.",
+  lufthansa: "Distinguish short-haul Economy Basic from fares that include an overhead bag, then check route-specific baggage rules.",
+  "singapore-airlines": "Identify the applicable piece or weight concept before treating any published allowance as universal.",
+  "air-india": "Separate domestic and international baggage rules, weight allowances, and route-specific excess charges.",
+  "eva-air": "Check long-haul versus within-Asia allowances and the current prepaid excess-baggage conditions.",
+  "british-airways": "Check the booked fare and operating carrier before relying on the cabin or checked-bag allowance.",
+  klm: "Use the fare and itinerary because included bags and additional-bag prices can vary by trip.",
+  emirates: "Confirm whether the itinerary uses a weight or piece allowance before calculating extra baggage.",
+  "qatar-airways": "Check route, cabin, and the applicable piece or weight system before comparing allowances.",
+};
+
 function pickAirlines(airlines: AirlineSummary[], slugs: string[]) {
   const bySlug = new Map(airlines.map((airline) => [airline.slug, airline]));
   return slugs
@@ -44,7 +68,7 @@ function pickAirlines(airlines: AirlineSummary[], slugs: string[]) {
     .filter((airline): airline is AirlineSummary => Boolean(airline));
 }
 
-function AirlineCard({ airline }: { airline: AirlineSummary }) {
+function AirlineCard({ airline, showReason = false }: { airline: AirlineSummary; showReason?: boolean }) {
   return (
     <Link
       href={`/airlines/${airline.slug}`}
@@ -65,6 +89,9 @@ function AirlineCard({ airline }: { airline: AirlineSummary }) {
           </span>
         )}
       </div>
+      {showReason && AIRLINE_REASONS[airline.slug] ? (
+        <p className="mt-3 text-xs leading-relaxed text-slate-600">{AIRLINE_REASONS[airline.slug]}</p>
+      ) : null}
     </Link>
   );
 }
@@ -78,7 +105,7 @@ export default function AirlinesIndexPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-12">
       <header className="mb-12 max-w-3xl">
-        <h1 className="mb-6 text-5xl font-black tracking-tight text-slate-900">Airline Fee Pages</h1>
+        <h1 className="mb-6 text-5xl font-black tracking-tight text-slate-900">Airline fee and baggage policy pages</h1>
         <p className="text-lg leading-relaxed text-slate-600">
           Start with the airline, then move into the fee guide or calculator that matches your trip.
           The strongest pages explain carry-on rules, checked-bag charges, seat fees, change rules,
@@ -123,16 +150,16 @@ export default function AirlinesIndexPage() {
       <section className="my-12">
         <div className="mb-5 max-w-3xl">
           <h2 className="text-2xl font-black tracking-tight text-slate-900">
-            Start with high-fee-risk airlines
+            Priority U.S. and low-cost comparisons
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            These pages are usually the best first checks for U.S. domestic bag fees, Basic Economy
-            restrictions, low-cost carrier add-ons, and card break-even decisions.
+            Start here when baggage, a stripped fare, or an unbundled low-cost model is likely to
+            change which flight is actually cheaper.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {priorityAirlines.map((airline) => (
-            <AirlineCard key={airline.slug} airline={airline} />
+            <AirlineCard key={airline.slug} airline={airline} showReason />
           ))}
         </div>
       </section>
@@ -149,23 +176,8 @@ export default function AirlinesIndexPage() {
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {internationalAirlines.map((airline) => (
-            <AirlineCard key={airline.slug} airline={airline} />
+            <AirlineCard key={airline.slug} airline={airline} showReason />
           ))}
-        </div>
-      </section>
-
-      <section className="my-12 rounded-lg border border-blue-100 bg-blue-50 p-6">
-        <h2 className="text-lg font-black text-slate-900">Not sure where to start?</h2>
-        <div className="mt-4 grid gap-4 text-sm md:grid-cols-3">
-          <Link href="/tools/checked-baggage-calculator" prefetch={false} className="font-semibold text-blue-700 underline">
-            Price a checked-bag trip
-          </Link>
-          <Link href="/tools/excess-baggage-calculator" prefetch={false} className="font-semibold text-blue-700 underline">
-            Check overweight or oversize risk
-          </Link>
-          <Link href="/best-cards" prefetch={false} className="font-semibold text-blue-700 underline">
-            Test card break-even
-          </Link>
         </div>
       </section>
 

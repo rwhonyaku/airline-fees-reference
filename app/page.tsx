@@ -1,11 +1,38 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getAirlinesIndex } from "@/lib/data";
 import { UnifiedBaggageComparison } from "@/components/UnifiedBaggageComparison";
+import { canonical } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Airline Fees Expert | Compare the True Cost of a Flight",
+  description:
+    "Compare airline baggage fees, fare restrictions, carry-on rules, and trip-level add-ons using official-source data and deterministic tools.",
+  alternates: { canonical: canonical("/") },
+};
+
+const FEATURED_AIRLINES = [
+  "united",
+  "delta",
+  "american",
+  "southwest",
+  "jetblue",
+  "alaska",
+  "frontier",
+  "ryanair",
+  "easyjet",
+  "air-france",
+  "air-canada",
+  "zipair",
+] as const;
 
 export default function HomePage() {
   const airlines = getAirlinesIndex().filter((airline) => airline.slug !== "spirit");
-  const previewAirlines = airlines.slice(0, 12);
+  const airlinesBySlug = new Map(airlines.map((airline) => [airline.slug, airline]));
+  const previewAirlines = FEATURED_AIRLINES.map((slug) => airlinesBySlug.get(slug)).filter(
+    (airline): airline is (typeof airlines)[number] => Boolean(airline),
+  );
 
   return (
     <div className="w-full">
@@ -40,27 +67,7 @@ export default function HomePage() {
               href="/airlines"
               className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
             >
-              Find Fee Traps by Airline
-            </Link>
-            <Link
-              href="/sizer-rules"
-              prefetch={false}
-              className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
-            >
-              Check Sizer Rules
-            </Link>
-            <Link
-              href="/tools/checked-baggage-calculator"
-              prefetch={false}
-              className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
-            >
-              Bag Cost Calculator
-            </Link>
-            <Link
-              href="/methodology"
-              className="w-full rounded-lg border border-white/35 bg-white/10 px-6 py-3 text-center font-bold text-white backdrop-blur transition-all hover:bg-white/20 sm:w-auto"
-            >
-              Methodology
+              Find your airline
             </Link>
           </div>
         </div>
@@ -82,10 +89,10 @@ export default function HomePage() {
       <section className="my-16">
         <div className="mb-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-900">
-            Popular reference topics
+            Start with the cost decision
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
-            Start with the topic that matches the fee or fare restriction you are trying to verify.
+            Choose the fee, allowance, or fare restriction that could change which flight is actually cheaper.
           </p>
         </div>
 
@@ -200,42 +207,26 @@ export default function HomePage() {
         <UnifiedBaggageComparison />
       </section>
 
-      <section className="mb-16 rounded-2xl border border-sky-200 bg-sky-50 p-6">
-        <div className="text-xs font-bold uppercase tracking-widest text-sky-800">
-          International trip prep
-        </div>
-        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900">
-          Avoid landing without data
-        </h2>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
-          For international flights, a travel eSIM is worth considering when you need maps,
-          rideshare, lodging messages, or airline rebooking tools immediately after arrival.
-        </p>
-        <Link href="/guides/travel-esims" className="mt-4 inline-block font-bold text-sky-900 underline">
-          Check the travel eSIM decision guide
-        </Link>
-      </section>
-
       <section className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
           <div className="mb-2 text-lg font-bold text-slate-900">What this site is</div>
           <div className="text-sm leading-relaxed text-slate-600">
-            A structured airline policy reference: published fees where available, plus route,
-            fare, and baggage context that changes how those fees apply.
+            A decision engine built on structured airline-policy records. It connects published
+            rules to the fare and baggage choices that change the real trip price.
           </div>
         </div>
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
           <div className="mb-2 text-lg font-bold text-slate-900">What you get</div>
           <div className="text-sm leading-relaxed text-slate-600">
-            Fee tables, carry-on and baggage references, fare-restriction guides, and bag-fee
-            math.
+            Official-source records, practical interpretation, and deterministic calculators that
+            show when an apparently cheaper fare loses after add-ons.
           </div>
         </div>
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
           <div className="mb-2 text-lg font-bold text-slate-900">What we do not do</div>
           <div className="text-sm leading-relaxed text-slate-600">
-            No legal guidance. When we cite fees, we link to the carrier-published source where the
-            underlying fee or rule is published.
+            We do not invent one universal price when the airline prices by route, fare, currency,
+            or booking channel. Those cases remain labeled for itinerary lookup.
           </div>
         </div>
       </section>
@@ -243,9 +234,9 @@ export default function HomePage() {
       <section className="border-t border-slate-100 pt-12">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="text-3xl font-black tracking-tight text-slate-900">Airline directory</h2>
+            <h2 className="text-3xl font-black tracking-tight text-slate-900">Priority airline pages</h2>
             <p className="mt-1 text-slate-500">
-              A sample of the {airlines.length} indexed carriers.
+              Start with frequently compared U.S., low-cost, and international baggage models.
             </p>
           </div>
           <Link href="/airlines" className="font-bold text-blue-600 hover:underline">

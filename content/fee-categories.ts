@@ -9,6 +9,7 @@ export const FEE_CATEGORIES: ReadonlyArray<FeeCategory> = Object.freeze([
   // Added: present in data + should have category pages
   { key: "overweight_baggage", label: "Overweight baggage" },
   { key: "oversize_baggage", label: "Oversize baggage" },
+  { key: "sports_equipment", label: "Sports equipment" },
 
   { key: "seat_selection", label: "Seat selection" },
   { key: "change_cancellation", label: "Change / cancellation" },
