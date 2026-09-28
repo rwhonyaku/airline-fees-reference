@@ -3,7 +3,6 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { TrueTripCostCalculator } from "@/components/TrueTripCostCalculator";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
-import { findUniversalCheckedBagFeeUsd } from "@/lib/bag-cost-calculator";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -18,8 +17,15 @@ export default function TrueTripCostPage() {
     .map((airline) => ({
       slug: airline.slug,
       name: airline.name,
-      firstBagUsd: findUniversalCheckedBagFeeUsd(airline.fees, 1),
-      secondBagUsd: findUniversalCheckedBagFeeUsd(airline.fees, 2),
+      checkedBagCoverage: airline.fees.some((fee) => fee.category === "checked_baggage"),
+      carryOnCoverage: airline.fees.some((fee) => fee.category === "carry_on" || fee.category === "personal_item"),
+      seatCoverage: airline.fees.some((fee) => fee.category === "seat_selection"),
+      lastVerified: airline.fees
+        .filter((fee) => fee.category === "checked_baggage" || fee.category === "carry_on" || fee.category === "personal_item" || fee.category === "seat_selection")
+        .map((fee) => fee.last_verified)
+        .filter((date): date is string => typeof date === "string")
+        .sort()
+        .at(-1) ?? null,
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -44,14 +50,14 @@ export default function TrueTripCostPage() {
     <JsonLd data={{ "@context": "https://schema.org", "@type": "WebApplication", name: "True Trip Cost Calculator", url: canonical("/tools/true-trip-cost"), applicationCategory: "TravelApplication", operatingSystem: "Any" }} />
     <header className="grid gap-3">
       <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Flight comparison tool</div>
-      <h1 className="text-4xl font-black tracking-tight">Compare the true cost of two flights</h1>
-      <p className="max-w-3xl leading-relaxed text-slate-700">Enter two fares you found, then add the bags, seats, and extras your trip actually needs. The calculator shows which option costs less for the whole party.</p>
+      <h1 className="text-4xl font-black tracking-tight">Compare the true cost of competing flights</h1>
+      <p className="max-w-3xl leading-relaxed text-slate-700">Enter two to four fares you found, then add the bags, seats, and extras your trip actually needs. The calculator shows which option costs less for the whole party.</p>
     </header>
     <TrueTripCostCalculator airlines={airlines} comparisonPresets={comparisonPresets} />
     <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
       <h2 className="text-xl font-black text-slate-950">Before you trust the total</h2>
-      <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. If a bag price cannot be determined without your route or fare, the calculator will ask for it instead of treating the bag as free.</p>
-      <p className="mt-3">Select “included or waived” only when your fare, cabin, status, or card benefit covers the bags shown. For roundtrips, the calculator assumes the same fee applies in both directions.</p>
+      <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. Published policy records establish what the airline charges for, but route-, fare-, timing-, weight-, and currency-dependent prices are not silently converted into a universal fee.</p>
+      <p className="mt-3">Select “included or waived” only when your fare, cabin, status, or card benefit covers the bags shown. For roundtrips, per-direction carry-on and seat inputs are applied in both directions; enter the checked-bag total exactly as shown for the whole itinerary.</p>
       <div className="mt-4 flex flex-wrap gap-4 font-bold text-blue-700 underline"><Link href="/fees/checked_baggage">Checked baggage reference</Link><Link href="/fees/carry_on">Carry-on reference</Link><Link href="/methodology">Data methodology</Link></div>
     </section>
   </main>;
