@@ -8,8 +8,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: Singapore Airlines baggage depends on cabin, fare, PPS/KrisFlyer/Star Alliance status, weight versus piece concept, Canada/U.S. routing, interline most-significant-carrier rules, and pre-purchase timing.",
+    "last_full_review": "2026-09-28",
+    "notes": "Cabin and checked allowances, weight-versus-piece treatment, interline rules, and advance-purchase timing were rechecked 2026-09-28. Singapore Airlines baggage depends on cabin, fare, status, Canada/U.S. routing, and the carrier whose policy applies.",
     "next_review_due": "2026-11-23"
   },
   "fees": [
@@ -22,7 +22,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/carry-on/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Carry-on is cabin-driven, not a flat fee. Oversize or overweight cabin bags can be checked and then count against the checked baggage allowance."
@@ -37,7 +37,7 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.singaporeair.com/en_UK/sg/travel-info/baggage/checked-baggage/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "The key traveler question is not whether Singapore includes baggage, but which concept applies: weight-based allowance outside North America, piece-based allowance for Canada/U.S. itineraries."
@@ -52,10 +52,10 @@
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.singaporeair.com/en_UK/us/travel-info/baggage/additional-baggage-charges/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Published tables use regional bands. Airport weight-concept pricing starts at USD 8/kg on the lowest Singapore-Band 1 pairing; piece-concept airport pricing is commonly USD 150+ for an extra piece, with higher bands and heavy/oversize charges."
+        "notes": "Published tables use regional bands. Eligible online purchases more than 48 hours ahead receive a 25% discount; purchases from 48 hours until 6 hours ahead receive 10%. Mixed-carrier restrictions apply."
       }
     },
     {

@@ -8,8 +8,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold pass verified EVA carry-on, personal item, checked baggage, prepaid excess baggage, airport/gate carry-on enforcement, sports equipment, status, seats, and change/refund caveats. Route-specific charges still depend on EVA’s calculator and the applicable baggage concept."
+    "last_full_review": "2026-09-28",
+    "notes": "Carry-on, checked-bag fare tables, status allowance, interline rules, and the new excess-baggage schedule were rechecked 2026-09-28. For travel on or after 2026-09-29, EVA publishes zone-based per-piece fees and a 10% prepaid discount up to 4 hours before departure; an older FAQ still shows 24 hours."
   },
   "fees": [
     {
@@ -21,7 +21,7 @@
       "region_or_route": "All routes (EVA Air-operated flights)",
       "timing": "per flight",
       "source_url": "https://www.evaair.com/en-global/fly-prepare/baggage/free-baggage/carry-on-baggage/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "EVA says carry-ons can be checked at check-in or the boarding gate if they exceed size or weight limits; extra fees can apply if checked baggage allowance is exceeded."
@@ -31,12 +31,12 @@
       "category": "checked_baggage",
       "amount": 0,
       "currency": "TWD",
-      "conditions": "Included allowance varies by long-haul vs short-haul route, cabin, fare family, ticket, and interline handling.",
+      "conditions": "Economy long-haul: Up/Standard/Basic include 2 x 23 kg, Discount 1 x 23 kg. Within Asia: Up/Standard include 2 x 23 kg, Basic/Discount 1 x 23 kg. Premium cabins differ.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "each way",
       "source_url": "https://www.evaair.com/en-ph/fly-prepare/baggage/free-baggage/checked-baggage/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "EVA’s long-haul and short-haul tables differ; use the booked ticket or EVA baggage calculator for the exact allowance."
@@ -46,15 +46,15 @@
       "category": "checked_baggage",
       "amount": "Depends on EVA baggage calculator; 10% prepaid discount may apply",
       "currency": "TWD",
-      "conditions": "Additional baggage pricing depends on route, piece/weight concept, and whether it is purchased online before departure or paid at check-in.",
+      "conditions": "Additional baggage pricing depends on route, piece weight/size, eligibility, and whether it is purchased online before departure or paid at check-in.",
       "applies_to": "All fares (where additional bags are permitted)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / airport",
       "source_url": "https://www.evaair.com/en-us/customer-services/optional-services-and-fees/",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "EVA offers prepaid excess baggage after ticketing and up to 4 hours before departure; quantities and eligibility are limited and calculator-driven."
+        "notes": "For travel on or after 2026-09-29, EVA's dated excess-baggage schedule publishes zone-based per-piece pricing and a 10% discount up to 4 hours before departure. Quantities and eligibility are limited."
       }
     },
     {
@@ -66,7 +66,7 @@
       "region_or_route": "EVA Air-operated flights",
       "timing": "each way",
       "source_url": "https://booking.evaair.com/flyeva/EVA/B2C/baggage-calculator.aspx?lang=en-global",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-28",
       "confidence": "confirmed",
       "data_quality": {
         "confidence": "confirmed",
@@ -77,17 +77,18 @@
       "category": "additional_baggage",
       "amount": "10% discount when prepaid",
       "currency": "TWD",
-      "conditions": "Prepaid excess baggage is available after ticket purchase and up to 4 hours before departure, subject to eligibility.",
+      "conditions": "For travel on or after Sep. 29, 2026, eligible prepaid excess baggage receives a 10% discount when purchased at least 4 hours before departure.",
       "applies_to": "Eligible EVA Air-operated itineraries",
       "region_or_route": "All eligible routes",
       "timing": "after ticket purchase / up to 4 hours before departure",
-      "source_url": "https://www.evaair.com/en-gb/customer-services/faq/detail.html?FaqCategories=Prepaid-Excess-Baggage",
-      "last_verified": "2026-08-23",
+      "source_url": "https://www.evaair.com/en-tw/fly-prepare/baggage/excess-baggage-and-other-optional-fees/",
+      "last_verified": "2026-09-28",
       "confidence": "confirmed",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "EVA limits prepaid purchases to 5 excess pieces per passenger; each piece follows the booked cabin’s free-bag weight limit."
-      }
+        "notes": "EVA limits prepaid purchases to 5 excess pieces per passenger; each piece follows the booked cabin's free-bag weight limit. The 4-hour rule comes from the dated schedule effective for travel on or after 2026-09-29."
+      },
+      "effective_date": "2026-09-29"
     },
     {
       "category": "sports_equipment",

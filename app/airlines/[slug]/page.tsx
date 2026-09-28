@@ -90,6 +90,21 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
     verdict:
       "Air India usually includes checked baggage, then charges excess differently by itinerary. Within India, airport excess weight is INR 800 per kg before applicable taxes; international weight-concept routes charge per kg, while piece-concept routes charge for an additional, heavy, or oversized piece.",
   },
+  lufthansa: {
+    h1: "Lufthansa baggage fees: Economy Basic, checked bags, and carry-on",
+    verdict:
+      "Lufthansa's short- and medium-haul Economy Basic fare includes only one 40 × 30 × 15 cm personal item. Other Economy fares include one 8 kg carry-on, while checked baggage depends on the route, cabin, fare, status, and ticketed allowance.",
+  },
+  "singapore-airlines": {
+    h1: "Singapore Airlines baggage allowance and excess-baggage costs",
+    verdict:
+      "Singapore Airlines uses weight allowances on routes not involving Canada or the U.S. and piece allowances to or from Canada and the U.S. The ticketed allowance—not a universal first-bag fee—is the starting point, and advance excess baggage can be 10% to 25% cheaper.",
+  },
+  "eva-air": {
+    h1: "EVA Air baggage allowance: fare, route, and extra bags",
+    verdict:
+      "EVA Air's checked allowance changes by long-haul versus intra-Asia travel and by fare family. Long-haul Economy usually includes two 23 kg pieces except Discount, while intra-Asia Basic and Discount generally include one; for travel from September 29, prepaid excess baggage is 10% less up to four hours ahead.",
+  },
   frontier: {
     h1: "Frontier baggage fees: carry-on, checked bags, and bundles",
     verdict:
@@ -370,10 +385,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main fee risk is excess baggage, not a simple first-bag charge: once you exceed the allowance attached to your route and fare, pricing moves into a route- and concept-based excess-baggage schedule.",
     },
     verificationNote:
-      "Singapore Airlines baggage, seat, change, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Singapore Airlines cabin and checked allowances, baggage-concept rules, and advance-purchase discounts were rechecked against Singapore Airlines on 2026-09-28. Other categories retain their record-level dates.",
     avoidFees: [
       "Confirm whether your itinerary uses the weight concept or piece concept before packing; the excess charge is triggered by exceeding the allowance attached to that concept.",
-      "Treat the 7 kg cabin-bag limit as real for Economy and Premium Economy. If your bag is close, moving weight into checked baggage before the airport is safer than discovering the issue at check-in.",
+      "Treat the 7 kg cabin-bag limit as real for Economy and Premium Economy. If your bag is close, move weight into the included checked allowance before reaching the airport.",
+      "If you need more checked baggage, buy it more than 48 hours before departure when eligible for the 25% discount. The discount drops to 10% from 48 hours until the six-hour cutoff.",
       "Do not assume a seat is free just because standard selection is often included. Preferred or extra-legroom seats may still price by route and fare family.",
       "Check fare conditions before buying a restrictive fare, because change and cancellation costs depend on the fare rule rather than one flat Singapore Airlines fee.",
     ],
@@ -381,12 +397,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=singapore-airlines&weight=33&size=63", label: "Excess baggage calculator" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/sizer-rules", label: "Sizer rules" },
     ],
     fareClasses: [
       {
@@ -410,28 +422,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Preferred or extra-legroom seats may cost extra on some Economy fares, with pricing depending on route and fare family.",
       },
     ],
-    scenarios: [
-      {
-        title: "Flying Economy with cabin baggage only",
-        details:
-          "The cabin allowance is one cabin bag up to 7 kg. This is a weight-sensitive cabin policy, so the risk is less about a posted carry-on fee and more about being over the cabin limit.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "There is no fixed first-bag fee shown here because Singapore Airlines usually starts from an included allowance on eligible fares. The useful question is how much your specific route and fare include.",
-      },
-      {
-        title: "Exceeding the included allowance",
-        details:
-          "Excess baggage pricing varies because Singapore Airlines may apply either weight-based or piece-based logic depending on the countries served and the ticket purchased.",
-      },
-      {
-        title: "Choosing a better seat",
-        details:
-          "Standard seat selection may be included on many fares, but preferred or extra-legroom seats can become a paid add-on on some Economy fares.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Checked baggage is included under either the weight or piece concept depending on route.",
       "Business and First Class show two cabin bags instead of the one-bag Economy and Premium Economy allowance.",
@@ -448,19 +439,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   lufthansa: {
     intro: {
       carryOn:
-        "Lufthansa includes carry-on baggage, but the cabin matters: Economy and Premium Economy get one 7 kg item, while Business and First get two 7 kg items. A small personal item is also permitted under the cabin rules.",
+        "On long-haul flights, Economy and Premium Economy include one 8 kg carry-on and Business and First include two. On short- and medium-haul flights, Economy Basic is different: it includes only one personal item unless an eligible status exception applies.",
       personalItem:
         "Lufthansa allows an additional small item, such as a slim laptop bag, alongside the main cabin baggage allowance.",
       checkedBag:
-        "Lufthansa checked baggage is fare-, cabin-, and route-dependent rather than one global first-bag price. In the U.S.-to-Germany Economy example shown here, the first 23 kg bag is free and the second bag costs USD 90.",
+        "Lufthansa checked baggage is fare-, cabin-, route-, and status-dependent rather than one global first-bag price. Economy Basic on selected European routes includes no checked bag; other tickets must be read from the booking or Lufthansa baggage calculator.",
       restrictions:
-        "Economy Light is the main restriction point: it has paid/limited rebooking treatment, and advance seat reservation fees may apply depending on fare, route, and status.",
+        "Economy Basic on selected short- and medium-haul routes is now the sharpest baggage restriction: no overhead carry-on, no checked bag, and no seat reservation are included. Economy Light is a different fare and does include one 8 kg carry-on.",
     },
     verificationNote:
-      "Lufthansa baggage, seat, change, and refund details shown here were last verified on 2025-12-24.",
+      "Lufthansa carry-on and Economy Basic baggage rules were rechecked against Lufthansa on 2026-09-28. Other baggage and fare records retain their record-level dates.",
     avoidFees: [
-      "Price the exact origin, destination, and fare family before assuming the first checked bag is included; the free first-bag example here is specifically United States to Germany in Economy.",
-      "Avoid treating Economy Light like a normal flexible fare. The example shown here has a USD 199 rebooking fee plus possible fare difference.",
+      "On selected European routes, distinguish Economy Basic from Economy Light. Basic includes only a personal item; Light includes the 8 kg overhead carry-on.",
+      "Price the exact origin, destination, and fare family before assuming a checked bag is included. The ticketed allowance is controlling.",
       "Keep Economy and Premium Economy checked bags at or below 23 kg and 158 cm total dimensions to avoid excess-baggage treatment.",
       "Use included or status-eligible seat-selection options where available instead of buying advance seat reservation by default.",
     ],
@@ -468,58 +459,33 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=lufthansa&weight=25&size=63", label: "Excess baggage calculator" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
-      { href: "/sizer-rules", label: "Sizer rules" },
     ],
     fareClasses: [
       {
-        name: "Economy Light",
+        name: "Economy Basic — selected European routes",
         details:
-          "Economy Light is the restrictive change example, with a USD 199 rebooking fee plus possible fare difference in the international example context.",
+          "Includes one personal item up to 40 × 30 × 15 cm. It does not include the 8 kg overhead carry-on, a checked bag, or seat reservation. Eligible HON Circle, Senator, and Star Alliance Gold members can receive a carry-on exception.",
       },
       {
-        name: "Economy Classic and above",
+        name: "Economy Light / Comfort / Flex",
         details:
-          "These fares can be rebooked under Lufthansa's fare rules, but the amount stays fare-rule based because fare differences and fare conditions still apply.",
+          "On short- and medium-haul flights these fares include one personal item plus one carry-on up to 8 kg and 55 × 40 × 23 cm. Checked baggage still depends on the fare and route.",
       },
       {
         name: "Economy / Premium Economy baggage",
         details:
-          "Carry-on is one 7 kg item plus a small item. Checked-bag allowance varies by fare, cabin, and route, with excess treatment above 23 kg or 158 cm total dimensions.",
+          "On long-haul flights, carry-on is one 8 kg item plus a personal item. Checked-bag allowance varies by fare, cabin, and route, with excess treatment above 23 kg or 158 cm total dimensions.",
       },
       {
         name: "Business / First",
         details:
-          "Carry-on is two 7 kg items plus the small item. Premium-cabin checked-bag fees are not reduced to one separate universal ladder here.",
+          "Carry-on is two 8 kg items plus the personal item. Premium-cabin checked-bag fees are not reduced to one universal ladder here.",
       },
     ],
-    scenarios: [
-      {
-        title: "Flying Economy from the U.S. to Germany",
-        details:
-          "The U.S.-to-Germany example shows the first checked bag up to 23 kg free and the second checked bag at USD 90, but that should not be treated as a universal Lufthansa rule for every route.",
-      },
-      {
-        title: "Booking Economy Light",
-        details:
-          "Economy Light can look cheaper until you need flexibility. The rebooking example shown here is USD 199 plus any fare difference.",
-      },
-      {
-        title: "Checking a 25 kg Economy bag",
-        details:
-          "For Economy and Premium Economy, bags above 23 kg and up to 32 kg move into excess-baggage treatment, with fees varying by route.",
-      },
-      {
-        title: "Selecting seats before check-in",
-        details:
-          "Advance seat reservation may cost extra depending on fare, route, and status, so the fee is variable rather than one flat seat-selection amount.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "The United States to Germany checked-bag amounts are examples, not a global Lufthansa checked-bag table.",
       "Bags above 32 kg are not accepted as ordinary travel baggage.",
@@ -839,38 +805,34 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "eva-air": {
     intro: {
       carryOn:
-        "EVA Air includes cabin baggage on EVA Air-operated flights: Economy shows one cabin bag up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
+        "EVA Air includes one 7 kg cabin bag in Economy and Premium Economy, or two 7 kg pieces in Royal Laurel, Premium Laurel, and Business, on EVA Air-operated flights.",
       personalItem:
         "EVA Air includes one personal item alongside the cabin bag allowance on EVA Air-operated flights.",
       checkedBag:
-        "EVA Air is mainly an included-allowance airline, not a flat first-bag-fee airline. Checked baggage is included on most eligible fares, while extra baggage is purchased separately under route-based piece or weight concept rules.",
+        "EVA Air is an included-allowance airline, but Economy allowance changes by route and fare. Long-haul Up, Standard, and Basic include two 23 kg pieces while Discount includes one; within Asia, Up and Standard include two while Basic and Discount include one.",
       restrictions:
-        "EVA Air's main restrictions are operational rather than one fixed fee ladder: cabin baggage is explicitly tied to EVA Air-operated flights, while extra baggage, seat selection, and changes all depend on route, baggage concept, or fare rules.",
+        "The main trap is assuming every Economy fare includes two bags. EVA's Discount fare cuts the long-haul allowance to one piece, while both Basic and Discount do so within Asia. Interline rules can also replace EVA's allowance.",
     },
     verificationNote:
-      "EVA Air baggage, seat, and change details shown here were last verified on 2025-12-24.",
+      "EVA Air cabin allowance, checked-bag fare tables, interline rules, and prepaid excess-baggage cutoff were rechecked against EVA Air on 2026-09-28. Other categories retain their record-level dates.",
     avoidFees: [
-      "Confirm whether your itinerary uses the piece concept or weight concept before buying extra baggage; that choice drives the excess-baggage math.",
+      "Check whether the trip is long-haul or within Asia and whether the Economy fare is Up, Standard, Basic, or Discount; that determines whether one or two checked pieces are included.",
       "Treat the Economy 7 kg cabin-bag limit as real on EVA Air-operated flights. If the bag is close, solve the weight before check-in.",
-      "For additional baggage, price the exact route before travel rather than assuming one universal TWD add-on amount.",
+      "For travel on or after September 29, 2026, price the exact route and prepay eligible excess baggage at least four hours before departure for EVA's published 10% discount.",
       "For partner-operated segments, check the operating carrier rules because this cabin-baggage guidance is limited to EVA Air-operated flights.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=eva-air&weight=33&size=63", label: "Excess baggage calculator" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/sizer-rules", label: "Sizer rules" },
     ],
     fareClasses: [
       {
         name: "Economy",
         details:
-          "Economy cabin baggage is one cabin bag up to 7 kg plus one personal item on EVA Air-operated flights. Checked baggage is still included on most eligible fares, but the actual allowance depends on route and whether the itinerary uses the piece or weight concept.",
+          "Economy cabin baggage is one bag up to 7 kg plus one personal item. Long-haul Up, Standard, and Basic include two checked pieces; Discount includes one. Within Asia, Up and Standard include two pieces while Basic and Discount include one.",
       },
       {
         name: "Premium Economy / Business",
@@ -880,7 +842,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Allowance and purchase path",
         details:
-          "The useful split on this page is between included allowance and purchased excess. Additional baggage can be bought in advance or at the airport, but pricing stays route-based rather than becoming one fixed amount.",
+          "Additional baggage is calculator-priced by route. For travel on or after September 29, 2026, EVA publishes a 10% discount for eligible purchases made at least four hours before departure. Airport and irregular-item handling can differ.",
       },
       {
         name: "Partner or non-EVA operations",
@@ -888,38 +850,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "The carry-on guidance is limited to EVA Air-operated flights. Partner-operated segments may use the operating carrier's baggage rules.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only cabin baggage",
-        details:
-          "Economy shows one cabin bag up to 7 kg plus one personal item on EVA Air-operated flights.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "There is no fixed first-bag fee shown here because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
-      },
-      {
-        title: "Buying extra baggage in advance",
-        details:
-          "Additional checked baggage is purchasable before travel or at the airport, but the amount stays route-based because there is no one universal TWD add-on figure.",
-      },
-      {
-        title: "Checking an overweight bag",
-        details:
-          "Overweight baggage is a variable airport fee that depends on route and baggage concept, up to the 32 kg acceptance limit.",
-      },
-      {
-        title: "Flying on a partner-operated itinerary",
-        details:
-          "The carry-on guidance here is limited to EVA Air-operated flights, so a partner-operated segment may follow different baggage rules than the EVA Air baseline.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Checked baggage is included on most eligible fares rather than handled as one fixed universal paid first-bag rule.",
-      "Additional baggage may be purchased in advance or at the airport where the route permits it, but no fixed extra-bag number is shown here.",
-      "Premium Economy and Business have higher cabin-baggage allowances.",
-      "No Infinity MileageLands status or co-branded-card baggage waiver is shown here for EVA Air.",
+      "Additional baggage may be purchased in advance or at the airport where the route permits it, but no fixed extra-bag number applies systemwide.",
+      "Premium Economy keeps one 7 kg cabin piece; Business-family cabins receive two pieces. The difference is cabin, not a paid carry-on product.",
+      "Infinity MileageLands Diamond, Gold, and eligible Silver members can receive one additional checked piece under EVA's published conditions.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -8791,6 +8727,142 @@ function AirIndiaBaggageDecisionChecklist() {
   );
 }
 
+function LufthansaBaggageDecisionChecklist() {
+  const cabinRules = [
+    ["Short/medium-haul Economy Basic", "Personal item only", "40 × 30 × 15 cm"],
+    ["Other short/medium-haul Economy fares", "1 carry-on + personal item", "8 kg; 55 × 40 × 23 cm"],
+    ["Long-haul Economy / Premium Economy", "1 carry-on + personal item", "8 kg; 55 × 40 × 23 cm"],
+    ["Business / First", "2 carry-ons + personal item", "8 kg per carry-on"],
+  ] as const;
+
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Lufthansa fare check
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Economy Basic and Economy Light no longer mean the same baggage allowance
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        On selected European short- and medium-haul routes, Economy Basic is personal-item-only. Economy Light, Comfort, Comfort Green, and Flex include the overhead carry-on. For checked baggage, use the allowance printed on the ticket instead of applying a route example as a universal price.
+      </p>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
+        <table className="w-full min-w-[680px] text-left text-sm">
+          <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+            <tr>
+              <th className="px-4 py-3">Trip / cabin</th>
+              <th className="px-4 py-3">Included in cabin</th>
+              <th className="px-4 py-3">Main bag limit</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-slate-700">
+            {cabinRules.map(([trip, included, limit]) => (
+              <tr key={trip}>
+                <th className="px-4 py-3 font-bold text-slate-950">{trip}</th>
+                <td className="px-4 py-3">{included}</td>
+                <td className="px-4 py-3">{limit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="block text-slate-950">Checked-bag decision</strong>
+          Economy Basic includes no checked bag. Other allowances depend on route, fare, cabin, and status; the ticket or Lufthansa baggage calculator controls.
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="block text-slate-950">Status exception</strong>
+          HON Circle, Senator, and Star Alliance Gold members can receive one carry-on with short/medium-haul Economy Basic, but ordinary customers should not assume that exception.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SingaporeAirlinesBaggageDecisionChecklist() {
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Singapore Airlines baggage concept
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Destination determines whether kilograms or pieces matter
+      </h2>
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-black text-slate-950">Except Canada and the U.S.: weight concept</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Economy Lite and Value include 25 kg; Standard and Flexi include 30 kg. Premium Economy includes 35 kg, Business 40 kg, and Suites/First 50 kg. Multiple bags are allowed as long as their combined weight stays within the allowance and no individual bag exceeds 32 kg.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-black text-slate-950">To or from Canada and the U.S.: piece concept</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Economy and Premium Economy include two pieces up to 23 kg each. Business, First, and Suites include two pieces up to 32 kg each. Each piece must remain within 158 cm total dimensions.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-slate-700">
+        <strong className="text-slate-950">The useful savings lever:</strong> eligible additional baggage purchased more than 48 hours before departure is discounted 25%. From 48 hours until six hours before departure, the discount is 10%. Mixed-carrier itineraries other than eligible Singapore Airlines/Scoot combinations may require airport purchase instead.
+      </div>
+    </section>
+  );
+}
+
+function EvaAirBaggageDecisionChecklist() {
+  const economyRules = [
+    ["Long haul", "Up / Standard / Basic", "2 × 23 kg"],
+    ["Long haul", "Discount", "1 × 23 kg"],
+    ["Within Asia", "Up / Standard", "2 × 23 kg"],
+    ["Within Asia", "Basic / Discount", "1 × 23 kg"],
+  ] as const;
+
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        EVA Air Economy allowance
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        The cheapest fare does not carry the same checked allowance on every route
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        Start with long haul versus travel within Asia, then read the fare family. This is the distinction that decides whether Economy includes one or two standard checked pieces.
+      </p>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
+        <table className="w-full min-w-[580px] text-left text-sm">
+          <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+            <tr>
+              <th className="px-4 py-3">Route group</th>
+              <th className="px-4 py-3">Economy fare</th>
+              <th className="px-4 py-3">Included checked baggage</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-slate-700">
+            {economyRules.map(([route, fare, included]) => (
+              <tr key={`${route}-${fare}`}>
+                <th className="px-4 py-3 font-bold text-slate-950">{route}</th>
+                <td className="px-4 py-3">{fare}</td>
+                <td className="px-4 py-3 font-bold">{included}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="block text-slate-950">Long haul means</strong>
+          Travel to or from the U.S., Canada, Europe, Australia, or New Zealand. Every standard Economy piece is capped at 23 kg and 158 cm.
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="block text-slate-950">Extra baggage</strong>
+          For travel on or after September 29, 2026, EVA prices excess baggage by zone and publishes a 10% discount when eligible baggage is prepaid at least four hours before departure. Mixed-carrier rules can change whose allowance applies.
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ZipairBaggageDecisionChecklist() {
   const checkedBagPrices = [
     ["Tokyo (NRT) → Los Angeles / San Francisco / San Jose", "¥7,000"],
@@ -9572,6 +9644,9 @@ function ReferenceAirlinePage({
       {slug === "easyjet" ? <EasyJetBaggageDecisionChecklist /> : null}
       {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
       {slug === "air-india" ? <AirIndiaBaggageDecisionChecklist /> : null}
+      {slug === "lufthansa" ? <LufthansaBaggageDecisionChecklist /> : null}
+      {slug === "singapore-airlines" ? <SingaporeAirlinesBaggageDecisionChecklist /> : null}
+      {slug === "eva-air" ? <EvaAirBaggageDecisionChecklist /> : null}
       {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
       {slug === "air-france" || slug === "zipair" ? <AirlineFaqBlock slug={slug} /> : null}

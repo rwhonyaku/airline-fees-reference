@@ -8,20 +8,20 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-22",
-    "notes": "Priority airline gold pass refreshed against Lufthansa current fees, baggage-and-fees, excess/sports baggage, Miles & More, infant, and fare-change sources. Key model: baggage calculator/fare-cabin-route plus status and USA/MSC rules."
+    "last_full_review": "2026-09-28",
+    "notes": "Carry-on and the new short/medium-haul Economy Basic restriction were rechecked 2026-09-28. Key model: route, fare, cabin, status, ticketed allowance, and interline rules; do not extrapolate one route example systemwide."
   },
   "fees": [
     {
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Economy and Premium Economy include 1 carry-on item up to 56 x 36 x 23 cm and 7 kg, plus a small personal item.",
-      "applies_to": "Economy / Premium Economy",
+      "conditions": "One carry-on up to 55 x 40 x 23 cm and 8 kg, plus one personal item up to 40 x 30 x 15 cm. Short/medium-haul Economy Basic is excluded.",
+      "applies_to": "Economy Light/Comfort/Flex and long-haul Economy/Premium Economy",
       "region_or_route": "All routes (rules may vary by origin)",
       "timing": "per flight",
       "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Lufthansa carry-on is cabin-driven, but local laws and aircraft/boarding constraints can still affect handling."
@@ -31,15 +31,30 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Business and First include 2 carry-on items, each up to 56 x 36 x 23 cm and 7 kg, plus a small personal item.",
+      "conditions": "Business and First include 2 carry-on items, each up to 55 x 40 x 23 cm and 8 kg, plus a personal item up to 40 x 30 x 15 cm.",
       "applies_to": "Business / First",
       "region_or_route": "All routes (rules may vary by origin)",
       "timing": "per flight",
       "source_url": "https://www.lufthansa.com/us/en/carry-on-baggage",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-28",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Lufthansa carry-on is cabin-driven, but local laws and aircraft/boarding constraints can still affect handling."
+      }
+    },
+    {
+      "category": "carry_on",
+      "amount": 0,
+      "currency": "EUR",
+      "conditions": "One personal item up to 40 x 30 x 15 cm; no overhead carry-on is included unless an eligible HON Circle, Senator, or Star Alliance Gold exception applies.",
+      "applies_to": "Economy Basic",
+      "region_or_route": "Selected short- and medium-haul routes",
+      "timing": "per flight",
+      "source_url": "https://www.lufthansa.com/sk/en/prepare-for-your-trip/travel-classes/economy-basic",
+      "last_verified": "2026-09-28",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Economy Basic is distinct from Economy Light and also excludes a checked bag and seat reservation."
       }
     },
     {
