@@ -8,8 +8,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-22",
-    "notes": "Priority airline gold pass refreshed against JetBlue legal fee table, adding-bags, card/status, and Blue Basic policy sources. Key model: peak/off-peak date bands, 24-hour savings window, route family, and card/status exemptions."
+    "last_full_review": "2026-09-27",
+    "notes": "Priority airline gold pass refreshed for JetBlue's July 2026 Base, Standard, and Flex fare structure. Key model: peak/off-peak date bands, 24-hour savings window, route family, fare tier, and card/status exemptions."
   },
   "unique_insights": {
     "traps": [
@@ -23,11 +23,11 @@
       "amount": "45-49",
       "currency": "USD",
       "conditions": "1st bag more than 24h before departure; off-peak vs peak dates change the price",
-      "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
+      "applies_to": "Main Base / Main / Main Flex / EvenMore Base / EvenMore / EvenMore Flex",
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
@@ -38,11 +38,11 @@
       "amount": "59-69",
       "currency": "USD",
       "conditions": "2nd bag more than 24h before departure; off-peak vs peak dates change the price",
-      "applies_to": "Blue / Blue Basic / Blue Extra / EvenMore",
+      "applies_to": "Main Base / Main / Main Flex / EvenMore Base / EvenMore / EvenMore Flex",
       "region_or_route": "U.S., Latin America, Caribbean, and Canada",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
@@ -53,11 +53,11 @@
       "amount": 0,
       "currency": "USD",
       "conditions": "1st checked bag included",
-      "applies_to": "Blue Plus",
-      "region_or_route": "U.S., Caribbean, Central America",
+      "applies_to": "Main / Main Flex / EvenMore / EvenMore Flex",
+      "region_or_route": "Transatlantic",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
@@ -65,14 +65,14 @@
     },
     {
       "category": "checked_baggage",
-      "amount": "59-69",
+      "amount": "109-119",
       "currency": "USD",
-      "conditions": "2nd checked bag; early purchase price varies by off-peak vs peak travel dates",
-      "applies_to": "Blue Plus",
-      "region_or_route": "U.S., Latin America, Caribbean, and Canada",
+      "conditions": "2nd checked bag; price varies by off-peak versus peak travel dates",
+      "applies_to": "Main / Main Flex / EvenMore / EvenMore Flex",
+      "region_or_route": "Transatlantic",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "JetBlue checked-bag prices depend on route family, peak/off-peak travel dates, fare family, status/card status, and whether bags are added at least 24 hours before departure."
@@ -113,16 +113,16 @@
       "category": "carry_on",
       "amount": 0,
       "currency": "USD",
-      "conditions": "One carry-on and one personal item are included on all fares, including Blue Basic since Sept. 6, 2024",
+      "conditions": "One carry-on and one personal item are included on all current fares",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-08-22",
+      "source_url": "https://www.jetblue.com/flying-with-us/our-fares",
+      "last_verified": "2026-09-27",
       "effective_date": "2024-09-06",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Blue Basic no longer blocks a normal carry-on; JetBlue’s current fee exposure is checked bags, peak dates, and Blue Basic flexibility."
+        "notes": "JetBlue's current fare structure includes a normal carry-on; the main exposure is checked bags, peak dates, and Base-fare flexibility."
       }
     },
     {
@@ -160,7 +160,7 @@
       "region_or_route": "JetBlue-operated flights",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-21",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Codeshare and partner-operated flights are excluded from the JetBlue card free-bag benefit."
@@ -175,7 +175,7 @@
       "region_or_route": "JetBlue-operated flights",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-22",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed",
       "data_quality": {
         "confidence": "confirmed",
@@ -191,7 +191,7 @@
       "region_or_route": "U.S., Latin America, Caribbean, Canada, and transatlantic routes",
       "timing": "each way",
       "source_url": "https://www.jetblue.com/legal/fees",
-      "last_verified": "2026-08-21",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -199,44 +199,44 @@
       "amount": 0,
       "currency": "USD",
       "conditions": "Standard seat selection included",
-      "applies_to": "Blue / Blue Plus / Blue Extra",
+      "applies_to": "Main / Main Flex / EvenMore / EvenMore Flex",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.jetblue.com/travel-agents/seat-assignments",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.jetblue.com/flying-with-us/our-fares",
+      "last_verified": "2026-09-27"
     },
     {
       "category": "seat_selection",
       "amount": "Depends on flight and seat type",
       "currency": "USD",
-      "conditions": "Even More Space seats; fee varies by flight",
-      "applies_to": "All fares",
+      "conditions": "Main Base advance seat selection or a paid preferred/extra-legroom seat; price varies by flight and seat",
+      "applies_to": "Main Base and eligible fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.jetblue.com/travel-agents/seat-assignments",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.jetblue.com/help/seats",
+      "last_verified": "2026-09-27"
     },
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No change or cancellation fees; fare difference may apply",
-      "applies_to": "Blue / Blue Plus / Blue Extra",
+      "conditions": "No change or cancellation fee; fare difference can apply and refund form depends on Standard versus Flex",
+      "applies_to": "Main / Main Flex / EvenMore / EvenMore Flex / Mint / Mint Flex",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/flights-terms",
+      "last_verified": "2026-09-27"
     },
     {
       "category": "change_cancellation",
-      "amount": 100,
+      "amount": 150,
       "currency": "USD",
-      "conditions": "Blue Basic cancellations are $100 per person on most routes and $200 per person on transatlantic itineraries; changes are not allowed",
-      "applies_to": "Blue Basic",
+      "conditions": "Change or cancellation fee; fare difference can apply",
+      "applies_to": "Main Base / EvenMore Base",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
-      "last_verified": "2026-05-06"
+      "source_url": "https://www.jetblue.com/legal/flights-terms",
+      "last_verified": "2026-09-27"
     },
     {
       "category": "unaccompanied_minor",

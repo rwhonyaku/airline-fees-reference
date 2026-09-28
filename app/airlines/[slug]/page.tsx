@@ -95,10 +95,45 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
     verdict:
       "Every Frontier ticket includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on and standard checked bag cost extra on Basic unless a bundle or benefit includes them; live prices vary by route, date, and when you buy.",
   },
+  ryanair: {
+    h1: "Ryanair baggage fees: small bag, Priority, and checked-bag choices",
+    verdict:
+      "Ryanair's free allowance is one 40 × 30 × 20 cm under-seat bag. If you need an overhead 10 kg bag, buy Priority & 2 Cabin Bags while it is available; if you need more weight, choose the correct 10 kg, 20 kg, or 23 kg checked product before airport or gate handling becomes the expensive path.",
+  },
+  easyjet: {
+    h1: "easyJet baggage fees: small cabin bag, large cabin bag, and hold luggage",
+    verdict:
+      "easyJet includes one 45 × 36 × 20 cm under-seat bag up to 15 kg. A 56 × 45 × 25 cm large cabin bag must be added separately or covered by an eligible Inclusive Plus or easyJet Plus benefit; arriving at the gate without the correct entitlement costs £60.",
+  },
+  spirit: {
+    h1: "Spirit Airlines fee archive and passenger refund reference",
+    verdict:
+      "Spirit Airlines ceased operations on May 2, 2026. This page preserves historical fee records for old tickets and comparisons; it must not be used to price a new trip or treated as evidence that Spirit flights are currently bookable.",
+  },
   southwest: {
     h1: "Southwest baggage fees: checked bags and free carry-on",
     verdict:
       "Southwest still includes one carry-on and one personal item, but it no longer gives every fare two free checked bags. On current U.S. Mainland Basic, Choice, and Choice Preferred bookings, the first checked bag is $45 each way and the second is $55; Choice Extra includes both.",
+  },
+  united: {
+    h1: "United Airlines baggage fees: the fare, date, and payment traps",
+    verdict:
+      "United does not have one reliable bag price for every trip. Check the fare first, because Basic Economy can restrict overhead-bin access; then check the ticket date and itinerary, because checked-bag pricing and exemptions depend on more than the airport pair alone.",
+  },
+  delta: {
+    h1: "Delta baggage fees: checked bags, Basic fares, and card exceptions",
+    verdict:
+      "Delta Basic still includes a carry-on and personal item, so the main Basic-fare trap is flexibility—not overhead-bin access. For current domestic Delta Main and Delta Comfort travel without an exception, the common first- and second-bag baseline is $45 and $55 each way.",
+  },
+  american: {
+    h1: "American Airlines baggage fees: ticket dates, Basic, and prepay prices",
+    verdict:
+      "American includes one carry-on and one personal item even on Basic Economy. The fee trap is checked baggage: current domestic and short-haul prices depend on fare family, ticket date, and whether the first two bags are paid online or at the airport.",
+  },
+  jetblue: {
+    h1: "JetBlue baggage fees: current fares, peak dates, and bag benefits",
+    verdict:
+      "JetBlue includes a carry-on on every current fare, but checked-bag costs depend on the fare family, route, travel date, and when the bag is added. Main Base and EvenMore Base also charge $150 to change or cancel, so the lowest displayed fare is not always the lowest-risk choice.",
   },
 };
 
@@ -184,6 +219,7 @@ const TARGET_REFERENCE_SLUGS = new Set([
   "frontier",
   "ryanair",
   "easyjet",
+  "spirit",
   "zipair",
 ]);
 
@@ -202,9 +238,124 @@ const DOT_REFERENCE_SLUGS = new Set([
 
 const EU261_REFERENCE_SLUGS = new Set(["aer-lingus", "air-france", "american", "british-airways", "delta", "easyjet", "iberia", "iberia-express", "jetblue", "klm", "lufthansa", "norwegian", "ryanair", "tap-air-portugal", "united", "vueling", "zipair"]);
 
-const DECISION_SCENARIO_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "zipair"]);
+const DECISION_SCENARIO_SLUGS = new Set(["zipair"]);
 
-const CARD_DECISION_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "air-canada"]);
+const CARD_DECISION_SLUGS = new Set(["united", "delta", "american", "alaska", "jetblue", "southwest", "air-canada"]);
+
+type AirlinePageArchetype = "ulcc" | "us-network" | "international-network" | "inclusive";
+
+const ULCC_AIRLINE_SLUGS = new Set([
+  "airasia",
+  "cebu-pacific",
+  "easyjet",
+  "frontier",
+  "indigo",
+  "iberia-express",
+  "jet2",
+  "jetstar",
+  "jetstar-asia",
+  "jetstar-japan",
+  "norwegian",
+  "ryanair",
+  "scoot",
+  "spicejet",
+  "spirit",
+  "vietjet-air",
+  "viva-aerobus",
+  "volaris",
+  "vueling",
+  "wizz-air",
+  "zipair",
+]);
+
+const US_NETWORK_AIRLINE_SLUGS = new Set([
+  "alaska",
+  "american",
+  "delta",
+  "jetblue",
+  "southwest",
+  "united",
+]);
+
+const INCLUSIVE_AIRLINE_SLUGS = new Set([
+  "ana",
+  "cathay-pacific",
+  "emirates",
+  "eva-air",
+  "jal",
+  "korean-air",
+  "qatar-airways",
+  "singapore-airlines",
+  "turkish-airlines",
+]);
+
+const DEEP_ANALYSIS_SLUGS = new Set([
+  "alaska",
+  "american",
+  "air-canada",
+  "air-france",
+  "air-india",
+  "delta",
+  "easyjet",
+  "frontier",
+  "ryanair",
+  "southwest",
+  "united",
+  "zipair",
+]);
+
+const REAL_WORLD_SCENARIO_SLUGS = new Set([
+  "air-france",
+  "jetblue",
+  "zipair",
+]);
+
+function getAirlinePageArchetype(slug: string): AirlinePageArchetype {
+  if (ULCC_AIRLINE_SLUGS.has(slug)) return "ulcc";
+  if (US_NETWORK_AIRLINE_SLUGS.has(slug)) return "us-network";
+  if (INCLUSIVE_AIRLINE_SLUGS.has(slug)) return "inclusive";
+  return "international-network";
+}
+
+function getSummaryLabels(archetype: AirlinePageArchetype) {
+  if (archetype === "ulcc") {
+    return {
+      eyebrow: "Where the base fare stops",
+      carryOn: "Cabin-bag trigger",
+      personalItem: "What travels free",
+      checkedBag: "Paid checked-bag model",
+      restrictions: "Highest-risk restriction",
+    };
+  }
+
+  if (archetype === "us-network") {
+    return {
+      eyebrow: "What changes the final price",
+      carryOn: "Carry-on by fare",
+      personalItem: "Personal-item baseline",
+      checkedBag: "First checked-bag baseline",
+      restrictions: "Fare, card, and status caveats",
+    };
+  }
+
+  if (archetype === "inclusive") {
+    return {
+      eyebrow: "Included allowance first",
+      carryOn: "Cabin allowance",
+      personalItem: "Additional cabin item",
+      checkedBag: "Included checked allowance",
+      restrictions: "Where excess charges begin",
+    };
+  }
+
+  return {
+    eyebrow: "Route and fare determine the answer",
+    carryOn: "Cabin allowance",
+    personalItem: "Personal-item treatment",
+    checkedBag: "Checked allowance or charge",
+    restrictions: "Route and baggage-concept limits",
+  };
+}
 
 const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "singapore-airlines": {
@@ -501,14 +652,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=southwest&travelers=2&bags=1&directions=2&trips=1&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=southwest&travelers=2&bags=1&trips=2&pay=yes", label: "Card bag-benefit calculator" },
-      { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
         {
@@ -573,7 +720,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The costly mistake is treating every kilogram and piece alike. Domestic airport excess is INR 800 per kg before applicable taxes, but piece-concept itineraries can charge separately for an extra piece, weight above 23 kg, and size above 158 cm.",
     },
     verificationNote:
-      "Air India checked-baggage allowances and excess, overweight, oversize, and prepayment rules were rechecked against Air India on 2026-09-10. Other fee rows retain their record-level verification dates.",
+      "Air India cabin baggage, checked-baggage allowances, and excess-baggage purchase rules were rechecked against Air India on 2026-09-27. Other fee rows retain their record-level verification dates.",
     avoidFees: [
       "Confirm whether the itinerary uses the piece concept or weight concept before buying extra baggage; the excess-baggage path depends on that structure.",
       "Treat the Economy 7 kg cabin-bag limit as a real packing constraint on Air India-operated flights. If the bag is close, solve the weight before the airport.",
@@ -584,12 +731,8 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=air-india&weight=33&size=63", label: "Excess baggage calculator" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/sizer-rules", label: "Sizer rules" },
     ],
     fareClasses: [
       {
@@ -613,38 +756,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "The carry-on guidance is limited to Air India-operated flights. Partner-operated segments may use the operating carrier's baggage rules.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only cabin baggage",
-        details:
-          "Economy shows one cabin bag up to 7 kg plus one personal item on Air India-operated flights.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "There is no fixed first-bag fee shown here because the usual starting point is included allowance on eligible fares. The real question becomes how much baggage the route and baggage concept include before excess pricing begins.",
-      },
-      {
-        title: "Buying extra baggage in advance",
-        details:
-          "Eligible 098-ticketed Air India itineraries can prepay extra baggage up to two hours before departure. A single bag's higher weight allowance can be purchased up to 32 kg until six hours before departure. Interline and codeshare flights do not qualify.",
-      },
-      {
-        title: "Exceeding a domestic allowance",
-        details:
-          "The current domestic airport rate is INR 800 per excess kg before applicable taxes. If the free allowance is below 25 kg, a separate piece-count limit also matters because only one checked piece is permitted.",
-      },
-      {
-        title: "Checking a heavy piece internationally",
-        details:
-          "On published piece-concept routes to or from India, a 23–32 kg piece costs USD 100 for Europe, USD 90 for Japan or Korea, USD 130 for the USA, or CAD 190 for Canada. Other international city pairs use Air India's regional matrix.",
-      },
-      {
-        title: "Flying on a partner-operated itinerary",
-        details:
-          "The carry-on guidance here is limited to Air India-operated flights, so a partner-operated segment may follow different baggage rules than the Air India baseline.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Domestic Economy allowances are fare-specific: Value and select-route Basic include 15 kg, Classic 20 kg, and Flex 25 kg.",
       "An Air India domestic segment on the same ticket as an Air India international segment receives the international allowance. Separate Air India tickets can also qualify when the connection is within 24 hours.",
@@ -671,7 +783,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic fares are the main restriction point: the checked bag fee can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
-      "Air Canada carry-on, checked-baggage, excess-baggage, and Aeroplan card-benefit claims were rechecked against Air Canada on 2026-09-09. Seat and change details retain their record-level 2026-08-23 verification dates.",
+      "Air Canada carry-on and checked-baggage claims were rechecked against Air Canada on 2026-09-27. Excess-baggage and Aeroplan card-benefit claims retain their 2026-09-09 record dates; seat and change details retain their 2026-08-23 dates.",
     avoidFees: [
       "Do not assume Standard always includes the first bag: on current short-haul fares, Basic and Standard both charge CAD/USD 45. Flex is the first of these three fare families with an included first bag.",
       "Use Air Canada's baggage calculator for the exact itinerary. The fee changes by route, fare, purchase date, and operating carrier, so a generic trip-cost calculator should not invent one universal total.",
@@ -682,17 +794,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=air-canada&travelers=2&bags=1&trips=2&pay=yes", label: "Aeroplan checked-bag benefit" },
       { href: "/tools/excess-baggage-calculator?airline=air-canada&bags=1&directions=2&weight=51&size=63", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
-      { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
-      { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
     ],
     fareClasses: [
       {
@@ -716,33 +821,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Air Canada's listed long-haul tier covers Canada or the U.S. to Africa, Asia/South Pacific, Europe, the Middle East, and South America. Other itineraries, codeshares, and tickets issued before the effective dates can produce a different answer, so the booking confirmation remains controlling.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only cabin baggage",
-        details:
-          "Check Economy Basic carefully. Some affected tickets include only one personal item, while an onward international connection can restore the standard carry-on allowance.",
-      },
-      {
-        title: "Checking one bag on a current short-haul fare",
-        details:
-          "Basic and Standard charge CAD/USD 45 each way for the first bag on fares purchased on or after April 13, 2026. Flex includes it, so compare the Flex fare premium against the roundtrip bag cost rather than assuming Standard solves the fee.",
-      },
-      {
-        title: "Checking bags on a current long-haul fare",
-        details:
-          "Basic charges CAD/USD 90 for the first bag and 120 for the second on the listed long-haul markets. Standard and Flex include the first bag but charge CAD/USD 120 for the second on fares purchased on or after May 14, 2026.",
-      },
-      {
-        title: "Checking an overweight bag",
-        details:
-          "Overweight baggage is route-based, with a CAD 100 to CAD 225 range. Bags over 32 kg are not accepted as ordinary checked baggage.",
-      },
-      {
-        title: "Changing a Basic fare after the 24-hour window",
-        details:
-          "Changes and refunds are not permitted on Basic fares after 24 hours except in qualifying circumstances.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "The published 2026 amounts apply only to the listed route groups and tickets purchased on or after their effective dates.",
       "Codeshare and interline itineraries can follow the first operating carrier's baggage rules rather than the Air Canada baseline.",
@@ -6285,90 +6364,58 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   jetblue: {
     intro: {
       carryOn:
-        "JetBlue includes one carry-on bag and one personal item even on Blue Basic, so the cabin-bag trap is not the main issue anymore.",
+        "JetBlue includes one carry-on bag and one personal item on every current fare, including Main Base and EvenMore Base. The cabin-bag allowance is not the main JetBlue fee trap.",
       personalItem:
         "A personal item is included; the practical question is whether the item fits JetBlue's under-seat expectations for the aircraft and seat area.",
       checkedBag:
-        "JetBlue checked-bag pricing is fare-, date-, and timing-sensitive. Blue Plus includes the first checked bag on the regional chart, while Blue, Blue Basic, Blue Extra, and EvenMore use paid first- and second-bag pricing that changes by peak versus off-peak travel dates and by whether the bag is added before check-in.",
+        "JetBlue checked-bag pricing is fare-, route-, date-, and timing-sensitive. On the U.S., Latin America, Caribbean, and Canada chart, the first bag is generally paid on Main and EvenMore fares unless a status, card, or premium-cabin benefit applies. Transatlantic Main and EvenMore Standard or Flex fares include the first bag, while Base fares do not.",
       restrictions:
-        "Blue Basic still includes a carry-on, but it gives up flexibility: changes are not allowed, and cancellations are listed at USD 100 per person on most North America, Central America, and Caribbean routes or USD 200 on other routes.",
+        "Main Base and EvenMore Base include cabin bags but charge USD 150 per person to change or cancel. Standard and Flex fares remove that fee, although fare differences can still apply; same-day flexibility also differs by tier.",
     },
     verificationNote:
-      "JetBlue checked-bag pricing was verified against JetBlue's optional-services fee page on 2026-07-01. Carry-on and change/cancellation details were last verified on 2026-05-06, oversize and overweight details on 2025-12-22, and seat details on 2025-12-19.",
+      "JetBlue's current fare names, checked-bag tables, carry-on inclusion, change rules, status benefits, and card exceptions were reviewed against JetBlue-published sources on 2026-09-27. JetBlue introduced the Base, Standard, and Flex structure in July 2026, so older Blue and Blue Plus labels should not be used to price a new booking.",
     avoidFees: [
-      "Add checked bags before check-in when the itinerary fits JetBlue's early-purchase chart; the page separates that timing from later airport or check-in pricing.",
-      "Compare Blue Plus against Blue or Blue Basic when one traveler is checking exactly one bag. Blue Plus can be cleaner because the first checked bag is included on the regional chart.",
-      "Do not buy Blue Basic just because the carry-on is included. If you may change or cancel, the restriction can cost more than the fare savings.",
-      "Use the peak/off-peak pricing as a real planning input. JetBlue's bag price can change because of travel dates, not only because of route or fare.",
+      "Add the first two checked bags at least 24 hours before departure when the published chart applies; JetBlue says this can save up to USD 10 per bag.",
+      "Compare a Base fare with Standard before booking when plans may change. One USD 150 change or cancellation charge can erase a small fare saving.",
+      "Check the travel dates as well as the route. JetBlue's first- and second-bag prices rise during published peak periods.",
+      "Do not assume a JetBlue-branded card always waives a bag. The recurring first-bag benefit is tied to eligible Plus or Premier cards and JetBlue-operated flights.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=jetblue&travelers=2&bags=1&directions=2&trips=1&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes", label: "Card bag-benefit calculator" },
-      { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
-      { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
       {
-        name: "Blue Basic",
+        name: "Main Base / EvenMore Base",
         details:
-          "Blue Basic includes one carry-on bag and one personal item, but changes are not allowed. Cancellation fees are the bigger trap: USD 100 on North America, Central America, and Caribbean routes, and USD 200 on other routes.",
+          "Base includes one carry-on and one personal item but charges USD 150 per person to change or cancel. Advance seat selection is not bundled. On transatlantic routes, the first checked bag is also paid.",
       },
       {
-        name: "Blue",
+        name: "Main / EvenMore",
         details:
-          "Blue has no change or cancellation fee listed, but checked bags are dynamic: the first two checked bags vary by peak versus off-peak travel dates and by whether you add them before check-in.",
+          "Standard fares have no change or cancellation fee, although a fare difference can apply. A first checked bag is paid on the regional chart but included on transatlantic itineraries; same-day changes or standby cost USD 100 where eligible.",
       },
       {
-        name: "Blue Plus / Blue Extra",
+        name: "Main Flex / EvenMore Flex",
         details:
-          "Blue Plus includes the first checked bag and then follows JetBlue's dynamic second-bag pricing. Blue Extra is grouped with the other paid-seat-included fares for standard seat selection and no change or cancellation fee.",
+          "Flex removes the change or cancellation fee and includes eligible same-day changes and standby. The checked-bag treatment still follows the route family rather than becoming universally free.",
       },
       {
-        name: "Premium seating and higher-end products",
+        name: "Mint / Mint Flex",
         details:
-          "EvenMore seats are a variable paid seat product. Mint has separate baggage treatment on JetBlue's fee page, so do not apply the Blue checked-bag ladder to Mint without checking the itinerary.",
+          "Mint includes two checked bags under the published tables. Mint and Mint Flex have separate flexibility and refund treatment, so do not apply the Main fare ladder to a premium-cabin ticket.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only cabin items",
-        details:
-          "JetBlue includes one carry-on bag and one personal item on all fares, including Blue Basic.",
-      },
-      {
-        title: "Checking one standard bag on Blue",
-        details:
-          "The first checked bag on Blue is USD 45 off-peak or USD 49 peak when added before check-in on the U.S., Latin America, Caribbean, and Canada chart.",
-      },
-      {
-        title: "Checking one standard bag on Blue Plus",
-        details:
-          "Blue Plus includes the first checked bag. The second checked bag follows the dynamic chart: USD 59 off-peak or USD 69 peak when added before check-in on the listed regional chart.",
-      },
-      {
-        title: "Checking three bags on most routes",
-        details:
-          "Within the U.S., Latin America, the Caribbean, and Canada, JetBlue lists the third checked bag at USD 200. Transatlantic third-bag pricing has its own off-peak and peak amounts.",
-      },
-      {
-        title: "Canceling a Blue Basic transatlantic itinerary",
-        details:
-          "JetBlue lists Blue Basic cancellations at USD 200 per person on transatlantic itineraries, while changes are not allowed.",
-      },
-    ],
-      exceptions: [
-      "Blue Plus includes the first checked bag on the U.S., Latin America, Caribbean, and Canada chart.",
-      "Blue, Blue Plus, and Blue Extra show no change or cancellation fee here, with fare difference still applying where relevant.",
-      "Mosaic and eligible JetBlue card benefits can change the bag math. Those benefits are referenced separately so the base fees stay readable.",
+    scenarios: [],
+    exceptions: [
+      "Mosaic 1 includes the first checked bag; Mosaic 2 through 4 include the first two under JetBlue's published benefit table.",
+      "Eligible JetBlue Plus and Premier cardmembers receive a first-bag benefit for themselves and up to three companions on JetBlue-operated flights; the no-annual-fee JetBlue Card does not publish that recurring benefit.",
+      "Overweight, oversized, and excess-piece charges are separate and can stack. Some destinations also restrict overweight bags.",
     ],
     comparisonLinks: [
       { href: "/airlines/alaska", label: "Alaska Airlines" },
@@ -6389,7 +6436,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "American's fee traps are route, fare-family, and timing based: Basic Economy can now cost more for domestic and short-haul checked bags, same-day confirmed change starts at USD 60 on eligible domestic itineraries, and seat pricing varies by product.",
     },
     verificationNote:
-      "The newest American domestic and short-haul checked-baggage facts shown here were last verified against American's checked bag policy on 2026-07-01. Carry-on, transatlantic baggage, seat, and same-day travel facts were last verified on 2025-12-22.",
+      "American's carry-on, domestic, short-haul, transatlantic, card/status, military, sports-equipment, child-travel, and Basic Economy rules shown here were reviewed through August 22, 2026. Overweight, oversize, seat, same-day, and unaccompanied-minor rows retain their separate December 2025 verification dates.",
     avoidFees: [
       "Pay for checked bags online when American offers a lower online price; the airport price is higher on the newer domestic and short-haul pricing structure.",
       "Check the ticket issue date before estimating bags. American's checked-bag pricing changes by ticketing window, fare family, and whether the bag is added online or at the airport.",
@@ -6400,17 +6447,11 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=american&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=american&travelers=2&bags=1&trips=2&pay=yes", label: "American card bag math" },
-      { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
-      { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
       {
@@ -6426,7 +6467,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Main Cabin seat products",
         details:
-          "Preferred seats and Main Cabin Extra are listed separately with variable per-segment pricing on top of the base fare.",
+          "Preferred seats and Main Cabin Extra are separate, flight-dependent purchases. A paid seat position does not by itself change the checked-bag allowance or Basic Economy restrictions.",
       },
       {
         name: "Premium cabins",
@@ -6485,7 +6526,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic Economy is the restriction product: changes and cancellations are listed as not permitted after 24 hours, advance seat assignment starts at USD 15, and preferred seating on Basic starts much higher than the regular Economy preferred-seat starting price.",
     },
     verificationNote:
-      "The newest United checked-baggage facts on this page were last verified on 2026-04-27. The seat-selection and change/cancellation facts currently shown here were last verified on 2025-12-19.",
+      "United's baggage and card/status rules shown here were reviewed through August 22, 2026. Seat-selection and change/cancellation rows retain their separate December 19, 2025 verification dates so older supporting facts are not presented as newly checked.",
     avoidFees: [
       "Prepay checked bags online when United offers an online-versus-airport difference; the airport amount is higher in the newer most-market pricing.",
       "Avoid Basic Economy when you need normal flexibility, advance seat control, or reliable cabin-bag access. The low fare can shift costs into seats and restrictions.",
@@ -6496,23 +6537,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes", label: "United card bag math" },
       { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
-      { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
       {
         name: "Basic Economy",
         details:
-          "Basic Economy is where United's fee stack starts. It allows no changes or cancellations after 24 hours, advance seat assignment starts at USD 15, and Basic preferred seating starts at USD 136.",
+          "Basic Economy is where United's fee stack starts. It can restrict full-size carry-on access and post-booking flexibility, while advance seat selection is a paid, route- and seat-map-dependent add-on.",
       },
       {
         name: "Economy (non-Basic)",
@@ -6522,7 +6557,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy Plus",
         details:
-          "Economy Plus is listed separately as a paid seat product with a range of USD 29-299 per flight, per person.",
+          "Economy Plus is a paid seat product rather than a different baggage fare family. Price it separately from the checked-bag decision instead of treating the upsell as a bag allowance.",
       },
       {
         name: "Premium cabins",
@@ -6581,7 +6616,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Delta Basic Economy is not mainly a carry-on trap. The bigger risk is flexibility: Basic change or cancellation fees differ by region, and older Basic tickets can still have stricter no-change treatment.",
     },
     verificationNote:
-      "The newest Delta checked-baggage facts on this page were last verified on 2026-05-06. The carry-on, oversize, overweight, same-day travel, and seat facts currently shown here were last verified on 2025-12-22, while the change/cancellation facts were last verified on 2025-12-19.",
+      "Delta's carry-on, checked-bag, card, status, military, and change/cancellation rules shown here were reviewed through August 22, 2026. Overweight, oversize, seat, and same-day rows retain their separate December 2025 verification dates.",
     avoidFees: [
       "Do not treat Basic Economy as a carry-on restriction; Delta's bigger Basic risk is change and cancellation flexibility.",
       "Check card, Medallion, military, and cabin exceptions before paying the domestic first-bag amount shown in the common chart.",
@@ -6592,23 +6627,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=delta&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=delta&travelers=2&bags=1&trips=2&pay=yes", label: "Delta card bag math" },
-      { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Basic Economy guide" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
-      { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
       {
         name: "Basic Economy",
         details:
-          "Basic Economy keeps the same domestic checked-bag baseline shown for non-Basic Economy, but flexibility is the catch. U.S./Canada-origin Basic fees depend on destination group, and tickets purchased before Nov. 6, 2025 can still be handled under older no-change rules.",
+          "Basic keeps the normal carry-on allowance, so flexibility is the catch. Current U.S./Canada-origin Main Basic and Comfort Basic change or cancellation fees are $99 for nearby regions and $199 for long-haul regions; older tickets can follow different treatment.",
       },
         {
           name: "Economy (non-Basic)",
@@ -6618,7 +6646,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Main Cabin seat products",
         details:
-          "Preferred seats are listed separately with variable per-segment pricing.",
+          "Preferred seats are a separate, flight-dependent purchase. Do not confuse a paid seat position with a fare upgrade that changes baggage or flexibility rules.",
       },
       {
         name: "Medallion-linked same-day products",
@@ -6677,7 +6705,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Saver is the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
     },
     verificationNote:
-      "Alaska carry-on, checked-baggage, overweight/oversize, and card-benefit claims were rechecked against Alaska-published sources on 2026-09-10. Seat, cancellation, and unaccompanied-minor details retain their record-level dates.",
+      "Alaska's current North America and Hawaii bag prices, April 10 ticket-date change, carry-on inclusion, excess-bag charges, and benefit exceptions were rechecked against Alaska-published sources on 2026-09-27. Older seat, cancellation, and child-travel records retain their individual verification dates.",
     avoidFees: [
       "Use the ticketing date first. Alaska's North America checked-bag pricing changed on April 10, 2026, so an old reservation and a new reservation can price differently.",
       "Do not treat Alaska as one domestic bag ladder. Wholly within Hawaii, First Class, and international Main Cabin examples have their own baggage treatment.",
@@ -6688,15 +6716,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked bag calculator" },
       { href: "/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes", label: "Alaska card bag math" },
-      { href: "/sizer-rules?height=22&width=14&depth=9", label: "Sizer rules" },
       { href: "/guides/airline-credit-card-baggage-benefits", label: "Credit card baggage benefits" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
       {
@@ -6720,33 +6743,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Alaska's bag pricing is not one universal domestic ladder. First Class receives two checked bags, while intrastate Hawaii and international Main Cabin examples use separate baggage treatment.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only cabin items",
-        details:
-          "For the query 'does Alaska Airlines charge for carry on,' the practical answer is no: one carry-on and one personal item are included, including on Saver.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "The first checked bag amount shown here is USD 45 each way on most North American routes ticketed on or after April 10, 2026.",
-      },
-      {
-        title: "Checking one standard bag wholly within Hawaii",
-        details:
-          "Wholly within Hawaii, the non-resident interisland example shows the first checked bag at USD 30 and the second at USD 40 for Main Cabin and Saver guests.",
-      },
-      {
-        title: "Checking multiple bags",
-        details:
-          "The third-plus checked bag amount shown here is USD 200 each way on flights ticketed on or after April 10, 2026, while earlier ticketed North American bookings remained at USD 150.",
-      },
-      {
-        title: "Checking a Main Cabin bag on an international trip",
-        details:
-          "International Main Cabin examples are not all the same: Asia shows the first and second checked bags free, Europe shows the first bag free and the second at USD 100, and Oceania shows the first and second bags free.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "All fares show a full refund when canceled within 24 hours of booking.",
       "Mileage Plan elite members, eligible co-branded cardholders, Atmos Rewards status holders, and eligible Alaska and Hawaii resident programs such as Club 49 and Huaka'i can receive baggage benefits or exceptions under Alaska's program terms.",
@@ -6774,6 +6771,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     },
     verificationNote:
       "Spirit ceased operations on May 2, 2026. The historical Spirit travel-option, carry-on, checked-bag, change/cancellation, and unaccompanied-minor details shown here were last verified on 2026-05-06. Overweight and oversize details were last verified on 2025-12-24.",
+    statusUpdate: {
+      label: "Airline no longer operating",
+      body: "Spirit cancelled all flights during its May 2, 2026 wind-down. The rows below are an archive for old-ticket, refund, and historical comparison work—not current booking guidance.",
+    },
     avoidFees: [
       "Do not use old Spirit fee math to plan a new trip. Since Spirit is no longer operating, compare replacement carriers instead.",
       "For an old disrupted Spirit booking, focus first on refund rights and the payment channel used to buy the ticket.",
@@ -6781,14 +6782,6 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       "When comparing replacement low-cost carriers, check whether the new airline prices bags by route, timing, bundle, or airport purchase.",
     ],
     relatedGuides: [
-      { href: "/fees/checked_baggage", label: "Checked baggage" },
-      { href: "/fees/carry_on", label: "Carry-on" },
-      { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
-      { href: "/tools/excess-baggage-calculator?airline=spirit&weight=51&size=62", label: "Overweight and oversize calculator" },
-      { href: "/sizer-rules", label: "Sizer rules" },
-      { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
       { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
@@ -6813,28 +6806,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Value is the fee-based change/cancellation path, while Premium Economy and Spirit First show no change or cancellation fee. Fare difference can still apply.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only a personal item",
-        details:
-          "Historically, the cleanest Spirit trip was one personal item under the seat and no paid carry-on or checked bag.",
-      },
-      {
-        title: "Adding a full-size carry-on",
-        details:
-          "On Value, the carry-on amount depended on purchase timing: online booking, online check-in, airport counter, or gate. Premium Economy and Spirit First included the carry-on.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "Value and Premium Economy use route- and timing-based checked-bag pricing, while Spirit First includes the first checked bag.",
-      },
-      {
-        title: "Checking an overweight bag",
-        details:
-          "Overweight pricing depends on how far over the limit the bag is, and the maximum accepted weight is 100 lbs.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Spirit Airlines is no longer operating scheduled flights; use this page as historical context, not current booking guidance.",
       "Premium Economy and Spirit First show no change or cancellation fee, with fare difference still possibly applying.",
@@ -6856,10 +6828,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       checkedBag:
         "Basic does not include a checked bag. A standard checked bag is limited to 40 lbs and 62 linear inches, and its base price depends on travel date and purchase timing. Overweight and oversize charges are added separately.",
       restrictions:
-        "Basic Fare and Standard use a timed change-fee ladder and a USD 99 cancellation fee, while Economy, Premium, and Business bundles show no change or cancellation fee.",
+        "For bookings made on or after September 25, 2026, Basic Fare and Standard cost USD 149 to change within 59 days of departure or to cancel. Economy Fare and Economy, Premium, or Business bundles list no change or cancellation fee, although fare differences can still apply.",
     },
     verificationNote:
-      "Frontier carry-on, checked-bag, bundle, overweight, and oversize rules were rechecked against Frontier on 2026-09-25. Change and cancellation rows retain their record-level verification dates.",
+      "Frontier carry-on, checked-bag, bundle, overweight, oversize, and current change/cancellation rules were rechecked against Frontier-published sources on 2026-09-27. Older booking-date rows remain visible because Frontier applies different change fees to earlier reservations.",
     avoidFees: [
       "Decide on bags before checkout. Frontier's carry-on and checked-bag pricing is timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
       "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; those bundles show no change or cancellation fee.",
@@ -6870,18 +6842,15 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/oversize_baggage", label: "Oversized baggage" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=frontier&weight=51&size=62", label: "Overweight and oversize calculator" },
       { href: "/sizer-rules", label: "Sizer rules" },
       { href: "/guides/basic-economy-traps", label: "Restricted fare guide" },
-      { href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" },
     ],
     fareClasses: [
       {
         name: "Basic Fare / Standard",
         details:
-          "Change pricing is USD 0 at 60 or more days before departure, USD 49 from 59 to 7 days before departure, and USD 99 at 6 days or less before departure. The cancellation fee is USD 99 per passenger, per direction.",
+          "For bookings made on or after September 25, 2026, changes remain free at least 60 days before departure but cost USD 149 within 59 days. Cancellation is USD 149 per passenger, per direction. Earlier 2026 bookings retain their older fee ladders.",
       },
       {
         name: "Economy / Premium / Business bundle",
@@ -6899,33 +6868,12 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Carry-on pricing depends on purchase timing, and checked-bag pricing depends on both route and purchase timing. That is why Frontier bag math should be done before the airport.",
       },
     ],
-    scenarios: [
-      {
-        title: "Traveling with only a personal item",
-        details:
-          "The cleanest Frontier trip is one under-seat personal item and no paid carry-on or checked bag.",
-      },
-      {
-        title: "Checking one standard bag",
-        details:
-          "A standard checked bag is capped at 40 lbs and 62 linear inches. The amount depends on travel date and purchase timing, so the Bag Price Checker or booking flow is the useful quote—not a universal first-bag fee.",
-      },
-      {
-        title: "Checking an overweight bag",
-        details:
-          "Overweight pricing is USD 75 each way for 41-50 lbs. For bookings made on or after April 4, 2026, a 51-99.99 lb bag costs USD 129 each way; older bookings retain the USD 100 tier.",
-      },
-      {
-        title: "Changing a Basic Fare itinerary close to departure",
-        details:
-          "Change pricing is USD 99 at 6 days or less before departure, including same-day changes.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Economy and Premium include a carry-on but not a checked bag; Business includes two checked bags up to 50 lbs each.",
       "Frontier checks personal-item and carry-on dimensions during boarding. An item outside the limit can trigger an additional charge.",
       "Overweight and oversize charges are separate from the route- and timing-dependent base bag price.",
-      "Basic Fare and Standard show a USD 0 change amount when the request is made 60 or more days before departure.",
+      "Basic Fare and Standard show a USD 0 change amount when the request is made 60 or more days before departure; the paid tier inside that window depends on the original booking date.",
     ],
     comparisonLinks: [
       { href: "/airlines/southwest", label: "Southwest Airlines" },
@@ -6945,7 +6893,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "The main Ryanair trap is solving the bag too late. Priority, checked bags, seats, and flight changes all have route, timing, or channel rules that can make a cheap base fare less cheap.",
     },
     verificationNote:
-      "The Ryanair carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Ryanair's small-bag allowance, Priority cabin-bag rules, current checked-bag ranges, gate handling, and excess-weight charge were rechecked against Ryanair-published sources on 2026-09-27. Seat, refund, and minor-travel records retain their individual verification dates.",
     avoidFees: [
       "Measure the under-seat bag before booking. If it cannot stay within 40 x 30 x 20 cm, compare Priority & 2 Cabin Bags against a checked-bag add-on before prices or availability change.",
       "Buy the correct bag product before the airport. Ryanair's checked-bag ranges depend on route, season, and purchase timing, while excess weight is charged per kg at the airport.",
@@ -6956,12 +6904,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=ryanair&weight=22&size=62", label: "Excess baggage calculator" },
       { href: "/sizer-rules?height=16&width=12&depth=8", label: "Sizer rules" },
       { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide" },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
@@ -6986,33 +6931,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Random seating can be free at check-in, while selected seats and flight changes are paid products with separate standard, extra-legroom, online, and airport/call-center pricing.",
       },
     ],
-    scenarios: [
-      {
-        title: "Flying with the free bag only",
-        details:
-          "The free path is one small 40 x 30 x 20 cm under-seat bag. If the bag needs the overhead bin, it is no longer the free cabin-bag path.",
-      },
-      {
-        title: "Adding an overhead cabin bag",
-        details:
-          "Priority & 2 Cabin Bags is the add-on for a 10 kg cabin bag, with pricing shown as a route- and timing-based range.",
-      },
-      {
-        title: "Checking a 20 kg bag",
-        details:
-          "The 20 kg checked-bag add-on shows a EUR 18.99 to EUR 59.99 range that varies by route, season, and purchase timing.",
-      },
-      {
-        title: "Going over the purchased allowance",
-        details:
-          "Excess baggage is charged at EUR 12 per additional kg at the airport.",
-      },
-      {
-        title: "Changing a flight",
-        details:
-          "The flight-change fee is EUR 45 online or EUR 60 at the airport or call center, per passenger, per flight.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Refunds are not permitted except for flight cancellation or qualifying circumstances.",
       "Ryanair does not offer an unaccompanied-minor service; passengers under 16 must travel with an adult aged 18 or over.",
@@ -7027,19 +6946,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   easyjet: {
     intro: {
       carryOn:
-        "easyJet includes one small under-seat cabin bag by default. The larger cabin bag is a paid add-on or comes through an eligible seat, fare, or membership path, so the cheapest fare is not automatically overhead-bin friendly.",
+        "easyJet includes one small under-seat cabin bag by default. The larger cabin bag is a paid add-on or comes through an eligible Inclusive Plus fare or easyJet Plus membership benefit, so the cheapest fare is not automatically overhead-bin friendly.",
       personalItem:
         "The included small cabin bag is 45 x 36 x 20 cm and must fit under the seat in front. That is the baseline personal-item-style allowance.",
       checkedBag:
         "easyJet checked baggage is purchased as a hold-bag allowance rather than treated as one flat first-bag fee. The 15 kg and 23 kg hold-bag ranges vary by route, season, and purchase timing; excess weight is charged per additional kg at the airport.",
       restrictions:
-        "The practical easyJet decision is whether to buy a larger cabin bag directly, get it through an eligible seat or fare path, or move the weight into a hold bag before airport pricing applies.",
+        "The practical easyJet decision is whether to buy a large cabin bag directly, use an eligible fare or membership benefit, or move the weight into a hold bag before the GBP 60 gate path applies.",
     },
     verificationNote:
-      "The easyJet carry-on, hold-bag, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "easyJet's small- and large-cabin-bag rules, GBP 60 gate charge, membership/fare benefits, hold-bag limits, and excess-weight rules were rechecked against easyJet-published sources on 2026-09-27. Older seat, change, and child-travel records retain their individual verification dates.",
     avoidFees: [
       "Start with bag size. If the trip fits inside the included 45 x 36 x 20 cm small cabin bag, the base fare can stay clean.",
-      "If you need the larger cabin bag, compare the bag add-on against Up Front or Extra Legroom seating because the seat path can include the large cabin-bag entitlement.",
+      "If you need the larger cabin bag, add it before the airport or verify that Inclusive Plus or easyJet Plus covers it. A seat location alone should not be treated as proof of a bag entitlement.",
       "Buy hold baggage before the airport when you need it. The 15 kg and 23 kg ranges vary by route, season, and purchase timing, and excess weight is a separate per-kg airport charge.",
       "Do not rely on refunds for ordinary plan changes. Tickets are not refundable except for flight cancellation or qualifying circumstances.",
     ],
@@ -7047,12 +6966,9 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/checked_baggage", label: "Checked baggage" },
       { href: "/fees/carry_on", label: "Carry-on" },
       { href: "/fees/overweight_baggage", label: "Overweight baggage" },
-      { href: "/fees/seat_selection", label: "Seat selection" },
-      { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/excess-baggage-calculator?airline=easyjet&weight=51&size=62", label: "Excess baggage calculator" },
       { href: "/sizer-rules?height=18&width=14&depth=8", label: "Sizer rules" },
       { href: "/guides/carry-on-strictness-by-airline", label: "Carry-on strictness guide" },
-      { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/passenger-rights/eu261", label: "EU261 passenger rights" },
     ],
     fareClasses: [
@@ -7064,7 +6980,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Large cabin bag path",
         details:
-          "The larger cabin bag is either purchased as an add-on or included through an eligible seat, fare, or membership path. The add-on range varies by route and timing.",
+          "The 56 x 45 x 25 cm large cabin bag is purchased as an add-on or included through an eligible Inclusive Plus fare or easyJet Plus membership benefit. Availability and prices vary by flight and timing.",
       },
       {
         name: "15 kg and 23 kg hold bags",
@@ -7077,33 +6993,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Standard seats can be free by random assignment at check-in, while Up Front and Extra Legroom seats are paid products. Flight changes are allowed for a fee plus fare difference.",
       },
     ],
-    scenarios: [
-      {
-        title: "Flying with the included small bag",
-        details:
-          "The cleanest easyJet path is one 45 x 36 x 20 cm under-seat bag and no larger cabin or hold bag.",
-      },
-      {
-        title: "Needing a larger cabin bag",
-        details:
-          "Compare the large cabin-bag add-on against Up Front or Extra Legroom seating, because eligible seat paths can include the larger cabin-bag entitlement.",
-      },
-      {
-        title: "Checking a 23 kg hold bag",
-        details:
-          "The 23 kg hold-bag add-on has a EUR 9.49 to EUR 59.99 range that varies by route, season, and purchase timing.",
-      },
-      {
-        title: "Exceeding purchased hold-bag weight",
-        details:
-          "Excess baggage is charged at EUR 12 per additional kg at the airport.",
-      },
-      {
-        title: "Changing a flight",
-        details:
-          "Flight changes are permitted for a fee plus fare difference, with the amount depending on route and timing.",
-      },
-    ],
+    scenarios: [],
     exceptions: [
       "Ticket refunds are not permitted except for flight cancellation or qualifying circumstances.",
       "easyJet does not offer an unaccompanied-minor service; passengers under 16 must travel with an adult.",
@@ -7948,13 +7838,35 @@ function getCardBenefitReference(slug: string) {
           .
         </p>
       );
-    case "southwest":
     case "jetblue":
       return (
         <p className="text-sm leading-relaxed text-slate-600">
-          For a broader comparison of published airline card checked bag benefits, see the{" "}
+          Eligible JetBlue Plus and Premier cardmembers receive a published first checked bag
+          benefit for themselves and up to three companions on the same reservation, but only on
+          JetBlue-operated flights. The no-annual-fee JetBlue Card does not publish the same
+          recurring waiver. Test repeat-trip value in the{" "}
+          <Link href="/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes" className="underline">
+            JetBlue card break-even calculator
+          </Link>{" "}
+          and verify the operating-carrier and eligibility limits in the{" "}
           <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
             airline credit card baggage benefit reference
+          </Link>
+          .
+        </p>
+      );
+    case "southwest":
+      return (
+        <p className="text-sm leading-relaxed text-slate-600">
+          Eligible Rapid Rewards primary cardmembers can receive a first-standard-bag waiver for
+          themselves and published same-reservation companions, but the second bag remains a
+          separate charge unless another fare or status benefit covers it. Test the trip in the{" "}
+          <Link href="/best-cards?airline=southwest&travelers=2&bags=1&trips=2&pay=yes" className="underline">
+            Southwest card break-even calculator
+          </Link>{" "}
+          and verify eligibility in the{" "}
+          <Link href="/guides/airline-credit-card-baggage-benefits" className="underline">
+            card baggage-benefit reference
           </Link>
           .
         </p>
@@ -8120,7 +8032,7 @@ function CardSavingsDecisionPanel({
 }
 
 function QuickSavePanel({ items }: { items: string[] }) {
-  const topItems = items.slice(0, 3);
+  const topItems = items.slice(0, 4);
 
   if (topItems.length === 0) {
     return null;
@@ -8385,6 +8297,336 @@ function AirFranceBaggagePriceChecklist() {
   );
 }
 
+function UnitedFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Is the ticket Basic Economy?",
+      answer:
+        "Do not assume the cheapest fare includes a full-size overhead-bin bag. United publishes route, Premier-status, and eligible-card exceptions, so verify the exact itinerary before relying on cabin-only travel.",
+    },
+    {
+      question: "Was the ticket bought before or after April 3, 2026?",
+      answer:
+        "The most-market Economy bag rows change at that ticket-date boundary. The newer published baseline is higher, so an older fee quote can understate the first, second, and third bag cost.",
+    },
+    {
+      question: "Can the first two bags be prepaid online?",
+      answer:
+        "For the current most-market Economy rows stored here, United charges $5 more per bag at the airport than online. Two travelers checking one bag each roundtrip can therefore give up $20 by waiting.",
+    },
+    {
+      question: "Are you relying on a United card or Premier benefit?",
+      answer:
+        "Verify the exact card, payment method, MileagePlus number, operating carrier, and same-reservation companion rules. The benefit is not a universal waiver attached to every United-branded booking.",
+    },
+    {
+      question: "Is any segment operated by United Express?",
+      answer:
+        "A bag that fits United's published allowance can still be gate-checked when the regional aircraft has limited space. Keep medication, documents, batteries, and other essentials removable.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        United booking checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Five checks determine whether the displayed fare is realistic.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=1&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Price the checked-bag pattern
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="text-blue-800 underline">
+          Compare Basic Economy restrictions
+        </Link>
+        <Link
+          href="/guides/airline-credit-card-baggage-benefits"
+          className="text-blue-800 underline"
+        >
+          Verify card-benefit conditions
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function DeltaFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Are you choosing Basic only to travel carry-on-only?",
+      answer:
+        "That is not a Delta savings tactic: Delta includes one carry-on and one personal item on Basic too. Compare Basic with Classic/Main for flexibility, seat choice, and cancellation value instead.",
+    },
+    {
+      question: "Was the domestic ticket bought before April 8, 2026?",
+      answer:
+        "Delta ties the baggage fee to the ticket-purchase date. The current common domestic baseline is $45 for the first standard bag and $55 for the second; older tickets can retain the previous amount.",
+    },
+    {
+      question: "Are you paying a third party for checked baggage?",
+      answer:
+        "Do not. Delta says third-party baggage sales are unauthorized. Add and pay for bags through Delta during check-in on delta.com, in the Fly Delta app, or at an airport kiosk.",
+    },
+    {
+      question: "Does a Delta Amex benefit actually cover this traveler?",
+      answer:
+        "The first-bag waiver can extend across the same reservation, but the newer domestic second-bag benefit applies to eligible Basic Card Members themselves. Codeshares, oversized bags, and overweight bags are not automatically covered.",
+    },
+    {
+      question: "Is the bag above 50 lb or 62 linear inches?",
+      answer:
+        "The normal $45 or $55 bag fee is no longer the whole calculation. Delta publishes separate overweight and oversize charges, and a card's standard-bag waiver does not erase those excess charges.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Delta booking checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Check the fare restriction before chasing a baggage workaround.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=delta&travelers=2&bags=1&directions=2&trips=1&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Price the domestic bag pattern
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="text-blue-800 underline">
+          Compare Basic fare restrictions
+        </Link>
+        <Link
+          href="/guides/airline-credit-card-baggage-benefits"
+          className="text-blue-800 underline"
+        >
+          Check card-benefit eligibility
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function AmericanFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Was the ticket issued on or after April 9, 2026?",
+      answer:
+        "That date starts the newer Main Cabin domestic and short-haul ladder: $45 online or $50 at the airport for bag one, and $55 online or $60 at the airport for bag two.",
+    },
+    {
+      question: "Is it Basic Economy issued on or after May 18, 2026?",
+      answer:
+        "Basic costs another $5 for the first and second bag on the covered domestic and short-haul markets. Carry-on access is still included, so compare Basic against Main using checked bags, seat rules, boarding, and flexibility—not cabin baggage alone.",
+    },
+    {
+      question: "Can you prepay the first two bags online?",
+      answer:
+        "American discounts each of the first two eligible bags by $5 when paid on aa.com or through its app. Two travelers checking one bag each roundtrip can save $20 versus airport payment.",
+    },
+    {
+      question: "Are you counting on an AAdvantage card benefit?",
+      answer:
+        "Verify the specific card and add the eligible AAdvantage number to the reservation. The common waiver is limited to qualifying domestic American or American Eagle itineraries; partner-operated codeshares and excess-size charges can fall outside it.",
+    },
+    {
+      question: "Is this international or operated on American Eagle?",
+      answer:
+        "International routes use separate allowance tables, so do not reuse the domestic ladder. On regional aircraft, limited overhead space can also force a gate check even when the carry-on meets the published size rule.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        American booking checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        The ticket date and fare family decide the bag ladder.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=american&travelers=2&bags=1&directions=2&trips=1&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Price the checked-bag pattern
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="text-blue-800 underline">
+          Compare Basic with Main
+        </Link>
+        <Link
+          href="/guides/airline-credit-card-baggage-benefits"
+          className="text-blue-800 underline"
+        >
+          Verify the card waiver
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function SouthwestFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Was the U.S. Mainland trip ticketed or changed on or after April 9, 2026?",
+      answer:
+        "Basic, Choice, and Choice Preferred then charge $45 for the first checked bag and $55 for the second, each way. Older bookings use the earlier $35 and $45 amounts.",
+    },
+    {
+      question: "Would Choice Extra cost less than the bag bill?",
+      answer:
+        "Choice Extra includes the first two checked bags. Compare the fare upgrade against the entire party's roundtrip bag total instead of assuming the cheaper displayed fare stays cheaper.",
+    },
+    {
+      question: "Are you relying on a Rapid Rewards credit card?",
+      answer:
+        "The primary cardmember and up to eight additional passengers on the same reservation can receive the first standard bag free when the Rapid Rewards number is included. The card benefit does not make the second bag free.",
+    },
+    {
+      question: "Does A-List or A-List Preferred apply?",
+      answer:
+        "A-List covers the first bag, while A-List Preferred covers the first two bags, with published same-reservation extensions. Those are different benefits and should not be modeled as one generic status waiver.",
+    },
+    {
+      question: "Is this interisland Hawaii or an overweight or oversized bag?",
+      answer:
+        "Interisland Hawaii has its own resident and nonresident table. Excess-size and excess-weight charges are added to the standard bag fee, so the $45 or $55 base amount may be only the first charge.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Southwest bag-benefit checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Southwest bag pricing is now an eligibility decision.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=southwest&travelers=2&bags=1&directions=2&trips=1&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Price the checked-bag pattern
+        </Link>
+        <Link
+          href="/best-cards?airline=southwest&travelers=2&bags=1&trips=2&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Test the card break-even
+        </Link>
+        <Link href="/guides/airline-credit-card-baggage-benefits" className="text-blue-800 underline">
+          Verify benefit conditions
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function JetBlueFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Is the fare Base, Standard, or Flex?",
+      answer:
+        "Main Base and EvenMore Base charge $150 per person to change or cancel. Standard removes that fee but charges $100 for eligible same-day changes or standby; Flex includes eligible same-day flexibility.",
+    },
+    {
+      question: "Can you add bags at least 24 hours before departure?",
+      answer:
+        "JetBlue says adding either of the first two bags at least 24 hours before departure can save up to $10 per bag. Do not wait for check-in when the bag is already certain.",
+    },
+    {
+      question: "Are the travel dates peak or off-peak?",
+      answer:
+        "On the U.S., Latin America, Caribbean, and Canada chart, the early first-bag price is $45 off-peak or $49 peak; the second is $59 or $69. The itinerary date changes the answer.",
+    },
+    {
+      question: "Does Mosaic or an eligible card apply?",
+      answer:
+        "Mosaic 1 includes the first bag; Mosaic 2–4 include the first two. Eligible Plus and Premier cards include the first bag for the cardmember and up to three companions on JetBlue-operated flights.",
+    },
+    {
+      question: "Is the itinerary transatlantic or the bag oversize?",
+      answer:
+        "Transatlantic Base fares pay for the first bag, while Main and EvenMore Standard or Flex include it. Overweight, oversize, and extra-piece charges are separate and can stack.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        JetBlue fare-and-bag checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        The fare label alone does not decide the JetBlue trip cost.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/tools/checked-baggage-calculator?airline=jetblue&travelers=2&bags=1&directions=2&trips=1&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Price the checked-bag pattern
+        </Link>
+        <Link
+          href="/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes"
+          className="text-blue-800 underline"
+        >
+          Test the card break-even
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="text-blue-800 underline">
+          Compare restricted fares
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function AirCanadaCheckedBagFeeChecklist() {
   const tiers = [
     ["Short-haul Basic", "CAD/USD 45", "CAD/USD 60", "Purchased Apr. 13, 2026 or later"],
@@ -8405,6 +8647,20 @@ function AirCanadaCheckedBagFeeChecklist() {
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
         Start with route group, fare, and purchase date. These are Air Canada&apos;s current published economy tiers; prices are per direction, shown in CAD or USD depending on departure market, and taxes may apply.
       </p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-black text-slate-950">First check the cabin-bag trap</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            Economy Basic tickets purchased on or after January 3, 2025 include only one personal item on trips within Canada or between Canada and the U.S., Mexico, Central America, or the Caribbean. A qualifying onward international connection restores one standard carry-on. Air Canada says an unentitled bag handled at the gate can cost CA/US $65–$78 including tax.
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-100 bg-white p-4">
+          <h3 className="font-black text-slate-950">Then identify whose rules apply</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            For a trip starting or ending in Canada or the U.S., Air Canada says the airline operating the first segment determines the baggage rules. On other international trips, the first carrier operating a flight between travel zones can control instead. Do this check before using the fee table.
+          </p>
+        </div>
+      </div>
       <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
         <table className="w-full min-w-[700px] text-left text-sm">
           <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
@@ -8445,6 +8701,90 @@ function AirCanadaCheckedBagFeeChecklist() {
         </Link>
         <Link href="/guides/basic-economy-traps" className="font-bold text-blue-800 underline">
           Compare Basic fare traps
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function AirIndiaBaggageDecisionChecklist() {
+  const domesticAllowances = [
+    ["Economy Value", "15 kg", "One checked piece"],
+    ["Economy Classic", "20 kg", "One checked piece"],
+    ["Economy Flex", "25 kg", "Up to two checked pieces"],
+  ] as const;
+
+  return (
+    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Air India baggage decision path
+      </div>
+      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+        Do not price Air India baggage until you know the baggage concept
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
+        Domestic tickets use a fare-specific kilogram allowance. International tickets may use either a total weight allowance or a piece allowance, so there is no honest universal “extra bag fee.” Read the allowance printed on the ticket before applying any excess rate.
+      </p>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_1.15fr]">
+        <div className="overflow-hidden rounded-xl border border-blue-100 bg-white">
+          <div className="border-b border-blue-100 px-4 py-3">
+            <h3 className="font-black text-slate-950">Domestic Economy baseline</h3>
+          </div>
+          <table className="w-full text-left text-sm">
+            <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+              <tr>
+                <th className="px-4 py-3">Fare</th>
+                <th className="px-4 py-3">Included</th>
+                <th className="px-4 py-3">Piece limit</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              {domesticAllowances.map(([fare, allowance, pieces]) => (
+                <tr key={fare}>
+                  <th className="px-4 py-3 font-bold text-slate-950">{fare}</th>
+                  <td className="whitespace-nowrap px-4 py-3">{allowance}</td>
+                  <td className="px-4 py-3">{pieces}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="border-t border-blue-100 bg-slate-50 px-4 py-3 text-xs leading-relaxed text-slate-600">
+            At the airport, Air India publishes INR 800 per excess kilogram for domestic travel, excluding applicable tax. A piece-count charge can still apply when the number of bags exceeds the allowance.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h3 className="font-black text-slate-950">If the ticket says weight concept</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Excess is charged per kilogram beyond the ticketed allowance. International per-kilogram prices vary by region; use Air India&apos;s current route matrix rather than applying the domestic INR rate.
+            </p>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h3 className="font-black text-slate-950">If the ticket says piece concept</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Extra pieces, pieces above 23 kg, and pieces above 158 cm can trigger distinct charges. One bag may therefore create more than one surcharge; no checked piece may exceed 32 kg.
+            </p>
+          </div>
+          <div className="rounded-xl border border-blue-100 bg-white p-4">
+            <h3 className="font-black text-slate-950">Prepay only when the ticket qualifies</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Air India advertises savings of up to 20% for eligible tickets beginning with 098. Extra weight or pieces can be bought up to two hours before departure; increasing one bag up to 32 kg has a six-hour cutoff. Interline and codeshare flights are excluded.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link
+          href="/tools/excess-baggage-calculator?airline=air-india&weight=33&size=63"
+          className="font-bold text-blue-800 underline"
+        >
+          Check excess-baggage risk
+        </Link>
+        <Link href="/guides/international-baggage-allowance" className="font-bold text-blue-800 underline">
+          Understand weight versus piece concept
         </Link>
       </div>
     </section>
@@ -8641,63 +8981,50 @@ function AirlineFaqBlock({ slug }: { slug: string }) {
 }
 
 function AlaskaCarryOnAndBagCheck() {
-  const currentFees = [
-    ["Most North America", "$45", "$55", "$200 each"],
-    ["Wholly within Hawaii", "$30", "$40", "Check itinerary"],
-    ["Asia, Main Cabin", "Included", "Included", "Check itinerary"],
-    ["Europe, Main Cabin", "Included", "$100", "Check itinerary"],
-    ["Oceania, Main Cabin", "Included", "Included", "Check itinerary"],
-  ] as const;
+  const checks = [
+    {
+      question: "Was the North America ticket issued before April 10, 2026?",
+      answer:
+        "Earlier tickets retain the $40 first-bag, $45 second-bag, and $150 third-plus ladder. Most tickets issued on or after April 10 use $45, $55, and $200 instead, with no online prepay discount.",
+    },
+    {
+      question: "Is the trip wholly within Hawaii or international?",
+      answer:
+        "Do not apply the North America ladder automatically. Wholly intra-Hawaii travel lists $30 and $40 for the first two bags, while Alaska publishes separate Main Cabin allowances for Asia, Europe, and Oceania.",
+    },
+    {
+      question: "Does a fare, card, status, or resident benefit cover the bag?",
+      answer:
+        "First Class, eligible Atmos status, qualifying cards, military rules, Club 49, and Huaka‘i can override the cash fee. Confirm the operating carrier and same-reservation conditions before relying on a waiver.",
+    },
+    {
+      question: "Is the bag sports equipment, overweight, or oversized?",
+      answer:
+        "Many approved sports items travel for the standard checked-bag fee with the oversize charge waived. Ordinary oversize and combined overweight-plus-oversize bags use much higher published charges.",
+    },
+  ];
 
   return (
-    <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
       <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
-        Alaska baggage answer
+        Alaska booking checklist
       </div>
-      <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
-        Most current North America tickets cost $45 for the first bag.
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Start with the ticket date—then check whether the route or benefit changes the fee.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-        For most North America flights ticketed on or after April 10, 2026, the first checked bag is
-        $45, the second is $55, and third-plus bags are $200 each way. Tickets issued earlier use the
-        former $40 / $45 / $150 ladder. Alaska no longer discounts these current fees for online or
-        mobile prepayment.
+        Saver still includes one 22 × 14 × 9 inch carry-on and one personal item. Its main tradeoff
+        is flexibility, not an automatic overhead-bin fee. Checked baggage needs the sequence below.
       </p>
-      <div className="mt-4 overflow-x-auto rounded-xl border border-blue-100 bg-white">
-        <table className="w-full min-w-[620px] text-left text-sm">
-          <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
-            <tr>
-              <th className="px-4 py-3">Route / cabin</th>
-              <th className="px-4 py-3">First bag</th>
-              <th className="px-4 py-3">Second bag</th>
-              <th className="px-4 py-3">Third+</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100 text-slate-700">
-            {currentFees.map(([route, first, second, third]) => (
-              <tr key={route}>
-                <th className="px-4 py-3 font-bold text-slate-900">{route}</th>
-                <td className="px-4 py-3">{first}</td>
-                <td className="px-4 py-3">{second}</td>
-                <td className="px-4 py-3">{third}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-2">
-        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
-          <strong className="text-slate-900">Carry-on:</strong> Saver and Main Cabin include one
-          22 × 14 × 9 inch carry-on plus one personal item. Saver boards last, so overhead space is
-          not guaranteed even though the allowance is included.
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm leading-relaxed text-slate-700">
-          <strong className="text-slate-900">Check benefits before paying:</strong> eligible Atmos
-          cards, status, military rules, Club 49, Huaka&apos;i, and First Class allowances can override
-          the standard cash fee.
-        </div>
-      </div>
-      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
         <Link href="/sizer-rules?height=22&width=14&depth=9" className="font-bold text-blue-800 underline">
           Check Alaska carry-on fit
         </Link>
@@ -8712,6 +9039,198 @@ function AlaskaCarryOnAndBagCheck() {
           className="font-bold text-blue-800 underline"
         >
           Check Alaska card break-even
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function FrontierFeeDecisionChecklist() {
+  const checks = [
+    {
+      question: "Can the trip stay personal-item-only?",
+      answer:
+        "That is Frontier's cleanest low-cost path: one item no larger than 14 × 18 × 8 inches. Frontier says it checks the included item's dimensions during boarding, so an overpacked bag is not a dependable workaround.",
+    },
+    {
+      question: "Do you need a carry-on, checked bag, and seat together?",
+      answer:
+        "Price Basic with every needed add-on, then compare the itinerary's bundle offer. Frontier publishes bags through its Bag Price Checker rather than one universal price, so the checkout comparison is the decision—not a generic national average.",
+    },
+    {
+      question: "Might the itinerary change inside 59 days?",
+      answer:
+        "For Basic or Standard bookings made on or after September 25, 2026, a change inside 59 days or a cancellation costs $149 per passenger, per direction. Economy Fare and Economy, Premium, or Business bundles list no change or cancellation fee.",
+    },
+    {
+      question: "Will the checked bag stay at or below 40 lb?",
+      answer:
+        "Frontier's standard checked-bag limit is only 40 lb. A 41–50 lb bag adds $75; a 51–99.99 lb bag adds $129 on bookings made on or after April 4, 2026, before any separate oversize charge.",
+    },
+    {
+      question: "Does a verified exception apply?",
+      answer:
+        "Eligible elite status, Frontier's qualifying card benefit, and active-duty military rules can change the bag total. Apply those benefits only when the traveler, booking, and operating-flight conditions match.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Frontier true-cost checklist
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Basic is cheapest only when the add-ons and flexibility risk stay low.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link href="/sizer-rules?height=14&width=18&depth=8" className="text-blue-800 underline">
+          Check the free personal-item fit
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?airline=frontier&weight=51&size=62"
+          className="text-blue-800 underline"
+        >
+          Check overweight exposure
+        </Link>
+        <Link href="/guides/basic-economy-traps" className="text-blue-800 underline">
+          Compare restricted fares
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function RyanairBaggageDecisionChecklist() {
+  const checks = [
+    {
+      question: "Does everything fit inside 40 × 30 × 20 cm?",
+      answer:
+        "If yes, the base fare can remain genuinely bag-fee-free. If the bag needs the overhead locker, it is not the included small-bag path, even if a retailer describes it as cabin luggage.",
+    },
+    {
+      question: "Do you need the 10 kg bag in the cabin or only at arrival?",
+      answer:
+        "Priority & 2 Cabin Bags keeps a 55 × 40 × 20 cm, 10 kg bag onboard. The 10 kg Check-in Bag goes through bag drop and the hold. Compare price, availability, liquids, and carousel time before choosing.",
+    },
+    {
+      question: "Would 20 kg or 23 kg prevent excess-weight charges?",
+      answer:
+        "Ryanair sells distinct 10 kg, 20 kg, and 23 kg checked products. Excess weight is €13/£13 per kilogram, so buying too little allowance can be worse than selecting the correct product initially.",
+    },
+    {
+      question: "Are you leaving the bag decision until the airport?",
+      answer:
+        "That is the high-risk path. A non-Priority cabin-sized bag can be refused or placed in the hold for a gate fee, and airport checked-bag pricing is higher than the published online range.",
+    },
+    {
+      question: "Could the itinerary itself change?",
+      answer:
+        "Ryanair charges per passenger, per flight, plus any fare difference. The published online change fee is lower than the airport or call-centre path, and ordinary voluntary refunds are not available.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        Ryanair baggage decision
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Choose the bag product before the airport—not after the sizer check.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link
+          href="/sizer-rules?height=16&width=12&depth=8"
+          className="text-blue-800 underline"
+        >
+          Check the small-bag fit
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?airline=ryanair&weight=22&size=62"
+          className="text-blue-800 underline"
+        >
+          Check excess-weight exposure
+        </Link>
+        <Link href="/guides/carry-on-strictness-by-airline" className="text-blue-800 underline">
+          Review carry-on enforcement
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function EasyJetBaggageDecisionChecklist() {
+  const checks = [
+    {
+      question: "Does the bag fit 45 × 36 × 20 cm?",
+      answer:
+        "Every fare includes one small cabin bag up to 15 kg, but it must fit under the seat and the traveler must be able to lift it. A normal roller may exceed the free size even when it is light enough.",
+    },
+    {
+      question: "Do you need a 56 × 45 × 25 cm overhead bag?",
+      answer:
+        "Add the large cabin bag to the booking, or confirm that Inclusive Plus or easyJet Plus supplies the entitlement. Prices and availability vary by flight; the airport path costs £60.",
+    },
+    {
+      question: "Would a 15 kg hold bag be enough?",
+      answer:
+        "The 15 kg option is online-only. The standard 23 kg hold bag has a separate route- and timing-dependent price, and buying it at bag drop is a different airport-priced path.",
+    },
+    {
+      question: "Could you exceed the purchased hold weight?",
+      answer:
+        "Extra weight can be bought online in 3 kg increments up to 32 kg per bag. At the airport, excess weight costs £12 per kilogram, so a realistic advance allowance usually beats improvising at bag drop.",
+    },
+    {
+      question: "Are you relying on seat assignment for the bag?",
+      answer:
+        "Do not infer a large-bag entitlement from receiving an Up Front or Extra Legroom seat. The current policy ties the bag to an added product, Inclusive Plus, or eligible easyJet Plus treatment.",
+    },
+  ];
+
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+        easyJet baggage decision
+      </div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+        Solve cabin size first, then decide whether the extra weight belongs overhead or in the hold.
+      </h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {checks.map((check) => (
+          <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-bold text-slate-950">{check.question}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{check.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <Link href="/sizer-rules?height=18&width=14&depth=8" className="text-blue-800 underline">
+          Check the small-bag fit
+        </Link>
+        <Link
+          href="/tools/excess-baggage-calculator?airline=easyjet&weight=25&size=62"
+          className="text-blue-800 underline"
+        >
+          Check excess-weight exposure
+        </Link>
+        <Link href="/guides/carry-on-strictness-by-airline" className="text-blue-800 underline">
+          Review carry-on enforcement
         </Link>
       </div>
     </section>
@@ -8744,37 +9263,6 @@ function getDefaultAvoidFeeAdvice(slug: string, airlineName: string): string[] {
   }
 
   return advice;
-}
-
-function getDefaultRelatedGuides(slug: string): ReferenceLink[] {
-  const guides: ReferenceLink[] = [
-    { href: "/fees/checked_baggage", label: "Checked baggage" },
-    { href: "/fees/carry_on", label: "Carry-on" },
-    { href: "/fees/seat_selection", label: "Seat selection" },
-    { href: "/fees/change_cancellation", label: "Change and cancellation" },
-    { href: "/sizer-rules", label: "Sizer rules" },
-  ];
-
-  if (["american", "delta", "united", "air-canada", "jetblue", "southwest"].includes(slug)) {
-    guides.push({ href: "/guides/basic-economy-traps", label: "Basic Economy guide" });
-  }
-
-  if (["american", "delta", "united", "alaska", "jetblue", "southwest"].includes(slug)) {
-    guides.push({
-      href: "/guides/airline-credit-card-baggage-benefits",
-      label: "Credit card baggage benefits",
-    });
-  }
-
-  if (hasDotReference(slug)) {
-    guides.push({ href: "/passenger-rights/us-dot-refund", label: "U.S. DOT refund rights" });
-  }
-
-  if (hasEu261Reference(slug)) {
-    guides.push({ href: "/passenger-rights/eu261", label: "EU261 passenger rights" });
-  }
-
-  return guides;
 }
 
 function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: string): Metadata {
@@ -8943,9 +9431,23 @@ function ReferenceAirlinePage({
   const changeRows = getRowsByCategory(fees, "change_cancellation");
   const sameDayChangeRows = getRowsByCategory(fees, "same_day_change");
   const sameDayStandbyRows = getRowsByCategory(fees, "same_day_standby");
-  const avoidFeeAdvice = content.avoidFees ?? getDefaultAvoidFeeAdvice(slug, airline.name);
-  const relatedGuides = content.relatedGuides ?? getDefaultRelatedGuides(slug);
+  const avoidFeeAdvice = content.avoidFees ?? [];
+  const relatedGuides = content.relatedGuides ?? [];
   const numericCheckedBagFees = getNumericCheckedBagFees(fees);
+  const changeAndSameDayRows = [...changeRows, ...sameDayChangeRows, ...sameDayStandbyRows];
+  const comparisonPeerSlugs = airlineSlugsFromLinks(content.comparisonLinks);
+  const hasCoreFeeData =
+    carryOnRows.length > 0 ||
+    checkedRows.length > 0 ||
+    overweightRows.length > 0 ||
+    oversizeRows.length > 0 ||
+    seatRows.length > 0 ||
+    changeAndSameDayRows.length > 0;
+  const archetype = getAirlinePageArchetype(slug);
+  const summaryLabels = getSummaryLabels(archetype);
+  const isActiveAirline = airline.data_quality?.status !== "ceased_operations";
+  const showDeepAnalysis = isActiveAirline && DEEP_ANALYSIS_SLUGS.has(slug);
+  const hasUsableBagEstimate = isActiveAirline && numericCheckedBagFees.length > 0;
   const faqJsonLd = airlineFaqJsonLd(slug);
   const searchEntryCopy = SEARCH_ENTRY_COPY[slug];
 
@@ -9001,30 +9503,30 @@ function ReferenceAirlinePage({
         ) : (
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
             <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-              Answer-first summary
+              {summaryLabels.eyebrow}
             </div>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Carry-on allowance
+                  {summaryLabels.carryOn}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.carryOn)}</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Personal item rules
+                  {summaryLabels.personalItem}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.personalItem)}</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Checked bag baseline
+                  {summaryLabels.checkedBag}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.checkedBag)}</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Notable restrictions
+                  {summaryLabels.restrictions}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{readerCopy(content.intro.restrictions)}</p>
               </div>
@@ -9032,16 +9534,18 @@ function ReferenceAirlinePage({
           </div>
         )}
 
-        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-          <BagCostTeaser
-            slug={slug}
-            airlineName={airline.name}
-            feeByBagOrdinal={numericCheckedBagFees}
-          />
-          <QuickSavePanel items={avoidFeeAdvice} />
-        </div>
-
-        <CompareNextPanel links={content.comparisonLinks} />
+        {hasUsableBagEstimate || avoidFeeAdvice.length > 0 ? (
+          <div className={`grid gap-4 ${hasUsableBagEstimate && avoidFeeAdvice.length > 0 ? "lg:grid-cols-[1.05fr_0.95fr]" : ""}`}>
+            {hasUsableBagEstimate ? (
+              <BagCostTeaser
+                slug={slug}
+                airlineName={airline.name}
+                feeByBagOrdinal={numericCheckedBagFees}
+              />
+            ) : null}
+            {avoidFeeAdvice.length > 0 ? <QuickSavePanel items={avoidFeeAdvice} /> : null}
+          </div>
+        ) : null}
       </header>
 
       {content.verificationNote ? (
@@ -9058,36 +9562,55 @@ function ReferenceAirlinePage({
         </section>
       ) : null}
 
+      {slug === "united" ? <UnitedFeeDecisionChecklist /> : null}
+      {slug === "delta" ? <DeltaFeeDecisionChecklist /> : null}
+      {slug === "american" ? <AmericanFeeDecisionChecklist /> : null}
+      {slug === "southwest" ? <SouthwestFeeDecisionChecklist /> : null}
+      {slug === "jetblue" ? <JetBlueFeeDecisionChecklist /> : null}
+      {slug === "frontier" ? <FrontierFeeDecisionChecklist /> : null}
+      {slug === "ryanair" ? <RyanairBaggageDecisionChecklist /> : null}
+      {slug === "easyjet" ? <EasyJetBaggageDecisionChecklist /> : null}
       {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
+      {slug === "air-india" ? <AirIndiaBaggageDecisionChecklist /> : null}
       {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
       {slug === "air-france" || slug === "zipair" ? <AirlineFaqBlock slug={slug} /> : null}
 
-      <BaggageDecisionWidget
-        airlineSlug={slug}
-        airlineName={airline.name}
-        feeByBagOrdinal={numericCheckedBagFees}
-      />
+      {hasUsableBagEstimate ? (
+        <BaggageDecisionWidget
+          airlineSlug={slug}
+          airlineName={airline.name}
+          feeByBagOrdinal={numericCheckedBagFees}
+        />
+      ) : null}
 
       <CardSavingsDecisionPanel slug={slug} airlineName={airline.name} />
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
 
-      <UnifiedBaggageComparison
-        focusSlug={slug}
-        peerSlugs={airlineSlugsFromLinks(content.comparisonLinks)}
-        compact
-      />
+      {showDeepAnalysis && comparisonPeerSlugs.length > 0 ? (
+        <UnifiedBaggageComparison
+          focusSlug={slug}
+          peerSlugs={comparisonPeerSlugs}
+          compact
+        />
+      ) : null}
 
-      <section className="space-y-8">
+      {hasCoreFeeData ? <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
           <h2 className="text-2xl font-bold text-slate-900">Core fee breakdown</h2>
           <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
-            Published fees below are grouped by fee type and keep the route, fare, and timing limits that matter for booking.
+            {archetype === "ulcc"
+              ? "Start with what the base fare excludes, then check how purchase timing, bag size, and weight change the price."
+              : archetype === "us-network"
+                ? "Published fees below preserve the fare, route, card, status, and timing conditions that can change the amount."
+                : archetype === "inclusive"
+                  ? "Start with the included allowance. The fee risk begins when the itinerary, cabin, weight, or piece limit is exceeded."
+                  : "International allowances and charges often depend on route, cabin, fare family, and whether the itinerary uses a weight or piece concept."}
           </p>
         </div>
 
-        <section className="space-y-3">
+        {carryOnRows.length > 0 ? <section className="space-y-3">
           <h3 className="text-xl font-bold text-slate-900">Carry-on rules</h3>
           <p className="text-sm leading-relaxed text-slate-600">
             See also the broader <Link href="/fees/carry_on" className="underline">carry-on fee reference</Link>.
@@ -9103,17 +9626,10 @@ function ReferenceAirlinePage({
             rows={carryOnRows}
             emptyMessage="No dedicated carry-on fee row is shown for this airline yet."
           />
-          <CarryOnRecommendations airlineSlug={slug} airlineName={airline.name} />
-        </section>
+          {isActiveAirline ? <CarryOnRecommendations airlineSlug={slug} airlineName={airline.name} /> : null}
+        </section> : null}
 
-        <section className="space-y-3">
-          <h3 className="text-xl font-bold text-slate-900">Personal item rules</h3>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
-            {readerCopy(content.intro.personalItem)}
-          </div>
-        </section>
-
-        <section className="space-y-3">
+        {checkedRows.length > 0 ? <section className="space-y-3">
           <h3 className="text-xl font-bold text-slate-900">
             {slug === "air-france"
               ? "Air France checked baggage fees"
@@ -9124,18 +9640,21 @@ function ReferenceAirlinePage({
                   : "Checked baggage fees"}
           </h3>
           <p className="text-sm leading-relaxed text-slate-600">
-            See also the <Link href="/fees/checked_baggage" className="underline">checked baggage fee reference</Link>. For a side-by-side baseline comparison, review{" "}
-            <InlineComparisonLinks links={content.comparisonLinks} />.
+            See also the <Link href="/fees/checked_baggage" className="underline">checked baggage fee reference</Link>
+            {content.comparisonLinks.length > 0 ? (
+              <>. For a side-by-side baseline comparison, review <InlineComparisonLinks links={content.comparisonLinks} />.</>
+            ) : "."}
           </p>
           {getCardBenefitReference(slug)}
           <FeeRowsTable
             rows={checkedRows}
             emptyMessage="No checked-baggage row is shown for this airline yet."
           />
-        </section>
+        </section> : null}
 
-        <section className="grid gap-6 lg:grid-cols-2">
-          <div className="space-y-3">
+        {overweightRows.length > 0 || oversizeRows.length > 0 ? (
+        <section className={`grid gap-6 ${overweightRows.length > 0 && oversizeRows.length > 0 ? "lg:grid-cols-2" : ""}`}>
+          {overweightRows.length > 0 ? <div className="space-y-3">
             <h3 className="text-xl font-bold text-slate-900">
               {slug === "air-france"
                 ? "Air France extra and overweight baggage costs"
@@ -9149,17 +9668,18 @@ function ReferenceAirlinePage({
               rows={overweightRows}
               emptyMessage="No dedicated overweight-baggage row is shown for this airline yet."
             />
-          </div>
-          <div className="space-y-3">
+          </div> : null}
+          {oversizeRows.length > 0 ? <div className="space-y-3">
             <h3 className="text-xl font-bold text-slate-900">Oversized baggage</h3>
             <FeeRowsTable
               rows={oversizeRows}
               emptyMessage="No dedicated oversized-baggage row is shown for this airline yet."
             />
-          </div>
+          </div> : null}
         </section>
+        ) : null}
 
-        <section className="space-y-3">
+        {seatRows.length > 0 ? <section className="space-y-3">
           <h3 className="text-xl font-bold text-slate-900">Seat and fare-related fees</h3>
           <p className="text-sm leading-relaxed text-slate-600">
             See also the <Link href="/fees/seat_selection" className="underline">seat selection fee reference</Link>.
@@ -9168,9 +9688,9 @@ function ReferenceAirlinePage({
             rows={seatRows}
             emptyMessage="No dedicated seat-selection row is shown for this airline yet."
           />
-        </section>
+        </section> : null}
 
-        <section className="space-y-3">
+        {changeAndSameDayRows.length > 0 ? <section className="space-y-3">
           <h3 className="text-xl font-bold text-slate-900">Change and cancellation references</h3>
           <p className="text-sm leading-relaxed text-slate-600">
             See also the <Link href="/fees/change_cancellation" className="underline">change and cancellation fee reference</Link>.
@@ -9185,30 +9705,17 @@ function ReferenceAirlinePage({
             </p>
           ) : null}
           <FeeRowsTable
-            rows={[...changeRows, ...sameDayChangeRows, ...sameDayStandbyRows]}
+            rows={changeAndSameDayRows}
             emptyMessage="No dedicated change, cancellation, or same-day service row is shown for this airline yet."
           />
-        </section>
-      </section>
+        </section> : null}
+      </section> : null}
 
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">How to avoid paying this fee</h2>
-        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6">
-          <ul className="space-y-3 text-sm leading-relaxed text-blue-950">
-            {avoidFeeAdvice.map((item) => (
-              <li key={item} className="border-l-4 border-blue-300 pl-4">
-                {readerCopy(item)}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="space-y-4">
+      {showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Fare-class behavior</h2>
         {slug === "jetblue" ? (
           <p className="text-sm leading-relaxed text-slate-600">
-            For a broader comparison of Blue Basic against other stripped-down entry fares, see the{" "}
+            For a broader comparison of Main Base and EvenMore Base against other stripped-down entry fares, see the{" "}
             <Link href="/guides/basic-economy-traps" className="underline">
               Basic Economy traps guide
             </Link>
@@ -9232,9 +9739,9 @@ function ReferenceAirlinePage({
             </div>
           ))}
         </div>
-      </section>
+      </section> : null}
 
-      <section className="space-y-4">
+      {showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Real-world scenarios</h2>
         {hasEu261Reference(slug) ? (
           <p className="text-sm leading-relaxed text-slate-600">
@@ -9253,28 +9760,22 @@ function ReferenceAirlinePage({
             </div>
           ))}
         </div>
-      </section>
+      </section> : null}
 
-      <section className="space-y-4">
+      {travelerExceptions.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">When fees may not apply</h2>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-          {travelerExceptions.length > 0 ? (
-            <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
-              {travelerExceptions.map((item) => (
-                <li key={item} className="border-l-4 border-slate-300 pl-4">
-                  {readerCopy(item)}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm leading-relaxed text-slate-700">
-              No broadly applicable fee-waiver exception was identified in the official sources reviewed.
-            </p>
-          )}
+          <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
+            {travelerExceptions.map((item) => (
+              <li key={item} className="border-l-4 border-slate-300 pl-4">
+                {readerCopy(item)}
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
+      </section> : null}
 
-      <section className="space-y-4">
+      {content.comparisonLinks.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Compare with other airlines</h2>
         <p className="text-sm leading-relaxed text-slate-600">
           Comparison links below are limited to airlines with closely related fee structures or booking models.
@@ -9290,9 +9791,9 @@ function ReferenceAirlinePage({
             </Link>
           ))}
         </div>
-      </section>
+      </section> : null}
 
-      <section className="space-y-4">
+      {relatedGuides.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Related guides</h2>
         <div className="flex flex-wrap gap-3">
           {relatedGuides.map((link) => (
@@ -9305,7 +9806,7 @@ function ReferenceAirlinePage({
             </Link>
           ))}
         </div>
-      </section>
+      </section> : null}
 
       <div className="grid gap-8 border-t border-slate-100 pt-8 md:grid-cols-2">
         <Disclaimer />
@@ -9335,6 +9836,7 @@ function LegacyAirlinePage({
   const insightHack = airline.unique_insights?.pro_hack;
   const summaryCards = summarizeRows(fees);
   const numericCheckedBagFees = getNumericCheckedBagFees(fees);
+  const isActiveAirline = airline.data_quality?.status !== "ceased_operations";
   const authorityHighlights = strategy?.authorityHighlights ?? [];
   const peerLinks = (strategy?.relatedAirlines ?? [])
     .map((peerSlug) => getAirlineBySlug(peerSlug))
@@ -9454,19 +9956,23 @@ function LegacyAirlinePage({
         ))}
       </section>
 
-      <BaggageDecisionWidget
-        airlineSlug={slug}
-        airlineName={airline.name}
-        feeByBagOrdinal={numericCheckedBagFees}
-      />
+      {isActiveAirline && numericCheckedBagFees.length > 0 ? (
+        <BaggageDecisionWidget
+          airlineSlug={slug}
+          airlineName={airline.name}
+          feeByBagOrdinal={numericCheckedBagFees}
+        />
+      ) : null}
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
 
-      <UnifiedBaggageComparison
-        focusSlug={slug}
-        peerSlugs={peerLinks.map((peer) => peer.slug)}
-        compact
-      />
+      {isActiveAirline ? (
+        <UnifiedBaggageComparison
+          focusSlug={slug}
+          peerSlugs={peerLinks.map((peer) => peer.slug)}
+          compact
+        />
+      ) : null}
 
       <section className="grid gap-6 md:grid-cols-2">
         {hasActiveStrategyPage(slug) ? (
@@ -9650,7 +10156,7 @@ function LegacyAirlinePage({
         </div>
       </section>
 
-      <SizerCheck />
+      {isActiveAirline ? <SizerCheck /> : null}
 
       <div className="grid gap-8 border-t border-slate-100 pt-8 md:grid-cols-2">
         <Disclaimer />
@@ -9659,7 +10165,7 @@ function LegacyAirlinePage({
         </div>
       </div>
 
-      <RelatedTools slug={slug} />
+      {isActiveAirline ? <RelatedTools slug={slug} /> : null}
     </main>
   );
 }

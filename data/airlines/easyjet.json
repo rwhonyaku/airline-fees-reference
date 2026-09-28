@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: easyJet fee exposure is driven by the free small underseat bag, paid large cabin bag, route/date/timing-based hold-bag prices, airport/gate bag fees, sports-item size tiers, infant equipment allowance, and no UM service.",
+    "last_full_review": "2026-09-27",
+    "notes": "Gold refresh: easyJet fee exposure is driven by the free small underseat bag, separately booked or eligible-benefit large cabin bag, route/date/timing-based hold-bag prices, the current GBP 60 gate fee, sports-item size tiers, infant equipment allowance, and no UM service.",
     "next_review_due": "2026-11-23"
   },
   "fees": [
@@ -28,7 +28,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "easyJet’s free allowance is generous by weight but strict by size: it must fit the gauge and go under the seat."
@@ -36,32 +36,32 @@
     },
     {
       "category": "carry_on",
-      "amount": "From 5.99",
+      "amount": "Price shown for the flight",
       "currency": "GBP",
-      "conditions": "Large cabin bag price varies by route, flight, timing, availability, fare, seat, or easyJet Plus status",
-      "applies_to": "Optional add-on / seat bundle",
+      "conditions": "Large cabin bag price varies by route, flight, timing, and availability; eligible Inclusive Plus and easyJet Plus travelers have separate benefit treatment",
+      "applies_to": "Optional add-on / eligible fare or membership benefit",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bags",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Large cabin bag access can come from direct add-on, fare type, Up Front/Extra Legroom seat, or membership, and availability is not guaranteed."
+        "notes": "Large cabin bag access can come from a direct add-on, Inclusive Plus fare, or easyJet Plus membership. Availability is not guaranteed, and seat location alone should not be treated as proof of entitlement."
       }
     },
     {
       "category": "carry_on",
-      "amount": 48,
+      "amount": 60,
       "currency": "GBP",
       "conditions": "Airport/gate bag fee for non-purchased or oversized cabin bags placed in the hold",
       "applies_to": "Cabin bags larger than the free small-bag allowance",
       "region_or_route": "All routes",
       "timing": "boarding gate",
       "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "Updated from stale value: easyJet’s current fees table lists GBP 48 for the airport bag fee at the gate/airport path."
+        "notes": "easyJet's current cabin-bag page states that adding the large cabin bag at the airport costs GBP 60."
       }
     },
     {
@@ -73,7 +73,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / checkout",
       "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bags",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "easyJet Plus is a cabin-bag and seat-selection benefit rather than a checked-bag waiver."
@@ -88,7 +88,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "easyJet sells hold luggage by weight tier. The 15 kg bag is online-only; higher weights can be added in increments before travel."
@@ -103,7 +103,7 @@
       "region_or_route": "All routes",
       "timing": "airport bag drop",
       "source_url": "https://www.easyjet.com/en/terms-and-conditions/fees?sc_customer=123070591",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Updated from stale value: current easyJet table lists GBP 40 for a 23 kg hold bag at bag drop."
@@ -118,7 +118,7 @@
       "region_or_route": "All routes",
       "timing": "online before travel",
       "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/fees-charges",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -130,7 +130,7 @@
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.easyjet.com/en/help-centre/policy-terms-and-conditions/fees-charges",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {

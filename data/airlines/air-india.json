@@ -8,8 +8,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-09-10",
-    "notes": "Gold refresh: domestic allowances and excess charges were rechecked after Air India introduced its select-route Basic fare. Air India baggage depends on cabin, fare, route, weight-versus-piece concept, prepaid versus airport excess, Maharaja Club tier, sports handling, and operating carrier.",
+    "last_full_review": "2026-09-27",
+    "notes": "Air India cabin baggage, domestic allowances, and excess charges were rechecked 2026-09-27. Baggage depends on cabin, fare, route, weight-versus-piece concept, prepaid versus airport excess, Maharaja Club tier, sports handling, and operating carrier.",
     "next_review_due": "2026-12-10"
   },
   "fees": [
@@ -22,7 +22,7 @@
       "region_or_route": "All routes (Air India-operated flights)",
       "timing": "per flight",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/cabin-baggage.html",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air India publishes excess cabin-baggage charges when cabin baggage must be checked: domestic INR 3000 or international USD 75 if the combined checked allowance is exceeded."
@@ -37,7 +37,7 @@
       "region_or_route": "Within India on Air India-operated flights",
       "timing": "each way",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/checked-baggage-allowance.html",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Passengers with less than 25 kg of free allowance are limited to one checked piece; those with at least 25 kg may check two. International, interline, codeshare, and Air India Express rules can differ."
@@ -52,7 +52,7 @@
       "region_or_route": "Within India on Air India-operated flights",
       "timing": "at booking / manage booking / airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Air India publishes INR 800/kg as the domestic airport rate. Eligible 098-ticketed Air India itineraries can prepay and save up to 20%; interline and codeshare flights are excluded."
@@ -67,7 +67,7 @@
       "region_or_route": "India–Europe: USD 100; India–Japan/Korea: USD 90; India–USA: USD 130; India–Canada: CAD 190",
       "timing": "at airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "USD figures exclude applicable taxes; the CAD figure includes applicable taxes. Other international origin/destination combinations use a larger region matrix."
@@ -82,7 +82,7 @@
       "region_or_route": "Within India; international excluding Canada; Canada",
       "timing": "at airport",
       "source_url": "https://www.airindia.com/in/en/travel-information/baggage-guidelines/excess-baggage.html",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "The domestic and USD amounts exclude applicable taxes; CAD includes applicable taxes. Air India publishes separate special-baggage acceptance limits."

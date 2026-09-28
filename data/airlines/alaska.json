@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-22",
-    "notes": "Priority airline gold pass refreshed against Alaska checked-bag, optional-fee, card/status, sports-equipment, and 2026 policy-change sources. Current North America baggage tiers, carry-on, combined excess-bag charges, and card benefit were rechecked 2026-09-10; other records retain their individual dates."
+    "last_full_review": "2026-09-27",
+    "notes": "Priority airline gold pass refreshed against Alaska checked-bag, optional-fee, card/status, sports-equipment, and 2026 policy-change sources. Current North America and Hawaii baggage tiers, carry-on, combined excess-bag charges, and card benefit were rechecked 2026-09-27; other records retain their individual dates."
   },
   "fees": [
     {
@@ -87,7 +87,7 @@
       "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -102,7 +102,7 @@
       "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -117,7 +117,7 @@
       "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -132,7 +132,7 @@
       "region_or_route": "North America unless route-specific exception applies",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -147,7 +147,7 @@
       "region_or_route": "Intra-island (wholly within the state of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -162,7 +162,7 @@
       "region_or_route": "Intra-island (wholly within the state of Hawaii)",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska checked-bag pricing is source-backed but route and ticketing-date sensitive; international regions and Hawaiian/Alaska-specific programs can override the North America ladder."
@@ -267,7 +267,7 @@
       "region_or_route": "Most routes",
       "timing": "each way",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/checked-bags",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Alaska’s oversize answer is not just a standalone fee because some approved sports equipment has the oversize fee waived, while combined overweight/oversize rows have separate charges."
@@ -282,7 +282,7 @@
       "region_or_route": "North American Alaska and Hawaiian flights",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -294,7 +294,7 @@
       "region_or_route": "North American Alaska and Hawaiian flights",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -306,7 +306,7 @@
       "region_or_route": "Qualifying Alaska, Hawaiian, Horizon, and SkyWest-operated flights",
       "timing": "each way",
       "source_url": "https://news.alaskaair.com/on-the-record/update-on-bag-fees/",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Card benefit should be modeled only where the eligible cardholder, same reservation, and qualifying Alaska/Hawaiian/Horizon/SkyWest-operated flight conditions are met."
@@ -353,7 +353,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.alaskaair.com/content/travel-info/baggage/carry-on-luggage",
-      "last_verified": "2026-09-10",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Saver fare still includes normal carry-on access; Alaska’s more meaningful fee exposure is checked baggage and seat/fare flexibility."

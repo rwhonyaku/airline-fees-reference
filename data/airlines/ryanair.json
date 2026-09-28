@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-08-23",
-    "notes": "Gold refresh: Ryanair fee exposure is driven by underseat-only base fares, paid Priority/checked-bag timing, gate bag fees, family seating rules, infant equipment rules, and no unaccompanied-minor service.",
+    "last_full_review": "2026-09-27",
+    "notes": "Gold refresh: Ryanair fee exposure is driven by underseat-only base fares, paid Priority/checked-bag timing, gate bag fees, family seating rules, infant equipment rules, and no unaccompanied-minor service. Current baggage ranges and excess-weight pricing were rechecked September 27, 2026.",
     "next_review_due": "2026-11-23"
   },
   "fees": [
@@ -28,7 +28,7 @@
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://help.ryanair.com/hc/en-us/articles/12888036565521-Ryanair-s-Bag-Policy",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "The core Ryanair fee trap is assuming the free bag means normal carry-on. It is only the 40 x 30 x 20 cm underseat bag."
@@ -43,7 +43,7 @@
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Priority is both the overhead-bin entitlement and a limited-availability boarding product, so waiting can change both price and availability."
@@ -58,43 +58,43 @@
       "region_or_route": "All routes",
       "timing": "post-booking / airport",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
       "category": "checked_baggage",
-      "amount": "From 9.49 to 44.99",
+      "amount": "From 10.49 to 44.99",
       "currency": "EUR/GBP",
       "conditions": "10 kg check-in bag; price changes by route, travel date, and whether bought at booking or later",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
       "category": "checked_baggage",
-      "amount": "From 18.99 to 59.99",
+      "amount": "From 21.49 to 59.99",
       "currency": "EUR/GBP",
       "conditions": "20 kg check-in bag; up to 3 can be bought, with prices changing by route/date/timing",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
       "category": "checked_baggage",
-      "amount": "From 29.99 to 80.99",
+      "amount": "From 28.99 to 80.99",
       "currency": "EUR/GBP",
       "conditions": "23 kg check-in bag; available at booking, one per passenger, and priced per flight",
       "applies_to": "Optional add-on",
       "region_or_route": "All routes",
       "timing": "at booking",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Ryanair has separate 10, 20, and 23 kg products. The airport/gate path can be much worse than buying the correct product early."
@@ -109,7 +109,7 @@
       "region_or_route": "All routes",
       "timing": "airport / call centre / kiosk",
       "source_url": "https://help.ryanair.com/hc/en-ie/articles/12889885474705-Can-I-increase-my-baggage-allowance-and-pay-for-excess-baggage",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -121,7 +121,7 @@
       "region_or_route": "All routes",
       "timing": "boarding gate",
       "source_url": "https://www.ryanair.com/fi/en/useful-info/help-centre/terms-and-conditions/termsandconditionsar_1713394128",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
@@ -133,7 +133,7 @@
       "region_or_route": "All routes",
       "timing": "airport check-in",
       "source_url": "https://help.ryanair.com/hc/en-ie/articles/12888320768785-What-happens-if-my-bags-weigh-more-than-my-allowance-at-the-check-in-desk",
-      "last_verified": "2026-08-23",
+      "last_verified": "2026-09-27",
       "confidence": "confirmed"
     },
     {
