@@ -2,10 +2,13 @@
 import { UPDATES } from "@/content/updates";
 import { Metadata } from "next";
 import { getLatestVerifiedAcrossAirlines } from "@/lib/freshness";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Data Update Log | Airline Fees Reference",
   description: "A transparent record of all data additions, fee updates, and policy removals across our database.",
+  alternates: { canonical: canonical("/updates") },
+  robots: { index: false, follow: true },
 };
 
 export default function UpdatesPage() {

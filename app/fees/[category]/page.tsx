@@ -149,6 +149,29 @@ function getFeeFaq(category: string): Array<{ question: string; answer: string }
             "Yes. A bag can cross both weight and size thresholds, and some airlines may charge both fees or refuse very large or heavy bags as ordinary checked baggage.",
         },
       ];
+    case "sports_equipment":
+      return [
+        {
+          question: "Does sports equipment count as a normal checked bag?",
+          answer:
+            "Sometimes. An airline may count eligible, correctly packed equipment within the normal checked-bag allowance, charge the standard bag price, sell a separate sports allowance, or apply an item-specific fee. Check the exact item and route rather than assuming all sports gear receives the same treatment.",
+        },
+        {
+          question: "How much does it cost to fly with sports equipment?",
+          answer:
+            "There is no universal sports-equipment price. The cost can depend on the item, route, fare allowance, bag count, weight, dimensions, purchase timing, and whether the airline requires a separate sports-baggage product.",
+        },
+        {
+          question: "Do I need to reserve sports equipment before flying?",
+          answer:
+            "Some airlines require or recommend advance registration, especially for bicycles, boards, bulky equipment, or flights with limited hold capacity. Use the airline source in the table to confirm the deadline and acceptance conditions.",
+        },
+        {
+          question: "Can overweight or oversize charges apply to sports equipment?",
+          answer:
+            "Yes. Some published sports-equipment rules waive a particular oversize charge, while others apply normal excess-weight, excess-size, or extra-piece charges. A sports-item label alone does not prove that excess fees are waived.",
+        },
+      ];
     default:
       return [];
   }
@@ -775,6 +798,73 @@ function CarryOnAnswerBlock() {
   );
 }
 
+function SportsEquipmentAnswerBlock() {
+  return (
+    <section
+      style={{
+        border: "1px solid #dbe1ea",
+        borderRadius: 12,
+        padding: 14,
+        background: "#fff",
+        display: "grid",
+        gap: 12,
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#475569" }}>
+          Direct answer
+        </div>
+        <h2 style={{ margin: "6px 0 0", fontSize: 20 }}>What will the airline charge for sports equipment?</h2>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#334155" }}>
+        First identify the exact item. Airlines may treat eligible sports equipment as a normal checked bag, sell a separate
+        sports allowance, apply an item-specific handling fee, or require approval before accepting it. Weight, dimensions,
+        packing, route, aircraft capacity, and purchase timing can all change the answer.
+      </p>
+
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        {[
+          ["Normal allowance", "The item can use an included or paid checked-bag allowance when it meets the airline's published conditions."],
+          ["Standard bag price", "The airline charges its ordinary checked-bag price but may publish different excess-size treatment for approved equipment."],
+          ["Separate sports product", "A sports-baggage allowance or handling charge must be purchased in addition to, or instead of, ordinary baggage."],
+          ["Approval or special handling", "Large or unusual equipment may need advance notice, route confirmation, secure packing, or cargo handling."],
+        ].map(([title, body]) => (
+          <div key={title} style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
+            <div style={{ fontWeight: 800, color: "#0f172a" }}>{title}</div>
+            <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.55, color: "#475569" }}>{body}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ border: "1px solid #bfdbfe", borderRadius: 10, padding: 12, background: "#eff6ff" }}>
+        <div style={{ fontWeight: 800, color: "#1e3a8a" }}>A $0 or “within allowance” record is conditional</div>
+        <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.6, color: "#334155" }}>
+          It means the item can qualify under the stated rule—not that every bicycle, board, golf bag, ski bag, or piece of
+          diving equipment travels free. Packaging, piece count, weight, size, route, and operating-carrier conditions still apply.
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ margin: 0, fontSize: 16, color: "#0f172a" }}>Check these four things before booking</h3>
+        <ol style={{ margin: "10px 0 0", paddingLeft: 20, display: "grid", gap: 7, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+          <li><strong>Item definition:</strong> confirm that the airline lists your equipment type and required case or packing method.</li>
+          <li><strong>Allowance treatment:</strong> determine whether it replaces a checked bag, consumes the allowance, or uses a separate product.</li>
+          <li><strong>Acceptance limits:</strong> check weight, outside dimensions, piece count, route, aircraft, and embargo conditions.</li>
+          <li><strong>Advance action:</strong> confirm whether registration or prepayment is required and whether airport pricing differs.</li>
+        </ol>
+      </div>
+
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+        <Link href="/fees/checked_baggage">Check the standard bag baseline</Link>
+        <Link href="/fees/overweight_baggage">Review overweight charges</Link>
+        <Link href="/fees/oversize_baggage">Review oversize charges</Link>
+        <Link href="/tools/excess-baggage-calculator?bags=1&directions=2&weight=50&size=63">Model excess-baggage risk</Link>
+      </div>
+    </section>
+  );
+}
+
 function OverweightBaggageAnswerBlock() {
   return (
     <section
@@ -939,6 +1029,13 @@ function getFeeMetadataCopy(category: string): Metadata {
           "See which airline fares include a carry-on, when only a personal item is free, and how bag size, bundles, purchase timing, and gate enforcement change the cost.",
         alternates: { canonical: canonical(href) },
       };
+    case "sports_equipment":
+      return {
+        title: "Sports Equipment Baggage Fees by Airline | Bikes, Skis, Golf",
+        description:
+          "Compare official airline sports-equipment baggage rules, including normal allowance treatment, special fees, packing, advance notice, weight, and size conditions.",
+        alternates: { canonical: canonical(href) },
+      };
     default:
       return {
         title: `${titleCaseFromSlug(category)} fees by airline (2026)`,
@@ -1036,6 +1133,8 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
               ? "Checked baggage fees and allowances by airline"
               : cat === "carry_on"
                 ? "Carry-on bag fees and personal-item rules by airline"
+                : cat === "sports_equipment"
+                  ? "Sports equipment baggage fees and rules by airline"
                 : `${title} fees by airline`}
           </h1>
           <span style={{ fontSize: 12, color: "#555" }}>Latest source check: {latestVerified}</span>
@@ -1051,6 +1150,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         {cat === "checked_baggage" ? <CheckedBaggageAnswerBlock /> : null}
         {cat === "checked_baggage" ? <CheckedBaggageDecisionGuide /> : null}
         {cat === "carry_on" ? <CarryOnAnswerBlock /> : null}
+        {cat === "sports_equipment" ? <SportsEquipmentAnswerBlock /> : null}
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", fontSize: 12, color: "#334155" }}>
           <span style={{ border: "1px solid #cbd5e1", borderRadius: 999, padding: "5px 10px", background: "#fff" }}>
@@ -1068,7 +1168,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </div>
 
         <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
-          {cat !== "checked_baggage" && cat !== "carry_on" ? <div>{hub.verdict}</div> : null}
+          {cat !== "checked_baggage" && cat !== "carry_on" && cat !== "sports_equipment" ? <div>{hub.verdict}</div> : null}
 
           {strategy && cat !== "checked_baggage" && cat !== "carry_on" ? (
             <div style={{ border: "1px solid #dbe1ea", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
@@ -1076,13 +1176,13 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
             </div>
           ) : null}
 
-          {cat !== "checked_baggage" && cat !== "carry_on" ? (
+          {cat !== "checked_baggage" && cat !== "carry_on" && cat !== "sports_equipment" ? (
             <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
               <strong>Quick check:</strong> {hub.proTip}
             </div>
           ) : null}
 
-          {cat !== "carry_on" ? (
+          {cat !== "carry_on" && cat !== "sports_equipment" ? (
             <>
               <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fafafa" }}>
                 <strong>Common way to avoid the fee:</strong> {hub.loophole}
@@ -1194,6 +1294,8 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
             ? "Official checked-baggage records"
             : cat === "carry_on"
               ? "Official carry-on and personal-item records"
+              : cat === "sports_equipment"
+                ? "Official sports-equipment records"
               : "Published fees and sources"}
         </h2>
 
@@ -1208,6 +1310,13 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
             Read the fare, route, dimensions, weight, and timing together. A zero amount means the stated allowance is
             included for that record; it does not prove that every fare on the airline includes an overhead bag.
+          </p>
+        ) : null}
+
+        {cat === "sports_equipment" ? (
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+            Read each record as an item- and itinerary-specific rule, not a universal fee. “Within allowance,” a zero amount,
+            or a standard bag price applies only when the equipment meets the stated packing, weight, size, route, and timing conditions.
           </p>
         ) : null}
 

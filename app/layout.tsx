@@ -132,11 +132,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                       Airline fee guides
                     </Link>
                   </li>
-                  <li className="pt-3">
-                    <Link href="/guides/travel-esims" className="hover:text-blue-600 underline">
-                      Travel eSIM decision guide
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </aside>

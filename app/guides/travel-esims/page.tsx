@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: canonical("/guides/travel-esims"),
   },
+  robots: { index: false, follow: true },
 };
 
 const DECISION_ROWS = [
