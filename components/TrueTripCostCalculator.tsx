@@ -153,6 +153,17 @@ function profileCarryOnTotal(
   return profile.carryOnFeeEachWay * carryOns * directions;
 }
 
+function profileSeatTotal(
+  profile: TripCostPilotProfile,
+  selectedSeats: number,
+  directions: number,
+  currency: ComparisonCurrency,
+): number | null {
+  if (selectedSeats === 0 || profile.standardSeatIncluded) return 0;
+  if (profile.seatFeeEachWay == null || profile.currency !== currency) return null;
+  return profile.seatFeeEachWay * selectedSeats * directions;
+}
+
 export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlines: AirlineOption[]; comparisonPresets: ComparisonPreset[] }) {
   const [travelers, setTravelers] = useState(2);
   const [directions, setDirections] = useState(2);
@@ -223,14 +234,15 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
     const benefit = airline?.bagBenefits.find((item) => item.id === flight.bagBenefitId);
     const automaticBagTotal = profile ? profileBagTotal(profile, bags, travelers, directions, currency, bagAssignment, customBagCounts, flight.paymentChannel, benefit) : null;
     const automaticCarryOnTotal = profile ? profileCarryOnTotal(profile, flight.paidCarryOns, directions, currency) : null;
+    const automaticSeatTotal = profile ? profileSeatTotal(profile, flight.paidSeats, directions, currency) : null;
     const bagTotal = bags === 0 || (!profile && flight.bagsIncluded) ? 0 : automaticBagTotal ?? flight.checkedBagTripTotal;
     const fareTotal = flight.fare == null ? null : flight.fare * travelers;
     const carryTotal = automaticCarryOnTotal ?? (flight.paidCarryOns === 0 ? 0 : flight.carryOnFee == null ? null : flight.carryOnFee * flight.paidCarryOns * directions);
-    const seatTotal = flight.paidSeats === 0 ? 0 : flight.seatFee == null ? null : flight.seatFee * flight.paidSeats * directions;
+    const seatTotal = automaticSeatTotal ?? (flight.paidSeats === 0 ? 0 : flight.seatFee == null ? null : flight.seatFee * flight.paidSeats * directions);
     const total = fareTotal == null || bagTotal == null || carryTotal == null || seatTotal == null
       ? null
       : fareTotal + bagTotal + carryTotal + seatTotal + flight.otherTripFees;
-    return { airline, profile, benefit, automaticBagTotal, automaticCarryOnTotal, bagTotal, carryTotal, fareTotal, seatTotal, total };
+    return { airline, profile, benefit, automaticBagTotal, automaticCarryOnTotal, automaticSeatTotal, bagTotal, carryTotal, fareTotal, seatTotal, total };
   }), [airlines, bagAssignment, bags, currency, customBagCounts, directions, flights, marketContext, travelers]);
 
   const totalsComplete = results.every((result) => result.total != null);
@@ -490,13 +502,14 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
                   <span className="rounded-full bg-white px-2 py-1">Checked allowance: {result.profile.checkedBaggage.includedPerTraveler} per traveler</span>
                   <span className="rounded-full bg-white px-2 py-1">Personal item: {result.profile.personalItemIncluded ? "included" : "not modeled"}</span>
                   <span className="rounded-full bg-white px-2 py-1">Overhead carry-on: {result.profile.carryOnIncluded ? "included" : "checkout-priced"}</span>
-                  <span className="rounded-full bg-white px-2 py-1">Standard seat: {result.profile.standardSeatIncluded ? "no added fee modeled" : "checkout-priced"}</span>
+                  <span className="rounded-full bg-white px-2 py-1">Standard seat: {result.profile.standardSeatIncluded ? "selection included" : result.profile.randomSeatAssignmentIncluded ? "random assignment free" : "selection checkout-priced"}</span>
                 </div>
                 <div className="mt-2 text-xs">{bagAssignment === "single" ? "All checked bags are priced as belonging to one traveler." : bagAssignment === "custom" ? "Checked bags follow the traveler-by-traveler assignment entered above." : "Each traveler receives one checked bag before anyone is assigned a second bag."} Fixed paid amounts apply only when the comparison currency matches {result.profile.currency}; included allowances remain zero in any currency.</div>
                 <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold">
                   {result.profile.sources.map((source, sourceIndex) => <a key={`${source.url}-${sourceIndex}`} href={source.url} target="_blank" rel="noreferrer" className="underline">{source.label} · verified {source.lastVerified}</a>)}
                 </div>
                 {result.profile.carryOnWarning ? <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-2 text-xs font-semibold text-amber-950">{result.profile.carryOnWarning}</div> : null}
+                {result.profile.seatSelectionWarning ? <div className="mt-2 rounded-lg border border-blue-200 bg-blue-50 p-2 text-xs font-semibold text-blue-950">{result.profile.seatSelectionWarning}</div> : null}
               </div> : null}
               {result.profile?.checkedBaggage.airportFeeByOrdinal ? <label className="text-sm font-bold">Checked-bag payment channel
                 <select value={flight.paymentChannel} onChange={(event) => updateFlight(index, { paymentChannel: event.target.value as "online" | "airport" })} className="mt-2 w-full rounded-xl border-slate-300">
@@ -536,11 +549,14 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
                 </label>
               </div>
               <div className="grid gap-3 rounded-xl border border-slate-200 p-3 sm:grid-cols-2">
-                <label className="text-sm font-bold">Paid seat selections each direction
+                <label className="text-sm font-bold">Travelers choosing seats each direction
                   <input type="number" min={0} max={travelers} step={1} value={flight.paidSeats} onChange={(event) => updateFlight(index, { paidSeats: Math.min(travelers, Math.max(0, Math.round(numberValue(event.target.value)))) })} className="mt-2 w-full rounded-xl border-slate-300" />
+                  <span className="mt-1 block font-normal text-slate-500">Enter zero when the party accepts the airline&apos;s free assignment process.</span>
                 </label>
-                <label className="text-sm font-bold">Fee per selected seat, each way ({currency})
-                  <input type="number" min={0} step="0.01" disabled={flight.paidSeats === 0} required={flight.paidSeats > 0} value={flight.seatFee ?? ""} onChange={(event) => updateFlight(index, { seatFee: optionalNumberValue(event.target.value) })} placeholder={flight.paidSeats === 0 ? "Not needed" : "Enter fee"} className="mt-2 w-full rounded-xl border-slate-300 disabled:bg-slate-100" />
+                <label className="text-sm font-bold">{result.profile?.standardSeatIncluded ? "Standard-seat pricing" : `Checkout price per selected standard seat, each way (${currency})`}
+                  <input type="number" min={0} step="0.01" disabled={flight.paidSeats === 0 || result.profile?.standardSeatIncluded} required={flight.paidSeats > 0 && !result.profile?.standardSeatIncluded} value={result.profile?.standardSeatIncluded ? 0 : flight.seatFee ?? ""} onChange={(event) => updateFlight(index, { seatFee: optionalNumberValue(event.target.value) })} placeholder={flight.paidSeats === 0 ? "Not needed" : result.profile?.standardSeatIncluded ? "Included" : "Enter airline checkout price"} className="mt-2 w-full rounded-xl border-slate-300 disabled:bg-slate-100" />
+                  {flight.paidSeats > 0 && result.profile?.standardSeatIncluded ? <span className="mt-1 block font-normal text-emerald-700">The selected fare rule includes its published standard-seat entitlement. Premium or extra-legroom upgrades are not assumed free.</span> : null}
+                  {flight.paidSeats > 0 && result.profile && !result.profile.standardSeatIncluded && result.profile.seatFeeEachWay == null ? <span className="mt-1 block font-normal text-amber-700">Seat prices vary by flight or seat type. Enter the standard-seat amount shown by the airline, not a premium-seat price.</span> : null}
                 </label>
               </div>
               <label className="text-sm font-bold">Other fees for the whole trip ({currency})
@@ -551,7 +567,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
               <div className="flex justify-between gap-4"><dt>Fare</dt><dd>{result.fareTotal == null ? "Enter fare" : money(result.fareTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Checked bags {flight.bagsIncluded ? "(included)" : result.automaticBagTotal != null ? result.benefit ? "(verified rule + benefit)" : "(verified rule)" : ""}</dt><dd>{result.bagTotal == null ? "Enter trip total" : money(result.bagTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Overhead carry-ons {result.automaticCarryOnTotal != null && flight.paidCarryOns > 0 ? result.profile?.carryOnIncluded ? "(included)" : "(verified rule)" : ""}</dt><dd>{result.carryTotal == null ? "Enter checkout amount" : money(result.carryTotal, currency)}</dd></div>
-              <div className="flex justify-between gap-4"><dt>Seats</dt><dd>{result.seatTotal == null ? "Enter amount" : money(result.seatTotal, currency)}</dd></div>
+              <div className="flex justify-between gap-4"><dt>Standard seats {result.automaticSeatTotal != null && flight.paidSeats > 0 ? result.profile?.standardSeatIncluded ? "(included)" : "(verified rule)" : ""}</dt><dd>{result.seatTotal == null ? "Enter checkout amount" : money(result.seatTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4 border-t border-slate-200 pt-3 text-lg font-black"><dt>True trip cost</dt><dd>{result.total == null ? "Incomplete" : money(result.total, currency)}</dd></div>
               {result.total != null ? <div className="flex justify-between gap-4 text-xs text-slate-500"><dt>Effective cost per traveler</dt><dd>{money(result.total / travelers, currency)}</dd></div> : null}
             </dl>

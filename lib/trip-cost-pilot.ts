@@ -22,6 +22,9 @@ export type TripCostPilotProfile = {
   carryOnFeeEachWay?: number;
   carryOnWarning?: string;
   standardSeatIncluded: boolean;
+  randomSeatAssignmentIncluded?: boolean;
+  seatFeeEachWay?: number;
+  seatSelectionWarning?: string;
   marketContexts?: string[];
   sources: TripCostRuleSource[];
 };
@@ -73,7 +76,11 @@ function southwestProfile(
     },
     personalItemIncluded: true,
     carryOnIncluded: true,
-    standardSeatIncluded: true,
+    standardSeatIncluded: false,
+    randomSeatAssignmentIncluded: fare === "Basic Fare",
+    seatSelectionWarning: fare === "Basic Fare"
+      ? "Declining paid seat selection still produces a standard seat assignment at check-in; it does not mean traveling without a seat."
+      : "Paid or included seat treatment varies by Southwest fare and seat type. Enter a checkout price only when selecting a seat or upgrade that is not already included.",
     marketContexts: ["us-domestic"],
     sources: [
       rowSource("First checked bag", first),
@@ -146,6 +153,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       personalItemIncluded: true,
       carryOnIncluded: true,
       standardSeatIncluded: false,
+      seatSelectionWarning: "Seat selection is paid unless the exact package entered for the flight includes it. Use ZIPAIR's checkout amount for the selected seat type.",
       marketContexts: ["transpacific"],
       sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry), rowSource("Seat selection", seat)],
     }];
@@ -182,7 +190,9 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       personalItemIncluded: true,
       carryOnIncluded: false,
       carryOnWarning: "Basic includes a personal item, not a full-size overhead carry-on. Enter Frontier's price from checkout for every traveler who needs the larger bag.",
-      standardSeatIncluded: true,
+      standardSeatIncluded: false,
+      randomSeatAssignmentIncluded: true,
+      seatSelectionWarning: "Declining paid selection triggers Frontier's free random assignment. Set selected seats to zero if the party accepts that assignment; enter checkout pricing only when choosing seats.",
       sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Random seat assignment", seat)],
     };
     const bundleProfiles = ["Economy", "Premium", "Business"].map((bundle) => {
@@ -192,6 +202,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         summary: `${bundle} includes the published seat entitlement stored for this bundle. Checked-bag and full-size carry-on totals remain manual because the records do not support one route-independent bundle price.`,
         currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: false, standardSeatIncluded: true,
         carryOnWarning: "Frontier bundle contents can change. Enter the checkout carry-on price unless the selected bundle explicitly shows the full-size carry-on as included.",
+        seatSelectionWarning: `${bundle} includes its published seat entitlement. Premium or upgraded seating beyond that entitlement remains a separate checkout-priced choice.`,
         marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Seat entitlement", bundleSeat)],
       } satisfies TripCostPilotProfile;
     });
@@ -201,6 +212,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
   if (airline.slug === "easyjet") {
     const smallBag = requireRow(airline, "included small cabin bag", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "All fares");
     const largeBag = requireRow(airline, "checkout-priced large cabin bag", (row) => row.category === "carry_on" && typeof row.amount === "string" && row.applies_to?.includes("Optional add-on") === true);
+    const standardSeat = requireRow(airline, "standard seat or random assignment", (row) => row.category === "seat_selection" && row.conditions.toLowerCase().includes("random seat"));
     return [
       {
         id: "easyjet-standard-small-bag",
@@ -212,8 +224,10 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         carryOnIncluded: false,
         carryOnWarning: "Do not count easyJet's free small underseat bag as a full-size overhead carry-on. Enter the live large-cabin-bag price from checkout.",
         standardSeatIncluded: false,
+        randomSeatAssignmentIncluded: true,
+        seatSelectionWarning: "A free random seat is assigned when standard seat selection is declined. Enter the live checkout price only for travelers choosing seats.",
         marketContexts: ["other"],
-        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag", largeBag)],
+        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag", largeBag), rowSource("Seat assignment", standardSeat)],
       },
       {
         id: "easyjet-large-cabin-bag-included",
@@ -224,8 +238,10 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         personalItemIncluded: true,
         carryOnIncluded: true,
         standardSeatIncluded: false,
+        randomSeatAssignmentIncluded: true,
+        seatSelectionWarning: "The cabin-bag entitlement does not by itself prove that a selected seat is included. Accept free random assignment or enter the seat price shown at checkout.",
         marketContexts: ["other"],
-        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag entitlement", largeBag)],
+        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag entitlement", largeBag), rowSource("Seat assignment", standardSeat)],
       },
     ];
   }
@@ -233,6 +249,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
   if (airline.slug === "ryanair") {
     const smallBag = requireRow(airline, "included small bag", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "Basic fare");
     const priority = requireRow(airline, "Priority cabin bag", (row) => row.category === "carry_on" && typeof row.amount === "string" && row.applies_to === "Optional add-on" && row.timing?.includes("booking") === true);
+    const standardSeat = requireRow(airline, "reserved or random seat", (row) => row.category === "seat_selection" && row.conditions.toLowerCase().includes("free random seat"));
     return [
       {
         id: "ryanair-basic-small-bag",
@@ -244,8 +261,10 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         carryOnIncluded: false,
         carryOnWarning: "Enter the live Priority & 2 Cabin Bags price from checkout for each traveler who needs a 10 kg overhead bag.",
         standardSeatIncluded: false,
+        randomSeatAssignmentIncluded: true,
+        seatSelectionWarning: "Declining a reserved seat produces a free random assignment, subject to Ryanair's family-seating rules. Enter checkout pricing only for travelers reserving seats.",
         marketContexts: ["other"],
-        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority)],
+        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority), rowSource("Seat assignment", standardSeat)],
       },
       {
         id: "ryanair-priority-two-cabin-bags",
@@ -256,8 +275,10 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         personalItemIncluded: true,
         carryOnIncluded: true,
         standardSeatIncluded: false,
+        randomSeatAssignmentIncluded: true,
+        seatSelectionWarning: "Priority adds cabin-bag and boarding benefits; it does not automatically make every reserved seat free. Accept random assignment or enter the checkout seat price.",
         marketContexts: ["other"],
-        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority)],
+        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority), rowSource("Seat assignment", standardSeat)],
       },
     ];
   }
@@ -266,6 +287,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
     const standardCarry = requireRow(airline, "Economy overhead carry-on", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to?.includes("Economy Light") === true);
     const basicCarry = requireRow(airline, "Economy Basic personal item", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "Economy Basic");
     const checked = requireRow(airline, "fare-dependent checked baggage", category("checked_baggage"));
+    const seat = requireRow(airline, "fare-dependent seat selection", category("seat_selection"));
     return [
       {
         id: "lufthansa-europe-basic-personal-item",
@@ -277,8 +299,9 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         carryOnIncluded: false,
         carryOnWarning: "If Lufthansa offers an overhead-bag option for this itinerary, enter its checkout price. Do not substitute the Economy Light allowance.",
         standardSeatIncluded: false,
+        seatSelectionWarning: "Advance seat selection depends on the itinerary, fare, and status. Enter the price shown in Lufthansa checkout when choosing seats.",
         marketContexts: ["other"],
-        sources: [rowSource("Economy Basic cabin allowance", basicCarry), rowSource("Checked baggage", checked)],
+        sources: [rowSource("Economy Basic cabin allowance", basicCarry), rowSource("Checked baggage", checked), rowSource("Seat selection", seat)],
       },
       {
         id: "lufthansa-economy-light-carry-on",
@@ -289,8 +312,9 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         personalItemIncluded: true,
         carryOnIncluded: true,
         standardSeatIncluded: false,
+        seatSelectionWarning: "Economy Light's overhead bag does not imply free advance seat selection. Enter Lufthansa's checkout price if selecting seats.",
         marketContexts: ["other", "transatlantic"],
-        sources: [rowSource("Economy carry-on allowance", standardCarry), rowSource("Checked baggage", checked)],
+        sources: [rowSource("Economy carry-on allowance", standardCarry), rowSource("Checked baggage", checked), rowSource("Seat selection", seat)],
       },
     ];
   }
@@ -373,6 +397,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
     const second = current("2nd checked bag");
     const third = current("3rd checked bag");
     const carry = requireRow(airline, "included carry-on", (row) => row.category === "carry_on" && row.amount === 0);
+    const standardSeat = requireRow(airline, "Main Cabin standard seat", (row) => row.category === "seat_selection" && row.amount === 0 && row.applies_to === "Main Cabin");
     const makeProfile = (id: string, label: string): TripCostPilotProfile => ({
       id,
       label,
@@ -381,9 +406,12 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], thirdPlusFee: 200 },
       personalItemIncluded: true,
       carryOnIncluded: true,
-      standardSeatIncluded: false,
+      standardSeatIncluded: id === "alaska-main-current",
+      seatSelectionWarning: id === "alaska-main-current"
+        ? "Main Cabin includes standard-seat selection; preferred or premium seating remains a separate paid choice."
+        : "Saver seat-selection treatment is not automatically priced here. Enter an amount only when Alaska checkout charges for the seat being selected.",
       marketContexts: ["us-domestic", "us-short-haul"],
-      sources: [rowSource("First checked bag", first), rowSource("Second checked bag", second), rowSource("Third checked bag", third), rowSource("Carry-on allowance", carry)],
+      sources: [rowSource("First checked bag", first), rowSource("Second checked bag", second), rowSource("Third checked bag", third), rowSource("Carry-on allowance", carry), rowSource("Main Cabin standard seat", standardSeat)],
     });
     return [makeProfile("alaska-main-current", "Main Cabin — current North America rules"), makeProfile("alaska-saver-current", "Saver — current North America rules")];
   }
@@ -398,6 +426,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         label: "Main Base — carry-on included; bags and seats priced separately",
         summary: "A normal carry-on is included. Checked bags vary by route, date, and purchase timing, while advance seat selection is checkout-priced.",
         currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: true, standardSeatIncluded: false,
+        seatSelectionWarning: "Main Base advance seat selection is checkout-priced. Enter the standard-seat amount shown for this flight; do not substitute an EvenMore or other premium-seat price.",
         marketContexts: ["us-domestic", "us-short-haul", "transatlantic", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry)],
       },
       {
@@ -405,6 +434,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         label: "Main / Main Flex / EvenMore — standard seat included",
         summary: "A normal carry-on and standard seat selection are included. Checked-bag pricing remains manual because it changes by market, peak date, and fare family.",
         currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: true, standardSeatIncluded: true,
+        seatSelectionWarning: "Standard selection is included for this fare path. Preferred or extra-legroom products remain separate paid upgrades.",
         marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry), rowSource("Standard seat", seat)],
       },
     ];
