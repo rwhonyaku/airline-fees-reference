@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { TrueTripCostCalculator } from "@/components/TrueTripCostCalculator";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
 import { canonical } from "@/lib/seo";
+import { getTripCostPilotProfiles } from "@/lib/trip-cost-pilot";
 
 export const metadata: Metadata = {
   title: "True Trip Cost Calculator | Compare Flights After Fees",
@@ -26,6 +27,7 @@ export default function TrueTripCostPage() {
         .filter((date): date is string => typeof date === "string")
         .sort()
         .at(-1) ?? null,
+      pilotProfiles: getTripCostPilotProfiles(airline),
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -34,6 +36,7 @@ export default function TrueTripCostPage() {
       label: "Los Angeles–Tokyo",
       detail: "ZIPAIR vs Japan Airlines",
       route: "Los Angeles (LAX)–Tokyo (NRT)",
+      currency: "USD" as const,
       airlineA: "zipair",
       airlineB: "jal",
     },
@@ -41,6 +44,7 @@ export default function TrueTripCostPage() {
       label: "Denver–Las Vegas",
       detail: "Frontier vs Southwest",
       route: "Denver (DEN)–Las Vegas (LAS)",
+      currency: "USD" as const,
       airlineA: "frontier",
       airlineB: "southwest",
     },
@@ -56,8 +60,8 @@ export default function TrueTripCostPage() {
     <TrueTripCostCalculator airlines={airlines} comparisonPresets={comparisonPresets} />
     <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
       <h2 className="text-xl font-black text-slate-950">Before you trust the total</h2>
-      <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. Published policy records establish what the airline charges for, but route-, fare-, timing-, weight-, and currency-dependent prices are not silently converted into a universal fee.</p>
-      <p className="mt-3">Select “included or waived” only when your fare, cabin, status, or card benefit covers the bags shown. For roundtrips, per-direction carry-on and seat inputs are applied in both directions; enter the checked-bag total exactly as shown for the whole itinerary.</p>
+      <p className="mt-3">Copy changing bag, carry-on, and seat prices from the airline checkout. Select one comparison currency and enter every amount in that currency. The calculator does not fetch or estimate exchange rates.</p>
+      <p className="mt-3">Without a verified pilot profile, select “included or waived” only when your fare, cabin, status, or card benefit covers the bags shown. For roundtrips, per-direction carry-on and seat inputs are applied in both directions; enter any requested checked-bag total exactly as shown for the whole itinerary.</p>
       <div className="mt-4 flex flex-wrap gap-4 font-bold text-blue-700 underline"><Link href="/fees/checked_baggage">Checked baggage reference</Link><Link href="/fees/carry_on">Carry-on reference</Link><Link href="/methodology">Data methodology</Link></div>
     </section>
   </main>;
