@@ -78,6 +78,48 @@ function southwestProfile(
   };
 }
 
+function fixedBagProfile(
+  airline: Airline,
+  options: {
+    id: string;
+    label: string;
+    summary: string;
+    appliesTo: string;
+    firstBagCondition?: string;
+    secondBagCondition?: string;
+  },
+): TripCostPilotProfile {
+  const matchingBag = (ordinal: "1st" | "2nd", condition?: string) => (row: FeeItem) => {
+    const conditions = row.conditions.toLowerCase();
+    const bagNumber = ordinal === "1st" ? "bag 1" : "bag 2";
+    return row.category === "checked_baggage" &&
+      row.applies_to === options.appliesTo &&
+      (conditions.includes(ordinal) || conditions.includes(bagNumber)) &&
+      (!condition || conditions.includes(condition));
+  };
+  const first = requireRow(airline, `${options.label} first checked bag`, matchingBag("1st", options.firstBagCondition));
+  const second = requireRow(airline, `${options.label} second checked bag`, matchingBag("2nd", options.secondBagCondition));
+  const carry = requireRow(airline, "included carry-on", (row) => row.category === "carry_on" && row.amount === 0);
+  const firstAmount = typeof first.amount === "number" ? first.amount : null;
+  const secondAmount = typeof second.amount === "number" ? second.amount : null;
+  if (firstAmount == null || secondAmount == null) throw new Error(`Non-numeric checked-bag pilot fee for ${airline.slug} ${options.label}`);
+
+  return {
+    id: options.id,
+    label: options.label,
+    summary: options.summary,
+    currency: "USD",
+    checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount] },
+    carryOnIncluded: true,
+    standardSeatIncluded: false,
+    sources: [
+      rowSource("First checked bag", first),
+      rowSource("Second checked bag", second),
+      rowSource("Carry-on allowance", carry),
+    ],
+  };
+}
+
 export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile[] {
   if (airline.slug === "zipair") {
     const checked = requireRow(airline, "checked baggage", category("checked_baggage"));
@@ -133,6 +175,44 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       southwestProfile(airline, "Choice Fare", "Choice — current U.S. Mainland rules"),
       southwestProfile(airline, "Choice Preferred Fare", "Choice Preferred — current U.S. Mainland rules"),
       southwestProfile(airline, "Choice Extra Fare", "Choice Extra — two checked bags included"),
+    ];
+  }
+
+  if (airline.slug === "delta") {
+    return [
+      fixedBagProfile(airline, {
+        id: "delta-domestic-basic",
+        label: "Domestic Basic Economy — no bag waiver",
+        summary: "Models Delta's published U.S. domestic first- and second-bag charges for a standard bag under 50 lb, with no card, status, military, or cabin waiver. Carry-on is included; any paid seat choice remains manual.",
+        appliesTo: "Basic Economy",
+      }),
+      fixedBagProfile(airline, {
+        id: "delta-domestic-main",
+        label: "Domestic Main Cabin — no bag waiver",
+        summary: "Models Delta's published U.S. domestic first- and second-bag charges for a standard bag under 50 lb, with no card, status, military, or cabin waiver. Carry-on is included; any paid seat choice remains manual.",
+        appliesTo: "Economy (non-Basic)",
+      }),
+    ];
+  }
+
+  if (airline.slug === "american") {
+    return [
+      fixedBagProfile(airline, {
+        id: "american-domestic-main-online",
+        label: "Domestic Main Cabin — bags prepaid online",
+        summary: "Models current online first- and second-bag prices for eligible U.S. and short-haul Main Cabin itineraries ticketed on or after April 9, 2026. Airport payment, exceptions, and paid seat choices remain manual.",
+        appliesTo: "Economy (non-Basic)",
+        firstBagCondition: "on/after apr. 9, 2026",
+        secondBagCondition: "on/after apr. 9, 2026",
+      }),
+      fixedBagProfile(airline, {
+        id: "american-domestic-basic-online",
+        label: "Domestic Basic Economy — bags prepaid online",
+        summary: "Models current online first- and second-bag prices for eligible U.S. and short-haul Basic Economy itineraries ticketed on or after May 18, 2026. Airport payment, exceptions, and paid seat choices remain manual.",
+        appliesTo: "Basic Economy",
+        firstBagCondition: "on/after may 18, 2026",
+        secondBagCondition: "on/after may 18, 2026",
+      }),
     ];
   }
 
