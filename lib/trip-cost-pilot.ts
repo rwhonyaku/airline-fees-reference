@@ -17,7 +17,10 @@ export type TripCostPilotProfile = {
     airportFeeByOrdinal?: number[];
     thirdPlusFee?: number;
   };
+  personalItemIncluded: boolean;
   carryOnIncluded: boolean;
+  carryOnFeeEachWay?: number;
+  carryOnWarning?: string;
   standardSeatIncluded: boolean;
   marketContexts?: string[];
   sources: TripCostRuleSource[];
@@ -68,6 +71,7 @@ function southwestProfile(
       feeByOrdinal: fare === "Choice Extra Fare" ? [thirdAmount] : [firstAmount, secondAmount],
       thirdPlusFee: thirdAmount,
     },
+    personalItemIncluded: true,
     carryOnIncluded: true,
     standardSeatIncluded: true,
     marketContexts: ["us-domestic"],
@@ -116,6 +120,7 @@ function fixedBagProfile(
     summary: options.summary,
     currency: "USD",
     checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount], airportFeeByOrdinal: options.airportFeeByOrdinal },
+    personalItemIncluded: true,
     carryOnIncluded: true,
     standardSeatIncluded: options.standardSeatIncluded ?? false,
     marketContexts: options.marketContexts,
@@ -138,6 +143,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       summary: "The 7 kg cabin allowance is included. Checked bags and seat selection remain checkout-priced for the selected route and flight.",
       currency: "JPY",
       checkedBaggage: { includedPerTraveler: 0 },
+      personalItemIncluded: true,
       carryOnIncluded: true,
       standardSeatIncluded: false,
       marketContexts: ["transpacific"],
@@ -155,6 +161,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       summary: "Models two checked pieces up to 23 kg per traveler, the published cabin allowance, and an eligible standard seat selection as included. Premium-seat charges remain manual.",
       currency: "JPY",
       checkedBaggage: { includedPerTraveler: 2 },
+      personalItemIncluded: true,
       carryOnIncluded: true,
       standardSeatIncluded: true,
       marketContexts: ["transpacific"],
@@ -172,7 +179,9 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       summary: "No checked bag or full-size carry-on is assumed included. Bag prices remain manual because Frontier prices them by flight and purchase timing; declining seat selection adds no seat fee.",
       currency: "USD",
       checkedBaggage: { includedPerTraveler: 0 },
+      personalItemIncluded: true,
       carryOnIncluded: false,
+      carryOnWarning: "Basic includes a personal item, not a full-size overhead carry-on. Enter Frontier's price from checkout for every traveler who needs the larger bag.",
       standardSeatIncluded: true,
       sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Random seat assignment", seat)],
     };
@@ -181,11 +190,109 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       return {
         id: `frontier-${bundle.toLowerCase()}-bundle`, label: `${bundle} bundle — included seat; bags from checkout`,
         summary: `${bundle} includes the published seat entitlement stored for this bundle. Checked-bag and full-size carry-on totals remain manual because the records do not support one route-independent bundle price.`,
-        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: false, standardSeatIncluded: true,
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: false, standardSeatIncluded: true,
+        carryOnWarning: "Frontier bundle contents can change. Enter the checkout carry-on price unless the selected bundle explicitly shows the full-size carry-on as included.",
         marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Seat entitlement", bundleSeat)],
       } satisfies TripCostPilotProfile;
     });
     return [basic, ...bundleProfiles];
+  }
+
+  if (airline.slug === "easyjet") {
+    const smallBag = requireRow(airline, "included small cabin bag", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "All fares");
+    const largeBag = requireRow(airline, "checkout-priced large cabin bag", (row) => row.category === "carry_on" && typeof row.amount === "string" && row.applies_to?.includes("Optional add-on") === true);
+    return [
+      {
+        id: "easyjet-standard-small-bag",
+        label: "Standard fare — small underseat bag only",
+        summary: "The fare includes one small underseat bag. A large overhead cabin bag is a separate checkout-priced product unless an eligible fare or benefit explicitly includes it.",
+        currency: "GBP",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: false,
+        carryOnWarning: "Do not count easyJet's free small underseat bag as a full-size overhead carry-on. Enter the live large-cabin-bag price from checkout.",
+        standardSeatIncluded: false,
+        marketContexts: ["other"],
+        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag", largeBag)],
+      },
+      {
+        id: "easyjet-large-cabin-bag-included",
+        label: "Eligible fare or benefit — large cabin bag included",
+        summary: "Use this only when the booking itself confirms a large cabin bag entitlement, such as an eligible Inclusive Plus or easyJet Plus path.",
+        currency: "GBP",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: true,
+        standardSeatIncluded: false,
+        marketContexts: ["other"],
+        sources: [rowSource("Small cabin bag", smallBag), rowSource("Large cabin bag entitlement", largeBag)],
+      },
+    ];
+  }
+
+  if (airline.slug === "ryanair") {
+    const smallBag = requireRow(airline, "included small bag", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "Basic fare");
+    const priority = requireRow(airline, "Priority cabin bag", (row) => row.category === "carry_on" && typeof row.amount === "string" && row.applies_to === "Optional add-on" && row.timing?.includes("booking") === true);
+    return [
+      {
+        id: "ryanair-basic-small-bag",
+        label: "Basic — small underseat bag only",
+        summary: "Basic includes the small underseat bag, not the 10 kg overhead cabin bag. Priority pricing varies by flight, date, availability, and purchase timing.",
+        currency: "EUR",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: false,
+        carryOnWarning: "Enter the live Priority & 2 Cabin Bags price from checkout for each traveler who needs a 10 kg overhead bag.",
+        standardSeatIncluded: false,
+        marketContexts: ["other"],
+        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority)],
+      },
+      {
+        id: "ryanair-priority-two-cabin-bags",
+        label: "Priority & 2 Cabin Bags already included",
+        summary: "Use this when the entered fare already includes Priority & 2 Cabin Bags. The small underseat bag and one 10 kg overhead cabin bag are then included.",
+        currency: "EUR",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: true,
+        standardSeatIncluded: false,
+        marketContexts: ["other"],
+        sources: [rowSource("Small bag allowance", smallBag), rowSource("Priority cabin bag", priority)],
+      },
+    ];
+  }
+
+  if (airline.slug === "lufthansa") {
+    const standardCarry = requireRow(airline, "Economy overhead carry-on", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to?.includes("Economy Light") === true);
+    const basicCarry = requireRow(airline, "Economy Basic personal item", (row) => row.category === "carry_on" && row.amount === 0 && row.applies_to === "Economy Basic");
+    const checked = requireRow(airline, "fare-dependent checked baggage", category("checked_baggage"));
+    return [
+      {
+        id: "lufthansa-europe-basic-personal-item",
+        label: "Europe Economy Basic — personal item only",
+        summary: "On selected short- and medium-haul routes, Economy Basic includes the personal item but not the normal 8 kg overhead carry-on, checked baggage, or seat reservation.",
+        currency: "EUR",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: false,
+        carryOnWarning: "If Lufthansa offers an overhead-bag option for this itinerary, enter its checkout price. Do not substitute the Economy Light allowance.",
+        standardSeatIncluded: false,
+        marketContexts: ["other"],
+        sources: [rowSource("Economy Basic cabin allowance", basicCarry), rowSource("Checked baggage", checked)],
+      },
+      {
+        id: "lufthansa-economy-light-carry-on",
+        label: "Economy Light or higher — 8 kg carry-on included",
+        summary: "The normal Economy cabin allowance includes one 8 kg overhead carry-on plus the published personal item. Checked baggage and advance seating still depend on the itinerary and fare.",
+        currency: "EUR",
+        checkedBaggage: { includedPerTraveler: 0 },
+        personalItemIncluded: true,
+        carryOnIncluded: true,
+        standardSeatIncluded: false,
+        marketContexts: ["other", "transatlantic"],
+        sources: [rowSource("Economy carry-on allowance", standardCarry), rowSource("Checked baggage", checked)],
+      },
+    ];
   }
 
   if (airline.slug === "southwest") {
@@ -252,6 +359,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       summary: "Models United's online first- and second-bag prices for Economy tickets purchased on or after April 3, 2026 in most covered U.S./short-haul markets. Route exceptions, cards, status, Basic Economy, and paid seats remain outside the automatic total.",
       currency: "USD",
       checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], airportFeeByOrdinal: [50, 60], thirdPlusFee: 200 },
+      personalItemIncluded: true,
       carryOnIncluded: true,
       standardSeatIncluded: false,
       marketContexts: ["us-domestic", "us-short-haul"],
@@ -271,6 +379,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       summary: "Models current North America first- and second-bag prices for tickets issued on or after April 10, 2026. Carry-on is included; seat choices remain manual until the supporting seat policy is reverified. Card, status, military, and route exceptions are excluded.",
       currency: "USD",
       checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], thirdPlusFee: 200 },
+      personalItemIncluded: true,
       carryOnIncluded: true,
       standardSeatIncluded: false,
       marketContexts: ["us-domestic", "us-short-haul"],
@@ -288,14 +397,14 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         id: "jetblue-main-base",
         label: "Main Base — carry-on included; bags and seats priced separately",
         summary: "A normal carry-on is included. Checked bags vary by route, date, and purchase timing, while advance seat selection is checkout-priced.",
-        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: true, standardSeatIncluded: false,
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: true, standardSeatIncluded: false,
         marketContexts: ["us-domestic", "us-short-haul", "transatlantic", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry)],
       },
       {
         id: "jetblue-main",
         label: "Main / Main Flex / EvenMore — standard seat included",
         summary: "A normal carry-on and standard seat selection are included. Checked-bag pricing remains manual because it changes by market, peak date, and fare family.",
-        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: true, standardSeatIncluded: true,
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, personalItemIncluded: true, carryOnIncluded: true, standardSeatIncluded: true,
         marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry), rowSource("Standard seat", seat)],
       },
     ];
