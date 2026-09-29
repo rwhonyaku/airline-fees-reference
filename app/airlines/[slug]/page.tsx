@@ -7831,14 +7831,16 @@ function InlineComparisonLinks({ links }: { links: ReferenceLink[] }) {
 function VerificationTrustBar({
   airlineName,
   latestVerified,
-  oldestVerified,
+  oldestCoreVerified,
+  secondaryReviewCount,
 }: {
   airlineName: string;
   latestVerified: string;
-  oldestVerified: string;
+  oldestCoreVerified: string;
+  secondaryReviewCount: number;
 }) {
   const reportHref = `/contact?subject=${encodeURIComponent(`${airlineName} policy changed`)}`;
-  const freshness = getVerificationFreshness(oldestVerified);
+  const freshness = getVerificationFreshness(oldestCoreVerified);
   const statusClass = {
     green: "border-emerald-200 text-emerald-900",
     amber: "border-amber-300 text-amber-950",
@@ -7854,8 +7856,13 @@ function VerificationTrustBar({
             Last verified: {latestVerified}
           </span>
           <span className={`rounded-full border bg-white px-3 py-1 font-bold ${statusClass}`} title={freshness.detail}>
-            Status: {freshness.label}
+            Core baggage status: {freshness.label}
           </span>
+          {secondaryReviewCount > 0 ? (
+            <span className="rounded-full border border-amber-300 bg-white px-3 py-1 font-bold text-amber-950">
+              {secondaryReviewCount} secondary {secondaryReviewCount === 1 ? "policy" : "policies"} due for review
+            </span>
+          ) : null}
         </div>
         <div className="flex flex-col gap-2 text-slate-700 sm:flex-row sm:items-center">
           <span>Policy changed?</span>
@@ -9461,14 +9468,27 @@ function FeeRowsTable({
               <td className="min-w-[260px] px-4 py-3 text-slate-700">{safeText(row.conditions)}</td>
               <td className="whitespace-nowrap px-4 py-3">
                 {safeUrl(row.source_url) ? (
-                  <a
-                    href={safeUrl(row.source_url)!}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 underline"
-                  >
-                    Source
-                  </a>
+                  <div className="grid gap-1.5">
+                    <a
+                      href={safeUrl(row.source_url)!}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-blue-700 underline"
+                    >
+                      Official source
+                    </a>
+                    <span className="text-xs text-slate-500">Checked {row.last_verified}</span>
+                    {(() => {
+                      const freshness = getVerificationFreshness(row.last_verified);
+                      if (freshness.label === "Recently checked") return null;
+                      const className = freshness.tone === "red"
+                        ? "border-rose-200 bg-rose-50 text-rose-900"
+                        : freshness.tone === "amber"
+                          ? "border-amber-200 bg-amber-50 text-amber-900"
+                          : "border-slate-200 bg-slate-50 text-slate-700";
+                      return <span title={freshness.detail} className={`w-fit rounded-full border px-2 py-0.5 text-[11px] font-bold ${className}`}>{freshness.label}</span>;
+                    })()}
+                  </div>
                 ) : (
                   <span className="text-slate-500">Not published</span>
                 )}
@@ -9491,7 +9511,12 @@ function ReferenceAirlinePage({
   fees: FeeItem[];
 }) {
   const latestVerified = getLatestVerifiedDate(fees);
-  const oldestVerified = getOldestVerifiedDate(fees);
+  const coreCategories = new Set<FeeItem["category"]>(["carry_on", "checked_baggage", "overweight_baggage", "oversize_baggage"]);
+  const coreFees = fees.filter((fee) => coreCategories.has(fee.category));
+  const oldestCoreVerified = getOldestVerifiedDate(coreFees.length ? coreFees : fees);
+  const secondaryReviewCount = fees.filter((fee) =>
+    !coreCategories.has(fee.category) && getVerificationFreshness(fee.last_verified).label !== "Recently checked"
+  ).length;
   const content = REFERENCE_AIRLINE_CONTENT[slug];
   const travelerExceptions = content.exceptions.filter(
     (item) => !/co-branded card baggage waiver|card baggage waiver/i.test(item),
@@ -9558,7 +9583,12 @@ function ReferenceAirlinePage({
           </div>
         </div>
 
-        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} oldestVerified={oldestVerified} />
+        <VerificationTrustBar
+          airlineName={airline.name}
+          latestVerified={latestVerified}
+          oldestCoreVerified={oldestCoreVerified}
+          secondaryReviewCount={secondaryReviewCount}
+        />
 
         {searchEntryCopy ? (
           <section className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
@@ -9906,7 +9936,12 @@ function LegacyAirlinePage({
   fees: FeeItem[];
 }) {
   const latestVerified = getLatestVerifiedDate(fees);
-  const oldestVerified = getOldestVerifiedDate(fees);
+  const coreCategories = new Set<FeeItem["category"]>(["carry_on", "checked_baggage", "overweight_baggage", "oversize_baggage"]);
+  const coreFees = fees.filter((fee) => coreCategories.has(fee.category));
+  const oldestCoreVerified = getOldestVerifiedDate(coreFees.length ? coreFees : fees);
+  const secondaryReviewCount = fees.filter((fee) =>
+    !coreCategories.has(fee.category) && getVerificationFreshness(fee.last_verified).label !== "Recently checked"
+  ).length;
   const strategy = AIRLINE_STRATEGY[slug];
   const insightTraps = airline.unique_insights?.traps ?? [];
   const insightHack = airline.unique_insights?.pro_hack;
@@ -9954,7 +9989,12 @@ function LegacyAirlinePage({
           </div>
         </div>
 
-        <VerificationTrustBar airlineName={airline.name} latestVerified={latestVerified} oldestVerified={oldestVerified} />
+        <VerificationTrustBar
+          airlineName={airline.name}
+          latestVerified={latestVerified}
+          oldestCoreVerified={oldestCoreVerified}
+          secondaryReviewCount={secondaryReviewCount}
+        />
 
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
           <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Quick summary</div>

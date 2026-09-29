@@ -110,6 +110,7 @@ export default function CarryOnStrictnessGuide() {
           <Link href="/airlines">All airlines</Link>
           <Link href="/fees/carry_on">Carry-on fees</Link>
           <Link href="/sizer-rules">Sizer rules</Link>
+          <Link href="/recommended-carry-on-luggage">Carry-on shortlist</Link>
           <Link href="/guides/basic-economy-traps">Basic Economy guide</Link>
           <Link href="/tools/checked-baggage-calculator">Checked-bag calculator</Link>
         </nav>
@@ -267,6 +268,16 @@ export default function CarryOnStrictnessGuide() {
             </div>
             <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
               Check this when the carry-on rule is only one part of a stripped-down fare.
+            </div>
+          </div>
+          <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
+            <div style={{ fontWeight: 700 }}>
+              <Link href="/recommended-carry-on-luggage" style={{ textDecoration: "underline" }}>
+                Dimension-checked carry-on shortlist
+              </Link>
+            </div>
+            <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: "#444" }}>
+              Compare a small editorial set using manufacturer-published exterior dimensions, empty weight, and airline-rule fit.
             </div>
           </div>
           <div style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>

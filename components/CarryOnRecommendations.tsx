@@ -2,7 +2,12 @@ import Link from "next/link";
 import { formatDims } from "@/lib/carry-on-sizer";
 import { formatProductDimensions, getPublishedCabinRules, productsForAirline } from "@/lib/carry-on-products";
 
+const RECOMMENDATION_AIRLINES = new Set([
+  "united", "delta", "american", "southwest", "jetblue", "alaska", "frontier", "ryanair", "easyjet", "zipair",
+]);
+
 export function CarryOnRecommendations({ airlineSlug, airlineName }: { airlineSlug: string; airlineName: string }) {
+  if (!RECOMMENDATION_AIRLINES.has(airlineSlug)) return null;
   const rules = getPublishedCabinRules();
   const recommendations = productsForAirline(airlineSlug, rules, 3);
   if (!recommendations.length) return null;

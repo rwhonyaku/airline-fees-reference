@@ -17,6 +17,35 @@ export const metadata: Metadata = {
   alternates: { canonical: canonical("/recommended-carry-on-luggage") },
 };
 
+function BagIllustration({ category }: { category: string }) {
+  const backpack = category.toLowerCase().includes("backpack");
+  const hardShell = category.toLowerCase().includes("hardside");
+
+  return (
+    <div className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-blue-50" role="img" aria-label={`${category} shape illustration; not a product photograph`}>
+      <svg viewBox="0 0 180 180" className="h-40 w-40" aria-hidden="true">
+        {backpack ? (
+          <>
+            <path d="M62 55c0-18 11-29 28-29s28 11 28 29" fill="none" stroke="#2563eb" strokeWidth="7" strokeLinecap="round" />
+            <path d="M48 65c0-9 7-16 16-16h52c9 0 16 7 16 16v82H48V65Z" fill="#dbeafe" stroke="#0f172a" strokeWidth="6" />
+            <path d="M64 95h52v35H64z" fill="#bfdbfe" stroke="#2563eb" strokeWidth="4" />
+            <path d="M49 78c-12 10-15 30-10 52M131 78c12 10 15 30 10 52" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
+          </>
+        ) : (
+          <>
+            <path d="M78 38V24h24v14" fill="none" stroke="#0f172a" strokeWidth="6" strokeLinecap="round" />
+            <rect x="45" y="38" width="90" height="108" rx={hardShell ? 18 : 10} fill={hardShell ? "#dbeafe" : "#e2e8f0"} stroke="#0f172a" strokeWidth="6" />
+            {hardShell ? <path d="M66 50v84M90 50v84M114 50v84" stroke="#93c5fd" strokeWidth="5" strokeLinecap="round" /> : <path d="M56 72h68M56 96h68" stroke="#94a3b8" strokeWidth="4" />}
+            <circle cx="62" cy="153" r="7" fill="#2563eb" />
+            <circle cx="118" cy="153" r="7" fill="#2563eb" />
+          </>
+        )}
+      </svg>
+      <span className="sr-only">Illustrative category silhouette, not an exact product image</span>
+    </div>
+  );
+}
+
 export default function RecommendedCarryOnLuggagePage() {
   const rules = getPublishedCabinRules();
 
@@ -42,15 +71,18 @@ export default function RecommendedCarryOnLuggagePage() {
           const fit = productFitSummary(product, rules);
           return (
             <article key={product.id} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                <div>
+              <div className="grid gap-5 md:grid-cols-[180px_1fr]">
+                <BagIllustration category={product.category} />
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                  <div>
                   <div className="text-xs font-black uppercase tracking-widest text-blue-700">{product.category}</div>
                   <h2 className="mt-1 text-2xl font-black text-slate-950">{product.brand} {product.model}</h2>
                   <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">{product.verdict}</p>
-                </div>
-                <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-950">
-                  <div className="font-black">Fits {fit.fits} of {fit.evaluated}</div>
-                  <div className="mt-1 text-xs">airlines with evaluable published cabin dimensions</div>
+                  </div>
+                  <div className="shrink-0 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-950">
+                    <div className="font-black">Fits {fit.fits} of {fit.evaluated}</div>
+                    <div className="mt-1 text-xs">airlines with evaluable published cabin dimensions</div>
+                  </div>
                 </div>
               </div>
 
@@ -76,6 +108,7 @@ export default function RecommendedCarryOnLuggagePage() {
         <h2 className="text-lg font-black text-slate-950">How this comparison is calculated</h2>
         <p className="mt-2">We sort the three exterior measurements from largest to smallest, then compare them with each airline&apos;s published cabin-bag dimensions the same way. This avoids treating a rotated bag as a different size. Personal-item rules are excluded from the headline count.</p>
         <p className="mt-2">Product specifications and observed manufacturer prices were checked on {carryOnProductsVerified}. Prices and availability can change; the dimensional result uses the stored exterior measurements, not a retailer&apos;s “carry-on approved” label.</p>
+        <p className="mt-2">The bag drawings are category silhouettes, not product photographs. Exact manufacturer or retailer imagery will be added only when an authorized product feed or usage permission is available.</p>
       </section>
     </main>
   );

@@ -178,7 +178,7 @@ export default function HomePage() {
           Use deterministic tools when the question is not just what the rule says, but what the
           likely charge does to the real fare.
         </p>
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
+        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <Link
             href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes"
             prefetch={false}
@@ -199,6 +199,12 @@ export default function HomePage() {
             className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
           >
             Carry-on sizer comparison
+          </Link>
+          <Link
+            href="/recommended-carry-on-luggage"
+            className="rounded-xl border border-blue-200 bg-white p-4 font-bold text-blue-800 hover:border-blue-400"
+          >
+            Dimension-checked carry-on shortlist
           </Link>
         </div>
       </section>
