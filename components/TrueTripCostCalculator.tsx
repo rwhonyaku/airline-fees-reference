@@ -21,10 +21,19 @@ type ComparisonPreset = {
   airlineA: string;
   airlineB: string;
   currency: ComparisonCurrency;
+  marketContext: string;
 };
 
 const CURRENCIES = ["USD", "EUR", "GBP", "CAD", "AUD", "JPY", "CHF", "SEK", "NOK", "DKK", "NZD", "CNY", "HKD", "SGD"] as const;
 type ComparisonCurrency = typeof CURRENCIES[number];
+const MARKET_CONTEXTS = [
+  { value: "", label: "Choose market context" },
+  { value: "us-domestic", label: "Within the United States" },
+  { value: "us-short-haul", label: "U.S./Canada/Mexico/Caribbean or short haul" },
+  { value: "transatlantic", label: "Transatlantic" },
+  { value: "transpacific", label: "Transpacific / Asia" },
+  { value: "other", label: "Other or mixed itinerary" },
+] as const;
 
 type FlightInput = {
   airline: string;
@@ -116,6 +125,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   const [bags, setBags] = useState(1);
   const [currency, setCurrency] = useState<ComparisonCurrency>("USD");
   const [route, setRoute] = useState("");
+  const [marketContext, setMarketContext] = useState("");
   const [shareStatus, setShareStatus] = useState("");
   const [flights, setFlights] = useState<FlightInput[]>([
     { ...EMPTY_FLIGHT },
@@ -158,6 +168,8 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
       setDirections(params.get("d") === "1" ? 1 : 2);
       setBags(Math.round(boundedNumber(params.get("b"), 0, 9, 1)));
       setRoute((params.get("r") ?? "").slice(0, 160));
+      const restoredMarket = params.get("m") ?? "";
+      setMarketContext(MARKET_CONTEXTS.some((item) => item.value === restoredMarket) ? restoredMarket : "");
       if (restoredFlights.length >= 2) setFlights(restoredFlights);
     });
     return () => { cancelled = true; };
@@ -165,7 +177,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
 
   const results = useMemo(() => flights.map((flight) => {
     const airline = airlines.find((item) => item.slug === flight.airline);
-    const profile = airline?.pilotProfiles.find((item) => item.id === flight.profileId);
+    const profile = airline?.pilotProfiles.find((item) => item.id === flight.profileId && (!item.marketContexts || item.marketContexts.includes(marketContext)));
     const automaticBagTotal = profile ? profileBagTotal(profile, bags, travelers, directions, currency) : null;
     const bagTotal = bags === 0 || (!profile && flight.bagsIncluded) ? 0 : automaticBagTotal ?? flight.checkedBagTripTotal;
     const fareTotal = flight.fare == null ? null : flight.fare * travelers;
@@ -175,7 +187,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
       ? null
       : fareTotal + bagTotal + carryTotal + seatTotal + flight.otherTripFees;
     return { airline, profile, automaticBagTotal, bagTotal, carryTotal, fareTotal, seatTotal, total };
-  }), [airlines, bags, currency, directions, flights, travelers]);
+  }), [airlines, bags, currency, directions, flights, marketContext, travelers]);
 
   const totalsComplete = results.every((result) => result.total != null);
   const ranked = totalsComplete
@@ -224,6 +236,17 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
     })));
   }
 
+  function changeMarketContext(nextMarket: string) {
+    setMarketContext(nextMarket);
+    setFlights((current) => current.map((flight) => {
+      const airline = airlines.find((item) => item.slug === flight.airline);
+      const profile = airline?.pilotProfiles.find((item) => item.id === flight.profileId);
+      return profile?.marketContexts && !profile.marketContexts.includes(nextMarket)
+        ? { ...flight, profileId: "", checkedBagTripTotal: null }
+        : flight;
+    }));
+  }
+
   function changeProfile(index: number, profileId: string) {
     setFlights((current) => current.map((flight, flightIndex) => flightIndex === index ? {
       ...flight,
@@ -240,6 +263,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   function applyPreset(preset: ComparisonPreset) {
     setRoute(preset.route);
     setCurrency(preset.currency);
+    setMarketContext(preset.marketContext);
     setFlights([
       { ...EMPTY_FLIGHT, airline: preset.airlineA },
       { ...EMPTY_FLIGHT, airline: preset.airlineB },
@@ -263,6 +287,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
       c: currency,
     });
     if (route.trim()) params.set("r", route.trim().slice(0, 160));
+    if (marketContext) params.set("m", marketContext);
 
     flights.forEach((flight, index) => {
       const slot = index + 1;
@@ -306,9 +331,17 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
             </button>
           ))}
         </div>
-        <label className="text-sm font-bold text-slate-800">Route being compared
-          <input value={route} onChange={(event) => setRoute(event.target.value)} placeholder="Example: Los Angeles (LAX)–Tokyo (NRT)" className="mt-2 w-full rounded-xl border-slate-300" />
-        </label>
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="text-sm font-bold text-slate-800">Route being compared
+            <input value={route} onChange={(event) => setRoute(event.target.value)} placeholder="Example: Los Angeles (LAX)–Tokyo (NRT)" className="mt-2 w-full rounded-xl border-slate-300" />
+          </label>
+          <label className="text-sm font-bold text-slate-800">Market context
+            <select value={marketContext} onChange={(event) => changeMarketContext(event.target.value)} className="mt-2 w-full rounded-xl border-slate-300">
+              {MARKET_CONTEXTS.map((item) => <option key={item.value || "none"} value={item.value}>{item.label}</option>)}
+            </select>
+            <span className="mt-1 block font-normal text-slate-500">This limits fare rules to markets where the stored policy applies.</span>
+          </label>
+        </div>
       </div>
 
       <div className="grid gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -358,11 +391,14 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
                 </div>
                 {result.airline.lastVerified ? <div className="mt-2">Latest source check in this airline record: {result.airline.lastVerified}</div> : null}
               </div> : null}
-              {result.airline?.pilotProfiles.length ? <label className="text-sm font-bold">Verified fare/allowance profile <span className="font-normal text-slate-500">(pilot)</span>
+              {result.airline?.pilotProfiles.length ? <label className="text-sm font-bold">Fare or bundle
                 <select value={flight.profileId} onChange={(event) => changeProfile(index, event.target.value)} className="mt-2 w-full rounded-xl border-slate-300">
                   <option value="">Use manual checkout inputs</option>
-                  {result.airline.pilotProfiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.label}</option>)}
+                  {result.airline.pilotProfiles
+                    .filter((profile) => !profile.marketContexts || (marketContext && profile.marketContexts.includes(marketContext)))
+                    .map((profile) => <option key={profile.id} value={profile.id}>{profile.label}</option>)}
                 </select>
+                {!marketContext && result.airline.pilotProfiles.some((profile) => profile.marketContexts?.length) ? <span className="mt-1 block font-normal text-amber-700">Choose a market context to unlock route-specific verified fare rules.</span> : null}
               </label> : null}
               {result.profile ? <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm leading-relaxed text-emerald-950">
                 <div className="font-black">Applied rule: {result.profile.label}</div>

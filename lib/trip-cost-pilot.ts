@@ -18,6 +18,7 @@ export type TripCostPilotProfile = {
   };
   carryOnIncluded: boolean;
   standardSeatIncluded: boolean;
+  marketContexts?: string[];
   sources: TripCostRuleSource[];
 };
 
@@ -68,6 +69,7 @@ function southwestProfile(
     },
     carryOnIncluded: true,
     standardSeatIncluded: true,
+    marketContexts: ["us-domestic"],
     sources: [
       rowSource("First checked bag", first),
       rowSource("Second checked bag", second),
@@ -87,6 +89,8 @@ function fixedBagProfile(
     appliesTo: string;
     firstBagCondition?: string;
     secondBagCondition?: string;
+    marketContexts?: string[];
+    standardSeatIncluded?: boolean;
   },
 ): TripCostPilotProfile {
   const matchingBag = (ordinal: "1st" | "2nd", condition?: string) => (row: FeeItem) => {
@@ -111,7 +115,8 @@ function fixedBagProfile(
     currency: "USD",
     checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount] },
     carryOnIncluded: true,
-    standardSeatIncluded: false,
+    standardSeatIncluded: options.standardSeatIncluded ?? false,
+    marketContexts: options.marketContexts,
     sources: [
       rowSource("First checked bag", first),
       rowSource("Second checked bag", second),
@@ -133,6 +138,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       checkedBaggage: { includedPerTraveler: 0 },
       carryOnIncluded: true,
       standardSeatIncluded: false,
+      marketContexts: ["transpacific"],
       sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry), rowSource("Seat selection", seat)],
     }];
   }
@@ -149,6 +155,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       checkedBaggage: { includedPerTraveler: 2 },
       carryOnIncluded: true,
       standardSeatIncluded: true,
+      marketContexts: ["transpacific"],
       sources: [rowSource("International checked allowance", checked), rowSource("Carry-on allowance", carry), rowSource("Seat selection", seat)],
     }];
   }
@@ -157,7 +164,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
     const checked = requireRow(airline, "checked baggage", category("checked_baggage"));
     const carry = requireRow(airline, "paid carry-on", (row) => row.category === "carry_on" && typeof row.amount === "string");
     const seat = requireRow(airline, "random seat assignment", (row) => row.category === "seat_selection" && row.applies_to === "Basic fare" && row.amount === 0);
-    return [{
+    const basic: TripCostPilotProfile = {
       id: "frontier-basic",
       label: "Basic — personal item and random seat",
       summary: "No checked bag or full-size carry-on is assumed included. Bag prices remain manual because Frontier prices them by flight and purchase timing; declining seat selection adds no seat fee.",
@@ -166,7 +173,17 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       carryOnIncluded: false,
       standardSeatIncluded: true,
       sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Random seat assignment", seat)],
-    }];
+    };
+    const bundleProfiles = ["Economy", "Premium", "Business"].map((bundle) => {
+      const bundleSeat = requireRow(airline, `${bundle} bundle seat`, (row) => row.category === "seat_selection" && row.applies_to === `${bundle} bundle` && row.amount === 0);
+      return {
+        id: `frontier-${bundle.toLowerCase()}-bundle`, label: `${bundle} bundle — included seat; bags from checkout`,
+        summary: `${bundle} includes the published seat entitlement stored for this bundle. Checked-bag and full-size carry-on totals remain manual because the records do not support one route-independent bundle price.`,
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: false, standardSeatIncluded: true,
+        marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on pricing", carry), rowSource("Seat entitlement", bundleSeat)],
+      } satisfies TripCostPilotProfile;
+    });
+    return [basic, ...bundleProfiles];
   }
 
   if (airline.slug === "southwest") {
@@ -185,12 +202,14 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         label: "Domestic Basic Economy — no bag waiver",
         summary: "Models Delta's published U.S. domestic first- and second-bag charges for a standard bag under 50 lb, with no card, status, military, or cabin waiver. Carry-on is included; any paid seat choice remains manual.",
         appliesTo: "Basic Economy",
+        marketContexts: ["us-domestic"],
       }),
       fixedBagProfile(airline, {
         id: "delta-domestic-main",
         label: "Domestic Main Cabin — no bag waiver",
         summary: "Models Delta's published U.S. domestic first- and second-bag charges for a standard bag under 50 lb, with no card, status, military, or cabin waiver. Carry-on is included; any paid seat choice remains manual.",
         appliesTo: "Economy (non-Basic)",
+        marketContexts: ["us-domestic"],
       }),
     ];
   }
@@ -204,6 +223,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         appliesTo: "Economy (non-Basic)",
         firstBagCondition: "on/after apr. 9, 2026",
         secondBagCondition: "on/after apr. 9, 2026",
+        marketContexts: ["us-domestic", "us-short-haul"],
       }),
       fixedBagProfile(airline, {
         id: "american-domestic-basic-online",
@@ -212,7 +232,68 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         appliesTo: "Basic Economy",
         firstBagCondition: "on/after may 18, 2026",
         secondBagCondition: "on/after may 18, 2026",
+        marketContexts: ["us-domestic", "us-short-haul"],
       }),
+    ];
+  }
+
+  if (airline.slug === "united") {
+    const first = requireRow(airline, "current most-market first bag", (row) => row.category === "checked_baggage" && row.amount === 45 && row.conditions.toLowerCase().includes("on or after april 3, 2026"));
+    const second = requireRow(airline, "current most-market second bag", (row) => row.category === "checked_baggage" && row.amount === 55 && row.conditions.toLowerCase().includes("on or after april 3, 2026"));
+    const third = requireRow(airline, "current most-market third bag", (row) => row.category === "checked_baggage" && row.amount === 200 && row.conditions.toLowerCase().includes("on or after april 3, 2026"));
+    const carry = requireRow(airline, "Economy carry-on", (row) => row.category === "carry_on" && row.amount === 0);
+    return [{
+      id: "united-economy-current-most-markets",
+      label: "Economy — current most-market online bag prices",
+      summary: "Models United's online first- and second-bag prices for Economy tickets purchased on or after April 3, 2026 in most covered U.S./short-haul markets. Route exceptions, cards, status, Basic Economy, and paid seats remain outside the automatic total.",
+      currency: "USD",
+      checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], thirdPlusFee: 200 },
+      carryOnIncluded: true,
+      standardSeatIncluded: false,
+      marketContexts: ["us-domestic", "us-short-haul"],
+      sources: [rowSource("First checked bag", first), rowSource("Second checked bag", second), rowSource("Third checked bag", third), rowSource("Carry-on allowance", carry)],
+    }];
+  }
+
+  if (airline.slug === "alaska") {
+    const current = (ordinal: string) => requireRow(airline, `current North America ${ordinal} bag`, (row) => row.category === "checked_baggage" && row.region_or_route?.startsWith("North America") === true && row.conditions.toLowerCase().includes(ordinal) && row.conditions.toLowerCase().includes("on or after april 10, 2026"));
+    const first = current("1st checked bag");
+    const second = current("2nd checked bag");
+    const third = current("3rd checked bag");
+    const carry = requireRow(airline, "included carry-on", (row) => row.category === "carry_on" && row.amount === 0);
+    const makeProfile = (id: string, label: string): TripCostPilotProfile => ({
+      id,
+      label,
+      summary: "Models current North America first- and second-bag prices for tickets issued on or after April 10, 2026. Carry-on is included; seat choices remain manual until the supporting seat policy is reverified. Card, status, military, and route exceptions are excluded.",
+      currency: "USD",
+      checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], thirdPlusFee: 200 },
+      carryOnIncluded: true,
+      standardSeatIncluded: false,
+      marketContexts: ["us-domestic", "us-short-haul"],
+      sources: [rowSource("First checked bag", first), rowSource("Second checked bag", second), rowSource("Third checked bag", third), rowSource("Carry-on allowance", carry)],
+    });
+    return [makeProfile("alaska-main-current", "Main Cabin — current North America rules"), makeProfile("alaska-saver-current", "Saver — current North America rules")];
+  }
+
+  if (airline.slug === "jetblue") {
+    const checked = requireRow(airline, "route-priced checked baggage", (row) => row.category === "checked_baggage" && row.region_or_route?.includes("U.S.") === true);
+    const carry = requireRow(airline, "included carry-on", (row) => row.category === "carry_on" && row.amount === 0);
+    const seat = requireRow(airline, "included standard seat", (row) => row.category === "seat_selection" && row.amount === 0);
+    return [
+      {
+        id: "jetblue-main-base",
+        label: "Main Base — carry-on included; bags and seats priced separately",
+        summary: "A normal carry-on is included. Checked bags vary by route, date, and purchase timing, while advance seat selection is checkout-priced.",
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: true, standardSeatIncluded: false,
+        marketContexts: ["us-domestic", "us-short-haul", "transatlantic", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry)],
+      },
+      {
+        id: "jetblue-main",
+        label: "Main / Main Flex / EvenMore — standard seat included",
+        summary: "A normal carry-on and standard seat selection are included. Checked-bag pricing remains manual because it changes by market, peak date, and fare family.",
+        currency: "USD", checkedBaggage: { includedPerTraveler: 0 }, carryOnIncluded: true, standardSeatIncluded: true,
+        marketContexts: ["us-domestic", "us-short-haul", "other"], sources: [rowSource("Checked baggage", checked), rowSource("Carry-on allowance", carry), rowSource("Standard seat", seat)],
+      },
     ];
   }
 
