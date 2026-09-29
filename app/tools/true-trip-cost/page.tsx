@@ -5,6 +5,7 @@ import { TrueTripCostCalculator } from "@/components/TrueTripCostCalculator";
 import { getAirlineBySlug, getAirlineSlugs } from "@/lib/data";
 import { canonical } from "@/lib/seo";
 import { getTripCostPilotProfiles } from "@/lib/trip-cost-pilot";
+import cardsData from "@/data/cards/cards.json";
 
 export const metadata: Metadata = {
   title: "True Trip Cost Calculator | Compare Flights After Fees",
@@ -28,6 +29,9 @@ export default function TrueTripCostPage() {
         .sort()
         .at(-1) ?? null,
       pilotProfiles: getTripCostPilotProfiles(airline),
+      bagBenefits: cardsData.cards
+        .filter((card) => card.airline_slug === airline.slug)
+        .map((card) => ({ id: card.id, name: card.name, freeCheckedBags: card.free_checked_bags, coveredTravelers: card.applies_to_travelers, requiresCardPayment: card.requires_purchase_with_card, verified: card.last_offer_verified })),
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 

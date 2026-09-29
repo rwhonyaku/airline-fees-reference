@@ -14,6 +14,7 @@ export type TripCostPilotProfile = {
   checkedBaggage: {
     includedPerTraveler: number;
     feeByOrdinal?: number[];
+    airportFeeByOrdinal?: number[];
     thirdPlusFee?: number;
   };
   carryOnIncluded: boolean;
@@ -91,6 +92,7 @@ function fixedBagProfile(
     secondBagCondition?: string;
     marketContexts?: string[];
     standardSeatIncluded?: boolean;
+    airportFeeByOrdinal?: number[];
   },
 ): TripCostPilotProfile {
   const matchingBag = (ordinal: "1st" | "2nd", condition?: string) => (row: FeeItem) => {
@@ -113,7 +115,7 @@ function fixedBagProfile(
     label: options.label,
     summary: options.summary,
     currency: "USD",
-    checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount] },
+    checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount], airportFeeByOrdinal: options.airportFeeByOrdinal },
     carryOnIncluded: true,
     standardSeatIncluded: options.standardSeatIncluded ?? false,
     marketContexts: options.marketContexts,
@@ -224,6 +226,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         firstBagCondition: "on/after apr. 9, 2026",
         secondBagCondition: "on/after apr. 9, 2026",
         marketContexts: ["us-domestic", "us-short-haul"],
+        airportFeeByOrdinal: [50, 60],
       }),
       fixedBagProfile(airline, {
         id: "american-domestic-basic-online",
@@ -233,6 +236,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
         firstBagCondition: "on/after may 18, 2026",
         secondBagCondition: "on/after may 18, 2026",
         marketContexts: ["us-domestic", "us-short-haul"],
+        airportFeeByOrdinal: [55, 65],
       }),
     ];
   }
@@ -247,7 +251,7 @@ export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile
       label: "Economy — current most-market online bag prices",
       summary: "Models United's online first- and second-bag prices for Economy tickets purchased on or after April 3, 2026 in most covered U.S./short-haul markets. Route exceptions, cards, status, Basic Economy, and paid seats remain outside the automatic total.",
       currency: "USD",
-      checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], thirdPlusFee: 200 },
+      checkedBaggage: { includedPerTraveler: 0, feeByOrdinal: [45, 55], airportFeeByOrdinal: [50, 60], thirdPlusFee: 200 },
       carryOnIncluded: true,
       standardSeatIncluded: false,
       marketContexts: ["us-domestic", "us-short-haul"],
