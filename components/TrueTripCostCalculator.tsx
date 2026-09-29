@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { TripCostPilotProfile } from "@/lib/trip-cost-pilot";
 
 type AirlineOption = {
@@ -74,6 +74,18 @@ function optionalNumberValue(value: string) {
   return numberValue(value);
 }
 
+function boundedNumber(value: string | null, min: number, max: number, fallback: number) {
+  if (value == null || value.trim() === "") return fallback;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.min(max, Math.max(min, parsed)) : fallback;
+}
+
+function restoredAmount(params: URLSearchParams, key: string): number | null {
+  if (!params.has(key)) return null;
+  const value = Number(params.get(key));
+  return Number.isFinite(value) && value >= 0 && value <= 1_000_000 ? value : null;
+}
+
 function profileBagTotal(
   profile: TripCostPilotProfile,
   bags: number,
@@ -104,10 +116,52 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   const [bags, setBags] = useState(1);
   const [currency, setCurrency] = useState<ComparisonCurrency>("USD");
   const [route, setRoute] = useState("");
+  const [shareStatus, setShareStatus] = useState("");
   const [flights, setFlights] = useState<FlightInput[]>([
     { ...EMPTY_FLIGHT },
     { ...EMPTY_FLIGHT },
   ]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("v") !== "1") return;
+
+    const restoredCurrency = params.get("c");
+    const restoredFlights: FlightInput[] = [];
+    for (let slot = 1; slot <= 4; slot += 1) {
+      if (!params.has(`a${slot}`)) continue;
+      const requestedAirline = params.get(`a${slot}`) ?? "";
+      const airline = airlines.find((item) => item.slug === requestedAirline);
+      const requestedProfile = params.get(`p${slot}`) ?? "";
+      const profileId = airline?.pilotProfiles.some((profile) => profile.id === requestedProfile) ? requestedProfile : "";
+      restoredFlights.push({
+        airline: airline?.slug ?? "",
+        profileId,
+        fare: restoredAmount(params, `f${slot}`),
+        bagsIncluded: params.get(`bi${slot}`) === "1",
+        checkedBagTripTotal: restoredAmount(params, `bt${slot}`),
+        paidCarryOns: Math.round(boundedNumber(params.get(`co${slot}`), 0, 9, 0)),
+        carryOnFee: restoredAmount(params, `cf${slot}`),
+        paidSeats: Math.round(boundedNumber(params.get(`s${slot}`), 0, 9, 0)),
+        seatFee: restoredAmount(params, `sf${slot}`),
+        otherTripFees: restoredAmount(params, `o${slot}`) ?? 0,
+      });
+    }
+
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      if (restoredCurrency && CURRENCIES.includes(restoredCurrency as ComparisonCurrency)) {
+        setCurrency(restoredCurrency as ComparisonCurrency);
+      }
+      setTravelers(Math.round(boundedNumber(params.get("t"), 1, 9, 2)));
+      setDirections(params.get("d") === "1" ? 1 : 2);
+      setBags(Math.round(boundedNumber(params.get("b"), 0, 9, 1)));
+      setRoute((params.get("r") ?? "").slice(0, 160));
+      if (restoredFlights.length >= 2) setFlights(restoredFlights);
+    });
+    return () => { cancelled = true; };
+  }, [airlines]);
 
   const results = useMemo(() => flights.map((flight) => {
     const airline = airlines.find((item) => item.slug === flight.airline);
@@ -198,6 +252,43 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
 
   function removeFlight(index: number) {
     setFlights((current) => current.length <= 2 ? current : current.filter((_, flightIndex) => flightIndex !== index));
+  }
+
+  async function copyShareableComparison() {
+    const params = new URLSearchParams({
+      v: "1",
+      t: String(travelers),
+      d: String(directions),
+      b: String(bags),
+      c: currency,
+    });
+    if (route.trim()) params.set("r", route.trim().slice(0, 160));
+
+    flights.forEach((flight, index) => {
+      const slot = index + 1;
+      params.set(`a${slot}`, flight.airline);
+      if (flight.profileId) params.set(`p${slot}`, flight.profileId);
+      if (flight.fare != null) params.set(`f${slot}`, String(flight.fare));
+      if (flight.bagsIncluded) params.set(`bi${slot}`, "1");
+      if (flight.checkedBagTripTotal != null) params.set(`bt${slot}`, String(flight.checkedBagTripTotal));
+      if (flight.paidCarryOns) params.set(`co${slot}`, String(flight.paidCarryOns));
+      if (flight.carryOnFee != null) params.set(`cf${slot}`, String(flight.carryOnFee));
+      if (flight.paidSeats) params.set(`s${slot}`, String(flight.paidSeats));
+      if (flight.seatFee != null) params.set(`sf${slot}`, String(flight.seatFee));
+      if (flight.otherTripFees) params.set(`o${slot}`, String(flight.otherTripFees));
+    });
+
+    const url = new URL(window.location.href);
+    url.search = params.toString();
+    url.hash = "";
+    window.history.replaceState({}, "", url);
+
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setShareStatus("Comparison link copied.");
+    } catch {
+      setShareStatus("Shareable link created in the address bar. Copy it from there.");
+    }
   }
 
   return (
@@ -335,6 +426,11 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
       <div className="rounded-2xl bg-slate-950 p-6 text-white">
         <h2 className="text-2xl font-black text-white">{!totalsComplete ? "Complete the missing prices to compare these flights." : winner == null ? "The lowest-cost options currently tie." : `Flight ${flightLabel(winner)} is ${money(difference!, currency)} cheaper than the next option.`}</h2>
         <p className="mt-2 text-sm leading-relaxed text-slate-300">Compare the completed totals, then confirm any price that can change by route, fare, or purchase timing during checkout.</p>
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <button type="button" onClick={copyShareableComparison} className="rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-950 hover:bg-blue-50">Copy shareable comparison</button>
+          {shareStatus ? <span className="text-sm text-slate-300" role="status">{shareStatus}</span> : null}
+        </div>
+        <p className="mt-3 text-xs leading-relaxed text-slate-400">The link contains only the route label, calculator choices, and amounts shown here. It stores no name, email, booking reference, or account information.</p>
       </div>
     </section>
   );
