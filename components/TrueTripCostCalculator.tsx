@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { TripCostPilotProfile } from "@/lib/trip-cost-pilot";
 
 type AirlineOption = {
@@ -126,6 +126,12 @@ function coverageMark(state: CoverageState) {
   return "Not needed";
 }
 
+function trackCalculatorEvent(event: string, parameters: Record<string, string | number | boolean>) {
+  if (typeof window === "undefined") return;
+  const analyticsWindow = window as Window & { gtag?: (command: "event", eventName: string, eventParameters: Record<string, string | number | boolean>) => void };
+  analyticsWindow.gtag?.("event", event, parameters);
+}
+
 function profileBagTotal(
   profile: TripCostPilotProfile,
   bags: number,
@@ -198,6 +204,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   const [bagAssignment, setBagAssignment] = useState<BagAssignment>("spread");
   const [customBagCounts, setCustomBagCounts] = useState<number[]>([1, 0]);
   const [shareStatus, setShareStatus] = useState("");
+  const comparisonWasComplete = useRef(false);
   const [flights, setFlights] = useState<FlightInput[]>([
     { ...EMPTY_FLIGHT },
     { ...EMPTY_FLIGHT },
@@ -375,6 +382,35 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
       })()
     : [];
 
+  useEffect(() => {
+    if (!totalsComplete) {
+      comparisonWasComplete.current = false;
+      return;
+    }
+    if (comparisonWasComplete.current) return;
+    comparisonWasComplete.current = true;
+
+    const fareRanked = results
+      .map((result, index) => ({ index, fare: result.fareTotal }))
+      .filter((item): item is { index: number; fare: number } => item.fare != null)
+      .sort((a, b) => a.fare - b.fare);
+    const advertisedFareLeader = fareRanked.length > 1 && fareRanked[0].fare < fareRanked[1].fare
+      ? fareRanked[0].index
+      : null;
+    trackCalculatorEvent("true_trip_cost_completed", {
+      airlines: flights.map((flight) => flight.airline || "unselected").join(","),
+      market_context: marketContext || "unspecified",
+      flight_count: flights.length,
+      traveler_count: travelers,
+      trip_type: directions === 1 ? "one_way" : "roundtrip",
+      checked_bags_selected: bags > 0,
+      carry_ons_selected: flights.some((flight) => flight.paidCarryOns > 0),
+      seats_selected: flights.some((flight) => flight.paidSeats > 0),
+      coverage_type: comparisonCoverage.label.toLowerCase().replaceAll(" ", "_"),
+      fee_reversal: winner != null && advertisedFareLeader != null && winner !== advertisedFareLeader,
+    });
+  }, [bags, comparisonCoverage.label, directions, flights, marketContext, results, totalsComplete, travelers, winner]);
+
   function updateFlight(index: number, patch: Partial<FlightInput>) {
     setFlights((current) => current.map((flight, flightIndex) => flightIndex === index ? { ...flight, ...patch } : flight));
   }
@@ -440,6 +476,10 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   }
 
   function applyPreset(preset: ComparisonPreset) {
+    trackCalculatorEvent("true_trip_cost_preset_selected", {
+      airline_pair: `${preset.airlineA},${preset.airlineB}`,
+      market_context: preset.marketContext,
+    });
     setRoute(preset.route);
     setCurrency(preset.currency);
     setMarketContext(preset.marketContext);
@@ -494,8 +534,18 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
     try {
       await navigator.clipboard.writeText(url.toString());
       setShareStatus("Comparison link copied.");
+      trackCalculatorEvent("true_trip_cost_shared", {
+        flight_count: flights.length,
+        market_context: marketContext || "unspecified",
+        comparison_complete: totalsComplete,
+      });
     } catch {
       setShareStatus("Shareable link created in the address bar. Copy it from there.");
+      trackCalculatorEvent("true_trip_cost_share_link_created", {
+        flight_count: flights.length,
+        market_context: marketContext || "unspecified",
+        comparison_complete: totalsComplete,
+      });
     }
   }
 

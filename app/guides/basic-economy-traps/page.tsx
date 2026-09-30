@@ -419,6 +419,9 @@ function AirlineComparisonTable({ rows }: { rows: GuideRow[] }) {
         <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
           The lowest fare is not the same product across airlines. Start with the restriction most likely to create an extra cost, then use the calculator with prices from your itinerary.
         </p>
+        <Link href="/tools/true-trip-cost" className="mt-4 inline-flex rounded-xl bg-blue-700 px-4 py-3 text-sm font-black text-white hover:bg-blue-800">
+          Compare the fares after bags and seats
+        </Link>
       </div>
       <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
         <table className="min-w-[900px] text-left text-sm">
@@ -489,6 +492,9 @@ export default function BasicEconomyTrapsGuide() {
           </Link>
           <Link href="/tools/checked-baggage-calculator" className="font-medium text-blue-700 underline">
             Checked-bag calculator
+          </Link>
+          <Link href="/tools/true-trip-cost" className="font-medium text-blue-700 underline">
+            Compare true trip cost
           </Link>
           <Link href="/best-cards" className="font-medium text-blue-700 underline">
             Card break-even calculator

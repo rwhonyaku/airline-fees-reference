@@ -18,6 +18,7 @@ import provenanceReviewQueue from "@/data/provenance/review-queue.json";
 import { getVerificationFreshness } from "@/lib/freshness";
 import { CarryOnRecommendations } from "@/components/CarryOnRecommendations";
 import { isFeeCategoryKey } from "@/content/fee-categories";
+import { getTripCostPilotProfiles } from "@/lib/trip-cost-pilot";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -9544,6 +9545,13 @@ function ReferenceAirlinePage({
   const archetype = getAirlinePageArchetype(slug);
   const summaryLabels = getSummaryLabels(archetype);
   const isActiveAirline = airline.data_quality?.status !== "ceased_operations";
+  const tripCostProfiles = isActiveAirline ? getTripCostPilotProfiles(airline) : [];
+  const tripCostCurrencies = [...new Set(tripCostProfiles.map((profile) => profile.currency))];
+  const tripCostMarkets = [...new Set(tripCostProfiles.flatMap((profile) => profile.marketContexts ?? []))];
+  const tripCostParams = new URLSearchParams({ v: "1", a1: slug, a2: "" });
+  if (tripCostCurrencies.length === 1) tripCostParams.set("c", tripCostCurrencies[0]);
+  if (tripCostMarkets.length === 1) tripCostParams.set("m", tripCostMarkets[0]);
+  const tripCostHref = `/tools/true-trip-cost?${tripCostParams.toString()}`;
   const showDeepAnalysis = isActiveAirline && DEEP_ANALYSIS_SLUGS.has(slug);
   const hasUsableBagEstimate = isActiveAirline && numericCheckedBagFees.length > 0;
   const faqJsonLd = airlineFaqJsonLd(slug);
@@ -9693,6 +9701,19 @@ function ReferenceAirlinePage({
       <CardSavingsDecisionPanel slug={slug} airlineName={airline.name} />
 
       <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+
+      {tripCostProfiles.length > 0 ? (
+        <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+          <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">Compare a fare you found</div>
+          <h2 className="mt-2 text-xl font-black text-slate-950">Does {airline.name} still win after the fees?</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+            Start with {airline.name} preselected, add the competing flight, and compare the whole party&apos;s fare, checked bags, overhead carry-ons, and seats. Choose the exact fare profile only when it matches the booking.
+          </p>
+          <Link href={tripCostHref} className="mt-4 inline-flex rounded-xl bg-blue-700 px-4 py-3 text-sm font-black text-white hover:bg-blue-800">
+            Compare true trip cost
+          </Link>
+        </section>
+      ) : null}
 
       {showDeepAnalysis && comparisonPeerSlugs.length > 0 ? (
         <UnifiedBaggageComparison

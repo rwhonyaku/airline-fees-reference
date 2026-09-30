@@ -716,6 +716,9 @@ function CheckedBaggageDecisionGuide() {
       </div>
 
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+        <Link href="/tools/true-trip-cost?v=1&t=2&d=2&b=2&a1=&a2=">
+          Compare competing fares after bag fees
+        </Link>
         <Link href="/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes">
           Calculate checked bags
         </Link>
@@ -789,6 +792,7 @@ function CarryOnAnswerBlock() {
       </div>
 
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, fontWeight: 700 }}>
+        <Link href="/tools/true-trip-cost?v=1&t=2&d=2&b=0&a1=&a2=">Compare fares with paid carry-ons</Link>
         <Link href="/sizer-rules?height=22&width=14&depth=9">Compare actual bag dimensions</Link>
         <Link href="/guides/carry-on-strictness-by-airline">Check enforcement context</Link>
         <Link href="/guides/basic-economy-traps#basic-economy-tool">Compare a restricted fare</Link>

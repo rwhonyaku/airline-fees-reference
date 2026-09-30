@@ -140,6 +140,75 @@ function fixedBagProfile(
 }
 
 export function getTripCostPilotProfiles(airline: Airline): TripCostPilotProfile[] {
+  if (airline.slug === "air-canada") {
+    const shortHaulFirst = requireRow(airline, "short-haul first checked bag", (row) =>
+      row.category === "checked_baggage" &&
+      row.applies_to === "Economy Basic / Standard" &&
+      row.region_or_route === "Canada/U.S./Mexico/Caribbean/Central America" &&
+      row.conditions.toLowerCase().includes("1st bag"),
+    );
+    const shortHaulSecond = requireRow(airline, "short-haul second checked bag", (row) =>
+      row.category === "checked_baggage" &&
+      row.region_or_route === "Canada/U.S./Mexico/Caribbean/Central America" &&
+      row.conditions.toLowerCase().includes("2nd bag"),
+    );
+    const normalCarry = requireRow(airline, "normal carry-on allowance", (row) =>
+      row.category === "carry_on" && row.applies_to === "Most fares and eligible Economy Basic itineraries" && row.amount === 0,
+    );
+    const affectedBasicCarry = requireRow(airline, "affected Basic carry-on allowance", (row) =>
+      row.category === "carry_on" && row.applies_to === "Economy Basic on affected itineraries" && row.amount === 0,
+    );
+    const includedStandardSeat = requireRow(airline, "included Standard-fare seat", (row) =>
+      row.category === "seat_selection" && row.applies_to === "Eligible fares" && row.amount === 0,
+    );
+    const paidBasicSeat = requireRow(airline, "paid Basic-fare seat", (row) =>
+      row.category === "seat_selection" && row.applies_to === "Basic fares",
+    );
+    const firstAmount = typeof shortHaulFirst.amount === "number" ? shortHaulFirst.amount : null;
+    const secondAmount = typeof shortHaulSecond.amount === "number" ? shortHaulSecond.amount : null;
+    if (firstAmount == null || secondAmount == null) throw new Error("Non-numeric Air Canada short-haul pilot fee");
+
+    const checkedBaggage = { includedPerTraveler: 0, feeByOrdinal: [firstAmount, secondAmount] };
+    return [
+      {
+        id: "air-canada-short-haul-standard-current",
+        label: "Short-haul Standard — current bag rules",
+        summary: "Models Air Canada's first- and second-bag prices for eligible Standard itineraries within Canada and between Canada/U.S. and covered nearby markets. A normal carry-on and eligible standard-seat selection are included.",
+        currency: "CAD",
+        checkedBaggage,
+        personalItemIncluded: true,
+        carryOnIncluded: true,
+        standardSeatIncluded: true,
+        marketContexts: ["us-short-haul"],
+        sources: [
+          rowSource("First checked bag", shortHaulFirst),
+          rowSource("Second checked bag", shortHaulSecond),
+          rowSource("Carry-on allowance", normalCarry),
+          rowSource("Standard seat selection", includedStandardSeat),
+        ],
+      },
+      {
+        id: "air-canada-short-haul-basic-personal-item",
+        label: "Short-haul Basic — affected personal-item-only itinerary",
+        summary: "Use only when Air Canada checkout shows the Basic ticket is subject to the personal-item-only rule. Current first- and second-bag prices are automatic; an overhead bag and advance seat remain checkout-dependent.",
+        currency: "CAD",
+        checkedBaggage,
+        personalItemIncluded: true,
+        carryOnIncluded: false,
+        carryOnWarning: "Some Basic itineraries regain a normal carry-on because of an international connection. Use this profile only when the booking confirms the personal-item-only restriction; otherwise use manual checkout inputs.",
+        standardSeatIncluded: false,
+        seatSelectionWarning: "Basic advance-seat prices vary by route and seat type. Enter the standard-seat price shown in checkout, or select zero travelers when accepting Air Canada's assignment process.",
+        marketContexts: ["us-short-haul"],
+        sources: [
+          rowSource("First checked bag", shortHaulFirst),
+          rowSource("Second checked bag", shortHaulSecond),
+          rowSource("Affected Basic carry-on rule", affectedBasicCarry),
+          rowSource("Basic seat selection", paidBasicSeat),
+        ],
+      },
+    ];
+  }
+
   if (airline.slug === "zipair") {
     const checked = requireRow(airline, "checked baggage", category("checked_baggage"));
     const carry = requireRow(airline, "carry-on", category("carry_on"));
