@@ -4,6 +4,8 @@ import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description:
+    "Read how Airline-Fees.com handles analytics, cookies, advertising technologies, and visitor privacy rights.",
   alternates: {
     canonical: canonical("/privacy"),
   },

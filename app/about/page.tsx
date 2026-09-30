@@ -4,6 +4,8 @@ import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
+  description:
+    "Learn how Airline-Fees.com turns official airline policies into sourced fee comparisons, practical traveler guidance, and deterministic trip-cost tools.",
   alternates: { canonical: canonical("/about") },
 };
 

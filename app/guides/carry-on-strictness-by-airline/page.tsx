@@ -2,11 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { CheckedBagCardMathCallout } from "@/components/CheckedBagCardMathCallout";
 import { hasActiveStrategyPage } from "@/lib/airline-strategy";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Carry-on strictness by airline (2026) | Airline Fees Reference",
   description:
     "An opinionated guide to which airlines are actually strict about carry-ons, where enforcement is discretionary, and when a soft bag beats a hard shell.",
+  alternates: { canonical: canonical("/guides/carry-on-strictness-by-airline") },
 };
 
 const LAST_VERIFIED = "2026-04-13";

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TravelEsimCallout } from "@/components/TravelEsimCallout";
+import { canonical } from "@/lib/seo";
 
 const LAST_VERIFIED = "2026-04-27";
 
 export const metadata: Metadata = {
   title: "U.S. DOT Refund Rules for Flight Cancellations and Delays",
+  description:
+    "Understand U.S. airline refund rights after cancellations, significant schedule changes, delayed baggage, and optional services that were not provided.",
+  alternates: { canonical: canonical("/passenger-rights/us-dot-refund") },
 };
 
 export default function UsDotRefundReferencePage() {

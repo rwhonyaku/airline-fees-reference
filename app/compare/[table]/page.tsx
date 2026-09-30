@@ -99,6 +99,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     title: entry.title,
+    description: `Compare ${entry.title.toLowerCase()} across published airline records, including the fare, route, timing, conditions, and official source behind each result.`,
     alternates: {
       canonical: canonical(`/compare/${entry.id}`),
     },

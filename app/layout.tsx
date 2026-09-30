@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { Disclaimer } from "@/components/Disclaimer";
-import { canonical } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +13,6 @@ export const metadata: Metadata = {
   },
   description:
     "Airline fee rules, baggage policies, fare restrictions, and card-benefit references in one place.",
-  alternates: {
-    canonical: canonical("/"),
-  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

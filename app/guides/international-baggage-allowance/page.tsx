@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 import { getAllAirlines } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "International baggage allowance: piece vs weight concept (2026) | Airline Fees Reference",
   description:
     "Why international checked baggage allowance often depends on route, cabin, fare family, and piece-versus-weight concept instead of one flat first-bag fee.",
+  alternates: { canonical: canonical("/guides/international-baggage-allowance") },
 };
 
 const LAST_VERIFIED = "2026-07-02";

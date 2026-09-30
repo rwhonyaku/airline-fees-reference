@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Basic Economy vs Bundles: Fees by Airline (2026)",
   description:
     "Compare Basic Economy and value bundles by carry-on, checked bags, seats, and change rules. Use the calculator to see which fare costs less for your trip.",
+  alternates: { canonical: canonical("/guides/basic-economy-traps") },
 };
 
 const LAST_VERIFIED = "2026-09-02";

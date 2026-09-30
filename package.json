@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "audit:metadata": "node scripts/audit-page-metadata.mjs",
     "dev": "next dev",
     "build": "next build",
     "build:stable": "sh scripts/build-stable.sh",

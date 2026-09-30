@@ -6,6 +6,7 @@ import { getLatestVerifiedDateFromFees, getVerificationFreshness } from "@/lib/f
 import type { FeeItem } from "@/lib/types";
 import { RelatedTools } from "@/components/RelatedTools";
 import { ACTIVE_STRATEGY_SLUGS, AIRLINE_STRATEGY } from "@/lib/airline-strategy";
+import { canonical } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -114,6 +115,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `How to beat ${airline.name} fees (2026)`,
     description: `Practical tactics to avoid the biggest fee traps on ${airline.name}: bags, seats, fare restrictions, and common add-on costs.`,
+    alternates: { canonical: canonical(`/airlines/${slug}/how-to-beat-fees`) },
   };
 }
 

@@ -5,6 +5,8 @@ import { canonical } from "@/lib/seo";
 
 export const metadata = {
   title: "Airline fee comparisons | Airline Fees Reference",
+  description:
+    "Compare published airline baggage, change, cancellation, and traveler-service fees, then check the conditions that can change the final trip cost.",
   alternates: {
     canonical: canonical("/compare"),
   },

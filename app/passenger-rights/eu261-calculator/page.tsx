@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculatorClient } from "./CalculatorClient";
+import { canonical } from "@/lib/seo";
 
 const LAST_VERIFIED = "2026-04-27";
 
 export const metadata: Metadata = {
   title: "EU261 Calculator for Flight Delay and Cancellation Checks",
+  description:
+    "Screen a delayed, cancelled, or rerouted flight against core EU261 conditions before reviewing the airline and itinerary details.",
+  alternates: { canonical: canonical("/passenger-rights/eu261-calculator") },
 };
 
 export default function Eu261CalculatorPage() {

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Baggage Calculator | Checked Bag Fee Calculator by Airline",
   description:
     "Use the checked bag fee calculator to estimate baggage costs by airline, travelers, bags, and roundtrip, then test whether a free checked bag card benefit could offset the cost.",
+  alternates: { canonical: canonical("/tools/checked-baggage-calculator") },
 };
 
 async function readJsonFile<T>(relPathFromRepoRoot: string): Promise<T> {

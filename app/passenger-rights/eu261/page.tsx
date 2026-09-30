@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TravelEsimCallout } from "@/components/TravelEsimCallout";
+import { canonical } from "@/lib/seo";
 
 const LAST_VERIFIED = "2026-04-27";
 
 export const metadata: Metadata = {
   title: "EU261 Passenger Rights for Flight Delays and Cancellations",
+  description:
+    "Understand when EU261 may provide compensation, care, rerouting, or refund rights after a qualifying European flight delay or cancellation.",
+  alternates: { canonical: canonical("/passenger-rights/eu261") },
 };
 
 export default function Eu261ReferencePage() {

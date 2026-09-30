@@ -1040,6 +1040,27 @@ function getFeeMetadataCopy(category: string): Metadata {
           "Compare official airline sports-equipment baggage rules, including normal allowance treatment, special fees, packing, advance notice, weight, and size conditions.",
         alternates: { canonical: canonical(href) },
       };
+    case "seat_selection":
+      return {
+        title: "Airline Seat Selection Fees | Standard, Preferred, and Fare Rules",
+        description:
+          "Compare airline seat-selection fees, fare inclusions, standard versus preferred seating, purchase timing, and the conditions that change the price.",
+        alternates: { canonical: canonical(href) },
+      };
+    case "change_cancellation":
+      return {
+        title: "Airline Change and Cancellation Fees | Fare and Timing Rules",
+        description:
+          "Compare published airline change and cancellation rules, including fare restrictions, route limits, timing, and when only a fare difference applies.",
+        alternates: { canonical: canonical(href) },
+      };
+    case "unaccompanied_minor":
+      return {
+        title: "Unaccompanied Minor Fees by Airline | Ages and Route Rules",
+        description:
+          "Compare published unaccompanied-minor service fees, eligible ages, route restrictions, required procedures, and official airline sources.",
+        alternates: { canonical: canonical(href) },
+      };
     default:
       return {
         title: `${titleCaseFromSlug(category)} fees by airline (2026)`,
