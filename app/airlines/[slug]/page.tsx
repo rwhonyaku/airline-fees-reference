@@ -10315,6 +10315,8 @@ export async function generateStaticParams() {
   return getAirlineSlugs().map((slug) => ({ slug }));
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const airline = getAirlineBySlug(slug);

@@ -4,6 +4,8 @@ import { FEE_CATEGORY_KEYS } from "@/content/fee-categories";
 import { ACTIVE_STRATEGY_SLUGS } from "@/lib/airline-strategy";
 import { COMPARE_TABLES } from "@/content/compare-tables";
 
+export const dynamic = "force-static";
+
 function latestDateForFees(fees: Array<{ last_verified?: unknown }>): Date {
   const latest = fees
     .map((item) => item.last_verified)

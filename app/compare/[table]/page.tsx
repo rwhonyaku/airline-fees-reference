@@ -17,6 +17,8 @@ export function generateStaticParams() {
   return COMPARE_TABLES.map((table) => ({ table: table.id }));
 }
 
+export const dynamicParams = false;
+
 function categoryNextSteps(category: string): Array<{ href: string; label: string; body: string }> {
   switch (category) {
     case "checked_baggage":

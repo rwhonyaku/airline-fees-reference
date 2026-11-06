@@ -107,6 +107,8 @@ export function generateStaticParams() {
   return ACTIVE_STRATEGY_SLUGS.map((slug) => ({ slug }));
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const airline = getAirlineBySlug(slug);
