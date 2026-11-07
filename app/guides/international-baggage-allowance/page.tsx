@@ -162,6 +162,9 @@ export default function InternationalBaggageAllowanceGuide() {
           <Link href="/tools/excess-baggage-calculator" className="font-medium text-blue-700 underline">
             Excess-bag calculator
           </Link>
+          <Link href="/fees/overweight_baggage" className="font-medium text-blue-700 underline">
+            Overweight baggage fees
+          </Link>
           <Link href="/airlines/singapore-airlines" className="font-medium text-blue-700 underline">
             Singapore Airlines
           </Link>
@@ -249,6 +252,41 @@ export default function InternationalBaggageAllowanceGuide() {
             concept. That is not filler. It means the airline is using different baggage rules for
             different itineraries.
           </p>
+        </div>
+      </section>
+
+      <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6 md:p-8">
+        <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+          Ticket shorthand
+        </div>
+        <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+          What do 0PC, 1PC, and 2PC mean for baggage?
+        </h2>
+        <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+          <strong>PC means piece, not kilogram.</strong> A 1PC allowance normally means one checked
+          bag is included; 2PC means two checked bags; and 0PC means the ticket does not include a
+          checked piece. The ticket or airline rule still controls the permitted weight and dimensions
+          of each piece.
+        </p>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <div className="rounded-2xl border border-blue-100 bg-white p-4">
+            <div className="font-black text-slate-950">0PC</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              No checked piece is included. Price the bag separately before assuming the airport rate.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-blue-100 bg-white p-4">
+            <div className="font-black text-slate-950">1PC</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              One checked piece is included, subject to the ticket&apos;s per-bag weight and size limits.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-blue-100 bg-white p-4">
+            <div className="font-black text-slate-950">2PC</div>
+            <p className="mt-1 text-sm leading-relaxed text-slate-700">
+              Two checked pieces are included. Do not assume their allowances can be combined into one heavier bag.
+            </p>
+          </div>
         </div>
       </section>
 

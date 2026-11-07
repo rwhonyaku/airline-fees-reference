@@ -756,6 +756,58 @@ function CarryOnAnswerBlock() {
         Check the fare entitlement before comparing bag dimensions or advertised prices.
       </p>
 
+      <div style={{ overflowX: "auto", border: "1px solid #e2e8f0", borderRadius: 10 }}>
+        <table style={{ minWidth: 700, width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+          <caption style={{ padding: 12, textAlign: "left", fontWeight: 800, color: "#0f172a", background: "#f8fafc" }}>
+            Which airline base fares include an overhead carry-on?
+          </caption>
+          <thead style={{ background: "#f8fafc", color: "#475569" }}>
+            <tr>
+              <th scope="col" style={{ padding: 10, textAlign: "left" }}>Airlines</th>
+              <th scope="col" style={{ padding: 10, textAlign: "left" }}>Cheapest-fare allowance</th>
+              <th scope="col" style={{ padding: 10, textAlign: "left" }}>Decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ padding: 10 }}>Delta, American, Southwest, JetBlue, Alaska</td>
+              <td style={{ padding: 10 }}>Personal item + overhead carry-on</td>
+              <td style={{ padding: 10 }}>The standard cabin bags are included on all current fare families in our records.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 10 }}>United</td>
+              <td style={{ padding: 10 }}>Personal item on Basic Economy</td>
+              <td style={{ padding: 10 }}>Choose Economy or higher for an included overhead bag unless an exception applies.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 10 }}>Frontier</td>
+              <td style={{ padding: 10 }}>Personal item on Basic</td>
+              <td style={{ padding: 10 }}>Economy, Premium, and Business include the overhead carry-on; Basic prices it separately.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 10 }}>Ryanair</td>
+              <td style={{ padding: 10 }}>Small under-seat bag</td>
+              <td style={{ padding: 10 }}>Priority &amp; 2 Cabin Bags adds the 10 kg overhead bag, subject to availability.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 10 }}>easyJet</td>
+              <td style={{ padding: 10 }}>Small under-seat bag</td>
+              <td style={{ padding: 10 }}>A large cabin bag requires an add-on or an eligible fare or membership benefit.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 10 }}>Wizz Air</td>
+              <td style={{ padding: 10 }}>Under-seat bag on Basic</td>
+              <td style={{ padding: 10 }}>WIZZ Priority or an eligible bundle adds the overhead trolley bag.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style={{ margin: 0, fontSize: 12, lineHeight: 1.6, color: "#64748b" }}>
+        This is a fare-entitlement comparison, not a universal size chart. Confirm the exact ticket and route in the
+        official records below because airline exceptions and cabin-bag limits still apply.
+      </p>
+
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
         <div style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 12, background: "#f8fafc" }}>
           <div style={{ fontWeight: 800, color: "#0f172a" }}>1. Entitlement</div>
