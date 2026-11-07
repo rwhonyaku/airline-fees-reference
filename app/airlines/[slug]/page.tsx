@@ -107,6 +107,156 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
     verdict:
       "EVA Air's checked allowance changes by long-haul versus intra-Asia travel and by fare family. Long-haul Economy usually includes two 23 kg pieces except Discount, while intra-Asia Basic and Discount generally include one; for travel from September 29, prepaid excess baggage is 10% less up to four hours ahead.",
   },
+  "cathay-pacific": {
+    h1: "Cathay Pacific baggage allowance: decode PC vs K before paying",
+    verdict:
+      "Start with the allowance printed on the ticket: 2PC is a piece allowance, while 23K is a shared weight allowance. That distinction controls whether Cathay charges for another piece or additional kilograms—and whether prepaid extra baggage is useful.",
+  },
+  "korean-air": {
+    h1: "Korean Air baggage fees: route tables and stacked excess charges",
+    verdict:
+      "Korean Air usually includes checked baggage, but the included pieces and excess price depend on the route, cabin, fare, and operating carrier. Extra-piece, overweight, and oversize charges can stack, so price all three conditions before accepting a seemingly cheap fare.",
+  },
+  "malaysia-airlines": {
+    h1: "Malaysia Airlines baggage fees: weight routes vs piece routes",
+    verdict:
+      "Malaysia Airlines uses total-weight allowances on many routes but switches to a piece system for Africa and the Americas. Identify the system first: extra weight can start from a per-kilogram rate, while an additional piece on Africa or Americas routes has a separate published price.",
+  },
+  "vietnam-airlines": {
+    h1: "Vietnam Airlines baggage fees: domestic and international excess costs",
+    verdict:
+      "Vietnam Airlines publishes unusually concrete excess-baggage tables. Current examples start at VND 650,000 for a standard domestic extra piece and USD 110 internationally off-peak, while overweight and oversize conditions are charged separately.",
+  },
+  "qatar-airways": {
+    h1: "Qatar Airways baggage fees: weight routes vs Africa and Americas",
+    verdict:
+      "Qatar prices excess baggage by kilogram on weight-concept routes but by piece on Africa and Americas itineraries. Extra-piece, overweight, and oversize conditions can also combine, so the cheapest action depends on the route printed on the ticket—not a universal bag fee.",
+  },
+  "turkish-airlines": {
+    h1: "Turkish Airlines baggage fees: fare package and route rules",
+    verdict:
+      "Turkish Airlines baggage starts with two questions: which fare package did you buy, and does the route use pieces or total weight? Some EcoFly routes include no checked bag, while extra-baggage pricing can change with connections, stopovers, and the most significant carrier.",
+  },
+  ana: {
+    h1: "ANA baggage fees: prepaid extra bags and route exclusions",
+    verdict:
+      "ANA includes checked baggage on many fares, but some fares have zero free pieces. Its prepaid product covers only one eligible extra bag, must be arranged at least six hours before departure, and excludes itineraries involving U.S. or Canadian cities, codeshares, and several other trip types.",
+  },
+  jal: {
+    h1: "Japan Airlines baggage fees: extra pieces, weight, and size",
+    verdict:
+      "JAL international Economy commonly includes two 23 kg pieces, but excess charges are condition-specific. An extra piece can also attract overweight or oversize fees, and domestic baggage uses different per-kilogram pricing.",
+  },
+  "air-china": {
+    h1: "Air China baggage fees: domestic fare formula vs international tables",
+    verdict:
+      "Air China calculates domestic excess baggage at 1.5% of the published full-fare Economy benchmark per kilogram. International and regional trips instead use route-specific piece, weight, and size tables, so the domestic formula should never be used to estimate an overseas bag.",
+  },
+  "china-eastern": {
+    h1: "China Eastern baggage fees: domestic kilograms vs international pieces",
+    verdict:
+      "China Eastern uses a domestic per-kilogram fare formula but international and regional piece tables. On those international routes, an extra bag that is also overweight or oversized can trigger multiple charges rather than one all-inclusive fee.",
+  },
+  "china-southern": {
+    h1: "China Southern baggage fees: domestic formula and international zones",
+    verdict:
+      "China Southern calculates domestic excess baggage with a published-fare percentage formula, while international and regional trips use route-area tables. Extra-piece, overweight, and oversize conditions can be charged together—and an oversized cabin bag can be checked and charged at the gate.",
+  },
+  xiamenair: {
+    h1: "XiamenAir baggage fees: fare brands, route groups, and heavy bags",
+    verdict:
+      "XiamenAir Economy allowances range from two checked pieces to no free bag depending on fare brand and route. Domestic excess uses a 1.5% per-kilogram formula; international travel uses route-group tables where extra, heavy, and large-bag charges can accumulate.",
+  },
+  asiana: {
+    h1: "Asiana Airlines baggage fees: U.S., non-U.S., and domestic rules",
+    verdict:
+      "Asiana publishes separate baggage systems for Korean domestic, U.S.-route, and other international travel. International travelers can prepay additional pieces at least 24 hours ahead for up to 10% less, but overweight and oversize charges remain separate.",
+  },
+  "garuda-indonesia": {
+    h1: "Garuda Indonesia baggage fees: the 2026 ticket-date change",
+    verdict:
+      "Garuda's baggage system changes with the ticket issue date. Older tickets use kilogram allowances and route-zone prices sold in 5 kg blocks; tickets issued from September 1, 2026 move to a piece system on Garuda-operated flights.",
+  },
+  srilankan: {
+    h1: "SriLankan Airlines baggage fees: prepaid kilograms vs Americas pieces",
+    verdict:
+      "SriLankan uses total weight on most routes but pieces for North, Central, and South America. On eligible weight routes, travelers can prepay 5–50 kg online up to three hours before departure; baggage above 158 cm has a separate USD 50 oversize fee.",
+  },
+  "hong-kong-airlines": {
+    h1: "Hong Kong Airlines baggage fees: fare families, zones, and prepayment",
+    verdict:
+      "Hong Kong Airlines uses piece allowances that vary by fare family and route zone. Prepaid extra baggage must be bought at least four hours ahead and works only on eligible HX-marketed, HX-operated flights—not ordinary codeshares or interline segments.",
+  },
+  "china-airlines": {
+    h1: "China Airlines baggage fees: fare classes, zones, and 5% prepay savings",
+    verdict:
+      "China Airlines uses piece allowances that vary by route and booking class; some trans-Tasman Discount or Basic fares include no checked bag. Eligible CI or Mandarin itineraries can receive a 5% prepaid excess discount, but heavy, large, and special items use separate rules.",
+  },
+  hainan: {
+    h1: "Hainan Airlines baggage fees: domestic kilograms vs international pieces",
+    verdict:
+      "Hainan uses weight allowances and a 1.5% full-fare formula on Chinese domestic routes, but pieces and route tables internationally. Prepaid baggage does not cover bags outside its limits; pieces above 32 kg or 203 cm generally must be repacked or moved as cargo.",
+  },
+  egyptair: {
+    h1: "EgyptAir baggage fees: prepay cutoff, Africa exception, and stacked charges",
+    verdict:
+      "EgyptAir prices extra 23 kg pieces by route and sales channel. Website or call-center rates close 24 hours before departure, some Africa departures are airport-only, and a bag that is both heavy and oversized can be charged at double the single-condition rate.",
+  },
+  "royal-air-maroc": {
+    h1: "Royal Air Maroc baggage fees: fare products, pieces, and route tables",
+    verdict:
+      "Royal Air Maroc uses pieces, not pooled weight. Eco Essential can include no checked bag on short or medium haul but one 23 kg piece on long-haul or transit travel, while extra, overweight, and oversize prices depend on the route pair.",
+  },
+  "batik-air": {
+    h1: "Batik Air baggage fees: ticketed allowance and prepaid weight blocks",
+    verdict:
+      "Batik Air Indonesia's checked allowance is whatever FBA appears on the ticket. Eligible travelers can add 5–30 kg in five-kilogram blocks up to six hours before departure, and passengers on the same booking can pool weight when they check in together.",
+  },
+  iberia: {
+    h1: "Iberia baggage fees: Basic fares, online bags, and 32 kg limit",
+    verdict:
+      "Iberia Basic is the principal no-bag risk; Standard, Flex, and premium fares generally include checked baggage. Extra bags are itinerary-priced and usually cleaner to buy online, while pieces above 23 kg face airport overweight treatment up to a hard 32 kg ceiling.",
+  },
+  "iberia-express": {
+    h1: "Iberia Express baggage fees: Express fare and 15, 23, or 32 kg bags",
+    verdict:
+      "The Express pack is Iberia Express's no-checked-bag fare. Travelers can add a 15, 23, or 32 kg bag at a route- and channel-specific price; exceeding the purchased tier triggers a published €60 airport charge, so buying the correct weight is the key decision.",
+  },
+  volaris: {
+    h1: "Volaris baggage fees: Zero, Basic, and Plus compared",
+    verdict:
+      "Volaris reverses the usual baggage ladder: Zero is personal-item only, Basic includes a 15 kg checked bag but no overhead carry-on, and Plus includes a carry-on plus a 25 kg checked bag. Choose by the bags you will actually bring—not by the fare name.",
+  },
+  "viva-aerobus": {
+    h1: "Viva Aerobus baggage fees: Zero, Light, Extra, and Smart compared",
+    verdict:
+      "Viva's bundles solve different packing needs: Zero is personal-item only, Light adds a 10 kg carry-on, Extra adds that carry-on plus a 15 kg checked bag, and Smart raises the cabin allowance to 15 kg and checked allowance to 25 kg. Compare the complete bundle—not isolated bag fees.",
+  },
+  "tap-air-portugal": {
+    h1: "TAP baggage fees: Discount fare, extra bags, and high-season risk",
+    verdict:
+      "TAP Discount can exclude checked baggage and standard seat selection. Extra bags start from €30 online but vary by route, channel, advance timing, and season; overweight and oversize are separate charges, and high-season restrictions can limit what TAP accepts.",
+  },
+  emirates: {
+    h1: "Emirates baggage fees: weight routes, piece routes, and prepay savings",
+    verdict:
+      "Emirates charges excess by kilogram on weight-concept routes and by bag on piece-concept routes. Eligible online purchases can be 35%–60% cheaper than airport rates, but no ordinary checked piece may exceed 32 kg or 203 cm.",
+  },
+  "kenya-airways": {
+    h1: "Kenya Airways baggage fees: ticketed pieces, pooling, and Asante benefits",
+    verdict:
+      "Kenya Airways uses piece allowances on KQ-operated flights, but the e-ticket or departure system controls mixed-carrier trips. Families can pool the number of bags—not weight inside one bag—and Asante points or status can cover an eligible extra standard piece.",
+  },
+  "south-african-airways": {
+    h1: "South African Airways baggage fees: extra bags, status, and cargo limits",
+    verdict:
+      "SAA additional baggage is route-priced, passenger-specific, and unavailable for lap infants. A date change on the same route can preserve the purchase, but a route change requires cancellation and repurchase; partner operation can also remove SAA status, card, or sports benefits.",
+  },
+  "air-astana": {
+    h1: "Air Astana baggage fees: Basic fare and MyBAGGAGE rules",
+    verdict:
+      "Air Astana Economy Basic includes no checked bag, Classic includes one 23 kg piece, and Plus includes two. MyBAGGAGE can add up to 10 pieces only on Air Astana-operated flights and must be bought at least 36 hours ahead to avoid airport rates.",
+  },
   frontier: {
     h1: "Frontier baggage fees: carry-on, checked bags, and bundles",
     verdict:
@@ -1051,17 +1201,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "There is no separate Emirates personal-item fee shown here; the practical cabin question is the number, weight, and size of the cabin pieces allowed by your cabin.",
       checkedBag:
-        "Emirates is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under either the weight or piece concept depending on route, and excess baggage is priced separately when you exceed that allowance.",
+        "Emirates includes checked baggage, then prices excess by kilogram on weight-concept routes or by additional piece on piece-concept routes. The allowance printed in the ticket or Manage Booking is the starting point.",
       restrictions:
-        "The main fee risk is excess baggage and restrictive Economy fare behavior: overweight, oversize, seat selection on Special or Saver-style fares, and change/cancellation fees all depend on route, fare family, or baggage concept.",
+        "Using the wrong baggage concept is the main pricing error. Airport tables start at USD 15 per kg or USD 100 per extra piece in selected markets, while eligible advance purchases can be 35%–60% less.",
     },
     verificationNote:
-      "The Emirates carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Emirates's cabin limits, weight and piece concepts, advance-purchase discounts, Skywards benefits, sports rules, and cargo cutoffs were fully reviewed on 2026-08-23.",
     avoidFees: [
       "Confirm whether your route uses the weight concept or piece concept before packing; excess charges are triggered differently under each model.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
-      "Check whether standard seat selection is included by cabin or fare before paying; Economy Special and Saver-style fares can behave differently from Flex or premium cabins.",
-      "Read fare conditions before buying a restrictive ticket because change, cancellation, and refund treatment depends on fare family and route.",
+      "Price extra baggage online before travel when eligible; Emirates publishes advance discounts of 35%–60% against airport pricing.",
+      "Split any piece above 32 kg and keep dimensions at or below 203 cm, because heavier or larger items leave normal checked baggage.",
+      "Apply Skywards correctly: Silver adds allowance on weight routes, while piece-route extra-bag benefits begin at Gold.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1076,24 +1226,24 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy / Premium Economy",
+        name: "Weight-concept routes",
         details:
-          "Economy carry-on is one 7 kg piece, while Premium Economy shows one 10 kg piece. Checked baggage is included on eligible fares but depends on route, cabin, fare family, and baggage concept.",
+          "The ticket shows a total kilogram allowance. Excess is purchased by additional weight, with airport examples starting at USD 15 per kg and eligible online discounts available.",
       },
       {
-        name: "Business / First",
+        name: "Piece-concept routes",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin seat selection is generally included.",
+          "The ticket shows a number of pieces with weight and size limits. Another bag, an overweight bag, and an oversized bag are different conditions.",
       },
       {
-        name: "Excess baggage",
+        name: "Cabin allowances",
         details:
-          "Excess baggage is triggered when the free allowance is exceeded, with pricing depending on route, cabin, and whether the itinerary uses piece or weight concept rules.",
+          "Economy gets one 7 kg cabin piece, Premium Economy one 10 kg piece, and Business or First two pieces up to 7 kg each. A rejected cabin bag enters the checked allowance calculation.",
       },
       {
-        name: "Economy seat and fare conditions",
+        name: "Skywards allowance",
         details:
-          "Seat selection may cost extra on some Economy fares, while change and cancellation fees depend on fare family and route.",
+          "Silver, Gold, and Platinum can add weight on eligible weight routes; only Gold and Platinum receive the published piece-route addition.",
       },
     ],
     scenarios: [
@@ -1103,25 +1253,25 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "The cabin baseline is one piece up to 7 kg. The risk is being over the cabin weight limit, not a simple carry-on fee.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "Needing 8 kg more on a weight route",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route, cabin, fare family, and whether the route uses the weight or piece concept.",
+          "Buy kilograms rather than another fixed piece, and compare the eligible online price with the airport per-kilogram table.",
       },
       {
-        title: "Exceeding the allowance",
+        title: "Needing another bag on a piece route",
         details:
-          "Excess baggage charges apply when the free allowance is exceeded, and the amount depends on route, cabin, and baggage concept.",
+          "Buy an extra piece. Keep it within the route's weight and size ceiling so extra-piece, overweight, or oversize treatment does not compound the cost.",
       },
       {
-        title: "Choosing an Economy seat",
+        title: "Checking a 34 kg or 210 cm item",
         details:
-          "Standard seat selection is included for some fare families and cabins, but some Economy fares can have paid seat selection depending on route, seat type, and timing.",
+          "A normal checked piece cannot exceed 32 kg, and an item over 203 cm must move through cargo or freight. Prepaying excess does not override either cutoff.",
       },
     ],
     exceptions: [
-      "Checked baggage is included under the weight or piece concept depending on route.",
-      "Bags above 32 kg per bag are outside the ordinary accepted checked-baggage weight.",
-      "No Emirates co-branded-card baggage waiver is shown here.",
+      "Skywards Silver receives additional allowance on weight-concept travel but not the published extra piece on piece-concept routes.",
+      "Bicycles should be arranged at least 24 hours in advance; equipment beyond accepted dimensions goes as cargo or freight.",
+      "Infants receive 10 kg on weight routes or one 23 kg piece on piece routes, plus limited cabin necessities and stroller or carry-cot handling.",
     ],
     comparisonLinks: [
       { href: "/airlines/qatar-airways", label: "Qatar Airways" },
@@ -1133,21 +1283,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "qatar-airways": {
     intro: {
       carryOn:
-        "Qatar Airways includes cabin baggage, but the allowance changes by cabin: Economy gets one 7 kg piece, while Business and First get two 7 kg pieces.",
+        "Qatar Airways Economy includes one 7 kg cabin bag. Business and First receive two pieces with a 15 kg combined allowance—not 7 kg for each piece as a traveler might infer from the Economy rule.",
       personalItem:
-        "There is no separate Qatar Airways personal-item fee shown here; the practical cabin question is whether your cabin allows one or two main cabin pieces under the 7 kg-per-piece rule.",
+        "A small personal item does not create another full-size Economy carry-on. Qatar can move noncompliant cabin baggage into the checked system, where the route's piece or weight rules become important.",
       checkedBag:
-        "Qatar Airways is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under the piece or weight concept depending on route, then excess baggage is charged when the allowance is exceeded.",
+        "Qatar uses piece allowances to and from Africa or the Americas and total-weight allowances on many other routes. On weight routes, another kilogram is the pricing unit; on piece routes, another bag, an overweight bag, and an oversize bag are separate conditions.",
       restrictions:
-        "The main fee risk is exceeding the included allowance or buying a restrictive fare. Excess baggage, preferred seats, changes, cancellations, and unaccompanied-minor service all depend on route, cabin, fare family, or eligibility.",
+        "The costliest mistake is using Qatar's lowest published example as a global price. Airport rates start from USD 20 per kg or USD 130 per extra piece in selected table pairings, while piece-route overweight and oversize charges start from USD 75 and may combine.",
     },
     verificationNote:
-      "The Qatar Airways carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Qatar Airways' cabin allowances, Africa and Americas piece system, weight-route excess tables, cumulative conditions, status benefits, and infant rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses the piece concept or weight concept before buying extra baggage; the allowance and excess logic change by route.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
-      "Do not pay for preferred or extra-legroom seating until you know whether standard seat selection is included for your fare and cabin.",
-      "Check fare rules before booking if you may change or cancel because fees depend on fare family and route, with fare differences possibly applying.",
+      "Identify Africa or Americas travel before doing any bag math: those routes use pieces, while many other routes charge excess by kilogram.",
+      "On a weight route, reduce total kilograms; on a piece route, redistribute weight and size before buying another bag because conditions can stack.",
+      "Keep every piece at or below 32 kg. A larger total allowance never permits one bag above Qatar's single-piece maximum.",
+      "Apply eligible Privilege Club allowance first: Silver, Gold, and Platinum add kilograms or pieces differently according to the baggage system.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1162,52 +1312,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Weight-concept routes",
         details:
-          "Economy carry-on is one cabin bag up to 7 kg. Checked baggage is included on eligible fares, with allowance depending on route, cabin, fare family, and baggage concept.",
+          "Excess is purchased by kilogram after the ticketed allowance. Qatar's airport table begins at USD 20 per kg for its lowest region pairing, but the actual rate changes with origin and destination.",
       },
       {
-        name: "Business / First",
+        name: "Africa and Americas piece routes",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
+          "These routes price an additional piece separately. Selected airport cases begin at USD 130, while overweight and oversize conditions begin at USD 75 and can be added to the extra-piece charge.",
       },
       {
-        name: "Excess baggage",
+        name: "Privilege Club allowance",
         details:
-          "Excess baggage charges apply when the free allowance is exceeded, with pricing based on route, cabin, and number of pieces or weight.",
+          "Silver, Gold, and Platinum add 15, 20, or 25 kg on eligible weight routes, or one, one, or two pieces on piece routes. The itinerary must be Qatar-marketed and operated for the published benefit.",
       },
       {
-        name: "Seats and fare rules",
+        name: "Premium cabin baggage",
         details:
-          "Standard seat selection is included for most fares, while preferred or extra-legroom seats and change/cancellation rules depend on fare family and route.",
+          "Business and First receive two cabin pieces totaling 15 kg. Checked allowance also rises by cabin and fare family, but the route still decides whether the allowance is expressed as weight or pieces.",
       },
     ],
     scenarios: [
       {
-        title: "Flying Economy with cabin baggage only",
+        title: "A weight-route itinerary is 4 kg over",
         details:
-          "The cabin baseline is one piece up to 7 kg. The risk is being over the cabin allowance, not a separate carry-on fee.",
+          "Price four excess kilograms using the exact origin-destination pairing. Adding another suitcase does not remove the excess because the allowance is measured by combined weight.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "An Americas itinerary needs one extra bag",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route and whether the itinerary uses the piece or weight concept.",
+          "Use the piece table, where selected airport rates begin at USD 130. Then test that piece independently for the 23 kg and 158 cm thresholds.",
       },
       {
-        title: "Buying excess baggage",
+        title: "An extra piece is both heavy and oversized",
         details:
-          "Excess baggage pricing depends on route, cabin, and number of pieces or weight, so this page should not be read as one universal add-on fee.",
+          "Qatar separates extra-piece, overweight, oversize, and combined conditions. Do not budget only the extra-piece rate; calculate the itinerary's combined treatment before travel.",
       },
       {
-        title: "Choosing an extra-legroom seat",
+        title: "An infant travels to the Americas",
         details:
-          "Preferred or extra-legroom seats may incur a fee on some Economy fares depending on route and fare family.",
+          "The published infant allowance is one 23 kg checked piece plus one baby item. Elsewhere, the infant checked allowance is commonly 10 kg, showing why route geography matters beyond adult tickets.",
       },
     ],
     exceptions: [
-      "Checked baggage is included under either the piece or weight concept depending on route.",
-      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
-      "No Qatar Airways co-branded-card baggage waiver is shown here.",
+      "The lowest USD excess examples apply only to selected region pairings, not every Qatar itinerary.",
+      "Extra-piece, overweight, and oversize conditions can combine on Africa or Americas piece routes.",
+      "Privilege Club extra allowance requires an eligible Qatar Airways-marketed and operated trip.",
+      "A single checked piece may not exceed 32 kg; split heavier baggage before check-in.",
     ],
     comparisonLinks: [
       { href: "/airlines/emirates", label: "Emirates" },
@@ -1219,21 +1370,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "turkish-airlines": {
     intro: {
       carryOn:
-        "Turkish Airlines includes cabin baggage, but the allowance changes by cabin: Economy gets one 8 kg piece, while Business gets two 8 kg pieces.",
+        "Turkish Airlines Economy includes one 8 kg cabin bag; Business includes two 8 kg pieces. Checked baggage is less uniform because the fare package and route can change both the free allowance and the excess calculation.",
       personalItem:
-        "There is no separate Turkish Airlines personal-item fee shown here; the key cabin question is whether your cabin allows one or two main cabin pieces under the 8 kg-per-piece rule.",
+        "A small personal item accompanies the cabin allowance, but it should not be treated as another full-size piece. The main cabin count remains one in Economy and two in Business.",
       checkedBag:
-        "Turkish Airlines is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under either the piece or weight concept depending on route, then excess baggage is charged when the allowance is exceeded.",
+        "Do not assume every Turkish fare includes a checked bag. Some EcoFly routes have no checked allowance; other packages include baggage expressed as pieces or total weight. Turkish then prices excess through an itinerary calculator rather than one global fee table.",
       restrictions:
-        "The main fee risks are excess baggage, paid Economy seat selection on some fares, and promotional or restrictive fare rules for changes and cancellations.",
+        "Connections complicate the answer. The most significant carrier, joint-flight rules, stopovers, domestic connections, and TRNC cases can override a simple origin-destination estimate. Sports equipment also uses its own table, not the normal extra-bag price.",
     },
     verificationNote:
-      "The Turkish Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Turkish Airlines' cabin allowance, fare-package baggage, piece-versus-weight rules, calculator caveats, Miles&Smiles benefits, sports equipment, infant baggage, and fare conditions were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether your route uses piece or weight concept baggage before packing; the excess-baggage charge depends on that structure.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
-      "Check whether standard seat selection is included for your fare before paying for an Economy seat.",
-      "Avoid promotional fares if flexibility matters because promotional fares are generally the most restrictive.",
+      "Check the named fare package before comparing prices. An EcoFly fare with no checked allowance can erase a small base-fare saving.",
+      "Run the exact itinerary through Turkish's excess calculator, including connections and stopovers, instead of transferring a price from another route.",
+      "Split any piece above 32 kg. The airline will not accept a heavier ordinary checked bag simply because the total allowance is sufficient.",
+      "Price sports equipment through the dedicated special-charge table; ordinary online extra baggage does not model those items.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1248,52 +1399,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "EcoFly",
         details:
-          "Economy cabin baggage is one piece up to 8 kg. Checked baggage is included on eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+          "EcoFly can carry no checked-bag allowance on selected routes. Confirm the package row before booking because adding baggage later may make ExtraFly the cheaper total trip.",
       },
       {
-        name: "Business",
+        name: "ExtraFly and PrimeFly",
         details:
-          "Business cabin baggage is two pieces up to 8 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
+          "Higher Economy packages can include more baggage and flexibility, but the exact allowance still changes by flight track and whether the route uses pieces or total weight.",
       },
       {
-        name: "Excess baggage",
+        name: "Route calculator and connections",
         details:
-          "Excess baggage applies when the free allowance is exceeded, with pricing based on route, cabin, and whether piece or weight concept applies.",
+          "Extra baggage is calculator-priced by route, carrier, timing, stopovers, and baggage concept. Most-significant-carrier rules and joint flights can change the result shown for a simple Turkish-operated itinerary.",
       },
       {
-        name: "Seats and fare rules",
+        name: "Miles&Smiles allowance",
         details:
-          "Standard seat selection is included for most fares, while some Economy seats and change/cancellation treatment depend on route, fare family, and timing.",
+          "Eligible tiers add 10, 20, or 25 kg on weight routes or an additional piece on piece routes. Apply the status benefit before deciding whether the next fare package is worth buying.",
       },
     ],
     scenarios: [
       {
-        title: "Flying Economy with cabin baggage only",
+        title: "EcoFly is cheaper but you need a checked bag",
         details:
-          "The cabin baseline is one piece up to 8 kg. The risk is being over the cabin weight limit, not a separate carry-on fee.",
+          "Compare EcoFly plus the calculator-priced bag against ExtraFly's total. The lowest advertised fare is not necessarily the lower trip cost when the route excludes checked baggage.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "A journey includes a partner-operated segment",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route and whether the itinerary uses the piece or weight concept.",
+          "Do not rely on the Turkish-only allowance. The most significant carrier can control baggage, and the calculator itself warns that joint-flight exceptions apply.",
       },
       {
-        title: "Buying excess baggage",
+        title: "A checked piece weighs more than 32 kg",
         details:
-          "Excess baggage pricing depends on route, cabin, and baggage concept, so this page should not be read as one universal extra-bag fee.",
+          "Repack into separate bags before check-in. Turkish caps each ordinary piece at 32 kg even on weight-concept tickets with a larger combined allowance.",
       },
       {
-        title: "Changing a promotional fare",
+        title: "Traveling with skis or another sports item",
         details:
-          "Change and cancellation fees depend on fare family and route, with promotional fares generally the most restrictive.",
+          "Use Turkish's sports-equipment rules and special-charge zones. A normal extra-baggage purchase can give the wrong answer because equipment is sold under a separate framework.",
       },
     ],
     exceptions: [
-      "Checked baggage is included under either the piece or weight concept depending on route.",
-      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
-      "No Turkish Airlines co-branded-card baggage waiver is shown here.",
+      "Some EcoFly flight tracks include no checked baggage; fare-package benefits are not identical across all routes.",
+      "Joint flights, stopovers, domestic connections, TRNC travel, and most-significant-carrier rules can change the calculator result.",
+      "Sports equipment uses separate equipment and zone charges rather than ordinary extra-baggage pricing.",
+      "No single checked piece may exceed 32 kg, including on weight-concept itineraries.",
     ],
     comparisonLinks: [
       { href: "/airlines/emirates", label: "Emirates" },
@@ -1305,21 +1457,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "cathay-pacific": {
     intro: {
       carryOn:
-        "Cathay Pacific includes cabin baggage, but the allowance changes by cabin: Economy and Premium Economy get one 7 kg piece, while Business and First get two 7 kg pieces.",
+        "Cathay's cabin allowance is straightforward compared with its checked-bag rules: Economy and Premium Economy receive one 7 kg cabin bag, while Business and First receive two 7 kg pieces. Do not use the premium-cabin count when comparing an Economy fare.",
       personalItem:
-        "There is no separate Cathay Pacific personal-item fee shown here; the practical cabin question is whether your cabin allows one or two main cabin pieces.",
+        "Cathay also permits a small personal item, but that does not increase the 7 kg limit on the main Economy cabin bag. Keep the personal item genuinely small instead of treating it as a second full-size carry-on.",
       checkedBag:
-        "Cathay Pacific is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under piece or weight concept rules depending on route, and excess baggage is charged when the allowance is exceeded.",
+        "The ticket's baggage notation is the decision point. A piece-system allowance such as 2PC limits the number and weight of bags; a weight-system allowance such as 23K lets eligible bags share a total weight. The cheapest response to excess baggage is different under each system.",
       restrictions:
-        "The main fee risks are excess baggage, preferred or extra-legroom seat charges on some Economy fares, fare-rule-based changes, and route-specific unaccompanied-minor rules.",
+        "The costly mistakes are buying the wrong kind of excess allowance, missing Cathay's advance-purchase window, or arriving with one bag above 32 kg. Partner-operated segments can also apply a different carrier's baggage rules.",
     },
     verificationNote:
-      "The Cathay Pacific carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Cathay Pacific's cabin limits, piece-versus-weight treatment, prepaid extra-baggage conditions, 32 kg maximum, and related fare rules were fully reviewed against official sources on 2026-08-23.",
     avoidFees: [
-      "Confirm whether your itinerary uses piece or weight concept baggage before buying extra allowance.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
-      "Check standard seat eligibility before buying preferred or extra-legroom seats on Economy fares.",
-      "Read the fare rules before booking if you may change or cancel because fees depend on fare family and route.",
+      "Find PC or K on the e-ticket before buying baggage. PC means the number of pieces matters; K means the combined checked weight matters.",
+      "On eligible Cathay-marketed, operated, and ticketed itineraries, prepay up to three extra pieces at least 24 hours before departure for a discount of up to 10%.",
+      "Repack instead of paying when a single bag exceeds 32 kg: Cathay will not accept that piece as ordinary checked baggage.",
+      "Recheck the operating carrier on every segment. Cathay's prepaid allowance is not a safe assumption for a partner-operated flight.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1334,52 +1486,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy / Premium Economy",
+        name: "Read the ticket first: PC",
         details:
-          "Cabin baggage is one piece up to 7 kg. Checked baggage is included on eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+          "A notation such as 2PC is a piece-system allowance. Each bag must stay within its individual weight and size limit; a light first bag does not create extra weight for an overweight second bag.",
       },
       {
-        name: "Business / First",
+        name: "Read the ticket first: K",
         details:
-          "Business and First show two cabin pieces up to 7 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
+          "A notation such as 23K is a weight-system allowance. The combined checked weight is the main constraint, so redistributing weight between bags can avoid a per-kilogram excess charge.",
       },
       {
-        name: "Excess baggage",
+        name: "Prepaid extra pieces",
         details:
-          "Excess baggage is charged when the free allowance is exceeded, with pricing based on route, cabin, and number of pieces or weight.",
+          "Eligible Cathay-only bookings can add up to three pieces at least 24 hours before departure and receive up to a 10% discount. This is useful for a known extra piece, not as a substitute for fixing an overweight bag.",
       },
       {
-        name: "Seats and fare rules",
+        name: "Cabin and status allowances",
         details:
-          "Standard seat selection is included for most fares, while preferred seats, changes, cancellations, and refunds depend on fare family and route.",
+          "Business and First receive two 7 kg cabin pieces. Cathay Gold or Diamond and eligible oneworld status may add checked allowance, but the benefit still follows the itinerary's piece or weight system.",
       },
     ],
     scenarios: [
       {
-        title: "Flying Economy with cabin baggage only",
+        title: "Your ticket says 2PC and you need a third bag",
         details:
-          "The cabin baseline is one piece up to 7 kg. The risk is being over the cabin allowance, not a separate carry-on fee.",
+          "Treat this as an extra-piece problem. If the itinerary qualifies, buying the third piece at least 24 hours ahead can be up to 10% cheaper than resolving it late.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "Your ticket says 23K and your bags total 27 kg",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route and whether the itinerary uses piece or weight concept rules.",
+          "Treat the four kilograms as excess weight rather than assuming you need another piece. Repacking between bags may help with individual handling limits, but it does not reduce the combined excess kilograms.",
       },
       {
-        title: "Exceeding the allowance",
+        title: "One checked bag weighs more than 32 kg",
         details:
-          "Excess baggage charges vary by route, cabin, and number of pieces or weight, so the amount must be priced for the itinerary.",
+          "Do not plan to pay an overweight fee and continue. Cathay caps an accepted checked piece at 32 kg, so move items to another bag or arrange cargo before arriving at the airport.",
       },
       {
-        title: "Choosing extra-legroom seats",
+        title: "A partner operates one flight",
         details:
-          "Preferred or extra-legroom seats may incur a fee on some Economy fares depending on route and fare family.",
+          "The operating carrier and most-significant-carrier rules can change the allowance. Confirm the baggage line for the whole ticket before buying Cathay prepaid baggage that may not cover the partner segment.",
       },
     ],
     exceptions: [
-      "Checked baggage is included under piece or weight concept rules depending on route.",
-      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
-      "No Cathay Pacific co-branded-card baggage waiver is shown here.",
+      "Prepaid extra baggage requires an eligible Cathay-marketed, Cathay-operated, and Cathay-ticketed itinerary and closes 24 hours before departure.",
+      "Sports equipment can count within the checked allowance, but size handling and a 203 cm threshold can still affect acceptance or charges.",
+      "No single checked piece above 32 kg is accepted, even when the total ticket allowance is higher.",
+      "Status benefits and partner flights can alter the printed allowance; the e-ticket remains the controlling starting point.",
     ],
     comparisonLinks: [
       { href: "/airlines/singapore-airlines", label: "Singapore Airlines" },
@@ -1391,21 +1544,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   ana: {
     intro: {
       carryOn:
-        "ANA includes carry-on baggage up to 10 kg total including the personal item, with standard size limits applying.",
+        "ANA's cabin limit is 10 kg combined across the carry-on and personal item. A light suitcase does not create a separate unrestricted allowance for a heavy personal bag.",
       personalItem:
-        "ANA treats the personal item as part of the total 10 kg cabin allowance, so weight matters even when the bag fits physically.",
+        "The personal item shares the 10 kg total, making weight—not merely fit—the cabin-bag trap. Weigh both pieces together before leaving for the airport.",
       checkedBag:
-        "ANA checked baggage is included on eligible fares, but the allowance depends on route, cabin, and domestic versus international rules. Additional bags are charged only after the free allowance is exceeded.",
+        "ANA's included allowance changes between domestic and international travel, by cabin and fare, and some fares can carry zero free checked pieces. Its prepaid service solves one additional bag on a narrow set of eligible international itineraries; it is not a universal excess-baggage purchase.",
       restrictions:
-        "The main risks are excess baggage above the free allowance, airport overweight or oversize charges, preferred-seat charges on some international Economy fares, and fare-rule-based changes or refunds.",
+        "The main mistake is assuming the prepaid option covers any trip or any baggage problem. It excludes U.S. and Canadian city itineraries, codeshares, other-airline operation, Japan-domestic-only sectors, and separate tickets, and it does not solve overweight baggage.",
     },
     verificationNote:
-      "The ANA carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "ANA's combined cabin limit, domestic and international allowances, one-piece prepaid product, premium benefits, sports-equipment exception, and family rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check whether the trip is domestic or international before assuming the checked-bag allowance; ANA's allowance changes by route and cabin.",
-      "Keep checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds.",
-      "Avoid bags over 32 kg because ANA does not accept them as checked baggage.",
-      "Use included advance seat selection where available, and check whether a preferred-seat fee applies before paying for international Economy seating.",
+      "Read the ticketed free-piece count first; ANA warns that some fares include no checked bag.",
+      "Use prepaid extra baggage only for one known additional piece on an eligible itinerary, and request it at least six hours before departure.",
+      "Do not buy the prepaid product for overweight baggage—it covers an extra piece, not unlimited excess weight.",
+      "If carrying listed sports equipment between 158 and 292 cm, check ANA's oversize-fee waiver and aircraft limits before paying a generic oversize charge.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1420,52 +1573,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "All fares / cabin baggage",
+        name: "Ticketed free allowance",
         details:
-          "Carry-on baggage is included up to 10 kg total including the personal item, with size limits applying.",
+          "Domestic versus international rules, cabin, and fare control the checked allowance. Some fares have zero free pieces, which can also remove the usual infant or child baggage expectation.",
       },
       {
-        name: "Checked-bag allowance",
+        name: "One prepaid extra piece",
         details:
-          "Checked baggage is included, but the allowance depends on route, cabin, and domestic versus international rules.",
+          "Eligible ANA-ticketed international trips can prepay one additional piece at least six hours ahead. Published examples range from JPY 10,000 or USD 100 within some areas to JPY 20,000, EUR 150, or USD 200 across areas.",
       },
       {
-        name: "Additional and excess baggage",
+        name: "Prepayment exclusions",
         details:
-          "Additional checked-bag, overweight, and oversize fees apply after the free allowance or standard thresholds are exceeded.",
+          "Trips involving U.S. or Canadian cities, codeshares, another operating airline, Japan-domestic-only sectors, or separate tickets are excluded from ANA's published prepaid product.",
       },
       {
-        name: "Seats and changes",
+        name: "Sports-equipment exception",
         details:
-          "Advance seat selection is included for most fares, while preferred seats and change/cancellation rules depend on fare brand, route, and ticket type.",
+          "Listed sports equipment within the free allowance can receive an oversize-fee waiver from 158 to 292 cm on eligible ANA international flights, although route, aircraft, and acceptance limits remain.",
       },
     ],
     scenarios: [
       {
-        title: "Flying with carry-on only",
+        title: "Carry-on plus personal item total 12 kg",
         details:
-          "ANA's carry-on limit is up to 10 kg total including the personal item, so a heavy personal item can still create a cabin-bag issue.",
+          "Repack or check weight before travel. ANA measures the two cabin items together against the 10 kg limit rather than giving each item its own allowance.",
       },
       {
-        title: "Checking within the free allowance",
+        title: "One extra bag on an eligible international trip",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route, cabin, and domestic versus international rules.",
+          "Prepay the single extra piece at least six hours before departure. Use the itinerary's departure currency and area pairing instead of assuming the lowest JPY or USD example.",
       },
       {
-        title: "Checking a 24 kg bag",
+        title: "The trip connects through a U.S. or Canadian city",
         details:
-          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
+          "ANA's published prepaid extra-bag option is not available. Budget using the airport or controlling-carrier rules rather than relying on the online one-piece product.",
       },
       {
-        title: "Selecting an international Economy preferred seat",
+        title: "Checking a 200 cm bicycle",
         details:
-          "Preferred seat fees may apply on some international Economy fares depending on fare brand and route.",
+          "Eligible listed sports gear can receive ANA's oversize-fee waiver between 158 and 292 cm, but advance contact is still sensible because aircraft and route limits can prevent carriage.",
       },
     ],
     exceptions: [
-      "ANA provides unaccompanied-minor assistance free of charge on ANA-operated flights, with age restrictions and conditions.",
-      "Bags above 32 kg are not accepted as checked baggage.",
-      "No ANA co-branded-card baggage waiver is shown here.",
+      "ANA's prepaid product covers one extra piece only and closes six hours before departure.",
+      "U.S./Canada city itineraries, codeshares, other-airline operation, domestic-only sectors, and separate tickets can be ineligible for prepayment.",
+      "Sports-equipment oversize relief does not override aircraft, route, packing, or acceptance limits.",
+      "Lap infants can receive one extra piece on eligible international fares, except where the fare has zero free checked allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/jal", label: "Japan Airlines" },
@@ -1477,21 +1631,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   jal: {
     intro: {
       carryOn:
-        "Japan Airlines includes carry-on baggage up to 10 kg total including the personal item, with size limits applying.",
+        "JAL includes 10 kg of cabin baggage in total across the main carry-on and personal item. The combined-weight rule matters more than the number of small bags.",
       personalItem:
-        "JAL treats the personal item as part of the 10 kg total cabin allowance, so the combined weight is the practical constraint.",
+        "The personal item shares the 10 kg ceiling. A compliant suitcase can still create a cabin issue when the laptop bag pushes the combined total over the limit.",
       checkedBag:
-        "Japan Airlines checked baggage is included on eligible fares, but the allowance depends on route and cabin. Additional bags are charged only after the free allowance is exceeded.",
+        "JAL international Economy and Premium Economy commonly include two 23 kg pieces. Excess is then classified as another piece, overweight, or oversize, with route-pair pricing; domestic baggage follows a different per-kilogram structure.",
       restrictions:
-        "The main risks are excess baggage above the included allowance, airport overweight or oversize charges, preferred-seat charges on some international Economy fares, and fare-rule-based changes or refunds.",
+        "Charges can accumulate when one bag violates multiple limits. Acceptance is another constraint: a single piece above 200 × 90 × 90 cm is generally outside JAL's airport limits, and sports equipment can be refused when the aircraft lacks cargo space.",
     },
     verificationNote:
-      "The Japan Airlines carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "JAL's combined cabin allowance, international piece rules, domestic and international excess examples, status allowance, infant baggage, and equipment limits were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm the route and cabin allowance before packing; JAL's included checked-bag allowance changes by route and cabin.",
-      "Keep Economy checked bags at or below 23 kg and 158 cm when possible because overweight and oversize fees begin above those thresholds.",
-      "Avoid bags over 32 kg because JAL does not accept them as checked baggage.",
-      "Check whether preferred or extra-legroom seats cost extra on the specific international Economy fare before paying for seat selection.",
+      "Keep each international Economy piece at or below 23 kg and 158 cm to avoid adding overweight or oversize charges to an extra-piece fee.",
+      "Separate domestic and international pricing: domestic excess can be charged per kilogram, while international tables use area pairs and baggage conditions.",
+      "Do not assume a through-check price from one route applies to another; JAL's own examples change with the international area pair and itinerary split.",
+      "Contact JAL before taking long sports equipment because valid baggage can still be rejected when the scheduled aircraft has insufficient cargo length or space.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1506,52 +1660,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "All fares / cabin baggage",
+        name: "International Economy allowance",
         details:
-          "Carry-on baggage is included up to 10 kg total including the personal item, with size limits applying.",
+          "Economy and Premium Economy commonly include two pieces up to 23 kg each. Premium cabins use higher piece-weight limits, while status can add another piece.",
       },
       {
-        name: "Economy checked baggage",
+        name: "International excess conditions",
         details:
-          "Economy is typically up to 23 kg per piece, while premium cabins have higher allowances.",
+          "Extra-piece, overweight, and oversize charges use area-pair tables. JAL illustrates a through-check Osaka–Tokyo–London extra piece at JPY 20,000 plus JPY 10,000 when overweight.",
       },
       {
-        name: "Additional and excess baggage",
+        name: "Domestic excess weight",
         details:
-          "Additional checked-bag, overweight, and oversize fees apply after the free allowance or standard thresholds are exceeded.",
+          "Japan domestic baggage uses different logic, including a published JPY 440 per kg excess example. Do not use that domestic figure to estimate an international extra piece.",
       },
       {
-        name: "Seats and changes",
+        name: "JMB and oneworld status",
         details:
-          "Advance seat selection is included for most fares, while preferred or extra-legroom seats and fare changes depend on fare brand and route.",
+          "Eligible status can raise international Economy or Premium Economy to three pieces. The weight limit varies by tier and JAL Global Club eligibility, so verify the exact member benefit.",
       },
     ],
     scenarios: [
       {
-        title: "Flying with carry-on only",
+        title: "Two Economy bags weigh 23 kg each",
         details:
-          "The cabin baseline is up to 10 kg total including the personal item, so combined cabin weight matters.",
+          "That commonly fits JAL's international Economy allowance, subject to the exact ticket and operating carrier. Check dimensions as well as weight before treating both pieces as included.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "A third bag also weighs 28 kg",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route and cabin.",
+          "Budget for an extra-piece charge plus the relevant 23–32 kg overweight charge. JAL's route examples show that one condition does not cancel the other.",
       },
       {
-        title: "Checking a 24 kg Economy bag",
+        title: "Domestic baggage exceeds the free weight",
         details:
-          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted as checked baggage.",
+          "Use the domestic per-kilogram table rather than an international extra-piece price. The published domestic excess example is JPY 440 per kilogram.",
       },
       {
-        title: "Choosing an international Economy preferred seat",
+        title: "Taking skis on a smaller aircraft",
         details:
-          "Preferred or extra-legroom seat fees may apply on some international Economy fares depending on fare brand and route.",
+          "Even when the equipment otherwise qualifies, acceptance depends on packaging and available cargo length. Confirm the scheduled aircraft rather than assuming fee payment guarantees carriage.",
       },
     ],
     exceptions: [
-      "JAL provides unaccompanied-minor assistance free of charge on JAL-operated flights, with age restrictions and conditions.",
-      "Bags above 32 kg are not accepted as checked baggage.",
-      "No JAL co-branded-card baggage waiver is shown here.",
+      "International excess prices depend on the area pair and can combine extra-piece, overweight, and oversize conditions.",
+      "Domestic per-kilogram examples do not price international baggage.",
+      "A single piece above 200 × 90 × 90 cm is generally outside JAL's published airport limits.",
+      "Sports-equipment acceptance depends on packing, aircraft cargo length, and available space.",
     ],
     comparisonLinks: [
       { href: "/airlines/ana", label: "ANA" },
@@ -1563,21 +1718,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "korean-air": {
     intro: {
       carryOn:
-        "Korean Air includes cabin baggage, but the allowance changes by cabin: Economy gets one 10 kg piece, while Prestige and First get two 10 kg pieces.",
+        "Korean Air Economy includes one 10 kg cabin bag; Prestige and First include two 10 kg pieces. The larger cost question is checked baggage, where route and cabin determine the included allowance before any fee is calculated.",
       personalItem:
-        "There is no separate Korean Air personal-item fee shown here; the practical cabin-bag question is how many 10 kg cabin pieces your cabin allows.",
+        "A small personal item is allowed with the main cabin baggage, but it is not permission to bring a second full-size Economy carry-on. Pack to the stated cabin count and 10 kg limit.",
       checkedBag:
-        "Korean Air is an included-allowance airline, not a flat paid-first-bag airline. Checked baggage is included under piece or weight concept rules depending on route, and excess baggage is charged when the allowance is exceeded.",
+        "Korean Air does not have one universal first-bag price. Domestic and international routes, Saver fares, cabin, ticket date, and codeshare operation can change the included pieces. Calculate the free allowance first, then test each bag for extra-piece, overweight, and oversize charges.",
       restrictions:
-        "The main risks are excess baggage, preferred or extra-legroom seat charges on some Economy fares, and fare-rule-based changes or cancellations.",
+        "Excess conditions can stack. A third bag that is also 24–32 kg and oversized can attract an extra-piece fee plus overweight and oversize charges. Large pieces above 203 cm may require advance approval rather than a simple airport payment.",
     },
     verificationNote:
-      "The Korean Air carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Korean Air's cabin allowances, route-based checked baggage, advance excess purchase, Americas fee examples, Brazil exception, and stacked excess conditions were fully reviewed against official sources on 2026-08-23.",
     avoidFees: [
-      "Confirm whether your itinerary uses piece or weight concept baggage before buying extra allowance.",
-      "Keep each checked bag at or below 32 kg because that is the maximum accepted weight per bag.",
-      "Check whether standard seat selection is included for your fare before paying for preferred or extra-legroom seats.",
-      "Read fare rules before booking if you may change or cancel because fees depend on fare family and route.",
+      "Use Korean Air's itinerary-specific baggage calculator before comparing fares; do not transplant an Americas allowance onto an intra-Asia or codeshare trip.",
+      "Buy a known extra bag online in advance when the itinerary is eligible rather than waiting for airport check-in.",
+      "Keep Economy pieces at or below 23 kg and 158 cm when possible. Crossing both thresholds can trigger two excess conditions on top of an extra-piece charge.",
+      "Check whether SKYPASS status actually adds a piece or weight on this route; some Americas Economy cases are excluded.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -1592,52 +1747,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Economy and Saver",
         details:
-          "Economy cabin baggage is one piece up to 10 kg. Checked baggage is included on eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+          "Economy receives one 10 kg cabin bag, but the checked allowance is route-specific. Saver, Brazil ticket dates, and a codeshare operator can produce a different result from a standard Korean Air-operated itinerary.",
       },
       {
-        name: "Prestige / First",
+        name: "Americas route tables",
         details:
-          "Prestige and First show two cabin pieces up to 10 kg each. Premium-cabin excess-baggage pricing is still route- and concept-based rather than one universal amount.",
+          "Korean Air publishes concrete fee tables for Americas itineraries. Current examples show a USD 200 third bag and USD 100 for a 24–32 kg bag on covered routes, but those figures are examples—not global prices.",
       },
       {
-        name: "Excess baggage",
+        name: "Brazil exception",
         details:
-          "Excess baggage applies when the free allowance is exceeded, with pricing based on route, cabin, and number of pieces or weight.",
+          "Travel involving Brazil has separate published treatment, including exceptions to the standard Americas overweight example. Confirm the route and ticket conditions instead of applying the USD 100 figure automatically.",
       },
       {
-        name: "Seats and changes",
+        name: "Prestige, First, and SKYPASS",
         details:
-          "Standard seat selection is included for most fares, while preferred seats and change/cancellation treatment depend on route and fare family.",
+          "Prestige and First receive two 10 kg cabin pieces and higher checked allowances. Eligible SKYPASS status may add a piece or 10 kg, subject to route and Economy exclusions.",
       },
     ],
     scenarios: [
       {
-        title: "Flying Economy with cabin baggage only",
+        title: "Economy between Asia and the Americas",
         details:
-          "The cabin baseline is one piece up to 10 kg. The risk is exceeding the cabin allowance, not a separate carry-on fee.",
+          "Start with the exact ticketed allowance; the first bag is commonly included and the second can be included on many routes, but exceptions exist. The booking confirmation beats a generic two-bag assumption.",
       },
       {
-        title: "Checking within the included allowance",
+        title: "Adding a third standard-size bag",
         details:
-          "Eligible fares include checked baggage, but the allowance depends on route and whether the itinerary uses piece or weight concept rules.",
+          "On covered Americas examples, Korean Air lists USD 200 for the third bag. Price the real itinerary and purchase in advance when eligible because another region can use a different amount.",
       },
       {
-        title: "Exceeding the allowance",
+        title: "Checking a 24–32 kg bag",
         details:
-          "Excess baggage charges vary by route, cabin, and number of pieces or weight, so the amount must be priced for the itinerary.",
+          "Covered Americas examples show a USD 100 overweight charge, with separate Brazil treatment. If the bag is also additional or oversized, those charges can be added rather than replaced.",
       },
       {
-        title: "Choosing an extra-legroom seat",
+        title: "Checking a piece larger than 203 cm",
         details:
-          "Preferred or extra-legroom seats may incur a fee on some Economy fares depending on route and fare family.",
+          "Do not assume an oversize fee guarantees acceptance. Korean Air requires advance approval for pieces in the larger published band, and equipment or aircraft limits can still control carriage.",
       },
     ],
     exceptions: [
-      "Checked baggage is included under piece or weight concept rules depending on route.",
-      "Bags above 32 kg per bag exceed the accepted checked-baggage weight limit.",
-      "No Korean Air co-branded-card baggage waiver is shown here.",
+      "Codeshare flights can follow the operating carrier's baggage allowance and fee rules rather than Korean Air's tables.",
+      "Brazil itineraries have separate published overweight and extra-piece treatment.",
+      "Extra-piece, overweight, and oversize charges may be cumulative when one bag violates multiple limits.",
+      "Infants on international tickets can receive one checked piece plus a stroller and car seat or bassinet; children generally follow the adult allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/ana", label: "ANA" },
@@ -1993,21 +2149,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "tap-air-portugal": {
     intro: {
       carryOn:
-        "TAP Air Portugal includes carry-on baggage, but the allowance depends on fare and cabin. Economy generally includes one cabin bag plus a personal item, with weight limits applying.",
+        "TAP hand baggage is included, but the quantity and weight depend on fare, cabin, and route. Treat the allowance shown for the ticket as controlling rather than assuming every TAP cabin has the same limit.",
       personalItem:
-        "A personal item is included alongside the main cabin bag; there is no separate personal-item charge shown here.",
+        "The personal-item allowance accompanies eligible hand baggage, but airport enforcement still turns on the published dimensions and weight for the itinerary.",
       checkedBag:
-        "TAP checked baggage depends on fare family and route. Economy Classic, Plus, and premium cabins include checked baggage, while Discount fares or additional bags use paid checked-bag pricing that varies by route and purchase timing.",
+        "Discount can have no included checked bag. Classic, Plus, and premium fares include baggage by route, while a Discount bag or extra piece starts from €30 online and changes with route, channel, advance timing, and season.",
       restrictions:
-        "The main TAP fee traps are Discount fare baggage, airport overweight or oversize charges, paid Discount seat selection, and restrictive Discount refund rules.",
+        "TAP separates extra-piece, overweight, and oversize decisions. A bag that is both additional and outside 23 kg or 158 cm can cost more than one simple add-on, and high-season limits can affect acceptance.",
     },
     verificationNote:
-      "The TAP Air Portugal carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "TAP's Discount exclusions, included-bag fares, advance and seasonal pricing, heavy/large-bag treatment, status benefits, and sports rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Compare Discount against Classic or Plus when you need a checked bag; the checked-bag add-on can change the fare math quickly.",
-      "Buy checked baggage before the airport when needed because the range depends on route and purchase timing.",
-      "Keep checked bags at or below 23 kg and 158 cm where possible to avoid airport overweight or oversize treatment.",
-      "Avoid Discount fares if refunds or flexibility matter because refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Compare Discount plus the exact bag and seat you need against Classic before choosing the lower headline fare.",
+      "Buy an extra bag online and early when possible; the €30 figure is only a starting point, not a universal TAP bag price.",
+      "Keep each piece at or below 23 kg and 158 cm because TAP prices extra, heavy, and large conditions separately.",
+      "Confirm high-season and route acceptance before relying on extra baggage, especially for a heavy, large, or sports item.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2024,31 +2180,31 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Discount",
+        name: "Discount: price the missing pieces",
         details:
-          "Discount is the baggage and flexibility pressure point: checked bags and seat selection can cost extra, and refunds are not permitted except for qualifying circumstances.",
+          "Checked baggage and standard seat choice can cost extra, and refunds are generally unavailable outside qualifying circumstances. Its value depends on the finished trip price.",
       },
       {
-        name: "Classic / Plus / premium cabins",
+        name: "Classic / Plus / premium",
         details:
-          "These fare paths include checked baggage, but the allowance still varies by route and fare family.",
+          "These paths include checked baggage and standard seat selection, but the number and weight of pieces still depend on fare, route, cabin, and status.",
       },
       {
-        name: "Additional baggage",
+        name: "Extra bag from €30 online",
         details:
-          "Discount checked bags or additional bags have a EUR 20 to EUR 85 range that varies by route and purchase timing.",
+          "This is an entry price. Channel, advance purchase, date, origin, destination, and high season determine the actual amount and availability.",
       },
       {
-        name: "Seats and changes",
+        name: "Miles&Go and sports equipment",
         details:
-          "Standard seat selection is included on Classic, Plus, and premium fares, while Discount seat selection and changes depend on route, seat type, and fare rules.",
+          "Miles&Go Gold can add baggage on eligible TAP-operated travel. Sports equipment counts within allowance only when fare, destination, status, 32 kg, and 158 cm conditions align.",
       },
     ],
     scenarios: [
       {
-        title: "Booking Discount with a checked bag",
+        title: "Discount needs a bag and selected seat",
         details:
-          "Checked baggage on Discount or additional bags has a EUR 20 to EUR 85 range, so price the bag before assuming Discount is cheaper.",
+          "Add TAP's itinerary-specific bag and Discount seat prices, then compare that total with Classic rather than relying on the headline gap.",
       },
       {
         title: "Flying carry-on only",
@@ -2058,18 +2214,18 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Checking a 24 kg bag",
         details:
-          "Overweight treatment applies above 23 kg and up to 32 kg, with bags over 32 kg not accepted.",
+          "The 23–32 kg overweight charge is route- and season-priced. If the bag is also extra or oversized, do not assume one charge covers every condition.",
       },
       {
-        title: "Refunding a Discount fare",
+        title: "Taking sports equipment in high season",
         details:
-          "Refunds are not permitted on Discount fares except for flight cancellation or qualifying circumstances.",
+          "Verify space and acceptance before travel. A piece within 32 kg and 158 cm may use the allowance, but larger or extra gear follows separate route and channel pricing.",
       },
     ],
     exceptions: [
-      "Checked baggage is included on Economy Classic, Plus, and premium cabins.",
-      "Bags over 32 kg are not accepted as checked baggage.",
-      "No TAP Air Portugal co-branded-card baggage waiver is shown here.",
+      "High-season restrictions can limit excess-baggage acceptance even when a price is published.",
+      "Infant and child checked allowance follows the fare; Discount can exclude a checked piece for them too.",
+      "Miles&Go and sports benefits require the fare, destination, operating carrier, status, and baggage limits to align.",
     ],
     comparisonLinks: [
       { href: "/airlines/aer-lingus", label: "Aer Lingus" },
@@ -2255,21 +2411,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   iberia: {
     intro: {
       carryOn:
-        "Iberia includes one cabin bag plus one personal item, but checked baggage and seat selection depend heavily on whether the fare is Basic, Standard/Flex, or premium.",
+        "Iberia includes a cabin bag plus a personal item, but the permitted cabin weight depends on cabin and operating carrier. Check the operator when an Iberia flight number is attached to a partner aircraft.",
       personalItem:
-        "The personal item is included with the cabin bag, so the first cabin-bag question is size and weight rather than a separate personal-item fee.",
+        "The personal item is included. The practical risk is not a separate personal-item charge but arriving with a cabin bag that exceeds the weight or dimensions applied by the operating carrier.",
       checkedBag:
-        "Iberia checked baggage separates included allowance from paid add-ons. Standard, Flex, and premium fares include baggage, while Basic fares or extra bags use a EUR 15 to EUR 70 range based on route and purchase timing.",
+        "Basic is Iberia's main zero-checked-bag risk. Standard, Flex, and premium fares generally include baggage; extra bags are priced for the itinerary and are usually simpler to add online than at the airport.",
       restrictions:
-        "Basic is the main restriction point: checked baggage, seat selection, and refund flexibility can all change the final trip cost.",
+        "A cheap Basic fare can stack a checked-bag charge, paid seat choice, and restrictive refund terms. Standard checked pieces are generally limited to 23 kg and 158 cm, with 32 kg as the hard per-piece ceiling.",
     },
     verificationNote:
-      "The Iberia carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Iberia's fare-family baggage inclusions, itinerary-priced extra bags, seat rules, status benefits, irregular-baggage treatment, and 32 kg ceiling were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Compare Basic against Standard before booking when a checked bag is likely; the checked-bag add-on can erase the fare gap.",
-      "Buy checked baggage before the airport when possible because Basic and additional-bag pricing varies by route and purchase timing.",
+      "Price Basic with the bag and seat you will actually select, then compare that total with Standard rather than comparing headline fares.",
+      "Add baggage online before travel when possible; Iberia prices extra pieces by itinerary and airport purchase is the least controlled option.",
       "Keep checked bags at or below 23 kg and 158 cm to avoid airport overweight or oversize treatment.",
-      "Avoid Basic if refunds matter; Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Count a status bag only on an eligible Iberia Group-operated flight; do not assume an oneworld flight number makes the benefit apply on a partner operator.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2286,36 +2442,36 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Basic",
+        name: "Basic: calculate the finished price",
         details:
-          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances.",
+          "Basic can exclude checked baggage and standard seat choice. It is only the cheaper decision when the required add-ons do not overtake the next fare family, and refunds are tightly restricted.",
       },
       {
         name: "Standard / Flex",
         details:
-          "These fare brands include checked baggage and standard seat selection, with allowance still dependent on route and fare brand.",
+          "These fares generally include checked baggage and standard seat selection. Confirm the exact allowance on the itinerary because route, cabin, and operator still control the final rule.",
       },
       {
-        name: "Premium cabins",
+        name: "Iberia Group and status benefits",
         details:
-          "Premium cabins are included-allowance paths, but excess-baggage pricing still depends on the itinerary rather than one universal premium-cabin schedule.",
+          "Eligible Iberia Club Gold and oneworld Sapphire-or-higher travelers may add a 23 kg piece when the base allowance is zero or one, but the published benefit is tied to Iberia Group operation.",
       },
       {
-        name: "Changes and cancellations",
+        name: "Irregular and sports baggage",
         details:
-          "Fees depend on fare brand and route, and fare difference may apply.",
+          "An irregular-shaped piece can attract route-specific treatment even when its weight is acceptable. Certain Iberia Club sports benefits are tier-specific and should not be assumed from oneworld status alone.",
       },
     ],
     scenarios: [
       {
-        title: "Booking Basic with a checked bag",
+        title: "Basic needs one checked bag and a chosen seat",
         details:
-          "Basic fares or additional bags use a EUR 15 to EUR 70 checked-bag range, varying by route and purchase timing.",
+          "Add Iberia's itinerary-specific bag price and the displayed seat price before comparing the fare. The Basic headline is not the trip total.",
       },
       {
-        title: "Flying with cabin baggage only",
+        title: "Basic and Standard are close in price",
         details:
-          "One cabin bag and one personal item are included, with Economy generally capped at 10 kg and premium cabins allowing more.",
+          "If Standard includes the bag and standard seat you need, the higher fare can be the cheaper and more flexible purchase after add-ons.",
       },
       {
         title: "Checking a 24 kg bag",
@@ -2323,15 +2479,16 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
       },
       {
-        title: "Choosing a Basic seat",
+        title: "The flight is partner-operated",
         details:
-          "Basic seat selection uses a EUR 6 to EUR 45 range based on route, seat type, and timing.",
+          "Use the operating carrier's cabin and checked-bag rules. Do not transfer Iberia's allowance or status benefit automatically to the partner flight.",
       },
     ],
     exceptions: [
       "Bags over 32 kg are not accepted as checked baggage.",
-      "Unaccompanied-minor fees and conditions vary by route and age.",
-      "No Iberia co-branded-card baggage waiver is shown here.",
+      "Irregular-shaped pieces can receive a route-specific charge even when they remain within the normal weight ceiling.",
+      "The published sports-equipment benefit is limited to eligible Iberia Club tiers and is not a general oneworld-only benefit.",
+      "Infant allowance has route exceptions, including separate published treatment for Bolivia; verify the itinerary rather than applying the general rule universally.",
     ],
     comparisonLinks: [
       { href: "/airlines/tap-air-portugal", label: "TAP Air Portugal" },
@@ -2605,21 +2762,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "iberia-express": {
     intro: {
       carryOn:
-        "Iberia Express includes one cabin bag plus one personal item, with Economy generally capped at 10 kg. The bigger decision is checked baggage and seat selection on Basic fares.",
+        "Iberia Express includes a cabin bag and personal item on every fare. Aircraft storage and boarding conditions can still move a compliant cabin bag to the hold, but the central pricing decision is the checked-bag tier.",
       personalItem:
-        "The personal item is included with the cabin bag, so the first test is whether your bag stays inside the size and weight limits.",
+        "The personal item is included, so do not pay for a checked bag merely to replace a small under-seat item. Keep both cabin pieces inside the published limits.",
       checkedBag:
-        "Iberia Express checked baggage separates included allowance from paid add-ons. Comfort and Business include checked baggage, while Basic fares or extra bags use a EUR 15 to EUR 70 range based on route and purchase timing.",
+        "Only the Express pack has no included checked luggage. Other packages may include a 23 kg piece, while Express and additional-bag customers can buy 15, 23, or 32 kg tiers priced by route, timing, and channel.",
       restrictions:
-        "Basic is the main restriction point: checked baggage, seat selection, and refunds can all make the cheapest fare less attractive.",
+        "Buying too little weight is a false economy: exceeding the purchased tier triggers a €60 airport charge. Basic also exposes travelers to paid seat selection and restrictive refund terms.",
     },
     verificationNote:
-      "The Iberia Express carry-on, checked-bag, excess-baggage, seat, change/cancellation, and unaccompanied-minor details shown here were last verified on 2025-12-24.",
+      "Iberia Express's fare inclusions, 15/23/32 kg bag products, €60 excess-weight charge, special-baggage rules, seats, and child-travel exceptions were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Compare Basic against Comfort when a checked bag is likely; Comfort includes checked baggage.",
-      "Buy checked baggage before travel when needed because Basic and additional-bag pricing varies by route and purchase timing.",
-      "Keep checked bags at or below 23 kg and 158 cm to avoid airport overweight or oversize handling.",
-      "Do not book Basic if refunds matter; Basic refunds are not permitted except for flight cancellation or qualifying circumstances.",
+      "Compare the Express pack plus the exact bag tier you need against a package that already includes 23 kg.",
+      "Choose 15, 23, or 32 kg from a realistic packed weight; a bag above its purchased tier can cost €60 at the airport.",
+      "Add baggage online or during online check-in when eligible instead of leaving an itinerary-priced purchase to the airport.",
+      "Reserve sports, musical, or bulky equipment at least 24 hours before check-in because space and aircraft limits matter.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -2636,31 +2793,31 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Basic",
+        name: "Express pack",
         details:
-          "Basic can require paid checked baggage and paid seat selection. Refunds are not permitted except for flight cancellation or qualifying circumstances.",
+          "This is the no-checked-bag package. Price the required 15, 23, or 32 kg add-on before deciding it is cheaper than an included-bag fare.",
       },
       {
-        name: "Comfort",
+        name: "Included-bag packages",
         details:
-          "Comfort includes checked baggage and standard seat selection, with allowance still varying by route and fare.",
+          "Packages other than Express can include a 23 kg bag depending on the fare and route. Comfort and Business also include standard seat selection.",
       },
       {
-        name: "Business",
+        name: "15 / 23 / 32 kg add-ons",
         details:
-          "Business is an included-allowance path, but excess baggage remains separate if a bag exceeds limits.",
+          "These are different purchased weight ceilings, not interchangeable bag labels. Route, purchase timing, and channel determine the displayed price.",
       },
       {
-        name: "Changes and cancellations",
+        name: "Status and special baggage",
         details:
-          "Change and cancellation fees depend on fare and route, and fare difference may apply.",
+          "Eligible Iberia Plus and oneworld status can add ordinary baggage, but sports-equipment exceptions are narrower and apply only to specified Iberia Plus tiers.",
       },
     ],
     scenarios: [
       {
-        title: "Booking Basic with a checked bag",
+        title: "Express fare with an 18 kg suitcase",
         details:
-          "Basic or additional bags use a EUR 15 to EUR 70 range that varies by route and purchase timing.",
+          "Buy the 23 kg tier rather than 15 kg. Exceeding the purchased tier can trigger the published €60 airport excess-weight charge.",
       },
       {
         title: "Flying cabin-bag only",
@@ -2668,20 +2825,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "One cabin bag and one personal item are included, with Economy generally capped at 10 kg.",
       },
       {
-        title: "Checking a 24 kg bag",
+        title: "A 24 kg bag on a 23 kg allowance",
         details:
-          "Overweight treatment applies above 23 kg and up to 32 kg; bags over 32 kg are not accepted.",
+          "Repack below 23 kg or buy the 32 kg tier when available; otherwise the €60 excess-weight charge applies at the airport.",
       },
       {
-        title: "Choosing a Basic seat",
+        title: "Traveling with sports equipment",
         details:
-          "Basic seat selection uses a EUR 6 to EUR 35 range based on route, seat type, and timing.",
+          "Reserve space at least 24 hours before check-in. Published charges vary by item, and status exceptions do not extend equally to every oneworld elite.",
       },
     ],
     exceptions: [
       "Iberia Express does not offer an unaccompanied-minor service.",
-      "Bags over 32 kg are not accepted as checked baggage.",
-      "No Iberia Express co-branded-card baggage waiver is shown here.",
+      "Ordinary checked bags are capped at 32 kg; the published €150 treatment concerns certain bulky or heavy items in a separate 32–45 kg framework, not a normal 45 kg suitcase allowance.",
+      "Children and infants receive the adult ticket's allowance plus one collapsible stroller under the published exception.",
     ],
     comparisonLinks: [
       { href: "/airlines/iberia", label: "Iberia" },
@@ -3552,21 +3709,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   volaris: {
     intro: {
       carryOn:
-        "Volaris carry-on access depends on fare bundle. Zero and Basic include only a personal item, while Plus and Premium include one carry-on bag.",
+        "Zero and Basic include only a personal item; Plus includes the overhead carry-on. A paid add-on, More Baggage combo, or qualifying INVEX benefit can change that result.",
       personalItem:
-        "Zero and Basic can work for a very small-bag trip, but they are not the same as a normal overhead carry-on fare.",
+        "The personal item is the only cabin baggage included with Zero and Basic. Do not mistake Basic's checked-bag inclusion for overhead-bin access.",
       checkedBag:
-        "Volaris checked baggage is not included on Zero and Basic fares. Fees depend on fare bundle, route, and purchase timing.",
+        "Basic includes one 15 kg checked bag, while Plus includes one 25 kg checked bag. Separately purchased checked bags generally use a 25 kg limit, with prices varying by route, timing, and channel.",
       restrictions:
-        "The main Volaris risks are personal-item-only fares, checked-bag add-ons, airport overweight/oversize fees, paid seats, and change restrictions.",
+        "The trap is choosing by fare label: Basic suits a traveler checking a light bag but carrying nothing overhead; Plus better fits a traveler who needs both cabin and checked baggage.",
     },
     verificationNote:
-      "Volaris carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Volaris's Zero, Basic, and Plus baggage inclusions, INVEX conditions, checked-bag limits, equipment rules, and Baby Combo were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Do not book Zero or Basic unless a personal item is enough or the bag add-on still leaves the fare cheaper.",
-      "Compare Plus or Premium when you need a carry-on bag.",
-      "Buy checked baggage before the airport when needed because pricing depends on fare bundle, route, and timing.",
-      "Keep checked bags within weight and size limits to avoid airport overweight or oversize treatment.",
+      "Choose Zero only when the personal item is genuinely enough; every larger bag must be priced into the comparison.",
+      "Use Basic when a 15 kg checked bag solves the trip but an overhead carry-on does not; otherwise compare Plus before buying separate add-ons.",
+      "Buy additional baggage before the airport and choose enough weight because airport excess depends on the allowance purchased or included.",
+      "Count an INVEX benefit only when the eligible card pays, the cardholder travels, booking is direct and non-group, and the flight is not a codeshare.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -3582,52 +3739,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Zero / Basic",
+        name: "Zero",
         details:
-          "These fares include only a personal item and do not include checked baggage.",
+          "Includes only a personal item. It is the cleanest low-price option only for travelers who need neither an overhead carry-on nor a checked bag.",
       },
       {
-        name: "Plus / Premium",
+        name: "Basic",
         details:
-          "Plus and Premium include one carry-on bag, making them the better comparison when overhead-bin access matters.",
+          "Includes a personal item and one 15 kg checked bag, but no overhead carry-on. That unusual combination is useful only when it matches how you pack.",
       },
       {
-        name: "Checked baggage",
+        name: "Plus",
         details:
-          "Checked-bag fees depend on fare bundle, route, and purchase timing rather than one flat first-bag amount.",
+          "Includes the carry-on and one 25 kg checked bag. Compare its finished price with lower fares plus the exact baggage add-ons needed.",
       },
       {
-        name: "Seats and changes",
+        name: "INVEX and bundles",
         details:
-          "Seat selection is optional and chargeable. Flight changes can require a fee plus fare difference.",
+          "More Baggage and eligible INVEX benefits can alter the allowance, but card, channel, traveler, booking-type, and codeshare restrictions make them conditional rather than automatic.",
       },
     ],
     scenarios: [
       {
-        title: "Flying Zero with only a personal item",
+        title: "Zero with only a personal item",
         details:
           "This is the lowest-bag path, but it only works if the personal item is enough.",
       },
       {
-        title: "Needing an overhead carry-on",
+        title: "Basic with a 12 kg suitcase",
         details:
-          "Plus and Premium include one carry-on bag, while Zero and Basic do not.",
+          "Basic can fit this trip if the suitcase is checked: its included bag is capped at 15 kg, while cabin baggage remains personal-item only.",
       },
       {
-        title: "Adding checked baggage",
+        title: "Needing both an overhead bag and checked suitcase",
         details:
-          "Checked baggage is not included on Zero and Basic, and the fee depends on fare bundle, route, and timing.",
+          "Compare Plus, which includes both the carry-on and a 25 kg checked bag, against Zero or Basic plus separate add-ons.",
       },
       {
-        title: "Checking a large or heavy bag",
+        title: "Replacing an added bag with sports gear",
         details:
-          "Overweight and oversize charges apply at the airport when limits are exceeded.",
+          "Eligible equipment within standard limits may replace a purchased extra bag; larger gear moves into special-baggage dimensions and possible extra charges.",
       },
     ],
     exceptions: [
       "Volaris does not offer an unaccompanied-minor service.",
-      "Oversize acceptance depends on aircraft and handling capabilities.",
-      "No Volaris co-branded card baggage waiver is listed in the current fee details.",
+      "A checked bag can be accepted with paid excess up to an absolute 45 kg maximum, but the standard purchased-bag limit is lower.",
+      "INVEX is not a blanket waiver: codeshares, group bookings, indirect channels, absent cardholders, or ineligible payment can defeat the benefit.",
+      "Baby Combo is a separately priced seasonal add-on that includes a diaper bag up to 10 kg and one documented infant item.",
     ],
     comparisonLinks: [
       { href: "/airlines/viva-aerobus", label: "Viva Aerobus" },
@@ -3638,21 +3796,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "viva-aerobus": {
     intro: {
       carryOn:
-        "Viva Aerobus carry-on access depends on fare bundle. Zero includes only a personal item, while Light, Smart, and Extra include one carry-on bag.",
+        "Every Viva fare includes a personal item. Light and Extra add a 10 kg carry-on, while Smart raises the cabin allowance to 15 kg.",
       personalItem:
-        "Zero is the personal-item-only path. If the bag needs the overhead bin, compare the next fare bundle or the bag add-on before booking.",
+        "Zero is personal-item only. A lap infant does not automatically add a separate carry-on; the adult allowance or optional Baby Package controls the extra infant items.",
       checkedBag:
-        "Viva Aerobus checked baggage is not included on Zero. Fees depend on fare bundle, route, and purchase timing.",
+        "Zero and Light have no included checked bag, Extra includes 15 kg, and Smart includes 25 kg. Add-on prices still vary by route and purchase timing.",
       restrictions:
-        "The main Viva Aerobus risks are Zero fare baggage limits, checked-bag add-ons, airport overweight/oversize treatment, paid seats, and change rules.",
+        "Do not treat Light, Extra, and Smart as progressively vague upgrades: they solve different weight, seat, and change needs, and the correct bundle can cost less than stacking add-ons.",
     },
     verificationNote:
-      "Viva Aerobus carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Viva Aerobus's Zero, Light, Extra, and Smart allowances, Doters conditions, special-equipment limits, changes, and Baby Package were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Do not book Zero unless a personal item is enough.",
-      "Compare Light, Smart, or Extra when you need a carry-on bag.",
-      "Buy checked baggage before the airport when needed because pricing depends on fare bundle, route, and timing.",
-      "Keep checked bags within weight and size limits to avoid airport overweight or oversize fees.",
+      "Use Zero only when a personal item is enough; choose Light when the missing item is specifically a 10 kg overhead bag.",
+      "Compare Extra's 15 kg checked allowance with Smart's 25 kg allowance before paying later for more weight.",
+      "Choose Smart when its 15 kg cabin allowance, 25 kg checked bag, seat selection, and unlimited changes match the trip; fare difference can still apply to changes.",
+      "Count Doters baggage or seat benefits only when the tier, fare bundle, and booking path qualify—Zero can be excluded.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -3673,19 +3831,19 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Zero includes only a personal item and does not include checked baggage.",
       },
       {
-        name: "Light / Smart / Extra",
+        name: "Light",
         details:
-          "These fare bundles include one carry-on bag, with checked-bag treatment depending on bundle and route.",
+          "Adds a 10 kg carry-on but no checked bag. It fits cabin-bag travelers who do not need Smart's heavier allowances or seat/change package.",
       },
       {
-        name: "Checked baggage",
+        name: "Extra",
         details:
-          "Checked-bag pricing depends on fare bundle, route, and purchase timing.",
+          "Includes a 10 kg carry-on and 15 kg checked bag. Limited penalty-free changes apply, though fare difference can remain.",
       },
       {
-        name: "Seats and changes",
+        name: "Smart",
         details:
-          "Seat selection is optional and chargeable. Flight changes can require a fee plus fare difference, and cancellation rules depend on fare rules.",
+          "Raises cabin allowance to 15 kg, includes a 25 kg checked bag and regular/front-row seat selection, and permits unlimited changes subject to fare difference.",
       },
     ],
     scenarios: [
@@ -3695,25 +3853,26 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "This is the cheapest clean path only if the personal item allowance is enough.",
       },
       {
-        title: "Needing a carry-on bag",
+        title: "A 9 kg cabin bag and no checked luggage",
         details:
-          "Light, Smart, and Extra include one carry-on bag, while Zero does not.",
+          "Light directly fits this packing pattern. Zero would require an add-on, while Extra or Smart may include benefits you do not need.",
       },
       {
-        title: "Adding checked baggage",
+        title: "A 20 kg checked suitcase",
         details:
-          "Checked baggage is not included on Zero, and fees depend on fare bundle, route, and purchase timing.",
+          "Extra's 15 kg inclusion is too low; compare an Extra weight add-on with Smart's included 25 kg bag before booking.",
       },
       {
-        title: "Changing a flight",
+        title: "Plans may change more than once",
         details:
-          "Flight changes are permitted with an applicable fee plus fare difference.",
+          "Smart includes unlimited changes, while Light and Extra provide limited penalty-free changes. Fare difference can still make any change expensive.",
       },
     ],
     exceptions: [
       "Viva Aerobus does not offer an unaccompanied-minor service.",
-      "Oversize acceptance depends on aircraft and airport handling limits.",
-      "No Viva Aerobus co-branded card baggage waiver is listed in the current fee details.",
+      "Sports and musical equipment can use a separate hard-case framework up to 32 kg and 319 cm; that is not the normal suitcase limit.",
+      "Lap infants do not receive an independent carry-on allowance unless the Baby Package changes the included setup.",
+      "Doters benefits are tier-, bundle-, and booking-dependent rather than a universal waiver.",
     ],
     comparisonLinks: [
       { href: "/airlines/volaris", label: "Volaris" },
@@ -4584,17 +4743,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "EgyptAir does not list a separate paid personal-item charge here. The practical question is whether your cabin bag fits the cabin-class allowance.",
       checkedBag:
-        "EgyptAir includes checked baggage on eligible fares, but the allowance changes by cabin class, fare type, route, and frequent flyer status. Excess baggage is charged separately.",
+        "EgyptAir's allowance changes by route, cabin, fare, and status. From January 1, 2026, Asmara tickets are capped at one checked piece in both Economy and Business, making route exceptions more important than the cabin label.",
       restrictions:
-        "The main EgyptAir fee risks are exceeding the included allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
+        "The main trap is waiting past the 24-hour prepurchase cutoff or assuming every African route can be bought online. Heavy and oversize conditions also combine: EgyptAir states that a bag violating both can be charged double.",
     },
     verificationNote:
-      "EgyptAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "EgyptAir's channel-specific route tables, 24-hour cutoff, Africa airport-only cases, 2026 Asmara exception, cumulative excess rules, and sports treatment were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the allowance attached to the exact route, cabin, fare type, and frequent flyer status.",
-      "Pre-purchase excess baggage where available if you know the free allowance will not be enough.",
-      "Keep checked bags within both weight and size limits because overweight and oversize charges are separate problems.",
-      "Avoid paying for seat selection unless seat location matters; some fares include standard seat selection.",
+      "Check the route table and any 2026 exception before relying on the cabin's normal allowance.",
+      "Buy an eligible extra piece more than 24 hours before departure; after that, airport pricing applies.",
+      "For travel to Africa, verify whether prepayment is available at all because some Cairo or worldwide departures are airport-only.",
+      "Repack a bag that is both above 23 kg and 158 cm to avoid EgyptAir's combined-charge treatment.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -4609,52 +4768,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Route and channel tables",
         details:
-          "Carry-on is included, while checked allowance depends on fare type, cabin, route, and status.",
+          "Extra 23 kg pieces have separate airport and website or call-center prices. Published examples span USD 30–650, showing why a universal extra-bag figure is misleading.",
       },
       {
-        name: "Premium cabins",
+        name: "Asmara 2026 exception",
         details:
-          "Cabin class affects the carry-on and checked-bag allowance.",
+          "Tickets to or from Asmara are limited to one checked piece in Economy and Business from January 1, 2026. A premium cabin does not restore the usual higher count.",
       },
       {
-        name: "Excess baggage",
+        name: "Heavy plus large bags",
         details:
-          "Excess baggage begins when the free allowance is exceeded. Charges depend on route and weight.",
+          "Overweight applies from 23–32 kg and oversize from 158–203 cm. EgyptAir says a piece violating both is charged double the overweight or oversize price.",
       },
       {
-        name: "Seats and changes",
+        name: "EgyptAir Plus and sports items",
         details:
-          "Seat fees depend on fare type, cabin, seat location, and timing. Change and cancellation costs are fare-rule based.",
+          "Status can add a piece or discount excess depending on tier. Sports gear can fall within allowance, pay 50% or 100% excess, or require cargo depending on the item.",
       },
     ],
     scenarios: [
       {
-        title: "International trip with one checked bag",
+        title: "An extra piece is known before travel",
         details:
-          "Confirm the free allowance for the exact route and fare type before deciding whether extra baggage is needed.",
+          "Price the website or call-center table and buy more than 24 hours ahead when eligible. Otherwise budget the airport route price.",
       },
       {
-        title: "Status traveler",
+        title: "Travel is to an African destination",
         details:
-          "Frequent flyer status can affect allowance, so status should be part of the baggage check.",
+          "Confirm whether prepayment is offered; selected Cairo or worldwide departures to Africa are handled only at the airport.",
       },
       {
-        title: "Large suitcase",
+        title: "A 28 kg bag also measures 170 cm",
         details:
-          "A bag can trigger a charge by weight, size, or both depending on the rules.",
+          "It violates both the overweight and oversize bands. EgyptAir's combined rule can double the single-condition price, so repacking has unusually high value.",
       },
       {
-        title: "Booking a restrictive fare",
+        title: "A bicycle exceeds ordinary limits",
         details:
-          "Change and cancellation costs depend on fare rules and ticket type, so the lowest fare may not be best if plans can move.",
+          "Check the sports table before arrival: bicycles can attract 100% excess, while items above 32 kg or two meters can require cargo.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can use the operating carrier's baggage policy.",
-      "Oversize acceptance depends on aircraft and airport handling constraints.",
-      "No EgyptAir co-branded card baggage waiver is listed in the current fee details.",
+      "Website and call-center excess pricing closes 24 hours before departure.",
+      "Some Africa departures are airport-only for excess baggage.",
+      "Asmara tickets are limited to one checked piece in both cabins from January 1, 2026.",
+      "Heavy and oversize conditions can combine, while items above 203 cm need different handling.",
     ],
     comparisonLinks: [
       { href: "/airlines/royal-air-maroc", label: "Royal Air Maroc" },
@@ -4756,17 +4916,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Royal Air Maroc does not list a separate paid personal-item charge here. The main cabin-bag question is whether the bag fits the cabin-class allowance.",
       checkedBag:
-        "Royal Air Maroc includes checked baggage on most eligible fares, but the allowance changes by cabin class, fare family, route, and frequent flyer status.",
+        "Royal Air Maroc uses a piece system. Eco Essential can mean zero checked pieces on short or medium haul but one 23 kg piece on long-haul or transit itineraries, with high-season route exceptions.",
       restrictions:
-        "The main Royal Air Maroc fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
+        "Weight cannot be pooled between checked pieces. A light first bag does not offset an overweight second bag, and items above 203 cm must travel as freight rather than ordinary oversize baggage.",
     },
     verificationNote:
-      "Royal Air Maroc carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Royal Air Maroc's fare-product piece allowances, high-season exceptions, route tables, non-pooling rule, Safar Flyer awards, and sports pricing were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the included checked allowance for the exact fare, route, cabin, and status before packing.",
-      "Pre-purchase excess baggage where available if the free allowance will not be enough.",
-      "Keep checked bags within both weight and size limits because overweight and oversize can be separate airport problems.",
-      "Skip paid seat selection when a standard included seat or check-in assignment is acceptable.",
+      "Check Eco Essential by route type; it can mean no bag on short or medium haul but one piece on long-haul or transit.",
+      "Redistribute weight before check-in because Royal Air Maroc does not pool unused kilograms between pieces.",
+      "Use the exact route-pair table for another, heavy, or large bag rather than a headline MAD or EUR example.",
+      "If eligible, compare a Safar Flyer mileage award for one extra 23 kg piece or up to 9 kg overweight against the cash price.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -4781,52 +4941,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Eco Essential",
         details:
-          "Carry-on is included, while checked allowance depends on fare family, route, cabin, and status.",
+          "The same product can carry no checked bag on short or medium haul but one 23 kg piece on long-haul or transit travel. High-season sectors can add exceptions.",
       },
       {
-        name: "Premium cabins",
+        name: "Route-table cash prices",
         details:
-          "Cabin class affects baggage allowance and can change the checked-bag baseline.",
+          "Extra-piece, overweight, and 158–203 cm oversize charges are priced separately by origin and destination. Public examples range widely by route and currency.",
       },
       {
-        name: "Excess baggage",
+        name: "Safar Flyer awards",
         details:
-          "Excess baggage is charged when the free allowance is exceeded, with pricing driven by route and weight.",
+          "Eligible members can redeem miles for one extra 23 kg piece or up to 9 kg overweight by zone. Awards are limited and tied to the member on the same flight.",
       },
       {
-        name: "Seats and changes",
+        name: "Sports and very large items",
         details:
-          "Seat fees depend on fare family, seat type, and timing. Change and cancellation costs are fare-rule based.",
+          "Sports fees are zone-based, although golf, kitesurf, or fishing gear can be free within listed limits. Items above 203 cm must move as freight.",
       },
     ],
     scenarios: [
       {
-        title: "Morocco-Europe trip with one checked bag",
+        title: "Eco Essential on a short-haul trip",
         details:
-          "Confirm the fare's included allowance first; extra cost begins when the bag exceeds the free allowance.",
+          "Do not assume one included piece. Compare the no-bag fare plus the eligible prepaid first-piece example against a fare product that includes baggage.",
       },
       {
-        title: "Status traveler",
+        title: "Two bags total 40 kg but one weighs 27 kg",
         details:
-          "Frequent flyer status can affect the allowance, so status should be checked before buying extra baggage.",
+          "The heavy piece can still attract an overweight charge because RAM does not pool weight between pieces. Move four kilograms before check-in.",
       },
       {
-        title: "Large or heavy suitcase",
+        title: "A 190 cm suitcase",
         details:
-          "A bag can trigger overweight, oversize, or both depending on the airport assessment.",
+          "Use the route's 158–203 cm oversize table. If the same piece is heavy or additional, calculate those conditions separately.",
       },
       {
-        title: "Child traveling alone",
+        title: "Using Safar Flyer miles",
         details:
-          "Unaccompanied-minor service depends on selected routes and age groups, so confirm it before buying the ticket.",
+          "Compare the zone-based miles needed for one extra 23 kg piece or up to 9 kg overweight with the cash route-table charge before redeeming.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can use the operating carrier's baggage policy.",
-      "Oversize acceptance depends on aircraft and airport handling limits.",
-      "No Royal Air Maroc co-branded card baggage waiver is listed in the current fee details.",
+      "Checked-bag weight cannot be pooled between pieces.",
+      "Eco Essential allowance changes between short/medium haul and long-haul or transit travel.",
+      "Items above 203 cm must move as freight rather than ordinary checked baggage.",
+      "Safar Flyer excess awards are zone-priced, limited, and tied to the member traveling on the flight.",
     ],
     comparisonLinks: [
       { href: "/airlines/egyptair", label: "EgyptAir" },
@@ -4842,17 +5003,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Kenya Airways does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the bag inside the cabin-class limit.",
       checkedBag:
-        "Kenya Airways includes checked baggage on eligible fares, but the allowance varies by cabin class, route, fare family, and frequent flyer status.",
+        "Kenya Airways uses route- and cabin-based pieces on KQ-operated flights. On interline or codeshare journeys, the allowance in the e-ticket, trip summary, or departure-control system overrides a generic KQ table.",
       restrictions:
-        "The main Kenya Airways fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seats, and fare-rule change or cancellation costs.",
+        "Families and groups can pool the number of bags, but not weight per piece. One 26 kg suitcase can therefore be overweight even when another traveler checks nothing.",
     },
     verificationNote:
-      "Kenya Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Kenya Airways's KQ-operated piece system, interline control, group pooling, Asante status and points benefits, and special-baggage rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm the allowance for the exact cabin, route, fare family, and status before packing.",
-      "Pre-purchase excess baggage where available if the bag will exceed the free allowance.",
-      "Keep bags within both weight and size limits to avoid airport excess-baggage treatment.",
-      "Avoid paid seat selection unless the seat type or location is worth the extra cost.",
+      "Use the ticketed allowance on any mixed-carrier trip; a public KQ route table is only an indication when another airline participates.",
+      "Redistribute weight between family or group bags before check-in because pooling adds bag count, not kilograms to one piece.",
+      "Compare cash pre-purchase with Asante points for one eligible standard extra bag; points do not erase overweight or special-item charges.",
+      "Apply Asante benefits accurately: Ruby discounts a first extra bag, while Silver, Gold, and Platinum receive an eligible extra piece.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -4867,31 +5028,31 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "KQ-operated allowance",
         details:
-          "Carry-on is included. Checked baggage depends on cabin, route, fare family, and frequent flyer status.",
+          "Kenya Airways publishes route- and cabin-based pieces. The exact ticket remains controlling, especially when fare or status changes the baseline.",
       },
       {
-        name: "Premium cabins",
+        name: "Interline and codeshare trips",
         details:
-          "Cabin class changes the allowance baseline, so premium-cabin baggage should be checked against the exact ticket.",
+          "IATA most-significant-carrier treatment and ticketed data can replace the simple KQ table. Read the e-ticket or trip summary before buying excess.",
       },
       {
-        name: "Excess baggage",
+        name: "Family and group pooling",
         details:
-          "Excess baggage applies when the free allowance is exceeded, with charges driven by route and weight.",
+          "Eligible travelers can combine the number of pieces, but every individual bag must remain within its own weight limit.",
       },
       {
-        name: "Seats and changes",
+        name: "Asante status or points",
         details:
-          "Seat fees depend on fare family, cabin, seat type, and timing. Change and cancellation costs depend on fare rules and route.",
+          "Ruby offers a discount, higher tiers add one standard piece, and points can redeem one eligible extra bag. None converts a heavy or special piece into standard baggage.",
       },
     ],
     scenarios: [
       {
-        title: "Africa-Europe trip with one checked bag",
+        title: "A family has two allowances and one 26 kg bag",
         details:
-          "Use the exact route and fare family to confirm whether the bag is included before buying extra allowance.",
+          "The unused second allowance does not increase the first bag's weight ceiling. Redistribute into two compliant pieces to use pooling correctly.",
       },
       {
         title: "Connecting itinerary",
@@ -4899,20 +5060,20 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
           "Partner-operated segments can change baggage rules, so check the operating carrier when the trip is not all Kenya Airways.",
       },
       {
-        title: "Heavy bag",
+        title: "Redeeming points for an extra bag",
         details:
-          "Overweight charges are airport-facing, so weighing before travel is the cleanest way to avoid a surprise fee.",
+          "Asante points can cover one eligible standard extra piece on qualifying KQ travel, but overweight and special-baggage conditions remain payable.",
       },
       {
-        title: "Buying the cheapest fare",
+        title: "A sports team pools its pieces",
         details:
-          "Seat selection and change rules can make the cheapest fare less useful if you need a specific seat or flexibility.",
+          "The group may pool bag count, but a large, heavy, or special equipment case can still trigger separate treatment or cargo handling.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on aircraft and airport handling limits.",
-      "No Kenya Airways co-branded card baggage waiver is listed in the current fee details.",
+      "The ticket, trip summary, or departure-control system can override Kenya Airways's public route table on interline travel.",
+      "Asante extra-piece benefits remain subject to standard weight and size limits.",
+      "Infants receive one collapsible stroller and one car seat free in addition to cabin baggage, without overriding route-specific checked allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/ethiopian", label: "Ethiopian" },
@@ -4924,21 +5085,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "south-african-airways": {
     intro: {
       carryOn:
-        "South African Airways includes carry-on baggage, with allowance depending on cabin class and size and weight limits.",
+        "SAA Economy includes one 8 kg cabin bag plus a personal item; Business includes two 8 kg cabin bags plus a personal item. A noncompliant cabin piece can be sent back to check-in.",
       personalItem:
-        "South African Airways does not list a separate paid personal-item charge here. The practical cabin-bag question is whether the bag fits the cabin-class allowance.",
+        "The personal item is additional to the cabin-piece allowance, but it does not increase an 8 kg bag's limit. Infant cabin baggage has its own 8 kg ceiling.",
       checkedBag:
-        "South African Airways includes checked baggage on eligible fares, but the allowance varies by cabin class, route, fare family, and Voyager status.",
+        "The included allowance depends on route, cabin, fare, and operating carrier. Additional bags are route-priced, non-transferable between passengers, and cannot be purchased for a lap infant.",
       restrictions:
-        "The main South African Airways fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
+        "A same-route date change can preserve an extra-bag purchase, but changing the route requires cancellation and repurchase. Codeshare operation can also defeat SAA-specific status, card, or sports treatment.",
     },
     verificationNote:
-      "South African Airways carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "SAA's cabin limits, route-priced additional bags, change treatment, Voyager/Star Alliance/card benefits, infant allowance, and cargo-only sports thresholds were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the allowance for the exact route, fare family, cabin, and Voyager status before packing.",
-      "Pre-purchase excess baggage where available when the free allowance will not be enough.",
-      "Keep bags within both size and weight limits to avoid airport excess-baggage treatment.",
-      "Use included or assigned standard seats when seat location does not matter.",
+      "Confirm that SAA actually operates the flight before relying on Voyager, Star Alliance, listed card, or special-baggage treatment.",
+      "Buy an additional piece for the traveler who will use it; the purchase is route-priced and non-transferable.",
+      "If the itinerary route changes, cancel and repurchase the bag rather than assuming the original add-on follows the ticket.",
+      "Send sports gear above 200 cm and listed items such as canoes, kayaks, windsurfers, or hang-gliders through cargo instead of ordinary baggage.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -4953,52 +5114,52 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "SAA-operated allowance",
         details:
-          "Carry-on is included. Checked allowance depends on route, fare family, cabin, and Voyager status.",
+          "Economy cabin baggage is one 8 kg piece; Business receives two. Checked pieces depend on route, cabin, fare, and eligible status or card benefit.",
       },
       {
-        name: "Premium cabins",
+        name: "Additional-bag purchase",
         details:
-          "Cabin class changes both the cabin-bag and checked-bag baseline.",
+          "The add-on is priced for the route and traveler. It survives an eligible date change on the same route but not a route change, and it cannot be bought for a lap infant.",
       },
       {
-        name: "Excess baggage",
+        name: "Voyager, Star Alliance, and card benefits",
         details:
-          "Excess baggage applies when the free allowance is exceeded, with fees driven by route and weight.",
+          "Benefits differ by tier, cabin, card, and operating carrier. Partner-operated codeshares can be excluded even when the ticket carries an SAA flight number.",
       },
       {
-        name: "Seats and changes",
+        name: "Sports and special baggage",
         details:
-          "Seat fees depend on fare family, cabin, seat type, and timing. Change and cancellation fees depend on fare rules and route.",
+          "Equipment can use the free allowance when eligible, but excess, pieces above 200 cm, listed cargo-only items, and partner-operated flights need separate treatment.",
       },
     ],
     scenarios: [
       {
-        title: "Domestic or regional trip with one checked bag",
+        title: "Changing only the travel date",
         details:
-          "Check the route-specific allowance first, especially if status or fare family changes the baseline.",
+          "An additional-bag purchase can remain valid when the route stays the same. Reconfirm it after the ticket change rather than buying it twice.",
       },
       {
-        title: "Voyager status traveler",
+        title: "Changing the origin or destination",
         details:
-          "Voyager status can affect checked allowance, so factor status into the baggage decision before buying extra allowance.",
+          "The original route-priced bag does not simply transfer. Cancel and repurchase baggage for the new route under SAA's published terms.",
       },
       {
-        title: "Oversize bag",
+        title: "A lap infant needs another checked bag",
         details:
-          "Oversize acceptance depends on aircraft and airport handling limits, so do not treat it as guaranteed ordinary baggage.",
+          "SAA gives a lap infant one 23 kg piece plus a pram or buggy and car seat, but an additional-bag product cannot be purchased for that infant.",
       },
       {
-        title: "Plans may change",
+        title: "Traveling with a 210 cm sports case",
         details:
-          "Change and cancellation fees are fare-rule based, so a restrictive fare can be costly if the trip is uncertain.",
+          "Sports equipment over 200 cm is cargo-only. Paying ordinary excess baggage does not make the case acceptable at passenger check-in.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on aircraft and airport handling limits.",
-      "No South African Airways co-branded card baggage waiver is listed in the current fee details.",
+      "Codeshare partner-operated flights can exclude SAA baggage, sports, Voyager, Star Alliance, or listed card benefits.",
+      "Additional baggage is non-transferable and cannot be purchased for a lap infant.",
+      "Canoes, kayaks, windsurfers, hang-gliders, and sports items over 200 cm are cargo-only.",
     ],
     comparisonLinks: [
       { href: "/airlines/kenya-airways", label: "Kenya Airways" },
@@ -5010,21 +5171,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   srilankan: {
     intro: {
       carryOn:
-        "SriLankan includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "SriLankan Economy includes one 7 kg cabin bag. Checked baggage then splits by geography: most routes use a total-weight allowance, while North, Central, and South America use pieces.",
       personalItem:
-        "SriLankan does not list a separate paid personal-item charge here. The practical issue is keeping the Economy cabin bag within 7 kg.",
+        "A small personal item does not create another full-size Economy carry-on. Keep the main cabin piece within 7 kg and the additional item within personal-item limits.",
       checkedBag:
-        "SriLankan includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece or weight concept.",
+        "On weight routes, SriLankan sells prepaid baggage in 5 kg blocks up to 50 kg. Americas itineraries use a piece allowance instead, so extra kilograms and another piece are not interchangeable purchases.",
       restrictions:
-        "The main SriLankan fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "Prepayment closes three hours before departure and does not eliminate later excess: if the final bag total still exceeds the purchased allowance, airport per-kilogram rates apply. Bags above 158 cm also attract a separate USD 50 oversize fee, subject to acceptance.",
     },
     verificationNote:
-      "SriLankan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "SriLankan's weight-versus-Americas piece system, online 5–50 kg prepayment, three-hour cutoff, USD 50 oversize fee, and family and status rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether your route uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's weight and size limits.",
-      "Use free check-in seat assignment when a specific seat is not important.",
+      "Identify an Americas piece route before buying weight in 5 kg blocks; the products solve different problems.",
+      "On eligible weight routes, prepay enough 5 kg blocks online before the three-hour cutoff instead of relying on airport per-kilogram rates.",
+      "Measure every checked item as well as weighing it because the USD 50 oversize fee is separate above 158 cm.",
+      "Recheck partner-operated segments and FlySmiLes or oneworld benefits before assuming SriLankan's allowance controls the whole ticket.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5039,52 +5200,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Most routes: weight concept",
         details:
-          "Economy includes one cabin bag up to 7 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "The checked allowance is total weight. Eligible travelers can add 5–50 kg online in five-kilogram blocks, with discounts from airport rates.",
       },
       {
-        name: "Business Class",
+        name: "Americas: piece concept",
         details:
-          "Business Class has a higher cabin allowance and can have different checked-bag treatment.",
+          "North, Central, and South America itineraries use pieces. Apply the ticket's bag count and per-piece limits rather than the online weight-block logic.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Prepaid baggage",
         details:
-          "SriLankan baggage can be calculated by pieces or by total weight depending on route.",
+          "Prepayment is available through Manage My Booking up to three hours before departure. Additional airport excess can still be charged per kilogram when the prepaid amount is insufficient.",
       },
       {
-        name: "Seats and changes",
+        name: "Oversize and sports items",
         details:
-          "Seat selection fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Ordinary pieces above 158 cm carry a published USD 50 oversize fee, while sports equipment follows item-specific weight or piece rules and aircraft acceptance.",
       },
     ],
     scenarios: [
       {
-        title: "Long-haul trip with one checked bag",
+        title: "A weight-route traveler needs 12 kg more",
         details:
-          "Start with the included allowance for the exact route and fare; extra baggage is priced separately when you exceed it.",
+          "Prepay enough five-kilogram blocks to cover the full excess—normally 15 kg rather than 10 kg—before the three-hour cutoff.",
       },
       {
-        title: "Route using weight concept",
+        title: "An itinerary touches the Americas",
         details:
-          "If the itinerary uses weight concept, the allowance is not the same as a piece-count route.",
+          "Use the piece allowance and extra-piece rules. Do not assume a prepaid kilogram bundle solves another-bag exposure.",
       },
       {
-        title: "Large checked item",
+        title: "A checked item measures 170 cm",
         details:
-          "Oversize acceptance depends on route and aircraft, so confirm handling before treating it as normal checked baggage.",
+          "Budget the USD 50 oversize fee in addition to any excess weight or piece charge, then confirm aircraft acceptance.",
       },
       {
-        title: "Need a specific seat",
+        title: "Prepaid baggage is still insufficient",
         details:
-          "Advance seat selection can be chargeable by route, fare family, and seat type; check-in assignment may be enough if location does not matter.",
+          "SriLankan can charge the remaining excess at the airport's per-kilogram rate. Prepayment reduces exposure but does not cap the final charge.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No SriLankan co-branded card baggage waiver is listed in the current fee details.",
+      "Weight-block prepayment closes three hours before departure and is sold in 5 kg increments up to 50 kg.",
+      "Americas routes use pieces rather than the normal total-weight system.",
+      "The USD 50 oversize fee does not guarantee aircraft acceptance.",
+      "Partner operation and elite benefits can change the ticketed allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-india", label: "Air India" },
@@ -5096,21 +5258,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "air-china": {
     intro: {
       carryOn:
-        "Air China includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "Air China Economy includes one cabin bag up to 8 kg. The more consequential split is checked baggage: mainland domestic trips use weight allowances and a fare-based excess formula, while international and regional trips use route-specific tables.",
       personalItem:
-        "Air China does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 8 kg limit or the allowance for your booked cabin.",
+        "There is no separate paid personal-item product to solve an overweight cabin bag. Keep the main Economy piece within 8 kg and the additional small item within the published cabin limits.",
       checkedBag:
-        "Air China includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
+        "Domestic Economy, Business, and First publish 20 kg, 30 kg, and 40 kg weight allowances. International and regional allowances vary by market and ticket, and excess can be classified by extra piece, heavy piece, or large piece.",
       restrictions:
-        "The main Air China fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The main trap is treating Air China's domestic 1.5% formula as a fixed CNY-per-kilogram price. The benchmark is the published full-fare Economy fare for the route, not necessarily the discounted fare paid, and international baggage requires a different appendix.",
     },
     verificationNote:
-      "Air China carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Air China's domestic weight allowances and 1.5% fare formula, international route appendices, PhoenixMiles benefits, sports-equipment rules, and transport limits were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 8 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Classify the itinerary as mainland domestic or international/regional before doing any fee calculation.",
+      "For domestic excess, use 1.5% of the published full-fare Economy benchmark per excess kilogram—not 1.5% of your discounted ticket.",
+      "For international travel, open the matching route appendix and test the bag for count, weight, and size separately.",
+      "Contact Air China before bringing long sports equipment because aircraft acceptance or cargo handling can matter more than the excess fee.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5125,52 +5287,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Mainland domestic allowances",
         details:
-          "Economy includes one cabin bag up to 8 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Air China publishes 20 kg for Economy, 30 kg for Business, and 40 kg for First on domestic weight-concept travel. The allowance is total weight rather than a standard international piece count.",
       },
       {
-        name: "Business / First",
+        name: "Domestic excess formula",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "Each excess kilogram is charged at 1.5% of the route's published full-fare Economy benchmark. Because that benchmark changes by route, there is no responsible universal CNY-per-kilogram headline.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "International and regional tables",
         details:
-          "Air China baggage can be calculated by pieces or by total weight depending on route.",
+          "Japan, Americas-related, and other markets can carry different allowances and excess appendices. Use the ticketed route's extra-piece, overweight, and oversize bands rather than the domestic calculation.",
       },
       {
-        name: "Seats and changes",
+        name: "PhoenixMiles and Star Alliance",
         details:
-          "Advance seat selection fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Eligible members receive added allowance according to tier, cabin, route, and baggage system. The benefit changes the allowance; it is not a blanket waiver of every heavy or large-bag charge.",
       },
     ],
     scenarios: [
       {
-        title: "China-international trip with one checked bag",
+        title: "Domestic Economy baggage totals 25 kg",
         details:
-          "Start with the included allowance for the exact route and fare; excess baggage only starts after that allowance is exceeded.",
+          "The published Economy allowance is 20 kg, leaving five excess kilograms. Multiply each kilogram by 1.5% of the route's full-fare Economy benchmark, not the fare shown in your booking receipt.",
       },
       {
-        title: "Route using weight concept",
+        title: "An international itinerary needs another piece",
         details:
-          "Do not apply piece-count assumptions if the itinerary uses a total-weight allowance.",
+          "Ignore the domestic formula. Find the matching international route appendix, then verify whether the added piece also crosses that table's weight or size thresholds.",
       },
       {
-        title: "Oversize checked item",
+        title: "A bag fits the maximum transport limit",
         details:
-          "Oversize acceptance and fees depend on route and aircraft, so confirm before treating it as ordinary baggage.",
+          "That does not make it free or even guarantee ordinary handling. Air China separates maximum acceptance limits from the ticket's free allowance and excess charges.",
       },
       {
-        title: "Need a specific seat",
+        title: "Travel includes another operating airline",
         details:
-          "Seat fees vary by route, fare family, and seat type; check-in assignment may be enough if seat location does not matter.",
+          "Recheck the controlling baggage rule and status benefit. Air China's domestic formula and PhoenixMiles examples are not automatically portable to a partner-operated segment.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Air China co-branded card baggage waiver is listed in the current fee details.",
+      "Domestic excess uses the published full-fare Economy benchmark, not necessarily the passenger's paid fare.",
+      "International and regional baggage must be priced from the applicable route appendix.",
+      "Staying below a maximum transport dimension or weight does not make a bag part of the free allowance.",
+      "Sports equipment and partner-operated flights can require advance approval or different carrier rules.",
     ],
     comparisonLinks: [
       { href: "/airlines/china-southern", label: "China Southern" },
@@ -5182,21 +5345,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-southern": {
     intro: {
       carryOn:
-        "China Southern includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "China Southern Economy includes one 8 kg cabin bag, but a noncompliant bag can be checked and charged at the gate. That makes weight and dimensions a boarding-time cost risk rather than merely a packing guideline.",
       personalItem:
-        "China Southern does not list a separate paid personal-item charge here. The practical cabin-bag issue is whether the bag fits the booked cabin's weight and size limits.",
+        "A small personal item does not create another full-size cabin allowance. Pack the main Economy piece within 8 kg and keep both items inside the airline's stated cabin limits.",
       checkedBag:
-        "China Southern includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "Domestic Economy and Premium Economy publish 20 kg, Business 30 kg, and First 40 kg. International and regional allowances instead vary by route area and fare brand, with excess priced by piece count, weight band, and size band.",
       restrictions:
-        "The main China Southern fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
+        "International charges can accumulate. China Southern publishes separate 23–28 kg, 28–32 kg, and on some routes 32–45 kg bands, plus oversize and extra-piece charges. Paying one does not necessarily clear the others.",
     },
     verificationNote:
-      "China Southern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "China Southern's gate-check warning, domestic allowances and fare formula, international route-area tables, cumulative conditions, and Sky Pearl benefits were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check whether the route uses piece concept or weight concept before packing.",
-      "Buy additional baggage before the airport where available if the free allowance will not cover the trip.",
-      "Keep Economy cabin baggage at or below 8 kg and checked bags within the route's limits.",
-      "Use free check-in assignment when a specific seat is not worth paying for.",
+      "Weigh the Economy cabin bag before departure; an over-limit piece can become chargeable checked baggage at the gate.",
+      "Use the domestic fare formula only for domestic travel and the correct route-area table for international or regional travel.",
+      "On a piece route, test each bag for extra-piece, overweight, and oversize exposure separately.",
+      "Apply eligible Sky Pearl allowance before purchasing baggage because status adds kilograms on weight routes but a piece on piece routes.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5211,52 +5374,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Domestic weight allowance",
         details:
-          "Economy includes one cabin bag up to 8 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Domestic Economy and Premium Economy receive 20 kg, Business 30 kg, and First 40 kg. Excess uses China Southern's published-fare percentage calculation per kilogram.",
       },
       {
-        name: "Business / First",
+        name: "International route areas",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "International and regional allowances and prices change by route area, currency, cabin, and fare brand. There is no single CNY or USD extra-bag amount.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Weight and size bands",
         details:
-          "China Southern baggage can be calculated by pieces or total weight depending on route.",
+          "Published overweight examples range from CNY 390 to 3,000 or USD 65 to 495 by route and band. A 159–203 cm oversize example is around CNY 1,000 or USD 165–170 on selected areas.",
       },
       {
-        name: "Seats and changes",
+        name: "Sky Pearl status",
         details:
-          "Seat fees depend on route, fare family, and seat type. Change and cancellation costs follow fare rules.",
+          "Eligible Gold and Silver members receive extra kilograms on weight-based routes or another piece on piece-based routes. The benefit follows the itinerary's baggage system.",
       },
     ],
     scenarios: [
       {
-        title: "Long-haul itinerary with one checked bag",
+        title: "Domestic Economy baggage totals 26 kg",
         details:
-          "Confirm the allowance for the route and fare before buying extra baggage.",
+          "Start from the 20 kg allowance and price six excess kilograms using the domestic published-fare formula. Do not substitute an international overweight-table example.",
       },
       {
-        title: "Connecting to a domestic segment",
+        title: "An international bag weighs 30 kg",
         details:
-          "Baggage concept and allowance can depend on the full itinerary, so check the exact ticket rather than assuming one rule across all flights.",
+          "Use the route area's 28–32 kg band. If the bag is also additional or oversized, calculate those conditions too because China Southern charges exceeded limits cumulatively.",
       },
       {
-        title: "Heavy checked bag",
+        title: "A cabin bag fails at the gate",
         details:
-          "Overweight charges are route- and baggage-concept based, so keeping the bag under the limit avoids airport repricing.",
+          "China Southern can move it into checked baggage and charge under the applicable route rules. The absence of a normal carry-on fee does not make an oversized cabin bag free.",
       },
       {
-        title: "Child traveling alone",
+        title: "Sports equipment exceeds ordinary limits",
         details:
-          "Unaccompanied-minor service depends on eligible ages and routing restrictions, so confirm before booking.",
+          "Check whether the item can count within allowance, then apply the route's weight and size conditions. Special packing and aircraft acceptance can still require advance contact.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No China Southern co-branded card baggage waiver is listed in the current fee details.",
+      "An over-limit carry-on can be gate-checked and charged under the checked-baggage rules.",
+      "Domestic formula pricing and international route-area tables are not interchangeable.",
+      "Extra-piece, overweight, and oversize conditions can be charged cumulatively.",
+      "Sky Pearl benefits differ between weight-based and piece-based itineraries.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5268,21 +5432,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   hainan: {
     intro: {
       carryOn:
-        "Hainan Airlines includes cabin baggage. Economy is listed as one cabin bag up to 10 kg, while Business Class has a higher allowance.",
+        "Hainan Economy includes one 10 kg cabin bag. Checked baggage then splits into Chinese domestic weight rules and international or regional piece rules.",
       personalItem:
-        "Hainan Airlines does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your cabin.",
+        "The relatively generous 10 kg Economy cabin limit still has size constraints. A small personal item does not justify a second full-size carry-on.",
       checkedBag:
-        "Hainan includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "Domestic excess can be charged per kilogram at 1.5% of the published one-way full-fare Economy benchmark. International and regional itineraries use pieces and route tables instead.",
       restrictions:
-        "The main Hainan fee risks are exceeding the included allowance, airport overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "Prepaid baggage is route- and platform-specific and excludes bags above its weight or size limits. International pieces above 32 kg or 203 cm generally must be repacked, split, or handled as cargo.",
     },
     verificationNote:
-      "Hainan carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Hainan's domestic weight formula, international piece tables, prepaid limitations, July 2026 excess standards, hard handling limits, and Fortune Wings benefit were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses piece concept or weight concept before packing.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Use Hainan's higher Economy cabin-bag limit carefully; the checked-bag rules still depend on route and fare.",
-      "Skip paid advance seat selection when check-in assignment is acceptable.",
+      "Classify the trip as Chinese domestic weight travel or international piece travel before using any fee example.",
+      "For domestic excess, calculate 1.5% of the published full-fare Economy benchmark per kilogram—not the discounted ticket price.",
+      "Use prepaid baggage only when the route, platform, weight, and dimensions qualify; otherwise the airport schedule controls.",
+      "Repack international pieces above 32 kg or 203 cm before check-in because a larger fee may not make them acceptable.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5297,52 +5461,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Chinese domestic routes",
         details:
-          "Economy includes one cabin bag up to 10 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Domestic baggage uses total weight. Excess is calculated at 1.5% of the published one-way full-fare Economy price per kilogram.",
       },
       {
-        name: "Business Class",
+        name: "International and regional routes",
         details:
-          "Business Class has a higher cabin allowance and can have different checked-bag treatment.",
+          "These routes use piece allowances and route-specific extra, overweight, and oversize tables. Current allowance tables carry an August 25, 2025 effective context.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Prepaid baggage limits",
         details:
-          "Hainan baggage can be calculated by pieces or total weight depending on route.",
+          "Eligible routes can offer prepaid kilograms or baggage, but out-of-limit heavy or large pieces remain airport-priced and may require repacking or cargo.",
       },
       {
-        name: "Seats and changes",
+        name: "Fortune Wings allowance",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Eligible elite members receive one additional checked bag above the ticketed allowance on Hainan-operated flights. The piece still follows the route's weight and size limits.",
       },
     ],
     scenarios: [
       {
-        title: "Economy trip with a heavier cabin bag",
+        title: "Domestic baggage is 6 kg over",
         details:
-          "Hainan's Economy allowance permits up to 10 kg, but the bag still needs to meet the size limits.",
+          "Multiply six kilograms by 1.5% of the route's published full-fare Economy benchmark. Do not use the fare paid or an international extra-piece price.",
       },
       {
-        title: "Adding a checked bag",
+        title: "An international trip needs another piece",
         details:
-          "Additional baggage is priced by route and baggage concept, not one universal first-bag charge.",
+          "Use the applicable route table, then check whether the added piece also exceeds 32 kg or the normal size threshold.",
       },
       {
-        title: "Oversize item",
+        title: "A prepaid bag is above 203 cm",
         details:
-          "Oversize acceptance and fees depend on route and aircraft, so check before travel.",
+          "The prepaid purchase does not solve acceptance. Hainan generally requires the piece to be repacked, split, or moved through cargo handling.",
       },
       {
-        title: "Changing plans",
+        title: "Traveling with sports equipment",
         details:
-          "Change and cancellation costs are fare-rule based and may include a fare difference.",
+          "Check the item-specific rules before travel; some equipment counts within allowance while other items use special charges and packing conditions.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Hainan co-branded card baggage waiver is listed in the current fee details.",
+      "Domestic excess uses 1.5% of the published full-fare Economy benchmark per kilogram.",
+      "International and regional travel uses piece and route-table logic instead.",
+      "Prepaid baggage excludes some heavy or oversized pieces; above 32 kg or 203 cm generally requires repacking or cargo.",
+      "Departure-date rules, partner operation, and special-equipment treatment can change the result.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5354,21 +5519,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   xiamenair: {
     intro: {
       carryOn:
-        "XiamenAir includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "XiamenAir Economy includes one 7 kg cabin bag. The checked-bag answer depends heavily on the Economy brand: international Flex, Comfort, Standard, and Light can range from two included pieces to no free checked bag.",
       personalItem:
-        "XiamenAir does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping Economy carry-on at or below 7 kg.",
+        "A small personal item is not a workaround for the 7 kg Economy cabin limit. Keep the main piece compliant and verify whether the specific aircraft imposes tighter cabin handling.",
       checkedBag:
-        "XiamenAir includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "Domestic travel uses weight allowances and a 1.5% per-kilogram fare formula. International and regional travel uses pieces and route groups, with added charges for 23–32 kg, 32–45 kg, and oversize bands.",
       restrictions:
-        "The main XiamenAir fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The hard limits matter: some large items need advance approval, and a single piece above 45 kg or 300 cm is not accepted as checked baggage. U.S. and Canada itineraries also have special heavy-bag and confirmation rules.",
     },
     verificationNote:
-      "XiamenAir carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "XiamenAir's Economy-brand allowances, domestic 1.5% formula, international route groups, cumulative conditions, U.S./Canada handling, and Egret benefits were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the free allowance is not enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's excess-baggage limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Compare Economy fare brands using their checked-bag inclusion; a Light fare can carry no free checked bag where another brand includes pieces.",
+      "Use the domestic 1.5% formula only on domestic weight-concept travel and the route-group table internationally.",
+      "Repack any international bag that is extra, above 23 kg, and above 158 cm because those charges can accumulate.",
+      "Request approval before travel for a piece near 45 kg, 300 cm, or the U.S./Canada heavy-bag limits; payment does not guarantee acceptance.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5383,52 +5548,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Economy fare brands",
         details:
-          "Economy includes one cabin bag up to 7 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "International Flex, Comfort, Standard, and Light can have materially different free baggage—from two pieces to none. Compare the fare plus required baggage rather than the base fare alone.",
       },
       {
-        name: "Business Class",
+        name: "Domestic weight formula",
         details:
-          "Business Class has a higher cabin allowance and can have different checked-bag treatment.",
+          "Domestic allowance is expressed in kilograms, and excess is charged at 1.5% of the applicable fare benchmark per kilogram. It is not an international extra-piece price.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "International route groups",
         details:
-          "XiamenAir baggage can be calculated by pieces or total weight depending on route.",
+          "Additional pieces, 23–32 kg bags, 32–45 kg bags, and 159–203 cm pieces use route-group tables. Published heavy-bag examples range from CNY 1,000 to 3,000 or USD 150 to 440.",
       },
       {
-        name: "Seats and changes",
+        name: "Egret and SkyTeam status",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Eligible members receive one extra checked piece within published limits, but the benefit is not stackable with some other special allowance categories and can change on partner flights.",
       },
     ],
     scenarios: [
       {
-        title: "Economy carry-on trip",
+        title: "Light is cheaper but includes no checked bag",
         details:
-          "The Economy cabin bag is listed up to 7 kg, so weigh the bag before relying on carry-on-only travel.",
+          "Compare Light plus the route-group extra-piece charge against Standard, Comfort, or Flex. The lower fare may not produce the lower trip cost when baggage is certain.",
       },
       {
-        title: "Additional checked bag",
+        title: "Domestic baggage exceeds the weight allowance",
         details:
-          "Additional baggage pricing depends on route and baggage concept rather than one flat extra-bag amount.",
+          "Price the excess kilograms with XiamenAir's 1.5% fare formula. Do not use the international CNY 1,000 heavy-bag example for a domestic trip.",
       },
       {
-        title: "Overweight bag",
+        title: "An international extra piece weighs 35 kg",
         details:
-          "Overweight treatment depends on route and excess weight, so airport repricing can be route-specific.",
+          "Calculate the extra-piece fee and the route group's 32–45 kg band. If it is also above 158 cm, add the applicable size condition rather than assuming one charge covers all three.",
       },
       {
-        title: "Child traveling alone",
+        title: "A large piece involves the U.S. or Canada",
         details:
-          "Unaccompanied-minor service depends on eligible ages and routing restrictions.",
+          "Seek confirmation before travel. XiamenAir applies special heavy-bag handling on these routes, and pieces above the published maximum can be refused regardless of willingness to pay.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No XiamenAir co-branded card baggage waiver is listed in the current fee details.",
+      "Economy fare brands can range from two free pieces to no checked allowance.",
+      "International extra-piece, overweight, and oversize conditions can accumulate.",
+      "Pieces above 45 kg or 300 cm are not accepted as checked baggage; some smaller large items still need approval.",
+      "Egret or SkyTeam extra allowance may not stack with other special allowances and can change on partner operation.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5444,17 +5610,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "Air Astana does not list a separate paid personal-item charge here. The practical cabin-bag issue is matching the Economy or Business cabin allowance.",
       checkedBag:
-        "Air Astana includes checked baggage on most eligible fares, but the allowance depends on fare family, cabin class, route, and Nomad Club status.",
+        "Economy Basic includes no checked bag, Classic includes one 23 kg piece, and Plus includes two 23 kg pieces. Nomad Club can add pieces by tier.",
       restrictions:
-        "The main Air Astana fee risks are exceeding the free allowance, overweight or oversize airport handling, paid seat selection, and fare-rule change or cancellation costs.",
+        "MyBAGGAGE only works on Air Astana-operated flights, is non-transferable, and moves to airport pricing inside 36 hours. Oversized items cannot be prepaid through it.",
     },
     verificationNote:
-      "Air Astana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Air Astana's Basic/Classic/Plus allowances, MyBAGGAGE operator and 36-hour rules, Nomad Club pieces, oversize approval, and cargo cutoff were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the included allowance for the exact fare family, cabin, route, and Nomad Club status.",
-      "Pre-purchase excess baggage where available if the free allowance will not be enough.",
-      "Keep checked bags within both weight and size limits to avoid airport excess-baggage treatment.",
-      "Skip paid seat selection when standard seating is included or seat location does not matter.",
+      "Compare Economy Basic plus the required MyBAGGAGE pieces against Classic or Plus before choosing the no-bag fare.",
+      "Buy MyBAGGAGE at least 36 hours before departure and only for an Air Astana-operated itinerary; partner segments are ineligible.",
+      "Seek prior approval for anything above 158 cm because oversize items are airport-paid and cannot be prepaid as ordinary extra pieces.",
+      "Split an item above 32 kg or arrange cargo; buying another MyBAGGAGE piece does not raise the per-item ceiling.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5469,52 +5635,52 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Economy Basic",
         details:
-          "Economy includes carry-on up to 8 kg. Checked allowance depends on fare family, cabin, route, and Nomad Club status.",
+          "Includes cabin baggage but no checked piece. Its true price is the fare plus every MyBAGGAGE piece required for the trip.",
       },
       {
-        name: "Business Class",
+        name: "Economy Classic / Plus",
         details:
-          "Business Class includes carry-on up to 12 kg and can have a different checked-bag allowance.",
+          "Classic includes one 23 kg checked piece; Plus includes two. Compare those inclusions directly with Basic plus add-ons.",
       },
       {
-        name: "Excess baggage",
+        name: "MyBAGGAGE",
         details:
-          "Excess baggage applies when the free allowance is exceeded, with fees driven by route and weight.",
+          "Adds up to 10 pieces on Air Astana-operated flights. It is non-transferable, unavailable on interline or codeshare travel, and uses airport rates inside 36 hours.",
       },
       {
-        name: "Seats and changes",
+        name: "Nomad Club",
         details:
-          "Seat selection fees depend on fare family, seat type, and timing. Change and cancellation costs are fare-rule based.",
+          "Silver adds one eligible piece; Gold and Diamond add two. Status does not override cabin limits, oversize approval, or the 32 kg cargo threshold.",
       },
     ],
     scenarios: [
       {
-        title: "Central Asia-Europe trip with one checked bag",
+        title: "Basic needs one checked suitcase",
         details:
-          "Confirm the included allowance for the exact fare and route before buying excess baggage.",
+          "Compare Basic plus one advance MyBAGGAGE piece with Classic's included 23 kg bag before booking.",
       },
       {
-        title: "Nomad Club status traveler",
+        title: "Buying baggage 24 hours before departure",
         details:
-          "Status can affect checked allowance, so include it before deciding whether extra baggage is needed.",
+          "The advance window has closed: less than 36 hours means airport rates, even if the itinerary otherwise qualifies for MyBAGGAGE.",
       },
       {
-        title: "Large suitcase",
+        title: "A 170 cm suitcase",
         details:
-          "Overweight and oversize treatment are separate airport risks when the bag exceeds the allowed limits.",
+          "Request approval before travel and expect airport handling. MyBAGGAGE does not prepay an item above the normal 158 cm limit.",
       },
       {
-        title: "Need to change flights",
+        title: "A 34 kg undivided item",
         details:
-          "Change cost depends on fare rules, ticket type, and route, plus any fare difference.",
+          "It is outside ordinary checked baggage and must move as cargo unless it can be split into compliant pieces.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on aircraft and airport handling limits.",
-      "No Air Astana co-branded card baggage waiver is listed in the current fee details.",
+      "MyBAGGAGE is unavailable on interline and codeshare flights even when Air Astana appears in the itinerary.",
+      "Items above 158 cm require prior approval and airport payment; undivided items above 32 kg go as cargo.",
+      "A child stroller is free, but gate return, cabin stroller or crib limits, and car-seat handling depend on airport and whether the infant has a seat.",
     ],
     comparisonLinks: [
       { href: "/airlines/turkish-airlines", label: "Turkish Airlines" },
@@ -5526,21 +5692,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   asiana: {
     intro: {
       carryOn:
-        "Asiana includes cabin baggage. Economy is listed as one cabin bag up to 10 kg, while Business and First have higher allowances.",
+        "Asiana Economy includes one 10 kg cabin bag. Checked baggage is less uniform because the airline publishes separate allowance and excess tables for Korean domestic, U.S.-route, and non-U.S. international travel.",
       personalItem:
-        "Asiana does not list a separate paid personal-item charge here. The practical cabin-bag issue is staying within the Economy 10 kg limit or the allowance for your booked cabin.",
+        "A small personal item does not increase the Economy cabin bag's 10 kg limit. Keep the main piece compliant and treat the additional item as genuinely personal-sized.",
       checkedBag:
-        "Asiana includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
+        "Start with the route family rather than a universal free-bag assumption. U.S. itineraries use published piece examples, other international travel has its own table, and Korean domestic travel follows domestic weight and handling rules.",
       restrictions:
-        "The main Asiana fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "Prepaid baggage solves additional international pieces only. It does not replace overweight or oversize fees, and charges can combine when a new piece is also above 23 kg or 158 cm.",
     },
     verificationNote:
-      "Asiana carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Asiana's domestic, U.S., and non-U.S. allowance tables, prepaid extra-piece discount, cumulative charges, status caveats, sports equipment, and infant rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 10 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not worth paying for.",
+      "Classify the trip as Korean domestic, U.S.-route, or other international before applying any allowance or fee example.",
+      "For a known international extra piece, prepay at least 24 hours before departure for up to 10% off the airport rate.",
+      "Repack an extra piece that is also heavy or large; the prepaid purchase does not erase overweight or oversize exposure.",
+      "Check Asiana Club benefits against the route and cabin, and recheck codeshares because partner rules can replace them.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5555,52 +5721,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "U.S.-route piece table",
         details:
-          "Economy includes one cabin bag up to 10 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Published examples include airport extra pieces at USD 100–200, 24–32 kg overweight from USD 100, and 158–203 cm oversize from USD 100–200.",
       },
       {
-        name: "Business / First",
+        name: "Other international routes",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "Non-U.S. international travel follows a separate allowance and fee table. Do not transfer the U.S. dollar examples to another region without checking the itinerary.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Korean domestic travel",
         details:
-          "Asiana baggage can be calculated by pieces or total weight depending on route.",
+          "Domestic Korean baggage follows domestic allowance and large-item handling rules. International prepaid extra baggage is not the product for a domestic excess problem.",
       },
       {
-        name: "Seats and changes",
+        name: "Prepaid additional pieces",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Eligible international additional pieces can be purchased at least 24 hours before departure for up to 10% less. Weight and size violations remain separately chargeable.",
       },
     ],
     scenarios: [
       {
-        title: "Korea-international trip with one checked bag",
+        title: "A U.S.-route Economy trip needs another bag",
         details:
-          "Start with the included allowance for the exact route and fare; extra baggage begins only after that allowance is exceeded.",
+          "Use Asiana's U.S. piece table and prepay 24 or more hours ahead when eligible. Airport examples start around USD 100–200, with prepaid pricing up to 10% lower.",
       },
       {
-        title: "Route using piece concept",
+        title: "The extra bag weighs 29 kg",
         details:
-          "Do not use weight-concept math on a piece-concept itinerary. The route determines which model applies.",
+          "Calculate both the additional-piece amount and the 24–32 kg overweight amount. On shown U.S. routes, the overweight example starts at USD 100 and does not replace the piece charge.",
       },
       {
-        title: "Large checked item",
+        title: "Sports equipment fits the free allowance",
         details:
-          "Oversize acceptance and fees depend on route and aircraft, so confirm handling before treating it as ordinary baggage.",
+          "It can count within the allowance when piece and weight limits are met. A sports exception does not automatically waive overweight or extra-piece charges.",
       },
       {
-        title: "Child traveling alone",
+        title: "A codeshare appears on the itinerary",
         details:
-          "Unaccompanied-minor service depends on eligible ages and routing restrictions, so it should be checked before booking.",
+          "Confirm which carrier's rules apply before buying Asiana prepaid baggage or relying on Asiana Club allowance. Partner operation can change both.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Asiana co-branded card baggage waiver is listed in the current fee details.",
+      "Prepaid baggage is international-only, additional-piece-only, and must be purchased at least 24 hours before departure.",
+      "Extra-piece, overweight, and oversize charges can apply together.",
+      "Korean domestic, U.S.-route, and non-U.S. international rules are separate.",
+      "Asiana Club benefits can change on Star Alliance partner or codeshare operation.",
     ],
     comparisonLinks: [
       { href: "/airlines/korean-air", label: "Korean Air" },
@@ -5612,21 +5779,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-airlines": {
     intro: {
       carryOn:
-        "China Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Premium Economy and Business have higher allowances.",
+        "China Airlines Economy includes one 7 kg cabin bag plus a personal item. Checked baggage is piece-based, but the included count changes by route, booking class, reward ticket, and first carrier.",
       personalItem:
-        "The personal item is included with the Economy cabin allowance, so the practical issue is keeping the main cabin bag within 7 kg.",
+        "The personal item does not raise the main cabin bag's 7 kg limit. An excess cabin item can be moved into checked baggage and consume or exceed the ticketed piece allowance.",
       checkedBag:
-        "China Airlines includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and whether the itinerary uses piece concept or weight concept.",
+        "There is no universal Economy bag count. Some trans-Tasman Discount or Basic tickets can include zero pieces, while other markets and booking classes include baggage. Eligible prepaid excess is then priced by zone.",
       restrictions:
-        "The main China Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The 5% prepaid discount applies only to eligible tickets and CI or Mandarin operation. Overweight, oversize, pets, instruments, and some sports equipment use separate rules and cannot safely be modeled as a normal extra piece.",
     },
     verificationNote:
-      "China Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "China Airlines' route and booking-class allowances, zero-piece trans-Tasman cases, 5% zone-based prepayment, Dynasty Flyer benefits, and special-baggage rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm the baggage concept for the exact route before packing or buying extra baggage.",
-      "Buy additional baggage before the airport where available if the included allowance will not be enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when seat location does not matter.",
+      "Read the booking-class and route row before assuming Economy includes a checked bag, especially on trans-Tasman Discount or Basic tickets.",
+      "Use the 5% prepaid discount only after confirming CI or Mandarin operation and online eligibility.",
+      "Keep every ordinary checked piece at or below 32 kg; China Airlines generally refuses heavier pieces rather than selling a larger overweight tier.",
+      "Price sports equipment from its specific rules because items above 292 cm can count as two pieces unless exempted.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5641,52 +5808,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Route and booking class",
         details:
-          "Economy includes one 7 kg cabin bag plus one personal item. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Piece allowance changes by market and fare class. Selected trans-Tasman Discount or Basic tickets can have no free checked piece, making the fare label alone insufficient.",
       },
       {
-        name: "Premium Economy / Business",
+        name: "Prepaid zone pricing",
         details:
-          "Higher cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "Eligible excess baggage is priced by itinerary zone and receives a published 5% prepaid discount. Ticket, operator, itinerary, and timing determine availability.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Dynasty Flyer status",
         details:
-          "China Airlines baggage can be calculated by pieces or total weight depending on route.",
+          "Gold and Emerald receive one extra piece and Paragon two on eligible China Airlines or Mandarin self-operated flights. Partner operation can remove that benefit.",
       },
       {
-        name: "Seats and changes",
+        name: "Special and large baggage",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Heavy, oversize, pet, instrument, and sports items follow separate rules. Some sports equipment above 292 cm can be charged as two pieces unless specifically dimension-exempt.",
       },
     ],
     scenarios: [
       {
-        title: "Taiwan-international trip with one checked bag",
+        title: "A trans-Tasman Basic fare has zero pieces",
         details:
-          "Check the included allowance for the exact route and fare before buying extra baggage.",
+          "Compare the fare plus a zone-priced extra piece against a higher booking class that includes baggage. The lowest base fare can lose once the bag is added.",
       },
       {
-        title: "Extra checked bag",
+        title: "Prepaying an ordinary extra piece",
         details:
-          "Additional baggage depends on route and baggage concept rather than one universal extra-bag price.",
+          "Confirm eligible CI or Mandarin operation, then use the zone price with the 5% discount. Recheck weight and size because prepayment does not waive those limits.",
       },
       {
-        title: "Economy cabin bag near the limit",
+        title: "A checked piece weighs more than 32 kg",
         details:
-          "The Economy cabin bag is listed at 7 kg, so a heavy cabin bag can become an airport problem even when carry-on is included.",
+          "Repack before check-in. China Airlines generally refuses pieces above 32 kg rather than accepting them under the ordinary overweight schedule.",
       },
       {
-        title: "Need a specific seat",
+        title: "Sports equipment exceeds 292 cm",
         details:
-          "Advance seat selection can be chargeable by route, fare family, and seat type; check-in assignment may be enough.",
+          "It can be charged as a two-piece equivalent unless the item appears in a dimension-exempt sports category. Confirm packing and aircraft handling in advance.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No China Airlines co-branded card baggage waiver is listed in the current fee details.",
+      "Some trans-Tasman Discount or Basic Economy tickets include zero checked pieces.",
+      "The 5% prepaid discount requires an eligible ticket, itinerary, timing, and CI or Mandarin operation.",
+      "Pieces above 32 kg are generally refused and should be repacked.",
+      "Sports equipment, pets, and instruments can use special rules instead of ordinary prepaid excess.",
     ],
     comparisonLinks: [
       { href: "/airlines/eva-air", label: "EVA Air" },
@@ -5698,21 +5866,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "china-eastern": {
     intro: {
       carryOn:
-        "China Eastern includes cabin baggage. Economy is listed as one cabin bag up to 8 kg, while Business and First have higher allowances.",
+        "China Eastern Economy includes one cabin bag up to 8 kg. Checked baggage then splits sharply: domestic travel uses a weight allowance and fare formula, while international and regional travel uses pieces and route bands.",
       personalItem:
-        "China Eastern does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the bag within the booked cabin's weight and size limits.",
+        "A small additional cabin item does not replace the 8 kg Economy limit. Infant journey supplies and a compact stroller have separate published treatment when they meet cabin constraints.",
       checkedBag:
-        "China Eastern includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "Domestic excess is calculated per kilogram from a fare benchmark. International and regional itineraries use an extra-piece table by route band, then add separate overweight or oversize amounts when the same piece crosses those limits.",
       restrictions:
-        "The main China Eastern fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
+        "International condition stacking is the largest cost trap. Published examples commonly show RMB 1,000 or more for a 23–32 kg Economy piece and RMB 1,000–2,700 for oversize bands, before considering whether the bag is also an extra piece.",
     },
     verificationNote:
-      "China Eastern carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "China Eastern's domestic fare formula, international route-band tables, cumulative excess conditions, Eastern Miles benefits, and special-baggage pricing were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 8 kg and checked bags within the route's limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Separate domestic weight travel from international piece travel before applying any price example.",
+      "On international routes, test every bag for three conditions: additional piece, above 23 kg, and above 158 cm.",
+      "Repack a bag that is both heavy and large; reducing one condition can remove an entire stacked charge.",
+      "Use the special-baggage table for sports gear or instruments because item type and route can matter as much as weight.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5727,52 +5895,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Domestic weight concept",
         details:
-          "Economy includes one cabin bag up to 8 kg. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Domestic included baggage and excess are measured by total weight. The excess calculation uses a per-kilogram fare formula rather than the international extra-piece table.",
       },
       {
-        name: "Business / First",
+        name: "International piece concept",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "International and regional allowances use pieces, with added bags priced by route band. A new piece must still be checked for weight and dimensions.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Heavy and large pieces",
         details:
-          "China Eastern baggage can be calculated by pieces or total weight depending on route.",
+          "Published international examples often start around RMB 1,000 for a 23–32 kg Economy piece and around RMB 1,000 for 159–203 cm, rising on larger or longer-haul bands. Conditions can stack.",
       },
       {
-        name: "Seats and changes",
+        name: "Eastern Miles and special items",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs follow fare rules.",
+          "Eligible status adds weight or pieces according to the itinerary's baggage system. Sports equipment and instruments can use separate item-and-route tables with examples from RMB 1,000 to RMB 6,000.",
       },
     ],
     scenarios: [
       {
-        title: "China-international trip with one checked bag",
+        title: "Domestic baggage exceeds the allowance",
         details:
-          "Start with the included allowance for the exact route and fare; excess baggage only starts after that allowance is exceeded.",
+          "Use China Eastern's domestic per-kilogram fare formula. Do not apply an RMB 1,000 international overweight example to this weight-concept trip.",
       },
       {
-        title: "Domestic connection on the same ticket",
+        title: "An international third bag weighs 28 kg",
         details:
-          "Baggage allowance can depend on the full itinerary, so check the ticketed route rather than assuming one rule across all flights.",
+          "Calculate the route-band extra-piece fee and the 23–32 kg overweight fee. One does not replace the other under the published international structure.",
       },
       {
-        title: "Heavy checked bag",
+        title: "A 170 cm bag is also overweight",
         details:
-          "Overweight charges depend on route and excess weight, so keeping the bag under the limit avoids airport repricing.",
+          "The piece enters both the 159–203 cm oversize band and the overweight band. Repacking either dimensions or weight can remove one charge from the stack.",
       },
       {
-        title: "Changing plans",
+        title: "Checking sports equipment",
         details:
-          "Change and cancellation costs are fare-rule based and may include fare difference.",
+          "Check the item-specific special-baggage table and seek approval when required. Ordinary extra-piece pricing may not model the equipment correctly.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No China Eastern co-branded card baggage waiver is listed in the current fee details.",
+      "Domestic fare-formula prices and international route-band prices are not interchangeable.",
+      "International extra-piece, overweight, and oversize charges can apply to the same bag.",
+      "Special baggage uses separate item, route, and baggage-system tables.",
+      "Eastern Miles benefits and allowances can change on partner-operated or interline segments.",
     ],
     comparisonLinks: [
       { href: "/airlines/air-china", label: "Air China" },
@@ -5784,21 +5953,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "hong-kong-airlines": {
     intro: {
       carryOn:
-        "Hong Kong Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg, while Business Class has a higher allowance.",
+        "Hong Kong Airlines Economy includes one 7 kg cabin bag plus small personal effects. The checked allowance is piece-based and changes by fare family and route zone under the current post-April 30, 2025 table.",
       personalItem:
-        "Hong Kong Airlines does not list a separate paid personal-item charge here. The practical cabin-bag issue is keeping the Economy cabin bag within 7 kg.",
+        "Small personal effects do not turn Economy into a second full-size carry-on. Keep the main bag at or below 7 kg and within the published dimensions.",
       checkedBag:
-        "Hong Kong Airlines includes checked baggage on most eligible fares, but the allowance depends on route and fare family. Extra baggage is priced separately by route and timing.",
+        "Basic, Main, and FlexiPlus can receive different bag counts across Zones 1–5. The table applies to HX-operated flights and excludes specified codeshares operated by carriers such as Asiana, Hainan, or Grand China.",
       restrictions:
-        "The main Hong Kong Airlines fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
+        "Prepaid baggage requires an eligible HX-marketed and HX-operated flight, purchase at least four hours ahead, and is generally nonrefundable if unused. Overweight and oversize charges can also accumulate.",
     },
     verificationNote:
-      "Hong Kong Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Hong Kong Airlines' current zone and fare-family allowances, four-hour prepaid cutoff, operating-carrier exclusions, cumulative charges, and special-equipment rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the checked-bag allowance for the exact route and fare family before buying extras.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Compare Basic, Main, and FlexiPlus using the itinerary's zone before assuming the cheapest fare has the same checked bags.",
+      "Confirm both HX marketing and HX operation before purchasing prepaid baggage.",
+      "Buy eligible extra baggage at least four hours ahead only when certain it will be used, because unused purchases are generally not refunded.",
+      "Repack any piece above 32 kg or 203 cm; Hong Kong Airlines requires it to be split rather than accepted for a larger fee.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5813,52 +5982,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Basic, Main, and FlexiPlus",
         details:
-          "Economy includes one cabin bag up to 7 kg. Checked allowance depends on route and fare family.",
+          "Current checked-bag counts differ by fare family and Zones 1–5. Read the exact row for the ticket instead of applying one Economy allowance.",
       },
       {
-        name: "Business Class",
+        name: "HX-operated flights",
         details:
-          "Business Class has a higher cabin allowance and can have different checked-bag treatment.",
+          "The published allowance and prepaid product are built for Hong Kong Airlines operation. Specified OZ, HU, CN, interline, and other codeshare flights can follow different rules.",
       },
       {
-        name: "Additional baggage",
+        name: "Prepaid additional baggage",
         details:
-          "Additional baggage is priced by route and purchase timing rather than one universal extra-bag amount.",
+          "Eligible extra baggage is sold per passenger per flight and must be purchased at least four hours before departure. Airport pricing follows the applicable route-zone table.",
       },
       {
-        name: "Seats and changes",
+        name: "Heavy, large, and sports items",
         details:
-          "Seat fees depend on route and seat type. Change and cancellation costs depend on fare rules and timing.",
+          "Weight and size charges accumulate. Bicycles require 48-hour pre-advice, while surf and windsurf equipment use separate special-handling examples.",
       },
     ],
     scenarios: [
       {
-        title: "Hong Kong regional trip with one checked bag",
+        title: "Basic and Main have different allowances",
         details:
-          "Confirm the route and fare-family allowance first; extra baggage begins after the included allowance is exceeded.",
+          "Compare the fare difference with the route-zone prepaid piece price. Main can be cheaper overall when a checked bag is certain.",
       },
       {
-        title: "Adding baggage after booking",
+        title: "Buying baggage for an HX-operated flight",
         details:
-          "The additional-baggage amount depends on route and timing, so airport handling can be less predictable.",
+          "Prepay at least four hours ahead after confirming the zone and need. The purchase is generally not refundable merely because the bag is unused.",
       },
       {
-        title: "Oversize checked item",
+        title: "A bag is both heavy and 170 cm",
         details:
-          "Oversize acceptance and fees depend on aircraft and route.",
+          "Calculate both the route-zone overweight amount and the 158–203 cm oversize charge. Hong Kong Airlines states that weight and size charges accumulate.",
       },
       {
-        title: "Child traveling alone",
+        title: "Traveling with a bicycle",
         details:
-          "Unaccompanied-minor service depends on eligible ages and routing restrictions.",
+          "Provide at least 48 hours' notice and budget the special handling example rather than treating it as an ordinary extra piece.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Hong Kong Airlines co-branded card baggage waiver is listed in the current fee details.",
+      "Prepaid baggage requires eligible HX marketing and operation and closes four hours before departure.",
+      "Unused prepaid baggage is generally nonrefundable.",
+      "Overweight and oversize charges can accumulate; pieces above 32 kg or 203 cm must be repacked or split.",
+      "Bicycles require 48-hour pre-advice, and codeshares can follow another carrier's allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/cathay-pacific", label: "Cathay Pacific" },
@@ -5870,21 +6040,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "malaysia-airlines": {
     intro: {
       carryOn:
-        "Malaysia Airlines includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and Business Suite have higher allowances.",
+        "Malaysia Airlines Economy includes one 7 kg cabin bag plus a personal item. The more important distinction is checked baggage: many routes use a total-weight allowance, while Africa and Americas itineraries use a piece allowance.",
       personalItem:
-        "The personal item is included with the Economy cabin allowance. The practical issue is keeping the main cabin bag within 7 kg.",
+        "The included personal item does not turn Economy into a two-carry-on allowance. Keep the main cabin bag within 7 kg and the personal item small enough for under-seat use.",
       checkedBag:
-        "Malaysia Airlines includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "The ticketed allowance must be read in the correct system. On a weight-concept trip, excess is sold by kilogram; on Africa and Americas piece-concept trips, another bag and an overweight bag are different chargeable conditions.",
       restrictions:
-        "The main Malaysia Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The main traps are applying a per-kilogram example to a piece route, waiting until the airport and losing the advance discount, or assuming a very large special item will travel as normal baggage. Items above 204 cm may require cargo handling.",
     },
     verificationNote:
-      "Malaysia Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Malaysia Airlines' 2026 allowance updates, weight-versus-piece system, Enrich and oneworld benefits, 20% advance discount, excess examples, and special-baggage limits were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the route uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Look for a kilogram allowance or a piece count on the ticket before pricing an extra bag; the two systems use different fee logic.",
+      "When eligible, buy extra baggage online or through the call centre at least 24 hours before departure for 20% off the applicable rate.",
+      "On weight routes, remove unnecessary kilograms rather than buying another suitcase—the charge follows total excess weight.",
+      "Contact the airline before taking a special item near 204 cm because it may need MASKargo instead of ordinary check-in.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5899,52 +6069,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Weight-concept routes",
         details:
-          "Economy includes one 7 kg cabin bag plus one personal item. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Many routes provide a total checked-weight allowance. Published excess examples begin at USD 15 per kg in Zone 1 and rise by zone, so the relevant calculation is excess kilograms rather than bag count.",
       },
       {
-        name: "Business / Business Suite",
+        name: "Africa and Americas piece routes",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "These itineraries use a piece allowance. Malaysia Airlines publishes a USD 280 additional-piece example and a separate USD 83 Economy overweight example up to 32 kg; verify the route before applying either figure.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Advance extra baggage",
         details:
-          "Malaysia Airlines baggage can be calculated by pieces or total weight depending on route.",
+          "Eligible purchases made online or through the call centre up to 24 hours before departure receive 20% off. The discount applies to the route's underlying per-kilogram or per-piece rate.",
       },
       {
-        name: "Seats and changes",
+        name: "Enrich and oneworld status",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Enrich Silver adds 10 kg on eligible Malaysia Airlines flights, while higher Enrich and oneworld tiers vary by cabin and route. Confirm exclusions rather than treating status as a universal free bag.",
       },
     ],
     scenarios: [
       {
-        title: "Southeast Asia trip with one checked bag",
+        title: "A weight-route ticket is 5 kg over allowance",
         details:
-          "Check the included allowance for the route and fare before buying extra baggage.",
+          "Price five excess kilograms using the applicable zone. Adding another physical suitcase does not erase the excess because the checked allowance is still measured by combined weight.",
       },
       {
-        title: "Route using piece concept",
+        title: "An Americas ticket needs one additional bag",
         details:
-          "Do not assume a weight allowance if the itinerary uses piece concept. The route determines the model.",
+          "Treat this as an additional-piece purchase, not a per-kilogram charge. The published example is USD 280 before any eligible 20% advance discount.",
       },
       {
-        title: "Adding baggage late",
+        title: "An Economy piece weighs 28 kg",
         details:
-          "Additional baggage depends on route, timing, and baggage concept, so airport handling can change the trip cost.",
+          "On the published Africa or Americas piece example, 23–32 kg creates an USD 83 overweight surcharge. If it is also an extra piece, do not assume the overweight charge replaces the extra-piece fee.",
       },
       {
-        title: "Need flexibility",
+        title: "A special item measures more than 204 cm",
         details:
-          "Change and cancellation costs depend on fare rules and route, and fare difference may apply.",
+          "Normal oversize payment may not solve acceptance. Malaysia Airlines says items above 204 cm may need cargo or another logistics provider, so arrange carriage before airport check-in.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Malaysia Airlines co-branded card baggage waiver is listed in the current fee details.",
+      "The 20% advance discount closes 24 hours before departure and depends on purchase eligibility.",
+      "Africa and Americas routes use the piece system; many other routes use combined checked weight.",
+      "Special baggage above 158 cm or 32 kg can incur a surcharge, while items above 204 cm may require cargo.",
+      "Partner-operated segments and Enrich or oneworld exclusions can change the ticketed allowance.",
     ],
     comparisonLinks: [
       { href: "/airlines/singapore-airlines", label: "Singapore Airlines" },
@@ -5956,21 +6127,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "garuda-indonesia": {
     intro: {
       carryOn:
-        "Garuda Indonesia includes cabin baggage. Economy is listed as one cabin bag up to 7 kg plus one personal item, while Business and First have higher allowances.",
+        "Garuda Economy includes one 7 kg cabin bag plus a personal item. The checked-bag decision is unusually date-sensitive because Garuda is changing from kilogram allowances to pieces during 2026.",
       personalItem:
-        "The personal item is included with the Economy cabin allowance. The practical issue is keeping the main cabin bag within 7 kg.",
+        "The personal item does not increase the main Economy bag's 7 kg ceiling. Keep it small enough for under-seat use instead of treating it as another full-size cabin piece.",
       checkedBag:
-        "Garuda Indonesia includes free checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "For tickets purchased or issued before September 1, 2026, many Garuda tables remain weight-based and price excess in 5 kg route-zone blocks. Tickets issued from that date move to a piece system on Garuda-operated flights.",
       restrictions:
-        "The main Garuda fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The ticket issue date is a pricing rule, not a footnote. Applying the new piece system to an older ticket—or the June 2026 five-kilogram table to a newer ticket—can produce the wrong allowance and excess cost.",
     },
     verificationNote:
-      "Garuda Indonesia carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Garuda's June 12, 2026 route-zone tables, September 1 piece-system transition, status changes, cabin allowance, and special-baggage treatment were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 7 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Check the ticket issue date before reading any Garuda allowance or excess table.",
+      "For pre-transition tickets, calculate excess in 5 kg blocks using the domestic or international route zone; do not estimate per bag.",
+      "For September 1, 2026 and later tickets, use the new piece allowance only on Garuda-operated flights and recheck any codeshare.",
+      "Confirm large sports or bulky items before travel because packing, aircraft, and cargo limits can override ordinary baggage treatment.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -5985,52 +6156,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Before September 1, 2026",
         details:
-          "Economy includes one 7 kg cabin bag plus one personal item. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "Many tickets use a kilogram allowance. The June 12, 2026 excess table prices domestic and outbound international routes in 5 kg zone blocks.",
       },
       {
-        name: "Business / First",
+        name: "From September 1, 2026",
         details:
-          "Premium cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "Tickets purchased or issued from this date use a piece concept on Garuda-operated flights. The included count and excess treatment must come from the new ticket rules.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Pre-transition route zones",
         details:
-          "Garuda baggage can be calculated by pieces or total weight depending on route.",
+          "Published examples vary by domestic or international zone and can range roughly from IDR 220,000 to 714,000 per 5 kg. The origin and destination determine the block price.",
       },
       {
-        name: "Seats and changes",
+        name: "GarudaMiles and SkyTeam",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Elite benefits also transition from additional kilograms to piece or discount logic according to ticket date. Apply the benefit under the same system as the ticket.",
       },
     ],
     scenarios: [
       {
-        title: "Indonesia-international trip with one checked bag",
+        title: "An August 2026 ticket is 7 kg over",
         details:
-          "Start with the included allowance for the exact route and fare; excess baggage only starts after that allowance is exceeded.",
+          "Use the applicable pre-transition route-zone table and purchase enough 5 kg blocks to cover the excess. Do not price it as one new piece.",
       },
       {
-        title: "Route using weight concept",
+        title: "A September 2026 ticket needs another bag",
         details:
-          "Do not assume a piece allowance if the trip is priced by total checked-bag weight.",
+          "Use the new piece-concept rules for Garuda-operated flights. Confirm the issue date and operator rather than applying the older per-5 kg table.",
       },
       {
-        title: "Adding baggage late",
+        title: "The itinerary includes a codeshare",
         details:
-          "Additional baggage depends on route and baggage concept, so airport handling can change the final cost.",
+          "Do not assume Garuda's new piece system controls the partner segment. Check the operating carrier and ticketed allowance for the full journey.",
       },
       {
-        title: "Child traveling alone",
+        title: "Traveling with bulky sports equipment",
         details:
-          "Unaccompanied-minor service depends on eligible ages and routing restrictions.",
+          "Start with the ticket-date baggage system, then check route zone, dimensions, packing, and aircraft limits. Ordinary excess payment may not guarantee acceptance.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Garuda Indonesia co-branded card baggage waiver is listed in the current fee details.",
+      "The September 1, 2026 piece transition is based on ticket purchase or issue date and applies to Garuda-operated flights.",
+      "Earlier tickets can use route-zone excess pricing in 5 kg increments.",
+      "GarudaMiles and SkyTeam benefits change with the same ticket-date transition.",
+      "Codeshares, bulky items, and sports equipment require separate operator and acceptance checks.",
     ],
     comparisonLinks: [
       { href: "/airlines/malaysia-airlines", label: "Malaysia Airlines" },
@@ -6042,21 +6214,21 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   "vietnam-airlines": {
     intro: {
       carryOn:
-        "Vietnam Airlines includes cabin baggage. Economy is listed as one carry-on bag up to 10 kg plus one personal item, while Premium Economy and Business have higher allowances.",
+        "Vietnam Airlines' cabin allowance is route- and aircraft-sensitive: Economy and Premium Economy receive 10–12 kg on published route groups, Business receives 18 kg, and ATR72 flights drop to 7 kg.",
       personalItem:
-        "The personal item is included with the Economy cabin allowance, so the practical issue is keeping the main carry-on within 10 kg.",
+        "A personal item is included, but the route's total cabin allowance remains the controlling limit. The ATR72 exception is especially important on a connecting itinerary with a smaller domestic aircraft.",
       checkedBag:
-        "Vietnam Airlines includes checked baggage on most eligible fares, but the allowance depends on route, cabin, fare family, and baggage concept.",
+        "Most eligible fares include checked baggage, then Vietnam Airlines uses published domestic and international tables for another piece, overweight baggage, and oversize baggage. Those are separate conditions rather than one generic excess fee.",
       restrictions:
-        "The main Vietnam Airlines fee risks are exceeding the included allowance, route-based overweight or oversize handling, paid advance seats, and fare-rule change or cancellation costs.",
+        "The cost can change by domestic versus international travel, international zone, peak period, and whether one piece is both heavy and large. Special equipment is also priced outside the ordinary checked-bag table unless an exception applies.",
     },
     verificationNote:
-      "Vietnam Airlines carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Vietnam Airlines' route-specific cabin limits, 2026 domestic excess update, international zone and peak tables, overweight and oversize pricing, status benefits, and infant allowances were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Confirm whether the itinerary uses piece concept or weight concept before assuming the checked-bag allowance.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep Economy cabin baggage at or below 10 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Check every aircraft on the itinerary: an ATR72 segment reduces the cabin allowance to 7 kg even when a longer segment allows more.",
+      "Separate the problem into extra piece, overweight, and oversize before calculating cost; one bag can trigger more than one table.",
+      "Use the correct domestic or international zone and check whether peak pricing applies instead of relying on the lowest published example.",
+      "Apply eligible Lotusmiles extra pieces before buying baggage: Titanium and Gold receive one, while Platinum and Million Miler receive two.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -6071,52 +6243,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Domestic extra baggage",
         details:
-          "Economy includes one 10 kg carry-on bag plus one personal item. Checked allowance depends on route, cabin, fare family, and baggage concept.",
+          "For tickets issued or changed from June 1, 2026, the airport table lists VND 650,000 for a standard domestic excess piece. A domestic overweight or oversize condition is listed separately at VND 800,000.",
       },
       {
-        name: "Premium Economy / Business",
+        name: "International zones and seasons",
         details:
-          "Higher cabins have higher cabin allowances and can have different checked-bag treatment.",
+          "International standard excess starts from USD 110 in the published off-peak table, but the amount changes by zone and can be higher in peak periods. Overweight starts from USD 80 and oversize from USD 110.",
       },
       {
-        name: "Piece vs weight concept",
+        name: "Cabin allowance by route and aircraft",
         details:
-          "Vietnam Airlines baggage can be calculated by pieces or total weight depending on route.",
+          "Economy and Premium Economy receive 10–12 kg depending on route, Business receives 18 kg, and ATR72-operated flights use a 7 kg limit. Use the lowest applicable segment limit when packing through an aircraft change.",
       },
       {
-        name: "Seats and changes",
+        name: "Lotusmiles extra pieces",
         details:
-          "Advance seat fees depend on route, fare family, and seat type. Change and cancellation costs are fare-rule based.",
+          "Eligible Titanium and Gold members receive one additional 23 kg piece; Platinum and Million Miler members receive two. The benefit applies on eligible Vietnam Airlines-operated flights.",
       },
     ],
     scenarios: [
       {
-        title: "Vietnam-international trip with one checked bag",
+        title: "Adding one standard bag on a domestic trip",
         details:
-          "Check the included allowance for the route and fare first; extra baggage is a separate purchase only when the allowance is not enough.",
+          "After using the fare's included allowance, the current airport example is VND 650,000 for a standard extra piece on eligible tickets issued or changed from June 1, 2026.",
       },
       {
-        title: "Carry-on-only trip",
+        title: "A domestic bag weighs 25 kg",
         details:
-          "Economy includes one 10 kg carry-on plus one personal item, but size limits still apply.",
+          "A piece between 23 and 32 kg enters the domestic overweight table, currently VND 800,000. If it is also an additional piece, calculate both conditions rather than using only the heavier-bag fee.",
       },
       {
-        title: "Adding baggage after booking",
+        title: "An international piece is 170 cm",
         details:
-          "Additional baggage depends on route, timing, and baggage concept, so buying late can change the trip math.",
+          "A piece from 158 to 203 cm enters the international oversize table, starting at USD 110 and rising by zone. Weight and extra-piece exposure must still be checked separately.",
       },
       {
-        title: "Need flexibility",
+        title: "A long-haul itinerary connects to an ATR72",
         details:
-          "Change and cancellation costs depend on fare rules and route, and fare difference may apply.",
+          "Pack for the ATR72's 7 kg cabin limit rather than the higher allowance on the long-haul segment, or move the difference into the checked allowance before travel.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Vietnam Airlines co-branded card baggage waiver is listed in the current fee details.",
+      "International excess prices vary by zone and peak period; the lowest USD example is not a universal price.",
+      "ATR72-operated flights use a 7 kg cabin allowance.",
+      "Lap infants receive one 23 kg piece to or from the Americas but 10 kg on many other routes, plus a stroller.",
+      "Sports equipment and other special baggage can use separate charges instead of the standard excess table.",
     ],
     comparisonLinks: [
       { href: "/airlines/vietjet-air", label: "VietJet Air" },
@@ -6132,17 +6305,17 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       personalItem:
         "The personal item is included with the Economy cabin allowance. The practical issue is staying within the one-bag, 7 kg cabin limit.",
       checkedBag:
-        "Batik Air includes checked baggage on most eligible fares, but the allowance depends on route and fare family. Additional baggage is priced separately by route and timing.",
+        "Batik Air's free baggage allowance is the FBA printed on the ticket and can use weight or pieces. Same-PNR passengers checking in together can pool eligible weight, while prepaid baggage adds 5–30 kg per passenger.",
       restrictions:
-        "The main Batik Air fee risks are exceeding the included allowance, airport overweight or oversize treatment, paid advance seats, and fare-rule change or cancellation costs.",
+        "Prepaid baggage closes six hours before departure and tops out at 30 kg per passenger. It adds weight to the allowance but does not permit a single checked piece above 32 kg.",
     },
     verificationNote:
-      "Batik Air carry-on, checked-bag, overweight, oversize, seat, change/cancellation, and unaccompanied-minor details were last verified on 2025-12-24.",
+      "Batik Air Indonesia's 2026 FBA rules, weight and piece systems, same-PNR pooling, 5–30 kg prepaid blocks, six-hour cutoff, and infant rules were fully reviewed on 2026-08-23.",
     avoidFees: [
-      "Check the included checked allowance for the exact route and fare family before buying extras.",
-      "Buy additional baggage before the airport where available if the included allowance is not enough.",
-      "Keep the cabin bag at or below 7 kg and checked bags within the route's weight and size limits.",
-      "Use check-in seat assignment when a specific seat is not important.",
+      "Read the FBA on the ticket rather than assuming every Batik fare includes the same kilograms.",
+      "Pool eligible weight with same-PNR companions by checking in together before buying more baggage.",
+      "Buy only the needed 5 kg block up to the 30 kg maximum and complete the purchase at least six hours before departure.",
+      "Split any piece above 32 kg even when the combined FBA and prepaid allowance is sufficient.",
     ],
     relatedGuides: [
       { href: "/fees/checked_baggage", label: "Checked baggage" },
@@ -6157,52 +6330,53 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
     ],
     fareClasses: [
       {
-        name: "Economy",
+        name: "Ticketed FBA",
         details:
-          "Economy includes one 7 kg cabin bag plus one personal item. Checked allowance depends on route and fare family.",
+          "The free allowance depends on route, fare, passenger count, and baggage system. The FBA printed on the booking is the starting point.",
       },
       {
-        name: "Included checked allowance",
+        name: "Same-PNR pooling",
         details:
-          "Checked baggage is included on most eligible fares, but the amount depends on the route and fare family.",
+          "Passengers on the same booking can combine eligible weight when they present baggage together. Pooling does not lift the 32 kg maximum for one piece.",
       },
       {
-        name: "Additional baggage",
+        name: "Prepaid 5–30 kg",
         details:
-          "Additional baggage is priced by route and purchase timing rather than one universal extra-bag amount.",
+          "Batik sells 5, 10, 15, 20, 25, or 30 kg blocks until six hours before departure. Airport excess applies beyond FBA plus prepaid weight.",
       },
       {
-        name: "Seats and changes",
+        name: "Infants and special items",
         details:
-          "Seat fees depend on route, fare, and seat type. Change and cancellation costs are fare-rule based.",
+          "Lap infants have no checked allowance, although an infant stroller can travel free. Sports gear can count within allowance when it meets item and aircraft limits.",
       },
     ],
     scenarios: [
       {
-        title: "Indonesia domestic trip with one checked bag",
+        title: "Two companions are on one booking",
         details:
-          "Confirm the included allowance for the route and fare family before buying additional baggage.",
+          "Check in together and pool eligible weight before purchasing more. A light bag can offset a heavier companion bag only within the individual 32 kg handling limit.",
       },
       {
-        title: "Adding baggage after booking",
+        title: "The trip needs 12 kg above FBA",
         details:
-          "Additional baggage depends on route and timing, so airport handling can be less predictable.",
+          "Buy a 15 kg block rather than 10 kg, because prepaid baggage is sold in five-kilogram increments and airport excess applies above the purchased total.",
       },
       {
-        title: "Carry-on-only trip",
+        title: "A single checked piece weighs 34 kg",
         details:
-          "The cabin allowance is one bag up to 7 kg plus one personal item; a heavy cabin bag can break the plan.",
+          "Repack it even if enough weight was prepaid. Batik caps an ordinary checked piece at 32 kg.",
       },
       {
-        title: "Oversize item",
+        title: "Traveling with an infant",
         details:
-          "Oversize acceptance and fees depend on aircraft and route.",
+          "Do not budget an infant checked allowance. A stroller used by the infant can be tagged as free special baggage, but the infant otherwise has no FBA.",
       },
     ],
     exceptions: [
-      "Partner-operated flights can follow the operating carrier's baggage rules.",
-      "Oversize acceptance depends on route, aircraft, and airport handling limits.",
-      "No Batik Air co-branded card baggage waiver is listed in the current fee details.",
+      "Prepaid baggage is sold in 5 kg blocks, closes six hours before departure, and is capped at 30 kg per passenger.",
+      "Same-PNR pooling requires passengers to check bags together and does not lift the 32 kg per-piece maximum.",
+      "Lap infants have no free checked allowance, although an eligible stroller can travel free.",
+      "Sports and oversize items remain subject to packing, route, and aircraft acceptance.",
     ],
     comparisonLinks: [
       { href: "/airlines/garuda-indonesia", label: "Garuda Indonesia" },
@@ -9510,6 +9684,216 @@ function getAirlineMetadataCopy(slug: string, airlineName: string, fallback?: st
         alternates: {
           canonical: canonical("/airlines/eva-air"),
         },
+      };
+    case "cathay-pacific":
+      return {
+        title: "Cathay Pacific Baggage Allowance 2026: PC vs K Rules",
+        description:
+          "Decode Cathay Pacific's piece and weight baggage allowances, 7 kg carry-on rule, prepaid extra-piece discount, and 32 kg maximum per checked bag.",
+        alternates: { canonical: canonical("/airlines/cathay-pacific") },
+      };
+    case "korean-air":
+      return {
+        title: "Korean Air Baggage Fees 2026: Extra and Overweight Bags",
+        description:
+          "Check Korean Air's route-based baggage allowance, advance excess purchase, Americas fee examples, stacked overweight and oversize charges, and Brazil exceptions.",
+        alternates: { canonical: canonical("/airlines/korean-air") },
+      };
+    case "malaysia-airlines":
+      return {
+        title: "Malaysia Airlines Baggage Fees 2026: Weight vs Piece Rules",
+        description:
+          "Check Malaysia Airlines' weight and piece baggage systems, 20% advance extra-baggage discount, route examples, overweight charges, and cargo limits.",
+        alternates: { canonical: canonical("/airlines/malaysia-airlines") },
+      };
+    case "vietnam-airlines":
+      return {
+        title: "Vietnam Airlines Baggage Fees 2026: Excess Bag Costs",
+        description:
+          "See Vietnam Airlines domestic and international excess-baggage examples, overweight and oversize tables, route-specific carry-on limits, and ATR72 rules.",
+        alternates: { canonical: canonical("/airlines/vietnam-airlines") },
+      };
+    case "qatar-airways":
+      return {
+        title: "Qatar Airways Baggage Fees 2026: Weight vs Piece Routes",
+        description:
+          "Check Qatar Airways excess baggage by kilogram or piece, Africa and Americas rules, overweight and oversize combinations, and status allowances.",
+        alternates: { canonical: canonical("/airlines/qatar-airways") },
+      };
+    case "turkish-airlines":
+      return {
+        title: "Turkish Airlines Baggage Fees 2026: Fare and Route Rules",
+        description:
+          "Compare Turkish Airlines EcoFly and higher fare baggage, piece and weight routes, connection caveats, Miles&Smiles allowances, and sports-equipment rules.",
+        alternates: { canonical: canonical("/airlines/turkish-airlines") },
+      };
+    case "ana":
+      return {
+        title: "ANA Baggage Fees 2026: Prepaid Extra Bag Rules",
+        description:
+          "Check ANA's 10 kg combined carry-on limit, prepaid one-bag prices and exclusions, domestic versus international allowance, and sports-equipment exception.",
+        alternates: { canonical: canonical("/airlines/ana") },
+      };
+    case "jal":
+      return {
+        title: "Japan Airlines Baggage Fees 2026: Extra and Heavy Bags",
+        description:
+          "See JAL international piece allowances, extra-piece and overweight examples, domestic per-kilogram excess, status benefits, and equipment limits.",
+        alternates: { canonical: canonical("/airlines/jal") },
+      };
+    case "air-china":
+      return {
+        title: "Air China Baggage Fees 2026: Domestic and International Rules",
+        description:
+          "Understand Air China's domestic 1.5% excess-weight formula, international route tables, 8 kg Economy carry-on, status benefits, and transport limits.",
+        alternates: { canonical: canonical("/airlines/air-china") },
+      };
+    case "china-eastern":
+      return {
+        title: "China Eastern Baggage Fees 2026: Excess and Heavy Bags",
+        description:
+          "Check China Eastern domestic per-kilogram baggage, international extra-piece tables, stacked overweight and oversize charges, and special-item rules.",
+        alternates: { canonical: canonical("/airlines/china-eastern") },
+      };
+    case "china-southern":
+      return {
+        title: "China Southern Baggage Fees 2026: Domestic and International",
+        description:
+          "Check China Southern's domestic excess formula, international route-area tables, gate-checked carry-on risk, cumulative charges, and status allowance.",
+        alternates: { canonical: canonical("/airlines/china-southern") },
+      };
+    case "xiamenair":
+      return {
+        title: "XiamenAir Baggage Fees 2026: Fare Brands and Extra Bags",
+        description:
+          "Compare XiamenAir Economy baggage by fare brand, domestic excess formula, international route groups, heavy-bag bands, and acceptance limits.",
+        alternates: { canonical: canonical("/airlines/xiamenair") },
+      };
+    case "asiana":
+      return {
+        title: "Asiana Baggage Fees 2026: Extra, Heavy, and Prepaid Bags",
+        description:
+          "Check Asiana baggage for U.S., non-U.S., and Korean domestic routes, prepaid extra-piece savings, cumulative overweight charges, and status caveats.",
+        alternates: { canonical: canonical("/airlines/asiana") },
+      };
+    case "garuda-indonesia":
+      return {
+        title: "Garuda Indonesia Baggage Fees 2026: New Piece Rules",
+        description:
+          "Understand Garuda's September 2026 switch from kilogram allowances and 5 kg excess blocks to piece rules, including status and codeshare caveats.",
+        alternates: { canonical: canonical("/airlines/garuda-indonesia") },
+      };
+    case "srilankan":
+      return {
+        title: "SriLankan Airlines Baggage Fees 2026: Prepaid Excess",
+        description:
+          "Check SriLankan's weight and Americas piece rules, online 5 kg baggage blocks, three-hour cutoff, airport excess, and USD 50 oversize fee.",
+        alternates: { canonical: canonical("/airlines/srilankan") },
+      };
+    case "hong-kong-airlines":
+      return {
+        title: "Hong Kong Airlines Baggage Fees 2026: Zones and Fare Rules",
+        description:
+          "Compare Hong Kong Airlines baggage by fare family and zone, prepaid eligibility and cutoff, cumulative heavy-bag charges, and codeshare exclusions.",
+        alternates: { canonical: canonical("/airlines/hong-kong-airlines") },
+      };
+    case "china-airlines":
+      return {
+        title: "China Airlines Baggage Fees 2026: Fares, Zones, and Prepay",
+        description:
+          "Check China Airlines baggage by route and booking class, zero-piece fare cases, 5% prepaid excess savings, elite benefits, and special-bag rules.",
+        alternates: { canonical: canonical("/airlines/china-airlines") },
+      };
+    case "hainan":
+      return {
+        title: "Hainan Airlines Baggage Fees 2026: Domestic and International",
+        description:
+          "Understand Hainan domestic 1.5% excess pricing, international piece tables, prepaid limits, 32 kg and 203 cm cutoffs, and status benefits.",
+        alternates: { canonical: canonical("/airlines/hainan") },
+      };
+    case "egyptair":
+      return {
+        title: "EgyptAir Baggage Fees 2026: Prepay and Excess Rules",
+        description:
+          "Check EgyptAir route and channel baggage prices, the 24-hour prepay cutoff, Africa exceptions, Asmara limits, and combined heavy-oversize charges.",
+        alternates: { canonical: canonical("/airlines/egyptair") },
+      };
+    case "royal-air-maroc":
+      return {
+        title: "Royal Air Maroc Baggage Fees 2026: Fares and Extra Bags",
+        description:
+          "Compare Royal Air Maroc fare-product allowances, route-table excess prices, non-pooled bag weight, Safar Flyer awards, and oversize limits.",
+        alternates: { canonical: canonical("/airlines/royal-air-maroc") },
+      };
+    case "batik-air":
+      return {
+        title: "Batik Air Baggage Fees 2026: FBA and Prepaid Weight",
+        description:
+          "Check Batik Air ticketed FBA, same-booking weight pooling, 5–30 kg prepaid blocks, the six-hour purchase cutoff, and 32 kg piece limit.",
+        alternates: { canonical: canonical("/airlines/batik-air") },
+      };
+    case "iberia":
+      return {
+        title: "Iberia Baggage Fees 2026: Basic, Bags, and Seats",
+        description:
+          "Compare Iberia Basic with included-bag fares, itinerary-priced extra bags, 23 kg overweight treatment, the 32 kg ceiling, and operator exceptions.",
+        alternates: { canonical: canonical("/airlines/iberia") },
+      };
+    case "iberia-express":
+      return {
+        title: "Iberia Express Baggage Fees 2026: 15, 23, or 32 kg",
+        description:
+          "Compare the no-bag Express pack with included-bag fares, choose a 15, 23, or 32 kg add-on, and avoid the €60 excess-weight charge.",
+        alternates: { canonical: canonical("/airlines/iberia-express") },
+      };
+    case "volaris":
+      return {
+        title: "Volaris Baggage Fees 2026: Zero vs Basic vs Plus",
+        description:
+          "Compare Volaris Zero, Basic, and Plus baggage: personal-item-only travel, 15 kg or 25 kg checked bags, carry-on access, and INVEX limits.",
+        alternates: { canonical: canonical("/airlines/volaris") },
+      };
+    case "viva-aerobus":
+      return {
+        title: "Viva Aerobus Baggage Fees 2026: Zero to Smart",
+        description:
+          "Compare Viva Aerobus Zero, Light, Extra, and Smart: personal items, 10–15 kg cabin allowances, 15–25 kg checked bags, seats, and changes.",
+        alternates: { canonical: canonical("/airlines/viva-aerobus") },
+      };
+    case "tap-air-portugal":
+      return {
+        title: "TAP Baggage Fees 2026: Discount and Extra Bags",
+        description:
+          "Compare TAP Discount with included-bag fares, extra bags from €30 online, route and seasonal pricing, heavy/large charges, and status rules.",
+        alternates: { canonical: canonical("/airlines/tap-air-portugal") },
+      };
+    case "emirates":
+      return {
+        title: "Emirates Baggage Fees 2026: Weight vs Piece Rules",
+        description:
+          "Identify Emirates weight or piece rules, compare advance excess discounts with airport rates, and understand Skywards, 32 kg, and 203 cm limits.",
+        alternates: { canonical: canonical("/airlines/emirates") },
+      };
+    case "kenya-airways":
+      return {
+        title: "Kenya Airways Baggage Fees 2026: Pieces and Pooling",
+        description:
+          "Read Kenya Airways ticketed pieces, interline rules, family bag-count pooling, per-piece weight limits, and Asante status or points benefits.",
+        alternates: { canonical: canonical("/airlines/kenya-airways") },
+      };
+    case "south-african-airways":
+      return {
+        title: "South African Airways Baggage Fees 2026: Extra Bags",
+        description:
+          "Check SAA route-priced extra bags, date versus route changes, Voyager and partner limits, infant allowance, and cargo-only sports equipment.",
+        alternates: { canonical: canonical("/airlines/south-african-airways") },
+      };
+    case "air-astana":
+      return {
+        title: "Air Astana Baggage Fees 2026: Basic and MyBAGGAGE",
+        description:
+          "Compare Air Astana Basic, Classic, and Plus baggage, the MyBAGGAGE 36-hour cutoff, operator exclusions, Nomad Club pieces, and cargo limits.",
+        alternates: { canonical: canonical("/airlines/air-astana") },
       };
     default:
       return {
