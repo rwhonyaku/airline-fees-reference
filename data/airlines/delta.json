@@ -174,12 +174,17 @@
       "category": "oversize_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bags measuring 63–80 linear inches (160–203 cm)",
+      "conditions": "Bags measuring 63–80 linear inches (161–203 cm); bags over 80 linear inches are not accepted",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "Within the U.S. and between the U.S. and Canada",
       "timing": "each way",
-      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/excess-overweight-baggage",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta publishes different oversize charges for other international regions, so this USD 200 row is intentionally limited to U.S./Canada travel."
+      }
     },
     {
       "category": "sports_equipment",
@@ -201,23 +206,33 @@
       "category": "overweight_baggage",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Bags weighing 51–70 lbs (23–32 kg)",
+      "conditions": "Bags weighing 51–70 lbs (23–31.75 kg)",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "Within the U.S. and between the U.S. and Canada",
       "timing": "each way",
-      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/excess-overweight-baggage",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The USD 100 band applies to U.S./Canada travel; some international routes use different currencies or restrictions."
+      }
     },
     {
       "category": "overweight_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bags weighing 71–100 lbs (32–45 kg); bags over 100 lbs not accepted",
+      "conditions": "Bags weighing over 70 but under 100 lbs (over 31.75 but under 45.36 kg); bags at 100 lbs or more are not accepted",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "Within the U.S. and between the U.S. and Canada",
       "timing": "each way",
-      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/oversize-overweight-baggage",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/us/en/baggage/checked-baggage/excess-overweight-baggage",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Many Delta international routes prohibit bags over 70 lb; this USD 200 band is therefore limited to U.S./Canada travel."
+      }
     },
     {
       "category": "change_cancellation",

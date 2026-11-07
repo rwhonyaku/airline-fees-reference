@@ -244,36 +244,71 @@
     },
     {
       "category": "oversize_baggage",
+      "amount": 30,
+      "currency": "USD",
+      "conditions": "Bags measuring over 62 through 65 linear inches (over 158 through 165 cm)",
+      "applies_to": "All fares",
+      "region_or_route": "All published regions",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/web/i18n/travel-info/baggage/oversize-and-overweight-baggage.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "oversize_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bags measuring 62–65 linear inches (158–165 cm); bags over 115 inches are not accepted",
+      "conditions": "Bags measuring over 65 through 115 linear inches (over 165 through 292 cm); bags over 115 linear inches are not accepted",
       "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "region_or_route": "Within and between the U.S., Canada, Puerto Rico, and U.S. Virgin Islands",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/travel-info/baggage/oversize-and-overweight-baggage.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American publishes different fees for some international regions; this USD 200 row is limited to the named domestic/Canada market."
+      }
+    },
+    {
+      "category": "overweight_baggage",
+      "amount": 30,
+      "currency": "USD",
+      "conditions": "Bags weighing over 50 through 53 lbs (over 23 through 24 kg)",
+      "applies_to": "All fares, subject to cabin and status weight allowances",
+      "region_or_route": "All published regions",
+      "timing": "each way",
+      "source_url": "https://www.aa.com/web/i18n/travel-info/baggage/oversize-and-overweight-baggage.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "overweight_baggage",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Bags weighing 51–70 lbs (23–32 kg)",
-      "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "conditions": "Bags weighing over 53 through 70 lbs (over 24 through 32 kg)",
+      "applies_to": "All fares, subject to cabin and status weight allowances",
+      "region_or_route": "Within and between the U.S., Canada, Puerto Rico, and U.S. Virgin Islands",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/travel-info/baggage/oversize-and-overweight-baggage.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "overweight_baggage",
       "amount": 200,
       "currency": "USD",
-      "conditions": "Bags weighing 71–100 lbs (32–45 kg); bags over 100 lbs are not accepted",
-      "applies_to": "All fares",
-      "region_or_route": "Most routes",
+      "conditions": "Bags weighing over 70 through 100 lbs (over 32 through 45 kg); bags over 100 lbs are not accepted",
+      "applies_to": "All fares, subject to route restrictions",
+      "region_or_route": "Within and between the U.S., Canada, Puerto Rico, and U.S. Virgin Islands",
       "timing": "each way",
-      "source_url": "https://www.aa.com/i18n/travel-info/baggage/oversize-and-overweight-baggage.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/travel-info/baggage/oversize-and-overweight-baggage.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "American does not accept this weight band on several international markets, so this row is limited to the named domestic/Canada market."
+      }
     },
     {
       "category": "sports_equipment",
