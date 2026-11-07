@@ -9,9 +9,9 @@ import type { AirlineOverrides, CardsJson } from "@/lib/bag-cost-calculator";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Baggage Calculator | Checked Bag Fee Calculator by Airline",
+  title: "Checked Bag Fee Calculator | United & Other Airlines",
   description:
-    "Use the checked bag fee calculator to estimate baggage costs by airline, travelers, bags, and roundtrip, then test whether a free checked bag card benefit could offset the cost.",
+    "Estimate United checked bag fees or choose another airline. Calculate baggage costs by travelers, bags, and trip type, then check whether a verified waiver could apply.",
   alternates: { canonical: canonical("/tools/checked-baggage-calculator") },
 };
 
@@ -40,7 +40,7 @@ function checkedBagCalculatorJsonLd() {
       {
         "@type": "WebApplication",
         "@id": canonical("/tools/checked-baggage-calculator"),
-        name: "Checked baggage cost calculator",
+        name: "Checked bag fee calculator by airline",
         url: canonical("/tools/checked-baggage-calculator"),
         applicationCategory: "TravelApplication",
         operatingSystem: "Any",

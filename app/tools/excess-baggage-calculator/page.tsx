@@ -6,9 +6,9 @@ import { getAllAirlines } from "@/lib/data";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Overweight & Oversize Baggage Fee Calculator",
+  title: "Excess Baggage Calculator | Overweight & Oversize Fees",
   description:
-    "Check whether a bag is overweight, oversized, or both; estimate supported airline fees and identify when an itinerary-specific quote is required.",
+    "Use the excess baggage calculator to check overweight and oversize bag charges by airline, or identify when the exact route requires an airline quote.",
   alternates: {
     canonical: canonical("/tools/excess-baggage-calculator"),
   },
@@ -38,7 +38,7 @@ function excessBaggageCalculatorJsonLd() {
         applicationCategory: "TravelApplication",
         operatingSystem: "Any",
         description:
-          "Check overweight and oversize baggage charges and identify when route-specific airline lookup is required.",
+          "Calculate supported excess baggage charges for overweight or oversized bags and identify when a route-specific airline quote is required.",
       },
       {
         "@type": "FAQPage",

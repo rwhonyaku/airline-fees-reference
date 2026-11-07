@@ -247,7 +247,7 @@ export function CheckedBaggageCalculatorClient({
     getServerLocationSearch
   );
   const sp = new URLSearchParams(queryString);
-  const requestedAirlineSlug = sp.get("airline") || "alaska";
+  const requestedAirlineSlug = sp.get("airline") || "united";
   const airline = airlines.find((item) => item.slug === requestedAirlineSlug) ?? airlines[0];
   const airlineSlug = airline.slug;
 
@@ -309,7 +309,7 @@ export function CheckedBaggageCalculatorClient({
         <div className="text-xs font-bold uppercase tracking-widest text-blue-700">
           Checked bag fee tool
         </div>
-        <h1 className="text-4xl font-extrabold tracking-tight">Checked bag fee calculator</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight">Checked baggage fee calculator by airline</h1>
         <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
           Use this baggage calculator for checked bags before booking: choose an airline, enter the
           number of travelers and bags, then see the trip total and yearly bag-fee exposure when the

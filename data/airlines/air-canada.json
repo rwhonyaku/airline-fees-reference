@@ -9,7 +9,7 @@
     "gold_standard": true,
     "source_depth": "gold",
     "last_full_review": "2026-09-27",
-    "notes": "Air Canada baggage depends on fare family, route region, purchase date, Aeroplan/card/status benefits, and partner operation. Carry-on and checked-baggage records were rechecked 2026-09-27; excess-baggage and card-benefit records retain their 2026-09-09 dates, and other categories retain their record-level dates.",
+    "notes": "Air Canada baggage depends on fare family, route region, purchase date, Aeroplan/card/status benefits, and partner operation. First-, second-, and additional-bag pricing was rechecked 2026-11-06; carry-on records retain their 2026-09-27 dates, and other categories retain their record-level dates.",
     "next_review_due": "2026-12-09"
   },
   "fees": [
@@ -122,6 +122,36 @@
         "notes": "This row keeps Air Canada’s May 14, 2026 long-haul second-bag rule separate from domestic/transborder pricing."
       },
       "effective_date": "2026-05-14"
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 100 to 120",
+      "currency": "CAD",
+      "conditions": "Additional bag above the standard allowance; exact amount and tax depend on the itinerary",
+      "applies_to": "All fares when the bag exceeds the ticketed piece allowance",
+      "region_or_route": "Within Canada or between Canada and the U.S.",
+      "timing": "each way",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/legal/products-and-services.html",
+      "last_verified": "2026-11-06",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is the additional-bag range, not the first- or second-bag fee. Air Canada's calculator remains controlling."
+      }
+    },
+    {
+      "category": "checked_baggage",
+      "amount": "From 225 to 270",
+      "currency": "CAD",
+      "conditions": "Additional bag above the standard allowance; exact amount and tax depend on the itinerary",
+      "applies_to": "All fares when the bag exceeds the ticketed piece allowance",
+      "region_or_route": "Canada to Caribbean, Mexico, Central America, or other international destinations",
+      "timing": "each way",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/legal/products-and-services.html",
+      "last_verified": "2026-11-06",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is the additional-bag range, not the first- or second-bag fee. Air Canada's calculator remains controlling."
+      }
     },
     {
       "category": "overweight_baggage",

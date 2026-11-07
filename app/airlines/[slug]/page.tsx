@@ -110,7 +110,7 @@ const SEARCH_ENTRY_COPY: Record<string, { h1: string; verdict: string }> = {
   frontier: {
     h1: "Frontier baggage fees: carry-on, checked bags, and bundles",
     verdict:
-      "Every Frontier ticket includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on and standard checked bag cost extra on Basic unless a bundle or benefit includes them; live prices vary by route, date, and when you buy.",
+      "Frontier does not publish one universal carry-on price. Every ticket includes one personal item up to 14 × 18 × 8 inches; Basic prices a full-size carry-on by itinerary and purchase timing, while Economy, Premium, and Business include it. Buying at booking is the lowest-risk path because airport and gate prices can be higher.",
   },
   ryanair: {
     h1: "Ryanair baggage fees: small bag, Priority, and checked-bag choices",
@@ -751,7 +751,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic fares are the main restriction point: the checked bag fee can appear where higher fares include a bag, changes and refunds are not permitted after 24 hours except in qualifying circumstances, and advance seat selection starts as a paid product on Basic.",
     },
     verificationNote:
-      "Air Canada carry-on and checked-baggage claims were rechecked against Air Canada on 2026-09-27. Excess-baggage and Aeroplan card-benefit claims retain their 2026-09-09 record dates; seat and change details retain their 2026-08-23 dates.",
+      "Air Canada's current first-, second-, and additional-bag fee structure was rechecked against Air Canada on 2026-11-06. Carry-on records retain their 2026-09-27 date; excess-baggage and Aeroplan card-benefit claims retain their 2026-09-09 dates; seat and change details retain their 2026-08-23 dates.",
     avoidFees: [
       "Do not assume Standard always includes the first bag: on current short-haul fares, Basic and Standard both charge CAD/USD 45. Flex is the first of these three fare families with an included first bag.",
       "Use Air Canada's baggage calculator for the exact itinerary. The fee changes by route, fare, purchase date, and operating carrier, so a generic trip-cost calculator should not invent one universal total.",
@@ -6760,7 +6760,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
   frontier: {
     intro: {
       carryOn:
-        "Frontier includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on up to 24 × 16 × 10 inches and 35 lbs is a paid add-on on Basic; its price depends on the trip and when it is purchased, so the bag decision belongs at booking, not at the gate.",
+        "Frontier includes one personal item up to 14 × 18 × 8 inches. A full-size carry-on up to 24 × 16 × 10 inches and 35 lbs is priced separately on Basic but included with Economy, Premium, and Business; a Basic-fare bag costs less when solved at booking instead of the airport or gate.",
       personalItem:
         "The free 14 × 18 × 8 inch item must fit under the seat. Frontier says its size is checked during boarding, so an overpacked personal item can turn the cheapest fare into a gate charge.",
       checkedBag:
@@ -6769,7 +6769,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "For bookings made on or after September 25, 2026, Basic Fare and Standard cost USD 149 to change within 59 days of departure or to cancel. Economy Fare and Economy, Premium, or Business bundles list no change or cancellation fee, although fare differences can still apply.",
     },
     verificationNote:
-      "Frontier carry-on, checked-bag, bundle, overweight, oversize, and current change/cancellation rules were rechecked against Frontier-published sources on 2026-09-27. Older booking-date rows remain visible because Frontier applies different change fees to earlier reservations.",
+      "Frontier carry-on pricing logic and current bundle inclusions were rechecked against Frontier-published sources on 2026-11-06. Checked-bag, overweight, oversize, and change/cancellation records retain their individual verification dates; older booking-date rows remain visible because Frontier applies different change fees to earlier reservations.",
     avoidFees: [
       "Decide on bags before checkout. Frontier's carry-on and checked-bag pricing is timing-sensitive, so late airport or gate decisions can change the economics of the fare.",
       "If you need flexibility, compare Basic Fare or Standard against Economy, Premium, or Business bundles before booking; those bundles show no change or cancellation fee.",
@@ -7253,6 +7253,11 @@ const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
         "Air Canada publishes route-dependent overweight charges in a CAD 100 to 225 range for bags over 23 kg and up to 32 kg. The normal checked-bag fee may also apply, and heavier bags must travel as cargo rather than ordinary checked baggage.",
     },
     {
+      question: "What is Air Canada's extra baggage fee?",
+      answer:
+        "For an additional bag above the ticket's standard allowance, Air Canada's current Canadian fee schedule lists CAD 100 to 120 within Canada and between Canada and the U.S., or CAD 225 to 270 for the Caribbean, Mexico, Central America, and other international destinations. Use Air Canada's calculator for the itinerary-specific amount and allowance.",
+    },
+    {
       question: "Does an Aeroplan credit card give a free checked bag?",
       answer:
         "Eligible Aeroplan cardholders and up to eight companions on the same reservation can receive one free checked bag up to 23 kg on Air Canada, Rouge, or Express flights. The bag must be presented at Air Canada check-in before security; gate-checked bags are excluded.",
@@ -7278,6 +7283,11 @@ const AIRLINE_FAQS: Record<string, AirlineFaq[]> = {
       question: "How much does it cost to check a bag on Air France?",
       answer:
         "First check whether your fare already includes checked baggage. If you need an additional checked bag, the price is shown during purchase or in My Bookings for the exact itinerary and fare.",
+    },
+    {
+      question: "How much is a 23 kg extra bag on Air France?",
+      answer:
+        "Air France does not publish one universal price for a 23 kg extra bag. In Economy and Premium, 23 kg is the maximum weight for a standard additional piece; its itinerary-specific price appears during booking or in My Bookings. This is different from an overweight charge, which applies when one bag exceeds the weight allowance on your ticket and is paid at the airport.",
     },
     {
       question: "Can you save by buying Air France baggage online?",
@@ -8055,6 +8065,13 @@ function AirFranceBaggagePriceChecklist() {
           Extra bags can be bought online, but overweight and oversized bags are priced and paid for
           at the airport.
         </p>
+        <div className="mt-4 rounded-2xl border border-blue-200 bg-white p-4 text-sm leading-relaxed text-slate-700">
+          <strong className="text-slate-950">Searching for a 23 kg extra-bag price?</strong>{" "}
+          That is an additional-piece price, not a per-kilogram overweight rate. For Economy and
+          Premium, an added standard bag can weigh up to 23 kg; Air France shows its price during
+          booking or in My Bookings. An overweight fee applies only when one bag exceeds the weight
+          allowed by the ticket, and that itinerary-based charge is paid at the airport.
+        </div>
       </div>
 
       <div className="overflow-x-auto rounded-2xl border border-blue-100 bg-white">
@@ -8631,6 +8648,27 @@ function AirCanadaCheckedBagFeeChecklist() {
       <p className="mt-3 text-xs leading-relaxed text-slate-600">
         Short-haul means travel within Canada; between Canada and the U.S.; or from Canada/U.S. to Mexico, the Caribbean, or Central America. The listed long-haul group covers Canada/U.S. to Africa, Asia/South Pacific, Europe, the Middle East, or South America. Older tickets and other itineraries may use different rules.
       </p>
+      <div className="mt-4 rounded-xl border border-blue-100 bg-white p-4">
+        <h3 className="font-black text-slate-950">Bringing a bag above the ticket allowance?</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">
+          Air Canada&apos;s current Canadian fee schedule lists an additional bag at CAD 100–120 for
+          travel within Canada or between Canada and the U.S. The listed range is CAD 225–270 for
+          the Caribbean, Mexico, Central America, and other international destinations. This is an
+          extra bag above the ticket&apos;s allowance, not the same as the first- or second-bag rows above.
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-slate-600">
+          The exact allowance, tax, currency, ticket date, and operating carrier still control. Air
+          Canada directs travelers to its baggage calculator for the itinerary-specific answer.
+        </p>
+        <a
+          href="https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-flex text-sm font-bold text-blue-800 underline"
+        >
+          Check Air Canada&apos;s baggage calculator
+        </a>
+      </div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link
           href="/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes"
@@ -9127,6 +9165,29 @@ function AlaskaCarryOnAndBagCheck() {
 }
 
 function FrontierFeeDecisionChecklist() {
+  const fareBagAnswer = [
+    {
+      fare: "Basic",
+      included: "Personal item only",
+      decision: "Price the carry-on in Frontier's booking flow or Bag Price Checker.",
+    },
+    {
+      fare: "Economy",
+      included: "Personal item + carry-on",
+      decision: "Compare the bundle premium with Basic plus the same bag and seat.",
+    },
+    {
+      fare: "Premium",
+      included: "Personal item + carry-on",
+      decision: "The added value is the premium seat and Board First—not another bag.",
+    },
+    {
+      fare: "Business",
+      included: "Personal item + carry-on + 2 checked bags",
+      decision: "Each included checked bag can weigh up to 50 lb.",
+    },
+  ];
+
   const checks = [
     {
       question: "Can the trip stay personal-item-only?",
@@ -9161,8 +9222,34 @@ function FrontierFeeDecisionChecklist() {
         Frontier true-cost checklist
       </div>
       <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-        Basic is cheapest only when the add-ons and flexibility risk stay low.
+        How much is a Frontier carry-on? The fare and purchase timing decide.
       </h2>
+      <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">
+        There is no honest nationwide dollar answer. Frontier prices a Basic-fare carry-on for the
+        specific trip and says buying at booking costs less than waiting until the airport or gate.
+        The useful comparison is Basic plus every needed add-on versus the offered bundle.
+      </p>
+      <div className="mt-5 overflow-hidden rounded-2xl border border-blue-100 bg-white">
+        <div className="hidden grid-cols-[0.65fr_1.1fr_1.6fr] gap-4 border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs font-black uppercase tracking-wider text-slate-500 md:grid">
+          <div>Fare</div>
+          <div>Bag allowance</div>
+          <div>What to compare</div>
+        </div>
+        {fareBagAnswer.map((row) => (
+          <div
+            key={row.fare}
+            className="grid gap-2 border-b border-slate-100 px-5 py-4 last:border-b-0 md:grid-cols-[0.65fr_1.1fr_1.6fr] md:gap-4"
+          >
+            <div className="font-black text-slate-950">{row.fare}</div>
+            <div className="text-sm font-semibold text-slate-800">{row.included}</div>
+            <div className="text-sm leading-relaxed text-slate-600">{row.decision}</div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 text-xs leading-relaxed text-slate-600">
+        Bundle inclusions can change. Confirm the itinerary before payment; status, card, and military
+        benefits can also change the result.
+      </p>
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         {checks.map((check) => (
           <div key={check.question} className="rounded-2xl border border-blue-100 bg-white p-5">
@@ -9172,6 +9259,14 @@ function FrontierFeeDecisionChecklist() {
         ))}
       </div>
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <a
+          href="https://www.flyfrontier.com/travel/travel-info/bag-options/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-800 underline"
+        >
+          Check Frontier&apos;s current bag options
+        </a>
         <Link href="/sizer-rules?height=14&width=18&depth=8" className="text-blue-800 underline">
           Check the free personal-item fit
         </Link>

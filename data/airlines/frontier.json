@@ -14,8 +14,8 @@
     "status": "active",
     "gold_standard": false,
     "source_depth": "silver",
-    "last_full_review": "2026-09-27",
-    "notes": "Frontier baggage, bundle, and flexibility pass rechecked against current optional-services, Bag Price Checker, and change-policy sources. Main issue is route/date/timing pricing plus booking-date-sensitive Basic/Standard change fees and the difference between Basic, Economy/Premium, and Business inclusions."
+    "last_full_review": "2026-11-06",
+    "notes": "Frontier baggage, bundle, and flexibility pass rechecked against current optional-services, bag-options, Bag Price Checker, and change-policy sources. Main issue is route/date/timing pricing plus booking-date-sensitive Basic/Standard change fees and the difference between Basic, Economy/Premium, and Business inclusions."
   },
   "fees": [
     {
@@ -180,12 +180,12 @@
       "category": "carry_on",
       "amount": "Bag Price Checker / booking flow",
       "currency": "USD",
-      "conditions": "Carry-on price depends on route, date, and purchase timing; airport and gate purchase can cost more",
-      "applies_to": "All fares",
+      "conditions": "Price varies by trip and purchase timing; airport and gate purchase can cost more. Economy, Premium, and Business include it.",
+      "applies_to": "Basic fare when no eligible bundle or benefit includes the bag",
       "region_or_route": "All routes",
       "timing": "per flight",
       "source_url": "https://www.flyfrontier.com/optional-services/?mobile=true",
-      "last_verified": "2026-09-25",
+      "last_verified": "2026-11-06",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "Frontier publishes a Bag Price Checker rather than one universal carry-on price; timing/channel is part of the fee model."
