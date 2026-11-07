@@ -569,6 +569,14 @@ function cardCalculatorHref(slug: string): string {
   return `/best-cards?airline=${encodeURIComponent(slug)}&travelers=2&bags=1&trips=2&pay=yes`;
 }
 
+function excessBagCalculatorHref(slug: string, category: string): string {
+  const scenario =
+    category === "oversize_baggage"
+      ? "bags=1&directions=2&weight=50&size=63"
+      : "bags=1&directions=2&weight=51&size=62";
+  return `/tools/excess-baggage-calculator?airline=${encodeURIComponent(slug)}&${scenario}`;
+}
+
 function sizerHref(): string {
   return "/sizer-rules?height=22&width=14&depth=9";
 }
@@ -1205,7 +1213,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
       />
       <header style={{ display: "grid", gap: 10 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "baseline" }}>
-          <h1 style={{ margin: 0, fontSize: 20 }}>
+          <h1 style={{ margin: 0, fontSize: "clamp(1.75rem, 4vw, 2.5rem)", lineHeight: 1.08, letterSpacing: "-0.025em" }}>
             {cat === "checked_baggage"
               ? "Checked baggage fees and allowances by airline"
               : cat === "carry_on"
@@ -1243,6 +1251,24 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           ) : null}
           <Link href="/methodology" style={{ padding: "5px 2px", fontWeight: 700 }}>How verification works</Link>
         </div>
+
+        {needsRecheckCount > 0 ? (
+          <div
+            role="note"
+            style={{
+              border: "1px solid #fecdd3",
+              borderRadius: 10,
+              padding: 12,
+              background: "#fff1f2",
+              color: "#881337",
+              fontSize: 13,
+              lineHeight: 1.6,
+            }}
+          >
+            <strong>Verify older rows before purchase.</strong> Records marked “Needs recheck” remain visible for
+            comparison, but the official airline source in that row should control a current booking.
+          </div>
+        ) : null}
 
         <section style={{ display: "grid", gap: 8, fontSize: 14, lineHeight: 1.6, color: "#333" }}>
           {cat !== "checked_baggage" && cat !== "carry_on" && cat !== "sports_equipment" ? <div>{hub.verdict}</div> : null}
@@ -1469,6 +1495,11 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
                       {cat === "seat_selection" ? (
                         <Link href={basicEconomyHref()} style={{ textDecoration: "underline" }}>
                           Basic fare risk
+                        </Link>
+                      ) : null}
+                      {cat === "overweight_baggage" || cat === "oversize_baggage" ? (
+                        <Link href={excessBagCalculatorHref(row.slug, cat)} style={{ textDecoration: "underline" }}>
+                          Test this bag
                         </Link>
                       ) : null}
                       {hasActiveStrategyPage(row.slug) ? (

@@ -911,7 +911,17 @@ export default function BasicEconomyTrapsGuide() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Related references</h2>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h3 className="text-lg font-bold text-slate-900">
+              <Link href="/tools/true-trip-cost" className="underline">
+                Compare the finished fare
+              </Link>
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              Enter the advertised fares, travelers, bags, and seat choices to see which option is actually cheaper.
+            </p>
+          </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-5">
             <h3 className="text-lg font-bold text-slate-900">
               <Link href="/fees/checked_baggage" className="underline">

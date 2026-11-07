@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { TravelEsimCallout } from "@/components/TravelEsimCallout";
 import { getAllAirlines } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
 import { canonical } from "@/lib/seo";
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: canonical("/guides/international-baggage-allowance") },
 };
 
-const LAST_VERIFIED = "2026-07-02";
+const LAST_VERIFIED = "2026-08-23";
 
 type ExampleRow = {
   slug: string;
@@ -24,6 +23,7 @@ type ExampleRow = {
   sourceUrl: string;
   lastVerified: string;
   signals: string[];
+  hasUsableNumericPrice: boolean;
 };
 
 function safeText(v: unknown): string {
@@ -95,6 +95,11 @@ function buildExamples(): ExampleRow[] {
       sourceUrl: safeText(row.source_url),
       lastVerified: safeText(row.last_verified),
       signals,
+      hasUsableNumericPrice:
+        typeof row.amount === "number" &&
+        Number.isFinite(row.amount) &&
+        row.amount > 0 &&
+        safeText(row.currency).toUpperCase() === "USD",
     }))
     .sort((a, b) => {
       const signalDiff = b.signals.length - a.signals.length;
@@ -351,13 +356,19 @@ export default function InternationalBaggageAllowanceGuide() {
                   <td className="px-4 py-4 text-slate-700">
                     <div className="flex flex-col gap-2">
                       <Link href={`/airlines/${row.slug}`} className="text-blue-700 underline">
-                        Airline fee page
+                        Check this itinerary
                       </Link>
-                      <Link href={checkedBagCalculatorHref(row.slug)} className="text-blue-700 underline">
-                        Price checked bags
-                      </Link>
+                      {row.hasUsableNumericPrice ? (
+                        <Link href={checkedBagCalculatorHref(row.slug)} className="text-blue-700 underline">
+                          Calculate published bag cost
+                        </Link>
+                      ) : (
+                        <span className="text-xs leading-relaxed text-slate-500">
+                          Route-priced: use the airline quote rather than a generic calculator.
+                        </span>
+                      )}
                       <Link href={excessBagCalculatorHref(row.slug)} className="text-blue-700 underline">
-                        Check excess risk
+                        Test weight and size risk
                       </Link>
                     </div>
                   </td>
@@ -406,11 +417,12 @@ export default function InternationalBaggageAllowanceGuide() {
             <Link href="/guides/basic-economy-traps" className="font-semibold text-blue-800 underline">
               Compare Basic and Light fare traps
             </Link>
+            <Link href="/tools/true-trip-cost" className="font-semibold text-blue-800 underline">
+              Compare two fares after bag and seat add-ons
+            </Link>
           </div>
         </div>
       </section>
-
-      <TravelEsimCallout compact />
     </main>
   );
 }
