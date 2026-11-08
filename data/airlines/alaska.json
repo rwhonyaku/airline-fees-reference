@@ -367,19 +367,21 @@
       "applies_to": "Main Cabin",
       "region_or_route": "All routes",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.alaskaair.com/content/travel-info/flight-experience/main-cabin",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "seat_selection",
       "amount": "Depends on flight and seat type",
       "currency": "USD",
-      "conditions": "Preferred seats; fee varies by flight",
+      "conditions": "Main Preferred or Premium Class upgrade; price varies by flight and seat",
       "applies_to": "Main Cabin",
       "region_or_route": "All routes",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.alaskaair.com/content/travel-info/flight-experience",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -390,29 +392,44 @@
       "region_or_route": "All routes",
       "timing": "within 24h",
       "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
-      "amount": "Depends on fare type",
+      "amount": 0,
       "currency": "USD",
-      "conditions": "Change and cancellation rules depend on fare type (Saver fares most restrictive)",
-      "applies_to": "All fares",
+      "conditions": "No change fee; any fare difference still applies",
+      "applies_to": "Main Cabin and First Class",
       "region_or_route": "All routes",
       "timing": "after 24h",
-      "source_url": "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.alaskaair.com/content/travel-info/flight-experience/main-cabin",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
+    },
+    {
+      "category": "change_cancellation",
+      "amount": "50% future-travel credit",
+      "currency": "USD",
+      "conditions": "50% future-travel credit when canceled at least 14 days before the first flight; otherwise no voluntary Saver credit",
+      "applies_to": "Saver fare",
+      "region_or_route": "All eligible routes",
+      "timing": "14+ days before departure",
+      "source_url": "https://www.alaskaair.com/content/travel-info/flight-experience/saver",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "unaccompanied_minor",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5–11)",
+      "conditions": "Required for ages 5–12 traveling alone, optional for ages 13–17; one fee covers up to two children",
       "applies_to": "All fares",
-      "region_or_route": "U.S. Mainland",
+      "region_or_route": "Routes other than travel wholly within the Hawaiian Islands",
       "timing": "one-way",
-      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.alaskaair.com/content/travel-info/policies/children-traveling-alone",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "infant_child",
@@ -428,14 +445,15 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": 35,
+      "amount": 50,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5–11)",
+      "conditions": "Junior Jetsetter service; one fee covers up to two children on the same reservation",
       "applies_to": "All fares",
-      "region_or_route": "Between Hawaiian Islands",
+      "region_or_route": "Travel wholly within the Hawaiian Islands",
       "timing": "one-way",
-      "source_url": "https://www.alaskaair.com/content/travel-info/optional-services-fees",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.alaskaair.com/content/travel-info/policies/children-traveling-alone",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     }
   ],
   "policy_change_history": [

@@ -26,8 +26,9 @@
       "applies_to": "Basic Fare / Standard",
       "region_or_route": "All routes",
       "timing": "60+ days before departure",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -37,8 +38,9 @@
       "applies_to": "Basic Fare / Standard",
       "region_or_route": "All routes",
       "timing": "59 to 7 days before departure",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -48,8 +50,9 @@
       "applies_to": "Basic Fare / Standard",
       "region_or_route": "All routes",
       "timing": "6 days or less before departure",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -114,8 +117,9 @@
       "applies_to": "Economy / Premium / Business bundle",
       "region_or_route": "All routes",
       "timing": "any time before departure",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/?mobile=true",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/change-policy/",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -126,7 +130,8 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -159,7 +164,8 @@
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://faq.flyfrontier.com/help/can-i-cancel-my-reservation",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "carry_on",
@@ -396,8 +402,9 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.flyfrontier.com/travel/travel-info/travel-policies/?mobile=true",
-      "last_verified": "2025-12-19"
+      "source_url": "https://faq.flyfrontier.com/help/can-a-child-travel-alone",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     }
   ]
 }

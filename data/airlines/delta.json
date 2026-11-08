@@ -313,45 +313,61 @@
       "category": "same_day_change",
       "amount": 75,
       "currency": "USD",
-      "conditions": "Same-day confirmed change; waived for Diamond, Platinum, and Gold Medallion members",
-      "applies_to": "Eligible fares",
-      "region_or_route": "Domestic",
+      "conditions": "$75 within 24 hours, subject to fare-class or cabin availability; waived for eligible premium tickets and elite members.",
+      "applies_to": "Eligible Classic, Extra, and refundable tickets",
+      "region_or_route": "United States, Canada, Puerto Rico, and U.S. Virgin Islands; not international",
       "timing": "per request",
-      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-ticket-changes",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-flight-change",
+      "last_verified": "2026-11-07",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The $75 fee is the general Same-Day Confirmed charge; eligibility depends on the ticket experience, purchased fare class or cabin, route, and seat availability."
+      }
     },
     {
       "category": "same_day_standby",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Same-day standby available on select routes; eligibility restrictions apply",
-      "applies_to": "Eligible fares",
-      "region_or_route": "Domestic",
+      "conditions": "Free standby for an earlier flight when Same-Day Confirmed is unavailable; Delta Basic is excluded.",
+      "applies_to": "Eligible non-Basic tickets",
+      "region_or_route": "United States, Puerto Rico, and U.S. Virgin Islands; not Canada or international",
       "timing": "per request",
-      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-ticket-changes",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/us/en/change-cancel/same-day-flight-change",
+      "last_verified": "2026-11-07",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Standby is limited to an earlier flight on the ticketed travel date and does not allow origin, destination, co-terminal, or connection-to-nonstop changes."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "Depends on flight and seat type",
       "currency": "USD",
-      "conditions": "Preferred seat pricing varies by flight",
-      "applies_to": "Main Cabin",
+      "conditions": "Price varies by itinerary and seat; eligible elites may select free. Delta Main Basic cannot buy Preferred Seats.",
+      "applies_to": "Eligible Delta Main and higher experiences",
       "region_or_route": "All routes",
       "timing": "per segment",
-      "source_url": "https://www.delta.com/us/en/onboard/onboard-experience/seating",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.delta.com/content/www/en_US/traveling-with-us/airports-and-aircraft/Aircraft/about-seat-selection.html",
+      "last_verified": "2026-11-07",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta does not publish a universal Preferred Seat price; the live seat map is the authoritative price for a specific flight."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee; additional fare requirements apply",
-      "applies_to": "All fares",
-      "region_or_route": "Eligible itineraries",
+      "conditions": "Covers up to four children; mandatory ages 5–14, optional ages 15–17. Ages 5–7 may use eligible nonstop flights only.",
+      "applies_to": "Children ages 5–17 traveling alone under program rules",
+      "region_or_route": "Eligible domestic and international itineraries",
       "timing": "per direction",
       "source_url": "https://www.delta.com/us/en/children-infant-travel/unaccompanied-minor-program",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Delta publishes the fee as 150 USD/CAD/EUR each way depending on departure market; partner-airline fees can apply when the partner operates the first flight in a direction."
+      }
     }
   ],
   "policy_change_history": [

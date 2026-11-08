@@ -394,56 +394,69 @@
       "category": "same_day_standby",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Same-day standby available on select routes; eligibility restrictions apply",
-      "applies_to": "Eligible fares",
-      "region_or_route": "Domestic",
+      "conditions": "Free standby for an earlier flight; only AAdvantage status members may stand by for a later flight",
+      "applies_to": "All customers, subject to flight availability",
+      "region_or_route": "Within and between the U.S., Puerto Rico, and U.S. Virgin Islands",
       "timing": "per request",
-      "source_url": "https://www.aa.com/i18n/travel-info/travel-tools/same-day-travel.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/pubcontent/en_US/plan-travel/extras/same-day-travel.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "same_day_change",
       "amount": "Starts at $60; itinerary-priced",
       "currency": "USD",
-      "conditions": "Same-day confirmed change pricing varies by itinerary; starting at $60",
+      "conditions": "Confirmed same-day change starts at $60; the same airports and routing must be retained",
       "applies_to": "Eligible fares",
-      "region_or_route": "Domestic",
+      "region_or_route": "U.S., Puerto Rico, U.S. Virgin Islands, Canada, Caribbean, and eligible JFK–LHR travel",
       "timing": "per request",
-      "source_url": "https://www.aa.com/i18n/travel-info/travel-tools/same-day-travel.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/pubcontent/en_US/plan-travel/extras/same-day-travel.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JFK–LHR confirmed changes start at USD 150; some eligible premium and status travelers receive complimentary changes."
+      }
     },
     {
       "category": "seat_selection",
       "amount": "$4-$139 published range",
       "currency": "USD",
-      "conditions": "Preferred seat pricing varies by flight; published range approximately $4–$139",
+      "conditions": "Preferred standard-legroom seat; price varies by flight",
       "applies_to": "Main Cabin",
       "region_or_route": "All routes",
       "timing": "per segment",
-      "source_url": "https://www.aa.com/i18n/travel-info/experience/seats/preferred-seats.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/customer-service/support/optional-service-fees.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "seat_selection",
       "amount": "$20-$280 published range",
       "currency": "USD",
-      "conditions": "Main Cabin Extra pricing varies by flight; published range approximately $20–$280",
+      "conditions": "Main Cabin Extra seat with extra legroom and Group 5 boarding; price varies by flight",
       "applies_to": "Main Cabin",
       "region_or_route": "All routes",
       "timing": "per segment",
-      "source_url": "https://www.aa.com/i18n/travel-info/experience/seats/main-cabin-extra.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/customer-service/support/optional-service-fees.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee per direction; covers up to two siblings on the same flight",
-      "applies_to": "All fares",
+      "conditions": "Required for ages 5–14 traveling alone and optional for ages 15–17; fee covers additional siblings on the same flight",
+      "applies_to": "Eligible American-operated itineraries",
       "region_or_route": "Eligible routes only",
       "timing": "per direction",
-      "source_url": "https://www.aa.com/i18n/travel-info/special-assistance/unaccompanied-minors.jsp",
-      "last_verified": "2025-12-22"
+      "source_url": "https://www.aa.com/web/i18n/travel-info/special-assistance/unaccompanied-minors.html",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The USD 150 fee is each way plus applicable taxes; domestic U.S. trips are subject to a 7% tax."
+      }
     }
   ]
 }

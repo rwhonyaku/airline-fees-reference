@@ -229,47 +229,55 @@
     },
     {
       "category": "seat_selection",
-      "amount": 15,
+      "amount": "Shown during booking",
       "currency": "USD",
-      "conditions": "Advance seat assignment (starting price)",
+      "conditions": "Advance standard-seat assignment may be purchased from booking until check-in opens; otherwise United assigns a seat",
       "applies_to": "Basic Economy",
       "region_or_route": "Route and seat map dependent",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.united.com/en/us/deals/flights/seat-options",
+      "last_verified": "2026-11-07",
+      "confidence": "ambiguous",
+      "data_quality": {
+        "confidence": "ambiguous",
+        "notes": "United confirms that Basic Economy travelers can buy an advance assignment but does not publish one universal price; use the live seat map."
+      }
     },
     {
       "category": "seat_selection",
-      "amount": "$29-$299 published range",
+      "amount": "Shown during booking",
       "currency": "USD",
-      "conditions": "Economy Plus seating (per flight, per person); published range $29–$299",
+      "conditions": "Economy Plus seating with extra legroom; price varies by aircraft, seat, and route",
       "applies_to": "Economy",
       "region_or_route": "Route and seat map dependent",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.united.com/en/us/deals/flights/seat-options",
+      "last_verified": "2026-11-07",
+      "confidence": "ambiguous"
     },
     {
       "category": "seat_selection",
-      "amount": 24,
+      "amount": "Shown during booking",
       "currency": "USD",
-      "conditions": "Preferred seating (starting price)",
+      "conditions": "Preferred standard-legroom seat closer to the front; price varies by aircraft, seat, and route",
       "applies_to": "Economy (non-Basic)",
       "region_or_route": "Route and seat map dependent",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.united.com/en/us/deals/flights/seat-options",
+      "last_verified": "2026-11-07",
+      "confidence": "ambiguous"
     },
     {
       "category": "seat_selection",
-      "amount": 136,
+      "amount": 0,
       "currency": "USD",
-      "conditions": "Preferred seating (starting price)",
-      "applies_to": "Basic Economy",
-      "region_or_route": "Route and seat map dependent",
+      "conditions": "Standard seat selection is included; preferred and Economy Plus seats can cost extra",
+      "applies_to": "Economy (non-Basic)",
+      "region_or_route": "United- and United Express-operated flights, subject to availability",
       "timing": "at booking / manage trip",
-      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.united.com/en/us/deals/flights/seat-options",
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "unaccompanied_minor",
@@ -279,8 +287,13 @@
       "applies_to": "All fares",
       "region_or_route": "Eligible itineraries",
       "timing": "per direction",
-      "source_url": "https://www.united.com/en/us/fly/products/upgrades-and-optional-service-charges.html",
-      "last_verified": "2025-12-19"
+      "source_url": "https://www.united.com/en/us/fly/travel/accessibility-and-assistance/unaccompanied-minors.html",
+      "last_verified": "2025-12-19",
+      "confidence": "ambiguous",
+      "data_quality": {
+        "confidence": "ambiguous",
+        "notes": "United's current official page is client-rendered and did not expose the fee in the verification response, so the stored USD 150 amount remains flagged rather than receiving a false freshness date."
+      }
     },
     {
       "category": "change_cancellation",
@@ -291,7 +304,8 @@
       "region_or_route": "US domestic and international",
       "timing": "before departure",
       "source_url": "https://www.united.com/en/us/fly/travel/trip-planning/flexible-booking-options.html#change-fees",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     },
     {
       "category": "change_cancellation",
@@ -302,7 +316,8 @@
       "region_or_route": "Basic Economy routes",
       "timing": "after 24h",
       "source_url": "https://www.united.com/en/us/fly/travel/trip-planning/flexible-booking-options.html#change-fees",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-07",
+      "confidence": "confirmed"
     }
   ]
 }
