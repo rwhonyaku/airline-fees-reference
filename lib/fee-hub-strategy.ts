@@ -67,10 +67,10 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
     ],
     spotlightAirlines: [
-      { slug: "air-france", reason: "Air France is getting baggage-charge impressions and is useful because route, fare, and excess-baggage logic matter more than one flat first-bag number." },
-      { slug: "air-canada", reason: "Air Canada is a strong example of Basic, route, fare brand, and allowance differences changing the checked-bag answer." },
-      { slug: "alaska", reason: "Alaska is useful because ticketing date, route exceptions, and card/status benefits can all change the bag math." },
-      { slug: "zipair", reason: "ZIPAIR is useful because checked baggage is purchased as an add-on by route, weight, and timing." },
+      { slug: "united", reason: "United shows why purchase channel matters: current most-market Economy bag prices are higher at the airport than when prepaid online." },
+      { slug: "southwest", reason: "Southwest is the clearest warning against legacy assumptions: checked-bag inclusion now depends on fare and booking timing." },
+      { slug: "jetblue", reason: "JetBlue shows how route, peak dates, fare tier, and the 24-hour purchase window can all change the checked-bag bill." },
+      { slug: "air-canada", reason: "Air Canada is a strong international example because route, fare brand, and included allowance change the answer." },
     ],
     toolLinks: [
       { href: "/tools/checked-baggage-calculator?travelers=2&bags=1&directions=2&trips=2&pay=yes", label: "Checked baggage cost calculator", reason: "Best when you need a traveler-and-bag estimate instead of a raw fee row." },
@@ -98,6 +98,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
       },
     ],
     spotlightAirlines: [
+      { slug: "united", reason: "United Basic Economy is a major-airline example where the cheapest fare can restrict the overhead-bin bag." },
       { slug: "frontier", reason: "Frontier is where personal-item limits and bundle choice determine the real fare." },
       { slug: "ryanair", reason: "Ryanair is one of the clearest examples of a fare with paid cabin-bag access." },
       { slug: "easyjet", reason: "easyJet matters because seat bundles can effectively include the larger bag." },

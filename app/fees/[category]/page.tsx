@@ -662,10 +662,10 @@ function CheckedBaggageAnswerBlock() {
       </div>
 
       <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
-        Useful comparisons: <Link href="/airlines/air-france">Air France baggage charges</Link>,{" "}
-        <Link href="/airlines/air-canada">Air Canada checked bag fees</Link>,{" "}
-        <Link href="/airlines/alaska">Alaska checked bag fees</Link>,{" "}
-        <Link href="/airlines/zipair">ZIPAIR baggage policy</Link>, and{" "}
+        Useful comparisons: <Link href="/airlines/united">United prepaid-versus-airport pricing</Link>,{" "}
+        <Link href="/airlines/southwest">Southwest fare-based bag rules</Link>,{" "}
+        <Link href="/airlines/jetblue">JetBlue timing and peak-date pricing</Link>,{" "}
+        <Link href="/airlines/air-canada">Air Canada route and fare allowances</Link>, and{" "}
         <Link href="/fees/overweight_baggage">overweight baggage fees</Link>.
       </p>
     </section>
@@ -778,32 +778,38 @@ function CarryOnAnswerBlock() {
           </thead>
           <tbody>
             <tr>
-              <td style={{ padding: 10 }}>Delta, American, Southwest, JetBlue, Alaska</td>
+              <td style={{ padding: 10 }}>
+                <Link href="/airlines/delta">Delta</Link>,{" "}
+                <Link href="/airlines/american">American</Link>,{" "}
+                <Link href="/airlines/southwest">Southwest</Link>,{" "}
+                <Link href="/airlines/jetblue">JetBlue</Link>,{" "}
+                <Link href="/airlines/alaska">Alaska</Link>
+              </td>
               <td style={{ padding: 10 }}>Personal item + overhead carry-on</td>
               <td style={{ padding: 10 }}>The standard cabin bags are included on all current fare families in our records.</td>
             </tr>
             <tr>
-              <td style={{ padding: 10 }}>United</td>
+              <td style={{ padding: 10 }}><Link href="/airlines/united">United</Link></td>
               <td style={{ padding: 10 }}>Personal item on Basic Economy</td>
               <td style={{ padding: 10 }}>Choose Economy or higher for an included overhead bag unless an exception applies.</td>
             </tr>
             <tr>
-              <td style={{ padding: 10 }}>Frontier</td>
+              <td style={{ padding: 10 }}><Link href="/airlines/frontier">Frontier</Link></td>
               <td style={{ padding: 10 }}>Personal item on Basic</td>
               <td style={{ padding: 10 }}>Economy, Premium, and Business include the overhead carry-on; Basic prices it separately.</td>
             </tr>
             <tr>
-              <td style={{ padding: 10 }}>Ryanair</td>
+              <td style={{ padding: 10 }}><Link href="/airlines/ryanair">Ryanair</Link></td>
               <td style={{ padding: 10 }}>Small under-seat bag</td>
               <td style={{ padding: 10 }}>Priority &amp; 2 Cabin Bags adds the 10 kg overhead bag, subject to availability.</td>
             </tr>
             <tr>
-              <td style={{ padding: 10 }}>easyJet</td>
+              <td style={{ padding: 10 }}><Link href="/airlines/easyjet">easyJet</Link></td>
               <td style={{ padding: 10 }}>Small under-seat bag</td>
               <td style={{ padding: 10 }}>A large cabin bag requires an add-on or an eligible fare or membership benefit.</td>
             </tr>
             <tr>
-              <td style={{ padding: 10 }}>Wizz Air</td>
+              <td style={{ padding: 10 }}><Link href="/airlines/wizz-air">Wizz Air</Link></td>
               <td style={{ padding: 10 }}>Under-seat bag on Basic</td>
               <td style={{ padding: 10 }}>WIZZ Priority or an eligible bundle adds the overhead trolley bag.</td>
             </tr>
@@ -1363,9 +1369,16 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
         </section>
       )}
 
-      {cat !== "checked_baggage" && cat !== "carry_on" && spotlightAirlines.length > 0 && (
+      {spotlightAirlines.length > 0 && (
         <section style={{ display: "grid", gap: 12 }}>
-          <h2 style={{ margin: 0, fontSize: 16 }}>Airline pages to compare next</h2>
+          <div>
+            <h2 style={{ margin: 0, fontSize: 16 }}>Airline pages to compare next</h2>
+            {cat === "checked_baggage" || cat === "carry_on" ? (
+              <p style={{ margin: "6px 0 0", fontSize: 13, lineHeight: 1.6, color: "#475569" }}>
+                These airlines show the fee models and fare traps that matter most for this decision; use the full table below for broader coverage.
+              </p>
+            ) : null}
+          </div>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
             {spotlightAirlines.map((entry) => (
               <div key={entry!.slug} style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12, background: "#fff" }}>
@@ -1522,7 +1535,7 @@ export default async function FeeCategoryHubPage({ params }: PageProps) {
           the next question is usually whether the fare restriction changes the real trip cost.
         </div>
 
-        {cat !== "carry_on" ? contextualBridge : null}
+        {contextualBridge}
       </section>
 
       {strategy && cat !== "checked_baggage" && cat !== "carry_on" && (
