@@ -760,7 +760,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Basic is now the clear restriction point: no seat selection, no included first bag, and no free same-day change unless the fare is upgraded.",
     },
     verificationNote:
-      "Southwest carry-on and current U.S. Mainland checked-baggage prices and waiver paths were rechecked against Southwest on 2026-09-10. Other fee rows retain their record-level verification dates.",
+      "Southwest's current seat-assignment, same-day-change, and change/cancellation rules were rechecked on 2026-11-08. Carry-on and U.S. Mainland checked-bag rows retain their separate record-level verification dates.",
     avoidFees: [
       "Do not assume Southwest still means two checked bags for every fare. Compare Basic, Choice, and Choice Preferred against Choice Extra if anyone in the party is checking bags.",
       "For U.S. Mainland bookings, check the ticketing or change date before relying on a baggage amount; Southwest separates bookings before and after April 9, 2026.",
@@ -6548,7 +6548,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "American's fee traps are route, fare-family, and timing based: Basic Economy can now cost more for domestic and short-haul checked bags, same-day confirmed change starts at USD 60 on eligible domestic itineraries, and seat pricing varies by product.",
     },
     verificationNote:
-      "American's carry-on, domestic, short-haul, transatlantic, card/status, military, sports-equipment, child-travel, and Basic Economy rules shown here were reviewed through August 22, 2026. Overweight, oversize, seat, same-day, and unaccompanied-minor rows retain their separate December 2025 verification dates.",
+      "American's seat, same-day-change, and unaccompanied-minor rules were rechecked on 2026-11-07. Carry-on, baggage, card/status, military, sports-equipment, and Basic Economy rows retain their separate record-level verification dates.",
     avoidFees: [
       "Pay for checked bags online when American offers a lower online price; the airport price is higher on the newer domestic and short-haul pricing structure.",
       "Check the ticket issue date before estimating bags. American's checked-bag pricing changes by ticketing window, fare family, and whether the bag is added online or at the airport.",
@@ -6635,10 +6635,10 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       checkedBag:
         "United's checked-bag model is ticket-date, market, fare, and payment-channel based. In most markets on Economy (non-Basic) tickets purchased on or after April 3, 2026, the first and second checked bags are cheaper when prepaid online than when paid at the airport.",
       restrictions:
-        "Basic Economy is the restriction product: changes and cancellations are listed as not permitted after 24 hours, advance seat assignment starts at USD 15, and preferred seating on Basic starts much higher than the regular Economy preferred-seat starting price.",
+        "Basic Economy is the restriction product: changes and cancellations are listed as not permitted after 24 hours, while advance seat assignment is priced in the live booking flow rather than at one reliable systemwide amount.",
     },
     verificationNote:
-      "United's baggage and card/status rules shown here were reviewed through August 22, 2026. Seat-selection and change/cancellation rows retain their separate December 19, 2025 verification dates so older supporting facts are not presented as newly checked.",
+      "United's seat-selection and change/cancellation rules were rechecked on 2026-11-07. Baggage and card/status rows retain their separate record-level verification dates; the unaccompanied-minor fee still needs an accessible official confirmation.",
     avoidFees: [
       "Prepay checked bags online when United offers an online-versus-airport difference; the airport amount is higher in the newer most-market pricing.",
       "Avoid Basic Economy when you need normal flexibility, advance seat control, or reliable cabin-bag access. The low fare can shift costs into seats and restrictions.",
@@ -6664,7 +6664,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         name: "Economy (non-Basic)",
         details:
-          "Economy (non-Basic) is the cleaner product if you need normal flexibility. On newer tickets, the first and second checked bags are cheaper online than at the airport, preferred seating starts at USD 24, and no change fee is listed apart from any fare difference.",
+          "Economy (non-Basic) is the cleaner product if you need normal flexibility. On newer tickets, the first and second checked bags are cheaper online than at the airport, standard seat selection is included, and no change fee is listed apart from any fare difference.",
       },
       {
         name: "Economy Plus",
@@ -6696,7 +6696,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       {
         title: "Purchasing a seat on Basic Economy",
         details:
-          "Advance seat assignment starts at USD 15, while preferred seating starts at USD 136 on Basic Economy.",
+          "United prices advance seat assignment in the live booking flow. Use the displayed itinerary-specific amount instead of assuming a systemwide starting price.",
       },
       {
         title: "Changing a non-Basic domestic itinerary",
@@ -6728,7 +6728,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Delta Basic Economy is not mainly a carry-on trap. The bigger risk is flexibility: Basic change or cancellation fees differ by region, and older Basic tickets can still have stricter no-change treatment.",
     },
     verificationNote:
-      "Delta's carry-on, checked-bag, card, status, military, and change/cancellation rules shown here were reviewed through August 22, 2026. Overweight, oversize, seat, and same-day rows retain their separate December 2025 verification dates.",
+      "Delta's seat-selection and same-day-change rules were rechecked on 2026-11-07. Carry-on, checked-bag, card, status, military, change/cancellation, overweight, and oversize rows retain their separate record-level verification dates.",
     avoidFees: [
       "Do not treat Basic Economy as a carry-on restriction; Delta's bigger Basic risk is change and cancellation flexibility.",
       "Check card, Medallion, military, and cabin exceptions before paying the domestic first-bag amount shown in the common chart.",
@@ -6817,7 +6817,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "Saver is the most restrictive fare family after the 24-hour cancellation window, while preferred seats may cost extra in Main Cabin.",
     },
     verificationNote:
-      "Alaska's current North America and Hawaii bag prices, April 10 ticket-date change, carry-on inclusion, excess-bag charges, and benefit exceptions were rechecked against Alaska-published sources on 2026-09-27. Older seat, cancellation, and child-travel records retain their individual verification dates.",
+      "Alaska's seat-selection and child-travel rules were rechecked on 2026-11-07. Current bag prices, carry-on inclusion, excess-bag charges, benefit exceptions, and cancellation rules retain their separate record-level verification dates.",
     avoidFees: [
       "Use the ticketing date first. Alaska's North America checked-bag pricing changed on April 10, 2026, so an old reservation and a new reservation can price differently.",
       "Do not treat Alaska as one domestic bag ladder. Wholly within Hawaii, First Class, and international Main Cabin examples have their own baggage treatment.",

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: canonical("/guides/basic-economy-traps") },
 };
 
-const LAST_VERIFIED = "2026-09-02";
+const LAST_VERIFIED = "2026-11-08";
 
 const SOURCES = {
   unitedBasic: "https://www.united.com/en/us/fly/travel/inflight/basic-economy.html",
@@ -24,8 +24,7 @@ const SOURCES = {
   deltaFees: "https://www.delta.com/us/en/baggage/overview#changecancelfees",
   airCanadaBags: "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
   airCanadaSeats: "https://www.aircanada.com/ca/en/aco/home/plan/seats/advance-seat-selection.html",
-  jetblueBasic:
-    "https://news.jetblue.com/latest-news/press-release-details/2024/JetBlue-Gives-Blue-Basic-a-Boost-with-Complimentary-Carry-On-Bag-Starting-September-6/default.aspx",
+  jetblueFares: "https://www.jetblue.com/flying-with-us/our-fares",
   alaskaChanges: "https://www.alaskaair.com/content/travel-info/fly-alaska/24-hour-cancellation",
   southwestFares: "https://www.southwest.com/fare-information/",
   southwestFees: "https://www.southwest.com/html/customer-service/travel-fees.html",
@@ -199,10 +198,10 @@ function buildGuideRows(): GuideRow[] {
     (row) => safeText(row.applies_to).toLowerCase().includes("basic")
   );
 
-  const jetblueBasicChange = findFee(
+  const jetblueBaseChange = findFee(
     jetblueFees,
     "change_cancellation",
-    (row) => safeText(row.applies_to).toLowerCase().includes("blue basic")
+    (row) => safeText(row.applies_to).toLowerCase().includes("main base")
   );
 
   const alaskaChange = findFee(
@@ -294,17 +293,17 @@ function buildGuideRows(): GuideRow[] {
     {
       slug: "jetblue",
       airline: "JetBlue",
-      model: "Blue Basic with carry-on included",
-      carryOn: "Blue Basic includes one carry-on bag and one personal item under JetBlue's current policy.",
-      seats: "Blue Basic seat selection depends on the itinerary and selected seat; an unselected seat is assigned later.",
+      model: "Main Base with carry-on included",
+      carryOn: "Main Base includes one carry-on bag and one personal item under JetBlue's current fare structure.",
+      seats: "Main Base advance seat selection is priced by itinerary and seat; an unselected standard seat is assigned later.",
       changes:
-        jetblueBasicChange
-          ? `${safeText(jetblueBasicChange.conditions)}.`
-          : "Blue Basic is the fare family with the change/cancel penalty shown here.",
+        jetblueBaseChange
+          ? `${safeText(jetblueBaseChange.conditions)}.`
+          : "Main Base is the fare family with the change/cancel penalty shown here.",
       whereItBreaks:
-        "JetBlue Blue Basic can look fine for bags, then become the wrong fare if you need to change or cancel.",
-      sourceLabel: "JetBlue Blue Basic update",
-      sourceHref: SOURCES.jetblueBasic,
+        "JetBlue Main Base can look fine for cabin bags, then become the wrong fare if you need a checked bag, advance seat choice, or flexibility.",
+      sourceLabel: "JetBlue current fare structure",
+      sourceHref: SOURCES.jetblueFares,
     },
     {
       slug: "alaska",
@@ -516,7 +515,7 @@ export default function BasicEconomyTrapsGuide() {
               <p>
                 United is the clearest case where Basic Economy can force a bag decision right
                 away. Air Canada Basic keeps carry-on access but can change checked-bag and seat
-                math. JetBlue Blue Basic includes a carry-on now, but flexibility remains the
+                math. JetBlue Main Base includes a carry-on, but flexibility remains the
                 thing to check before booking.
               </p>
             </div>
@@ -738,10 +737,10 @@ export default function BasicEconomyTrapsGuide() {
                   </Link>
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  Blue Basic now includes a carry-on bag and a personal item.
+                  Main Base includes a carry-on bag and a personal item.
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  Carry-on access is included now, but Blue Basic still has stricter change rules.
+                  Carry-on access is included, but Main Base charges for advance seat choice and changes or cancellations.
                 </td>
               </tr>
               <tr className="border-t border-slate-100">
@@ -853,8 +852,8 @@ export default function BasicEconomyTrapsGuide() {
                 on long-haul regional groups.
               </li>
               <li>
-                <strong>JetBlue:</strong> Blue Basic cancellations are published at USD 100 on most
-                routes and USD 200 on transatlantic itineraries; changes are not allowed.
+                <strong>JetBlue:</strong> Main Base and EvenMore Base publish a USD 150 change or
+                cancellation fee, while Standard and Flex fares remove that fee; fare differences can still apply.
               </li>
               <li>
                 <strong>Frontier:</strong> Basic is the restrictive product. Economy, Premium, and
@@ -895,8 +894,8 @@ export default function BasicEconomyTrapsGuide() {
               matter as much as the fare name.
             </li>
             <li>
-              <strong>JetBlue:</strong> Blue Basic uses a different published cancellation number on
-              transatlantic itineraries than on most other routes.
+              <strong>JetBlue:</strong> transatlantic bag inclusion differs by fare tier. Base keeps
+              the first checked bag paid, while Standard and Flex include it under the current table.
             </li>
             <li>
               <strong>United:</strong> current checked-bag rows are published for “most markets,” so
@@ -995,8 +994,8 @@ export default function BasicEconomyTrapsGuide() {
             </a>
           </li>
           <li>
-            <a href={SOURCES.jetblueBasic} target="_blank" rel="noreferrer" className="text-blue-700 underline">
-              JetBlue Blue Basic update
+            <a href={SOURCES.jetblueFares} target="_blank" rel="noreferrer" className="text-blue-700 underline">
+              JetBlue current fare structure
             </a>
           </li>
           <li>

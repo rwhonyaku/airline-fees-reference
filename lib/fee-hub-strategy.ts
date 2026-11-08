@@ -218,7 +218,7 @@ export const FEE_HUB_STRATEGY: Record<string, FeeHubStrategy> = {
     spotlightAirlines: [
       { slug: "american", reason: "American is a useful benchmark for published oversize and overweight ladders." },
       { slug: "delta", reason: "Delta shows how oversize pricing interacts with a broader legacy-carrier baggage table." },
-      { slug: "southwest", reason: "Southwest is useful because free checked bags do not mean free oversize baggage." },
+      { slug: "southwest", reason: "Southwest is useful because an included or paid standard bag can still trigger a separate oversize charge." },
       { slug: "frontier", reason: "Frontier shows how special bag handling can stack on top of a fragile low-fare bag plan." },
     ],
     toolLinks: [
