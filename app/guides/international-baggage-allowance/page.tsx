@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllAirlines } from "@/lib/data";
 import type { FeeItem } from "@/lib/types";
 import { canonical } from "@/lib/seo";
@@ -10,8 +11,6 @@ export const metadata: Metadata = {
     "Why international checked baggage allowance often depends on route, cabin, fare family, and piece-versus-weight concept instead of one flat first-bag fee.",
   alternates: { canonical: canonical("/guides/international-baggage-allowance") },
 };
-
-const LAST_VERIFIED = "2026-08-23";
 
 type ExampleRow = {
   slug: string;
@@ -64,8 +63,18 @@ function conceptSignals(row: FeeItem): string[] {
     .toLowerCase();
 
   const signals: string[] = [];
-  if (haystack.includes("piece")) signals.push("piece concept");
-  if (haystack.includes("weight") || haystack.includes("kg")) signals.push("weight concept");
+  if (haystack.includes("piece concept") || haystack.includes("piece allowance") || haystack.includes("per piece")) {
+    signals.push("piece concept");
+  }
+  if (
+    haystack.includes("weight concept") ||
+    haystack.includes("total checked weight") ||
+    haystack.includes("weight allowance") ||
+    haystack.includes("per kg") ||
+    haystack.includes("/kg")
+  ) {
+    signals.push("weight concept");
+  }
   if (haystack.includes("route") || haystack.includes("market") || haystack.includes("itinerary")) signals.push("route-based");
   if (haystack.includes("fare")) signals.push("fare-family based");
   if (haystack.includes("cabin")) signals.push("cabin based");
@@ -74,7 +83,8 @@ function conceptSignals(row: FeeItem): string[] {
 }
 
 function buildExamples(): ExampleRow[] {
-  return getAllAirlines()
+  const candidates = getAllAirlines()
+    .filter((airline) => airline.slug !== "spirit" && airline.slug !== "jetstar-asia")
     .flatMap((airline) =>
       airline.fees
         .filter((row) => row.category === "checked_baggage")
@@ -104,9 +114,39 @@ function buildExamples(): ExampleRow[] {
     .sort((a, b) => {
       const signalDiff = b.signals.length - a.signals.length;
       if (signalDiff !== 0) return signalDiff;
+      if (a.hasUsableNumericPrice !== b.hasUsableNumericPrice) return a.hasUsableNumericPrice ? -1 : 1;
+      const dateDiff = b.lastVerified.localeCompare(a.lastVerified);
+      if (dateDiff !== 0) return dateDiff;
       return a.airline.localeCompare(b.airline);
-    })
-    .slice(0, 14);
+    });
+
+  const bestByAirline = new Map<string, ExampleRow>();
+  for (const row of candidates) {
+    if (!bestByAirline.has(row.slug)) bestByAirline.set(row.slug, row);
+  }
+  return Array.from(bestByAirline.values()).slice(0, 14);
+}
+
+function guideJsonLd(latestSourceCheck: string) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+          { "@type": "ListItem", position: 2, name: "International baggage allowance", item: canonical("/guides/international-baggage-allowance") },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "International baggage allowance: piece vs weight concept",
+        description: metadata.description,
+        dateModified: latestSourceCheck,
+        mainEntityOfPage: canonical("/guides/international-baggage-allowance"),
+      },
+    ],
+  };
 }
 
 const CHECKLIST = [
@@ -144,16 +184,18 @@ const CHECKLIST = [
 
 export default function InternationalBaggageAllowanceGuide() {
   const examples = buildExamples();
+  const latestSourceCheck = examples.map((row) => row.lastVerified).sort().at(-1) ?? "Not published";
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
+      <JsonLd data={guideJsonLd(latestSourceCheck)} />
       <header className="space-y-6">
         <div className="flex flex-wrap items-baseline gap-3">
           <h1 className="text-4xl font-black tracking-tight text-slate-900">
             International baggage allowance: piece vs weight concept
           </h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            Last verified {LAST_VERIFIED}
+            Latest source check {latestSourceCheck}
           </span>
         </div>
 
@@ -289,7 +331,7 @@ export default function InternationalBaggageAllowanceGuide() {
           <div className="rounded-2xl border border-blue-100 bg-white p-4">
             <div className="font-black text-slate-950">2PC</div>
             <p className="mt-1 text-sm leading-relaxed text-slate-700">
-              Two checked pieces are included. Do not assume their allowances can be combined into one heavier bag.
+              Two checked pieces are included. Do not combine their allowances into one heavier bag unless the airline explicitly permits pooling.
             </p>
           </div>
         </div>

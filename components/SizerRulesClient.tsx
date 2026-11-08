@@ -6,23 +6,6 @@ import { compareBagToRules, extractSizerRules, formatDims } from "@/lib/carry-on
 import { clampInt } from "@/lib/bag-cost-calculator";
 import type { ToolAirline } from "@/lib/tool-airline";
 
-const LAST_VERIFIED = "2026-02-16";
-
-function riskLabel(risk: "low" | "medium" | "high" | "extreme") {
-  const map: Record<string, { label: string; cls: string }> = {
-    low: { label: "Low", cls: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-    medium: { label: "Medium", cls: "bg-amber-50 text-amber-800 border-amber-200" },
-    high: { label: "High", cls: "bg-orange-50 text-orange-800 border-orange-200" },
-    extreme: { label: "Extreme", cls: "bg-rose-50 text-rose-800 border-rose-200" },
-  };
-  const v = map[risk];
-  return (
-    <span className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-bold ${v.cls}`}>
-      {v.label}
-    </span>
-  );
-}
-
 function statusBadge(status: "fits" | "near_limit" | "fails") {
   const map = {
     fits: { label: "Fits published dimensions", cls: "border-emerald-200 bg-emerald-50 text-emerald-800" },
@@ -71,8 +54,11 @@ export function SizerRulesClient({
   const sortedResults = [...results].sort((a, b) => statusRank(a.status) - statusRank(b.status) || a.airlineName.localeCompare(b.airlineName));
   const cabinResults = sortedResults.filter((result) => result.kind === "cabin_bag");
   const personalResults = sortedResults.filter((result) => result.kind === "personal_item");
-  const failCount = results.filter((result) => result.status === "fails").length;
-  const tightCount = results.filter((result) => result.status === "near_limit").length;
+  const failCount = new Set(results.filter((result) => result.status === "fails").map((result) => result.airlineSlug)).size;
+  const tightCount = new Set(results.filter((result) => result.status === "near_limit").map((result) => result.airlineSlug)).size;
+  const coveredAirlineCount = new Set(rules.map((rule) => rule.airlineSlug)).size;
+  const sourceDates = airlines.flatMap((airline) => airline.fees.map((fee) => fee.last_verified)).filter(Boolean).sort();
+  const latestSourceCheck = sourceDates.at(-1) ?? "Not published";
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
@@ -83,11 +69,11 @@ export function SizerRulesClient({
           your bag against published size rules and spot the bag types most likely to get questioned
           at the gate.
         </p>
-        <div className="mt-3 text-xs text-slate-500">Last verified: {LAST_VERIFIED}</div>
+        <div className="mt-3 text-xs text-slate-500">Latest source check in this tool: {latestSourceCheck}</div>
 
         <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
           <a href="#risk" className="text-blue-700 underline">
-            Enforcement risk tiers
+            Carry-on risk models
           </a>
           <a href="#signals" className="text-blue-700 underline">
             What triggers checks
@@ -141,12 +127,13 @@ export function SizerRulesClient({
         <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5">
           <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Answer first</div>
           <p className="mt-2 text-lg font-bold text-slate-950">
-            A {heightIn} × {widthIn} × {depthIn} inch bag fails {failCount} published sizer rule{failCount === 1 ? "" : "s"} in this comparison
-            {tightCount ? ` and is very tight on ${tightCount}` : ""}.
+            A {heightIn} × {widthIn} × {depthIn} inch bag exceeds a published size rule for {failCount} airline{failCount === 1 ? "" : "s"} in this comparison
+            {tightCount ? ` and is very tight for ${tightCount} more` : ""}.
           </p>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            This checks size only. A bag can still be challenged if it is rigid, visibly overpacked,
-            too heavy, or used on a stricter fare.
+            This checks dimensions only across {coveredAirlineCount} airlines with a parseable three-number rule. It does not
+            prove the fare includes overhead access, test weight, or promise acceptance. Airlines missing from the results
+            have not been treated as permissive; their stored rule may not contain a comparable dimension triplet.
           </p>
         </div>
 
@@ -165,6 +152,9 @@ export function SizerRulesClient({
                   <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     Published limit: {formatDims(result.dimensionsIn)}. {result.rawText}
                   </p>
+                  <a href={result.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-xs font-semibold text-blue-700 underline">
+                    Official source
+                  </a>
                 </div>
               ))}
             </div>
@@ -184,6 +174,9 @@ export function SizerRulesClient({
                   <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     Published limit: {formatDims(result.dimensionsIn)}. {result.rawText}
                   </p>
+                  <a href={result.sourceUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-xs font-semibold text-blue-700 underline">
+                    Official source
+                  </a>
                 </div>
               ))}
             </div>
@@ -192,10 +185,10 @@ export function SizerRulesClient({
       </section>
 
       <section id="risk" className="mt-10">
-        <h2 className="text-2xl font-bold mb-3">Enforcement risk tiers</h2>
+        <h2 className="text-2xl font-bold mb-3">Carry-on risk models</h2>
         <p className="text-slate-600 mb-6">
-          Start here to decide how cautious to be before you pack. Stricter airlines are more likely
-          to notice rigid, overstuffed, or borderline bags.
+          Size is only one failure mode. Use these models to separate a paid-entitlement problem
+          from an aircraft-space problem before you pack.
         </p>
 
         <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
@@ -205,33 +198,33 @@ export function SizerRulesClient({
                 <th className="p-4 border-b border-slate-200">Group</th>
                 <th className="p-4 border-b border-slate-200">Typical published carry-on</th>
                 <th className="p-4 border-b border-slate-200">What to watch for</th>
-                <th className="p-4 border-b border-slate-200">Risk</th>
+                <th className="p-4 border-b border-slate-200">Decision</th>
               </tr>
             </thead>
             <tbody className="text-slate-800">
               <tr>
                 <td className="p-4 border-b border-slate-100 font-semibold">US Big Three (UA / DL / AA)</td>
                 <td className="p-4 border-b border-slate-100">22 × 14 × 9 (common baseline)</td>
-                <td className="p-4 border-b border-slate-100">Full flights make rigid rollers more likely to get checked</td>
-                <td className="p-4 border-b border-slate-100">{riskLabel("medium")}</td>
+                <td className="p-4 border-b border-slate-100">Included on normal eligible fares, but Basic rules and full-flight gate-checks still need separate attention</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">Fare or operational risk</td>
               </tr>
               <tr className="bg-rose-50/40">
                 <td className="p-4 border-b border-slate-100 font-semibold">US low-cost carriers (for example, Frontier)</td>
                 <td className="p-4 border-b border-slate-100">Personal item is included; larger bags usually cost extra</td>
-                <td className="p-4 border-b border-slate-100">A bag that looks too large is more likely to be checked against the sizer</td>
-                <td className="p-4 border-b border-slate-100">{riskLabel("extreme")}</td>
+                <td className="p-4 border-b border-slate-100">Confirm whether the fare includes only a personal item before treating a roller as a size question</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">Paid-access risk</td>
               </tr>
               <tr>
                 <td className="p-4 border-b border-slate-100 font-semibold">European low-cost carriers (Ryanair / easyJet)</td>
                 <td className="p-4 border-b border-slate-100">Personal item baseline + paid “large cabin bag”</td>
                 <td className="p-4 border-b border-slate-100">Buy the correct bag option before travel if your bag needs the overhead bin</td>
-                <td className="p-4 border-b border-slate-100">{riskLabel("extreme")}</td>
+                <td className="p-4 border-b border-slate-100 font-semibold">Paid-access risk</td>
               </tr>
               <tr>
                 <td className="p-4 font-semibold">Regional flights (small jets)</td>
                 <td className="p-4">Overheads + under-seat are physically smaller</td>
                 <td className="p-4">Tags can reroute bags to carousel; under-seat obstructions exist on some aircraft</td>
-                <td className="p-4">{riskLabel("high")}</td>
+                <td className="p-4 font-semibold">Operational risk</td>
               </tr>
             </tbody>
           </table>
@@ -244,28 +237,29 @@ export function SizerRulesClient({
       </section>
 
       <section id="signals" className="mt-12">
-        <h2 className="text-2xl font-bold mb-3">What triggers checks</h2>
+        <h2 className="text-2xl font-bold mb-3">What makes a carry-on plan fail</h2>
 
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #1: boxy hardshell rollers</div>
+            <div className="text-sm font-bold text-slate-900">Failure point #1: outside dimensions</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              On busy flights, agents often pre-tag rigid rollers because they do not compress. Soft
-              bags are less likely to draw attention because they look smaller and can squeeze into
-              tighter spaces.
+              Published limits normally include wheels, handles, and stuffed exterior pockets. A
+              soft bag can compress; a rigid shell cannot. Measure the packed bag rather than relying
+              on the product name.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #2: staff judgment at the gate</div>
+            <div className="text-sm font-bold text-slate-900">Failure point #2: fare entitlement</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              Some airports do not use obvious metal sizers every time. If the bag looks too large,
-              staff may ask you to check it even before exact measuring starts.
+              A dimension-compliant roller is still not included when the fare permits only a small
+              personal item. Confirm the fare, bundle, status, card, or route exception before using
+              the size result.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #3: regional flight constraints</div>
+            <div className="text-sm font-bold text-slate-900">Failure point #3: aircraft and bin space</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
               Small aircraft have real physical limits. Even if carry-on bags are allowed, you may
               still be forced to gate-check. Keep medicine, keys, and documents with you in case the
@@ -274,10 +268,11 @@ export function SizerRulesClient({
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="text-sm font-bold text-slate-900">Trigger #4: cheapest fares with small-bag limits</div>
+            <div className="text-sm font-bold text-slate-900">Failure point #4: weight and overpacking</div>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-              On airlines where the cheapest fare includes only a small bag, choose a personal item
-              that can compress into the sizer even when it is packed.
+              This calculator does not test weight. Airlines with cabin weight caps can reject or
+              redirect a bag that fits the published dimensions, and an overstuffed soft bag may no
+              longer match the measurements entered above.
             </p>
           </div>
         </div>
@@ -299,14 +294,17 @@ export function SizerRulesClient({
             <Link href="/airlines" className="inline-flex rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">
               Browse airlines
             </Link>
-            <Link href="/airlines/united/how-to-beat-fees" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
-              Example: United fee guide
+            <Link href="/guides/carry-on-strictness-by-airline" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
+              Compare carry-on risk models
             </Link>
             <Link href="/guides/basic-economy-traps" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
               Check Basic fare risk
             </Link>
             <Link href="/tools/checked-baggage-calculator" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
               Price checked bags
+            </Link>
+            <Link href="/tools/true-trip-cost" className="inline-flex rounded-xl border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-800 hover:border-blue-400">
+              Compare the finished fare
             </Link>
           </div>
         </div>
