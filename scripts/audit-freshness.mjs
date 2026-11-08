@@ -18,17 +18,25 @@ const queue = [];
 
 for (const filename of fs.readdirSync(directory).filter((name) => name.endsWith(".json"))) {
   const airline = JSON.parse(fs.readFileSync(path.join(directory, filename), "utf8"));
+  if (airline.data_quality?.status && airline.data_quality.status !== "active") continue;
   for (const fee of airline.fees ?? []) {
     const date = typeof fee.last_verified === "string" ? fee.last_verified : "";
     const age = /^\d{4}-\d{2}-\d{2}$/.test(date) ? ageDays(date) : Number.POSITIVE_INFINITY;
     if (age <= REVIEW_AFTER_DAYS) continue;
+    const attempted = typeof fee.data_quality?.last_attempted === "string" ? fee.data_quality.last_attempted : "";
+    const attemptedAge = /^\d{4}-\d{2}-\d{2}$/.test(attempted) ? ageDays(attempted) : Number.POSITIVE_INFINITY;
+    const recentlyAttemptedButBlocked =
+      age > RECHECK_AFTER_DAYS &&
+      fee.data_quality?.confidence === "ambiguous" &&
+      attemptedAge <= REVIEW_AFTER_DAYS;
     queue.push({
       priority: PRIORITY.has(airline.slug) ? "high" : "standard",
-      state: age > RECHECK_AFTER_DAYS ? "needs_recheck" : "review_due",
+      state: recentlyAttemptedButBlocked ? "unable_to_verify" : age > RECHECK_AFTER_DAYS ? "needs_recheck" : "review_due",
       airline: airline.name,
       slug: airline.slug,
       category: fee.category ?? "unknown",
       last_verified: date || null,
+      last_attempted: attempted || null,
       age_days: Number.isFinite(age) ? age : null,
       source_url: fee.source_url ?? null,
     });
@@ -37,7 +45,8 @@ for (const filename of fs.readdirSync(directory).filter((name) => name.endsWith(
 
 queue.sort((a, b) => {
   if (a.priority !== b.priority) return a.priority === "high" ? -1 : 1;
-  if (a.state !== b.state) return a.state === "needs_recheck" ? -1 : 1;
+  const stateRank = { needs_recheck: 0, unable_to_verify: 1, review_due: 2 };
+  if (a.state !== b.state) return stateRank[a.state] - stateRank[b.state];
   return (b.age_days ?? Number.MAX_SAFE_INTEGER) - (a.age_days ?? Number.MAX_SAFE_INTEGER);
 });
 
@@ -47,6 +56,7 @@ const summary = {
   counts: {
     high_priority: queue.filter((item) => item.priority === "high").length,
     needs_recheck: queue.filter((item) => item.state === "needs_recheck").length,
+    unable_to_verify: queue.filter((item) => item.state === "unable_to_verify").length,
     review_due: queue.filter((item) => item.state === "review_due").length,
   },
   queue,

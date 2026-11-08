@@ -242,12 +242,16 @@
       "category": "unaccompanied_minor",
       "amount": 150,
       "currency": "USD",
-      "conditions": "Unaccompanied minor service fee (ages 5-13); nonstop flights only",
-      "applies_to": "All fares",
-      "region_or_route": "Eligible routes only",
-      "timing": "each way",
+      "conditions": "$150 per child each way; mandatory from age 5 until the 14th birthday; nonstop JetBlue-operated flights only.",
+      "applies_to": "Children age 5 through 13 traveling alone",
+      "region_or_route": "Eligible nonstop routes; excludes flights to and from the U.K. and Europe",
+      "timing": "per child, per direction",
       "source_url": "https://www.jetblue.com/help/unaccompanied-minors-umnr",
-      "last_verified": "2025-12-19"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "JetBlue caps unaccompanied minors at three per flight and excludes connecting, direct-with-a-stop, interline, and codeshare itineraries."
+      }
     }
   ],
   "policy_change_history": [

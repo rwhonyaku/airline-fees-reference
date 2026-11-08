@@ -115,12 +115,16 @@
       "category": "seat_selection",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "Seat selection included from time of booking for First, Club World, Club Europe, and Club Europe Plus fares",
+      "conditions": "Advance seat selection is included for First and varies for other premium cabins by fare flexibility and status.",
       "applies_to": "Premium cabins",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.britishairways.com/content/en/information/seating/reserving-your-seat",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "BA advises checking the booking because cabin alone does not determine whether advance selection is complimentary."
+      }
     },
     {
       "category": "seat_selection",
@@ -130,41 +134,57 @@
       "applies_to": "Economy (some fares)",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.britishairways.com/content/en/information/seating/reserving-your-seat",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The live booking or Manage My Booking flow supplies the itinerary-specific advance seat price."
+      }
     },
     {
       "category": "seat_selection",
       "amount": 0,
       "currency": "GBP",
-      "conditions": "Free seat selection available at check-in (24 hours before departure) on eligible fares",
+      "conditions": "Eligible customers can choose free from check-in opening 24 hours before departure; Basic is assigned a seat.",
       "applies_to": "Eligible fares",
       "region_or_route": "All routes",
       "timing": "check-in",
-      "source_url": "https://www.britishairways.com/en-gb/information/seating/seat-selection",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.britishairways.com/content/en/information/seating/reserving-your-seat",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Basic customers can pay before check-in or accept BA's allocation; changing that allocated seat can still cost extra."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": "Depends on fare rules",
       "currency": "GBP",
-      "conditions": "Change fees and fare differences apply depending on ticket fare rules; some fares are non-refundable",
+      "conditions": "Change, cancellation, and refund rights follow the purchased fare rules; fare differences and service fees may apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.britishairways.com/en-gb/information/legal/fare-rules",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "British Airways does not publish one universal change or cancellation amount across all fares and markets."
+      }
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": 0,
       "currency": "GBP",
-      "conditions": "Unaccompanied minors are not accepted on British Airways-operated flights",
-      "applies_to": "All fares",
+      "conditions": "Under 14 cannot travel alone; ages 14–15 may travel alone with required consent and identification documents.",
+      "applies_to": "Young travelers age 14 and older",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.britishairways.com/en-gb/information/family-travel/children-flying",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.britishairways.com/content/en/information/family-travel/tickets-and-travel-documents",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "BA does not provide a paid escort service; this record models its minimum solo-travel age and documentation rule."
+      }
     },
     {
       "category": "infant_child",

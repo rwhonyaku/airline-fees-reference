@@ -393,78 +393,106 @@
       "category": "seat_selection",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No seat selection with Basic; standard seat assigned at check-in from Jan. 27, 2026",
+      "conditions": "Basic does not include seat selection; Southwest assigns a standard seat at check-in.",
       "applies_to": "Basic Fare",
       "region_or_route": "All routes",
       "timing": "check-in / boarding",
       "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Assigned seating replaced open seating on January 27, 2026. Status and eligible card benefits can create separate exceptions."
+      }
     },
     {
       "category": "seat_selection",
-      "amount": "Depends on flight and seat type",
+      "amount": "4-250",
       "currency": "USD",
-      "conditions": "Paid seat upgrades (for flights departing on or after January 27, 2026)",
-      "applies_to": "All fares",
+      "conditions": "Paid seat upgrade price varies by flight and seat; Choice and higher fares include a defined seat category.",
+      "applies_to": "Optional upgrades and fare-bundle seat choices",
       "region_or_route": "All routes",
       "timing": "per segment",
-      "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Southwest publishes paid seat upgrades at $4-$250 per segment per customer; included seat type depends on the fare bundle."
+      }
     },
     {
       "category": "change_cancellation",
       "amount": 0,
       "currency": "USD",
-      "conditions": "No cancel fee; cancel at least 10 minutes before departure to preserve eligible funds",
+      "conditions": "No airline change or cancellation fee; fare difference applies and cancellation must precede departure by 10 minutes.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
       "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Refund or flight-credit treatment depends on fare. Basic changes require upgrading, and Basic round trips have cancellation restrictions."
+      }
     },
     {
       "category": "same_day_change",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Free same-day change available only for Choice Extra, Choice Preferred, or Choice fares; Basic fares not eligible unless fare is upgraded",
+      "conditions": "Free confirmed switch to an available flight on the same date and airport pair; Basic must first be upgraded.",
       "applies_to": "Choice / Choice Preferred / Choice Extra",
       "region_or_route": "All routes",
       "timing": "day of travel",
       "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Request at least 10 minutes before the original departure; government taxes and fees can change."
+      }
     },
     {
       "category": "same_day_standby",
       "amount": 0,
       "currency": "USD",
-      "conditions": "Same-day standby; request before departure, with earlier app/mobile deadlines",
-      "applies_to": "Eligible fares",
+      "conditions": "Free earlier-flight standby; Basic, groups, unaccompanied minors, and partner itineraries are excluded.",
+      "applies_to": "Choice, Choice Preferred, and Choice Extra",
       "region_or_route": "All routes",
       "timing": "day of travel",
-      "source_url": "https://www.southwest.com/fare-information/",
-      "last_verified": "2025-12-24"
+      "source_url": "https://support.southwest.com/helpcenter/article/What-is-same-day-standby",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "App or mobile requests must precede the new flight by 60 minutes domestically or 90 minutes internationally; the original seat remains until cleared."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": 100,
       "currency": "USD",
-      "conditions": "Unaccompanied minor (UM) service charge (ages 5–11): U.S. Mainland",
-      "applies_to": "All fares",
+      "conditions": "$100 each way per child age 5–11; nonstop or same-plane service only, with no international travel.",
+      "applies_to": "Children ages 5–11 traveling alone",
       "region_or_route": "U.S. Mainland",
-      "timing": "one-way",
+      "timing": "per child, per direction",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Unaccompanied minors cannot use standby, connecting itineraries, international routes, or Getaways vacation packages."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": 35,
       "currency": "USD",
-      "conditions": "Unaccompanied minor (UM) service charge (ages 5–11): Between Hawaiian Islands",
-      "applies_to": "All fares",
+      "conditions": "$35 each way per child age 5–11; nonstop or same-plane service only.",
+      "applies_to": "Children ages 5–11 traveling alone",
       "region_or_route": "Between Hawaiian Islands",
-      "timing": "one-way",
+      "timing": "per child, per direction",
       "source_url": "https://www.southwest.com/html/customer-service/travel-fees.html",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The interisland fee is lower than the U.S. Mainland fee but follows the same age and itinerary restrictions."
+      }
     },
     {
       "category": "infant_child",

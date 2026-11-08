@@ -150,14 +150,18 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": 0,
       "currency": "USD",
-      "conditions": "Unaccompanied Minor service is not offered; minors must travel with an accompanying adult",
-      "applies_to": "Minors",
-      "region_or_route": "All routes",
-      "timing": "at booking",
-      "source_url": "https://www.flyscoot.com/en/plan/your-trip/children-and-infants",
-      "last_verified": "2025-12-24"
+      "conditions": "Under 12 cannot travel alone; ages 12–17 may travel alone with required forms and at least 48 hours' advance booking.",
+      "applies_to": "Unaccompanied travelers ages 12–17",
+      "region_or_route": "Scoot-only or Scoot–Singapore Airlines itineraries",
+      "timing": "book at least 48 hours before departure",
+      "source_url": "https://www.flyscoot.com/en/manage/get-ready-to-fly/travel-information",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Scoot permits ages 12–17 with a service-request or waiver form; other-airline connections are excluded."
+      }
     }
   ]
 }

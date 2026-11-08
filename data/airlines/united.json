@@ -292,6 +292,7 @@
       "confidence": "ambiguous",
       "data_quality": {
         "confidence": "ambiguous",
+        "last_attempted": "2026-11-08",
         "notes": "United's current official page is client-rendered and did not expose the fee in the verification response, so the stored USD 150 amount remains flagged rather than receiving a false freshness date."
       }
     },

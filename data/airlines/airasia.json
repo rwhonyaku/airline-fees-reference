@@ -106,12 +106,16 @@
       "category": "seat_selection",
       "amount": "Depends on seat type, route, and timing",
       "currency": "USD",
-      "conditions": "Seat selection is optional and chargeable; fees vary by seat type, route, and timing",
+      "conditions": "Advance seat selection is optional and chargeable; otherwise a seat is assigned randomly at check-in.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/seats.html",
-      "last_verified": "2025-12-24"
+      "source_url": "https://support.airasia.com/s/article/All-You-Need-To-Know-About-Our-Seat-Policy?language=en_GB",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The specific Pick-A-Seat price depends on the operating carrier, route, seat category, and purchase channel."
+      }
     },
     {
       "category": "change_cancellation",
@@ -142,14 +146,18 @@
     },
     {
       "category": "unaccompanied_minor",
-      "amount": "Not permitted",
+      "amount": 0,
       "currency": "USD",
-      "conditions": "Unaccompanied Minor service is not offered; children must be accompanied by an adult aged 18 or above",
-      "applies_to": "Minors",
-      "region_or_route": "All routes",
-      "timing": "at booking",
-      "source_url": "https://www.airasia.com/aa/about-us/en/gb/children-and-infants.html",
-      "last_verified": "2025-12-24"
+      "conditions": "Under 12 cannot travel alone; ages 12–15 require a signed release at check-in; ages 16–17 travel as adults.",
+      "applies_to": "Young passengers traveling alone",
+      "region_or_route": "AirAsia (AK) flights",
+      "timing": "at check-in",
+      "source_url": "https://www.airasia.com/aa/about-us/en/gb/terms-and-conditions-ak.html?cur=USD",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "AirAsia does not sell a traditional paid escort service for AK flights; the age-based acceptance rules are the relevant traveler constraint."
+      }
     }
   ]
 }

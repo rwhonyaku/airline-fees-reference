@@ -136,12 +136,16 @@
       "category": "seat_selection",
       "amount": "Seat type and route dependent",
       "currency": "USD",
-      "conditions": "Seat selection is chargeable on Economy fares; included with Business Class; fees vary by seat type and route",
+      "conditions": "Economy seat selection is chargeable and varies by route and seat type; Business includes seat selection.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://www.flydubai.com/en/plan/seats",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The live booking and Manage Booking flows display the price for standard, preferred, and extra-legroom seats."
+      }
     },
     {
       "category": "change_cancellation",
@@ -158,12 +162,16 @@
       "category": "unaccompanied_minor",
       "amount": "Not permitted",
       "currency": "USD",
-      "conditions": "Unaccompanied Minor service is not offered; children must travel with an adult",
-      "applies_to": "Minors",
+      "conditions": "Under 12 must travel with someone at least 16 in the same booking and cabin; passengers 12 and older may travel alone.",
+      "applies_to": "Children under age 12",
       "region_or_route": "All routes",
       "timing": "at booking",
-      "source_url": "https://www.flydubai.com/en/help/children-and-infants",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.flydubai.com/en/help/faq/?fc=travelling-with-children&fn=flydubai",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "flydubai does not accept unaccompanied children under 12 and does not offer a paid escort service."
+      }
     }
   ]
 }

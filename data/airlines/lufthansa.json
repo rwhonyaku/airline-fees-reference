@@ -180,7 +180,11 @@
       "region_or_route": "All routes",
       "timing": "at airport",
       "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Lufthansa's current baggage rules retain a hard 32 kg per-piece acceptance ceiling."
+      }
     },
     {
       "category": "seat_selection",
@@ -190,8 +194,12 @@
       "applies_to": "Most fares",
       "region_or_route": "All routes (varies)",
       "timing": "at booking / manage booking",
-      "source_url": "https://www.lufthansa.com/az/en/advance-seat-reservation",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Published U.S. examples range from free standard seats on eligible fares to paid standard and extra-legroom seats; itinerary context controls."
+      }
     },
     {
       "category": "change_cancellation",
@@ -206,14 +214,18 @@
     },
     {
       "category": "change_cancellation",
-      "amount": "Fare difference may apply",
+      "amount": "0-300",
       "currency": "USD",
-      "conditions": "Economy Classic fares and upwards can be rebooked; fare differences may apply and additional conditions apply per published rules",
-      "applies_to": "Economy Classic and above",
+      "conditions": "Published U.S. fare examples range from free rebooking to $300, plus any fare difference; Saver can prohibit changes.",
+      "applies_to": "Published Economy fare examples",
       "region_or_route": "International (published example context)",
       "timing": "before departure",
-      "source_url": "https://www.lufthansa.com/us/en/current-fees",
-      "last_verified": "2025-12-24"
+      "source_url": "https://www.lufthansa.com/us/en/baggage-and-other-fees",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "This is not a universal quote: route, fare family, ticket date, and fare difference determine the actual cost."
+      }
     },
     {
       "category": "change_cancellation",
@@ -224,7 +236,11 @@
       "region_or_route": "All routes",
       "timing": "before journey begins",
       "source_url": "https://www.lufthansa.com/us/en/cancellations-and-refunds",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Refundability remains fare-specific; the booking record and fare conditions are authoritative."
+      }
     },
     {
       "category": "infant_child",

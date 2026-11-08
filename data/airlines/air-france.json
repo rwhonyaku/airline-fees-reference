@@ -148,23 +148,31 @@
       "category": "seat_selection",
       "amount": "Depends on route, fare, and seat type",
       "currency": "EUR",
-      "conditions": "Advance seat price varies by destination, dates, and fare. Economy Light has paid seats until check-in closes; otherwise auto-assigned.",
-      "applies_to": "All fares (Economy Light has restrictions)",
+      "conditions": "Advance price varies by destination, dates, and fare; Economy Light seat selection remains paid through check-in.",
+      "applies_to": "Eligible Economy, Premium, and Business fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / check-in",
       "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The live booking flow or My Bookings displays the itinerary-specific price. Non-Light customers can generally change an assigned standard seat free at check-in, subject to availability."
+      }
     },
     {
       "category": "seat_selection",
       "amount": 0,
       "currency": "EUR",
-      "conditions": "Standard seats are free for Flying Blue Silver/Gold/Platinum, reduced-mobility passengers, unaccompanied children, and Flex fares.",
+      "conditions": "Standard seats are free for eligible elites, Flex fares, reduced-mobility passengers, and children using Kids Solo.",
       "applies_to": "Eligible passengers / fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking",
       "source_url": "https://wwws.airfrance.us/information/aeroport/options/choix-siege-standard",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "The waiver includes Flying Blue Silver, Gold, and Platinum members and companions on the same booking, subject to the published conditions."
+      }
     },
     {
       "category": "status_exemption",
@@ -229,23 +237,31 @@
       "category": "change_cancellation",
       "amount": "Depends on fare conditions",
       "currency": "EUR",
-      "conditions": "Change and cancellation terms depend on the fare conditions of the ticket; fare difference may apply",
+      "conditions": "Change and refund eligibility follows the purchased fare conditions; fare differences and offline service fees may apply.",
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "before departure",
-      "source_url": "https://wwws.airfrance.fr/en/trip",
-      "last_verified": "2025-12-24"
+      "source_url": "https://wwws.airfrance.us/information/legal/us-regulation",
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Air France does not publish one universal charge; My Bookings shows the applicable rules and options for the ticket."
+      }
     },
     {
       "category": "unaccompanied_minor",
       "amount": "Depends on child age and itinerary",
       "currency": "EUR",
-      "conditions": "Kids Solo service fares vary by child age and itinerary (domestic vs international age eligibility applies)",
-      "applies_to": "Eligible ages",
-      "region_or_route": "Domestic vs international itinerary",
+      "conditions": "Kids Solo pricing and whether the service is included or optional depend on the child's age and itinerary.",
+      "applies_to": "Ages 4–17 on eligible domestic routes and 5–17 on eligible international routes",
+      "region_or_route": "Eligible domestic and international itineraries",
       "timing": "per direction",
       "source_url": "https://wwws.airfrance.us/information/passagers/enfants-voyageant-seuls",
-      "last_verified": "2025-12-24"
+      "last_verified": "2026-11-08",
+      "data_quality": {
+        "confidence": "confirmed",
+        "notes": "Mandatory and optional age bands vary by network. Air France's U.S. disclosure gives approximate ranges rather than one universal charge."
+      }
     }
   ]
 }
