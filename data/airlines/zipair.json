@@ -8,9 +8,9 @@
     "status": "active",
     "gold_standard": true,
     "source_depth": "gold",
-    "last_full_review": "2026-09-01",
-    "notes": "ZIPAIR baggage is an add-on model: base fares include two cabin items weighing 7 kg combined, every checked piece is charged by route, airport purchase adds a processing fee, and each checked piece must be 30 kg or less and no larger than 203 cm total dimensions.",
-    "next_review_due": "2026-11-23"
+    "last_full_review": "2026-11-09",
+    "notes": "ZIPAIR baggage is an add-on model: base fares include two cabin items weighing 7 kg combined, every checked piece is charged by route and direction, airport or contact-center purchase adds a processing fee, and each ordinary checked piece must be 30 kg or less and no larger than 203 cm total dimensions.",
+    "next_review_due": "2027-01-09"
   },
   "fees": [
     {
@@ -21,8 +21,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "per flight",
-      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
-      "last_verified": "2026-09-01",
+      "source_url": "https://www.zipair.net/en/service/baggage",
+      "last_verified": "2026-11-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR’s base fare includes 7 kg carry-on only. Flex Biz and similar packages can include extra carry-on weight and seat selection on eligible routes."
@@ -36,8 +36,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at booking / manage booking / at airport",
-      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
-      "last_verified": "2026-09-01",
+      "source_url": "https://www.zipair.net/en/service/baggage",
+      "last_verified": "2026-11-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR’s tariff lists paid ancillary services; checked baggage is accepted when a paid ancillary or fare rule allows it."
@@ -51,8 +51,8 @@
       "applies_to": "All fares",
       "region_or_route": "All routes",
       "timing": "at airport",
-      "source_url": "https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf",
-      "last_verified": "2026-09-01",
+      "source_url": "https://www.zipair.net/en/service/baggage",
+      "last_verified": "2026-11-09",
       "data_quality": {
         "confidence": "confirmed",
         "notes": "ZIPAIR does not publish an overweight surcharge band above its 30 kg per-piece limit. The practical remedy is another paid piece, not paying to make one bag heavier."
@@ -62,15 +62,15 @@
       "category": "oversize_baggage",
       "amount": "Not accepted above checked-bag limit",
       "currency": "JPY",
-      "conditions": "Checked baggage over 203 cm total dimensions or 30 kg is not accepted as ordinary checked baggage",
+      "conditions": "Ordinary checked bags over 203 cm total dimensions or 30 kg are not accepted; eligible sports equipment uses separate limits",
       "applies_to": "Checked baggage over ZIPAIR limits",
       "region_or_route": "All routes",
       "timing": "airport check-in",
-      "source_url": "https://corporate.zipair.net/ja/yakkan/",
-      "last_verified": "2026-09-01",
+      "source_url": "https://www.zipair.net/en/service/baggage",
+      "last_verified": "2026-11-09",
       "data_quality": {
         "confidence": "confirmed",
-        "notes": "ZIPAIR's conditions of carriage state checked baggage above 203 cm total dimensions or 30 kg is not accepted."
+        "notes": "ZIPAIR's current baggage page caps ordinary checked pieces at 30 kg and 203 cm. Certain sports equipment is separately priced and may weigh up to 32 kg."
       }
     },
     {

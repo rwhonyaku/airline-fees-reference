@@ -5,6 +5,13 @@ import { useSyncExternalStore } from "react";
 import type { ToolAirline } from "@/lib/tool-airline";
 import { CHECKED_BAG_FAQS } from "@/lib/checked-bag-calculator-content";
 import {
+  formatZipairMoney,
+  getZipairBaggageQuote,
+  ZIPAIR_BAGGAGE_SOURCE,
+  ZIPAIR_BAGGAGE_VERIFIED,
+  ZIPAIR_CHECKED_BAG_PRICES,
+} from "@/lib/zipair-baggage-pricing";
+import {
   calcCardBagOffset,
   calcCheckedBagTripCost,
   clampInt,
@@ -258,6 +265,10 @@ export function CheckedBaggageCalculatorClient({
   const payWithCard = (sp.get("pay") ?? "yes") !== "no";
   const routeLabel = cleanRouteLabel(sp.get("route") ?? undefined);
   const routePresets = ROUTE_PRESETS_BY_AIRLINE[airlineSlug] ?? [];
+  const zipairQuote = airlineSlug === "zipair" && bags > 0
+    ? getZipairBaggageQuote(routeLabel, directions)
+    : [];
+  const hasZipairQuote = zipairQuote.length > 0;
 
   const trip = calcCheckedBagTripCost({
     fees: airline.fees,
@@ -452,10 +463,10 @@ export function CheckedBaggageCalculatorClient({
               Popular route presets
             </div>
             <h2 className="mt-2 text-xl font-extrabold text-slate-950">
-              Start with a ZIPAIR route context, then verify the baggage quote at checkout.
+              Start with a ZIPAIR route and calculate the published bag price.
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
-              These presets do not assign route-specific bag prices. They set the airline, party size, and bag pattern so you can see whether the calculator can quote a total or whether ZIPAIR&apos;s route-and-timing lookup is still required.
+              These presets use ZIPAIR&apos;s verified direction-specific price table. The result remains an estimate until the final checkout quote is confirmed.
             </p>
           </div>
           <div className="grid gap-3 md:grid-cols-2">
@@ -496,7 +507,7 @@ export function CheckedBaggageCalculatorClient({
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className={`grid gap-4 ${airlineSlug === "zipair" ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
           <div>
             <label className="mb-2 block text-sm font-semibold text-slate-800">Travelers</label>
             <input
@@ -528,7 +539,7 @@ export function CheckedBaggageCalculatorClient({
               className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
             />
           </div>
-          <div>
+          {airlineSlug !== "zipair" ? <div>
             <label className="mb-2 block text-sm font-semibold text-slate-800">Pay fare with eligible card?</label>
             <select
               name="pay"
@@ -538,21 +549,38 @@ export function CheckedBaggageCalculatorClient({
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
-          </div>
+          </div> : null}
         </div>
 
         <div>
           <label className="mb-2 block text-sm font-semibold text-slate-800">
-            Route or fare context <span className="font-normal text-slate-500">(optional)</span>
+            Route or fare context <span className="font-normal text-slate-500">{airlineSlug === "zipair" ? "(required for a route price)" : "(optional)"}</span>
           </label>
-          <input
-            name="route"
-            defaultValue={routeLabel ?? ""}
-            placeholder="Example: LAX to Tokyo, Basic fare, buying bag online"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-          />
+          {airlineSlug === "zipair" ? (
+            <select
+              name="route"
+              defaultValue={routeLabel ?? ""}
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+            >
+              <option value="">Select a ZIPAIR direction</option>
+              {ZIPAIR_CHECKED_BAG_PRICES.map((route) => (
+                <option key={`${route.origin}-${route.destination}`} value={route.label}>
+                  {route.label} — {formatZipairMoney(route.amount, route.currency)} per piece
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              name="route"
+              defaultValue={routeLabel ?? ""}
+              placeholder="Example: LAX to Tokyo, Basic fare, buying bag online"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+            />
+          )}
           <p className="mt-2 text-xs leading-relaxed text-slate-500">
-            This does not force a price. It keeps the route or fare context visible when the airline needs a route-specific lookup.
+            {airlineSlug === "zipair"
+              ? "ZIPAIR publishes a price for each direction. Roundtrips with different currencies are shown as separate directional totals."
+              : "This does not force a price. It keeps the route or fare context visible when the airline needs a route-specific lookup."}
           </p>
         </div>
 
@@ -571,7 +599,35 @@ export function CheckedBaggageCalculatorClient({
             Route context: {routeLabel}
           </div>
         ) : null}
-        {trip.canEstimate ? (
+        {hasZipairQuote ? (
+          <>
+            <h2 className="text-3xl font-extrabold text-slate-950">
+              Directional total{zipairQuote.length > 1 ? "s" : ""}: {zipairQuote.map((leg) => formatZipairMoney(leg.amount * travelers * bags, leg.currency)).join(" + ")} for this ZIPAIR bag plan.
+            </h2>
+            <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+              Each amount covers {plural(travelers * bags, "paid checked piece")} in that direction.
+              Across {plural(roundtrips, "trip")}, multiply each directional total by {roundtrips}.
+              ZIPAIR charges every piece, including the first, and each ordinary checked piece must stay at or below 30 kg and 203 cm.
+            </p>
+            <div className="grid gap-3 md:grid-cols-2">
+              {zipairQuote.map((leg) => (
+                <div key={`${leg.origin}-${leg.destination}`} className="rounded-xl border border-blue-200 bg-white p-4">
+                  <div className="text-xs font-bold uppercase tracking-widest text-slate-500">{leg.label}</div>
+                  <div className="mt-1 text-2xl font-extrabold text-slate-950">
+                    {formatZipairMoney(leg.amount * travelers * bags, leg.currency)}
+                  </div>
+                  <p className="mt-1 text-xs text-slate-600">
+                    {formatZipairMoney(leg.amount, leg.currency)} per piece × {travelers} traveler(s) × {bags} bag(s).
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs leading-relaxed text-slate-500">
+              Published route-table estimate, not a booking quote. Airport or contact-center payment adds a handling fee. Verified {ZIPAIR_BAGGAGE_VERIFIED}.{" "}
+              <a href={ZIPAIR_BAGGAGE_SOURCE} target="_blank" rel="noreferrer" className="font-bold text-blue-700 underline">Official ZIPAIR source</a>.
+            </p>
+          </>
+        ) : trip.canEstimate ? (
           <>
             <h2 className="text-3xl font-extrabold text-slate-950">
               {bags === 0
@@ -614,9 +670,15 @@ export function CheckedBaggageCalculatorClient({
         )}
         <p className="text-sm leading-relaxed text-slate-600">{trip.explanation}</p>
 
-        <div className={`rounded-xl border px-4 py-3 text-sm font-semibold ${pressure.className}`}>
-          {pressure.label}: {pressure.explanation}
-        </div>
+        {hasZipairQuote ? (
+          <div className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-950">
+            Route price available: the calculation uses ZIPAIR&apos;s published per-piece price for the selected direction.
+          </div>
+        ) : (
+          <div className={`rounded-xl border px-4 py-3 text-sm font-semibold ${pressure.className}`}>
+            {pressure.label}: {pressure.explanation}
+          </div>
+        )}
 
         {trip.canEstimate ? (
           <div className="grid gap-3 pt-2 md:grid-cols-3">
@@ -666,7 +728,9 @@ export function CheckedBaggageCalculatorClient({
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Cost confidence</div>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              {trip.canEstimate
+              {hasZipairQuote
+                ? "The calculator matched the selected direction to ZIPAIR's published route table. It does not convert the return leg into another currency."
+                : trip.canEstimate
                 ? hasLowerBound
                   ? "At least one selected fee is the lower end of a published range, so the result is a cost floor."
                   : "The calculator found published USD reference fees for every selected bag position; confirm that their scope matches your itinerary."
@@ -676,7 +740,9 @@ export function CheckedBaggageCalculatorClient({
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Best next move</div>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
-              {trip.canEstimate && shouldCompareCards
+              {hasZipairQuote
+                ? "Compare these bag totals with a Value package or competing fare, then verify the final checkout amount."
+                : trip.canEstimate && shouldCompareCards
                 ? "Compare eligible free checked bag cards only after checking the bag-only savings against the annual fee."
                 : trip.canEstimate
                   ? "Compare the cash fee against a bag-inclusive fare before changing products."
@@ -691,13 +757,15 @@ export function CheckedBaggageCalculatorClient({
           <Link href="/tools/excess-baggage-calculator" className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
             Check overweight or oversize fees
           </Link>
-          <Link href={cardHref} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
-            Test card break-even
-          </Link>
+          {airlineSlug !== "zipair" ? (
+            <Link href={cardHref} className="rounded-xl border border-slate-200 bg-white px-4 py-2 font-bold text-blue-700 hover:border-blue-300">
+              Test card break-even
+            </Link>
+          ) : null}
         </div>
       </section>
 
-      {!trip.canEstimate ? (
+      {!trip.canEstimate && !hasZipairQuote ? (
         <section className="grid gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-6">
           <div className="text-xs font-bold uppercase tracking-widest text-amber-800">
             What to check before you pay
@@ -815,7 +883,7 @@ export function CheckedBaggageCalculatorClient({
         </section>
       ) : null}
 
-      {bags > 0 ? <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      {bags > 0 && !hasZipairQuote ? <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">

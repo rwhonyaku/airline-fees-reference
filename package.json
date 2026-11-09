@@ -19,6 +19,7 @@
     "test:trip-cost": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/trip-cost-profiles.mjs",
     "test:excess-baggage": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/excess-baggage-calculator.mjs",
     "test:card-bag-offset": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/card-bag-offset.mjs",
+    "test:zipair-pricing": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/zipair-baggage-pricing.mjs",
     "monitor:provenance": "node scripts/monitor-provenance-sources.mjs",
     "monitor:provenance:write": "node scripts/monitor-provenance-sources.mjs --write",
     "review:provenance": "node scripts/review-provenance.mjs",

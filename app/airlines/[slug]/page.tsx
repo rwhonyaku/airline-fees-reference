@@ -19,6 +19,12 @@ import { getVerificationFreshness } from "@/lib/freshness";
 import { CarryOnRecommendations } from "@/components/CarryOnRecommendations";
 import { isFeeCategoryKey } from "@/content/fee-categories";
 import { getTripCostPilotProfiles } from "@/lib/trip-cost-pilot";
+import {
+  formatZipairMoney,
+  ZIPAIR_BAGGAGE_SOURCE,
+  ZIPAIR_BAGGAGE_VERIFIED,
+  ZIPAIR_CHECKED_BAG_PRICES,
+} from "@/lib/zipair-baggage-pricing";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -7301,7 +7307,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
         "ZIPAIR is an optional-service model: checked bags, extra baggage weight, seats, sports equipment, and changes are separate add-on decisions. Unaccompanied-minor service is not offered.",
     },
     verificationNote:
-      "ZIPAIR carry-on, checked-bag, excess-baggage, sports-equipment, seat, change/cancellation, and unaccompanied-minor details were last verified on 2026-09-01.",
+      "ZIPAIR carry-on, checked-bag, route-price, and excess-baggage details were reverified against the current official baggage page on 2026-11-09.",
     avoidFees: [
       "Weigh cabin items together because the carry-on row uses a combined 7 kg limit across the cabin bag and personal item.",
       "Buy checked baggage by weight before travel when needed; ZIPAIR checked baggage is not included by default.",
@@ -7316,7 +7322,7 @@ const REFERENCE_AIRLINE_CONTENT: Record<string, ReferenceContent> = {
       { href: "/fees/seat_selection", label: "Seat selection" },
       { href: "/fees/change_cancellation", label: "Change and cancellation" },
       { href: "/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=2&trips=1&pay=yes&route=Los+Angeles+%28LAX%29+to+Tokyo+%28NRT%29", label: "ZIPAIR route bag calculator" },
-      { href: "/tools/excess-baggage-calculator?airline=zipair&weight=24&size=62", label: "Excess baggage calculator" },
+      { href: "/tools/excess-baggage-calculator?airline=zipair&weight=31&size=62", label: "Excess baggage calculator" },
       { href: "/guides/basic-economy-traps", label: "Basic fare guide" },
       { href: "/guides/international-baggage-allowance", label: "International baggage allowance" },
       { href: "/sizer-rules?weight=7", label: "Sizer rules" },
@@ -7739,7 +7745,7 @@ function getAirlineScenarioLinks(slug: string, airlineName: string): Array<{
       },
       {
         title: "Purchased allowance is not enough",
-        body: "Use this when the bag may exceed the weight allowance you bought. ZIPAIR lists airport rates for excess weight, and a single checked bag must not exceed 32 kg.",
+        body: "Use this when a normal checked piece may exceed ZIPAIR's 30 kg acceptance limit. Repack it into another paid piece before check-in.",
         href: `/tools/excess-baggage-calculator?airline=${enc}&bags=1&directions=2&weight=24&size=62`,
         cta: "Check excess risk",
       },
@@ -9085,18 +9091,13 @@ function EvaAirBaggageDecisionChecklist() {
 }
 
 function ZipairBaggageDecisionChecklist() {
-  const checkedBagPrices = [
-    ["Tokyo (NRT) → Los Angeles / San Francisco / San Jose", "¥7,000"],
-    ["Los Angeles / San Francisco / San Jose → Tokyo (NRT)", "$54"],
-    ["Tokyo (NRT) → Honolulu", "¥6,000"],
-    ["Honolulu → Tokyo (NRT)", "$46"],
-    ["Tokyo (NRT) → Manila / Bangkok / Singapore", "¥5,000"],
-    ["Manila → Tokyo (NRT)", "$38"],
-    ["Bangkok → Tokyo (NRT)", "฿1,270"],
-    ["Singapore → Tokyo (NRT)", "S$51"],
-    ["Tokyo (NRT) → Seoul", "¥4,000"],
-    ["Seoul → Tokyo (NRT)", "₩38,100"],
-  ] as const;
+  const checkedBagPrices = ZIPAIR_CHECKED_BAG_PRICES.filter((route) => route.origin === "NRT").map((outbound) => ({
+    destination: outbound.label.replace("Tokyo (NRT) to ", ""),
+    outbound,
+    inbound: ZIPAIR_CHECKED_BAG_PRICES.find(
+      (route) => route.origin === outbound.destination && route.destination === "NRT"
+    ),
+  }));
 
   return (
     <section className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
@@ -9114,24 +9115,42 @@ function ZipairBaggageDecisionChecklist() {
           <table className="min-w-full text-left text-sm">
             <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
               <tr>
-                <th className="px-4 py-3 font-bold">Route</th>
-                <th className="whitespace-nowrap px-4 py-3 font-bold">One checked bag, up to 30 kg</th>
+                <th className="px-4 py-3 font-bold">Destination</th>
+                <th className="whitespace-nowrap px-4 py-3 font-bold">From Tokyo</th>
+                <th className="whitespace-nowrap px-4 py-3 font-bold">To Tokyo</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700">
-              {checkedBagPrices.map(([route, price]) => (
-                <tr key={route}>
-                  <td className="px-4 py-3">{route}</td>
-                  <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">{price}</td>
+              {checkedBagPrices.map(({ destination, outbound, inbound }) => (
+                <tr key={outbound.destination}>
+                  <td className="px-4 py-3">{destination}</td>
+                  <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">
+                    <Link
+                      href={`/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=1&trips=1&pay=yes&route=${encodeURIComponent(outbound.label)}`}
+                      className="text-blue-800 underline"
+                    >
+                      {formatZipairMoney(outbound.amount, outbound.currency)}
+                    </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">
+                    {inbound ? (
+                      <Link
+                        href={`/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=1&trips=1&pay=yes&route=${encodeURIComponent(inbound.label)}`}
+                        className="text-blue-800 underline"
+                      >
+                        {formatZipairMoney(inbound.amount, inbound.currency)}
+                      </Link>
+                    ) : "Check ZIPAIR"}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <div className="border-t border-blue-100 bg-slate-50 px-4 py-3 text-xs leading-relaxed text-slate-600">
-          Prices are per piece and direction. ZIPAIR may convert fees using its exchange rate for the selected payment currency. Confirm the current quote before paying. Source:{" "}
+          Prices are per piece and direction, verified {ZIPAIR_BAGGAGE_VERIFIED}. ZIPAIR may convert fees using its exchange rate for the selected payment currency. Confirm the current quote before paying. Source:{" "}
           <a
-            href="https://www.zipair.net/service/baggage/departures_after_October_29_2023_en.pdf"
+            href={ZIPAIR_BAGGAGE_SOURCE}
             target="_blank"
             rel="noreferrer"
             className="font-semibold text-blue-700 underline"
@@ -9166,38 +9185,6 @@ function ZipairBaggageDecisionChecklist() {
             There is no published overweight band above 30 kg. Repack into another paid piece; airport purchases also incur a processing fee and require a credit card.
           </p>
         </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Paid carry-on weight
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            ZIPAIR sells an extra 8 kg of cabin weight, raising the combined allowance to 15 kg. Buy it at least 24 hours before departure; it is not sold at the airport.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Seat add-on
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Seat selection is optional and chargeable. The amount depends on seat type and purchase timing.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Sports equipment
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Sports equipment is checked separately and can depend on equipment type, route, and advance purchase.
-          </p>
-        </div>
-        <div className="rounded-xl border border-blue-100 bg-white p-4">
-          <div className="text-xs font-bold uppercase tracking-widest text-slate-500">
-            Changes
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">
-            Flight changes are listed as fee plus fare difference. Cancellations are generally not permitted unless ZIPAIR explicitly allows them.
-          </p>
-        </div>
       </div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link
@@ -9207,10 +9194,16 @@ function ZipairBaggageDecisionChecklist() {
           Try a ZIPAIR route preset
         </Link>
         <Link
-          href="/tools/excess-baggage-calculator?airline=zipair&weight=24&size=62"
+          href="/tools/excess-baggage-calculator?airline=zipair&weight=31&size=62"
           className="font-bold text-blue-800 underline"
         >
           Check ZIPAIR excess baggage risk
+        </Link>
+        <Link
+          href="/tools/true-trip-cost?v=1&a1=zipair&a2="
+          className="font-bold text-blue-800 underline"
+        >
+          Compare ZIPAIR&apos;s true trip cost
         </Link>
         <Link href="/sizer-rules?weight=7" className="font-bold text-blue-800 underline">
           Check 7 kg cabin-bag fit
@@ -10088,9 +10081,11 @@ function ReferenceAirlinePage({
           </section>
         ) : null}
 
+        {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
+
         {slug === "air-france" ? (
           <AirFranceBaggagePriceChecklist />
-        ) : (
+        ) : slug !== "zipair" ? (
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
             <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
               {summaryLabels.eyebrow}
@@ -10122,9 +10117,9 @@ function ReferenceAirlinePage({
               </div>
             </div>
           </div>
-        )}
+        ) : null}
 
-        {hasUsableBagEstimate || avoidFeeAdvice.length > 0 ? (
+        {slug !== "zipair" && (hasUsableBagEstimate || avoidFeeAdvice.length > 0) ? (
           <div className={`grid gap-4 ${hasUsableBagEstimate && avoidFeeAdvice.length > 0 ? "lg:grid-cols-[1.05fr_0.95fr]" : ""}`}>
             {hasUsableBagEstimate ? (
               <BagCostTeaser
@@ -10138,7 +10133,7 @@ function ReferenceAirlinePage({
         ) : null}
       </header>
 
-      {content.verificationNote ? (
+      {slug !== "zipair" && content.verificationNote ? (
         <section className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
           <span className="font-bold text-slate-900">Last verified note:</span>{" "}
           {readerCopy(content.verificationNote)}
@@ -10166,7 +10161,6 @@ function ReferenceAirlinePage({
       {slug === "singapore-airlines" ? <SingaporeAirlinesBaggageDecisionChecklist /> : null}
       {slug === "eva-air" ? <EvaAirBaggageDecisionChecklist /> : null}
       {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
-      {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
       {slug === "air-france" || slug === "zipair" ? <AirlineFaqBlock slug={slug} /> : null}
 
       {hasUsableBagEstimate ? (
@@ -10177,11 +10171,11 @@ function ReferenceAirlinePage({
         />
       ) : null}
 
-      <CardSavingsDecisionPanel slug={slug} airlineName={airline.name} />
+      {slug !== "zipair" ? <CardSavingsDecisionPanel slug={slug} airlineName={airline.name} /> : null}
 
-      <AirlineScenarioLinks slug={slug} airlineName={airline.name} />
+      {slug !== "zipair" ? <AirlineScenarioLinks slug={slug} airlineName={airline.name} /> : null}
 
-      {tripCostProfiles.length > 0 ? (
+      {slug !== "zipair" && tripCostProfiles.length > 0 ? (
         <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
           <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">Compare a fare you found</div>
           <h2 className="mt-2 text-xl font-black text-slate-950">Does {airline.name} still win after the fees?</h2>
@@ -10194,7 +10188,7 @@ function ReferenceAirlinePage({
         </section>
       ) : null}
 
-      {showDeepAnalysis && comparisonPeerSlugs.length > 0 ? (
+      {slug !== "zipair" && showDeepAnalysis && comparisonPeerSlugs.length > 0 ? (
         <UnifiedBaggageComparison
           focusSlug={slug}
           peerSlugs={comparisonPeerSlugs}
@@ -10204,7 +10198,7 @@ function ReferenceAirlinePage({
 
       {hasCoreFeeData ? <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
-          <h2 className="text-2xl font-bold text-slate-900">Core fee breakdown</h2>
+          <h2 className="text-2xl font-bold text-slate-900">{slug === "zipair" ? "Detailed policy references" : "Core fee breakdown"}</h2>
           <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
             {archetype === "ulcc"
               ? "Start with what the base fare excludes, then check how purchase timing, bag size, and weight change the price."
@@ -10251,7 +10245,7 @@ function ReferenceAirlinePage({
               <>. For a side-by-side baseline comparison, review <InlineComparisonLinks links={content.comparisonLinks} />.</>
             ) : "."}
           </p>
-          {getCardBenefitReference(slug)}
+          {slug !== "zipair" ? getCardBenefitReference(slug) : null}
           <FeeRowsTable
             rows={checkedRows}
             emptyMessage="No checked-baggage row is shown for this airline yet."
@@ -10317,7 +10311,7 @@ function ReferenceAirlinePage({
         </section> : null}
       </section> : null}
 
-      {showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
+      {slug !== "zipair" && showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Fare-class behavior</h2>
         {slug === "jetblue" ? (
           <p className="text-sm leading-relaxed text-slate-600">
@@ -10347,7 +10341,7 @@ function ReferenceAirlinePage({
         </div>
       </section> : null}
 
-      {showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
+      {slug !== "zipair" && showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Real-world scenarios</h2>
         {hasEu261Reference(slug) ? (
           <p className="text-sm leading-relaxed text-slate-600">
