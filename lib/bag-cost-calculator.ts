@@ -512,6 +512,7 @@ export function calcCardBagOffset(params: {
   bagsPerTravelerPerDirection: number;
   card: Card;
   userWillPayWithCard: boolean;
+  userConfirmsEligibility?: boolean;
   airlineOverrides?: AirlineOverrides[string];
 }): {
   eligible: boolean;
@@ -522,6 +523,16 @@ export function calcCardBagOffset(params: {
   warnings: string[];
 } {
   const warnings: string[] = [];
+  if (params.userConfirmsEligibility === false) {
+    return {
+      eligible: false,
+      savingsPerTripUsd: 0,
+      annualSavingsUsd: 0,
+      netAnnualUsd: -params.card.annual_fee_usd,
+      breakEvenRoundtrips: null,
+      warnings: ["Confirm the cardholder, route, operating-carrier, reservation, companion, and payment conditions before applying this benefit."],
+    };
+  }
   const mustPay =
     params.card.requires_purchase_with_card ||
     params.airlineOverrides?.requires_card_payment_for_free_bag === true;

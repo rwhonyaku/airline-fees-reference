@@ -2,74 +2,16 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import type { FeeItem } from "@/lib/types";
 import type { ToolAirline } from "@/lib/tool-airline";
 import {
   calcCardBagOffset,
   clampInt,
-  findCheckedBagFeeUsd,
-  getCheckedBagFeeMap,
+  getCheckedBagFeeEstimateMap,
   safeExternalUrl,
   usd,
   type AirlineOverrides,
   type Card,
 } from "@/lib/bag-cost-calculator";
-
-const PAGE_REVIEWED = "2026-09-10";
-
-function parseLowerRangeAmountUsd(amount: FeeItem["amount"]): number | null {
-  if (typeof amount === "number" && Number.isFinite(amount)) return amount;
-  if (typeof amount !== "string") return null;
-
-  const match = amount.trim().match(/^\$?\s*(\d+(?:\.\d+)?)\s*[-–]\s*\$?\s*(\d+(?:\.\d+)?)/);
-  if (!match) return null;
-
-  const low = Number(match[1]);
-  const high = Number(match[2]);
-  if (!Number.isFinite(low) || !Number.isFinite(high)) return null;
-  return Math.min(low, high);
-}
-
-function bagOrdinalMatches(row: FeeItem, ordinal: number): boolean {
-  const conditions = typeof row.conditions === "string" ? row.conditions.toLowerCase() : "";
-  if (ordinal === 1) {
-    return conditions.includes("1st checked bag") || conditions.includes("first checked bag") || conditions.includes("bag 1");
-  }
-  if (ordinal === 2) {
-    return conditions.includes("2nd checked bag") || conditions.includes("second checked bag") || conditions.includes("bag 2");
-  }
-  if (ordinal === 3) {
-    return conditions.includes("3rd checked bag") || conditions.includes("third checked bag") || conditions.includes("bag 3");
-  }
-  return false;
-}
-
-function getCardMathBagFeeMap(fees: FeeItem[], maxBags: number): Map<number, number> {
-  const map = getCheckedBagFeeMap(fees, maxBags);
-
-  for (let ordinal = 1; ordinal <= maxBags; ordinal += 1) {
-    if (map.has(ordinal)) continue;
-
-    const fallback = fees
-      .filter((row) => {
-        if (row.category !== "checked_baggage") return false;
-        if (row.currency && row.currency.toUpperCase() !== "USD") return false;
-        if (!bagOrdinalMatches(row, ordinal)) return false;
-        const appliesTo = typeof row.applies_to === "string" ? row.applies_to.toLowerCase() : "";
-        return !appliesTo.includes("blue plus") && parseLowerRangeAmountUsd(row.amount) != null;
-      })
-      .sort((a, b) => {
-        const verifiedA = typeof a.last_verified === "string" ? a.last_verified : "";
-        const verifiedB = typeof b.last_verified === "string" ? b.last_verified : "";
-        return verifiedB.localeCompare(verifiedA);
-      })[0];
-
-    const fee = fallback ? parseLowerRangeAmountUsd(fallback.amount) : null;
-    if (fee != null) map.set(ordinal, fee);
-  }
-
-  return map;
-}
 
 function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
   label: string;
@@ -77,10 +19,12 @@ function verdictForResult(r: ReturnType<typeof calcCardBagOffset>): {
   className: string;
 } {
   if (!r.eligible) {
+    const eligibilityMissing = r.warnings.some((warning) => /confirm the cardholder|requires paying/i.test(warning));
     return {
-      label: "Needs a route-specific fee lookup",
-      detail:
-        "The calculator needs a published first checked bag fee and applicable benefit rules before it can make a card judgment.",
+      label: eligibilityMissing ? "Benefit conditions not confirmed" : "Needs a route-specific fee lookup",
+      detail: eligibilityMissing
+        ? "No savings verdict is shown until the cardholder, route, reservation, companion, and payment conditions are confirmed."
+        : "The calculator needs a published first checked bag fee and applicable benefit rules before it can make a card judgment.",
       className: "border-amber-200 bg-amber-50 text-amber-950",
     };
   }
@@ -175,6 +119,7 @@ function scenarioHref(scenario: (typeof QUICK_SCENARIOS)[number]): string {
     bags: String(scenario.bags),
     trips: String(scenario.trips),
     pay: "yes",
+    eligible: "no",
   });
 
   return `/best-cards?${params.toString()}`;
@@ -216,10 +161,20 @@ export function BestCardsClient({
   const bags = clampInt(sp.get("bags") ?? undefined, 0, 2, 1);
   const trips = clampInt(sp.get("trips") ?? undefined, 0, 30, 2);
   const payWithCard = (sp.get("pay") ?? "yes") !== "no";
+  const eligibilityConfirmed = (sp.get("eligible") ?? "no") === "yes";
 
-  const fees = (airline.fees ?? []) as FeeItem[];
-  const feeByBagOrdinal = getCardMathBagFeeMap(fees, bags);
-  const firstBagFeeUsd = feeByBagOrdinal.get(1) ?? findCheckedBagFeeUsd(fees, 1);
+  const fees = airline.fees ?? [];
+  const feeEstimateByBagOrdinal = getCheckedBagFeeEstimateMap(fees, bags);
+  const feeByBagOrdinal = new Map(
+    Array.from(feeEstimateByBagOrdinal.entries()).map(([ordinal, estimate]) => [ordinal, estimate.amountUsd] as const)
+  );
+  const firstBagEstimate = feeEstimateByBagOrdinal.get(1);
+  const firstBagFeeUsd = firstBagEstimate?.amountUsd ?? null;
+  const pageReviewed = cards
+    .map((card) => card.last_offer_verified)
+    .filter((date): date is string => Boolean(date))
+    .sort()
+    .at(-1) ?? "date unavailable";
 
   const airlineOverrides = overrides?.[airlineSlug];
   const allCardsForAirline = cards.filter((card) => card.airline_slug === airlineSlug);
@@ -302,6 +257,7 @@ export function BestCardsClient({
         bagsPerTravelerPerDirection: bags,
         card,
         userWillPayWithCard: payWithCard,
+        userConfirmsEligibility: eligibilityConfirmed,
         airlineOverrides,
       }),
     }))
@@ -329,11 +285,18 @@ export function BestCardsClient({
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-950">
               Will a free checked bag card actually save you money?
             </h1>
-            <p className="mt-3 text-base leading-relaxed text-slate-700">
-              For {airline.name}, this setup would produce about{" "}
-              <span className="font-bold text-slate-950">{usd(top.r.annualSavingsUsd)}</span> in calculated annual checked-bag savings before the card annual fee. After the annual fee, the top match would{" "}
-              <span className="font-bold text-slate-950">{netLabel}</span>.
-            </p>
+            {top.r.eligible ? (
+              <p className="mt-3 text-base leading-relaxed text-slate-700">
+                For {airline.name}, this setup would produce about{" "}
+                <span className="font-bold text-slate-950">{usd(top.r.annualSavingsUsd)}</span> in calculated annual checked-bag savings before the card annual fee. After the annual fee, the top match would{" "}
+                <span className="font-bold text-slate-950">{netLabel}</span>.
+              </p>
+            ) : (
+              <p className="mt-3 text-base leading-relaxed text-slate-700">
+                No break-even verdict is shown yet. Confirm that the published cardholder, route,
+                operating-carrier, reservation, companion, and payment conditions apply to your trip.
+              </p>
+            )}
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
               This is a baggage-fee break-even calculator, not a general travel-card ranking. It uses published checked-bag fees, card annual fees, traveler coverage, and card-payment rules. It does not count points, lounge access, statement credits, or sign-up bonuses.
             </p>
@@ -361,7 +324,7 @@ export function BestCardsClient({
           </Link>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
-          Page reviewed: <span className="font-medium">{PAGE_REVIEWED}</span>. Individual benefit-check dates appear with each card. Start with the selected airline&apos;s{" "}
+          Latest card verification in this dataset: <span className="font-medium">{pageReviewed}</span>. Individual benefit-check dates appear with each card. Start with the selected airline&apos;s{" "}
           <Link href={`/airlines/${encodeURIComponent(airlineSlug)}`} className="text-blue-700 underline">
             fee page
           </Link>
@@ -398,7 +361,7 @@ export function BestCardsClient({
       </section>
 
       <form
-        key={`${airlineSlug}-${travelers}-${bags}-${trips}-${payWithCard}`}
+        key={`${airlineSlug}-${travelers}-${bags}-${trips}-${payWithCard}-${eligibilityConfirmed}`}
         id="card-inputs"
         method="get"
         className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
@@ -432,6 +395,23 @@ export function BestCardsClient({
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">
+              Do all published benefit conditions apply?
+            </label>
+            <select
+              name="eligible"
+              defaultValue={eligibilityConfirmed ? "yes" : "no"}
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+            >
+              <option value="no">Not confirmed</option>
+              <option value="yes">Yes, confirmed</option>
+            </select>
+            <p className="mt-2 text-xs leading-relaxed text-slate-500">
+              Confirm cardholder, route, operating carrier, loyalty number, same-reservation companion,
+              and booking conditions against the issuer and airline terms.
+            </p>
           </div>
         </div>
 
@@ -501,7 +481,7 @@ export function BestCardsClient({
         <h2 className="text-2xl font-extrabold text-slate-950">
           {top.r.eligible
             ? `About ${usd(top.r.annualSavingsUsd)} in calculated annual checked-bag savings for the top match.`
-            : "This airline needs a first-bag fee lookup before card math can be trusted."}
+            : "The calculator is waiting for fee evidence or benefit-condition confirmation."}
         </h2>
         <div className="grid gap-3 md:grid-cols-3">
           <div className="rounded-xl border border-slate-200 bg-white p-4">
@@ -517,6 +497,17 @@ export function BestCardsClient({
                 ? `${usd(firstBagFeeUsd)} first checked bag fee${bags > 1 && feeByBagOrdinal.get(2) != null ? ` and ${usd(feeByBagOrdinal.get(2) ?? 0)} second checked bag fee` : ""}, multiplied by eligible travelers and roundtrip directions. Range-priced fees use the lower published amount.`
                 : "No fixed USD first checked bag fee is available for this airline in the current fee data."}
             </p>
+            {firstBagEstimate ? (
+              <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                {firstBagEstimate.label}. {firstBagEstimate.appliesTo ? `${firstBagEstimate.appliesTo}. ` : ""}
+                {firstBagEstimate.regionOrRoute ? `${firstBagEstimate.regionOrRoute}. ` : ""}
+                {firstBagEstimate.conditions ? `${firstBagEstimate.conditions} ` : ""}
+                <a href={firstBagEstimate.sourceUrl} target="_blank" rel="noreferrer" className="font-semibold text-blue-700 underline">
+                  Official source
+                </a>{" "}
+                (verified {firstBagEstimate.lastVerified}).
+              </p>
+            ) : null}
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4">
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Important limit</div>
@@ -545,9 +536,9 @@ export function BestCardsClient({
         ) : null}
       </div>
 
-      <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
-        <div className="text-xs font-bold uppercase tracking-widest text-emerald-800">
-          Top baggage match for these inputs
+      <div className={`mt-5 rounded-2xl border p-6 ${top.r.eligible ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
+        <div className={`text-xs font-bold uppercase tracking-widest ${top.r.eligible ? "text-emerald-800" : "text-amber-900"}`}>
+          {top.r.eligible ? "Top baggage match for these inputs" : "Card entry awaiting confirmation"}
         </div>
         <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
@@ -557,19 +548,14 @@ export function BestCardsClient({
               {top.card.tier ? ` | Tier: ${top.card.tier}` : ""}
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-sm text-slate-700">Estimated value after annual fee</div>
-            <div
-              className={
-                top.r.netAnnualUsd >= 0
-                  ? "text-3xl font-extrabold text-emerald-800"
-                  : "text-3xl font-extrabold text-rose-700"
-              }
-            >
-              {top.r.netAnnualUsd >= 0 ? "+" : "-"}
-              {usd(Math.abs(top.r.netAnnualUsd))}
+          {top.r.eligible ? (
+            <div className="text-right">
+              <div className="text-sm text-slate-700">Estimated value after annual fee</div>
+              <div className={top.r.netAnnualUsd >= 0 ? "text-3xl font-extrabold text-emerald-800" : "text-3xl font-extrabold text-rose-700"}>
+                {top.r.netAnnualUsd >= 0 ? "+" : "-"}{usd(Math.abs(top.r.netAnnualUsd))}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
 
         <div className="mt-3 text-sm text-slate-700">
@@ -590,7 +576,7 @@ export function BestCardsClient({
         )}
 
         {topOfferUrl ? (
-          <div className="mt-5 flex flex-col gap-2 border-t border-emerald-200 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className={`mt-5 flex flex-col gap-2 border-t pt-4 sm:flex-row sm:items-center sm:justify-between ${top.r.eligible ? "border-emerald-200" : "border-amber-200"}`}>
             <div className="text-xs leading-relaxed text-slate-600">
               {top.card.issuer_disclosure ??
                 "Issuer terms can change. Verify the annual fee, baggage benefit, and application terms before applying."}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
 import { BestCardsClient } from "@/components/BestCardsClient";
+import { JsonLd } from "@/components/JsonLd";
 import type { AirlineOverrides, CardsJson } from "@/lib/bag-cost-calculator";
 import { getAllAirlines } from "@/lib/data";
 import { canonical } from "@/lib/seo";
@@ -31,10 +32,33 @@ export default async function BestCardsPage() {
   }));
 
   return (
-    <BestCardsClient
-      airlines={airlines}
-      cards={cardsJson.cards}
-      overrides={overrides}
-    />
+    <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Free checked bag card calculator",
+            url: canonical("/best-cards"),
+            applicationCategory: "FinanceApplication",
+            operatingSystem: "Any",
+            description: metadata.description,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+              { "@type": "ListItem", position: 2, name: "Free checked bag card calculator", item: canonical("/best-cards") },
+            ],
+          },
+        ]}
+      />
+      <BestCardsClient
+        airlines={airlines}
+        cards={cardsJson.cards}
+        overrides={overrides}
+      />
+    </>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
+import { JsonLd } from "@/components/JsonLd";
 import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -12,8 +13,6 @@ export const metadata: Metadata = {
     canonical: canonical("/guides/airline-credit-card-baggage-benefits"),
   },
 };
-
-const PAGE_REVIEWED = "2026-09-10";
 
 type Card = {
   id: string;
@@ -66,7 +65,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "Alaska",
     airlinePage: "/airlines/alaska",
     calculatorHref: "/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://www.alaskaair.com/atmosrewards/content/credit-cards",
     cardSourceLabel: "Atmos Rewards credit cards",
     policySource: "https://www.alaskaair.com/content/travel-info/baggage/baggage-fee-waivers-exceptions",
@@ -82,7 +81,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "Air Canada",
     airlinePage: "/airlines/air-canada",
     calculatorHref: "/tools/checked-baggage-calculator?airline=air-canada&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=air-canada&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=air-canada&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan",
     cardSourceLabel: "Chase Aeroplan Card",
     policySource: "https://www.aircanada.com/ca/en/aco/home/plan/baggage/checked.html",
@@ -99,7 +98,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "American",
     airlinePage: "/airlines/american",
     calculatorHref: "/tools/checked-baggage-calculator?airline=american&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=american&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=american&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://creditcards.aa.com/card-benefits/",
     cardSourceLabel: "AA card benefits",
     policySource: "https://www.aa.com/i18n/travel-info/baggage/baggage.jsp",
@@ -115,7 +114,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "United",
     airlinePage: "/airlines/united",
     calculatorHref: "/tools/checked-baggage-calculator?airline=united&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=united&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://creditcards.chase.com/travel-credit-cards/united",
     cardSourceLabel: "United card comparison",
     policySource: "https://www.united.com/en/us/fly/baggage/free-bags-for-cardmembers.html",
@@ -131,7 +130,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "Delta",
     airlinePage: "/airlines/delta",
     calculatorHref: "/tools/checked-baggage-calculator?airline=delta&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=delta&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=delta&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://www.delta.com/us/en/skymiles/airline-credit-cards/american-express-personal-cards",
     cardSourceLabel: "Delta personal card overview",
     policySource: "https://www.delta.com/us/en/baggage/checked-baggage/first-checked-bag-free",
@@ -148,7 +147,7 @@ const AIRLINE_META: Record<string, AirlineGuideMeta> = {
     airlineName: "JetBlue",
     airlinePage: "/airlines/jetblue",
     calculatorHref: "/tools/checked-baggage-calculator?airline=jetblue&travelers=2&bags=1&directions=2&trips=2&pay=yes",
-    cardMathHref: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes",
+    cardMathHref: "/best-cards?airline=jetblue&travelers=2&bags=1&trips=2&pay=yes&eligible=no",
     cardSource: "https://www.jetblue.com/trueblue/credit-cards",
     cardSourceLabel: "JetBlue credit cards",
     policySource: "https://www.jetblue.com/legal/fees",
@@ -237,16 +236,42 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
       .filter((card) => card.airline_slug === slug)
       .sort((a, b) => a.annual_fee_usd - b.annual_fee_usd),
   }));
+  const pageReviewed = cards
+    .map((card) => card.last_offer_verified)
+    .filter((date): date is string => Boolean(date))
+    .sort()
+    .at(-1) ?? "date unavailable";
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
+    <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Credit cards with free checked bags",
+            description: metadata.description,
+            url: canonical("/guides/airline-credit-card-baggage-benefits"),
+            dateModified: pageReviewed === "date unavailable" ? undefined : pageReviewed,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+              { "@type": "ListItem", position: 2, name: "Credit cards with free checked bags", item: canonical("/guides/airline-credit-card-baggage-benefits") },
+            ],
+          },
+        ]}
+      />
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
       <header className="space-y-6">
         <div className="flex flex-wrap items-baseline gap-3">
           <h1 className="text-4xl font-black tracking-tight text-slate-900">
             Credit cards with free checked bags
           </h1>
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            Page reviewed {PAGE_REVIEWED}
+            Card data verified through {pageReviewed}
           </span>
         </div>
 
@@ -338,7 +363,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
             </div>
           </div>
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
-            <Link href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes" className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
+            <Link href="/best-cards?airline=alaska&travelers=2&bags=1&trips=2&pay=yes&eligible=no" className="rounded-xl bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-700">
               Run card break-even math
             </Link>
             <Link href="/tools/checked-baggage-calculator?airline=alaska&travelers=2&bags=1&directions=2&trips=2&pay=yes" className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-bold text-slate-900 hover:border-blue-400">
@@ -656,6 +681,7 @@ export default async function AirlineCreditCardBaggageBenefitsPage() {
           ))}
         </ul>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
