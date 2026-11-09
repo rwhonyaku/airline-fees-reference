@@ -19,6 +19,7 @@ import { getVerificationFreshness } from "@/lib/freshness";
 import { CarryOnRecommendations } from "@/components/CarryOnRecommendations";
 import { isFeeCategoryKey } from "@/content/fee-categories";
 import { getTripCostPilotProfiles } from "@/lib/trip-cost-pilot";
+import { TrackedLink } from "@/components/TrackedLink";
 import {
   formatZipairMoney,
   ZIPAIR_BAGGAGE_SOURCE,
@@ -9125,21 +9126,25 @@ function ZipairBaggageDecisionChecklist() {
                 <tr key={outbound.destination}>
                   <td className="px-4 py-3">{destination}</td>
                   <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">
-                    <Link
+                    <TrackedLink
                       href={`/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=1&trips=1&pay=yes&route=${encodeURIComponent(outbound.label)}`}
+                      eventName="zipair_bag_calculator_started"
+                      eventParameters={{ source: "airline_route_table", route_code: `${outbound.origin}_${outbound.destination}` }}
                       className="text-blue-800 underline"
                     >
                       {formatZipairMoney(outbound.amount, outbound.currency)}
-                    </Link>
+                    </TrackedLink>
                   </td>
                   <td className="whitespace-nowrap px-4 py-3 font-bold text-slate-950">
                     {inbound ? (
-                      <Link
+                      <TrackedLink
                         href={`/tools/checked-baggage-calculator?airline=zipair&travelers=1&bags=1&directions=1&trips=1&pay=yes&route=${encodeURIComponent(inbound.label)}`}
+                        eventName="zipair_bag_calculator_started"
+                        eventParameters={{ source: "airline_route_table", route_code: `${inbound.origin}_${inbound.destination}` }}
                         className="text-blue-800 underline"
                       >
                         {formatZipairMoney(inbound.amount, inbound.currency)}
-                      </Link>
+                      </TrackedLink>
                     ) : "Check ZIPAIR"}
                   </td>
                 </tr>
@@ -9149,14 +9154,15 @@ function ZipairBaggageDecisionChecklist() {
         </div>
         <div className="border-t border-blue-100 bg-slate-50 px-4 py-3 text-xs leading-relaxed text-slate-600">
           Prices are per piece and direction, verified {ZIPAIR_BAGGAGE_VERIFIED}. ZIPAIR may convert fees using its exchange rate for the selected payment currency. Confirm the current quote before paying. Source:{" "}
-          <a
+          <TrackedLink
             href={ZIPAIR_BAGGAGE_SOURCE}
-            target="_blank"
-            rel="noreferrer"
+            external
+            eventName="zipair_official_source_clicked"
+            eventParameters={{ location: "airline_page_route_table" }}
             className="font-semibold text-blue-700 underline"
           >
             ZIPAIR official baggage fee table
-          </a>
+          </TrackedLink>
           .
         </div>
       </div>
@@ -10082,10 +10088,11 @@ function ReferenceAirlinePage({
         ) : null}
 
         {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
+        {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
 
         {slug === "air-france" ? (
           <AirFranceBaggagePriceChecklist />
-        ) : slug !== "zipair" ? (
+        ) : slug !== "zipair" && slug !== "air-canada" ? (
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
             <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
               {summaryLabels.eyebrow}
@@ -10119,7 +10126,7 @@ function ReferenceAirlinePage({
           </div>
         ) : null}
 
-        {slug !== "zipair" && (hasUsableBagEstimate || avoidFeeAdvice.length > 0) ? (
+        {!["zipair", "air-canada", "air-france"].includes(slug) && (hasUsableBagEstimate || avoidFeeAdvice.length > 0) ? (
           <div className={`grid gap-4 ${hasUsableBagEstimate && avoidFeeAdvice.length > 0 ? "lg:grid-cols-[1.05fr_0.95fr]" : ""}`}>
             {hasUsableBagEstimate ? (
               <BagCostTeaser
@@ -10133,7 +10140,7 @@ function ReferenceAirlinePage({
         ) : null}
       </header>
 
-      {slug !== "zipair" && content.verificationNote ? (
+      {!["zipair", "air-canada", "air-france"].includes(slug) && content.verificationNote ? (
         <section className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
           <span className="font-bold text-slate-900">Last verified note:</span>{" "}
           {readerCopy(content.verificationNote)}
@@ -10155,7 +10162,6 @@ function ReferenceAirlinePage({
       {slug === "frontier" ? <FrontierFeeDecisionChecklist /> : null}
       {slug === "ryanair" ? <RyanairBaggageDecisionChecklist /> : null}
       {slug === "easyjet" ? <EasyJetBaggageDecisionChecklist /> : null}
-      {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
       {slug === "air-india" ? <AirIndiaBaggageDecisionChecklist /> : null}
       {slug === "lufthansa" ? <LufthansaBaggageDecisionChecklist /> : null}
       {slug === "singapore-airlines" ? <SingaporeAirlinesBaggageDecisionChecklist /> : null}
@@ -10198,7 +10204,11 @@ function ReferenceAirlinePage({
 
       {hasCoreFeeData ? <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
-          <h2 className="text-2xl font-bold text-slate-900">{slug === "zipair" ? "Detailed policy references" : "Core fee breakdown"}</h2>
+          <h2 className="text-2xl font-bold text-slate-900">
+            {["zipair", "air-canada", "air-france"].includes(slug)
+              ? "Detailed policy references"
+              : "Core fee breakdown"}
+          </h2>
           <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
             {archetype === "ulcc"
               ? "Start with what the base fare excludes, then check how purchase timing, bag size, and weight change the price."
@@ -10311,7 +10321,7 @@ function ReferenceAirlinePage({
         </section> : null}
       </section> : null}
 
-      {slug !== "zipair" && showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
+      {!["zipair", "air-canada", "air-france"].includes(slug) && showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Fare-class behavior</h2>
         {slug === "jetblue" ? (
           <p className="text-sm leading-relaxed text-slate-600">
@@ -10341,7 +10351,7 @@ function ReferenceAirlinePage({
         </div>
       </section> : null}
 
-      {slug !== "zipair" && showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
+      {!["zipair", "air-france"].includes(slug) && showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Real-world scenarios</h2>
         {hasEu261Reference(slug) ? (
           <p className="text-sm leading-relaxed text-slate-600">

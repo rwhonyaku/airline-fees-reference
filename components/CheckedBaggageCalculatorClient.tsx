@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import type { ToolAirline } from "@/lib/tool-airline";
 import { CHECKED_BAG_FAQS } from "@/lib/checked-bag-calculator-content";
+import { TrackedLink } from "@/components/TrackedLink";
+import { trackAnalyticsEvent } from "@/lib/client-analytics";
 import {
   formatZipairMoney,
   getZipairBaggageQuote,
@@ -265,10 +267,29 @@ export function CheckedBaggageCalculatorClient({
   const payWithCard = (sp.get("pay") ?? "yes") !== "no";
   const routeLabel = cleanRouteLabel(sp.get("route") ?? undefined);
   const routePresets = ROUTE_PRESETS_BY_AIRLINE[airlineSlug] ?? [];
-  const zipairQuote = airlineSlug === "zipair" && bags > 0
-    ? getZipairBaggageQuote(routeLabel, directions)
-    : [];
+  const zipairQuote = useMemo(
+    () => airlineSlug === "zipair" && bags > 0
+      ? getZipairBaggageQuote(routeLabel, directions)
+      : [],
+    [airlineSlug, bags, directions, routeLabel]
+  );
   const hasZipairQuote = zipairQuote.length > 0;
+  const trackedZipairResult = useRef("");
+
+  useEffect(() => {
+    if (!hasZipairQuote) return;
+    const routeCodes = zipairQuote.map((leg) => `${leg.origin}_${leg.destination}`).join("_");
+    const fingerprint = `${routeCodes}-${travelers}-${bags}-${directions}-${roundtrips}`;
+    if (trackedZipairResult.current === fingerprint) return;
+    trackedZipairResult.current = fingerprint;
+    trackAnalyticsEvent("zipair_bag_calculator_completed", {
+      route_codes: routeCodes,
+      travelers,
+      bags_per_traveler: bags,
+      directions,
+      trips: roundtrips,
+    });
+  }, [bags, directions, hasZipairQuote, roundtrips, travelers, zipairQuote]);
 
   const trip = calcCheckedBagTripCost({
     fees: airline.fees,
@@ -487,6 +508,17 @@ export function CheckedBaggageCalculatorClient({
       <form
         key={`${airlineSlug}-${travelers}-${bags}-${directions}-${roundtrips}-${payWithCard}-${routeLabel ?? ""}`}
         method="get"
+        onSubmit={() => {
+          if (airlineSlug !== "zipair") return;
+          const matchedRoute = zipairQuote[0];
+          trackAnalyticsEvent("zipair_bag_calculator_started", {
+            source: "calculator_form",
+            route_code: matchedRoute ? `${matchedRoute.origin}_${matchedRoute.destination}` : "not_selected",
+            travelers,
+            bags_per_traveler: bags,
+            directions,
+          });
+        }}
         className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
       >
         <div className="grid gap-4 md:grid-cols-2">
@@ -624,7 +656,15 @@ export function CheckedBaggageCalculatorClient({
             </div>
             <p className="text-xs leading-relaxed text-slate-500">
               Published route-table estimate, not a booking quote. Airport or contact-center payment adds a handling fee. Verified {ZIPAIR_BAGGAGE_VERIFIED}.{" "}
-              <a href={ZIPAIR_BAGGAGE_SOURCE} target="_blank" rel="noreferrer" className="font-bold text-blue-700 underline">Official ZIPAIR source</a>.
+              <TrackedLink
+                href={ZIPAIR_BAGGAGE_SOURCE}
+                external
+                eventName="zipair_official_source_clicked"
+                eventParameters={{ location: "checked_bag_calculator" }}
+                className="font-bold text-blue-700 underline"
+              >
+                Official ZIPAIR source
+              </TrackedLink>.
             </p>
           </>
         ) : trip.canEstimate ? (
