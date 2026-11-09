@@ -451,6 +451,16 @@ const US_NETWORK_AIRLINE_SLUGS = new Set([
   "united",
 ]);
 
+const PRIORITY_US_DECISION_SLUGS = new Set([
+  "alaska",
+  "american",
+  "delta",
+  "frontier",
+  "jetblue",
+  "southwest",
+  "united",
+]);
+
 const INCLUSIVE_AIRLINE_SLUGS = new Set([
   "ana",
   "cathay-pacific",
@@ -10089,10 +10099,17 @@ function ReferenceAirlinePage({
 
         {slug === "zipair" ? <ZipairBaggageDecisionChecklist /> : null}
         {slug === "air-canada" ? <AirCanadaCheckedBagFeeChecklist /> : null}
+        {slug === "united" ? <UnitedFeeDecisionChecklist /> : null}
+        {slug === "delta" ? <DeltaFeeDecisionChecklist /> : null}
+        {slug === "american" ? <AmericanFeeDecisionChecklist /> : null}
+        {slug === "southwest" ? <SouthwestFeeDecisionChecklist /> : null}
+        {slug === "jetblue" ? <JetBlueFeeDecisionChecklist /> : null}
+        {slug === "frontier" ? <FrontierFeeDecisionChecklist /> : null}
+        {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
 
         {slug === "air-france" ? (
           <AirFranceBaggagePriceChecklist />
-        ) : slug !== "zipair" && slug !== "air-canada" ? (
+        ) : slug !== "zipair" && slug !== "air-canada" && !PRIORITY_US_DECISION_SLUGS.has(slug) ? (
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
             <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
               {summaryLabels.eyebrow}
@@ -10126,7 +10143,7 @@ function ReferenceAirlinePage({
           </div>
         ) : null}
 
-        {!["zipair", "air-canada", "air-france"].includes(slug) && (hasUsableBagEstimate || avoidFeeAdvice.length > 0) ? (
+        {!["zipair", "air-canada", "air-france"].includes(slug) && !PRIORITY_US_DECISION_SLUGS.has(slug) && (hasUsableBagEstimate || avoidFeeAdvice.length > 0) ? (
           <div className={`grid gap-4 ${hasUsableBagEstimate && avoidFeeAdvice.length > 0 ? "lg:grid-cols-[1.05fr_0.95fr]" : ""}`}>
             {hasUsableBagEstimate ? (
               <BagCostTeaser
@@ -10140,7 +10157,7 @@ function ReferenceAirlinePage({
         ) : null}
       </header>
 
-      {!["zipair", "air-canada", "air-france"].includes(slug) && content.verificationNote ? (
+      {!["zipair", "air-canada", "air-france"].includes(slug) && !PRIORITY_US_DECISION_SLUGS.has(slug) && content.verificationNote ? (
         <section className="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-relaxed text-slate-700">
           <span className="font-bold text-slate-900">Last verified note:</span>{" "}
           {readerCopy(content.verificationNote)}
@@ -10154,19 +10171,12 @@ function ReferenceAirlinePage({
         </section>
       ) : null}
 
-      {slug === "united" ? <UnitedFeeDecisionChecklist /> : null}
-      {slug === "delta" ? <DeltaFeeDecisionChecklist /> : null}
-      {slug === "american" ? <AmericanFeeDecisionChecklist /> : null}
-      {slug === "southwest" ? <SouthwestFeeDecisionChecklist /> : null}
-      {slug === "jetblue" ? <JetBlueFeeDecisionChecklist /> : null}
-      {slug === "frontier" ? <FrontierFeeDecisionChecklist /> : null}
       {slug === "ryanair" ? <RyanairBaggageDecisionChecklist /> : null}
       {slug === "easyjet" ? <EasyJetBaggageDecisionChecklist /> : null}
       {slug === "air-india" ? <AirIndiaBaggageDecisionChecklist /> : null}
       {slug === "lufthansa" ? <LufthansaBaggageDecisionChecklist /> : null}
       {slug === "singapore-airlines" ? <SingaporeAirlinesBaggageDecisionChecklist /> : null}
       {slug === "eva-air" ? <EvaAirBaggageDecisionChecklist /> : null}
-      {slug === "alaska" ? <AlaskaCarryOnAndBagCheck /> : null}
       {slug === "air-france" || slug === "zipair" ? <AirlineFaqBlock slug={slug} /> : null}
 
       {hasUsableBagEstimate ? (
@@ -10205,7 +10215,7 @@ function ReferenceAirlinePage({
       {hasCoreFeeData ? <section className="space-y-8">
         <div className="border-b border-slate-200 pb-4">
           <h2 className="text-2xl font-bold text-slate-900">
-            {["zipair", "air-canada", "air-france"].includes(slug)
+            {["zipair", "air-canada", "air-france"].includes(slug) || PRIORITY_US_DECISION_SLUGS.has(slug)
               ? "Detailed policy references"
               : "Core fee breakdown"}
           </h2>
@@ -10321,7 +10331,7 @@ function ReferenceAirlinePage({
         </section> : null}
       </section> : null}
 
-      {!["zipair", "air-canada", "air-france"].includes(slug) && showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
+      {!["zipair", "air-canada", "air-france"].includes(slug) && !PRIORITY_US_DECISION_SLUGS.has(slug) && showDeepAnalysis && content.fareClasses.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Fare-class behavior</h2>
         {slug === "jetblue" ? (
           <p className="text-sm leading-relaxed text-slate-600">
@@ -10351,7 +10361,7 @@ function ReferenceAirlinePage({
         </div>
       </section> : null}
 
-      {!["zipair", "air-france"].includes(slug) && showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
+      {!["zipair", "air-france"].includes(slug) && !PRIORITY_US_DECISION_SLUGS.has(slug) && showDeepAnalysis && REAL_WORLD_SCENARIO_SLUGS.has(slug) && content.scenarios.length > 0 ? <section className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Real-world scenarios</h2>
         {hasEu261Reference(slug) ? (
           <p className="text-sm leading-relaxed text-slate-600">
