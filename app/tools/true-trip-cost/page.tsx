@@ -57,7 +57,26 @@ export default function TrueTripCostPage() {
   ].filter((preset) => airlines.some((airline) => airline.slug === preset.airlineA) && airlines.some((airline) => airline.slug === preset.airlineB));
 
   return <main className="grid gap-8">
-    <JsonLd data={{ "@context": "https://schema.org", "@type": "WebApplication", name: "True Trip Cost Calculator", url: canonical("/tools/true-trip-cost"), applicationCategory: "TravelApplication", operatingSystem: "Any" }} />
+    <JsonLd data={{
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: canonical("/") },
+            { "@type": "ListItem", position: 2, name: "True Trip Cost Calculator", item: canonical("/tools/true-trip-cost") },
+          ],
+        },
+        {
+          "@type": "WebApplication",
+          name: "True Trip Cost Calculator",
+          url: canonical("/tools/true-trip-cost"),
+          applicationCategory: "TravelApplication",
+          operatingSystem: "Any",
+          description: "Compare traveler-entered airfares after checked bags, carry-ons, seats, and other required trip fees.",
+        },
+      ],
+    }} />
     <header className="grid gap-3">
       <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Flight comparison tool</div>
       <h1 className="text-4xl font-black tracking-tight">Compare the true cost of competing flights</h1>

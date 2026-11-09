@@ -48,6 +48,7 @@ type FlightInput = {
   seatFee: number | null;
   otherTripFees: number;
   bagBenefitId: string;
+  bagBenefitConfirmed: boolean;
   paymentChannel: "online" | "airport";
 };
 
@@ -63,6 +64,7 @@ const EMPTY_FLIGHT: FlightInput = {
   seatFee: null,
   otherTripFees: 0,
   bagBenefitId: "",
+  bagBenefitConfirmed: false,
   paymentChannel: "online",
 };
 
@@ -109,7 +111,7 @@ function coverageSummary(items: CoverageItem[]) {
   if (relevant.some((item) => item.state === "missing")) {
     return { label: "Incomplete", detail: "At least one required price is still missing.", tone: "border-rose-200 bg-rose-50 text-rose-950" };
   }
-  const modeled = relevant.filter((item) => item.label !== "Fare");
+  const modeled = relevant.filter((item) => item.label !== "Fare" && item.label !== "Airline");
   if (modeled.length > 0 && modeled.every((item) => item.state === "verified")) {
     return { label: "Verified policy coverage", detail: "Selected extras are calculated from verified fare rules; the airfare is traveler-entered.", tone: "border-emerald-200 bg-emerald-50 text-emerald-950" };
   }
@@ -235,6 +237,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
         seatFee: restoredAmount(params, `sf${slot}`),
         otherTripFees: restoredAmount(params, `o${slot}`) ?? 0,
         bagBenefitId: airline?.bagBenefits.some((benefit) => benefit.id === requestedBenefit) ? requestedBenefit : "",
+        bagBenefitConfirmed: false,
         paymentChannel: params.get(`pc${slot}`) === "airport" ? "airport" : "online",
       });
     }
@@ -263,22 +266,35 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
     const airline = airlines.find((item) => item.slug === flight.airline);
     const profile = airline?.pilotProfiles.find((item) => item.id === flight.profileId && (!item.marketContexts || item.marketContexts.includes(marketContext)));
     const benefit = airline?.bagBenefits.find((item) => item.id === flight.bagBenefitId);
-    const automaticBagTotal = profile ? profileBagTotal(profile, bags, travelers, directions, currency, bagAssignment, customBagCounts, flight.paymentChannel, benefit) : null;
+    const appliedBenefit = benefit && flight.bagBenefitConfirmed ? benefit : undefined;
+    const customAssignmentValid = bagAssignment !== "custom" || customBagCounts
+      .slice(0, travelers)
+      .reduce((sum, value) => sum + value, 0) === bags;
+    const automaticBagTotal = profile && customAssignmentValid
+      ? profileBagTotal(profile, bags, travelers, directions, currency, bagAssignment, customBagCounts, flight.paymentChannel, appliedBenefit)
+      : null;
     const automaticCarryOnTotal = profile ? profileCarryOnTotal(profile, flight.paidCarryOns, directions, currency) : null;
     const automaticSeatTotal = profile ? profileSeatTotal(profile, flight.paidSeats, directions, currency) : null;
-    const bagTotal = bags === 0 || (!profile && flight.bagsIncluded) ? 0 : automaticBagTotal ?? flight.checkedBagTripTotal;
+    const bagTotal = !customAssignmentValid
+      ? null
+      : bags === 0 || (!profile && flight.bagsIncluded)
+        ? 0
+        : automaticBagTotal ?? flight.checkedBagTripTotal;
     const fareTotal = flight.fare == null ? null : flight.fare * travelers;
     const carryTotal = automaticCarryOnTotal ?? (flight.paidCarryOns === 0 ? 0 : flight.carryOnFee == null ? null : flight.carryOnFee * flight.paidCarryOns * directions);
     const seatTotal = automaticSeatTotal ?? (flight.paidSeats === 0 ? 0 : flight.seatFee == null ? null : flight.seatFee * flight.paidSeats * directions);
-    const total = fareTotal == null || bagTotal == null || carryTotal == null || seatTotal == null
+    const total = airline == null || fareTotal == null || bagTotal == null || carryTotal == null || seatTotal == null
       ? null
       : fareTotal + bagTotal + carryTotal + seatTotal + flight.otherTripFees;
     const coverageItems: CoverageItem[] = [
+      { label: "Airline", state: airline ? "entered" : "missing", detail: airline ? airline.name : "Choose the airline operating this flight." },
       { label: "Fare", state: fareTotal == null ? "missing" : "entered", detail: fareTotal == null ? "Enter the advertised fare." : "Entered from the fare found by the traveler." },
       bags === 0
         ? { label: "Checked bags", state: "not-needed", detail: "No checked bags selected." }
+        : !customAssignmentValid
+          ? { label: "Checked bags", state: "missing", detail: "The custom traveler assignments must equal the whole-party bag count." }
         : automaticBagTotal != null
-          ? { label: "Checked bags", state: "verified", detail: benefit ? "Calculated from the selected fare rule and verified benefit." : "Calculated from the selected verified fare rule." }
+          ? { label: "Checked bags", state: "verified", detail: appliedBenefit ? "Calculated from the selected fare rule and confirmed benefit." : "Calculated from the selected verified fare rule." }
           : bagTotal != null
             ? { label: "Checked bags", state: "entered", detail: flight.bagsIncluded ? "Traveler confirmed these bags are included or waived." : "Whole-trip price entered from airline checkout." }
             : { label: "Checked bags", state: "missing", detail: "Enter the airline checkout total or select a supported fare rule." },
@@ -300,7 +316,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
     const extrasTotal = bagTotal == null || carryTotal == null || seatTotal == null
       ? null
       : bagTotal + carryTotal + seatTotal + flight.otherTripFees;
-    return { airline, profile, benefit, automaticBagTotal, automaticCarryOnTotal, automaticSeatTotal, bagTotal, carryTotal, fareTotal, seatTotal, extrasTotal, total, coverageItems, coverage: coverageSummary(coverageItems) };
+    return { airline, profile, benefit, appliedBenefit, automaticBagTotal, automaticCarryOnTotal, automaticSeatTotal, bagTotal, carryTotal, fareTotal, seatTotal, extrasTotal, total, coverageItems, coverage: coverageSummary(coverageItems) };
   }), [airlines, bagAssignment, bags, currency, customBagCounts, directions, flights, marketContext, travelers]);
 
   const totalsComplete = results.every((result) => result.total != null);
@@ -312,7 +328,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
   const runnerUp = ranked.length > 1 ? ranked[1].index : null;
   const comparisonCoverage = results.some((result) => result.coverageItems.some((item) => item.state === "missing"))
     ? { label: "Comparison incomplete", detail: "A winner will appear only after every required fare and selected extra has a price." }
-    : results.some((result) => result.coverageItems.some((item) => item.state === "entered" && item.label !== "Fare"))
+    : results.some((result) => result.coverageItems.some((item) => item.state === "entered" && item.label !== "Fare" && item.label !== "Airline"))
       ? { label: "Complete with checkout inputs", detail: "The result combines verified policy rules with traveler-entered airline checkout information." }
       : { label: "Verified extras coverage", detail: "Selected extras are covered by verified fare rules; advertised fares remain traveler-entered." };
   const winnerExplanation = winner != null && runnerUp != null
@@ -634,7 +650,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
             <div className="mt-4 grid gap-4">
               <h3 className="text-lg font-black text-slate-950">Choose the flight and fare</h3>
               <label className="text-sm font-bold">Airline
-                <select value={flight.airline} onChange={(event) => changeAirline(index, event.target.value)} className="mt-2 w-full rounded-xl border-slate-300">
+                <select required value={flight.airline} onChange={(event) => changeAirline(index, event.target.value)} className="mt-2 w-full rounded-xl border-slate-300">
                   <option value="">Choose an airline</option>
                   {airlines.map((airline) => <option key={airline.slug} value={airline.slug}>{airline.name}</option>)}
                 </select>
@@ -688,13 +704,22 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
                 </select>
                 <span className="mt-1 block font-normal text-slate-500">The automatic bag total uses the airline&apos;s verified channel-specific amount.</span>
               </label> : null}
-              {bags > 0 && result.airline?.bagBenefits.length ? <label className="text-sm font-bold">Verified checked-bag benefit
-                <select value={flight.bagBenefitId} onChange={(event) => updateFlight(index, { bagBenefitId: event.target.value })} className="mt-2 w-full rounded-xl border-slate-300">
-                  <option value="">No verified card benefit applied</option>
-                  {result.airline.bagBenefits.map((benefit) => <option key={benefit.id} value={benefit.id}>{benefit.name}</option>)}
-                </select>
-                {result.benefit ? <span className="mt-2 block rounded-lg border border-blue-200 bg-blue-50 p-2 font-normal text-blue-950">Applies up to {result.benefit.freeCheckedBags} checked {result.benefit.freeCheckedBags === 1 ? "bag" : "bags"} for {Math.min(travelers, result.benefit.coveredTravelers)} eligible {Math.min(travelers, result.benefit.coveredTravelers) === 1 ? "traveler" : "travelers"}. {result.benefit.requiresCardPayment ? "The ticket must be purchased with the eligible card." : "Card payment is not modeled as a requirement."} Verified {result.benefit.verified}. This waiver is applied only when the fare profile has deterministic bag prices.</span> : null}
-              </label> : null}
+              {bags > 0 && result.airline?.bagBenefits.length ? <div className="text-sm">
+                <label className="font-bold">Checked-bag card benefit
+                  <select value={flight.bagBenefitId} onChange={(event) => updateFlight(index, { bagBenefitId: event.target.value, bagBenefitConfirmed: false })} className="mt-2 w-full rounded-xl border-slate-300">
+                    <option value="">No card benefit applied</option>
+                    {result.airline.bagBenefits.map((benefit) => <option key={benefit.id} value={benefit.id}>{benefit.name}</option>)}
+                  </select>
+                </label>
+                {result.benefit ? <div className="mt-2 rounded-lg border border-blue-200 bg-blue-50 p-3 text-blue-950">
+                  <p>Potentially covers up to {result.benefit.freeCheckedBags} checked {result.benefit.freeCheckedBags === 1 ? "bag" : "bags"} for {Math.min(travelers, result.benefit.coveredTravelers)} eligible {Math.min(travelers, result.benefit.coveredTravelers) === 1 ? "traveler" : "travelers"}. {result.benefit.requiresCardPayment ? "The ticket must also be purchased with the eligible card." : "Card payment is not modeled as a requirement."} Verified {result.benefit.verified}.</p>
+                  <label className="mt-3 flex items-start gap-2 rounded-lg border border-blue-300 bg-white p-2 font-bold">
+                    <input type="checkbox" checked={flight.bagBenefitConfirmed} onChange={(event) => updateFlight(index, { bagBenefitConfirmed: event.target.checked })} className="mt-0.5 rounded border-slate-300" />
+                    <span>I confirm the cardholder, companion, reservation, and payment conditions apply to this trip.</span>
+                  </label>
+                  {!flight.bagBenefitConfirmed ? <p className="mt-2 text-xs font-semibold text-amber-800">The benefit is not included in the total until you confirm eligibility.</p> : null}
+                </div> : null}
+              </div> : null}
               {bags > 0 ? <details className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs leading-relaxed text-slate-600">
                 <summary className="cursor-pointer font-bold text-slate-800">Using another bag waiver?</summary>
                 <p className="mt-2">Elite status, military, premium-cabin, and unlisted benefits remain manual unless the exact entitlement is supported here. Enter the airline checkout total after the benefit instead of assuming every bag is free.</p>
@@ -739,7 +764,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
             </div>
             <dl className="mt-5 grid gap-2 border-t border-slate-200 pt-4 text-sm">
               <div className="flex justify-between gap-4"><dt>Fare</dt><dd>{result.fareTotal == null ? "Enter fare" : money(result.fareTotal, currency)}</dd></div>
-              <div className="flex justify-between gap-4"><dt>Checked bags {flight.bagsIncluded ? "(included)" : result.automaticBagTotal != null ? result.benefit ? "(verified rule + benefit)" : "(verified rule)" : ""}</dt><dd>{result.bagTotal == null ? "Enter trip total" : money(result.bagTotal, currency)}</dd></div>
+              <div className="flex justify-between gap-4"><dt>Checked bags {flight.bagsIncluded ? "(included)" : result.automaticBagTotal != null ? result.appliedBenefit ? "(verified rule + confirmed benefit)" : "(verified rule)" : ""}</dt><dd>{result.bagTotal == null ? "Enter trip total" : money(result.bagTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Overhead carry-ons {result.automaticCarryOnTotal != null && flight.paidCarryOns > 0 ? result.profile?.carryOnIncluded ? "(included)" : "(verified rule)" : ""}</dt><dd>{result.carryTotal == null ? "Enter checkout amount" : money(result.carryTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Standard seats {result.automaticSeatTotal != null && flight.paidSeats > 0 ? result.profile?.standardSeatIncluded ? "(included)" : "(verified rule)" : ""}</dt><dd>{result.seatTotal == null ? "Enter checkout amount" : money(result.seatTotal, currency)}</dd></div>
               <div className="flex justify-between gap-4 border-t border-slate-200 pt-3 text-lg font-black"><dt>True trip cost</dt><dd>{result.total == null ? "Incomplete" : money(result.total, currency)}</dd></div>
@@ -781,7 +806,7 @@ export function TrueTripCostCalculator({ airlines, comparisonPresets }: { airlin
           <button type="button" onClick={copyShareableComparison} className="rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-950 hover:bg-blue-50">Copy shareable comparison</button>
           {shareStatus ? <span className="text-sm text-slate-300" role="status">{shareStatus}</span> : null}
         </div>
-        <p className="mt-3 text-xs leading-relaxed text-slate-400">The link contains only the route label, calculator choices, and amounts shown here. It stores no name, email, booking reference, or account information.</p>
+        <p className="mt-3 text-xs leading-relaxed text-slate-400">The link contains only the route label, calculator choices, and amounts shown here. It stores no name, email, booking reference, or account information. Card-benefit eligibility confirmation is deliberately not carried into a shared link; each traveler must confirm it again.</p>
       </div>
     </section>
   );

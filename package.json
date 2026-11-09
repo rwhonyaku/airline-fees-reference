@@ -17,6 +17,7 @@
     "test:provenance-monitor": "node tests/provenance-monitor.mjs",
     "test:provenance-review": "node tests/provenance-review.mjs",
     "test:trip-cost": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/trip-cost-profiles.mjs",
+    "test:excess-baggage": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/excess-baggage-calculator.mjs",
     "monitor:provenance": "node scripts/monitor-provenance-sources.mjs",
     "monitor:provenance:write": "node scripts/monitor-provenance-sources.mjs --write",
     "review:provenance": "node scripts/review-provenance.mjs",

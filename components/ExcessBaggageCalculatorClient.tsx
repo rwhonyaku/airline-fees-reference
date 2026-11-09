@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { calcExcessBaggageTripCost, clampInt, usd } from "@/lib/bag-cost-calculator";
+import { calcExcessBaggageTripCost, clampInt, safeExternalUrl, usd } from "@/lib/bag-cost-calculator";
 import { EXCESS_BAG_FAQS } from "@/lib/excess-bag-calculator-content";
 import type { ToolAirline } from "@/lib/tool-airline";
+import type { FeeItem } from "@/lib/types";
 
 const FEATURED_AIRLINES = [
   {
@@ -88,7 +89,23 @@ function sizerHref(): string {
 }
 
 function rowSummary(row: NonNullable<ReturnType<typeof calcExcessBaggageTripCost>["overweight"]>["row"]): string {
-  return [row.conditions, row.region_or_route, row.timing].filter(Boolean).join(" · ");
+  return [row.applies_to, row.region_or_route, row.conditions, row.timing].filter(Boolean).join(" · ");
+}
+
+function SourceEvidence({ row }: { row: FeeItem }) {
+  const sourceUrl = safeExternalUrl(row.source_url);
+  return (
+    <div className="mt-3 text-xs leading-relaxed text-slate-500">
+      {sourceUrl ? (
+        <a href={sourceUrl} target="_blank" rel="noreferrer" className="font-bold text-blue-700 underline">
+          Official source
+        </a>
+      ) : (
+        "Official source unavailable"
+      )}
+      <span> · Verified {row.last_verified}</span>
+    </div>
+  );
 }
 
 function airlinePageHref(airlineSlug: string): string {
@@ -135,6 +152,14 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
   const needsOverweight = weightLbs > 50;
   const needsOversize = linearInches > 62;
   const noExcess = !needsOverweight && !needsOversize;
+  const weightKg = (weightLbs * 0.45359237).toFixed(1);
+  const linearCm = Math.round(linearInches * 2.54);
+  const officialExcessSource = airline.fees
+    .filter((fee) => safeExternalUrl(fee.source_url))
+    .sort((a, b) => b.last_verified.localeCompare(a.last_verified))[0];
+  const stackingUnconfirmed = Boolean(
+    needsOverweight && needsOversize && !result.combined && result.overweight && result.oversize
+  );
 
   return (
     <main className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-10">
@@ -149,7 +174,7 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
           Check overweight and oversize baggage charges before the airport scale. Use this when your
           checked bag is over 50 lb, over 62 linear inches, or both. If you are adding another bag
           that remains within the normal limits, use the checked-bag calculator instead. When an airline prices excess baggage by route, fare allowance,
-          currency, purchase timing, or airport handling, the tool says so instead of inventing a
+          currency, purchase timing, or airport handling, the tool says so instead of inventing an
           unsupported number.
         </p>
         <div className="flex flex-wrap gap-3 text-sm">
@@ -311,10 +336,16 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
             <input name="weight" defaultValue={String(weightLbs)} inputMode="numeric" className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm" />
           </div>
           <div>
-            <label className="mb-2 block text-sm font-semibold text-slate-800">Linear inches</label>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Linear inches (L + W + H)</label>
             <input name="size" defaultValue={String(linearInches)} inputMode="numeric" className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm" />
           </div>
         </div>
+
+        <p className="text-sm leading-relaxed text-slate-600">
+          Entered bag: <span className="font-bold">{weightLbs} lb ({weightKg} kg)</span> and{" "}
+          <span className="font-bold">{linearInches} linear in ({linearCm} cm)</span>. International
+          airline rules often use kilograms and centimeters, so compare both units with the source.
+        </p>
 
         <button type="submit" className="inline-flex w-full justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-700 md:w-fit">
           Estimate excess-bag cost
@@ -328,18 +359,39 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
             <h2 className="text-3xl font-extrabold text-slate-950">This bag does not cross the common excess-bag thresholds.</h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
               The entered weight is at or below the tool&apos;s 50 lb screening point and the entered size
-              is at or below 62 linear inches. Check the airline page if your ticket has a lower weight allowance.
+              is at or below 62 linear inches. This is only a common screening test; your cabin, status,
+              route, or airline may use a lower included weight.
             </p>
+            {officialExcessSource ? (
+              <a
+                href={officialExcessSource.source_url}
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit text-sm font-bold text-blue-700 underline"
+              >
+                Confirm {airline.name}&apos;s published limit
+              </a>
+            ) : null}
           </>
         ) : result.canEstimate ? (
           <>
             <h2 className="text-3xl font-extrabold text-slate-950">
-              Estimated excess-bag charges: {result.totalUsd != null ? usd(result.totalUsd) : "-"}.
+              Published reference charges total {result.totalUsd != null ? usd(result.totalUsd) : "-"}.
             </h2>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-              This multiplies the matched published excess-bag fees by {bagCount} bag{bagCount === 1 ? "" : "s"} and{" "}
+              This multiplies the matched published weight or size band by {bagCount} bag{bagCount === 1 ? "" : "s"} and{" "}
               {directions} flight direction{directions === 1 ? "" : "s"}. It does not include the
-              regular checked-bag fee that may also apply.
+              regular checked-bag fee that may also apply, and it is not an itinerary quote.
+            </p>
+          </>
+        ) : stackingUnconfirmed ? (
+          <>
+            <h2 className="text-3xl font-extrabold text-slate-950">
+              Separate weight and size fees exist, but the tool cannot prove they should be added together.
+            </h2>
+            <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+              Review both reference rows below, then confirm the combined airport charge with {airline.name}.
+              The calculator will not manufacture a total from an unverified stacking assumption.
             </p>
           </>
         ) : (
@@ -352,6 +404,16 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
               handling, whether the bag is bought in advance or at the airport, or whether the airline
               stacks overweight and oversize fees.
             </p>
+            {officialExcessSource ? (
+              <a
+                href={officialExcessSource.source_url}
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit text-sm font-bold text-blue-700 underline"
+              >
+                Open official {airline.name} excess-baggage source
+              </a>
+            ) : null}
           </>
         )}
       </section>
@@ -438,6 +500,7 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
             <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.combined.fee)}</div>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">{rowSummary(result.combined.row)}</p>
             <p className="mt-2 text-xs leading-relaxed text-slate-600">Used once per bag instead of adding separate overweight and oversize fees.</p>
+            <SourceEvidence row={result.combined.row} />
           </div>
         ) : null}
         <div className="grid gap-3 md:grid-cols-2">
@@ -450,6 +513,7 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
                 <>
                   <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.overweight.fee)}</div>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{rowSummary(result.overweight.row)}</p>
+                  <SourceEvidence row={result.overweight.row} />
                 </>
               ) : (
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">Needs route or allowance lookup.</p>
@@ -468,6 +532,7 @@ export function ExcessBaggageCalculatorClient({ airlines }: { airlines: ToolAirl
                 <>
                   <div className="mt-2 text-2xl font-black text-slate-950">{usd(result.oversize.fee)}</div>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{rowSummary(result.oversize.row)}</p>
+                  <SourceEvidence row={result.oversize.row} />
                 </>
               ) : (
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">Needs route or special-item lookup.</p>
