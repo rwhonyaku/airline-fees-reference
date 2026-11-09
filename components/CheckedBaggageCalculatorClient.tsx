@@ -266,6 +266,13 @@ export function CheckedBaggageCalculatorClient({
     directions,
   });
   const variablePricing = explainVariableCheckedBagPricing(airline.fees);
+  const selectedEstimates = Array.from(trip.feeEstimateByBagOrdinal.values());
+  const hasLowerBound = selectedEstimates.some(
+    (estimate) => estimate.confidence === "conservative_lower_bound"
+  );
+  const officialCheckedBagSource = airline.fees
+    .filter((fee) => safeExternalUrl(fee.source_url))
+    .sort((a, b) => b.last_verified.localeCompare(a.last_verified))[0];
 
   const airlineOverrides = overrides[airlineSlug];
   const airlineCards = cards.filter((card) => card.airline_slug === airlineSlug);
@@ -513,7 +520,7 @@ export function CheckedBaggageCalculatorClient({
             </select>
           </div>
           <div>
-            <label className="mb-2 block text-sm font-semibold text-slate-800">Roundtrips / year</label>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Trips / year</label>
             <input
               name="trips"
               defaultValue={String(roundtrips)}
@@ -522,7 +529,7 @@ export function CheckedBaggageCalculatorClient({
             />
           </div>
           <div>
-            <label className="mb-2 block text-sm font-semibold text-slate-800">Pay with card?</label>
+            <label className="mb-2 block text-sm font-semibold text-slate-800">Pay fare with eligible card?</label>
             <select
               name="pay"
               defaultValue={payWithCard ? "yes" : "no"}
@@ -567,14 +574,20 @@ export function CheckedBaggageCalculatorClient({
         {trip.canEstimate ? (
           <>
             <h2 className="text-3xl font-extrabold text-slate-950">
-              You will probably pay about {usd(trip.tripCostUsd)} in checked baggage fees for this trip.
+              {bags === 0
+                ? "No checked-bag fee is modeled because you selected zero bags."
+                : hasLowerBound
+                  ? `Published fees put this trip at no less than ${usd(trip.tripCostUsd)} for checked bags.`
+                  : `The published reference fees total ${usd(trip.tripCostUsd)} for this trip.`}
             </h2>
-            <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
-              Annualized across {roundtrips} roundtrip{roundtrips === 1 ? "" : "s"}, that is about{" "}
-              <span className="font-bold">{annualBagCost != null ? usd(annualBagCost) : "-"}</span> in
-              estimated checked-bag fees before elite status, fare bundles, included allowances, or
-              route-specific exceptions.
-            </p>
+            {bags > 0 ? (
+              <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
+                Across {plural(roundtrips, "trip")} per year, the same assumptions produce{" "}
+                <span className="font-bold">{annualBagCost != null ? usd(annualBagCost) : "-"}</span> in
+                reference bag costs. This is not an itinerary quote: the table below shows the fare,
+                market, and conditions attached to each source row.
+              </p>
+            ) : null}
             {routeLabel ? (
               <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
                 The route label helps you frame the decision, but this calculator only quotes a total when the stored fee data has a usable fixed amount for the selected airline and bag position.
@@ -654,7 +667,9 @@ export function CheckedBaggageCalculatorClient({
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Cost confidence</div>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
               {trip.canEstimate
-                ? "The calculator found usable fixed checked-bag amounts for the selected bag count."
+                ? hasLowerBound
+                  ? "At least one selected fee is the lower end of a published range, so the result is a cost floor."
+                  : "The calculator found published USD reference fees for every selected bag position; confirm that their scope matches your itinerary."
                 : `The ${missingBagLabel(trip.missingBagOrdinals)} bag needs airline checkout or route-table pricing.`}
             </p>
           </div>
@@ -708,6 +723,16 @@ export function CheckedBaggageCalculatorClient({
             <Link href="/fees/checked_baggage" className="font-bold text-blue-800 underline">
               Compare checked-bag rules
             </Link>
+            {officialCheckedBagSource ? (
+              <a
+                href={officialCheckedBagSource.source_url}
+                target="_blank"
+                rel="noreferrer"
+                className="font-bold text-blue-800 underline"
+              >
+                Open official {airline.name} baggage source
+              </a>
+            ) : null}
           </div>
         </section>
       ) : null}
@@ -731,7 +756,8 @@ export function CheckedBaggageCalculatorClient({
                   {usd(Math.abs(best.result.netAnnualUsd))}
                 </span>
                 . The card page shows the same inputs, compares eligible card tiers, and excludes points, sign-up bonuses,
-                lounge access, and unrelated perks.
+                lounge access, and unrelated perks. Savings use the same published reference fees shown below, so they are
+                decision support rather than a quote for your ticket.
               </p>
               {remainingAnnualBagCost != null ? (
                 <p className="max-w-3xl text-sm leading-relaxed text-slate-700">
@@ -789,7 +815,7 @@ export function CheckedBaggageCalculatorClient({
         </section>
       ) : null}
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      {bags > 0 ? <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-bold text-slate-950">Fees used for this estimate</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">
@@ -801,10 +827,12 @@ export function CheckedBaggageCalculatorClient({
                 <th scope="col" className="py-2 pr-4">Bag</th>
                 <th scope="col" className="py-2 pr-4">Estimated fee</th>
                 <th scope="col" className="py-2 pr-4">Confidence</th>
+                <th scope="col" className="py-2 pr-4">Published scope</th>
+                <th scope="col" className="py-2 pr-4">Source</th>
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: Math.max(1, bags) }, (_, index) => index + 1).map((ordinal) => {
+              {Array.from({ length: bags }, (_, index) => index + 1).map((ordinal) => {
                 const estimate = trip.feeEstimateByBagOrdinal.get(ordinal);
                 return (
                   <tr key={ordinal} className="border-b border-slate-100">
@@ -818,7 +846,7 @@ export function CheckedBaggageCalculatorClient({
                       {estimate ? (
                         <span
                           className={
-                            estimate.confidence === "exact_published_fee"
+                            estimate.confidence === "published_reference_fee"
                               ? "inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-bold text-emerald-800"
                               : "inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-xs font-bold text-amber-800"
                           }
@@ -831,6 +859,39 @@ export function CheckedBaggageCalculatorClient({
                         </span>
                       )}
                     </td>
+                    <td className="min-w-64 py-3 pr-4 text-xs leading-relaxed text-slate-600">
+                      {estimate
+                        ? [estimate.appliesTo, estimate.regionOrRoute, estimate.conditions]
+                            .filter(Boolean)
+                            .join(" · ")
+                        : "Confirm route, fare family, and purchase timing."}
+                    </td>
+                    <td className="whitespace-nowrap py-3 pr-4 text-xs text-slate-600">
+                      {estimate ? (
+                        <a
+                          href={estimate.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-bold text-blue-700 underline"
+                        >
+                          Official source
+                        </a>
+                      ) : officialCheckedBagSource ? (
+                        <a
+                          href={officialCheckedBagSource.source_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-bold text-blue-700 underline"
+                        >
+                          Official source
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                      {estimate?.lastVerified ? (
+                        <div className="mt-1">Verified {estimate.lastVerified}</div>
+                      ) : null}
+                    </td>
                   </tr>
                 );
               })}
@@ -838,12 +899,11 @@ export function CheckedBaggageCalculatorClient({
           </table>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-slate-500">
-          The calculator prefers current, broad-market USD fees and avoids special-case prices such
-          as intra-island or long-haul routes when broader domestic or North America pricing exists.
-          If the airline publishes a USD range, the estimate uses the lower end and labels it as a
-          conservative lower-bound estimate.
+          The calculator selects a current, broadly applicable USD reference row when one exists.
+          It does not prove that row applies to your exact ticket. Match the published scope to your
+          route, fare family, operating carrier, and purchase timing; a range is shown as a cost floor.
         </p>
-      </section>
+      </section> : null}
 
       <section className="grid gap-3 text-sm leading-relaxed text-slate-700">
         <h2 className="text-lg font-bold text-slate-950">Related guides</h2>

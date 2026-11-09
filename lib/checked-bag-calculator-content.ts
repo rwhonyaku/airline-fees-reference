@@ -2,7 +2,7 @@ export const CHECKED_BAG_FAQS = [
   {
     question: "How does the checked baggage calculator estimate cost?",
     answer:
-      "It multiplies the selected airline's usable published checked-bag fee by travelers, bags, flight directions, and annual roundtrips. If a bag price depends on route, fare, or booking timing, the tool explains the lookup instead of inventing a number.",
+      "It multiplies a selected published checked-bag reference fee by travelers, bags, flight directions, and annual trips. The result shows the source row's market and fare scope; if no usable price is available, the tool explains the lookup instead of inventing a number.",
   },
   {
     question: "Why does the calculator sometimes refuse to quote a checked bag total?",
@@ -17,7 +17,7 @@ export const CHECKED_BAG_FAQS = [
   {
     question: "Can I use this as a United baggage fee calculator?",
     answer:
-      "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual roundtrips. The result calculates the checked-bag total when a broadly applicable published price is available.",
+      "Yes. Select United, then enter travelers, checked bags per traveler, one-way or roundtrip, and annual trips. The result models a total from a published reference fee and links to United's source so you can confirm the route, fare, status, and card assumptions.",
   },
   {
     question: "Are baggage fees calculated round trip?",

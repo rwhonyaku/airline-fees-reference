@@ -28,8 +28,13 @@ export type CardsJson = { cards: Card[] };
 
 export type CheckedBagFeeEstimate = {
   amountUsd: number;
-  confidence: "exact_published_fee" | "conservative_lower_bound";
+  confidence: "published_reference_fee" | "conservative_lower_bound";
   label: string;
+  sourceUrl: string;
+  lastVerified: string;
+  conditions: string;
+  appliesTo?: string;
+  regionOrRoute?: string;
 };
 
 export function usd(n: number): string {
@@ -125,12 +130,12 @@ function currentRuleScore(row: FeeItem): number {
   return score;
 }
 
-function parseUsdEstimate(amount: FeeItem["amount"]): CheckedBagFeeEstimate | null {
+function parseUsdAmount(amount: FeeItem["amount"]): Pick<CheckedBagFeeEstimate, "amountUsd" | "confidence" | "label"> | null {
   if (typeof amount === "number" && Number.isFinite(amount)) {
     return {
       amountUsd: amount,
-      confidence: "exact_published_fee",
-      label: "Exact published USD fee",
+      confidence: "published_reference_fee",
+      label: "Published reference fee",
     };
   }
   if (typeof amount !== "string") return null;
@@ -172,7 +177,7 @@ export function findCheckedBagFeeEstimateUsd(fees: FeeItem[], ordinal: number): 
     const appliesTo = typeof row.applies_to === "string" ? row.applies_to.toLowerCase() : "";
     if (appliesTo.includes("blue plus")) return false;
 
-    return parseUsdEstimate(row.amount) != null;
+    return parseUsdAmount(row.amount) != null;
   });
 
   if (!matches.length) return null;
@@ -183,7 +188,17 @@ export function findCheckedBagFeeEstimateUsd(fees: FeeItem[], ordinal: number): 
     return scoreB - scoreA;
   })[0];
 
-  return parseUsdEstimate(row.amount);
+  const parsed = parseUsdAmount(row.amount);
+  if (!parsed) return null;
+
+  return {
+    ...parsed,
+    sourceUrl: row.source_url,
+    lastVerified: row.last_verified,
+    conditions: row.conditions,
+    appliesTo: row.applies_to,
+    regionOrRoute: row.region_or_route,
+  };
 }
 
 export function findCheckedBagFeeUsd(fees: FeeItem[], ordinal: number): number | null {
