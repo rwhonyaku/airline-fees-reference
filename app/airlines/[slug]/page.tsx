@@ -455,17 +455,31 @@ const TAILORED_DECISION_HIERARCHY_SLUGS = new Set([
   "air-canada",
   "air-france",
   "air-india",
+  "air-new-zealand",
+  "aer-lingus",
   "alaska",
   "american",
+  "ana",
+  "cathay-pacific",
   "delta",
   "easyjet",
+  "emirates",
+  "etihad",
   "eva-air",
   "frontier",
+  "jal",
   "jetblue",
+  "korean-air",
+  "klm",
   "lufthansa",
+  "qatar-airways",
+  "qantas",
   "ryanair",
   "singapore-airlines",
   "southwest",
+  "tap-air-portugal",
+  "turkish-airlines",
+  "british-airways",
   "united",
   "zipair",
 ]);
@@ -9110,6 +9124,304 @@ function EvaAirBaggageDecisionChecklist() {
   );
 }
 
+function EvidenceBasedBaggageDecision({
+  eyebrow,
+  title,
+  lead,
+  decisions,
+  officialHref,
+  officialLabel,
+  toolHref,
+}: {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  decisions: ReadonlyArray<Readonly<{ title: string; detail: string }>>;
+  officialHref: string;
+  officialLabel: string;
+  toolHref: string;
+}) {
+  return (
+    <section className="rounded-3xl border border-blue-200 bg-blue-50 p-6">
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">{eyebrow}</div>
+      <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">{title}</h2>
+      <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-700">{lead}</p>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {decisions.map((decision) => (
+          <div key={decision.title} className="rounded-2xl border border-blue-100 bg-white p-5">
+            <h3 className="font-black text-slate-950">{decision.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{decision.detail}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+        <a href={officialHref} target="_blank" rel="noreferrer" className="text-blue-800 underline">
+          {officialLabel}
+        </a>
+        <Link href={toolHref} className="text-blue-800 underline">
+          Check excess-baggage exposure
+        </Link>
+        <Link href="/guides/international-baggage-allowance" className="text-blue-800 underline">
+          Understand weight vs. piece rules
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function AnaBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="ANA baggage decision"
+      title="Read the ticket allowance before buying one extra piece"
+      lead="ANA does not publish one universal checked-bag price. Domestic and international rules, cabin, fare, route, status, and the operating airline determine the included allowance and the applicable excess table."
+      decisions={[
+        { title: "Prepaid baggage solves one specific problem", detail: "An eligible prepaid purchase covers one additional piece—not unlimited extra weight—and must be completed at least six hours before departure." },
+        { title: "Ten kilograms is the whole cabin allowance", detail: "ANA's published carry-on allowance is 10 kg total, including the personal item. Treating the personal item as a separate weight allowance can create an airport problem." },
+        { title: "Sports equipment has a useful exception", detail: "Eligible sports equipment within the free allowance can avoid the normal oversize charge between 158 and 292 cm, but route and aircraft limits still control acceptance." },
+      ]}
+      officialHref="https://www.ana.co.jp/en/jp/travel-information/baggage-information/checked-baggage/"
+      officialLabel="Check ANA's baggage rules"
+      toolHref="/tools/excess-baggage-calculator?airline=ana&weight=24&size=63"
+    />
+  );
+}
+
+function EmiratesBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Emirates baggage decision"
+      title="First determine whether the itinerary uses kilograms or pieces"
+      lead="Emirates uses two different excess-baggage systems. Buying extra kilograms on a weight-concept trip and buying an extra piece on a piece-concept trip are not interchangeable decisions."
+      decisions={[
+        { title: "Weight-concept trip", detail: "Additional baggage is priced per kilogram. Compare the online offer with the airport rate before travel rather than relying on a per-piece estimate." },
+        { title: "Piece-concept trip", detail: "Additional pieces and overweight or oversize conditions are separate. A standard extra-piece price does not automatically cover a heavy or large bag." },
+        { title: "Hard acceptance limits", detail: "No normal checked piece may exceed 32 kg. Emirates directs items above 203 cm to cargo or freight rather than treating them as ordinary oversize baggage." },
+        { title: "Status benefits follow the concept", detail: "Skywards benefits differ between weight and piece routes, so verify the allowance shown for the member and itinerary before subtracting a fee." },
+      ]}
+      officialHref="https://www.emirates.com/us/english/before-you-fly/baggage/purchase-additional-baggage-allowance/"
+      officialLabel="Check Emirates additional baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=emirates&weight=24&size=63"
+    />
+  );
+}
+
+function QatarBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Qatar Airways baggage decision"
+      title="Africa and the Americas use different excess math"
+      lead="Qatar Airways generally prices additional baggage by piece on Africa and Americas routes and by kilogram on weight-concept routes. The route system must be known before a fee estimate is meaningful."
+      decisions={[
+        { title: "Piece-route risk", detail: "A piece between 23 and 32 kg or between 158 and 300 cm can generate an overweight or oversize charge in addition to the piece rules." },
+        { title: "Weight-route risk", detail: "Additional baggage is priced by kilogram, so the useful input is total excess weight rather than a generic extra-bag count." },
+        { title: "Privilege Club can change the allowance", detail: "Published tier benefits add kilograms on weight routes or pieces on piece routes. Confirm that the membership benefit attaches to this booking." },
+      ]}
+      officialHref="https://www.qatarairways.com/en/baggage/excess.html"
+      officialLabel="Check Qatar Airways excess baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=qatar-airways&weight=24&size=63"
+    />
+  );
+}
+
+function CathayPacificBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Cathay Pacific baggage decision"
+      title="Use the e-ticket allowance, then decide whether to prepay pieces"
+      lead="Cathay's included allowance can change with route, cabin, fare, status, and baggage system. The e-ticket and baggage calculator are more authoritative than a generic Economy allowance."
+      decisions={[
+        { title: "Prepay only when the itinerary qualifies", detail: "Eligible travelers can buy up to three additional pieces at least 24 hours before departure and may receive up to a 10% discount." },
+        { title: "Heavy pieces wait until check-in", detail: "Cathay prices heavy-bag handling at check-in, and a single checked piece above 32 kg is not accepted as ordinary baggage." },
+        { title: "Sports equipment is not automatically free", detail: "It can count within the included allowance, but route rules, packing requirements, and the published 203 cm sports-item length limit still apply." },
+      ]}
+      officialHref="https://flights.cathaypacific.com/en_GB/baggage/baggage-calculator.html"
+      officialLabel="Check Cathay's baggage calculator"
+      toolHref="/tools/excess-baggage-calculator?airline=cathay-pacific&weight=24&size=63"
+    />
+  );
+}
+
+function JalBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Japan Airlines baggage decision"
+      title="The area pair determines which surcharge table applies"
+      lead="JAL separates domestic and international rules, and international excess prices vary by the origin and destination area. Do not apply a Japan domestic example to an international itinerary."
+      decisions={[
+        { title: "One bag can trigger several tests", detail: "Extra-piece, overweight, and oversize conditions are distinct. Price the route first, then check the individual piece's weight and dimensions." },
+        { title: "The overweight band matters", detail: "JAL distinguishes pieces from 23 to 32 kg and, where accepted, pieces from 32 to 45 kg. A single generic overweight estimate can materially understate the charge." },
+        { title: "Operating airline and aircraft matter", detail: "Partner operation can change the applicable allowance, while bulky sports equipment may require advance inquiry because cargo-space and length limits vary." },
+      ]}
+      officialHref="https://www.jal.co.jp/jp/en/inter/baggage/checked/"
+      officialLabel="Check JAL international baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=jal&weight=24&size=63"
+    />
+  );
+}
+
+function KoreanAirBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Korean Air baggage decision"
+      title="Price the segment, then test every limit the bag exceeds"
+      lead="Korean Air's allowance and excess charge depend on domestic versus international travel, cabin, fare, route, ticket conditions, and codeshare operation. Its calculator or segment table should anchor the estimate."
+      decisions={[
+        { title: "Charges can stack", detail: "An additional piece that is also overweight or oversized can receive more than one charge. Do not stop the calculation after finding the extra-piece amount." },
+        { title: "Advance purchase can matter", detail: "Korean Air allows eligible excess baggage to be bought online in advance; compare that itinerary-specific offer before relying on the airport table." },
+        { title: "Very large items require approval", detail: "Items from 203 to 292 cm need advance approval. Acceptance is therefore a separate question from merely paying an oversize charge." },
+      ]}
+      officialHref="https://www.koreanair.com/contents/booking/additional-service/excess-baggage?hl=en"
+      officialLabel="Check Korean Air excess baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=korean-air&weight=24&size=63"
+    />
+  );
+}
+
+function TurkishAirlinesBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Turkish Airlines baggage decision"
+      title="Route, baggage concept, and operating carrier control the answer"
+      lead="Turkish Airlines prices excess baggage through itinerary-specific rules. Weight versus piece concept, transfers, stopovers, timing, and the most-significant-carrier rule can all change the quote."
+      decisions={[
+        { title: "Use the itinerary calculator", detail: "A route example is not a universal extra-bag price. Confirm the exact journey and operating carriers before purchasing additional baggage." },
+        { title: "Split anything above 32 kg", detail: "A single checked piece cannot exceed 32 kg. Buying more total allowance does not make an over-limit individual bag acceptable." },
+        { title: "Sports equipment uses separate pricing", detail: "Turkish publishes item- and route-specific sports-equipment charges. Do not model those items as ordinary excess baggage without checking the dedicated table." },
+      ]}
+      officialHref="https://www.turkishairlines.com/en-int/any-questions/excess-baggage/"
+      officialLabel="Check Turkish Airlines excess baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=turkish-airlines&weight=24&size=63"
+    />
+  );
+}
+
+function BritishAirwaysBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="British Airways baggage decision"
+      title="Basic protects cabin baggage—not checked baggage"
+      lead="British Airways includes a cabin bag and personal item, but hand-baggage-only Basic fares do not include a checked piece. The checked allowance still changes by route, cabin, status, and operating airline."
+      decisions={[
+        { title: "Do not price Basic as a normal checked fare", detail: "A checked bag is a route-, cabin-, channel-, and timing-dependent add-on. Compare that total with the next fare before booking." },
+        { title: "Thirty-two kilograms is a hard ceiling", detail: "BA does not accept a normal checked piece above 32 kg. More allowance does not remove the need to repack or ship an overweight individual bag." },
+        { title: "Large items need an acceptance check", detail: "Out-of-gauge baggage may be accepted up to 190 × 75 × 65 cm, but BA asks travelers to notify it early and use the out-of-gauge drop." },
+      ]}
+      officialHref="https://hotline.britishairways.com/content/en/us/information/baggage-essentials"
+      officialLabel="Check British Airways baggage rules"
+      toolHref="/tools/excess-baggage-calculator?airline=british-airways&weight=24&size=63"
+    />
+  );
+}
+
+function KlmBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="KLM baggage decision"
+      title="Economy Basic changes the cabin-bag calculation"
+      lead="KLM Basic includes only a small underseat bag. Light, Standard, and Flex include the small item plus hand baggage with a 12 kg combined limit, while checked allowance remains fare- and route-dependent."
+      decisions={[
+        { title: "Add the overhead bag before the cutoff", detail: "Basic customers can buy one hand-baggage piece through My Trip up to four hours before departure; eligible Flying Blue elites receive a published exception." },
+        { title: "Heavy and large bags move to airport pricing", detail: "KLM prices bags above the ticket allowance up to 32 kg by route and charges itinerary-specific oversize fees from 158 to 300 cm at the airport." },
+        { title: "Sports equipment depends on the item", detail: "Some equipment counts as a checked bag, while bicycles and other items use separate reservation or route-priced treatment." },
+      ]}
+      officialHref="https://www.klm.com/information/baggage/hand-baggage-allowance"
+      officialLabel="Check KLM hand-baggage allowance"
+      toolHref="/tools/excess-baggage-calculator?airline=klm&weight=24&size=63"
+    />
+  );
+}
+
+function QantasBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Qantas baggage decision"
+      title="Domestic pieces and international excess use different math"
+      lead="Qantas baggage depends on the itinerary, cabin, status, operating carrier, and whether the market charges excess by piece or weight. Start with the confirmed allowance, not a global Economy assumption."
+      decisions={[
+        { title: "Domestic Australia airport exposure", detail: "For travel under the current published schedule, an extra domestic piece bought at the airport is A$161, and a piece above 23 kg up to 32 kg adds a A$64 heavy charge." },
+        { title: "International pricing changes by market", detail: "Published pre-purchase examples begin by kilogram on applicable routes and by extra piece in Americas markets. The exact route and timing determine the usable quote." },
+        { title: "Prepurchase before relying on airport rates", detail: "Additional baggage can be materially cheaper before travel, while sports and oversize items remain subject to aircraft and handling limits." },
+      ]}
+      officialHref="https://www.qantas.com/en-au/baggage/pre-purchase-additional"
+      officialLabel="Check Qantas additional baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=qantas&weight=24&size=63"
+    />
+  );
+}
+
+function EtihadBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Etihad baggage decision"
+      title="Basic can remove the checked allowance entirely"
+      lead="Etihad's allowance changes by fare, destination, cabin, ticket date, and baggage concept. Basic fares include no checked baggage, so the cheapest displayed fare needs an extra-bag comparison before booking."
+      decisions={[
+        { title: "Online purchase is the main savings lever", detail: "Etihad advertises savings of up to 65% online, but the cutoff differs: four hours before weight-concept travel and 30 hours before piece-concept travel." },
+        { title: "Keep every extra piece within 32 kg", detail: "Paying for more allowance does not make a heavier individual piece acceptable. Repack before reaching the airport." },
+        { title: "Codeshares can replace the rule set", detail: "Partner-operated itineraries may use another carrier's allowance and excess fees, so confirm the operating airline before using Etihad's table." },
+      ]}
+      officialHref="https://www.etihad.com/en/help/faq/baggage"
+      officialLabel="Check Etihad baggage rules"
+      toolHref="/tools/excess-baggage-calculator?airline=etihad&weight=24&size=63"
+    />
+  );
+}
+
+function AirNewZealandBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Air New Zealand baggage decision"
+      title="Seat-only fares change the checked-bag baseline"
+      lead="Air New Zealand includes checked baggage on eligible fares but not seat-only tickets. The confirmed allowance in Manage Booking should control before pricing an Extra Bag."
+      decisions={[
+        { title: "Prepaid Extra Bags beat airport improvisation", detail: "Published prices vary across domestic, regional, and long-haul routes, and eligibility depends on Air New Zealand ticketing, operation, and advance timing." },
+        { title: "Over 32 kg means repack", detail: "Overweight and oversize charges are airport-priced by departure country, but an individual item above 32 kg is not solved by paying another fee." },
+        { title: "Sports gear normally consumes a bag", detail: "Treat the equipment as a checked piece first; overweight, oversize, route, and aircraft restrictions can then add cost or block acceptance." },
+      ]}
+      officialHref="https://www.airnewzealand.com/en-nz/travel-info/baggage"
+      officialLabel="Check Air New Zealand baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=air-new-zealand&weight=24&size=63"
+    />
+  );
+}
+
+function AerLingusBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Aer Lingus baggage decision"
+      title="The free small item is not the 10 kg cabin bag"
+      lead="Every traveler gets a small personal item, but onboard access for the 10 kg bag depends on fare, route, status, or a paid option. Presenting an unentitled Saver bag at the gate can trigger hold handling and a fee."
+      decisions={[
+        { title: "Europe and North America use different overweight math", detail: "European excess is charged per kilogram above the purchased allowance; North American pieces from 23 to 32 kg use a per-bag, per-direction charge." },
+        { title: "Choose 20 kg versus 25 kg before the airport", detail: "Both products vary by route, season, and timing. Buying too little allowance exposes a European itinerary to the airport per-kilogram rate." },
+        { title: "Book sports equipment online when eligible", detail: "The published Europe price is €40 online versus €50 at the airport for eligible equipment up to 23 kg." },
+      ]}
+      officialHref="https://www.aerlingus.com/prepare/bags/checked-baggage/"
+      officialLabel="Check Aer Lingus checked baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=aer-lingus&weight=24&size=63"
+    />
+  );
+}
+
+function TapBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="TAP Air Portugal baggage decision"
+      title="Discount fares can remove the checked piece"
+      lead="TAP's included allowance changes by fare family, route, cabin, and status. Discount is the first fare to inspect because baggage, seat, change, and refund rules can all be more restrictive."
+      decisions={[
+        { title: "Extra baggage is not a flat €30", detail: "That is a published starting point. Channel, advance timing, route, and season determine the actual extra-piece price." },
+        { title: "Test both weight and dimensions", detail: "A piece from 23 to 32 kg and a piece above 158 cm use separate route- and season-based charges; airport handling can still limit acceptance." },
+        { title: "Sports equipment may use the allowance", detail: "Eligible equipment can count within the ticket allowance, but an additional item uses date-, route-, and channel-dependent pricing." },
+      ]}
+      officialHref="https://www.flytap.com/en-st/information/baggage/hold-baggage"
+      officialLabel="Check TAP hold-baggage pricing"
+      toolHref="/tools/excess-baggage-calculator?airline=tap-air-portugal&weight=24&size=63"
+    />
+  );
+}
+
 function ZipairBaggageDecisionChecklist() {
   const checkedBagPrices = ZIPAIR_CHECKED_BAG_PRICES.filter((route) => route.origin === "NRT").map((outbound) => ({
     destination: outbound.label.replace("Tokyo (NRT) to ", ""),
@@ -10121,6 +10433,20 @@ function ReferenceAirlinePage({
         {slug === "lufthansa" ? <LufthansaBaggageDecisionChecklist /> : null}
         {slug === "singapore-airlines" ? <SingaporeAirlinesBaggageDecisionChecklist /> : null}
         {slug === "eva-air" ? <EvaAirBaggageDecisionChecklist /> : null}
+        {slug === "ana" ? <AnaBaggageDecisionChecklist /> : null}
+        {slug === "emirates" ? <EmiratesBaggageDecisionChecklist /> : null}
+        {slug === "qatar-airways" ? <QatarBaggageDecisionChecklist /> : null}
+        {slug === "cathay-pacific" ? <CathayPacificBaggageDecisionChecklist /> : null}
+        {slug === "jal" ? <JalBaggageDecisionChecklist /> : null}
+        {slug === "korean-air" ? <KoreanAirBaggageDecisionChecklist /> : null}
+        {slug === "turkish-airlines" ? <TurkishAirlinesBaggageDecisionChecklist /> : null}
+        {slug === "british-airways" ? <BritishAirwaysBaggageDecisionChecklist /> : null}
+        {slug === "klm" ? <KlmBaggageDecisionChecklist /> : null}
+        {slug === "qantas" ? <QantasBaggageDecisionChecklist /> : null}
+        {slug === "etihad" ? <EtihadBaggageDecisionChecklist /> : null}
+        {slug === "air-new-zealand" ? <AirNewZealandBaggageDecisionChecklist /> : null}
+        {slug === "aer-lingus" ? <AerLingusBaggageDecisionChecklist /> : null}
+        {slug === "tap-air-portugal" ? <TapBaggageDecisionChecklist /> : null}
 
         {slug === "air-france" ? (
           <AirFranceBaggagePriceChecklist />
