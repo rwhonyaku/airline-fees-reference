@@ -336,6 +336,7 @@ const TARGET_REFERENCE_SLUGS = new Set([
   "aer-lingus",
   "aeromexico",
   "air-new-zealand",
+  "airasia",
   "qantas",
   "tap-air-portugal",
   "avianca",
@@ -345,6 +346,7 @@ const TARGET_REFERENCE_SLUGS = new Set([
   "westjet",
   "virgin-australia",
   "iberia-express",
+  "iberia",
   "norwegian",
   "saudia",
   "vueling",
@@ -405,6 +407,7 @@ const DOT_REFERENCE_SLUGS = new Set([
   "alaska",
   "air-canada",
   "jetblue",
+  "jetstar",
   "spirit",
   "frontier",
   "zipair",
@@ -461,24 +464,37 @@ const TAILORED_DECISION_HIERARCHY_SLUGS = new Set([
   "american",
   "ana",
   "cathay-pacific",
+  "cebu-pacific",
   "delta",
   "easyjet",
   "emirates",
   "etihad",
   "eva-air",
   "frontier",
+  "iberia",
+  "iberia-express",
+  "indigo",
   "jal",
   "jetblue",
+  "jetstar",
+  "jet2",
   "korean-air",
   "klm",
   "lufthansa",
+  "norwegian",
   "qatar-airways",
   "qantas",
   "ryanair",
   "singapore-airlines",
+  "scoot",
   "southwest",
   "tap-air-portugal",
   "turkish-airlines",
+  "vietjet-air",
+  "viva-aerobus",
+  "volaris",
+  "vueling",
+  "wizz-air",
   "british-airways",
   "united",
   "zipair",
@@ -9422,6 +9438,259 @@ function TapBaggageDecisionChecklist() {
   );
 }
 
+function IberiaBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Iberia baggage decision"
+      title="Basic keeps the cabin bag but can remove the checked piece"
+      lead="Iberia includes a cabin bag and personal item, while checked baggage depends on fare brand, route, cabin, timing, season, and Iberia Group operation. Price Basic against a fare with baggage before booking."
+      decisions={[
+        { title: "Buy the bag before the airport", detail: "Basic-fare and additional-bag prices change by route and purchase channel. The online itinerary quote is more useful than a generic average." },
+        { title: "Twenty-three kilograms is the standard threshold", detail: "Pieces above 23 kg and up to 32 kg use route-based airport overweight pricing; irregular-shaped baggage can use another route charge." },
+        { title: "Partner operation can replace the allowance", detail: "Iberia Club and oneworld benefits, included bags, and handling rules can depend on whether an Iberia Group carrier operates the flight." },
+      ]}
+      officialHref="https://www.iberia.com/us/luggage/allowance-in-hold/"
+      officialLabel="Check Iberia hold-baggage allowance"
+      toolHref="/tools/excess-baggage-calculator?airline=iberia&weight=24&size=63"
+    />
+  );
+}
+
+function VuelingBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Vueling baggage decision"
+      title="Choose the correct weight tier before check-in"
+      lead="Vueling includes one underseat bag, but overhead access depends on the fare or add-on. Checked baggage is sold in 15, 20, 25, and 30 kg tiers rather than as one standard product."
+      decisions={[
+        { title: "Overhead cabin access is a separate purchase", detail: "The online price varies by route, date, bundle, and seat choice; airport and gate paths are higher-risk and more expensive." },
+        { title: "Underbuying weight costs €12 per kilogram", detail: "Airport excess applies above the purchased checked-bag tier, up to the 32 kg maximum. Choose a realistic tier before travel." },
+        { title: "Sports equipment is special luggage", detail: "It is not included merely because the traveler bought a normal checked bag; add the correct special-luggage service and stay within hold limits." },
+      ]}
+      officialHref="https://www.vueling.com/en/vueling-services/supplementary-service-rates/"
+      officialLabel="Check Vueling service rates"
+      toolHref="/tools/excess-baggage-calculator?airline=vueling&weight=26&size=63"
+    />
+  );
+}
+
+function NorwegianBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Norwegian baggage decision"
+      title="LowFare removes both the overhead bag and checked bag"
+      lead="Norwegian LowFare includes only an underseat item. LowFare+ and Flex restore overhead cabin baggage, while checked-bag inclusion and flexibility also differ by fare."
+      decisions={[
+        { title: "Add checked baggage before check-in", detail: "Paid-bag pricing varies by route, season, and timing. Norwegian directs travelers to buy online before check-in to avoid the higher late path." },
+        { title: "The 23 kg limit is expensive to miss", detail: "Excess is charged per kilogram, per leg, up to 32 kg per piece. A roundtrip with a consistently heavy bag repeats that exposure." },
+        { title: "Sports equipment is cheaper online", detail: "Published sports-item prices are lower online than at the airport, and excess weight can still be charged separately." },
+      ]}
+      officialHref="https://www.norwegian.com/en/travel-info/baggage/checked-baggage/"
+      officialLabel="Check Norwegian checked baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=norwegian&weight=24&size=63"
+    />
+  );
+}
+
+function WizzAirBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Wizz Air baggage decision"
+      title="Priority and checked-weight tiers solve different problems"
+      lead="The Basic fare includes one underseat bag. WIZZ Priority adds an overhead trolley bag, while checked baggage is sold separately in 10, 20, 26, and 32 kg tiers."
+      decisions={[
+        { title: "Do not buy Priority for checked weight", detail: "Priority changes cabin entitlement. It does not replace a checked-bag product when the bag must travel in the hold." },
+        { title: "Airport excess is €13 per kilogram", detail: "Underbuying the selected weight tier can erase the apparent saving, and no individual checked bag may exceed 32 kg." },
+        { title: "Discount Club is a discount—not a waiver", detail: "Membership can reduce eligible baggage prices but does not make cabin or checked baggage universally free." },
+        { title: "Sports gear has a three-hour deadline", detail: "The special-baggage service must be added during booking or at least three hours before departure." },
+      ]}
+      officialHref="https://wizzair.com/en-gb/information-and-services/travel-information/baggage"
+      officialLabel="Check Wizz Air baggage options"
+      toolHref="/tools/excess-baggage-calculator?airline=wizz-air&weight=21&size=63"
+    />
+  );
+}
+
+function VolarisBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Volaris baggage decision"
+      title="The bundle changes both cabin and checked entitlement"
+      lead="Zero and Basic include only a personal item in the cabin, while Plus includes a carry-on. Basic includes a 15 kg checked piece and Plus includes 25 kg, so the displayed fare alone does not reveal the useful baggage value."
+      decisions={[
+        { title: "Compare the next bundle before adding bags", detail: "Carry-on, checked weight, seat, route, channel, and purchase timing can make a higher bundle cheaper than rebuilding Zero or Basic." },
+        { title: "INVEX benefits have strict conditions", detail: "Eligible card payment, cardholder travel, direct booking, non-group travel, and no codeshare are among the conditions; do not model it as a universal waiver." },
+        { title: "Sports gear can replace a purchased bag", detail: "Within the published limits, an extra-bag purchase can be used for sports equipment; larger items move into separate special-baggage rules." },
+      ]}
+      officialHref="https://cms.volaris.com/en/travel-info/baggage-policy/"
+      officialLabel="Check Volaris baggage policy"
+      toolHref="/tools/excess-baggage-calculator?airline=volaris&weight=26&size=63"
+    />
+  );
+}
+
+function JetstarBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Jetstar baggage decision"
+      title="Buy checked weight online; airport fallback starts at 20 kg"
+      lead="Jetstar base fares include limited cabin baggage. Checked allowance and extra carry-on weight must be purchased where available, and airport baggage uses carrier- and route-specific fallback pricing."
+      decisions={[
+        { title: "Online weight is the controllable cost", detail: "At the airport, the first checked purchase starts with a 20 kg allowance on applicable JQ travel, followed by per-kilogram excess. Online purchase is cheaper." },
+        { title: "Jetstar carriers do not share one airport table", detail: "JQ and GK can use different starting allowances and currencies, so confirm the operating Jetstar airline before applying a price." },
+        { title: "Oversize does not buy weight", detail: "An item with a side longer than one metre needs the oversized-item fee and enough purchased checked weight; sports gear can trigger both requirements." },
+      ]}
+      officialHref="https://www.jetstar.com/jp/en/help/excess-baggage-charges-at-the-airport"
+      officialLabel="Check Jetstar airport baggage charges"
+      toolHref="/tools/excess-baggage-calculator?airline=jetstar&weight=21&size=63"
+    />
+  );
+}
+
+function ScootBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Scoot baggage decision"
+      title="Basic has cabin weight—but no checked baggage"
+      lead="Scoot Economy permits two cabin pieces up to 10 kg combined, but Basic includes no checked bag. Value and Flex include 20 kg, while ScootPlus includes 30 kg."
+      decisions={[
+        { title: "Choose the bundle before adding hold weight", detail: "Seat selection, checked baggage, and change treatment differ by bundle. Compare the complete itinerary rather than adding baggage to Basic automatically." },
+        { title: "Purchased allowance still has a per-piece ceiling", detail: "Airport excess applies above the purchased total, and any individual checked piece above 32 kg must be repacked." },
+        { title: "There is no universal elite bag waiver", detail: "Scoot's baggage model is driven by fare bundle and purchased weight, so do not import Singapore Airlines status assumptions without a published benefit." },
+      ]}
+      officialHref="https://www.flyscoot.com/en/plan/booking-your-flight/baggage"
+      officialLabel="Check Scoot baggage rules"
+      toolHref="/tools/excess-baggage-calculator?airline=scoot&weight=21&size=63"
+    />
+  );
+}
+
+function AirAsiaBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="AirAsia baggage decision"
+      title="Seven kilograms covers both cabin pieces combined"
+      lead="AirAsia Low Fare includes two cabin pieces totaling 7 kg but no checked baggage. Checked and sports allowances are separate products whose price depends on operating carrier, route, weight tier, and timing."
+      decisions={[
+        { title: "Upgrade checked weight before the airport", detail: "Allowance can be increased before travel; weight above the purchased tier moves to the operating carrier's airport per-kilogram rate." },
+        { title: "Do not pool sports and normal baggage", detail: "Listed sports items need the sports allowance, and AirAsia does not permit travelers to combine that weight with ordinary checked allowance." },
+        { title: "Thirty-two kilograms remains the item limit", detail: "Buying more total allowance does not make an individual piece above the published limit acceptable." },
+      ]}
+      officialHref="https://www.airasia.com/aa/about-us/en/gb/fares.html"
+      officialLabel="Check AirAsia fare inclusions"
+      toolHref="/tools/excess-baggage-calculator?airline=airasia&weight=21&size=63"
+    />
+  );
+}
+
+function CebuPacificBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Cebu Pacific baggage decision"
+      title="Buy the correct checked weight before airport per-kilogram pricing"
+      lead="Cebu Pacific includes 7 kg of hand-carry, while checked baggage is bundle- or add-on-based. Route group and timing determine both the advance package and the airport penalty."
+      decisions={[
+        { title: "Airport excess escalates by route group", detail: "Published airport excess starts at PHP 700 per kg domestically and rises on short- and long-haul international routes; online 4 kg upgrades are cheaper when offered." },
+        { title: "Special baggage is a separate app product", detail: "CEB Special or Sports Baggage is limited to one 20 kg item per sector, must be added through the app, and still incurs excess above 20 kg." },
+        { title: "Go Rewards pays—it does not waive", detail: "Points may cover baggage purchases, but membership does not create a universal free checked allowance." },
+      ]}
+      officialHref="https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500"
+      officialLabel="Check Cebu Pacific baggage options"
+      toolHref="/tools/excess-baggage-calculator?airline=cebu-pacific&weight=21&size=63"
+    />
+  );
+}
+
+function IndigoBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="IndiGo baggage decision"
+      title="Domestic kilograms and international route rules are not interchangeable"
+      lead="IndiGo's common domestic baseline is one 15 kg checked piece, but Lite, Stretch, international routes, and codeshares can differ. Read the itinerary allowance before choosing a prepaid slab."
+      decisions={[
+        { title: "Prepaid kilograms usually beat airport excess", detail: "The stored domestic airport example is INR 800 per kilogram, while eligible advance slabs use separate pricing and cutoffs." },
+        { title: "Extra weight and extra pieces are different", detail: "A prepaid weight slab does not necessarily cover another piece; additional-piece and odd-size handling can apply separately." },
+        { title: "Codeshare passengers lose the advance path", detail: "IndiGo states that codeshare travelers can add excess only at check-in, so ordinary online-add-on assumptions do not apply." },
+      ]}
+      officialHref="https://www.goindigo.in/baggage/excess-baggage.html"
+      officialLabel="Check IndiGo excess baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=indigo&weight=16&size=63"
+    />
+  );
+}
+
+function Jet2BaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Jet2 baggage decision"
+      title="Cabin baggage is included; hold-weight selection is the real fee decision"
+      lead="Jet2 includes a small underseat item and one 10 kg cabin bag. Checked baggage is sold mainly in 22 kg and 26 kg options, with prices driven by route, season, and booking path."
+      decisions={[
+        { title: "Buy the hold bag before the airport", detail: "Jet2 permits up to three checked bags per traveler, but advance pricing is the controllable path; airport excess uses a different calculation." },
+        { title: "The first four excess kilograms are per kg", detail: "After that band, Jet2 publishes a flat excess charge up to the applicable limit. Underestimating weight can therefore change pricing method mid-calculation." },
+        { title: "Oversize cabin items are gate-priced", detail: "An extra or oversized hand-baggage item can trigger the published per-item airport or gate charge despite the normal 10 kg cabin allowance." },
+      ]}
+      officialHref="https://www.jet2.com/baggage"
+      officialLabel="Check Jet2 baggage options"
+      toolHref="/tools/excess-baggage-calculator?airline=jet2&weight=23&size=63"
+    />
+  );
+}
+
+function IberiaExpressBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Iberia Express baggage decision"
+      title="Express is the fare without checked luggage"
+      lead="Iberia Express includes cabin baggage, but only higher fare packages can include a 23 kg checked piece. Express-fare and additional bags vary by route, weight tier, timing, and channel."
+      decisions={[
+        { title: "Price the checked bag before accepting Express", detail: "The route-specific online price can make the next package a better total-cost choice than rebuilding the lowest fare." },
+        { title: "Overweight and oversize are separate", detail: "A bag above its purchased tier can incur a €60 overweight fee, while qualifying bulky items can use the €150 special or oversize path." },
+        { title: "Reserve sports-equipment space", detail: "Special baggage requires advance space reservation, and the price changes by item type; elite exceptions are narrower than normal bag benefits." },
+      ]}
+      officialHref="https://www.iberiaexpress.com/en/general-info/passenger-information/before-you-go/baggage/checked-baggage"
+      officialLabel="Check Iberia Express checked baggage"
+      toolHref="/tools/excess-baggage-calculator?airline=iberia-express&weight=24&size=63"
+    />
+  );
+}
+
+function VivaAerobusBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="Viva Aerobus baggage decision"
+      title="The bundle determines both cabin and checked weight"
+      lead="Every fare includes a personal item. Light and Extra include 10 kg of carry-on, Smart can raise cabin allowance to 15 kg, while checked baggage begins at 15 kg on Extra and 25 kg on Smart."
+      decisions={[
+        { title: "Zero and Light exclude checked baggage", detail: "Compare the add-on total with Extra or Smart before booking; route and purchase timing change the rebuild cost." },
+        { title: "Doters benefits are not universal", detail: "Tier and fare bundle determine baggage and seat benefits, and Zero may be excluded. Verify the exact entitlement on the booking." },
+        { title: "Equipment needs both shape and weight compliance", detail: "Sports or musical equipment must satisfy hard-case, weight, and dimensional conditions; the published ceiling is 32 kg and 319 cm for eligible items." },
+      ]}
+      officialHref="https://blog.vivaaerobus.com/en/baggage-policies/"
+      officialLabel="Check Viva Aerobus baggage policies"
+      toolHref="/tools/excess-baggage-calculator?airline=viva-aerobus&weight=26&size=63"
+    />
+  );
+}
+
+function VietjetBaggageDecisionChecklist() {
+  return (
+    <EvidenceBasedBaggageDecision
+      eyebrow="VietJet Air baggage decision"
+      title="Fare family, route group, and weight package set the real total"
+      lead="Eco and Deluxe include 7 kg of cabin baggage, while checked baggage is purchased by route-group package unless the fare includes it. Airport excess is then charged per kilogram above that allowance."
+      decisions={[
+        { title: "Buy the correct package before departure", detail: "Domestic and international route groups use different advance prices and airport rates; a single global checked-bag estimate is unreliable." },
+        { title: "Oversize service does not replace weight", detail: "Bulky items need the appropriate advance package or airport service, but the traveler still needs sufficient checked allowance." },
+        { title: "Every piece remains capped at 32 kg", detail: "Sports and bulky items follow the same per-piece ceiling even when special handling has been purchased." },
+      ]}
+      officialHref="https://seo.vietjetair.com/en/pages/fee-and-charges-1599130343851"
+      officialLabel="Check VietJet fees and charges"
+      toolHref="/tools/excess-baggage-calculator?airline=vietjet-air&weight=21&size=63"
+    />
+  );
+}
+
 function ZipairBaggageDecisionChecklist() {
   const checkedBagPrices = ZIPAIR_CHECKED_BAG_PRICES.filter((route) => route.origin === "NRT").map((outbound) => ({
     destination: outbound.label.replace("Tokyo (NRT) to ", ""),
@@ -10447,6 +10716,20 @@ function ReferenceAirlinePage({
         {slug === "air-new-zealand" ? <AirNewZealandBaggageDecisionChecklist /> : null}
         {slug === "aer-lingus" ? <AerLingusBaggageDecisionChecklist /> : null}
         {slug === "tap-air-portugal" ? <TapBaggageDecisionChecklist /> : null}
+        {slug === "iberia" ? <IberiaBaggageDecisionChecklist /> : null}
+        {slug === "vueling" ? <VuelingBaggageDecisionChecklist /> : null}
+        {slug === "norwegian" ? <NorwegianBaggageDecisionChecklist /> : null}
+        {slug === "wizz-air" ? <WizzAirBaggageDecisionChecklist /> : null}
+        {slug === "volaris" ? <VolarisBaggageDecisionChecklist /> : null}
+        {slug === "jetstar" ? <JetstarBaggageDecisionChecklist /> : null}
+        {slug === "scoot" ? <ScootBaggageDecisionChecklist /> : null}
+        {slug === "airasia" ? <AirAsiaBaggageDecisionChecklist /> : null}
+        {slug === "cebu-pacific" ? <CebuPacificBaggageDecisionChecklist /> : null}
+        {slug === "indigo" ? <IndigoBaggageDecisionChecklist /> : null}
+        {slug === "jet2" ? <Jet2BaggageDecisionChecklist /> : null}
+        {slug === "iberia-express" ? <IberiaExpressBaggageDecisionChecklist /> : null}
+        {slug === "viva-aerobus" ? <VivaAerobusBaggageDecisionChecklist /> : null}
+        {slug === "vietjet-air" ? <VietjetBaggageDecisionChecklist /> : null}
 
         {slug === "air-france" ? (
           <AirFranceBaggagePriceChecklist />
